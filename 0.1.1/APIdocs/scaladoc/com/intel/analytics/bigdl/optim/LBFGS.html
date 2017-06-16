@@ -1,0 +1,913 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>LBFGS - bigdl-SPARK_2.1 0.2.0-SNAPSHOT API - com.intel.analytics.bigdl.optim.LBFGS</title>
+          <meta name="description" content="LBFGS - bigdl - SPARK 2.1 0.2.0 - SNAPSHOT API - com.intel.analytics.bigdl.optim.LBFGS" />
+          <meta name="keywords" content="LBFGS bigdl SPARK 2.1 0.2.0 SNAPSHOT API com.intel.analytics.bigdl.optim.LBFGS" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../index.html';
+            var hash = 'com.intel.analytics.bigdl.optim.LBFGS';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="type">
+      <div id="definition">
+        <img alt="Class" src="../../../../../lib/class_big.png" />
+        <p id="owner"><a href="../../../../package.html" class="extype" name="com">com</a>.<a href="../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.optim">optim</a></p>
+        <h1>LBFGS</h1><h3><span class="morelinks"><div>Related Doc:
+            <a href="package.html" class="extype" name="com.intel.analytics.bigdl.optim">package optim</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">LBFGS</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>]</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This implementation of L-BFGS relies on a user-provided line
+search function (state.lineSearch). If this function is not
+provided, then a simple learningRate is used to produce fixed
+size steps. Fixed size steps are much less costly than line
+searches, and can be useful for stochastic problems.</p><p>The learning rate is used even when a line search is provided.
+This is also useful for large-scale stochastic problems, where
+opfunc is a noisy approximation of f(x). In that case, the learning
+rate allows a reduction of confidence in the step size.</p></div><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="com.intel.analytics.bigdl.optim.LBFGS"><span>LBFGS</span></li><li class="in" name="com.intel.analytics.bigdl.optim.OptimMethod"><span>OptimMethod</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show All</span></li>
+            </ol>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="com.intel.analytics.bigdl.optim.LBFGS#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(maxIter:Int,maxEval:Double,tolFun:Double,tolX:Double,nCorrection:Int,learningRate:Double,verbose:Boolean,lineSearch:Option[com.intel.analytics.bigdl.optim.LineSearch[T]],lineSearchOptions:Option[com.intel.analytics.bigdl.utils.Table])(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.optim.LBFGS[T]"></a>
+      <a id="&lt;init&gt;:LBFGS[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">LBFGS</span><span class="params">(<span name="maxIter">maxIter: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">20</span></span>, <span name="maxEval">maxEval: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">Double.MaxValue</span></span>, <span name="tolFun">tolFun: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1e-5</span></span>, <span name="tolX">tolX: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1e-9</span></span>, <span name="nCorrection">nCorrection: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">100</span></span>, <span name="learningRate">learningRate: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1.0</span></span>, <span name="verbose">verbose: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="lineSearch">lineSearch: <span class="extype" name="scala.Option">Option</span>[<a href="LineSearch.html" class="extype" name="com.intel.analytics.bigdl.optim.LineSearch">LineSearch</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>]] = <span class="symbol">None</span></span>, <span name="lineSearchOptions">lineSearchOptions: <span class="extype" name="scala.Option">Option</span>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>] = <span class="symbol">None</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>]</span>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@&lt;init&gt;(maxIter:Int,maxEval:Double,tolFun:Double,tolX:Double,nCorrection:Int,learningRate:Double,verbose:Boolean,lineSearch:Option[com.intel.analytics.bigdl.optim.LineSearch[T]],lineSearchOptions:Option[com.intel.analytics.bigdl.utils.Table])(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.optim.LBFGS[T]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">maxIter</dt><dd class="cmt"><p>Maximum number of iterations allowed</p></dd><dt class="param">maxEval</dt><dd class="cmt"><p>Maximum number of function evaluations</p></dd><dt class="param">tolFun</dt><dd class="cmt"><p>Termination tolerance on the first-order optimality</p></dd><dt class="param">tolX</dt><dd class="cmt"><p>Termination tol on progress in terms of func/param changes</p></dd><dt class="param">lineSearch</dt><dd class="cmt"><p>A line search function</p></dd><dt class="param">lineSearchOptions</dt><dd class="cmt"><p>If no line search provided,
+              then a fixed step size is used</p></dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@##():Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.LBFGS#clearHistory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clearHistory():Unit"></a>
+      <a id="clearHistory():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clearHistory</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@clearHistory():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Clear the history information in the OptimMethod state
+</p><div class="fullcomment"><div class="comment cmt"><p>Clear the history information in the OptimMethod state
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.LBFGS">LBFGS</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.OptimMethod#clone" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():com.intel.analytics.bigdl.optim.OptimMethod[T]"></a>
+      <a id="clone():OptimMethod[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@clone():com.intel.analytics.bigdl.optim.OptimMethod[T]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">clone OptimMethod
+</p><div class="fullcomment"><div class="comment cmt"><p>clone OptimMethod
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a> → AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
+      <a id="equals(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.OptimMethod#getHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getHyperParameter():String"></a>
+      <a id="getHyperParameter():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getHyperParameter</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@getHyperParameter():String" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Get hyper parameter from config table.</p><div class="fullcomment"><div class="comment cmt"><p>Get hyper parameter from config table.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.LBFGS#getLearningRate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getLearningRate():Double"></a>
+      <a id="getLearningRate():Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getLearningRate</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@getLearningRate():Double" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">get learning rate
+</p><div class="fullcomment"><div class="comment cmt"><p>get learning rate
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.LBFGS">LBFGS</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <a id="hashCode():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.LBFGS#learningRate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="learningRate:Double"></a>
+      <a id="learningRate:Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">learningRate</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@learningRate:Double" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.intel.analytics.bigdl.optim.LBFGS#lineSearch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="lineSearch:Option[com.intel.analytics.bigdl.optim.LineSearch[T]]"></a>
+      <a id="lineSearch:Option[LineSearch[T]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">lineSearch</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="LineSearch.html" class="extype" name="com.intel.analytics.bigdl.optim.LineSearch">LineSearch</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@lineSearch:Option[com.intel.analytics.bigdl.optim.LineSearch[T]]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A line search function</p>
+    </li><li name="com.intel.analytics.bigdl.optim.LBFGS#lineSearchOptions" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="lineSearchOptions:Option[com.intel.analytics.bigdl.utils.Table]"></a>
+      <a id="lineSearchOptions:Option[Table]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">lineSearchOptions</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@lineSearchOptions:Option[com.intel.analytics.bigdl.utils.Table]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">If no line search provided,
+              then a fixed step size is used</p>
+    </li><li name="com.intel.analytics.bigdl.optim.LBFGS#loadFromTable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="loadFromTable(config:com.intel.analytics.bigdl.utils.Table):LBFGS.this.type"></a>
+      <a id="loadFromTable(Table):LBFGS.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">loadFromTable</span><span class="params">(<span name="config">config: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.LBFGS">LBFGS</a>.this.type</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@loadFromTable(config:com.intel.analytics.bigdl.utils.Table):LBFGS.this.type" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">load optimMethod parameters from Table</p><div class="fullcomment"><div class="comment cmt"><p>load optimMethod parameters from Table</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.LBFGS">LBFGS</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.LBFGS#maxEval" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="maxEval:Double"></a>
+      <a id="maxEval:Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">maxEval</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@maxEval:Double" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Maximum number of function evaluations</p>
+    </li><li name="com.intel.analytics.bigdl.optim.LBFGS#maxIter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="maxIter:Int"></a>
+      <a id="maxIter:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">maxIter</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@maxIter:Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Maximum number of iterations allowed</p>
+    </li><li name="com.intel.analytics.bigdl.optim.LBFGS#nCorrection" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="nCorrection:Int"></a>
+      <a id="nCorrection:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">nCorrection</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@nCorrection:Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.LBFGS#optimize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="optimize(opfunc:com.intel.analytics.bigdl.tensor.Tensor[T]=&gt;(T,com.intel.analytics.bigdl.tensor.Tensor[T]),x:com.intel.analytics.bigdl.tensor.Tensor[T]):(com.intel.analytics.bigdl.tensor.Tensor[T],Array[T])"></a>
+      <a id="optimize((Tensor[T])⇒(T,Tensor[T]),Tensor[T]):(Tensor[T],Array[T])"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">optimize</span><span class="params">(<span name="opfunc">opfunc: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>]) ⇒ (<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>])</span>, <span name="x">x: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>]</span>)</span><span class="result">: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>])</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@optimize(opfunc:com.intel.analytics.bigdl.tensor.Tensor[T]=&gt;(T,com.intel.analytics.bigdl.tensor.Tensor[T]),x:com.intel.analytics.bigdl.tensor.Tensor[T]):(com.intel.analytics.bigdl.tensor.Tensor[T],Array[T])" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Optimize the model parameter
+</p><div class="fullcomment"><div class="comment cmt"><p>Optimize the model parameter
+</p></div><dl class="paramcmts block"><dt class="param">opfunc</dt><dd class="cmt"><p>a function that takes a single input (X), the point of a evaluation,
+              and returns f(X) and df/dX</p></dd><dt class="param">x</dt><dd class="cmt"><p>the initial point</p></dd><dt>returns</dt><dd class="cmt"><p>the new x vector and the evaluate value list, evaluated before the update
+        x : the new <code>x</code> vector, at the optimal point
+        f : a table of all function values:
+        <code>f[1]</code> is the value of the function before any optimization and
+        <code>f[#f]</code> is the final fully optimized value, at <code>x*</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.LBFGS">LBFGS</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.OptimMethod#save" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="save(path:String,overWrite:Boolean):OptimMethod.this.type"></a>
+      <a id="save(String,Boolean):LBFGS.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">save</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.LBFGS">LBFGS</a>.this.type</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@save(path:String,overWrite:Boolean):OptimMethod.this.type" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">save OptimMethod
+</p><div class="fullcomment"><div class="comment cmt"><p>save OptimMethod
+</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path</p></dd><dt class="param">overWrite</dt><dd class="cmt"><p>whether to overwrite</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@toString():String" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.LBFGS#tolFun" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="tolFun:Double"></a>
+      <a id="tolFun:Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tolFun</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@tolFun:Double" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Termination tolerance on the first-order optimality</p>
+    </li><li name="com.intel.analytics.bigdl.optim.LBFGS#tolX" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="tolX:Double"></a>
+      <a id="tolX:Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tolX</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@tolX:Double" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Termination tol on progress in terms of func/param changes</p>
+    </li><li name="com.intel.analytics.bigdl.optim.OptimMethod#updateHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="updateHyperParameter():Unit"></a>
+      <a id="updateHyperParameter():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updateHyperParameter</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@updateHyperParameter():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Update hyper parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Update hyper parameter.
+We have updated hyper parameter in method optimize(). But in DistriOptimizer, the method
+optimize() is only called on the executor side, the driver's hyper parameter is unchanged.
+So this method is using to update hyper parameter on the driver side.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>A string.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.LBFGS#verbose" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="verbose(msg:String):Unit"></a>
+      <a id="verbose(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">verbose</span><span class="params">(<span name="msg">msg: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@verbose(msg:String):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.intel.analytics.bigdl.optim.LBFGS#verbose" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="verbose:Boolean"></a>
+      <a id="verbose:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">verbose</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@verbose:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="com.intel.analytics.bigdl.optim.OptimMethod#clearHistory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clearHistory(state:com.intel.analytics.bigdl.utils.Table):com.intel.analytics.bigdl.utils.Table"></a>
+      <a id="clearHistory(Table):Table"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Please use clearHistory() instead">clearHistory</span><span class="params">(<span name="state">state: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@clearHistory(state:com.intel.analytics.bigdl.utils.Table):com.intel.analytics.bigdl.utils.Table" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Clear the history information in the state
+</p><div class="fullcomment"><div class="comment cmt"><p>Clear the history information in the state
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.2.0)</i> Please use clearHistory() instead</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.OptimMethod#getHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getHyperParameter(config:com.intel.analytics.bigdl.utils.Table):String"></a>
+      <a id="getHyperParameter(Table):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Please use getHyperParameter() instead">getHyperParameter</span><span class="params">(<span name="config">config: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@getHyperParameter(config:com.intel.analytics.bigdl.utils.Table):String" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Get hyper parameter from config table.</p><div class="fullcomment"><div class="comment cmt"><p>Get hyper parameter from config table.
+</p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>a table contains the hyper parameter.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.2.0)</i> Please use getHyperParameter() instead</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.OptimMethod#optimize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="optimize(feval:com.intel.analytics.bigdl.tensor.Tensor[T]=&gt;(T,com.intel.analytics.bigdl.tensor.Tensor[T]),parameter:com.intel.analytics.bigdl.tensor.Tensor[T],config:com.intel.analytics.bigdl.utils.Table,state:com.intel.analytics.bigdl.utils.Table):(com.intel.analytics.bigdl.tensor.Tensor[T],Array[T])"></a>
+      <a id="optimize((Tensor[T])⇒(T,Tensor[T]),Tensor[T],Table,Table):(Tensor[T],Array[T])"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Please initialize OptimMethod with parameters when creating it instead of importing table">optimize</span><span class="params">(<span name="feval">feval: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>]) ⇒ (<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>])</span>, <span name="parameter">parameter: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>]</span>, <span name="config">config: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="state">state: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a> = <span class="symbol">null</span></span>)</span><span class="result">: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>])</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@optimize(feval:com.intel.analytics.bigdl.tensor.Tensor[T]=&gt;(T,com.intel.analytics.bigdl.tensor.Tensor[T]),parameter:com.intel.analytics.bigdl.tensor.Tensor[T],config:com.intel.analytics.bigdl.utils.Table,state:com.intel.analytics.bigdl.utils.Table):(com.intel.analytics.bigdl.tensor.Tensor[T],Array[T])" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Optimize the model parameter
+</p><div class="fullcomment"><div class="comment cmt"><p>Optimize the model parameter
+</p></div><dl class="paramcmts block"><dt class="param">feval</dt><dd class="cmt"><p>a function that takes a single input (X), the point of a evaluation,
+                 and returns f(X) and df/dX</p></dd><dt class="param">parameter</dt><dd class="cmt"><p>the initial point</p></dd><dt class="param">config</dt><dd class="cmt"><p>a table with configuration parameters for the optimizer</p></dd><dt class="param">state</dt><dd class="cmt"><p>a table describing the state of the optimizer; after each call the state
+                 is modified</p></dd><dt>returns</dt><dd class="cmt"><p>the new x vector and the function list, evaluated before the update</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.2.0)</i> Please initialize OptimMethod with parameters when creating it instead of importing table</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.OptimMethod#updateHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="updateHyperParameter(config:com.intel.analytics.bigdl.utils.Table,state:com.intel.analytics.bigdl.utils.Table):Unit"></a>
+      <a id="updateHyperParameter(Table,Table):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Please use updateHyperParameter() instead">updateHyperParameter</span><span class="params">(<span name="config">config: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="state">state: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.LBFGS@updateHyperParameter(config:com.intel.analytics.bigdl.utils.Table,state:com.intel.analytics.bigdl.utils.Table):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Update hyper parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Update hyper parameter.
+We have updated hyper parameter in method optimize(). But in DistriOptimizer, the method
+optimize() is only called on the executor side, the driver's hyper parameter is unchanged.
+So this method is using to update hyper parameter on the driver side.
+</p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>config table.</p></dd><dt class="param">state</dt><dd class="cmt"><p>state Table.</p></dd><dt>returns</dt><dd class="cmt"><p>A string.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.2.0)</i> Please use updateHyperParameter() instead</p></dd></dl></div>
+    </li></ol>
+            </div>
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="com.intel.analytics.bigdl.optim.OptimMethod">
+              <h3>Inherited from <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LBFGS.T">T</span>]</h3>
+            </div><div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>util package &#8212; PySpark master documentation</title>
+    
+    <link rel="stylesheet" href="static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'master',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="optim package" href="optim.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="optim.html" title="optim package"
+             accesskey="P">previous</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">PySpark master documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">util package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-util.common">util.common module</a></li>
+<li><a class="reference internal" href="#module-util">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="optim.html"
+                        title="previous chapter">optim package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="sources/util.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="util-package">
+<h1>util package<a class="headerlink" href="#util-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-util.common">
+<span id="util-common-module"></span><h2>util.common module<a class="headerlink" href="#module-util.common" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="util.common.JTensor">
+<em class="property">class </em><code class="descclassname">util.common.</code><code class="descname">JTensor</code><span class="sig-paren">(</span><em>storage</em>, <em>shape</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="modules/util/common.html#JTensor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#util.common.JTensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>A wrapper to easy our work when need to pass or return Tensor to/from Scala.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">util.common</span> <span class="k">import</span> <span class="n">JTensor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<dl class="classmethod">
+<dt id="util.common.JTensor.flatten_ndarray">
+<em class="property">classmethod </em><code class="descname">flatten_ndarray</code><span class="sig-paren">(</span><em>a_ndarray</em><span class="sig-paren">)</span><a class="reference internal" href="modules/util/common.html#JTensor.flatten_ndarray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#util.common.JTensor.flatten_ndarray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Utility method to flatten a ndarray</p>
+<p>:return (storage, shape)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">util.common</span> <span class="k">import</span> <span class="n">JTensor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">storage</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span> <span class="o">=</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">flatten_ndarray</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shape</span>
+<span class="go">[2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">storage</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span> <span class="o">=</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">flatten_ndarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shape</span>
+<span class="go">[1]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="util.common.JTensor.from_ndarray">
+<em class="property">classmethod </em><code class="descname">from_ndarray</code><span class="sig-paren">(</span><em>a_ndarray</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="modules/util/common.html#JTensor.from_ndarray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#util.common.JTensor.from_ndarray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a ndarray to Tensor which would be used in Java side.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">util.common</span> <span class="k">import</span> <span class="n">JTensor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">util.common</span> <span class="k">import</span> <span class="n">callBigDlFunc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_back</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">data</span> <span class="o">==</span> <span class="n">data_back</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor1</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="s2">&quot;testTensor&quot;</span><span class="p">,</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>  <span class="c1"># noqa</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array_from_tensor</span> <span class="o">=</span> <span class="n">tensor1</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">array_from_tensor</span> <span class="o">==</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="util.common.JTensor.to_ndarray">
+<code class="descname">to_ndarray</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/util/common.html#JTensor.to_ndarray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#util.common.JTensor.to_ndarray" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="util.common.JavaValue">
+<em class="property">class </em><code class="descclassname">util.common.</code><code class="descname">JavaValue</code><span class="sig-paren">(</span><em>jvalue</em>, <em>bigdl_type</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="modules/util/common.html#JavaValue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#util.common.JavaValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="util.common.JavaValue.jvm_class_constructor">
+<code class="descname">jvm_class_constructor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/util/common.html#JavaValue.jvm_class_constructor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#util.common.JavaValue.jvm_class_constructor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="util.common.Sample">
+<em class="property">class </em><code class="descclassname">util.common.</code><code class="descname">Sample</code><span class="sig-paren">(</span><em>features</em>, <em>label</em>, <em>features_shape</em>, <em>label_shape</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="modules/util/common.html#Sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#util.common.Sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="classmethod">
+<dt id="util.common.Sample.from_ndarray">
+<em class="property">classmethod </em><code class="descname">from_ndarray</code><span class="sig-paren">(</span><em>features</em>, <em>label</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="modules/util/common.html#Sample.from_ndarray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#util.common.Sample.from_ndarray" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="util.common.TestResult">
+<em class="property">class </em><code class="descclassname">util.common.</code><code class="descname">TestResult</code><span class="sig-paren">(</span><em>result</em>, <em>total_num</em>, <em>method</em><span class="sig-paren">)</span><a class="reference internal" href="modules/util/common.html#TestResult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#util.common.TestResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>A testing result used to benchmark the model quality.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="util.common.callBigDlFunc">
+<code class="descclassname">util.common.</code><code class="descname">callBigDlFunc</code><span class="sig-paren">(</span><em>bigdl_type</em>, <em>name</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="modules/util/common.html#callBigDlFunc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#util.common.callBigDlFunc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call API in PythonBigDL</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="util.common.callJavaFunc">
+<code class="descclassname">util.common.</code><code class="descname">callJavaFunc</code><span class="sig-paren">(</span><em>sc</em>, <em>func</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="modules/util/common.html#callJavaFunc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#util.common.callJavaFunc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call Java Function</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="util.common.create_spark_conf">
+<code class="descclassname">util.common.</code><code class="descname">create_spark_conf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/util/common.html#create_spark_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#util.common.create_spark_conf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="util.common.get_bigdl_conf">
+<code class="descclassname">util.common.</code><code class="descname">get_bigdl_conf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/util/common.html#get_bigdl_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#util.common.get_bigdl_conf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="util.common.init_engine">
+<code class="descclassname">util.common.</code><code class="descname">init_engine</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="modules/util/common.html#init_engine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#util.common.init_engine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-util">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-util" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="optim.html" title="optim package"
+             >previous</a></li>
+        <li class="nav-item nav-item-0"><a href="index.html">PySpark master documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
+    </div>
+  </body>
+</html>
