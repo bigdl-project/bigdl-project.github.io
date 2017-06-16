@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>models.lenet package &#8212; PySpark master documentation</title>
+    
+    <link rel="stylesheet" href="static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'master',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/underscore.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="nn package" href="nn.html" />
+    <link rel="prev" title="models package" href="models.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="nn.html" title="nn package"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="models.html" title="models package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PySpark master documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="models.html" accesskey="U">models package</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">models.lenet package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-models.lenet.lenet5">models.lenet.lenet5 module</a></li>
+<li><a class="reference internal" href="#module-models.lenet">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="models.html"
+                        title="previous chapter">models package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="nn.html"
+                        title="next chapter">nn package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="sources/models.lenet.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="models-lenet-package">
+<h1>models.lenet package<a class="headerlink" href="#models-lenet-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-models.lenet.lenet5">
+<span id="models-lenet-lenet5-module"></span><h2>models.lenet.lenet5 module<a class="headerlink" href="#module-models.lenet.lenet5" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="models.lenet.lenet5.build_model">
+<code class="descclassname">models.lenet.lenet5.</code><code class="descname">build_model</code><span class="sig-paren">(</span><em>class_num</em><span class="sig-paren">)</span><a class="reference internal" href="modules/models/lenet/lenet5.html#build_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#models.lenet.lenet5.build_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="models.lenet.lenet5.get_minst">
+<code class="descclassname">models.lenet.lenet5.</code><code class="descname">get_minst</code><span class="sig-paren">(</span><em>sc</em>, <em>data_type='train'</em>, <em>location='/tmp/mnist'</em><span class="sig-paren">)</span><a class="reference internal" href="modules/models/lenet/lenet5.html#get_minst"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#models.lenet.lenet5.get_minst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get and normalize the mnist data. We would download it automatically
+if the data doesn&#8217;t present at the specific location.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sc</strong> &#8211; SparkContext</li>
+<li><strong>data_type</strong> &#8211; training data or testing data</li>
+<li><strong>location</strong> &#8211; Location storing the mnist</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A RDD of Sample</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-models.lenet">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-models.lenet" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="nn.html" title="nn package"
+             >next</a></li>
+        <li class="right" >
+          <a href="models.html" title="models package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PySpark master documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="models.html" >models package</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.
+    </div>
+  </body>
+</html>
