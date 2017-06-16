@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Models - BigDL Project</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Models";
+    var mkdocs_page_input_path = "UserGuide\\models.md";
+    var mkdocs_page_url = "/UserGuide/models/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> BigDL Project</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../release/">Release</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../build/">Build</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting Started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../examples/">Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../visualization-with-tensorboard/">Visualization With Tensorboard</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../running-on-EC2/">Running On EC2</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Models</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#models">Models</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#models_1">Models</a></li>
+        
+            <li><a class="toctree-l4" href="#examples">Examples</a></li>
+        
+            <li><a class="toctree-l4" href="#python-examples">Python Examples</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../programming-guide/">Programming Guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../PythonSupport/python-support/">Python Support</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../PythonSupport/Python-turtorial/">Python Tutorial</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API Docs</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/scaladoc/">Scala Docs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/python-api-doc/">Python API Docs</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../powered-by/">Powered by</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">BigDL Project</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>User Guide &raquo;</li>
+        
+      
+    
+    <li>Models</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/intel-analytics/BigDL/"> Edit on GitHub </a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="models"><strong>Models</strong></h1>
+<hr />
+<p>BigDL provides many popular <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models">neural network models</a> and <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example">deep learning examples</a> for Apache Spark, including: </p>
+<h2 id="models_1"><strong>Models</strong></h2>
+<ul>
+<li><a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/lenet">LeNet</a>: it demonstrates how to use BigDL to train and evaluate the <a href="http://yann.lecun.com/exdb/lenet/">LeNet-5</a> network on MNIST data.</li>
+<li><a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/inception">Inception</a>: it demonstrates how to use BigDL to train and evaluate <a href="https://arxiv.org/abs/1409.4842">Inception v1</a> and <a href="https://arxiv.org/abs/1502.03167">Inception v2</a> architecture on the ImageNet data.</li>
+<li><a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/vgg">VGG</a>: it demonstrates how to use BigDL to train and evaluate a <a href="http://torch.ch/blog/2015/07/30/cifar.html">VGG-like</a> network on CIFAR-10 data.</li>
+<li><a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/resnet">ResNet</a>: it demonstrates how to use BigDL to train and evaluate the <a href="https://arxiv.org/abs/1512.03385">ResNet</a> architecture on CIFAR-10 data.</li>
+<li><a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/rnn">RNN</a>: it demonstrates how to use BigDL to build and train a simple recurrent neural network <a href="http://www.fit.vutbr.cz/research/groups/speech/publi/2010/mikolov_interspeech2010_IS100722.pdf">(RNN) for language model</a>.</li>
+<li><a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/autoencoder">Auto-encoder</a>: it demonstrates how to use BigDL to build and train a basic fully-connected autoencoder using MNIST data.</li>
+</ul>
+<h2 id="examples"><strong>Examples</strong></h2>
+<ul>
+<li><a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/textclassification">text_classification</a>: it demonstrates how to use BigDL to build a <a href="https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html">text classifier</a> using a simple convolutional neural network (CNN) model.</li>
+<li><a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/imageclassification">image_classification</a>: it demonstrates how to load a BigDL or <a href="http://torch.ch/">Torch</a> model trained on ImageNet data (e.g., <a href="https://arxiv.org/abs/1409.4842">Inception</a> or <a href="https://arxiv.org/abs/1512.03385">ResNet</a>), and then applies the loaded model to classify the contents of a set of images in Spark ML pipeline.</li>
+<li><a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/loadmodel">load_model</a>: it demonstrates how to use BigDL to load a pre-trained <a href="http://torch.ch/">Torch</a> or <a href="http://caffe.berkeleyvision.org/">Caffe</a> model into Spark program for prediction.</li>
+</ul>
+<h2 id="python-examples"><strong>Python Examples</strong></h2>
+<ul>
+<li><a href="https://github.com/intel-analytics/BigDL/tree/master/pyspark/dl/models/lenet">LeNet</a>: it demonstrates how to use BigDL Python APIs to train and evaluate the <a href="http://yann.lecun.com/exdb/lenet/">LeNet-5</a> network on MNIST data.</li>
+<li><a href="https://github.com/intel-analytics/BigDL/tree/master/pyspark/dl/models/textclassifier">Text Classifier</a>:  it demonstrates how to use BigDL Python APIs to build a text classifier using a simple [convolutional neural network (CNN) model(https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html)] or a simple LSTM/GRU model.</li>
+<li><a href="https://github.com/intel-analytics/BigDL/blob/branch-0.1/pyspark/dl/example/tutorial/simple_text_classification/text_classfication.ipynb">Jupyter tutorial</a>: it contains a tutorial for using BigDL Python APIs in Jupyter notebooks (together with TensorBoard support) for interactive data explorations and visualizations.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../programming-guide/" class="btn btn-neutral float-right" title="Programming Guide">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../running-on-EC2/" class="btn btn-neutral" title="Running On EC2"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../running-on-EC2/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../programming-guide/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../../js/theme.js"></script>
+
+</body>
+</html>

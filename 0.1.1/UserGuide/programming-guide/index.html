@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Programming Guide - BigDL Project</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Programming Guide";
+    var mkdocs_page_input_path = "UserGuide\\programming-guide.md";
+    var mkdocs_page_url = "/UserGuide/programming-guide/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> BigDL Project</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../release/">Release</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../build/">Build</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting Started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../examples/">Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../visualization-with-tensorboard/">Visualization With Tensorboard</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../running-on-EC2/">Running On EC2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../models/">Models</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Programming Guide</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#programming-guide">Programming Guide</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#overview">Overview</a></li>
+        
+            <li><a class="toctree-l4" href="#tensor">Tensor</a></li>
+        
+            <li><a class="toctree-l4" href="#table">Table</a></li>
+        
+            <li><a class="toctree-l4" href="#module">Module</a></li>
+        
+            <li><a class="toctree-l4" href="#criterion">Criterion</a></li>
+        
+            <li><a class="toctree-l4" href="#regularizers">Regularizers</a></li>
+        
+            <li><a class="toctree-l4" href="#transformer">Transformer</a></li>
+        
+            <li><a class="toctree-l4" href="#sample-and-minibatch">Sample and MiniBatch</a></li>
+        
+            <li><a class="toctree-l4" href="#engine">Engine</a></li>
+        
+            <li><a class="toctree-l4" href="#optimizer">Optimizer</a></li>
+        
+            <li><a class="toctree-l4" href="#validator">Validator</a></li>
+        
+            <li><a class="toctree-l4" href="#model-persist">Model Persist</a></li>
+        
+            <li><a class="toctree-l4" href="#logging">Logging</a></li>
+        
+            <li><a class="toctree-l4" href="#visualization-via-tensorboard">Visualization via TensorBoard</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../PythonSupport/python-support/">Python Support</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../PythonSupport/Python-turtorial/">Python Tutorial</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API Docs</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/scaladoc/">Scala Docs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/python-api-doc/">Python API Docs</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../powered-by/">Powered by</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">BigDL Project</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>User Guide &raquo;</li>
+        
+      
+    
+    <li>Programming Guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/intel-analytics/BigDL/"> Edit on GitHub </a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="programming-guide"><strong>Programming Guide</strong></h1>
+<hr />
+<h2 id="overview"><strong>Overview</strong></h2>
+<p>Before starting the programming guide, you may have checked out the <a href="../../Getting-Started">Getting Started Page</a> and the <a href="../../Tutorials">Tutorials page</a>. This section will introduce the BigDL concepts and APIs for building deep learning applications on Spark.</p>
+<ul>
+<li><a href="#tensor">Tensor</a></li>
+<li><a href="#table">Table</a></li>
+<li><a href="#module">Module</a><ul>
+<li><a href="#create-modules">Create modules</a></li>
+<li><a href="#construct-complex-networks">Construct complex networks</a></li>
+<li><a href="#build-neural-network-models">Build neural network models</a></li>
+</ul>
+</li>
+<li><a href="#criterion">Criterion</a></li>
+<li><a href="#regularizers">Regularizers</a></li>
+<li><a href="#transformer">Transformer</a></li>
+<li><a href="#sample-and-minibatch">Sample and MiniBatch</a></li>
+<li><a href="#engine">Engine</a></li>
+<li><a href="#optimizer">Optimizer</a><ul>
+<li><a href="#how-BigDL-train-models-in-a-distributed-cluster?">How BigDL train models in a distributed cluster</a></li>
+</ul>
+</li>
+<li><a href="#validator">Validator</a></li>
+<li><a href="#model-persist">Model Persist</a></li>
+<li><a href="#logging">Logging</a></li>
+<li><a href="#visualization-via-tensorboard">Visualization via TensorBoard</a></li>
+</ul>
+<h2 id="tensor"><strong>Tensor</strong></h2>
+<p>Modeled after the <a href="https://github.com/torch/torch7/blob/master/doc/tensor.md">Tensor</a> class in <a href="http://torch.ch/">Torch</a>, the <code>Tensor</code> <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/tensor">package</a> (written in Scala and leveraging <a href="https://software.intel.com/en-us/intel-mkl">Intel MKL</a>) in BigDL provides numeric computing support for the deep learning applications (e.g., the input, output, weight, bias and gradient of the neural networks).</p>
+<p>A <code>Tensor</code> is essentially a multi-dimensional array of numeric types (e.g., <code>Int</code>, <code>Float</code>, <code>Double</code>, etc.); you may check it out in the interactive Scala shell (by typing <code>scala -cp bigdl_0.1-0.1.0-SNAPSHOT-jar-with-dependencies.jar</code>), for instance:</p>
+<pre><code class="scala">scala&gt; import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.Tensor
+
+scala&gt; val tensor = Tensor[Float](2, 3)
+tensor: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+0.0     0.0     0.0
+0.0     0.0     0.0
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+</code></pre>
+
+<h2 id="table"><strong>Table</strong></h2>
+<p>Modeled after the <a href="https://github.com/torch/nn/blob/master/doc/table.md">Table</a> class in <a href="http://torch.ch/">Torch</a>, the <code>Table</code> class (defined in package <code>com.intel.analytics.bigdl.utils</code>) is widely used in BigDL (e.g., a <code>Table</code> of <code>Tensor</code> can be used as the input or output of neural networks). In essence, a <code>Table</code> can be considered as a key-value map, and there is also a syntax sugar to create a <code>Table</code> using <code>T()</code> in BigDL.</p>
+<pre><code class="scala">scala&gt; import com.intel.analytics.bigdl.utils.T
+import com.intel.analytics.bigdl.utils.T
+
+scala&gt; T(Tensor[Float](2,2), Tensor[Float](2,2))
+res2: com.intel.analytics.bigdl.utils.Table =
+ {
+        2: 0.0  0.0
+           0.0  0.0
+           [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x2]
+        1: 0.0  0.0
+           0.0  0.0
+           [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x2]
+ }
+
+</code></pre>
+
+<h2 id="module"><strong>Module</strong></h2>
+<p>Modeled after the <a href="https://github.com/torch/nn">nn</a> package in <a href="http://torch.ch/">Torch</a>, the <code>Module</code> class in BigDL represents individual layers of the neural network (such as <code>ReLU</code>, <code>Linear</code>, <code>SpatialConvolution</code>, <code>Sequential</code>, etc.).</p>
+<h3 id="create-modules"><strong>Create modules</strong></h3>
+<p>For instance, we can create a <code>Linear</code> module as follows:</p>
+<pre><code class="scala">scala&gt; import com.intel.analytics.bigdl.numeric.NumericFloat // import global float tensor numeric type
+import com.intel.analytics.bigdl.numeric.NumericFloat
+
+scala&gt; import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.nn._
+
+scala&gt; val f = Linear(3,4) // create the module
+mlp: com.intel.analytics.bigdl.nn.Linear[Float] = nn.Linear(3 -&gt; 4)
+
+// let's see what f's parameters were initialized to. ('nn' always inits to something reasonable)
+scala&gt; f.weight
+res5: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+-0.008662592    0.543819        -0.028795477
+-0.30469555     -0.3909278      -0.10871882
+0.114964925     0.1411745       0.35646403
+-0.16590376     -0.19962183     -0.18782845
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 4x3]
+</code></pre>
+
+<h3 id="construct-complex-networks"><strong>Construct complex networks</strong></h3>
+<p>We can use the <code>Container</code> module (e.g., <code>Sequential</code>, <code>Concat</code>, <code>ConcatTable</code>, etc.) to combine individual models to build complex networks, for instance</p>
+<pre><code class="scala">scala&gt; val g = Sum()
+g: com.intel.analytics.bigdl.nn.Sum[Float] = nn.Sum
+
+scala&gt; val mlp = Sequential().add(f).add(g)
+mlp: com.intel.analytics.bigdl.nn.Sequential[Float] =
+nn.Sequential {
+  [input -&gt; (1) -&gt; (2) -&gt; output]
+  (1): nn.Linear(3 -&gt; 4)
+  (2): nn.Sum
+}
+</code></pre>
+
+<h3 id="build-neural-network-models"><strong>Build neural network models</strong></h3>
+<p>We can create neural network models, e.g., <a href="http://yann.lecun.com/exdb/lenet/">LeNet-5</a>, using different <code>Module</code> as follows:</p>
+<pre><code class="scala">import com.intel.analytics.bigdl._
+import com.intel.analytics.bigdl.numeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+
+object LeNet5 {
+  def apply(classNum: Int): Module[Float] = {
+    val model = Sequential()
+    model.add(Reshape(Array(1, 28, 28)))
+      .add(SpatialConvolution(1, 6, 5, 5))
+      .add(Tanh())
+      .add(SpatialMaxPooling(2, 2, 2, 2))
+      .add(Tanh())
+      .add(SpatialConvolution(6, 12, 5, 5))
+      .add(SpatialMaxPooling(2, 2, 2, 2))
+      .add(Reshape(Array(12 * 4 * 4)))
+      .add(Linear(12 * 4 * 4, 100))
+      .add(Tanh())
+      .add(Linear(100, classNum))
+      .add(LogSoftMax())
+  }
+}
+</code></pre>
+
+<h2 id="criterion"><strong>Criterion</strong></h2>
+<p>Modeled after the <a href="https://github.com/torch/nn/blob/master/doc/criterion.md">Criterion</a> class in <a href="http://torch.ch/">Torch</a>, the <code>Criterion</code> class in BigDL will compute loss and gradient (given prediction and target). See <a href="https://github.com/intel-analytics/BigDL/wiki/Criterion">BigDL Criterions</a> for a list of supported criterions. </p>
+<pre><code class="scala">scala&gt; val mse = MSECriterion() // mean square error lost, usually used for regression loss
+mse: com.intel.analytics.bigdl.nn.MSECriterion[Float] = com.intel.analytics.bigdl.nn.MSECriterion@0
+
+scala&gt; val target = Tensor(3).rand() // create a target tensor randomly
+target: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+0.33631626
+0.2535103
+0.94784033
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3]
+
+scala&gt; val prediction = Tensor(3).rand() // create a predicted tensor randomly
+prediction: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+0.91918194
+0.6019384
+0.38315287
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3]
+
+scala&gt; mse.forward(prediction, target) // use mse to get the loss, returns 1/n sum_i (yhat_i - t_i)^2
+res11: Float = 0.2600022
+
+</code></pre>
+
+<h2 id="regularizers"><strong>Regularizers</strong></h2>
+<p>Regularizers allow user to apply penalties to the parameters of layers during the optimization process. The penalties are aggregated to the loss function that the network optimizes.</p>
+<p>BigDL provides layer wise and parameter separated regularizers. User can apply different penalties to different layers and even different parameters of the same layer. Hence the exact API will depend on the layers.</p>
+<h3 id="example"><strong>Example</strong></h3>
+<pre><code class="scala">Linear(inputN, outputN, 
+       wRegularizer = L2Regularizer(0.1),
+       bRegularizer = L2Regularizer(0.1))
+</code></pre>
+
+<h3 id="available-penalties"><strong>Available penalties</strong></h3>
+<p>The defined regularizers are located in <code>com.intel.analytics.bigdl.optim</code> package.</p>
+<p>Three pre-defined regularizers are available:</p>
+<pre><code class="scala">L1L2Regularizer(0.)
+L1Regularizer(0.)
+L2Regularizer(0.)
+</code></pre>
+
+<h3 id="developing-new-regularizers"><strong>Developing new regularizers</strong></h3>
+<p>Users can define their own customized regularizers by inheriting the <code>Regularizer</code> trait and overriding the <code>accRegularization</code> function. The <code>accRegularization</code> function takes two arguments, one is the parameters to be penalized and the other is the gradient of the parameters. The derivatives of the penalty function should be defined in <code>accRegularization</code>.</p>
+<h2 id="transformer"><strong>Transformer</strong></h2>
+<p>Transformer is for pre-processing. In many deep learning workload, input data need to be pre-processed before fed into model. For example, in CNN, the image file need to be decoded from some compressed format(e.g. jpeg) to float arrays, normalized and cropped to some fixed shape. You can also find pre-processing in other types of deep learning work load(e.g. NLP, speech recognition). In BigDL, we provide many pre-process procedures for user. They're implemented as Transformer.</p>
+<p>The transformer interface is</p>
+<pre><code class="scala">trait Transformer[A, B] extends Serializable {
+  def apply(prev: Iterator[A]): Iterator[B]
+}
+</code></pre>
+
+<p>It's simple, right? What a transformer do is convert a sequence of objects of Class A to a sequence of objects of Class B.</p>
+<p>Transformer is flexible. You can chain them together to do pre-processing. Let's still use the CNN example, say first we need read image files from given paths, then extract the image binaries to array of float, then normalized the image content and crop a fixed size from the image at a random position. Here we need 4 transformers, <code>PathToImage</code>, <code>ImageToArray</code>, <code>Normalizor</code> and <code>Cropper</code>. And then chain them together.</p>
+<pre><code class="scala">class PathToImage extends Transformer[Path, Image]
+class ImageToArray extends Transformer[Image, Array]
+class Normalizor extends Transformer[Array, Array]
+class Cropper extends Transformer[Array, Array]
+
+PathToImage -&gt; ImageToArray -&gt; Normalizor -&gt; Cropper
+</code></pre>
+
+<p>Another benefit from <code>Transformer</code> is code reuse. You may find that for similar tasks, although there's a little difference, many pre-processing steps are same. So instead of a big single pre-process function, break it into small steps can improve the code reuse and save your time.</p>
+<p>Transformer can work with Spark easily. For example, to transform RDD[A] to RDD[B]</p>
+<pre><code class="scala">val rddA : RDD[A] = ...
+val tran : Transformer[A, B] = ...
+val rddB : RDD[B] = rdd.mapPartitions(tran(_))
+</code></pre>
+
+<p>Transformer here is different from <a href="https://spark.apache.org/docs/latest/ml-pipeline.html">Spark ML pipeline Transformer</a>. But they serve similar purpose. </p>
+<h2 id="sample-and-minibatch"><strong>Sample and MiniBatch</strong></h2>
+<p><strong>Sample</strong> represent one <code>item</code> of your data set. For example, one image in image classification, one word in word2vec and one sentence in RNN language model.</p>
+<p><strong>MiniBatch</strong> represent <code>a batch of samples</code>. For computing efficiency, we would like to train/inference data in batches.</p>
+<p>You need to convert your data type to Sample or MiniBatch by transformers, and then do optimization or inference. Please note that if you provide Sample format, BigDL will still convert it to MiniBatch automatically before optimization or inference.</p>
+<h2 id="engine"><strong>Engine</strong></h2>
+<p>BigDL need some environment variables be set correctly to get a good performance. <code>Engine.init</code> method can help you set and verify them.</p>
+<p><strong>How to do in the code?</strong></p>
+<pre><code class="scala">// Scala code example
+val conf = Engine.createSparkConf()
+val sc = new SparkContext(conf)
+Engine.init
+</code></pre>
+
+<pre><code class="python"># Python code example
+conf=create_spark_conf()
+sc = SparkContext(conf)
+init_engine()
+</code></pre>
+
+<ul>
+<li>If you're in spark-shell, Jupyter notebook or yarn-cluster</li>
+</ul>
+<p>As the spark context is pre-created, you need start spark-shell or pyspark with <code>dist/conf/spark-bigdl.conf</code> file</p>
+<pre><code class="bash"># Spark shell
+spark-shell --properties-file dist/conf/spark-bigdl.conf ...
+# Jupyter notebook
+pyspark --properties-file dist/conf/spark-bigdl.conf ...
+</code></pre>
+
+<p>In your code</p>
+<pre><code class="scala">Engine.init    // scala: check spark conf values
+</code></pre>
+
+<pre><code class="python">init_engine()    # python: check spark conf values
+</code></pre>
+
+<h2 id="optimizer"><strong>Optimizer</strong></h2>
+<p><strong>Optimizer</strong> represent a optimization process, aka training. </p>
+<p>You need to provide the model, train data set and loss function to start a optimization.</p>
+<pre><code class="scala">val optimizer = Optimizer(
+  model = model,
+  dataset = trainDataSet,
+  criterion = new ClassNLLCriterion[Float]()
+)
+</code></pre>
+
+<p>You can set other properties of a optimization process. Here's some examples:
+* Hyper Parameter</p>
+<pre><code class="scala">optimizer.setState(
+  T(
+    &quot;learningRate&quot; -&gt; 0.01,
+    &quot;weightDecay&quot; -&gt; 0.0005,
+    &quot;momentum&quot; -&gt; 0.9,
+    &quot;dampening&quot; -&gt; 0.0,
+    &quot;learningRateSchedule&quot; -&gt; SGD.EpochStep(25, 0.5)
+  )
+)
+</code></pre>
+
+<ul>
+<li>Optimization method, the default one is SGD. See <a href="https://github.com/intel-analytics/BigDL/wiki/Optimization-Algorithms">Optimization Algorithms</a> for a list of supported optimization methods and their usage.</li>
+</ul>
+<pre><code class="scala">// Change optimization method to adagrad
+optimizer.setOptimMethod(new Adagrad())
+</code></pre>
+
+<ul>
+<li>When to stop, the default one is stopped after 100 iteration</li>
+</ul>
+<pre><code class="scala">// Stop after 10 epoch
+optimizer.setEndWhen(Trigger.maxEpoch(10))
+</code></pre>
+
+<ul>
+<li>Checkpoint</li>
+</ul>
+<pre><code class="scala">// Every 50 iteration save current model and training status to ./checkpoint
+optimizer.setCheckpoint(&quot;./checkpoint&quot;, Trigger.severalIteration(50))
+</code></pre>
+
+<ul>
+<li>Validation
+You can provide a separated data set for validation.</li>
+</ul>
+<pre><code class="scala">// Every epoch do a validation on valData, use Top1 accuracy metrics
+optimizer.setValidation(Trigger.everyEpoch, valData, Array(new Top1Accuracy[Float]))
+</code></pre>
+
+<h3 id="how-bigdl-train-models-in-a-distributed-cluster"><strong>How BigDL train models in a distributed cluster?</strong></h3>
+<p>BigDL distributed training is data parallelism. The training data is split among workers and cached in memory. A complete model is also cached on each worker. The model only uses the data of the same worker in the training.</p>
+<p>BigDL employs a synchronous distributed training. In each iteration, each worker will sync the latest weights, calculate
+gradients with local data and local model, sync the gradients and update the weights with a given optimization method(e.g. SGD, Adagrad).</p>
+<p>In gradients and weights sync, BigDL doesn't use the RDD APIs like(broadcast, reduce, aggregate, treeAggregate). The problem of these methods is every worker needs to communicate with driver, so the driver will become the bottleneck if the parameter is too large or the workers are too many. Instead, BigDL implement a P2P algorithm for parameter sync to remove the bottleneck. For detail of the algorithm, please see the <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/optim/DistriOptimizer.scala">code</a></p>
+<h2 id="validator"><strong>Validator</strong></h2>
+<p>Validator represent testing the model with some metrics. The model can be loaded from disk or trained from optimization. The metrics can be Top1 accuracy, Loss, etc. See <a href="https://github.com/intel-analytics/BigDL/wiki/Validation-Methods">Validation Methods</a> for a list of supported validation methods</p>
+<pre><code class="scala">// Test the model with validationSet and Top1 accuracy
+val validator = Validator(model, validationSet)
+val result = validator.test(Array(new Top1Accuracy[Float]))
+</code></pre>
+
+<h2 id="model-persist"><strong>Model Persist</strong></h2>
+<p>You can save your model like this</p>
+<pre><code class="scala">// Save as Java object
+model.save(&quot;./model&quot;)
+
+// Save as Torch object
+model.saveTorch(&quot;./model.t7&quot;)
+</code></pre>
+
+<p>You can read your model file like this</p>
+<pre><code class="scala">// Load from Java object file
+Module.load(&quot;./model&quot;)
+
+// Load from torch file
+Module.loadTorch(&quot;./model.t7&quot;)
+</code></pre>
+
+<h2 id="logging"><strong>Logging</strong></h2>
+<p>In the training, BigDL provide a straight forward logging like this. You can see epoch/iteration/loss/throughput directly from the log.</p>
+<pre><code>2017-01-10 10:03:55 INFO  DistriOptimizer$:241 - [Epoch 1 0/5000][Iteration 1][Wall Clock XXX] Train 512 in XXXseconds. Throughput is XXX records/second. Loss is XXX.
+2017-01-10 10:03:58 INFO  DistriOptimizer$:241 - [Epoch 1 512/5000][Iteration 2][Wall Clock XXX] Train 512 in XXXseconds. Throughput is XXX records/second. Loss is XXX.
+2017-01-10 10:04:00 INFO  DistriOptimizer$:241 - [Epoch 1 1024/5000][Iteration 3][Wall Clock XXX] Train 512 in XXXseconds. Throughput is XXX records/second. Loss is XXX.
+2017-01-10 10:04:03 INFO  DistriOptimizer$:241 - [Epoch 1 1536/5000][Iteration 4][Wall Clock XXX] Train 512 in XXXseconds. Throughput is XXX records/second. Loss is XXX.
+2017-01-10 10:04:05 INFO  DistriOptimizer$:241 - [Epoch 1 2048/5000][Iteration 5][Wall Clock XXX] Train 512 in XXXseconds. Throughput is XXX records/second. Loss is XXX.
+</code></pre>
+
+<p>The DistriOptimizer log level is INFO. Currently, we implement a method named with <code>redirectSparkInfoLogs</code> in <code>spark/utils/LoggerFilter.scala</code>. You can import and redirect at first.</p>
+<pre><code class="scala">import com.intel.analytics.bigdl.utils.LoggerFilter
+LoggerFilter.redirectSparkInfoLogs()
+</code></pre>
+
+<p>This method will redirect all logs of <code>org</code>, <code>akka</code>, <code>breeze</code> to <code>bigdl.log</code> with <code>INFO</code> level, except <code>org.apache.spark.SparkContext</code>. And it will output all <code>ERROR</code> message in console too.</p>
+<ul>
+<li>You can disable the redirection with java property <code>-Dbigdl.utils.LoggerFilter.disable=true</code>. By default, it will do redirect of all examples and models in our code.</li>
+<li>You can set where the <code>bigdl.log</code> will be generated with <code>-Dbigdl.utils.LoggerFilter.logFile=&lt;path&gt;</code>. By default, it will be generated under current workspace.</li>
+</ul>
+<h2 id="visualization-via-tensorboard"><strong>Visualization via TensorBoard</strong></h2>
+<p>To enable visualization, you need to <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/visualization/README.md">install tensorboard</a> first, then <code>setTrainSummary()</code> and <code>setValidationSummary()</code> to your optimizer before you call <code>optimize()</code>:</p>
+<pre><code class="scala">val logdir = &quot;mylogdir&quot;
+val appName = &quot;myapp&quot;
+val trainSummary = TrainSummary(logdir, appName)
+val talidationSummary = ValidationSummary(logdir, appName)
+optimizer.setTrainSummary(trainSummary)
+optimizer.setValidationSummary(validationSummary)
+</code></pre>
+
+<p>After you start to run your spark job, the train and validation log will be saved to "mylogdir/myapp/train" and "mylogdir/myapp/validation". Notice: please change the appName before you start a new job, or the log files will conflict.</p>
+<p>As the training started, use command <code>tensorboard --logdir mylogdir</code> to start tensorboard. Then open http://[ip]:6006 to watch the training.</p>
+<ul>
+<li>TrainSummary will show "Loss" and "Throughput" each iteration by default. You can use <code>setSummaryTrigger()</code> to enable "LearningRate" and "Parameters", or change the "Loss" and "Throughput"'s trigger:</li>
+</ul>
+<pre><code class="scala">trainSummary.setSummaryTrigger(&quot;LearningRate&quot;, Trigger.severalIteration(1))
+trainSummary.setSummaryTrigger(&quot;Parameters&quot;, Trigger.severalIteration(20))
+</code></pre>
+
+<p>Notice: "Parameters" show the histogram of parameters and gradParameters in the model. But getting parameters from workers is a heavy operation, recommend setting the trigger interval to at least 10 iterations. For a better visualization, please give names to the layers in model.</p>
+<ul>
+<li>
+<p>ValidationSummary will show the result of ValidationMethod set in optimizer.setValidation(), like "Loss" and "Top1Accuracy".</p>
+</li>
+<li>
+<p>Summary also provide readScalar function to read scalar summary by tag name. Reading "Loss" from summary:</p>
+</li>
+</ul>
+<pre><code class="scala">val trainLoss = trainSummary.readScalar(&quot;Loss&quot;)
+val validationLoss = validationSummary.readScalar(&quot;Loss&quot;)
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../faq/" class="btn btn-neutral float-right" title="FAQ">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../models/" class="btn btn-neutral" title="Models"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../models/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../../js/theme.js"></script>
+
+</body>
+</html>
