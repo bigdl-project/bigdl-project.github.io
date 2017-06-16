@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Build - BigDL Project</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Build";
+    var mkdocs_page_input_path = "UserGuide\\build.md";
+    var mkdocs_page_url = "/UserGuide/build/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> BigDL Project</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../release/">Release</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Guide</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">Build</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#build">Build</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#download">Download</a></li>
+        
+            <li><a class="toctree-l4" href="#linking">Linking</a></li>
+        
+            <li><a class="toctree-l4" href="#get-source-code">Get Source Code</a></li>
+        
+            <li><a class="toctree-l4" href="#build_1">Build</a></li>
+        
+            <li><a class="toctree-l4" href="#ide-settings">IDE Settings</a></li>
+        
+            <li><a class="toctree-l4" href="#next-steps">Next Steps</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting Started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../examples/">Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../visualization-with-tensorboard/">Visualization With Tensorboard</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../running-on-EC2/">Running On EC2</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../models/">Models</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../programming-guide/">Programming Guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../PythonSupport/python-support/">Python Support</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../PythonSupport/Python-turtorial/">Python Tutorial</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API Docs</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/scaladoc/">Scala Docs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/python-api-doc/">Python API Docs</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../powered-by/">Powered by</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">BigDL Project</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>User Guide &raquo;</li>
+        
+      
+    
+    <li>Build</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/intel-analytics/BigDL/"> Edit on GitHub </a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="build"><strong>Build</strong></h1>
+<hr />
+<p>This page shows how to install and build BigDL (on both Linux and macOS), including:</p>
+<ul>
+<li><a href="#download">Download</a></li>
+<li><a href="#linking">Linking</a><ul>
+<li><a href="#linking-with-bigdl-releases">Linking with BigDL releases</a></li>
+<li><a href="#linking-with-development-version">Linking with development version</a></li>
+</ul>
+</li>
+<li><a href="#get-source-code">Get Source Code</a></li>
+<li><a href="#build">Build</a><ul>
+<li><a href="#build-with-make-distsh">Build with make-dist.sh</a><ul>
+<li><a href="#build-with-make-distsh">Using the <code>make-dist.sh</code> script</a></li>
+<li><a href="#build-for-macos">Build for macOS</a></li>
+<li><a href="#build-for-spark-20-and-above">Build for Spark 2.0 and above</a></li>
+<li><a href="#build-using-scala-210-or-211">Build using Scala 2.10 or 2.11</a></li>
+<li><a href="#full-build">Full Build</a></li>
+</ul>
+</li>
+<li><a href="#build-with-maven">Build with Maven</a></li>
+</ul>
+</li>
+<li><a href="#ide-settings">IDE Settings</a></li>
+<li><a href="#next-steps">Next Steps</a></li>
+</ul>
+<h2 id="download"><strong>Download</strong></h2>
+<p>You may download the BigDL release (currently v0.1.0) and nightly build from the <a href="../../release">Release Page</a></p>
+<h2 id="linking"><strong>Linking</strong></h2>
+<h3 id="linking-with-bigdl-releases">Linking with BigDL releases</h3>
+<p>Currently, BigDL releases are hosted on maven central; here's an example to add the BigDL dependency to your own project:</p>
+<pre><code class="xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.intel.analytics.bigdl&lt;/groupId&gt;
+    &lt;artifactId&gt;bigdl&lt;/artifactId&gt;
+    &lt;version&gt;${BIGDL_VERSION}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>SBT developers can use</p>
+<pre><code class="sbt">libraryDependencies += &quot;com.intel.analytics.bigdl&quot; % &quot;bigdl&quot; % &quot;${BIGDL_VERSION}&quot;
+</code></pre>
+
+<p>Since currently only BigDL 0.1.0 is released, ${BIGDL_VERSION} must be set to 0.1.0 here.</p>
+<p><em>Note</em>: the BigDL lib default supports Spark 1.5.x and 1.6.x; if your project runs on Spark 2.0 and 2.1, use this</p>
+<pre><code class="xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.intel.analytics.bigdl&lt;/groupId&gt;
+    &lt;artifactId&gt;bigdl-SPARK_2.0&lt;/artifactId&gt;
+    &lt;version&gt;${BIGDL_VERSION}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>SBT developers can use</p>
+<pre><code class="sbt">libraryDependencies += &quot;com.intel.analytics.bigdl&quot; % &quot;bigdl-SPARK_2.0&quot; % &quot;${BIGDL_VERSION}&quot;
+</code></pre>
+
+<p>If your project runs on MacOS, you should add the dependency below,</p>
+<pre><code class="xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.intel.analytics.bigdl.native&lt;/groupId&gt;
+    &lt;artifactId&gt;mkl-java-mac&lt;/artifactId&gt;
+    &lt;version&gt;${BIGDL_VERSION}&lt;/version&gt;
+    &lt;exclusions&gt;
+        &lt;exclusion&gt;
+            &lt;groupId&gt;com.intel.analytics.bigdl.native&lt;/groupId&gt;
+            &lt;artifactId&gt;bigdl-native&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>SBT developers can use</p>
+<pre><code class="sbt">libraryDependencies += &quot;com.intel.analytics.bigdl.native&quot; % &quot;mkl-java-mac&quot; % &quot;${BIGDL_VERSION}&quot; from &quot;http://repo1.maven.org/maven2/com/intel/analytics/bigdl/native/mkl-java-mac/${BIGDL_VERSION}/mkl-java-mac-${BIGDL_VERSION}.jar&quot;
+</code></pre>
+
+<h3 id="linking-with-development-version"><strong>Linking with development version</strong></h3>
+<p>Currently, BigDL development version is hosted on <a href="https://oss.sonatype.org/content/groups/public/com/intel/analytics/bigdl/">SonaType</a>. </p>
+<p>To link your application with the latest BigDL development version, you should add some dependencies like <a href="#linking-with-bigdl-releases">Linking with BigDL releases</a>, but set ${BIGDL_VERSION} to 0.2.0-SNAPSHOT, and add below repository to your pom.xml.</p>
+<pre><code class="xml">&lt;repository&gt;
+    &lt;id&gt;sonatype&lt;/id&gt;
+    &lt;name&gt;sonatype repository&lt;/name&gt;
+    &lt;url&gt;https://oss.sonatype.org/content/groups/public/&lt;/url&gt;
+    &lt;releases&gt;
+        &lt;enabled&gt;true&lt;/enabled&gt;
+    &lt;/releases&gt;
+    &lt;snapshots&gt;
+        &lt;enabled&gt;true&lt;/enabled&gt;
+    &lt;/snapshots&gt;
+&lt;/repository&gt;
+</code></pre>
+
+<p>SBT developers can use</p>
+<pre><code class="sbt">resolvers += &quot;Sonatype OSS Snapshots&quot; at &quot;https://oss.sonatype.org/content/repositories/snapshots&quot;
+</code></pre>
+
+<h2 id="get-source-code"><strong>Get Source Code</strong></h2>
+<p>BigDL source code is available at <a href="https://github.com/intel-analytics/BigDL">GitHub</a></p>
+<pre><code class="sbt">$ git clone https://github.com/intel-analytics/BigDL.git
+</code></pre>
+
+<p>By default, <code>git clone</code> will download the development version of BigDL, if you want a release version, you can use command <code>git checkout</code> to change the version. Available release versions is <a href="https://github.com/intel-analytics/BigDL/releases">BigDL releases</a>.</p>
+<h2 id="build_1"><strong>Build</strong></h2>
+<p>The following instructions are aligned with master code.</p>
+<p>Maven 3 is needed to build BigDL, you can download it from the <a href="https://maven.apache.org/download.cgi">maven website</a>.</p>
+<p>After installing Maven 3, please set the environment variable MAVEN_OPTS as follows:
+```{r, engine='sh'}
+$ export MAVEN_OPTS="-Xmx2g -XX:ReservedCodeCacheSize=512m"</p>
+<pre><code>When compiling with Java 7, you need to add the option “-XX:MaxPermSize=1G”. 
+
+### **Build with `make-dist.sh`**
+It is highly recommended that you build BigDL using the [make-dist.sh script](https://github.com/intel-analytics/BigDL/blob/master/make-dist.sh). And it will handle the MAVEN_OPTS variable.
+
+Once downloaded, you can build BigDL with the following commands:
+```sbt
+$ bash make-dist.sh
+</code></pre>
+
+<p>After that, you can find a <code>dist</code> folder, which contains all the needed files to run a BigDL program. The files in <code>dist</code> include:
+<em> <strong>dist/bin/bigdl.sh</strong>: A script used to set up proper environment variables and launch the BigDL program.
+</em> <strong>dist/lib/bigdl-VERSION-jar-with-dependencies.jar</strong>: This jar package contains all dependencies except Spark classes.
+<em> <strong>dist/lib/bigdl-VERSION-python-api.zip</strong>: This zip package contains all Python files of BigDL.
+</em> <strong>dist/conf/spark-bigdl.conf</strong>: This file contains necessary property configurations. <code>Engine.createSparkConf</code> will populate these properties, so try to use that method in your code. Or you need to pass the file to Spark with the "--properties-file" option. </p>
+<h4 id="build-for-macos"><strong>Build for macOS</strong></h4>
+<p>The instructions above will only build for Linux. To build BigDL for macOS, pass <code>-P mac</code> to the <code>make-dist.sh</code> script as follows:</p>
+<pre><code class="sbt">$ bash make-dist.sh -P mac
+</code></pre>
+
+<h4 id="build-for-spark-20-and-above"><strong>Build for Spark 2.0 and above</strong></h4>
+<p>The instructions above will build BigDL with Spark 1.5.x or 1.6.x (using Scala 2.10); to build for Spark 2.0 and above (which uses Scala 2.11 by default), pass <code>-P spark_2.x</code> to the <code>make-dist.sh</code> script:</p>
+<pre><code class="sbt">$ bash make-dist.sh -P spark_2.x
+</code></pre>
+
+<p>It is highly recommended to use <em><strong>Java 8</strong></em> when running with Spark 2.x; otherwise you may observe very poor performance.</p>
+<h4 id="build-using-scala-210-or-211"><strong>Build using Scala 2.10 or 2.11</strong></h4>
+<p>By default, <code>make-dist.sh</code> uses Scala 2.10 for Spark 1.5.x or 1.6.x, and Scala 2.11 for Spark 2.0.x or 2.1.x. To override the default behaviors, you can pass <code>-P scala_2.10</code> or <code>-P scala_2.11</code> to <code>make-dist.sh</code> as appropriate.</p>
+<h4 id="full-build"><strong>Full Build</strong></h4>
+<p>Note that the instructions above will skip the build of native library code, and pull the corresponding libraries from Maven Central. If you want to build the the native library code by yourself, follow the steps below:</p>
+<ol>
+<li>
+<p>Download and install <a href="https://software.intel.com//qualify-for-free-software/opensourcecontributor">Intel Parallel Studio XE</a> in your Linux box.</p>
+</li>
+<li>
+<p>Prepare build environment as follows:
+    <code>{r, engine='sh'}
+    $ source &lt;install-dir&gt;/bin/compilervars.sh intel64
+    $ source PATH_TO_MKL/bin/mklvars.sh intel64</code>
+    where the <code>PATH_TO_MKL</code> is the installation directory of the MKL.</p>
+</li>
+<li>
+<p>Full build</p>
+</li>
+</ol>
+<p>Clone BigDL as follows:
+   <code>{r, engine='sh'}
+   git clone git@github.com:intel-analytics/BigDL.git --recursive</code>
+   For already cloned repos, just use:
+   <code>{r, engine='sh'}
+   git submodule update --init --recursive</code>
+   If the Intel MKL is not installed to the default path <code>/opt/intel</code>, please pass your libiomp5.so's directory path to
+   the <code>make-dist.sh</code> script:
+   <code>{r, engine='sh'}
+   $ bash make-dist.sh -P full-build -DiompLibDir=&lt;PATH_TO_LIBIOMP5_DIR&gt;</code>
+   Otherwise, only pass <code>-P full-build</code> to the <code>make-dist.sh</code> script:
+   <code>{r, engine='sh'}
+   $ bash make-dist.sh -P full-build</code></p>
+<h3 id="build-with-maven"><strong>Build with Maven</strong></h3>
+<p>To build BigDL directly using Maven, run the command below:</p>
+<pre><code class="sbt">$ mvn clean package -DskipTests
+</code></pre>
+
+<p>After that, you can find that the three jar packages in <code>PATH_To_BigDL</code>/target/, where <code>PATH_To_BigDL</code> is the path to the directory of the BigDL. </p>
+<p>Note that the instructions above will build BigDL with Spark 1.5.x or 1.6.x (using Scala 2.10) for Linux, and skip the build of native library code. Similarly, you may customize the default behaviors by passing the following parameters to maven:</p>
+<ul>
+<li><code>-P mac</code>: build for maxOS</li>
+<li><code>-P spark_2.x</code>: build for Spark 2.0 and above (using Scala 2.11). (Again, it is highly recommended to use <em><strong>Java 8</strong></em> when running with Spark 2.0; otherwise you may observe very poor performance.)</li>
+<li><code>-P full-build</code>: full build</li>
+<li><code>-P scala_2.10</code> (or <code>-P scala_2.11</code>): build using Scala 2.10 (or Scala 2.11) </li>
+</ul>
+<h2 id="ide-settings"><strong>IDE Settings</strong></h2>
+<p>We set the scope of spark related library to <code>provided</code> in pom.xml. The reason is that we don't want package spark related jars which will make bigdl a huge jar, and generally as bigdl is invoked by spark-submit, these dependencies will be provided by spark at run-time.</p>
+<p>This will cause a problem in IDE. When you run applications, it will throw <code>NoClassDefFoundError</code> because the library scope is <code>provided</code>.</p>
+<p>You can easily change the scopes by the <code>all-in-one</code> profile.</p>
+<ul>
+<li>In Intellij, go to View -&gt; Tools Windows -&gt; Maven Projects. Then in the Maven Projects panel, Profiles -&gt; click "all-in-one". </li>
+</ul>
+<h2 id="next-steps"><strong>Next Steps</strong></h2>
+<ul>
+<li>To learn how to run BigDL programs (as either a local Java program or a Spark program), you can check out the <a href="../../Getting-Started">Getting Started Page</a>.</li>
+<li>To learn the details of Python support in BigDL, you can check out the <a href="../../Python-Support">Python Support Page</a></li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../getting-started/" class="btn btn-neutral float-right" title="Getting Started">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../release/" class="btn btn-neutral" title="Release"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../release/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../getting-started/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../../js/theme.js"></script>
+
+</body>
+</html>

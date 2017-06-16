@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Running On EC2 - BigDL Project</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Running On EC2";
+    var mkdocs_page_input_path = "UserGuide\\running-on-EC2.md";
+    var mkdocs_page_url = "/UserGuide/running-on-EC2/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> BigDL Project</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../release/">Release</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../build/">Build</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../getting-started/">Getting Started</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../examples/">Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../visualization-with-tensorboard/">Visualization With Tensorboard</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Running On EC2</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#running-on-ec2">Running on EC2</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#1-ami">1. AMI</a></li>
+        
+            <li><a class="toctree-l4" href="#2-before-you-start">2. Before You Start</a></li>
+        
+            <li><a class="toctree-l4" href="#3-run-bigdl-examples">3. Run BigDL examples</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../models/">Models</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../programming-guide/">Programming Guide</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../faq/">FAQ</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../PythonSupport/python-support/">Python Support</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../PythonSupport/Python-turtorial/">Python Tutorial</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API Docs</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/scaladoc/">Scala Docs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/python-api-doc/">Python API Docs</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../powered-by/">Powered by</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">BigDL Project</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>User Guide &raquo;</li>
+        
+      
+    
+    <li>Running On EC2</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/intel-analytics/BigDL/"> Edit on GitHub </a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="running-on-ec2"><strong>Running on EC2</strong></h1>
+<hr />
+<ul>
+<li><a href="#1-ami">1. AMI</a></li>
+<li><a href="#2-before-you-start">2. Before You Start</a></li>
+<li><a href="#3-run-bigdl-examples">3. Run BigDL examples</a><ul>
+<li><a href="#31-run-the-inception-v1-example">3.1 Run the "inception-v1" example</a></li>
+<li><a href="#32-run-the-perf-example">3.2 Run the "perf" example</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="1-ami"><strong>1. AMI</strong></h2>
+<p>To make it easier to try out BigDL examples on Spark using EC2, a public AMI is provided. It will automatically retrieve the latest BigDL package, download the necessary input data, and then run the specified BigDL example (using Java 8 on a Spark cluster). The details of the public AMI are shown in the table below.</p>
+<table>
+<thead>
+<tr>
+<th>BigDL version</th>
+<th>AMI version</th>
+<th>Date</th>
+<th>AMI ID</th>
+<th>AMI Name</th>
+<th>Region</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>master</td>
+<td>0.2S</td>
+<td>Mar 13, 2017</td>
+<td>ami-37b73957</td>
+<td>BigDL Client 0.2S</td>
+<td>US West (Oregon)</td>
+<td>Active</td>
+</tr>
+<tr>
+<td>master</td>
+<td>0.2S</td>
+<td>Apr 10, 2017</td>
+<td>ami-8c87099a</td>
+<td>BigDL Client 0.2S</td>
+<td>US East (N. Virginia)</td>
+<td>Active</td>
+</tr>
+<tr>
+<td>0.1.0</td>
+<td>0.1.0</td>
+<td>Apr 10, 2017</td>
+<td>ami-9a8818fa</td>
+<td>BigDL Client 0.1.0</td>
+<td>US West (Oregon)</td>
+<td>Active</td>
+</tr>
+<tr>
+<td>0.1.0</td>
+<td>0.1.0</td>
+<td>Apr 10, 2017</td>
+<td>ami-6476f872</td>
+<td>BigDL Client 0.1.0</td>
+<td>US East (N. Virginia)</td>
+<td>Active</td>
+</tr>
+</tbody>
+</table>
+<p>Please note that it is highly recommended to run BigDL using EC2 instances with Xeon E5 v3 or v4 processors.</p>
+<p>After launching the AMI on EC2, please log on to the instance and run a "bootstrap.sh" script to download example scripts.</p>
+<pre><code class="bash">./bootstrap.sh
+</code></pre>
+
+<h2 id="2-before-you-start"><strong>2. Before You Start</strong></h2>
+<p>Before running the BigDL examples, you need to launch a Spark cluster on EC2 (you may refer to <a href="https://github.com/amplab/spark-ec2">https://github.com/amplab/spark-ec2</a> for more instructions). In addition, to run the Inception-v1 example, you also need to start a HDFS cluster on EC2 to store the input image data.</p>
+<h2 id="3-run-bigdl-examples"><strong>3. Run BigDL examples</strong></h2>
+<p>You can run BigDL examples using the <code>run.example.sh</code> script in home directory of your BigDL Client instance (e.g. <code>/home/ubuntu/</code>) with the following parameters:
+* Mandatory parameters:
+  * <code>-m|--model</code> which model to train, including
+    * lenet: train the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/lenet">LeNet</a> example
+    * vgg: train the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/vgg">VGG</a> example
+    * inception-v1: train the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/inception">Inception v1</a> example
+    * perf: test the training speed using the <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/inception/Inception_v1.scala">Inception v1</a> model with dummy data</p>
+<ul>
+<li>
+<p><code>-s|--spark-url</code> the master URL for the Spark cluster</p>
+</li>
+<li>
+<p><code>-n|--nodes</code> number of Spark slave nodes</p>
+</li>
+<li>
+<p><code>-o|--cores</code> number of cores used on each node</p>
+</li>
+<li>
+<p><code>-r|--memory</code> memory used on each node, e.g. 200g</p>
+</li>
+<li>
+<p><code>-b|--batch-size</code> batch size when training the model; it is expected to be a multiple of "nodes * cores"</p>
+</li>
+<li>
+<p><code>-f|--hdfs-data-dir</code> HDFS directory for the input images (for the "inception-v1" model training only)</p>
+</li>
+<li>
+<p>Optional parameters:</p>
+</li>
+<li>
+<p><code>-e|--max-epoch</code> the maximum number of epochs (i.e., going through all the input data once) used in the training; default to 90 if not specified</p>
+</li>
+<li>
+<p><code>-p|--spark</code> by default the example will run with Spark 1.5 or 1.6; to use Spark 2.0, please specify "spark_2.0" here (it is highly recommended to use <em><strong>Java 8</strong></em> when running BigDL for Spark 2.0, otherwise you may observe very poor performance)</p>
+</li>
+<li>
+<p><code>-l|--learning-rate</code> by default the the example will use an initial learning rate of "0.01"; you can specify a different value here</p>
+</li>
+</ul>
+<p>After the training, you can check the log files and generated models in the home directory (e.g., <code>/home/ubuntu/</code>).  </p>
+<h3 id="31-run-the-inception-v1-example"><strong>3.1 Run the "inception-v1" example</strong></h3>
+<p>You can refer to the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/inception">Inception v1</a> example to prepare the input <a href="http://image-net.org/index">ImageNet</a> data here. Alternatively, you may also download just a small set of images (with dummy labels) to run the example as follows, which can be useful if you only want to try it out to see the training speed on a Spark cluster.</p>
+<ul>
+<li>Download and prepare the input image data (a subset of the <a href="http://sergeykarayev.com/files/1311.3715v3.pdf">Flickr Style</a> data)</li>
+</ul>
+<pre><code class="bash">  ./download.sh $HDFS-NAMENODE
+</code></pre>
+
+<p>After the download completes, the downloaded images are stored in <code>hdfs://HDFS-NAMENODE:9000/seq</code>. (If the download fails with error "Unable to establish SSL connection." please check your network connection and retry this later.)</p>
+<ul>
+<li>To run the "inception-v1" example on a 4-worker Spark cluster (using, say, the "m4.10xlarge" instance), run the example command below: </li>
+</ul>
+<pre><code>  nohup bash ./run.example.sh --model inception-v1  \
+         --spark-url spark://SPARK-MASTER:7077    \
+         --nodes 4 --cores 20 --memory 150g       \
+         --batch-size 400 --learning-rate 0.0898  \
+         --hdfs-data-dir hdfs://HDFS-NAMENODE:9000/seq \
+         --spark spark_2.0 --max-epoch 4 \
+         &gt; incep.log 2&gt;&amp;1 &amp;     
+</code></pre>
+
+<ul>
+<li>View output of the training in the log file generated by the previous step:</li>
+</ul>
+<pre><code class="bash">  $ tail -f incep.log
+  2017-01-10 10:03:55 INFO  DistriOptimizer$:241 - [Epoch 1 0/5000][Iteration 1][Wall Clock XXX] Train 512 in XXXseconds. Throughput is XXX records/second. Loss is XXX.
+  2017-01-10 10:03:58 INFO  DistriOptimizer$:241 - [Epoch 1 512/5000][Iteration 2][Wall Clock XXX] Train 512 in XXXseconds. Throughput is XXX records/second. Loss is XXX.
+  2017-01-10 10:04:00 INFO  DistriOptimizer$:241 - [Epoch 1 1024/5000][Iteration 3][Wall Clock XXX] Train 512 in XXXseconds. Throughput is XXX records/second. Loss is XXX.
+  2017-01-10 10:04:03 INFO  DistriOptimizer$:241 - [Epoch 1 1536/5000][Iteration 4][Wall Clock XXX] Train 512 in XXXseconds. Throughput is XXX records/second. Loss is XXX.
+  2017-01-10 10:04:05 INFO  DistriOptimizer$:241 - [Epoch 1 2048/5000][Iteration 5][Wall Clock XXX] Train 512 in XXXseconds. Throughput is XXX records/second. Loss is XXX.
+</code></pre>
+
+<h3 id="32-run-the-perf-example"><strong>3.2 Run the "perf" example</strong></h3>
+<p>To run the "perf" example on a 4-worker Spark cluster (using, say, the "m4.10xlarge" instance), you may try the example command below: </p>
+<pre><code class="bash">  nohup bash ./run.example.sh --model perf  \
+       --spark-url spark://SPARK-MASTER:7077    \
+       --nodes 4 --cores 20 --memory 150g       \
+       --spark spark_2.0 --max-epoch 4 \
+       &gt; perf.log 2&gt;&amp;1 &amp;
+</code></pre>
+
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../models/" class="btn btn-neutral float-right" title="Models">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../visualization-with-tensorboard/" class="btn btn-neutral" title="Visualization With Tensorboard"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../visualization-with-tensorboard/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../models/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../../js/theme.js"></script>
+
+</body>
+</html>
