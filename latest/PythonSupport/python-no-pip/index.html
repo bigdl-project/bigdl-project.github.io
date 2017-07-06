@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Use Python without Pip - BigDL Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Use Python without Pip";
+    var mkdocs_page_input_path = "PythonSupport/python-no-pip.md";
+    var mkdocs_page_url = "/PythonSupport/python-no-pip/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> BigDL Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../release/">Releases</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../powered-by/">Powered by</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../UserGuide/getting-started/">Getting Started</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../UserGuide/examples/">Examples</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../UserGuide/ug-setup-bigdl/">Setup BigDL</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../UserGuide/ug-prepare-data/">Prepare your Data</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../UserGuide/ug-prediction/">Use BigDL for Prediction Only</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../UserGuide/ug-train/">Train a Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../UserGuide/ug-monitor/">Monitor the Training</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../UserGuide/ug-tune/">Tuning</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../UserGuide/ug-advanced/">Advanced Usage</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Install/Deploy</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../UserGuide/use-pre-built/">Use Pre-built Package</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../UserGuide/build-src/">Build from Source</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../UserGuide/deploy-python/">Enable Python Support</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../UserGuide/running-on-EC2/">Running On EC2</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../UserGuide/resources/">Resources</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../python-api/">API Usage</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../install-via-pip/">Install via pip</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Use Python without Pip</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#run-python-program-in-command-line">Run Python Program in Command Line</a></li>
+    
+
+    <li class="toctree-l3"><a href="#run-python-program-in-notebook">Run Python Program in Notebook</a></li>
+    
+
+    <li class="toctree-l3"><a href="#use-python-on-yarn-cluster">Use Python on YARN cluster</a></li>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../APIdocs/Data/_merged_Data/">Data</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Model</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Model/SequentialModel/">Sequential Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Model/FunctionalAPI/">Functional API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Layers</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Layers/Containers/_merged_Containers/">Containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Layers/Simple_Layers/_merged_Simple_Layers/">Simple Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Layers/Convolution_Layers/_merged_Convolution_Layers/">Convolution Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Layers/Pooling_Layers/_merged_Pooling_Layers/">Pooling Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Layers/Linear_Layers/_merged_Linear_Layers/">Linear Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Layers/Non-linear_Activations/_merged_Non-linear_Activations/">Non-linear Activations</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Layers/Embedding_Layers/_merged_Embedding_Layers/">Embedding Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Layers/MergeSplit_Layers/_merged_MergeSplit_Layers/">Merge/Split Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Layers/Math_Layers/_merged_Math_Layers/">Math Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Layers/Padding_Layers/_merged_Padding_Layers/">Padding Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Layers/Normalization_Layers/_merged_Normalization_Layers/">Normalization Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Layers/Dropout_Layers/_merged_Dropout_Layers/">Dropout Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Layers/Distance_Layers/_merged_Distance_Layers/">Distance Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Layers/Recurrent_Layers/_merged_Recurrent_Layers/">Recurrent Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Layers/Utilities/_merged_Utilities/">Utilities</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../APIdocs/Losses/_merged_Losses/">Losses</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Optimization</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Optimizers/DistriOptimizer/">Optimizer</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Optimizers/Optim_Methods/_merged_Optim_Methods/">Optimization Algorithms</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Optimizers/Triggers/">Triggers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Optimizers/ResumeTraining/">Resume Training</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../APIdocs/Initializers/_merged_Initializers/">Initalizers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../APIdocs/Regularizers/_merged_Regularizers/">Regularizers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../APIdocs/Metrics/_merged_Metrics/">Metrics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Preprocessing</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Preprocessing/Transformer/">Transformer</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Load/Save Models</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Model_LoadSave/BigDLModel/">Load/Save a BigDL Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/Model_LoadSave/TensorflowModel/">Load a Tensorflow Model</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../UserGuide/visualization-with-tensorboard/">Visualization</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API Docs</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/scaladoc/">Scala Docs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../APIdocs/python-api-doc/">Python API Docs</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../UserGuide/known-issues/">Known Issues</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">BigDL Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Latest Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Python Support &raquo;</li>
+        
+      
+    
+    <li>Use Python without Pip</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/intel-analytics/BigDL/"> Fork on GitHub </a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <hr />
+<h2 id="run-python-program-in-command-line"><strong>Run Python Program in Command Line</strong></h2>
+<p>A BigDL Python program runs as a standard PySPark program, which requires all Python dependency (e.g., NumPy) used by the program be installed on each node in the Spark cluster. One can run the BigDL <a href="https://github.com/intel-analytics/BigDL/tree/master/pyspark/dl/models/lenet">lenet Python example</a> using <a href="http://spark.apache.org/docs/latest/submitting-applications.html">spark-submit</a> as follows:</p>
+<pre><code class="bash">PYTHON_API_PATH=${BigDL_HOME}/dist/lib/bigdl-VERSION-python-api.zip
+BigDL_JAR_PATH=${BigDL_HOME}/dist/lib/bigdl-VERSION-jar-with-dependencies.jar
+PYTHONPATH=${PYTHON_API_ZIP_PATH}:$PYTHONPATH
+
+${SPARK_HOME}/bin/spark-submit \
+    --master ${MASTER} \
+    --driver-memory 10g  \
+    --driver-cores 4  \
+    --executor-memory 20g \
+    --total-executor-cores ${TOTAL_CORES}\
+    --executor-cores 10 ${EXECUTOR_CORES} \
+    --py-files ${PYTHON_API_PATH},${BigDL_HOME}/pyspark/dl/models/lenet/lenet5.py  \
+    --properties-file ${BigDL_HOME}/dist/conf/spark-bigdl.conf \
+    --jars ${BigDL_JAR_PATH} \
+    --conf spark.driver.extraClassPath=${BigDL_JAR_PATH} \
+    --conf spark.executor.extraClassPath=bigdl-VERSION-jar-with-dependencies.jar \
+    ${BigDL_HOME}/pyspark/dl/models/lenet/lenet5.py
+</code></pre>
+
+<hr />
+<h2 id="run-python-program-in-notebook"><strong>Run Python Program in Notebook</strong></h2>
+<p>With the full Python API support in BigDL, users can now use BigDL together with powerful notebooks (such as Jupyter notebook) in a distributed fashion across the cluster, combining Python libraries, Spark SQL / dataframes and MLlib, deep learning models in BigDL, as well as interactive visualization tools.</p>
+<p>First, install all the necessary libraries on the local node where you will run Jupyter, e.g., </p>
+<pre><code class="bash">sudo apt install python
+sudo apt install python-pip
+sudo pip install numpy scipy pandas scikit-learn matplotlib seaborn wordcloud
+</code></pre>
+
+<p>Then, you can launch the Jupyter notebook as follows:</p>
+<pre><code class="bash">PYTHON_API_PATH=${BigDL_HOME}/dist/lib/bigdl-0.1.0-python-api.zip
+BigDL_JAR_PATH=${BigDL_HOME}/dist/lib/bigdl-0.1.0-jar-with-dependencies.jar
+
+export PYTHONPATH=${PYTHON_API_PATH}:$PYTHONPATH
+export PYSPARK_DRIVER_PYTHON=jupyter
+export PYSPARK_DRIVER_PYTHON_OPTS=&quot;notebook --notebook-dir=./ --ip=* --no-browser&quot;
+
+${SPARK_HOME}/bin/pyspark \
+  --master ${MASTER} \
+  --properties-file ${BigDL_HOME}/dist/conf/spark-bigdl.conf \
+  --driver-memory 10g  \
+  --driver-cores 4  \
+  --executor-memory 20g \
+  --total-executor-cores {TOTAL_CORES} \
+  --executor-cores {EXECUTOR_CORES} \
+  --py-files ${PYTHON_API_PATH} \
+  --jars ${BigDL_JAR_PATH} \
+  --conf spark.driver.extraClassPath=${BigDL_JAR_PATH} \
+  --conf spark.executor.extraClassPath=bigdl-0.1.0-jar-with-dependencies.jar
+</code></pre>
+
+<p>After successfully launching Jupyter, you will be able to navigate to the notebook dashboard using your browser. You can find the exact URL in the console output when you started Jupyter; by default, the dashboard URL is http://your_node:8888/</p>
+<hr />
+<h2 id="use-python-on-yarn-cluster"><strong>Use Python on YARN cluster</strong></h2>
+<p>You can run BigDL Python programs on YARN clusters without changes to the cluster (e.g., no need to pre-install the      Python dependency). You  can first package all the required Python dependency into a virtual environment on the local    node (where you will run the spark-submit command), and then directly use spark-submit to run the BigDL Python program   on the YARN cluster (using that virtual environment). Please refer to this <a href="https://github.com/intel-analytics/   BigDL/pull/706">patch</a> for more details.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../APIdocs/Data/_merged_Data/" class="btn btn-neutral float-right" title="Data">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../install-via-pip/" class="btn btn-neutral" title="Install via pip"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../install-via-pip/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../APIdocs/Data/_merged_Data/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../../js/theme.js"></script>
+
+</body>
+</html>

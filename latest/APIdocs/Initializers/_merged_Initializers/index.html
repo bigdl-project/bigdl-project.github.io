@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../../img/favicon.ico">
+  <title>Initalizers - BigDL Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../css/highlight.css">
+  <link href="../../../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Initalizers";
+    var mkdocs_page_input_path = "APIdocs/Initializers/_merged_Initializers.md";
+    var mkdocs_page_url = "/APIdocs/Initializers/_merged_Initializers/";
+  </script>
+  
+  <script src="../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../.." class="icon icon-home"> BigDL Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../release/">Releases</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../powered-by/">Powered by</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../UserGuide/getting-started/">Getting Started</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../UserGuide/examples/">Examples</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../UserGuide/ug-setup-bigdl/">Setup BigDL</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../UserGuide/ug-prepare-data/">Prepare your Data</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../UserGuide/ug-prediction/">Use BigDL for Prediction Only</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../UserGuide/ug-train/">Train a Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../UserGuide/ug-monitor/">Monitor the Training</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../UserGuide/ug-tune/">Tuning</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../UserGuide/ug-advanced/">Advanced Usage</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Install/Deploy</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../UserGuide/use-pre-built/">Use Pre-built Package</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../UserGuide/build-src/">Build from Source</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../UserGuide/deploy-python/">Enable Python Support</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../UserGuide/running-on-EC2/">Running On EC2</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../UserGuide/resources/">Resources</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../PythonSupport/python-api/">API Usage</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../PythonSupport/install-via-pip/">Install via pip</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../PythonSupport/python-no-pip/">Use Python without Pip</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../Data/_merged_Data/">Data</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Model</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../Model/SequentialModel/">Sequential Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Model/FunctionalAPI/">Functional API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Layers</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../Layers/Containers/_merged_Containers/">Containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Layers/Simple_Layers/_merged_Simple_Layers/">Simple Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Layers/Convolution_Layers/_merged_Convolution_Layers/">Convolution Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Layers/Pooling_Layers/_merged_Pooling_Layers/">Pooling Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Layers/Linear_Layers/_merged_Linear_Layers/">Linear Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Layers/Non-linear_Activations/_merged_Non-linear_Activations/">Non-linear Activations</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Layers/Embedding_Layers/_merged_Embedding_Layers/">Embedding Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Layers/MergeSplit_Layers/_merged_MergeSplit_Layers/">Merge/Split Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Layers/Math_Layers/_merged_Math_Layers/">Math Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Layers/Padding_Layers/_merged_Padding_Layers/">Padding Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Layers/Normalization_Layers/_merged_Normalization_Layers/">Normalization Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Layers/Dropout_Layers/_merged_Dropout_Layers/">Dropout Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Layers/Distance_Layers/_merged_Distance_Layers/">Distance Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Layers/Recurrent_Layers/_merged_Recurrent_Layers/">Recurrent Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Layers/Utilities/_merged_Utilities/">Utilities</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../Losses/_merged_Losses/">Losses</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Optimization</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../Optimizers/DistriOptimizer/">Optimizer</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Optimizers/Optim_Methods/_merged_Optim_Methods/">Optimization Algorithms</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Optimizers/Triggers/">Triggers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Optimizers/ResumeTraining/">Resume Training</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Initalizers</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#customizedinitializer">CustomizedInitializer</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#python">Python</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#zeros">Zeros</a></li>
+    
+
+    <li class="toctree-l2"><a href="#xavier">Xavier</a></li>
+    
+
+    <li class="toctree-l2"><a href="#bilinearfiller">BilinearFiller</a></li>
+    
+
+    <li class="toctree-l2"><a href="#randomnormal">RandomNormal</a></li>
+    
+
+    <li class="toctree-l2"><a href="#ones">Ones</a></li>
+    
+
+    <li class="toctree-l2"><a href="#constinitmethod">ConstInitMethod</a></li>
+    
+
+    <li class="toctree-l2"><a href="#randomuniform">RandomUniform</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../Regularizers/_merged_Regularizers/">Regularizers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../Metrics/_merged_Metrics/">Metrics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Preprocessing</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../Preprocessing/Transformer/">Transformer</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Load/Save Models</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../Model_LoadSave/BigDLModel/">Load/Save a BigDL Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Model_LoadSave/TensorflowModel/">Load a Tensorflow Model</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../UserGuide/visualization-with-tensorboard/">Visualization</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API Docs</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../scaladoc/">Scala Docs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python-api-doc/">Python API Docs</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../UserGuide/known-issues/">Known Issues</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../..">BigDL Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../..">Latest Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Initalizers</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/intel-analytics/BigDL/"> Fork on GitHub </a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="customizedinitializer">CustomizedInitializer</h2>
+<p>All customizedInitializer should implement the <code>InitializationMethod</code> trait</p>
+<pre><code class="scala">/**
+ * Initialization method to initialize bias and weight.
+ * The init method will be called in Module.reset()
+ */
+
+trait InitializationMethod {
+
+  type Shape = Array[Int]
+
+  /**
+   * Initialize the given variable
+   *
+   * @param variable    the variable to initialize
+   * @param dataFormat  describe the meaning of each dimension of the variable
+   */
+  def init[T](variable: Tensor[T], dataFormat: VariableFormat)
+             (implicit ev: TensorNumeric[T]): Unit
+}
+</code></pre>
+
+<p>The <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/nn/InitializationMethod.scala#L163">RandomUniform</a>
+code should give you a good sense of how to implement this trait.</p>
+<h3 id="python">Python</h3>
+<p>Custom initialization method in python is not supported right now.</p>
+<h2 id="zeros">Zeros</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = Zeros
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = Zeros()
+</code></pre>
+
+<p>Initialization method that set tensor to zeros.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val weightInitMethod = Zeros
+val biasInitMethod = Zeros
+val model = Linear(3, 2).setName(&quot;linear1&quot;)
+model.setInitMethod(weightInitMethod, biasInitMethod)
+println(model.getParametersTable().get(&quot;linear1&quot;).get)
+</code></pre>
+
+<pre><code>
+ {
+    weight: 0.0 0.0 0.0 
+            0.0 0.0 0.0 
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+    bias: 0.0
+          0.0
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradBias: 0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradWeight: 0.0 0.0 0.0 
+                0.0 0.0 0.0 
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+ }
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+weight_init = Zeros()
+bias_init = Zeros()
+model = Linear(3, 2)
+model.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(model.get_weights()[0])
+print(&quot;bias: &quot;)
+print(model.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createZeros
+creating: createZeros
+creating: createLinear
+weight:
+[[ 0.  0.  0.]
+ [ 0.  0.  0.]]
+bias: 
+[ 0.  0.]
+</code></pre>
+
+<h2 id="xavier">Xavier</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = Xavier
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = Xavier()
+</code></pre>
+
+<p>The Xavier initialization method draws samples from a uniform distribution
+bounded by [-limit, limit) where limit = sqrt(6.0/(fanIn+fanOut)). The rationale
+behind this formula can be found in the paper
+<a href="http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf">Understanding the difficulty of training deep feedforward neural networks</a>.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val weightInitMethod = Xavier
+val biasInitMethod = Xavier
+val model = Linear(3, 2).setName(&quot;linear1&quot;)
+model.setInitMethod(weightInitMethod, biasInitMethod)
+println(model.getParametersTable().get(&quot;linear1&quot;).get)
+</code></pre>
+
+<pre><code> {
+    weight: -0.78095555 -0.09939616 0.12034761  
+            -0.3019594  0.11734331  0.80369484  
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+    bias: 1.0727772
+          -0.6703765
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradBias: 0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradWeight: 0.0 0.0 0.0 
+                0.0 0.0 0.0 
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+ }
+
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+weight_init = Xavier()
+bias_init = Xavier()
+model = Linear(3, 2)
+model.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(model.get_weights()[0])
+print(&quot;bias: &quot;)
+print(model.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createXavier
+creating: createXavier
+creating: createLinear
+weight:
+[[ 0.00580597 -0.73662472  0.13767919]
+ [ 0.16802482 -0.49394709 -0.74967551]]
+bias: 
+[-1.12355328  0.0779365 ]
+</code></pre>
+
+<h2 id="bilinearfiller">BilinearFiller</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = BilinearFiller
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = BilinearFiller()
+</code></pre>
+
+<p>Initialize the weight with coefficients for bilinear interpolation. A common use case is with the DeconvolutionLayer acting as upsampling. This initialization method can only be used in the weight initialization of SpatialFullConvolution.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val weightInitMethod = BilinearFiller
+val biasInitMethod - Zeros
+val model = SpatialFullConvolution(2, 3, 2, 2).setName(&quot;sfconv&quot;)
+model.setInitMethod(weightInitMethod, biasInitMethod)
+println(model.getParametersTable().get(&quot;sfconv&quot;).get)
+</code></pre>
+
+<pre><code>{
+    weight: (1,1,1,.,.) =
+            1.0 0.0 
+            0.0 0.0 
+
+            (1,1,2,.,.) =
+            1.0 0.0 
+            0.0 0.0 
+
+            (1,1,3,.,.) =
+            1.0 0.0 
+            0.0 0.0 
+
+            (1,2,1,.,.) =
+            1.0 0.0 
+            0.0 0.0 
+
+            (1,2,2,.,.) =
+            1.0 0.0 
+            0.0 0.0 
+
+            (1,2,3,.,.) =
+            1.0 0.0 
+            0.0 0.0 
+
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x3x2x2]
+    bias: 0.0
+          0.0
+          0.0
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 3]
+    gradBias: 0.0
+              0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 3]
+    gradWeight: (1,1,1,.,.) =
+                0.0 0.0 
+                0.0 0.0 
+
+                (1,1,2,.,.) =
+                0.0 0.0 
+                0.0 0.0 
+
+                (1,1,3,.,.) =
+                0.0 0.0 
+                0.0 0.0 
+
+                (1,2,1,.,.) =
+                0.0 0.0 
+                0.0 0.0 
+
+                (1,2,2,.,.) =
+                0.0 0.0 
+                0.0 0.0 
+
+                (1,2,3,.,.) =
+                0.0 0.0 
+                0.0 0.0 
+
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x3x2x2]
+ }
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+weight_init = BilinearFiller()
+bias_init = Zeros()
+model =  SpatialFullConvolution(2, 3, 2, 2)
+model.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(model.get_weights()[0])
+print(&quot;bias: &quot;)
+print(model.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createBilinearFiller
+creating: createZeros
+creating: createSpatialFullConvolution
+weight:
+[[[[[ 1.  0.]
+    [ 0.  0.]]
+
+   [[ 1.  0.]
+    [ 0.  0.]]
+
+   [[ 1.  0.]
+    [ 0.  0.]]]
+
+
+  [[[ 1.  0.]
+    [ 0.  0.]]
+
+   [[ 1.  0.]
+    [ 0.  0.]]
+
+   [[ 1.  0.]
+    [ 0.  0.]]]]]
+bias: 
+[ 0.  0.  0.]
+
+
+</code></pre>
+
+<h2 id="randomnormal">RandomNormal</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = RandomNormal(mean, stdv)
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = RandomNormal(mean, stdv)
+</code></pre>
+
+<p>This initialization method draws samples from a normal distribution.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val weightInitMethod = RandomNormal(0, 1)
+val biasInitMethod = RandomNormal(0, 1)
+val linear = Linear(3, 2).setName(&quot;linear1&quot;)
+linear.setInitMethod(weightInitMethod, biasInitMethod)
+println(linear.getParametersTable().get(&quot;linear1&quot;).get)
+</code></pre>
+
+<pre><code> {
+    weight: -0.5908564  0.32844943  -0.845019   
+            0.21550806  1.2037253   0.6807024   
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+    bias: 0.5345903
+          -0.76420456
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradBias: 0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradWeight: 0.0 0.0 0.0 
+                0.0 0.0 0.0 
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+  }
+
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+from bigdl.nn.layer import *
+
+weight_init = RandomNormal(0, 1)
+bias_init = RandomNormal(0, 1)
+linear= Linear(3, 2)
+linear.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(linear.get_weights()[0])
+print(&quot;bias: &quot;)
+print(linear.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createRandomNormal
+creating: createRandomNormal
+creating: createLinear
+weight:
+[[-0.00784962  0.77845585 -1.16250944]
+ [ 0.03195094 -0.15211993  0.6254822 ]]
+bias: 
+[-0.37883148 -0.81106091]
+
+</code></pre>
+
+<h2 id="ones">Ones</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = Ones
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = Ones()
+</code></pre>
+
+<p>Initialization method that set tensor to be ones.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val weightInitMethod = Ones
+val biasInitMethod = Ones
+val model = Linear(3, 2).setName(&quot;linear1&quot;)
+model.setInitMethod(weightInitMethod, biasInitMethod)
+println(model.getParametersTable().get(&quot;linear1&quot;).get)
+</code></pre>
+
+<pre><code> {
+    weight: 1.0 1.0 1.0 
+            1.0 1.0 1.0 
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+    bias: 1.0
+          1.0
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradBias: 0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradWeight: 0.0 0.0 0.0 
+                0.0 0.0 0.0 
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+ }
+
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+weight_init = Ones()
+bias_init = Ones()
+model = Linear(3, 2)
+model.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(model.get_weights()[0])
+print(&quot;bias: &quot;)
+print(model.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createOnes
+creating: createOnes
+creating: createLinear
+weight:
+[[ 1.  1.  1.]
+ [ 1.  1.  1.]]
+bias: 
+[ 1.  1.]
+
+</code></pre>
+
+<h2 id="constinitmethod">ConstInitMethod</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = ConstInitMethod(value: Double)
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = ConstInitMethod(value)
+</code></pre>
+
+<p>Initialization method that set tensor to the specified constant value.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+
+val weightInitMethod = ConstInitMethod(0.2)
+val biasInitMethod = ConstInitMethod(0.2)
+val linear = Linear(3, 2).setName(&quot;linear1&quot;)
+linear.setInitMethod(weightInitMethod, biasInitMethod)
+println(linear.getParametersTable().get(&quot;linear1&quot;).get)
+</code></pre>
+
+<pre><code> {
+    weight: 0.2 0.2 0.2
+            0.2 0.2 0.2
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+    bias: 0.2
+          0.2
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradBias: 0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradWeight: 0.0 0.0 0.0
+                0.0 0.0 0.0
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+ }
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+weight_init = ConstInitMethod(0.2)
+bias_init = ConstInitMethod(0.2)
+linear = Linear(3, 2)
+linear.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(linear.get_weights()[0])
+print(&quot;bias: &quot;)
+print(linear.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createConstInitMethod
+creating: createConstInitMethod
+creating: createLinear
+weight:
+[[ 0.2  0.2  0.2]
+ [ 0.2  0.2  0.2]]
+bias:
+[ 0.2  0.2]
+
+</code></pre>
+
+<h2 id="randomuniform">RandomUniform</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = RandomUniform(lower, upper)
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = RandomUniform(upper=None, lower=None)
+</code></pre>
+
+<p>This initialization method draws samples from a uniform distribution. If the lower bound and upper bound of this uniform distribution is not specified, it will be set to [-limit, limit) where limit = 1/sqrt(fanIn).</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val weightInitMethod = RandomUniform
+val biasInitMethod = RandomUniform(0, 1)
+val model = Linear(3, 2).setName(&quot;linear1&quot;)
+model.setInitMethod(weightInitMethod, biasInitMethod)
+println(model.getParametersTable().get(&quot;linear1&quot;).get)
+</code></pre>
+
+<pre><code> {
+    weight: -0.572536   0.13046022  -0.040449623    
+            -0.547542   0.19093458  0.5632484   
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+    bias: 0.785292
+          0.63280666
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradBias: 0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradWeight: 0.0 0.0 0.0 
+                0.0 0.0 0.0 
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+ }
+
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+weight_init = RandomUniform()
+bias_init = RandomUniform()
+model = Linear(3, 2)
+model.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(model.get_weights()[0])
+print(&quot;bias: &quot;)
+print(model.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createRandomUniform
+creating: createRandomUniform
+creating: createLinear
+weight:
+[[ 0.53153235  0.53016287  0.32831791]
+ [-0.45736417 -0.16206641  0.21758588]]
+bias: 
+[ 0.32058391  0.26307678]
+
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../Regularizers/_merged_Regularizers/" class="btn btn-neutral float-right" title="Regularizers">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../Optimizers/ResumeTraining/" class="btn btn-neutral" title="Resume Training"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../Optimizers/ResumeTraining/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../Regularizers/_merged_Regularizers/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../../../js/theme.js"></script>
+
+</body>
+</html>
