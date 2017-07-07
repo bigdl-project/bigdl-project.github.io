@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>Padding Layers - BigDL Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/highlight.css">
+  <link href="../../../../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Padding Layers";
+    var mkdocs_page_input_path = "APIdocs/Layers/Padding_Layers/merged-Padding_Layers.md";
+    var mkdocs_page_url = "/APIdocs/Layers/Padding_Layers/merged-Padding_Layers/";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> BigDL Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../release/">Releases</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../powered-by/">Powered by</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../UserGuide/getting-started/">Getting Started</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../UserGuide/examples/">Examples</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">User Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/ug-setup-bigdl/">Setup BigDL</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/ug-prepare-data/">Prepare your Data</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/ug-prediction/">Use BigDL for Prediction Only</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/ug-train/">Train a Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/ug-monitor/">Monitor the Training</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/ug-tune/">Tuning</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/ug-advanced/">Advanced Usage</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Install/Deploy</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/use-pre-built/">Use Pre-built Package</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/build-src/">Build from Source</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/deploy-python/">Enable Python Support</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/running-on-EC2/">Running On EC2</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../UserGuide/resources/">Resources</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../PythonSupport/python-api/">API Usage</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../PythonSupport/install-via-pip/">Install via pip</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../PythonSupport/python-no-pip/">Use Python without Pip</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Model</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../Model/SequentialModel/">Sequential Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../Model/FunctionalAPI/">Functional API</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Layers</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../Containers/merged-Containers/">Containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Simple_Layers/merged-Simple_Layers/">Simple Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Convolution_Layers/merged-Convolution_Layers/">Convolution Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Pooling_Layers/merged-Pooling_Layers/">Pooling Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Linear_Layers/merged-Linear_Layers/">Linear Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Non-linear_Activations/merged-Non-linear_Activations/">Non-linear Activations</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Embedding_Layers/merged-Embedding_Layers/">Embedding Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../MergeSplit_Layers/merged-MergeSplit_Layers/">Merge/Split Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Math-Layers/merged-Math-Layers/">Math Layers</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Padding Layers</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#spatialzeropadding">SpatialZeroPadding</a></li>
+    
+
+    <li class="toctree-l3"><a href="#padding">Padding</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Normalization_Layers/merged-Normalization_Layers/">Normalization Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Dropout_Layers/merged-Dropout_Layers/">Dropout Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Distance_Layers/merged-Distance_Layers/">Distance Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Recurrent_Layers/merged-Recurrent_Layers/">Recurrent Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Utilities/merged-Utilities/">Utilities</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../Losses/merged-Losses/">Losses</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Optimization</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../Optimizers/DistriOptimizer/">Optimizer</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../Optimizers/Optim_Methods/merged-Optim_Methods/">Optimization Algorithms</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../Optimizers/Triggers/">Triggers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../Optimizers/ResumeTraining/">Resume Training</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../Initializers/merged-Initializers/">Initalizers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../Regularizers/merged-Regularizers/">Regularizers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../Metrics/merged-Metrics/">Metrics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Preprocessing</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../Preprocessing/Transformer/">Transformer</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Load/Save Models</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../Model_LoadSave/BigDLModel/">Load/Save a BigDL Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../Model_LoadSave/TensorflowModel/">Load a Tensorflow Model</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../UserGuide/visualization-with-tensorboard/">Visualization</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API Docs</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../scaladoc/">Scala Docs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../python-api-doc/">Python API Docs</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../UserGuide/known-issues/">Known Issues</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">BigDL Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Latest Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Layers &raquo;</li>
+        
+      
+    
+    <li>Padding Layers</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/intel-analytics/BigDL/"> Fork on GitHub </a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="spatialzeropadding">SpatialZeroPadding</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val spatialZeroPadding = SpatialZeroPadding(padLeft, padRight, padTop, padBottom)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">spatialZeroPadding = SpatialZeroPadding(pad_left, pad_right, pad_top, pad_bottom)
+</code></pre>
+
+<p>Each feature map of a given input is padded with specified number of zeros.</p>
+<p>If padding values are negative, then input will be cropped.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor._
+val spatialZeroPadding = SpatialZeroPadding(1, 0, -1, 0)
+val input = Tensor(3, 3, 3).rand()
+&gt; print(input)
+(1,.,.) =
+0.9494078   0.31556255  0.8432871   
+0.0064580487    0.6487367   0.151881    
+0.8822722   0.3634125   0.7034494   
+
+(2,.,.) =
+0.32691675  0.07487922  0.08813124  
+0.4564806   0.37191486  0.05507739  
+0.10097649  0.6589037   0.8721945   
+
+(3,.,.) =
+0.068939745 0.040364727 0.4893642   
+0.39481318  0.17923461  0.15748173  
+0.87117475  0.9933199   0.6097995
+
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3x3x3]
+
+&gt;  print(spatialZeroPadding.forward(input))
+(1,.,.) =
+0.0 0.0064580487    0.6487367   0.151881    
+0.0 0.8822722   0.3634125   0.7034494   
+
+(2,.,.) =
+0.0 0.4564806   0.37191486  0.05507739  
+0.0 0.10097649  0.6589037   0.8721945   
+
+(3,.,.) =
+0.0 0.39481318  0.17923461  0.15748173  
+0.0 0.87117475  0.9933199   0.6097995   
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 3x2x4]
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+spatialZeroPadding = SpatialZeroPadding(1, 0, -1, 0)
+&gt; spatialZeroPadding.forward(np.array([[[1, 2],[3, 4]],[[1, 2],[3, 4]]]))
+[array([[[ 0.,  3.,  4.]],
+       [[ 0.,  3.,  4.]]], dtype=float32)]
+
+</code></pre>
+
+<h2 id="padding">Padding</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val module = Padding(dim,pad,nInputDim,value=0.0,nIndex=1)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">module = Padding(dim,pad,n_input_dim,value=0.0,n_index=1,bigdl_type=&quot;float&quot;)
+</code></pre>
+
+<p>This module adds pad units of padding to dimension dim of the input. If pad is negative,
+padding is added to the left, otherwise, it is added to the right of the dimension.
+The input to this layer is expected to be a tensor, or a batch of tensors;
+when using mini-batch, a batch of sample tensors will be passed to the layer and
+the user need to specify the number of dimensions of each sample tensor in the
+batch using nInputDims.</p>
+<ul>
+<li>@param dim the dimension to be applied padding operation</li>
+<li>@param pad num of the pad units</li>
+<li>@param nInputDim specify the number of dimensions that this module will receive
+                  If it is more than the dimension of input tensors, the first dimension
+                  would be considered as batch size</li>
+<li>@param value padding value, default is 0</li>
+</ul>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">val module = Padding(1,-1,3,value=0.0,nIndex=1)
+val input = Tensor(3,2,1).rand()
+input: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+(1,.,.) =
+0.673425
+0.9350421
+
+(2,.,.) =
+0.35407698
+0.52607465
+
+(3,.,.) =
+0.7226349
+0.70645845
+
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3x2x1]
+
+module.forward(input)
+res14: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+(1,.,.) =
+0.0
+0.0
+
+(2,.,.) =
+0.673425
+0.9350421
+
+(3,.,.) =
+0.35407698
+0.52607465
+
+(4,.,.) =
+0.7226349
+0.70645845
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 4x2x1]
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">module = Padding(1, -1, 3, value=0.0,n_index=1,bigdl_type=&quot;float&quot;)
+input = np.random.rand(3, 2, 1)
+array([[[ 0.81505274],
+        [ 0.55769512]],
+
+       [[ 0.13193961],
+        [ 0.32610741]],
+
+       [[ 0.29855582],
+        [ 0.47394154]]])
+
+module.forward(input)
+array([[[ 0.        ],
+        [ 0.        ]],
+
+       [[ 0.81505275],
+        [ 0.55769515]],
+
+       [[ 0.1319396 ],
+        [ 0.32610741]],
+
+       [[ 0.29855582],
+        [ 0.47394153]]], dtype=float32)
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../Normalization_Layers/merged-Normalization_Layers/" class="btn btn-neutral float-right" title="Normalization Layers">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../Math-Layers/merged-Math-Layers/" class="btn btn-neutral" title="Math Layers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../Math-Layers/merged-Math-Layers/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../Normalization_Layers/merged-Normalization_Layers/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../../../../js/theme.js"></script>
+
+</body>
+</html>
