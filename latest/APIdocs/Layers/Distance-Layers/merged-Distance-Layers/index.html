@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../../../img/favicon.ico">
+  <title>Distance Layers - BigDL Project</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../css/highlight.css">
+  <link href="../../../../extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Distance Layers";
+    var mkdocs_page_input_path = "APIdocs/Layers/Distance-Layers/merged-Distance-Layers.md";
+    var mkdocs_page_url = "/APIdocs/Layers/Distance-Layers/merged-Distance-Layers/";
+  </script>
+  
+  <script src="../../../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../../../.." class="icon icon-home"> BigDL Project</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../release/">Releases</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../UserGuide/getting-started/">Getting Started</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../UserGuide/examples/">Examples</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../UserGuide/user-guide/">User Guide</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Install/Deploy</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/use-pre-built/">Use Pre-built Package</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/build-src/">Build from Source</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/running-on-EC2/">Running On EC2</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Python Support</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../../PythonSupport/install-via-pip/">Install via pip</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../PythonSupport/python-no-pip/">Use Python without Pip</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../PythonSupport/python-api/">API Usage</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/resources/">Python Models/Examples</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/resources/">Python Tutorials</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../UserGuide/resources/">Resources</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Model</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../Model/SequentialModel/">Sequential Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../Model/FunctionalAPI/">Functional API</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../Model-LoadSave/BigDLModel/">Load/Save a BigDL Model</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../Model-LoadSave/TensorflowModel/">Load a Tensorflow Model</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Layers</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../Containers/merged-Containers/">Containers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Simple-Layers/merged-Simple-Layers/">Simple Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Convolution-Layers/merged-Convolution-Layers/">Convolution Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Pooling-Layers/merged-Pooling-Layers/">Pooling Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Linear-Layers/merged-Linear-Layers/">Linear Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Non-linear-Activations/merged-Non-linear-Activations/">Non-linear Activations</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Embedding-Layers/merged-Embedding-Layers/">Embedding Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../MergeSplit-Layers/merged-MergeSplit-Layers/">Merge/Split Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Math-Layers/merged-Math-Layers/">Math Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Padding-Layers/merged-Padding-Layers/">Padding Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Normalization-Layers/merged-Normalization-Layers/">Normalization Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Dropout-Layers/merged-Dropout-Layers/">Dropout Layers</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Distance Layers</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#pairwisedistance">PairwiseDistance</a></li>
+    
+
+    <li class="toctree-l3"><a href="#cosinedistance">CosineDistance</a></li>
+    
+
+    <li class="toctree-l3"><a href="#euclidean">Euclidean</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Recurrent-Layers/merged-Recurrent-Layers/">Recurrent Layers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../Utilities/merged-Utilities/">Utilities</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../Losses/merged-Losses/">Losses</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../Initializers/merged-Initializers/">Initalizers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../Regularizers/merged-Regularizers/">Regularizers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Optimization</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../Optimizers/DistriOptimizer/">Optimizer</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../Optimizers/Optim-Methods/merged-Optim-Methods/">Optimization Algorithms</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../Optimizers/Triggers/">Triggers</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../Metrics/merged-Metrics/">Metrics</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../Optimizers/ResumeTraining/">Resume Training</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../../UserGuide/visualization-with-tensorboard/">Visualization</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">API Docs</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../../scaladoc/">Scala Docs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../../python-api-doc/">Python API Docs</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../powered-by/">Powered by</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../../../UserGuide/known-issues/">Known Issues</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../..">BigDL Project</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../..">Latest Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Layers &raquo;</li>
+        
+      
+    
+    <li>Distance Layers</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/intel-analytics/BigDL/"> Fork on GitHub </a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="pairwisedistance">PairwiseDistance</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val pd = PairwiseDistance(norm=2)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">pd = PairwiseDistance(norm=2)
+</code></pre>
+
+<p>It is a module that takes a table of two vectors as input and outputs
+the distance between them using the p-norm.
+The input given in <code>forward(input)</code> is a [[Table]] that contains two tensors which
+must be either a vector (1D tensor) or matrix (2D tensor). If the input is a vector,
+it must have the size of <code>inputSize</code>. If it is a matrix, then each row is assumed to be
+an input sample of the given batch (the number of rows means the batch size and
+the number of columns should be equal to the <code>inputSize</code>).</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.PairwiseDistance
+import com.intel.analytics.bigdl.utils.T
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val pd = PairwiseDistance()
+val input1 = Tensor(3, 3).randn()
+val input2 = Tensor(3, 3).randn()
+val input = T(1 -&gt; input1, 2 -&gt; input2)
+
+val output = pd.forward(input)
+
+val gradOutput = Tensor(3).randn()
+val gradInput = pd.backward(input, gradOutput)
+
+</code></pre>
+
+<p>The ouotput is,</p>
+<pre><code>output: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+4.155246
+1.1267666
+2.1415536
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 3]
+gradOutput: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+-0.32565984
+-1.0108998
+-0.030873261
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3]
+</code></pre>
+
+<p>The gradInput is,</p>
+<pre><code>gradInput: com.intel.analytics.bigdl.utils.Table =
+ {
+        2: 0.012723052  0.31482473      0.08232752
+           0.7552968    -0.27292773     -0.6139655
+           0.0062761847 -0.018232936    -0.024110721
+           [com.intel.analytics.bigdl.tensor.DenseTensor of size 3x3]
+        1: -0.012723052 -0.31482473     -0.08232752
+           -0.7552968   0.27292773      0.6139655
+           -0.0062761847        0.018232936     0.024110721
+           [com.intel.analytics.bigdl.tensor.DenseTensor of size 3x3]
+ }
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+from bigdl.nn.criterion import *
+from bigdl.optim.optimizer import *
+from bigdl.util.common import *
+
+pd = PairwiseDistance()
+
+input1 = np.random.uniform(0, 1, [3, 3]).astype(&quot;float32&quot;)
+input2 = np.random.uniform(0, 1, [3, 3]).astype(&quot;float32&quot;)
+input1 = input1.reshape(3, 3)
+input2 = input2.reshape(3, 3)
+
+input = [input1, input2]
+
+output = pd.forward(input)
+print output
+
+gradOutput = np.random.uniform(0, 1, [3]).astype(&quot;float32&quot;)
+gradOutput = gradOutput.reshape(3)
+
+gradInput = pd.backward(input, gradOutput)
+print gradInput
+</code></pre>
+
+<p>The output is,</p>
+<pre><code>[ 0.99588805  0.65620303  1.11735415]
+</code></pre>
+
+<p>The gradInput is,</p>
+<pre><code>[array([[-0.27412388,  0.32756016, -0.02032043],
+       [-0.16920818,  0.60189474,  0.21347123],
+       [ 0.57771122,  0.28602061,  0.58044904]], dtype=float32), array([[ 0.27412388, -0.32756016,  0.02032043],
+       [ 0.16920818, -0.60189474, -0.21347123],
+       [-0.57771122, -0.28602061, -0.58044904]], dtype=float32)]
+</code></pre>
+
+<h2 id="cosinedistance">CosineDistance</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val module = CosineDistance()
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">module = CosineDistance()
+</code></pre>
+
+<p>CosineDistance creates a module that takes a table of two vectors (or matrices if in batch mode) as input and outputs the cosine distance between them.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.utils.T
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val module = CosineDistance()
+val t1 = Tensor().range(1, 3)
+val t2 = Tensor().range(4, 6)
+val input = T(t1, t2)
+val output = module.forward(input)
+
+&gt; input
+input: com.intel.analytics.bigdl.utils.Table =
+ {
+    2: 4.0
+       5.0
+       6.0
+       [com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3]
+    1: 1.0
+       2.0
+       3.0
+       [com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3]
+ }
+
+&gt; output
+output: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+0.9746319
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1]
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
+
+module = CosineDistance()
+t1 = np.array([1.0, 2.0, 3.0])
+t2 = np.array([4.0, 5.0, 6.0])
+input = [t1, t2]
+output = module.forward(input)
+
+&gt; input
+[array([ 1.,  2.,  3.]), array([ 4.,  5.,  6.])]
+
+&gt; output
+[ 0.97463191]
+</code></pre>
+
+<h2 id="euclidean">Euclidean</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val module = Euclidean(
+  inputSize,
+  outputSize,
+  fastBackward = true)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">module = Euclidean(
+  input_size,
+  output_size,
+  fast_backward=True)
+</code></pre>
+
+<p>Outputs the Euclidean distance of the input to <code>outputSize</code> centers.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor._
+
+val module = Euclidean(3, 3)
+
+println(module.forward(Tensor.range(1, 3, 1)))
+</code></pre>
+
+<p>Output is</p>
+<pre><code>com.intel.analytics.bigdl.tensor.Tensor[Float] =
+4.0323668
+3.7177157
+3.8736997
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 3]
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
+
+module = Euclidean(3, 3)
+
+print(module.forward(np.arange(1, 4, 1)))
+</code></pre>
+
+<p>Output is</p>
+<pre><code>[array([ 3.86203027,  4.02212906,  3.2648952 ], dtype=float32)]
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../Recurrent-Layers/merged-Recurrent-Layers/" class="btn btn-neutral float-right" title="Recurrent Layers">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../Dropout-Layers/merged-Dropout-Layers/" class="btn btn-neutral" title="Dropout Layers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../../Dropout-Layers/merged-Dropout-Layers/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../Recurrent-Layers/merged-Recurrent-Layers/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../../../../js/theme.js"></script>
+
+</body>
+</html>
