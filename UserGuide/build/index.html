@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>Build - BigDL Project</title>
+  <title>Build - BigDL Documentation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
@@ -36,7 +36,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> BigDL Project</a>
+        <a href="../.." class="icon icon-home"> BigDL Documentation</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -164,7 +164,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">BigDL Project</a>
+        <a href="../..">BigDL Documentation</a>
       </nav>
 
       
@@ -172,7 +172,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
+    <li><a href="../..">Latest Docs</a> &raquo;</li>
     
       
         
@@ -294,24 +294,24 @@
 <h2 id="build_1"><strong>Build</strong></h2>
 <p>The following instructions are aligned with master code.</p>
 <p>Maven 3 is needed to build BigDL, you can download it from the <a href="https://maven.apache.org/download.cgi">maven website</a>.</p>
-<p>After installing Maven 3, please set the environment variable MAVEN_OPTS as follows:
-```{r, engine='sh'}
-$ export MAVEN_OPTS="-Xmx2g -XX:ReservedCodeCacheSize=512m"</p>
-<pre><code>When compiling with Java 7, you need to add the option “-XX:MaxPermSize=1G”. 
-
-### **Build with `make-dist.sh`**
-It is highly recommended that you build BigDL using the [make-dist.sh script](https://github.com/intel-analytics/BigDL/blob/master/make-dist.sh). And it will handle the MAVEN_OPTS variable.
-
-Once downloaded, you can build BigDL with the following commands:
-```sbt
-$ bash make-dist.sh
+<p>After installing Maven 3, please set the environment variable MAVEN_OPTS as follows:</p>
+<pre><code class="sbt">$ export MAVEN_OPTS=&quot;-Xmx2g -XX:ReservedCodeCacheSize=512m&quot;
 </code></pre>
 
-<p>After that, you can find a <code>dist</code> folder, which contains all the needed files to run a BigDL program. The files in <code>dist</code> include:
-<em> <strong>dist/bin/bigdl.sh</strong>: A script used to set up proper environment variables and launch the BigDL program.
-</em> <strong>dist/lib/bigdl-VERSION-jar-with-dependencies.jar</strong>: This jar package contains all dependencies except Spark classes.
-<em> <strong>dist/lib/bigdl-VERSION-python-api.zip</strong>: This zip package contains all Python files of BigDL.
-</em> <strong>dist/conf/spark-bigdl.conf</strong>: This file contains necessary property configurations. <code>Engine.createSparkConf</code> will populate these properties, so try to use that method in your code. Or you need to pass the file to Spark with the "--properties-file" option. </p>
+<p>When compiling with Java 7, you need to add the option “-XX:MaxPermSize=1G”. </p>
+<h3 id="build-with-make-distsh"><strong>Build with <code>make-dist.sh</code></strong></h3>
+<p>It is highly recommended that you build BigDL using the <a href="https://github.com/intel-analytics/BigDL/blob/master/make-dist.sh">make-dist.sh script</a>. And it will handle the MAVEN_OPTS variable.</p>
+<p>Once downloaded, you can build BigDL with the following commands:</p>
+<pre><code class="sbt">$ bash make-dist.sh
+</code></pre>
+
+<p>After that, you can find a <code>dist</code> folder, which contains all the needed files to run a BigDL program. The files in <code>dist</code> include:</p>
+<ul>
+<li><strong>dist/bin/bigdl.sh</strong>: A script used to set up proper environment variables and launch the BigDL program. </li>
+<li><strong>dist/lib/bigdl-VERSION-jar-with-dependencies.jar</strong>: This jar package contains all dependencies except Spark classes.</li>
+<li><strong>dist/lib/bigdl-VERSION-python-api.zip</strong>: This zip package contains all Python files of BigDL.</li>
+<li><strong>dist/conf/spark-bigdl.conf</strong>: This file contains necessary property configurations. <code>Engine.createSparkConf</code> will populate these properties, so try to use that method in your code. Or you need to pass the file to Spark with the "--properties-file" option. </li>
+</ul>
 <h4 id="build-for-macos"><strong>Build for macOS</strong></h4>
 <p>The instructions above will only build for Linux. To build BigDL for macOS, pass <code>-P mac</code> to the <code>make-dist.sh</code> script as follows:</p>
 <pre><code class="sbt">$ bash make-dist.sh -P mac
@@ -327,34 +327,31 @@ $ bash make-dist.sh
 <p>By default, <code>make-dist.sh</code> uses Scala 2.10 for Spark 1.5.x or 1.6.x, and Scala 2.11 for Spark 2.0.x or 2.1.x. To override the default behaviors, you can pass <code>-P scala_2.10</code> or <code>-P scala_2.11</code> to <code>make-dist.sh</code> as appropriate.</p>
 <h4 id="full-build"><strong>Full Build</strong></h4>
 <p>Note that the instructions above will skip the build of native library code, and pull the corresponding libraries from Maven Central. If you want to build the the native library code by yourself, follow the steps below:</p>
-<ol>
-<li>
-<p>Download and install <a href="https://software.intel.com//qualify-for-free-software/opensourcecontributor">Intel Parallel Studio XE</a> in your Linux box.</p>
-</li>
-<li>
-<p>Prepare build environment as follows:
-    <code>{r, engine='sh'}
-    $ source &lt;install-dir&gt;/bin/compilervars.sh intel64
-    $ source PATH_TO_MKL/bin/mklvars.sh intel64</code>
-    where the <code>PATH_TO_MKL</code> is the installation directory of the MKL.</p>
-</li>
-<li>
-<p>Full build</p>
-</li>
-</ol>
-<p>Clone BigDL as follows:
-   <code>{r, engine='sh'}
-   git clone git@github.com:intel-analytics/BigDL.git --recursive</code>
-   For already cloned repos, just use:
-   <code>{r, engine='sh'}
-   git submodule update --init --recursive</code>
-   If the Intel MKL is not installed to the default path <code>/opt/intel</code>, please pass your libiomp5.so's directory path to
-   the <code>make-dist.sh</code> script:
-   <code>{r, engine='sh'}
-   $ bash make-dist.sh -P full-build -DiompLibDir=&lt;PATH_TO_LIBIOMP5_DIR&gt;</code>
-   Otherwise, only pass <code>-P full-build</code> to the <code>make-dist.sh</code> script:
-   <code>{r, engine='sh'}
-   $ bash make-dist.sh -P full-build</code></p>
+<p>1.Download and install <a href="https://software.intel.com//qualify-for-free-software/opensourcecontributor">Intel Parallel Studio XE</a> in your Linux box.</p>
+<p>2.Prepare build environment as follows:</p>
+<pre><code class="sbt">    $ source &lt;install-dir&gt;/bin/compilervars.sh intel64
+    $ source PATH_TO_MKL/bin/mklvars.sh intel64
+</code></pre>
+
+<p>where the <code>PATH_TO_MKL</code> is the installation directory of the MKL.</p>
+<p>3.Full build
+Clone BigDL as follows:</p>
+<pre><code class="sbt">   git clone git@github.com:intel-analytics/BigDL.git --recursive 
+</code></pre>
+
+<p>For already cloned repos, just use:</p>
+<pre><code class="sbt">   git submodule update --init --recursive 
+</code></pre>
+
+<p>If the Intel MKL is not installed to the default path <code>/opt/intel</code>, please pass your libiomp5.so's directory path to
+   the <code>make-dist.sh</code> script:</p>
+<pre><code class="sbt">   $ bash make-dist.sh -P full-build -DiompLibDir=&lt;PATH_TO_LIBIOMP5_DIR&gt; 
+</code></pre>
+
+<p>Otherwise, only pass <code>-P full-build</code> to the <code>make-dist.sh</code> script:</p>
+<pre><code class="sbt">   $ bash make-dist.sh -P full-build
+</code></pre>
+
 <h3 id="build-with-maven"><strong>Build with Maven</strong></h3>
 <p>To build BigDL directly using Maven, run the command below:</p>
 <pre><code class="sbt">$ mvn clean package -DskipTests
