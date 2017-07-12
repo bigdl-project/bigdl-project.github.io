@@ -280,7 +280,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../ProgrammingGuide/visualization-with-tensorboard/">Visualization</a>
+    <a class="" href="../ProgrammingGuide/visualization/">Visualization</a>
                 </li>
                 <li class="">
                     
@@ -334,8 +334,8 @@
             <div class="section">
               
                 <h2 id="before-using-bigdl">Before using BigDL</h2>
-<p>To use BigDL <em>Scala</em> API, the first thing is to obtain the BigDL libraries. You can either download the pre-built BigDL libs, or build the libs from source code (available at <a href="https://github.com/intel-analytics/BigDL">BigDL Github</a>). Then in your program, you need to ensure the SparkContext is created successfully and initialze BigDL engine. Refer to <a href="../UserGuide/install/">Install</a> and <a href="../UserGuide/run/">Run</a> for details about how to build BigDL and run a scala program.  </p>
-<p>To use BigDL <em>Python</em> API, you can install BigDL python simply via pip. You may use Python API in an interactive shell, or run a program in commandline, or use Jupyter notebooks. Before calling BigDL API's in your program, you have to ensure the SparkContext is succesfully created and initialize BigDL engine. Refer to <a href="../PythonSupport/python-install/">Python Install</a> and <a href="../PythonSupport/python-run/">Python Run</a> for details about how to install python and run python programs.</p>
+<p>To use BigDL <em>Scala</em> API, the first thing is to obtain the BigDL libraries. You can either download the pre-built BigDL libs (<a href="../release/">available here</a>), or build the libs from source code (available at <a href="https://github.com/intel-analytics/BigDL">BigDL Github</a>). When writing programs, you need to ensure the SparkContext is created successfully and initialize BigDL engine before calling BigDL APIs. Refer to <a href="../UserGuide/install/">Install</a> and <a href="../UserGuide/run/">Run</a> for details about how to build BigDL and run a program in Scala.  </p>
+<p>To use BigDL <em>Python</em> API, besides using pre-built BigDL libs or building from source, you can also install BigDL python via pip (only support some spark versions). You may use Python API in an interactive shell, or run a program in commandline, or use Jupyter notebooks. Before calling BigDL API's in your program, you have to ensure the SparkContext is succesfully created and initialize BigDL engine. Refer to <a href="../PythonSupport/python-install/">Python Install</a> and <a href="../PythonSupport/python-run/">Python Run</a> for details about how to install python and run python programs.</p>
 <hr />
 <h2 id="prepare-your-data">Prepare your Data</h2>
 <p>You data need to be transformed into specific data structures in order to be fed into BigDL for training, evaluation and prediction.</p>
@@ -343,25 +343,22 @@
 <ul>
 <li><code>Tensor</code> is a multi-dimensional array of basic numeric types (e.g., <code>Int</code>, <code>Float</code>,       <code>Double</code>, etc.) It is the most essential data structure in BigDL, composing the basic data flow inside the nerual network (i.e. the input, output, weight, bias and gradient of many layers). Refer to <a href="../APIdocs/Data/merged-Data#tensor">Tensor API doc</a> for details about the numeric computation functions provided in BigDL. </li>
 <li>
-<p><code>Table</code> is key-value map. Some of the layers accepts Table as input or output a Table (e.g. <a href="../APIdocs/Layers/Containers/merged-Containers/#concattable">ConcatTable</a>). Find detailed usage in <a href="../APIdocs/Data/merged-Data#table">Table API doc</a>. There is a syntax sugar to to using <code>T()</code> to create Tables in BigDL.</p>
+<p><code>Table</code> is key-value map. Usually we use Tables to map from digits to Tensors. Some of the layers has <code>Table</code> as input or output (e.g. <a href="../APIdocs/Layers/Containers/merged-Containers/#concattable">ConcatTable</a>). You can also use <code>T()</code> to create Tables in BigDL - just a syntax sugar. Refer to <a href="../APIdocs/Data/merged-Data#table">Table API doc</a> for detailed usage.</p>
 </li>
 <li>
 <p><code>Sample</code> is a <strong>(feature, label)</strong> pair. A <code>Sample</code> can be created from two <code>Tensors</code> (in Scala) or two <code>numpy arrays</code> (in Python). Refer to <a href="../APIdocs/Data/merged-Data#sample">Sample API doc</a> for detailed usage.</p>
 </li>
 </ul>
-<p>[TODO need elaboration on <code>Dataset</code>(scala only)? <code>MiniBatch</code> seems rarely used by user, so skip it here]</p>
-<p>You need to convert your dataset into <code>RDD</code> of <code>Samples</code>, and then feed your data into Optimizer for training, validation or prediction. Refer to <a href="../APIdocs/Optimizers/DistriOptimizer/">Optimizer docs</a> for details.</p>
-<p>[TODO We have provided several preprocessing utilities to help you transform your data.]</p>
+<p>You need to convert your dataset into <code>RDD</code> of <code>Samples</code> (both Scala and Python), and then feed your data into Optimizer for training, validation or prediction. Refer to <a href="../APIdocs/Optimizers/DistriOptimizer/">Optimizer docs</a> for details.</p>
 <hr />
 <h2 id="use-bigdl-for-prediction-only">Use BigDL for Prediction only</h2>
 <p>If you have an existing model and want to use BigDL only for prediction, you need to first load the model, and then do prediction or evaluation. </p>
-<p>BigDL supports loading models trained and saved in BigDL, or a trained Caffe model, or a trained Tensorflow model. </p>
+<p>BigDL supports loading models trained and saved in BigDL, or a trained Tensorflow model. </p>
 <ul>
-<li>To load a BigDL model, you can use <code>module.load</code> interface. Refer to <a href="../APIdocs/Model/ModuleAPI/">Module API docs</a> for details.  </li>
+<li>To load a BigDL model, you can use <code>Module.load</code> interface (Scala). Refer to <a href="../APIdocs/Model/ModuleAPI/">Module API docs</a> for details.  </li>
 <li>To load a Tensorflow model, refer to <a href="../PythonSupport/tensorflow-support/">Tensorflow Support</a> for details.</li>
-<li>[TODO To load a Caffe model, refer to ...]</li>
 </ul>
-<p>Once you have a loaded model, you can call <code>model.predict()</code> to do predictions. Note that prediction need your data to be prepared into designated format. For how to prepare your data, refer to section <a href="#prepare-your-data">Prepare your Data</a>. </p>
+<p>Once you have a loaded model, you can call <code>Module.predict()</code> to do predictions. Note that you need to convert your input data into proper format which <code>predict</code> accepts. For how to prepare your data, refer to section <a href="#prepare-your-data">Prepare your Data</a>. </p>
 <p>If you are using predicted result as a component inside a Spark ML pipeline, refer to <a href="../APIdocs/MLPipeline/merged-MLPipeline/">MLPipeline</a> for usage. </p>
 <hr />
 <h2 id="train-a-model-from-scratch">Train a Model from Scratch</h2>
@@ -370,11 +367,11 @@
 <li>define your model (by connecting layers/activations into a network)</li>
 <li>decide your loss function (which function to optimize)</li>
 <li>optimization (choose a proper algorithm and hyper parameters, and train)</li>
-<li>evaluation (evalute your model) </li>
+<li>evaluation (evaluate your model) </li>
 </ol>
-<p>Before diving into details, please make sure BigDL is installed, BigDL engine initialized properly, and your data is in proper format. Refer to <a href="#before-using-bigdl">Before using BigDL</a> and <a href="#prepare-your-data">Prepare Your Data</a> for details.  </p>
+<p>Before training models, please make sure BigDL is installed, BigDL engine initialized properly, and your data is in proper format. Refer to <a href="#before-using-bigdl">Before using BigDL</a> and <a href="#prepare-your-data">Prepare Your Data</a> for details.  </p>
 <p>The most recommended way to create your first model is to modify from an existing one. BigDL provides plenty of models for you to refer to. See <a href="../UserGuide/resources/">Scala Models/Examples</a> and <a href="../PythonSupport/python-resources/">Python Models/Examples and Tutorials</a>. </p>
-<p>To define a model, you can either use the Sequential API or Functional API. The Functional API is more flexible than Sequential API. Refer to <a href="../APIdocs/Model/Sequential/">Sequential API</a> and <a href="../APIdocs/Model/Functional/">Functional API</a> for how to define models in different shapes.  </p>
+<p>To define a model, you can either use the Sequential API or Functional API. The Functional API is more flexible than Sequential API. Refer to <a href="../APIdocs/Model/Sequential/">Sequential API</a> and <a href="../APIdocs/Model/Functional/">Functional API</a> for how to define models in different shapes. Navigate to <em>Programming Guide/Layers</em> on the side bar to find the documenations of available layers and activation.</p>
 <p>After creating the model, you will have to deside which loss function to use in training. Find the details of losses defined in BigDL in <a href="../APIdocs/Losses/merged-Losses/">Losses</a>.  </p>
 <p>Now you create an <code>Optimizer</code> and set the loss function, input dataset along with other hyper parameters into the Optimizer. Then call <code>Optimizer.optimize</code> to train. Refer to <a href="../APIdocs/Optimizers/DistriOptimizer/">Optimizer docs</a> for details. </p>
 <p>Evaluation can be performed periodically during a training. Before calling <code>Optimizer.optimize</code>, use <code>Optimizer.setValidation</code> (in Scala) or <code>Optimizer.set_validation</code> (in Python) to set validation configurations, e.g. validation dataset, validation metrics, etc. For a list of defined metrics, refer to <a href="../APIdocs/Metrics/merged-Metrics/">Metrics</a>.</p>
@@ -386,20 +383,19 @@
 <p>You can also resume training without loading the optimization state, if you intend to change the learning rate schedule or even optimization method. Just create an <code>Optimizer</code> with loaded model and a new instance of OptimMethod. </p>
 <hr />
 <h2 id="use-pre-trained-modelslayers">Use Pre-trained Models/Layers</h2>
-<p>Pre-train is a useful strategy in training deep learning models. You may use the pre-trained features (e.g. embeddings) in your model, or do a fine-tuning for a different dataset or target.</p>
+<p>Pre-train is a useful strategy when training deep learning models. You may use the pre-trained features (e.g. embeddings) in your model, or do a fine-tuning for a different dataset or target.</p>
 <p>To use a learnt model as a whole, you can use <code>Module.load</code> to load the entire model, Then create an <code>Optimizer</code> with the loaded model set into it. Refer to <a href="../APIdocs/Optimizers/DistriOptimizer/">Optmizer API</a> and <a href="../APIdocs/Model/ModuleAPI/">Module API</a> for details. </p>
 <p>Instead of using an entire model, you can also use pre-trained weights/biases in certain layers. After a <code>Module</code>(Scala) or <code>Layer</code>(Python) is created, use <code>Module.setWeightsBias</code> (in Scala) or <code>layer.set_weights</code> (in Python) to initialize the weights with pre-trained weights. Then continue to train your model as usual. </p>
 <hr />
 <h2 id="monitor-your-training">Monitor your training</h2>
-<p>You can use several methods</p>
 <ul>
 <li>Visualization</li>
 </ul>
-<p>BigDL writes the statistics as protobuf format and can be directly visualized using tensorboard. For details, refer to <a href="../ProgrammingGuide/visualization-with-tensorboard/">Visualize the Training</a>. </p>
+<p>BigDL provides a convinient way to monitor/visualize your training progress. It writes the statistics collected during training/validation and they can be visualized in real-time using tensorboard. These statistics can also be retrieved into readable data structures later and visualized in other tools (e.g. Jupyter notebook). For details, refer to <a href="../ProgrammingGuide/visualization/">Visualization</a>. </p>
 <ul>
 <li>Logging</li>
 </ul>
-<p>In the training, BigDL provide a straight forward logging like this. You can see epoch/iteration/loss/throughput directly from the log.</p>
+<p>BigDL also has a stright-forward logging output on the console along the training, as shown below. You can see real-time epoch/iteration/loss/throughput in the log.</p>
 <pre><code> 2017-01-10 10:03:55 INFO  DistriOptimizer$:241 - [Epoch 1 0/5000][Iteration 1][Wall Clock XXX] Train 512 in   XXXseconds. Throughput is XXX records/second. Loss is XXX.
  2017-01-10 10:03:58 INFO  DistriOptimizer$:241 - [Epoch 1 512/5000][Iteration 2][Wall Clock XXX] Train 512    in XXXseconds. Throughput is XXX records/second. Loss is XXX.
  2017-01-10 10:04:00 INFO  DistriOptimizer$:241 - [Epoch 1 1024/5000][Iteration 3][Wall Clock XXX] Train 512   in XXXseconds. Throughput is XXX records/second. Loss is XXX.
