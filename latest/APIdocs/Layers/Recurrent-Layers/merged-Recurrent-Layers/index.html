@@ -1,341 +1,68 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="shortcut icon" href="../../../../img/favicon.ico">
-  <title>Recurrent Layers - BigDL Project</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Recurrent Layers - BigDL Project</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 
-  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../css/highlight.css">
-  <link href="../../../../extra.css" rel="stylesheet">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Recurrent Layers";
-    var mkdocs_page_input_path = "APIdocs/Layers/Recurrent-Layers/merged-Recurrent-Layers.md";
-    var mkdocs_page_url = "/APIdocs/Layers/Recurrent-Layers/merged-Recurrent-Layers/";
-  </script>
-  
-  <script src="../../../../js/jquery-2.1.1.min.js"></script>
-  <script src="../../../../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../../../../js/highlight.pack.js"></script> 
-  
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "RNN", url: "#rnn", children: [
+          ]},
+          {title: "Recurrent", url: "#recurrent", children: [
+          ]},
+          {title: "BiRecurrent", url: "#birecurrent", children: [
+          ]},
+          {title: "LSTMPeephole", url: "#lstmpeephole", children: [
+          ]},
+          {title: "ConvLSTMPeephole", url: "#convlstmpeephole", children: [
+          ]},
+          {title: "GRU", url: "#gru", children: [
+          ]},
+          {title: "LSTM", url: "#lstm", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
 
-  <div class="wy-grid-for-nav">
 
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-      <div class="wy-side-nav-search">
-        <a href="../../../.." class="icon icon-home"> BigDL Project</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-  </form>
-</div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../../..">Overview</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../../../release/">Releases</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../../../getting-started/">Getting Started</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">User Guide</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../../../UserGuide/install/">Install</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../UserGuide/run/">Run</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../UserGuide/examples/">Examples</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../UserGuide/resources/">More Resources</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Python Support</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../../../PythonSupport/python-install/">Install</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../PythonSupport/python-run/">Run</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../PythonSupport/python-examples/">Examples</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../PythonSupport/python-resources/">More Examples and Tutorials</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../PythonSupport/tensorflow-support/">Tensorflow Support</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Programming Guide</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../../scaladoc/">Scala Docs</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../python-api-doc/">Python API Docs</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../Data/merged-Data/">Data</a>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Model</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../Model/Sequential/">Sequential Model</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../Model/Functional/">Functional API</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../Model/ModuleAPI/">Module API</a>
-                </li>
-    </ul>
-                </li>
-                <li class=" current">
-                    
-    <span class="caption-text">Layers</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Containers/merged-Containers/">Containers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Simple-Layers/merged-Simple-Layers/">Simple Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Convolution-Layers/merged-Convolution-Layers/">Convolution Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Pooling-Layers/merged-Pooling-Layers/">Pooling Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Linear-Layers/merged-Linear-Layers/">Linear Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Non-linear-Activations/merged-Non-linear-Activations/">Non-linear Activations</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Embedding-Layers/merged-Embedding-Layers/">Embedding Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../MergeSplit-Layers/merged-MergeSplit-Layers/">Merge/Split Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Math-Layers/merged-Math-Layers/">Math Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Padding-Layers/merged-Padding-Layers/">Padding Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Normalization-Layers/merged-Normalization-Layers/">Normalization Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Dropout-Layers/merged-Dropout-Layers/">Dropout Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Distance-Layers/merged-Distance-Layers/">Distance Layers</a>
-                </li>
-                <li class="toctree-l3 current">
-                    
-    <a class="current" href="./">Recurrent Layers</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l4"><a href="#rnn">RNN</a></li>
+<div class="container-fluid wm-page-content">
     
 
-    <li class="toctree-l4"><a href="#recurrent">Recurrent</a></li>
-    
-
-    <li class="toctree-l4"><a href="#birecurrent">BiRecurrent</a></li>
-    
-
-    <li class="toctree-l4"><a href="#lstmpeephole">LSTMPeephole</a></li>
-    
-
-    <li class="toctree-l4"><a href="#gru">GRU</a></li>
-    
-
-    <li class="toctree-l4"><a href="#lstm">LSTM</a></li>
-    
-
-    </ul>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Utilities/merged-Utilities/">Utilities</a>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../Losses/merged-Losses/">Losses</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../Initializers/merged-Initializers/">Initalizers</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../Regularizers/merged-Regularizers/">Regularizers</a>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Optimization</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../Optimizers/DistriOptimizer/">Optimizer</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../Optimizers/Optim-Methods/merged-Optim-Methods/">Optimization Algorithms</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../Optimizers/Triggers/">Triggers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../Optimizers/ResumeTraining/">Resume Training</a>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../Metrics/merged-Metrics/">Metrics</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../ProgrammingGuide/visualization/">Visualization</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../MLPipeline/merged-MLPipeline/">MLPipeline</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../../../powered-by/">Powered by</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../../../known-issues/">Known Issues</a>
-	    </li>
-          
-        </ul>
-      </div>
-      &nbsp;
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../..">BigDL Project</a>
-      </nav>
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../../../..">Latest Docs</a> &raquo;</li>
-    
-      
-        
-          <li>Programming Guide &raquo;</li>
-        
-      
-        
-          <li>Layers &raquo;</li>
-        
-      
-    
-    <li>Recurrent Layers</li>
-    <li class="wy-breadcrumbs-aside">
-      
-        <a href="https://github.com/intel-analytics/BigDL/"> Fork on GitHub </a>
-      
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main">
-            <div class="section">
-              
-                <h2 id="rnn">RNN</h2>
+    <h2 id="rnn">RNN</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val rnnCell = RnnCell[Double](inputSize, hiddenSize, activation, wRegularizer, uRegularizer, bRegularizer)
 </code></pre>
@@ -664,6 +391,224 @@ output = model.forward(input)
   [ 0.40263647 -0.22403356  0.38489845  0.04720671  0.1686969 ]]]
 </code></pre>
 
+<h2 id="convlstmpeephole">ConvLSTMPeephole</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val model = ConvLSTMPeephole(
+  inputSize = 2,
+  outputSize = 4,
+  kernelI = 3,
+  kernelC = 3,
+  stride = 1,
+  wRegularizer = null,
+  uRegularizer = null,
+  bRegularizer = null,
+  withPeephole = true)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">model = ConvLSTMPeephole(
+  input_size = 2,
+  output_size = 4,
+  kernel_i = 3,
+  kernel_c = 3,
+  stride = 1,
+  wRegularizer=None,
+  uRegularizer=None,
+  bRegularizer=None,
+  with_peephole = True)
+</code></pre>
+
+<p>Convolution Long Short Term Memory architecture with peephole.
+Ref. A.: https://arxiv.org/abs/1506.04214 (blueprint for this module)
+B. https://github.com/viorik/ConvLSTM</p>
+<ul>
+<li>param inputSize: number of input planes in the image given into forward()</li>
+<li>param outputSize: number of output planes the convolution layer will produce</li>
+<li>param kernelI: convolutional filter size to convolve input</li>
+<li>param kernelC: convolutional filter size to convolve cell</li>
+<li>param stride: step of the convolution</li>
+<li>param wRegularizer: instance of [[Regularizer]]
+                   (eg. L1 or L2 regularization), applied to the input weights matrices.</li>
+<li>param uRegularizer: instance [[Regularizer]]
+          (eg. L1 or L2 regularization), applied to the recurrent weights matrices.</li>
+<li>param bRegularizer: instance of [[Regularizer]]
+          applied to the bias.</li>
+<li>param withPeephole: whether use last cell status control a gate</li>
+</ul>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.utils.RandomGenerator._
+
+val outputSize = 4
+val inputSize = 3
+val seqLength = 2
+val batchSize = 1
+
+val input = Tensor(Array(batchSize, seqLength, inputSize, 3, 3)).rand()
+
+val rec = Recurrent()
+    val model = Sequential()
+      .add(rec
+        .add(ConvLSTMPeephole(inputSize, outputSize, 3, 3, 1, withPeephole = false)))
+
+val output = model.forward(input).toTensor
+
+scala&gt; print(input)
+input: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+(1,1,1,.,.) =
+0.32810056      0.23436882      0.1387327
+0.98273766      0.76427716      0.73554766
+0.47947738      0.72805804      0.43982902
+
+(1,1,2,.,.) =
+0.58144385      0.7534736       0.94412255
+0.05087549      0.021427812     0.91333073
+0.6844351       0.62977004      0.68027127
+
+(1,1,3,.,.) =
+0.48504198      0.16233416      0.7612549
+0.5387952       0.8391377       0.3687795
+0.85271466      0.71726906      0.79466575
+
+(1,2,1,.,.) =
+0.727532        0.05341824      0.32531977
+0.79593664      0.60162276      0.99931896
+0.7534103       0.71214366      0.031062916
+
+(1,2,2,.,.) =
+0.7343414       0.053005006     0.7448063
+0.2277985       0.47414783      0.21945253
+0.0034818714    0.11545401      0.73085403
+
+(1,2,3,.,.) =
+0.9644807       0.30755267      0.42099005
+0.6831594       0.50683653      0.14237563
+0.65172654      0.86954886      0.5077393
+
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x2x3x3x3]
+
+scala&gt; print(output)
+(1,1,1,.,.) =
+-0.04460164     -0.023752786    -0.014343993
+0.0067705153    0.08542874      0.020885356
+-0.042719357    -0.012113815    -0.030324051
+
+(1,1,2,.,.) =
+-0.038318213    -0.056998547    -0.02303889
+0.027873239     -0.040311974    -0.03261278
+0.015056128     0.11064132      0.0034682436
+
+(1,1,3,.,.) =
+0.006952648     0.011758738     -0.047590334
+0.052022297     0.040250845     -0.046224136
+-0.0084472215   -0.02629062     -0.0737972
+
+(1,1,4,.,.) =
+-0.087721705    0.0382758       0.027436329
+-0.030658737    -0.022953996    0.15838619
+0.055106055     0.004877564     0.098199464
+
+(1,2,1,.,.) =
+-0.069991425    -0.022071177    -0.06291955
+-0.006841902    0.010781053     0.05410414
+-0.03933395     -0.003422904    -0.106903486
+
+(1,2,2,.,.) =
+-0.059429795    -0.098534085    -0.068920344
+0.008100101     0.01948546      -0.040567685
+0.048763007     0.06001041      0.003068042
+
+(1,2,3,.,.) =
+0.02817994      0.006684172     -0.0962587
+0.022453573     0.014425971     -0.06118475
+-0.013392928    -0.04574135     -0.12722406
+
+(1,2,4,.,.) =
+-0.074006446    -0.028510522    0.06808455
+-0.021926142    0.036675904     0.18708621
+0.08240187      0.12469789      0.17341805
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x4x3x3]
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
+
+output_size = 4
+input_size= 3
+seq_len = 2
+batch_size = 1
+
+input = np.random.randn(batch_size, seq_len, input_size, 3, 3)
+rec = Recurrent()
+model = Sequential().add(
+    rec.add(ConvLSTMPeephole(input_size, output_size, 3, 3, 1, with_peephole = False)))
+output = model.forward(input)
+
+&gt;&gt;&gt; print(input)
+[[[[[ 2.39979422  0.75647109  0.88928214]
+    [-0.07132477 -0.4348564   0.38270011]
+    [-1.03522309  0.38399781  0.20369625]]
+
+   [[-0.48392771  0.54371842 -1.42064221]
+    [-0.3711481  -0.16019682  0.82116693]
+    [ 0.15922215  1.79676148  0.38362552]]
+
+   [[-0.69402482  1.11930766 -1.29138064]
+    [ 0.92755002 -0.31138235  0.34953374]
+    [-0.0176643   1.13839126  0.02133309]]]
+
+
+  [[[-0.40704988  0.1819258  -0.21400335]
+    [ 0.65717965  0.75912824  1.49077775]
+    [-0.74917913 -1.48460681  1.06098727]]
+
+   [[ 1.04942415  1.2558929  -1.24367776]
+    [-0.13452707  0.01485188  2.41215047]
+    [ 0.59776321 -0.38602613  0.57937933]]
+
+   [[ 0.55007301  1.22571134  0.11656841]
+    [-0.4722457   1.79801493  0.59698431]
+    [ 0.25119458 -0.27323404  1.5516505 ]]]]]
+
+&gt;&gt;&gt; print(output)
+[[[[[-0.22908808 -0.08243818 -0.10530333]
+    [ 0.04545299  0.0347576   0.06448466]
+    [ 0.00148075 -0.01422587 -0.04424585]]
+
+   [[-0.08625289  0.00121372  0.00961097]
+    [-0.08068027  0.2389598  -0.08875058]
+    [-0.10860988 -0.08109165  0.05274875]]
+
+   [[ 0.01545026 -0.14079301  0.0162897 ]
+    [ 0.0114354   0.01696588  0.09375648]
+    [ 0.06766916  0.16015787 -0.01530124]]
+
+   [[-0.00311095  0.07033439  0.05258823]
+    [-0.04846094 -0.11335927 -0.22434352]
+    [-0.09923813 -0.064981   -0.05341392]]]
+
+
+  [[[-0.01070079  0.01705431 -0.10199456]
+    [-0.19023973 -0.1359819   0.11552753]
+    [ 0.04331793  0.00603994 -0.19059387]]
+
+   [[-0.12100818 -0.01191896  0.08049219]
+    [-0.10134248  0.02910084 -0.00024394]
+    [-0.09548382 -0.18623565  0.18261637]]
+
+   [[-0.00644266  0.03494127  0.09105418]
+    [ 0.03467004 -0.1236406   0.23844369]
+    [ 0.12281432  0.09469442  0.04526915]]
+
+   [[ 0.00190313  0.01997324 -0.17609949]
+    [-0.0937     -0.03763293 -0.04860835]
+    [-0.15700462 -0.17341313 -0.06551415]]]]]
+</code></pre>
+
 <h2 id="gru">GRU</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val gru = GRU(inputSize, outputSize, p, wRegularizer, uRegularizer, bRegularizer)
@@ -875,50 +820,13 @@ loss = criterion.forward(input, labels)
 gradInput = criterion.backward(output, labels)
 model.backward(input, gradInput)
 </code></pre>
-              
-            </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../../Utilities/merged-Utilities/" class="btn btn-neutral float-right" title="Utilities">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../../Distance-Layers/merged-Distance-Layers/" class="btn btn-neutral" title="Distance Layers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
-  
 
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-    
-  </div>
-
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-	  
-        </div>
-      </div>
-
-    </section>
-    
-  </div>
-
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../../Distance-Layers/merged-Distance-Layers/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../../Utilities/merged-Utilities/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <br>
 </div>
-    <script src="../../../../js/theme.js"></script>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
 
 </body>
 </html>

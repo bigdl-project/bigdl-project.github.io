@@ -1,332 +1,60 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-  <link rel="shortcut icon" href="../../../../img/favicon.ico">
-  <title>Distance Layers - BigDL Project</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Distance Layers - BigDL Project</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 
-  <link rel="stylesheet" href="../../../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../css/highlight.css">
-  <link href="../../../../extra.css" rel="stylesheet">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Distance Layers";
-    var mkdocs_page_input_path = "APIdocs/Layers/Distance-Layers/merged-Distance-Layers.md";
-    var mkdocs_page_url = "/APIdocs/Layers/Distance-Layers/merged-Distance-Layers/";
-  </script>
-  
-  <script src="../../../../js/jquery-2.1.1.min.js"></script>
-  <script src="../../../../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../../../../js/highlight.pack.js"></script> 
-  
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "PairwiseDistance", url: "#pairwisedistance", children: [
+          ]},
+          {title: "CosineDistance", url: "#cosinedistance", children: [
+          ]},
+          {title: "Euclidean", url: "#euclidean", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
 
-  <div class="wy-grid-for-nav">
 
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-      <div class="wy-side-nav-search">
-        <a href="../../../.." class="icon icon-home"> BigDL Project</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-  </form>
-</div>
-      </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../../..">Overview</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../../../release/">Releases</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../../../getting-started/">Getting Started</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">User Guide</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../../../UserGuide/install/">Install</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../UserGuide/run/">Run</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../UserGuide/examples/">Examples</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../UserGuide/resources/">More Resources</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Python Support</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../../../PythonSupport/python-install/">Install</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../PythonSupport/python-run/">Run</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../PythonSupport/python-examples/">Examples</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../PythonSupport/python-resources/">More Examples and Tutorials</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../PythonSupport/tensorflow-support/">Tensorflow Support</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Programming Guide</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../../../scaladoc/">Scala Docs</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../python-api-doc/">Python API Docs</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../Data/merged-Data/">Data</a>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Model</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../Model/Sequential/">Sequential Model</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../Model/Functional/">Functional API</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../Model/ModuleAPI/">Module API</a>
-                </li>
-    </ul>
-                </li>
-                <li class=" current">
-                    
-    <span class="caption-text">Layers</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Containers/merged-Containers/">Containers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Simple-Layers/merged-Simple-Layers/">Simple Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Convolution-Layers/merged-Convolution-Layers/">Convolution Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Pooling-Layers/merged-Pooling-Layers/">Pooling Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Linear-Layers/merged-Linear-Layers/">Linear Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Non-linear-Activations/merged-Non-linear-Activations/">Non-linear Activations</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Embedding-Layers/merged-Embedding-Layers/">Embedding Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../MergeSplit-Layers/merged-MergeSplit-Layers/">Merge/Split Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Math-Layers/merged-Math-Layers/">Math Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Padding-Layers/merged-Padding-Layers/">Padding Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Normalization-Layers/merged-Normalization-Layers/">Normalization Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Dropout-Layers/merged-Dropout-Layers/">Dropout Layers</a>
-                </li>
-                <li class="toctree-l3 current">
-                    
-    <a class="current" href="./">Distance Layers</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l4"><a href="#pairwisedistance">PairwiseDistance</a></li>
+<div class="container-fluid wm-page-content">
     
 
-    <li class="toctree-l4"><a href="#cosinedistance">CosineDistance</a></li>
-    
-
-    <li class="toctree-l4"><a href="#euclidean">Euclidean</a></li>
-    
-
-    </ul>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Recurrent-Layers/merged-Recurrent-Layers/">Recurrent Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../Utilities/merged-Utilities/">Utilities</a>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../Losses/merged-Losses/">Losses</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../Initializers/merged-Initializers/">Initalizers</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../Regularizers/merged-Regularizers/">Regularizers</a>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Optimization</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../Optimizers/DistriOptimizer/">Optimizer</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../Optimizers/Optim-Methods/merged-Optim-Methods/">Optimization Algorithms</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../Optimizers/Triggers/">Triggers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="../../../Optimizers/ResumeTraining/">Resume Training</a>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../Metrics/merged-Metrics/">Metrics</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../../ProgrammingGuide/visualization/">Visualization</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../../../MLPipeline/merged-MLPipeline/">MLPipeline</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../../../powered-by/">Powered by</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../../../../known-issues/">Known Issues</a>
-	    </li>
-          
-        </ul>
-      </div>
-      &nbsp;
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../..">BigDL Project</a>
-      </nav>
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../../../..">Latest Docs</a> &raquo;</li>
-    
-      
-        
-          <li>Programming Guide &raquo;</li>
-        
-      
-        
-          <li>Layers &raquo;</li>
-        
-      
-    
-    <li>Distance Layers</li>
-    <li class="wy-breadcrumbs-aside">
-      
-        <a href="https://github.com/intel-analytics/BigDL/"> Fork on GitHub </a>
-      
-    </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main">
-            <div class="section">
-              
-                <h2 id="pairwisedistance">PairwiseDistance</h2>
+    <h2 id="pairwisedistance">PairwiseDistance</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val pd = PairwiseDistance(norm=2)
 </code></pre>
@@ -530,50 +258,13 @@ print(module.forward(np.arange(1, 4, 1)))
 <p>Output is</p>
 <pre><code>[array([ 3.86203027,  4.02212906,  3.2648952 ], dtype=float32)]
 </code></pre>
-              
-            </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../../Recurrent-Layers/merged-Recurrent-Layers/" class="btn btn-neutral float-right" title="Recurrent Layers">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../../Dropout-Layers/merged-Dropout-Layers/" class="btn btn-neutral" title="Dropout Layers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
-  
 
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-    
-  </div>
-
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-	  
-        </div>
-      </div>
-
-    </section>
-    
-  </div>
-
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-        <span><a href="../../Dropout-Layers/merged-Dropout-Layers/" style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../../Recurrent-Layers/merged-Recurrent-Layers/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <br>
 </div>
-    <script src="../../../../js/theme.js"></script>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
 
 </body>
 </html>
