@@ -1,315 +1,263 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="None">
   
-  <link rel="shortcut icon" href="./img/favicon.ico">
-  <title>Overview - BigDL Project</title>
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="None">
+    
+    
+    <link rel="shortcut icon" href="./img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>BigDL Project</title>
+    <link href="./css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="./css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="./css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 
-  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="./css/highlight.css">
-  <link href="./extra.css" rel="stylesheet">
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "Overview";
-    var mkdocs_page_input_path = "index.md";
-    var mkdocs_page_url = "/";
-  </script>
-  
-  <script src="./js/jquery-2.1.1.min.js"></script>
-  <script src="./js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="./js/highlight.pack.js"></script> 
-  
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/bootstrap-3.3.7.min.js"></script>
+    <script src="./js/highlight.pack.js"></script>
+    
+      <script src="./js/elasticlunr.min.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '.';
+      var is_top_frame = (window === window.parent);
+        
+        var pageToc = [
+          {title: "What is BigDL", url: "#what-is-bigdl", children: [
+          ]},
+          {title: "Why BigDL?", url: "#why-bigdl", children: [
+          ]},
+          {title: "Getting Help", url: "#getting-help", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="./js/base.js"></script> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
 
-  <div class="wy-grid-for-nav">
-
+<nav class="navbar wm-page-top-frame">
+  <div class="container-fluid wm-top-container">
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-      <div class="wy-side-nav-search">
-        <a href="." class="icon icon-home"> BigDL Project</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-  </form>
-</div>
-      </div>
+    <div class="wm-top-tool pull-right wm-vcenter">
+      <form class="dropdown wm-vcentered" id="wm-search-form" action="./search.html">
+        
+        <button id="wm-search-show" class="btn btn-sm btn-default" type="submit"
+          ><i class="fa fa-search" aria-hidden="true"></i></button>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-	<ul class="current">
-	  
-          
-            <li class="toctree-l1 current">
-		
-    <a class="current" href=".">Overview</a>
-    <ul class="subnav">
+        <div class="input-group input-group-sm wm-top-search">
+          <input type="text" name="q" class="form-control" id="mkdocs-search-query" placeholder="Search">
+          <span class="input-group-btn" role="search">
             
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="release/">Releases</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="getting-started/">Getting Started</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">User Guide</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="UserGuide/install/">Install</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="UserGuide/run/">Run</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="UserGuide/examples/">Examples</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="UserGuide/resources/">More Resources</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Python Support</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="PythonSupport/python-install/">Install</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="PythonSupport/python-run/">Run</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="PythonSupport/python-examples/">Examples</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="PythonSupport/python-resources/">More Examples and Tutorials</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="PythonSupport/tensorflow-support/">Tensorflow Support</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <span class="caption-text">Programming Guide</span>
-    <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="APIdocs/scaladoc/">Scala Docs</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="APIdocs/python-api-doc/">Python API Docs</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="APIdocs/Data/merged-Data/">Data</a>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Model</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Model/Sequential/">Sequential Model</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Model/Functional/">Functional API</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Model/ModuleAPI/">Module API</a>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Layers</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Layers/Containers/merged-Containers/">Containers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Layers/Simple-Layers/merged-Simple-Layers/">Simple Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Layers/Convolution-Layers/merged-Convolution-Layers/">Convolution Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Layers/Pooling-Layers/merged-Pooling-Layers/">Pooling Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Layers/Linear-Layers/merged-Linear-Layers/">Linear Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Layers/Non-linear-Activations/merged-Non-linear-Activations/">Non-linear Activations</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Layers/Embedding-Layers/merged-Embedding-Layers/">Embedding Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Layers/MergeSplit-Layers/merged-MergeSplit-Layers/">Merge/Split Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Layers/Math-Layers/merged-Math-Layers/">Math Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Layers/Padding-Layers/merged-Padding-Layers/">Padding Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Layers/Normalization-Layers/merged-Normalization-Layers/">Normalization Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Layers/Dropout-Layers/merged-Dropout-Layers/">Dropout Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Layers/Distance-Layers/merged-Distance-Layers/">Distance Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Layers/Recurrent-Layers/merged-Recurrent-Layers/">Recurrent Layers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Layers/Utilities/merged-Utilities/">Utilities</a>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="APIdocs/Losses/merged-Losses/">Losses</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="APIdocs/Initializers/merged-Initializers/">Initalizers</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="APIdocs/Regularizers/merged-Regularizers/">Regularizers</a>
-                </li>
-                <li class="">
-                    
-    <span class="caption-text">Optimization</span>
-    <ul class="subnav">
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Optimizers/DistriOptimizer/">Optimizer</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Optimizers/Optim-Methods/merged-Optim-Methods/">Optimization Algorithms</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Optimizers/Triggers/">Triggers</a>
-                </li>
-                <li class="toctree-l3">
-                    
-    <a class="" href="APIdocs/Optimizers/ResumeTraining/">Resume Training</a>
-                </li>
-    </ul>
-                </li>
-                <li class="">
-                    
-    <a class="" href="APIdocs/Metrics/merged-Metrics/">Metrics</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="ProgrammingGuide/visualization/">Visualization</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="APIdocs/MLPipeline/merged-MLPipeline/">MLPipeline</a>
-                </li>
-    </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="powered-by/">Powered by</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="known-issues/">Known Issues</a>
-	    </li>
-          
-        </ul>
+            <button class="btn btn-default dropdown-toggle collapse" data-toggle="dropdown" type="button"><span class="caret"></span></button>
+            <ul id="mkdocs-search-results" class="dropdown-menu dropdown-menu-right"></ul>
+            <button id="wm-search-go" class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+          </span>
+        </div>
+      </form>
+    </div>
+
+    
+    <div class="wm-top-tool wm-vcenter pull-right wm-small-left">
+      <button id="wm-toc-button" type="button" class="btn btn-sm btn-default wm-vcentered"><i class="fa fa-th-list" aria-hidden="true"></i></button>
+    </div>
+
+    
+    
+
+    
+    <a href="" class="wm-top-brand wm-top-link wm-vcenter">
+      
+      <div class="wm-top-title">
+        BigDL Project &nbsp
+        
+          <span class="wm-top-version">latest</span>
+        
       </div>
-      &nbsp;
-    </nav>
+    </a>
+  </div>
+</nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href=".">BigDL Project</a>
-      </nav>
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href=".">Latest Docs</a> &raquo;</li>
+  <div id="main-content" class="wm-page-top-frame">
     
-      
-    
-    <li>Overview</li>
-    <li class="wy-breadcrumbs-aside">
-      
-        <a href="https://github.com/intel-analytics/BigDL/"> Fork on GitHub </a>
-      
-    </li>
+<nav class="wm-toc-pane">
+  
+    <ul class="wm-toctree wm-toc-repo">
+      <li class="wm-toc-li wm-toc-lev1">
+      <a class="wm-article-link wm-toc-text" href="https://github.com/intel-analytics/BigDL">
+        Fork on GitHub 
+      </a>
+      </li>
+    </ul>
+  <ul class="wm-toctree">
+        <li class="wm-toc-li wm-toc-lev1 "><a href="." class="wm-article-link wm-toc-text">Overview</a>
+</li>
+        <li class="wm-toc-li wm-toc-lev1 "><a href="release/" class="wm-article-link wm-toc-text">Releases</a>
+</li>
+        <li class="wm-toc-li wm-toc-lev1 "><a href="getting-started/" class="wm-article-link wm-toc-text">Getting Started</a>
+</li>
+        <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">User Guide</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Install</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 "><a href="UserGuide/install-pre-built/" class="wm-article-link wm-toc-text">Use Pre-built Libs</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="UserGuide/install-build-src/" class="wm-article-link wm-toc-text">Build from Source Code</a>
+</li>
   </ul>
-  <hr/>
-</div>
-          <div role="main">
-            <div class="section">
-              
-                <p><strong>What is BigDL</strong></p>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev2 "><a href="UserGuide/run/" class="wm-article-link wm-toc-text">Run</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="UserGuide/examples/" class="wm-article-link wm-toc-text">Examples</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="UserGuide/resources/" class="wm-article-link wm-toc-text">More Resources</a>
+</li>
+  </ul>
+</li>
+
+        <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">Python Support</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev2 "><a href="PythonSupport/python-install/" class="wm-article-link wm-toc-text">Install</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="PythonSupport/python-run/" class="wm-article-link wm-toc-text">Run</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="PythonSupport/python-examples/" class="wm-article-link wm-toc-text">Examples</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="PythonSupport/python-resources/" class="wm-article-link wm-toc-text">More Examples and Tutorials</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="PythonSupport/tensorflow-support/" class="wm-article-link wm-toc-text">Tensorflow Support</a>
+</li>
+  </ul>
+</li>
+
+        <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">Programming Guide</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev2 "><a href="APIdocs/scaladoc/" class="wm-article-link wm-toc-text">Scala Docs</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="APIdocs/python-api-doc/" class="wm-article-link wm-toc-text">Python API Docs</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="APIdocs/Data/merged-Data/" class="wm-article-link wm-toc-text">Data</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Model</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Model/Sequential/" class="wm-article-link wm-toc-text">Sequential Model</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Model/Functional/" class="wm-article-link wm-toc-text">Functional API</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Model/ModuleAPI/" class="wm-article-link wm-toc-text">Module API</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Layers</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Containers/merged-Containers/" class="wm-article-link wm-toc-text">Containers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Simple-Layers/merged-Simple-Layers/" class="wm-article-link wm-toc-text">Simple Layers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Convolution-Layers/merged-Convolution-Layers/" class="wm-article-link wm-toc-text">Convolution Layers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Pooling-Layers/merged-Pooling-Layers/" class="wm-article-link wm-toc-text">Pooling Layers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Linear-Layers/merged-Linear-Layers/" class="wm-article-link wm-toc-text">Linear Layers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Non-linear-Activations/merged-Non-linear-Activations/" class="wm-article-link wm-toc-text">Non-linear Activations</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Embedding-Layers/merged-Embedding-Layers/" class="wm-article-link wm-toc-text">Embedding Layers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/MergeSplit-Layers/merged-MergeSplit-Layers/" class="wm-article-link wm-toc-text">Merge/Split Layers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Math-Layers/merged-Math-Layers/" class="wm-article-link wm-toc-text">Math Layers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Padding-Layers/merged-Padding-Layers/" class="wm-article-link wm-toc-text">Padding Layers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Normalization-Layers/merged-Normalization-Layers/" class="wm-article-link wm-toc-text">Normalization Layers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Dropout-Layers/merged-Dropout-Layers/" class="wm-article-link wm-toc-text">Dropout Layers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Distance-Layers/merged-Distance-Layers/" class="wm-article-link wm-toc-text">Distance Layers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Recurrent-Layers/merged-Recurrent-Layers/" class="wm-article-link wm-toc-text">Recurrent Layers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Utilities/merged-Utilities/" class="wm-article-link wm-toc-text">Utilities</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev2 "><a href="APIdocs/Losses/merged-Losses/" class="wm-article-link wm-toc-text">Losses</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="APIdocs/Initializers/merged-Initializers/" class="wm-article-link wm-toc-text">Initalizers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="APIdocs/Regularizers/merged-Regularizers/" class="wm-article-link wm-toc-text">Regularizers</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Optimization</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Optimizers/DistriOptimizer/" class="wm-article-link wm-toc-text">Optimizer</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Optimizers/Optim-Methods/merged-Optim-Methods/" class="wm-article-link wm-toc-text">Optimization Algorithms</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Optimizers/Triggers/" class="wm-article-link wm-toc-text">Triggers</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev2 "><a href="APIdocs/Metrics/merged-Metrics/" class="wm-article-link wm-toc-text">Metrics</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="ProgrammingGuide/visualization/" class="wm-article-link wm-toc-text">Visualization</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="APIdocs/MLPipeline/merged-MLPipeline/" class="wm-article-link wm-toc-text">MLPipeline</a>
+</li>
+  </ul>
+</li>
+
+        <li class="wm-toc-li wm-toc-lev1 "><a href="powered-by/" class="wm-article-link wm-toc-text">Powered by</a>
+</li>
+        <li class="wm-toc-li wm-toc-lev1 "><a href="known-issues/" class="wm-article-link wm-toc-text">Known Issues</a>
+</li>
+        <li class="wm-toc-li wm-toc-lev1 "><a href="version/" class="wm-article-link wm-toc-text">Version</a>
+</li>
+  </ul>
+</nav>
+
+    <div class="wm-content-pane">
+      <iframe class="wm-article" name="article"></iframe>
+    </div>
+  </div>
+
+<div class="container-fluid wm-page-content">
+    
+
+    <h2 id="what-is-bigdl">What is BigDL</h2>
 <p>BigDL is a distributed deep learning library for Apache Spark; with BigDL, users can write their deep learning applications as standard Spark programs, which can directly run on top of existing Spark or Hadoop clusters.</p>
 <ul>
 <li>
@@ -323,7 +271,7 @@
 </li>
 </ul>
 <hr />
-<p><strong>Why BigDL?</strong></p>
+<h2 id="why-bigdl">Why BigDL?</h2>
 <p>You may want to write your deep learning programs using BigDL if:</p>
 <ul>
 <li>
@@ -337,7 +285,7 @@
 </li>
 </ul>
 <hr />
-<p><strong>Getting Help</strong></p>
+<h2 id="getting-help">Getting Help</h2>
 <ul>
 <li>
 <p>You can join the <a href="https://groups.google.com/forum/#!forum/bigdl-user-group">BigDL Google Group</a> (or subscribe to the <a href="mailto:bigdl-user-group+subscribe@googlegroups.com">Mail List</a>) for more questions and discussions on BigDL</p>
@@ -346,51 +294,17 @@
 <p>You can post bug reports and feature requests at the <a href="https://github.com/intel-analytics/BigDL/issues">Issue Page</a></p>
 </li>
 </ul>
-              
-            </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="release/" class="btn btn-neutral float-right" title="Releases">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-    </div>
-  
 
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-    
-  </div>
-
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-	  
-        </div>
-      </div>
-
-    </section>
-    
-  </div>
-
-  <div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-      
-        <span style="margin-left: 15px"><a href="release/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
+  <br>
 </div>
-    <script src="./js/theme.js"></script>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
 
 </body>
 </html>
-
 <!--
 MkDocs version : 0.16.3
-Build Date UTC : 2017-07-12 10:04:04
+Build Date UTC : 2017-07-13 08:05:21
 -->
