@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Module - BigDL Project</title>
+    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/highlight.css">
+    <link href="../../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Import necessary dependencies", url: "#import-necessary-dependencies", children: [
+          ]},
+          {title: "Define the model", url: "#define-the-model", children: [
+          ]},
+          {title: "Save model to specific path", url: "#save-model-to-specific-path", children: [
+          ]},
+          {title: "Load model from given path", url: "#load-model-from-given-path", children: [
+          ]},
+          {title: "Evaluate model with test set", url: "#evaluate-model-with-test-set", children: [
+          ]},
+          {title: "Predict with model", url: "#predict-with-model", children: [
+          ]},
+          {title: "Import necessary dependencies", url: "#import-necessary-dependencies_1", children: [
+          ]},
+          {title: "Define the model", url: "#define-the-model_1", children: [
+          ]},
+          {title: "Save model to specific path", url: "#save-model-to-specific-path_1", children: [
+          ]},
+          {title: "Load model from given path", url: "#load-model-from-given-path_1", children: [
+          ]},
+          {title: "Evaluate model with test set", url: "#evaluate-model-with-test-set_1", children: [
+          ]},
+          {title: "Predict with model", url: "#predict-with-model_1", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+
+    <p>BigDL provides model API to faciliate user's requirement to save model to specific path, load model from given path, evaluate model and predict with model, etc.</p>
+<p>Here we introduce how to leverage this APIs</p>
+<p>Suppose we have a sequential model defined as below : </p>
+<pre><code>Linear -&gt; Sigmoid -&gt; Softmax
+</code></pre>
+
+<p><strong>Scala:</strong></p>
+<h6 id="import-necessary-dependencies">Import necessary dependencies</h6>
+<pre><code class="scala">import com.intel.analytics.bigdl.dataset.Sample
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.numeric.NumericFloat
+import com.intel.analytics.bigdl.optim.Top1Accuracy
+import com.intel.analytics.bigdl.tensor.Tensor
+</code></pre>
+
+<h6 id="define-the-model">Define the model</h6>
+<pre><code class="scala">val model = Sequential().add(Linear(10, 5)).add(Sigmoid()).add(SoftMax())
+</code></pre>
+
+<h6 id="save-model-to-specific-path">Save model to specific path</h6>
+<p>BigDL supports different file systems like Linux file system, HDFS and AWS S3, Assume we want to save to local file system</p>
+<pre><code class="scala">model.save(&quot;/tmp/model.bigdl&quot;, true)
+</code></pre>
+
+<p>In the above code , the first parameter is the path where we want to save our model, the second paramter is to specify if we need to overwrite the file if it already exists, it's set to false by default</p>
+<h6 id="load-model-from-given-path">Load model from given path</h6>
+<p>We just need to specify the model path where we previously saved the model to load it to memory for resume training or prediction purpose</p>
+<pre><code class="scala">val loadedModel = Module.load(&quot;/tmp/model.bigdl&quot;)
+</code></pre>
+
+<p><code>Module</code> above is a utilily  to manipulate module APIs</p>
+<h6 id="evaluate-model-with-test-set">Evaluate model with test set</h6>
+<p>Evaluation needs real test data set, here we just simulate some dummy data for function introduction purpose</p>
+<p>Create dummy test data set</p>
+<pre><code class="scala">val feature = Tensor(10).rand()
+
+val label = Tensor(1).randn()
+
+val testSample = Sample(feature, label)
+
+val testSet = sc.parallelize(Seq(testSample))
+</code></pre>
+
+<p>In above code, <code>sc</code> is the SparkContxt instance</p>
+<p>Use the test dataset to evaluate the model</p>
+<pre><code class="scala">val evaluateResult = model.evaluate(testSet, Array(new Top1Accuracy))
+</code></pre>
+
+<h6 id="predict-with-model">Predict with model</h6>
+<p>Similar to above, we create input data first</p>
+<pre><code class="scala">val feature = Tensor(10).rand()
+
+val label = Tensor(1).randn()
+
+val predictSample = Sample(feature, label)
+
+val predictSet = sc.parallelize(Seq(predictSample))
+</code></pre>
+
+<p>Predict with the data set</p>
+<pre><code class="scala">val preductResult = model.predict(predictSet)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<h6 id="import-necessary-dependencies_1">Import necessary dependencies</h6>
+<pre><code class="python">from bigdl.nn.layer import *
+from bigdl.util.common import *
+from bigdl.optim.optimizer import *
+import numpy as np
+</code></pre>
+
+<h6 id="define-the-model_1">Define the model</h6>
+<pre><code class="python">model = Sequential().add(Linear(10, 5)).add(Sigmoid()).add(SoftMax())
+</code></pre>
+
+<h6 id="save-model-to-specific-path_1">Save model to specific path</h6>
+<pre><code class="python">model.save(&quot;/tmp/model.bigdl&quot;, True)
+</code></pre>
+
+<h6 id="load-model-from-given-path_1">Load model from given path</h6>
+<pre><code class="python">model = Model.load(&quot;/tmp/model.bigdl&quot;)
+</code></pre>
+
+<p><code>Model</code> is a utility for python mirroring <code>Module</code> in scala</p>
+<h6 id="evaluate-model-with-test-set_1">Evaluate model with test set</h6>
+<p>Create dummy test data set </p>
+<pre><code class="python">samples=[Sample.from_ndarray(np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]), np.array([2.0]))]
+
+testSet = sc.parallelize(samples)
+
+</code></pre>
+
+<p>Use the test data to evaluate the model</p>
+<pre><code class="python">evaluateResult = model.evaluate(testSet, 1, [Top1Accuracy])
+</code></pre>
+
+<h6 id="predict-with-model_1">Predict with model</h6>
+<p>Create predict dummy data set</p>
+<pre><code class="python">samples=[Sample.from_ndarray(np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]), np.array([2.0]))]
+
+predictSet = sc.parallelize(samples)
+</code></pre>
+
+<p>Predict with the data set</p>
+<pre><code class="python">preductResult = model.predict(predictSet)
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

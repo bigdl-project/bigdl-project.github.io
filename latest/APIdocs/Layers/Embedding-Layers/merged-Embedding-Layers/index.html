@@ -16,6 +16,7 @@
     <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../../css/base.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../../css/highlight.css">
+    <link href="../../../../extra.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -52,7 +53,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     <h2 id="lookuptable">LookupTable</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val layer = LookupTable[Float](nIndex: Int, nOutput: Int, paddingValue: Double = 0,
+<pre><code class="scala">val layer = LookupTable(nIndex: Int, nOutput: Int, paddingValue: Double = 0,
                                  maxNorm: Double = Double.MaxValue,
                                  normType: Double = 2.0,
                                  shouldScaleGradByFreq: Boolean = false,
@@ -68,9 +69,12 @@ Input should be a 1D or 2D tensor filled with indices. Indices are corresponding
 in weight. For each index element of input, it outputs the selected index part of weight.
 This layer is often used in word embedding. In collaborative filtering, it can be used together with Select to create embeddings for users or items. </p>
 <p><strong>Scala example:</strong></p>
-<pre><code class="scala">
-val layer = LookupTable[Float](9, 4, 2, 0.1, 2.0, true)
-val input = Tensor[Float](Storage(Array(5.0f, 2.0f, 6.0f, 9.0f, 4.0f)), 1, Array(5))
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor._
+
+val layer = LookupTable(9, 4, 2, 0.1, 2.0, true)
+val input = Tensor(Storage(Array(5.0f, 2.0f, 6.0f, 9.0f, 4.0f)), 1, Array(5))
 
 val output = layer.forward(input)
 val gradInput = layer.backward(input, output)
