@@ -16,6 +16,7 @@
     <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../../css/base.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../../css/highlight.css">
+    <link href="../../../../extra.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -919,7 +920,7 @@ output:
 
 <h2 id="rrelu">RReLU</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val layer = RReLU[T](lower, upper, inPlace)
+<pre><code class="scala">val layer = RReLU(lower, upper, inPlace)
 </code></pre>
 
 <p><strong>Python:</strong></p>
@@ -940,11 +941,11 @@ factor a = (l + u) / 2.</p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn._
 import com.intel.analytics.bigdl.utils.T
 import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
 
-val layer = RReLU[Float]()
-layer.forward(Tensor[Float](T(1.0f, 2.0f, -1.0f, -2.0f)))
-layer.backward(Tensor[Float](T(1.0f, 2.0f, -1.0f, -2.0f)),
-Tensor[Float](T(0.1f, 0.2f, -0.1f, -0.2f)))
+val layer = RReLU()
+layer.forward(Tensor(T(1.0f, 2.0f, -1.0f, -2.0f)))
+layer.backward(Tensor(T(1.0f, 2.0f, -1.0f, -2.0f)),Tensor(T(0.1f, 0.2f, -0.1f, -0.2f)))
 </code></pre>
 
 <p>There's random factor. An output is like</p>

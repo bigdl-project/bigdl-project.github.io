@@ -57,7 +57,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="generating-summary-info-in-bigdl"><strong>Generating summary info in BigDL</strong></h2>
+    <hr />
+<h2 id="generating-summary-info-in-bigdl"><strong>Generating summary info in BigDL</strong></h2>
 <p>To enable visualization support, you need first properly configure the <code>Optimizer</code> to collect statistics summary in different stages of training (i.e. training (<code>TrainSummary</code>) and validation (<code>ValidationSummary</code>),respectively). It should be done before the training starts (calling <code>Optimizer.optimize()</code>). See examples below: </p>
 <p><em><strong>Example: Generating summary info in Scala</strong></em></p>
 <pre><code class="scala">val optimizer = Optimizer(...)
@@ -86,7 +87,8 @@ trainedModel = optimizer.optimize()
 </code></pre>
 
 <p>After you start to run your spark job, the train and validation summary will be saved to <code>mylogdir/myapp/train</code> and <code>mylogdir/myapp/validation</code> respectively (Note: you may want to use different <code>appName</code> for different job runs to avoid possible conflicts.)</p>
-<h2 id="retrieving-summary-info-as-readable-format">Retrieving summary info as readable format</h2>
+<hr />
+<h2 id="retrieving-summary-info-as-readable-format"><strong>Retrieving summary info as readable format</strong></h2>
 <p>You can use provided API <code>readScalar</code>(Scala) and <code>read_scalar</code>(Python) to retrieve the summaries into readable format, and export them to other tools for further analysis or visualization.</p>
 <p><em><strong>Example: Reading summary info in Scala</strong></em></p>
 <pre><code class="scala">val trainLoss = trainSummary.readScalar(&quot;Loss&quot;)
@@ -100,6 +102,7 @@ valloss = np.array(val_summary.read_scalar('Loss'))
 ...
 </code></pre>
 
+<hr />
 <h2 id="visualizing-training-with-tensorboard"><strong>Visualizing training with TensorBoard</strong></h2>
 <p>With the summary info generated, we can then use <a href="https://pypi.python.org/pypi/tensorboard">TensorBoard</a> to visualize the behaviors of the BigDL program.  </p>
 <ul>
@@ -135,7 +138,8 @@ valloss = np.array(val_summary.read_scalar('Loss'))
 <p>And “weights”, “bias”, “gradientWeights” and “gradientBias” under the DISTRIBUTIONS and HISTOGRAMS tabs (as illustrated below):
 <img alt="histogram1" src="../../Image/tensorboard-histo1.png" />
 <img alt="histogram2" src="../../Image/tensorboard-histo2.png" /></p>
-<h2 id="visualizing-training-with-jupyter-notebook">Visualizing training with Jupyter notebook</h2>
+<hr />
+<h2 id="visualizing-training-with-jupyter-notebook"><strong>Visualizing training with Jupyter notebook</strong></h2>
 <p>If you're using Jupyter notebook, you can also draw the training curves using popular plotting tools (e.g. matplotlib) and show the plots inline. </p>
 <p>First, retrieve the summaries as instructed in <a href="#retrieving-summary-info-as-readable-format">Retrieve Summary</a>. The retrived summary is a list of tuples. Each tuple is a recorded event in format (iteration count, recorded value, timestamp). You can convert it to numpy array or dataframe to plot it. See example below:  </p>
 <p><em><strong>Example: Plot the train/validation loss in Jupyter</strong></em></p>

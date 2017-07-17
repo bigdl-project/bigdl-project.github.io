@@ -16,6 +16,7 @@
     <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../../css/base.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../../css/highlight.css">
+    <link href="../../../../extra.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -236,7 +237,7 @@ gradient = min.backward(input, grad_output)
 
 <h2 id="add">Add</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val addLayer = Add[T](inputSize)
+<pre><code class="scala">val addLayer = Add(inputSize)
 </code></pre>
 
 <p><strong>Python:</strong></p>
@@ -253,12 +254,13 @@ parameter.</p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn._
 import com.intel.analytics.bigdl.utils.T
 import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
 
-val addLayer = Add[Float](4)
-addLayer.bias.set(Tensor[Float](T(1.0f, 2.0f, 3.0f, 4.0f)))
-addLayer.forward(Tensor[Float](T(T(1.0f, 1.0f, 1.0f, 1.0f), T(3.0f, 3.0f, 3.0f, 3.0f))))
-addLayer.backward(Tensor[Float](T(T(1.0f, 1.0f, 1.0f, 1.0f), T(3.0f, 3.0f, 3.0f, 3.0f))),
-    Tensor[Float](T(T(0.1f, 0.1f, 0.1f, 0.1f), T(0.3f, 0.3f, 0.3f, 0.3f))))
+val addLayer = Add(4)
+addLayer.bias.set(Tensor(T(1.0f, 2.0f, 3.0f, 4.0f)))
+addLayer.forward(Tensor(T(T(1.0f, 1.0f, 1.0f, 1.0f), T(3.0f, 3.0f, 3.0f, 3.0f))))
+addLayer.backward(Tensor(T(T(1.0f, 1.0f, 1.0f, 1.0f), T(3.0f, 3.0f, 3.0f, 3.0f))),
+    Tensor(T(T(0.1f, 0.1f, 0.1f, 0.1f), T(0.3f, 0.3f, 0.3f, 0.3f))))
 </code></pre>
 
 <p>Its output should be</p>
@@ -1150,7 +1152,7 @@ output is : [array([[-0.73284394, -0.28076306, -0.51965958],
 
 <h2 id="mul">Mul</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val module = Mul[Float]()
+<pre><code class="scala">val module = Mul()
 </code></pre>
 
 <p><strong>Python:</strong></p>
@@ -1163,7 +1165,12 @@ output is : [array([[-0.73284394, -0.28076306, -0.51965958],
 </code></pre>
 
 <p><strong>Scala example:</strong></p>
-<pre><code class="scala">val mul = Mul[Float]()
+<pre><code class="scala">
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor._
+
+val mul = Mul()
 
 &gt; print(mul.forward(Tensor(1, 5).rand()))
 -0.03212923     -0.019040342    -9.136753E-4    -0.014459004    -0.04096878
@@ -1171,7 +1178,10 @@ output is : [array([[-0.73284394, -0.28076306, -0.51965958],
 </code></pre>
 
 <p><strong>Python example:</strong></p>
-<pre><code class="python">mul = Mul()
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
+
+mul = Mul()
 input = np.random.uniform(0, 1, (1, 5)).astype(&quot;float32&quot;)
 
 &gt; mul.forward(input)

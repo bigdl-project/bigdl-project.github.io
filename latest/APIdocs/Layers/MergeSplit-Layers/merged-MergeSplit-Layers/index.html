@@ -16,6 +16,7 @@
     <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../../css/base.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../../css/highlight.css">
+    <link href="../../../../extra.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -313,7 +314,7 @@ grad input of m is : [array([ 0.        ,  0.        ,  0.86938971], dtype=float
 
 <h2 id="splittable">SplitTable</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val layer = SplitTable[T](dim)
+<pre><code class="scala">val layer = SplitTable(dim)
 </code></pre>
 
 <p><strong>Python:</strong></p>
@@ -327,12 +328,22 @@ the dimension starts from 1.</p>
 when using mini-batch, a batch of sample tensors will be passed to the layer and
 the user needs to specify the number of dimensions of each sample tensor in a
 batch using <code>nInputDims</code>.</p>
+<pre><code>    +----------+         +-----------+
+    | input[1] +---------&gt; {member1, |
+  +----------+-+         |           |
+  | input[2] +-----------&gt;  member2, |
++----------+-+           |           |
+| input[3] +-------------&gt;  member3} |
++----------+             +-----------+
+</code></pre>
+
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn._
 import com.intel.analytics.bigdl.utils.T
 import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
 
-val layer = SplitTable[Float](2)
+val layer = SplitTable(2)
 layer.forward(Tensor(T(
   T(1.0f, 2.0f, 3.0f),
   T(4.0f, 5.0f, 6.0f),
@@ -343,9 +354,9 @@ layer.backward(Tensor(T(
   T(4.0f, 5.0f, 6.0f),
   T(7.0f, 8.0f, 9.0f)
 )), T(
-  Tensor[Float](T(0.1f, 0.2f, 0.3f)),
-  Tensor[Float](T(0.4f, 0.5f, 0.6f)),
-  Tensor[Float](T(0.7f, 0.8f, 0.9f))
+  Tensor(T(0.1f, 0.2f, 0.3f)),
+  Tensor(T(0.4f, 0.5f, 0.6f)),
+  Tensor(T(0.7f, 0.8f, 0.9f))
 ))
 </code></pre>
 
@@ -585,6 +596,15 @@ batch using <code>nInputDims</code>.</p>
 <p><strong>Parameters:</strong></p>
 <p><strong>dimension</strong>  - to be join in this dimension</p>
 <p><strong>nInputDims</strong> - specify the number of dimensions that this module will receiveIf it is more than the dimension of input tensors, the first dimensionwould be considered as batch size</p>
+<pre><code>+----------+             +-----------+
+| {input1, +-------------&gt; output[1] |
+|          |           +-----------+-+
+|  input2, +-----------&gt; output[2] |
+|          |         +-----------+-+
+|  input3} +---------&gt; output[3] |
++----------+         +-----------+
+</code></pre>
+
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn.JoinTable
 import com.intel.analytics.bigdl.tensor.Tensor
@@ -1042,7 +1062,7 @@ output = module.forward(input)
 
 <h2 id="cmintable">CMinTable</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val layer = CMinTable[T]()
+<pre><code class="scala">val layer = CMinTable()
 </code></pre>
 
 <p><strong>Python:</strong></p>
@@ -1056,18 +1076,19 @@ and use the min value.</p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn._
 import com.intel.analytics.bigdl.utils.T
 import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
 
-val layer = CMinTable[Float]()
+val layer = CMinTable()
 layer.forward(T(
-  Tensor[Float](T(1.0f, 5.0f, 2.0f)),
-  Tensor[Float](T(3.0f, 4.0f, -1.0f)),
-  Tensor[Float](T(5.0f, 7.0f, -5.0f))
+  Tensor(T(1.0f, 5.0f, 2.0f)),
+  Tensor(T(3.0f, 4.0f, -1.0f)),
+  Tensor(T(5.0f, 7.0f, -5.0f))
 ))
 layer.backward(T(
-  Tensor[Float](T(1.0f, 5.0f, 2.0f)),
-  Tensor[Float](T(3.0f, 4.0f, -1.0f)),
-  Tensor[Float](T(5.0f, 7.0f, -5.0f))
-), Tensor[Float](T(0.1f, 0.2f, 0.3f)))
+  Tensor(T(1.0f, 5.0f, 2.0f)),
+  Tensor(T(3.0f, 4.0f, -1.0f)),
+  Tensor(T(5.0f, 7.0f, -5.0f))
+), Tensor(T(0.1f, 0.2f, 0.3f)))
 </code></pre>
 
 <p>Its output should be</p>

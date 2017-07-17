@@ -16,6 +16,7 @@
     <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="../../../../css/base.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../../css/highlight.css">
+    <link href="../../../../extra.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -264,7 +265,7 @@ array([[[[  5.70826093e-03,   9.06338100e-05],
 
 <h2 id="spatialdivisivenormalization">SpatialDivisiveNormalization</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val layer = SpatialDivisiveNormalization[Float]()
+<pre><code class="scala">val layer = SpatialDivisiveNormalization()
 </code></pre>
 
 <p><strong>Python:</strong></p>
@@ -283,9 +284,13 @@ of two pixel locations decrease with increasing distance. On the feature dimensi
 a uniform average is used since the weighting across features is not known.</p>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">
-val layer = SpatialDivisiveNormalization[Float]()
-val input = Tensor[Float](1, 5, 5).rand
-val gradOutput = Tensor[Float](1, 5, 5).rand
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor._
+
+val layer = SpatialDivisiveNormalization()
+val input = Tensor(1, 5, 5).rand
+val gradOutput = Tensor(1, 5, 5).rand
 
 val output = layer.forward(input)
 val gradInput = layer.backward(input, gradOutput)
@@ -326,7 +331,10 @@ res21: com.intel.analytics.bigdl.tensor.Tensor[Float] =
 </code></pre>
 
 <p><strong>Python example:</strong></p>
-<pre><code class="python">layer = SpatialDivisiveNormalization()
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
+
+layer = SpatialDivisiveNormalization()
 input = np.random.uniform(0, 1, (1, 5, 5)).astype(&quot;float32&quot;)
 gradOutput = np.random.uniform(0, 1, (1, 5, 5)).astype(&quot;float32&quot;)
 
