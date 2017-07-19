@@ -215,11 +215,7 @@ function loadVersion() {
       if (dir.includes("#")) {
         dir = dir.split("#")[1];
       }
-      if (dir === "" || dir.includes("latest") || dir.includes("index")) {
-        versionSelect.value = "latest";
-      } else {
-        versionSelect.value = dir;
-      }
+      versionSelect.value = dir;
     }
   }
 }
@@ -228,11 +224,7 @@ function loadVersion() {
  *function to switch versions
  */
 function switchVersion(opt) {
-  if (opt.value === "latest") {
-    window.location = "/index.html"
-  } else {
-    window.location = "/" + opt.value + "/index.html"
-  }
+  window.location = "/" + opt.value + "/index.html"
 }
 
 /**
