@@ -33,17 +33,17 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "SpatialShareConvolution", url: "#spatialshareconvolution", children: [
-          ]},
           {title: "VolumetricConvolution", url: "#volumetricconvolution", children: [
-          ]},
-          {title: "SpatialConvolutionMap", url: "#spatialconvolutionmap", children: [
-          ]},
-          {title: "SpatialConvolution", url: "#spatialconvolution", children: [
           ]},
           {title: "SpatialFullConvolution", url: "#spatialfullconvolution", children: [
           ]},
+          {title: "SpatialConvolution", url: "#spatialconvolution", children: [
+          ]},
           {title: "SpatialDilatedConvolution", url: "#spatialdilatedconvolution", children: [
+          ]},
+          {title: "SpatialShareConvolution", url: "#spatialshareconvolution", children: [
+          ]},
+          {title: "SpatialConvolutionMap", url: "#spatialconvolutionmap", children: [
           ]},
         ];
 
@@ -61,117 +61,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="spatialshareconvolution">SpatialShareConvolution</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val layer = SpatialShareConvolution(nInputPlane, nOutputPlane, kW, kH, dW, dH,
-      padW, padH)
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">layer = SpatialShareConvolution(nInputPlane, nOutputPlane, kW, kH, dW, dH, padW, padH)
-</code></pre>
-
-<p>Applies a 2D convolution over an input image composed of several input planes.
- The input tensor in forward(input) is expected to be
- a 3D tensor (nInputPlane x height x width).</p>
-<p>This layer has been optimized to save memory. If using this layer to construct multiple convolution
- layers, please add sharing script for the fInput and fGradInput. Please refer to the ResNet example.</p>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">
-    import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-    import com.intel.analytics.bigdl.nn._
-    import com.intel.analytics.bigdl.tensor._
-
-    val nInputPlane = 1
-    val nOutputPlane = 1
-    val kW = 2
-    val kH = 2
-    val dW = 1
-    val dH = 1
-    val padW = 0
-    val padH = 0
-    val layer = SpatialShareConvolution(nInputPlane, nOutputPlane, kW, kH, dW, dH,
-      padW, padH)
-
-    val inputData = Array(
-      1.0, 2, 3, 1,
-      4, 5, 6, 1,
-      7, 8, 9, 1,
-      1.0, 2, 3, 1,
-      4, 5, 6, 1,
-      7, 8, 9, 1,
-      1.0, 2, 3, 1,
-      4, 5, 6, 1,
-      7, 8, 9, 1
-    )
-
-    val kernelData = Array(
-      2.0, 3,
-      4, 5
-    )
-
-    val biasData = Array(0.0)
-
-    layer.weight.copy(Tensor(Storage(kernelData), 1,
-      Array(nOutputPlane, nInputPlane, kH, kW)))
-    layer.bias.copy(Tensor(Storage(biasData), 1, Array(nOutputPlane)))
-
-    val input = Tensor(Storage(inputData), 1, Array(3, 1, 3, 4))
-    val output = layer.updateOutput(input)
-
-    &gt; output
-res2: com.intel.analytics.bigdl.tensor.Tensor[Float] =
-(1,1,.,.) =
-49.0    63.0    38.0
-91.0    105.0   56.0
-
-(2,1,.,.) =
-49.0    63.0    38.0
-91.0    105.0   56.0
-
-(3,1,.,.) =
-49.0    63.0    38.0
-91.0    105.0   56.0
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">nInputPlane = 1
-nOutputPlane = 1
-kW = 2
-kH = 2
-dW = 1
-dH = 1
-padW = 0
-padH = 0
-layer = SpatialShareConvolution(nInputPlane, nOutputPlane, kW, kH, dW, dH, padW, padH)
-
-input = np.array([
-      1.0, 2, 3, 1,
-      4, 5, 6, 1,
-      7, 8, 9, 1,
-      1.0, 2, 3, 1,
-      4, 5, 6, 1,
-      7, 8, 9, 1,
-      1.0, 2, 3, 1,
-      4, 5, 6, 1,
-      7, 8, 9, 1]
-    ).astype(&quot;float32&quot;).reshape(3, 1, 3, 4)
-layer.forward(input)
-
-&gt; print (output)
-array([[[[-3.55372381, -4.0352459 , -2.65861344],
-         [-4.99829054, -5.4798131 , -3.29477644]]],
-
-
-       [[[-3.55372381, -4.0352459 , -2.65861344],
-         [-4.99829054, -5.4798131 , -3.29477644]]],
-
-
-       [[[-3.55372381, -4.0352459 , -2.65861344],
-         [-4.99829054, -5.4798131 , -3.29477644]]]], dtype=float32)
-</code></pre>
-
-<h2 id="volumetricconvolution">VolumetricConvolution</h2>
+    <h2 id="volumetricconvolution">VolumetricConvolution</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val module = VolumetricConvolution(nInputPlane, nOutputPlane, kT, kW, kH,
   dT=1, dW=1, dH=1, padT=0, padW=0, padH=0, withBias=true)
@@ -261,272 +151,6 @@ array([[[[ 0.54268712]]],
 
        [[[ 0.40953237]]]], dtype=float32)
 
-</code></pre>
-
-<h2 id="spatialconvolutionmap">SpatialConvolutionMap</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val layer = SpatialConvolutionMap(
-  connTable,
-  kW,
-  kH,
-  dW = 1,
-  dH = 1,
-  padW = 0,
-  padH = 0,
-  wRegularizer = null,
-  bRegularizer = null)
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">layer = SpatialConvolutionMap(
-  conn_table,
-  kw,
-  kh,
-  dw=1,
-  dh=1,
-  pad_w=0,
-  pad_h=0,
-  wRegularizer=None,
-  bRegularizer=None)
-</code></pre>
-
-<p>This class is a generalization of SpatialConvolution.
-It uses a generic connection table between input and output features.
-The SpatialConvolution is equivalent to using a full connection table.<br />
-A Connection Table is the mapping of input/output feature map, stored in a 2D Tensor. The first column is the input feature maps. The second column is output feature maps.</p>
-<p><strong><em>Full Connection table:</em></strong></p>
-<pre><code class="scala">val conn = SpatialConvolutionMap.full(nin: Int, nout: In)
-</code></pre>
-
-<p><strong><em>One to One connection table:</em></strong></p>
-<pre><code class="scala">val conn = SpatialConvolutionMap.oneToOne(nfeat: Int)
-</code></pre>
-
-<p><strong><em>Random Connection table:</em></strong></p>
-<pre><code class="scala">val conn = SpatialConvolutionMap.random(nin: Int, nout: Int, nto: Int)
-</code></pre>
-
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.tensor._
-
-val conn = SpatialConvolutionMap.oneToOne(3)
-</code></pre>
-
-<p><code>conn</code> is</p>
-<pre><code>conn: com.intel.analytics.bigdl.tensor.Tensor[Float] =
-1.0 1.0
-2.0 2.0
-3.0 3.0
-[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3x2]
-</code></pre>
-
-<pre><code>val module = SpatialConvolutionMap(SpatialConvolutionMap.oneToOne(3), 2, 2)
-
-pritnln(module.forward(Tensor.range(1, 48, 1).resize(3, 4, 4)))
-</code></pre>
-
-<p>Output is</p>
-<pre><code>com.intel.analytics.bigdl.tensor.Tensor[Float] =
-(1,.,.) =
-4.5230045   5.8323975   7.1417904
-9.760576    11.069969   12.379362
-14.998148   16.30754    17.616934
-
-(2,.,.) =
--5.6122046  -5.9227824  -6.233361
--6.8545156  -7.165093   -7.4756703
--8.096827   -8.407404   -8.71798
-
-(3,.,.) =
-13.534529   13.908197   14.281864
-15.029203   15.402873   15.77654
-16.523876   16.897545   17.271214
-
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 3x3x3]
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.layer import *
-import numpy as np
-
-module = SpatialConvolutionMap(np.array([(1, 1), (2, 2), (3, 3)]), 2, 2)
-
-print(module.forward(np.arange(1, 49, 1).reshape(3, 4, 4)))
-</code></pre>
-
-<p>Output is</p>
-<pre><code>[array([[[-1.24280548, -1.70889318, -2.17498088],
-        [-3.10715604, -3.57324386, -4.03933144],
-        [-4.97150755, -5.43759441, -5.90368223]],
-
-       [[-5.22062826, -5.54696751, -5.87330723],
-        [-6.52598572, -6.85232496, -7.17866373],
-        [-7.8313427 , -8.15768337, -8.48402214]],
-
-       [[ 0.5065825 ,  0.55170798,  0.59683061],
-        [ 0.68707776,  0.73219943,  0.77732348],
-        [ 0.86757064,  0.91269422,  0.95781779]]], dtype=float32)]
-</code></pre>
-
-<h2 id="spatialconvolution">SpatialConvolution</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val m = SpatialConvolution(nInputPlane,nOutputPlane,kernelW,kernelH,strideW=1,strideH=1,padW=0,padH=0,nGroup=1,propagateBack=true,wRegularizer=null,bRegularizer=null,initWeight=null, initBias=null, initGradWeight=null, initGradBias=null)
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">m = SpatialConvolution(n_input_plane,n_output_plane,kernel_w,kernel_h,stride_w=1,stride_h=1,pad_w=0,pad_h=0,n_group=1,propagate_back=True,wRegularizer=None,bRegularizer=None,init_weight=None,init_bias=None,init_grad_weight=None,init_grad_bias=None)
-</code></pre>
-
-<p>SpatialConvolution is a module that applies a 2D convolution over an input image.</p>
-<p>The input tensor in <code>forward(input)</code> is expected to be
-either a 4D tensor (<code>batch x nInputPlane x height x width</code>) or a 3D tensor (<code>nInputPlane x height x width</code>). The convolution is performed on the last two dimensions.</p>
-<p>Detailed paramter explaination for the constructor.</p>
-<ul>
-<li>param nInputPlane: The number of expected input planes in the image given into forward()</li>
-<li>param nOutputPlane: The number of output planes the convolution layer will produce.</li>
-<li>param kernelW: The kernel width of the convolution</li>
-<li>param kernelH: The kernel height of the convolution</li>
-<li>param strideW: The step of the convolution in the width dimension.</li>
-<li>param strideH: The step of the convolution in the height dimension</li>
-<li>param padW:  padding to be added to width to the input.</li>
-<li>param padH: padding to be added to height to the input.</li>
-<li>param nGroup: Kernel group number</li>
-<li>param propagateBack: whether to propagate gradient back</li>
-<li>param wRegularizer: regularizer on weight. an instance of [[Regularizer]] (e.g. L1 or L2)</li>
-<li>param bRegularizer: regularizer on bias. an instance of [[Regularizer]] (e.g. L1 or L2).</li>
-<li>param initWeight: weight initializer</li>
-<li>param initBias:  bias initializer</li>
-<li>param initGradWeight: weight gradient initializer</li>
-<li>param initGradBias: bias gradient initializer</li>
-</ul>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">
-scala&gt;
-import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.tensor._
-import com.intel.analytics.bigdl.tensor.Storage
-
-val m = SpatialConvolution(2,1,2,2,1,1,0,0)
-m.setInitMethod(weightInitMethod = BilinearFiller, biasInitMethod = Zeros)
-val params = m.getParameters()
-
-scala&gt; print(params)
-(1.0
-0.0
-0.0
-0.0
-1.0
-0.0
-0.0
-0.0
-0.0
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 9],0.0
-0.0
-0.0
-0.0
-0.0
-0.0
-0.0
-0.0
-0.0
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 9])
-
-scala&gt;
-val input = Tensor(1,2,3,3).randn()
-val output = m.forward(input)
-val gradOut = Tensor(1,1,2,2).fill(0.2f)
-val gradIn = m.backward(input,gradOut)
-
-scala&gt; print(input)
-(1,1,.,.) =
--0.37011376     0.13565119      -0.73574775
--0.19486316     -0.4430604      -0.62543416
-0.7017611       -0.6441595      -1.2953792
-
-(1,2,.,.) =
--0.9903588      0.5669722       0.2630131
-0.03392942      -0.6984676      -0.12389368
-0.78704715      0.5411976       -1.3877676
-
-[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x2x3x3]
-
-scala&gt; print(output)
-(1,1,.,.) =
--1.3604726      0.70262337
--0.16093373     -1.141528
-
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x1x2x2]
-
-scala&gt; print(gradOut)
-(1,1,.,.) =
-0.2     0.2
-0.2     0.2
-
-[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x1x2x2]
-
-scala&gt; print(gradIn)
-(1,1,.,.) =
-0.2     0.2     0.0
-0.2     0.2     0.0
-0.0     0.0     0.0
-
-(1,2,.,.) =
-0.2     0.2     0.0
-0.2     0.2     0.0
-0.0     0.0     0.0
-
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x3x3]
-
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.layer import *
-import numpy as np
-
-input = np.random.rand(1,3,3,3)
-print &quot;input is :&quot;,input
-
-m = SpatialConvolution(3,1,2,2,1,1,0,0)
-out = m.forward(input)
-print &quot;output m is :&quot;,out
-
-grad_out = np.random.rand(1,1,2,2)
-print &quot;grad out of m is :&quot;,grad_out
-grad_in = m.backward(input,grad_out)
-print &quot;grad input of m is :&quot;,grad_in
-</code></pre>
-
-<p>produces output:</p>
-<pre><code class="python">input is : [[[[ 0.75276617  0.44212513  0.90275949]
-   [ 0.78205279  0.77864714  0.83647254]
-   [ 0.76220944  0.22106036  0.68762202]]
-
-  [[ 0.37346971  0.31532213  0.33276243]
-   [ 0.69872884  0.07262236  0.66372462]
-   [ 0.47803013  0.80194459  0.53313873]]
-
-  [[ 0.56196833  0.20599878  0.47575818]
-   [ 0.35454298  0.96910557  0.36234704]
-   [ 0.64017738  0.95762579  0.50073035]]]]
-creating: createSpatialConvolution
-output m is : [[[[-1.08398974 -0.67615652]
-   [-0.77027249 -0.82885492]]]]
-grad out of m is : [[[[ 0.38295452  0.77048361]
-   [ 0.11671955  0.76357513]]]]
-grad input of m is : [[[[-0.02344826 -0.06515953 -0.03618064]
-   [-0.06770924 -0.22586647 -0.14004168]
-   [-0.01845866 -0.13653883 -0.10325129]]
-
-  [[-0.09294108 -0.14361492  0.08727306]
-   [-0.09885897 -0.21209857  0.29151234]
-   [-0.02149716 -0.10957514  0.20318349]]
-
-  [[-0.05926216 -0.04542646  0.14849319]
-   [-0.09506465 -0.34244278 -0.03763583]
-   [-0.02346931 -0.1815301  -0.18314059]]]]
 </code></pre>
 
 <h2 id="spatialfullconvolution">SpatialFullConvolution</h2>
@@ -767,6 +391,165 @@ output m is : [[[-0.04712385  0.21949144  0.0843184   0.14336972]
   [-0.38188276 -0.36746511 -0.37627563 -0.34141305]]]
 </code></pre>
 
+<h2 id="spatialconvolution">SpatialConvolution</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val m = SpatialConvolution(nInputPlane,nOutputPlane,kernelW,kernelH,strideW=1,strideH=1,padW=0,padH=0,nGroup=1,propagateBack=true,wRegularizer=null,bRegularizer=null,initWeight=null, initBias=null, initGradWeight=null, initGradBias=null)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">m = SpatialConvolution(n_input_plane,n_output_plane,kernel_w,kernel_h,stride_w=1,stride_h=1,pad_w=0,pad_h=0,n_group=1,propagate_back=True,wRegularizer=None,bRegularizer=None,init_weight=None,init_bias=None,init_grad_weight=None,init_grad_bias=None)
+</code></pre>
+
+<p>SpatialConvolution is a module that applies a 2D convolution over an input image.</p>
+<p>The input tensor in <code>forward(input)</code> is expected to be
+either a 4D tensor (<code>batch x nInputPlane x height x width</code>) or a 3D tensor (<code>nInputPlane x height x width</code>). The convolution is performed on the last two dimensions.</p>
+<p>Detailed paramter explaination for the constructor.</p>
+<ul>
+<li>param nInputPlane: The number of expected input planes in the image given into forward()</li>
+<li>param nOutputPlane: The number of output planes the convolution layer will produce.</li>
+<li>param kernelW: The kernel width of the convolution</li>
+<li>param kernelH: The kernel height of the convolution</li>
+<li>param strideW: The step of the convolution in the width dimension.</li>
+<li>param strideH: The step of the convolution in the height dimension</li>
+<li>param padW:  padding to be added to width to the input.</li>
+<li>param padH: padding to be added to height to the input.</li>
+<li>param nGroup: Kernel group number</li>
+<li>param propagateBack: whether to propagate gradient back</li>
+<li>param wRegularizer: regularizer on weight. an instance of [[Regularizer]] (e.g. L1 or L2)</li>
+<li>param bRegularizer: regularizer on bias. an instance of [[Regularizer]] (e.g. L1 or L2).</li>
+<li>param initWeight: weight initializer</li>
+<li>param initBias:  bias initializer</li>
+<li>param initGradWeight: weight gradient initializer</li>
+<li>param initGradBias: bias gradient initializer</li>
+</ul>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">
+scala&gt;
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor._
+import com.intel.analytics.bigdl.tensor.Storage
+
+val m = SpatialConvolution(2,1,2,2,1,1,0,0)
+m.setInitMethod(weightInitMethod = BilinearFiller, biasInitMethod = Zeros)
+val params = m.getParameters()
+
+scala&gt; print(params)
+(1.0
+0.0
+0.0
+0.0
+1.0
+0.0
+0.0
+0.0
+0.0
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 9],0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 9])
+
+scala&gt;
+val input = Tensor(1,2,3,3).randn()
+val output = m.forward(input)
+val gradOut = Tensor(1,1,2,2).fill(0.2f)
+val gradIn = m.backward(input,gradOut)
+
+scala&gt; print(input)
+(1,1,.,.) =
+-0.37011376     0.13565119      -0.73574775
+-0.19486316     -0.4430604      -0.62543416
+0.7017611       -0.6441595      -1.2953792
+
+(1,2,.,.) =
+-0.9903588      0.5669722       0.2630131
+0.03392942      -0.6984676      -0.12389368
+0.78704715      0.5411976       -1.3877676
+
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x2x3x3]
+
+scala&gt; print(output)
+(1,1,.,.) =
+-1.3604726      0.70262337
+-0.16093373     -1.141528
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x1x2x2]
+
+scala&gt; print(gradOut)
+(1,1,.,.) =
+0.2     0.2
+0.2     0.2
+
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x1x2x2]
+
+scala&gt; print(gradIn)
+(1,1,.,.) =
+0.2     0.2     0.0
+0.2     0.2     0.0
+0.0     0.0     0.0
+
+(1,2,.,.) =
+0.2     0.2     0.0
+0.2     0.2     0.0
+0.0     0.0     0.0
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x3x3]
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
+
+input = np.random.rand(1,3,3,3)
+print &quot;input is :&quot;,input
+
+m = SpatialConvolution(3,1,2,2,1,1,0,0)
+out = m.forward(input)
+print &quot;output m is :&quot;,out
+
+grad_out = np.random.rand(1,1,2,2)
+print &quot;grad out of m is :&quot;,grad_out
+grad_in = m.backward(input,grad_out)
+print &quot;grad input of m is :&quot;,grad_in
+</code></pre>
+
+<p>produces output:</p>
+<pre><code class="python">input is : [[[[ 0.75276617  0.44212513  0.90275949]
+   [ 0.78205279  0.77864714  0.83647254]
+   [ 0.76220944  0.22106036  0.68762202]]
+
+  [[ 0.37346971  0.31532213  0.33276243]
+   [ 0.69872884  0.07262236  0.66372462]
+   [ 0.47803013  0.80194459  0.53313873]]
+
+  [[ 0.56196833  0.20599878  0.47575818]
+   [ 0.35454298  0.96910557  0.36234704]
+   [ 0.64017738  0.95762579  0.50073035]]]]
+creating: createSpatialConvolution
+output m is : [[[[-1.08398974 -0.67615652]
+   [-0.77027249 -0.82885492]]]]
+grad out of m is : [[[[ 0.38295452  0.77048361]
+   [ 0.11671955  0.76357513]]]]
+grad input of m is : [[[[-0.02344826 -0.06515953 -0.03618064]
+   [-0.06770924 -0.22586647 -0.14004168]
+   [-0.01845866 -0.13653883 -0.10325129]]
+
+  [[-0.09294108 -0.14361492  0.08727306]
+   [-0.09885897 -0.21209857  0.29151234]
+   [-0.02149716 -0.10957514  0.20318349]]
+
+  [[-0.05926216 -0.04542646  0.14849319]
+   [-0.09506465 -0.34244278 -0.03763583]
+   [-0.02346931 -0.1815301  -0.18314059]]]]
+</code></pre>
+
 <h2 id="spatialdilatedconvolution">SpatialDilatedConvolution</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val layer = SpatialDilatedConvolution(
@@ -898,6 +681,223 @@ array([[[ 0.1       ,  0.2       ,  0.1       ,  0.2       ],
         [ 0.1       ,  0.2       ,  0.1       ,  0.2       ],
         [ 0.30000001,  0.40000001,  0.30000001,  0.40000001]]], dtype=float32)
 
+</code></pre>
+
+<h2 id="spatialshareconvolution">SpatialShareConvolution</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val layer = SpatialShareConvolution(nInputPlane, nOutputPlane, kW, kH, dW, dH,
+      padW, padH)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">layer = SpatialShareConvolution(nInputPlane, nOutputPlane, kW, kH, dW, dH, padW, padH)
+</code></pre>
+
+<p>Applies a 2D convolution over an input image composed of several input planes.
+ The input tensor in forward(input) is expected to be
+ a 3D tensor (nInputPlane x height x width).</p>
+<p>This layer has been optimized to save memory. If using this layer to construct multiple convolution
+ layers, please add sharing script for the fInput and fGradInput. Please refer to the ResNet example.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">
+    import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+    import com.intel.analytics.bigdl.nn._
+    import com.intel.analytics.bigdl.tensor._
+
+    val nInputPlane = 1
+    val nOutputPlane = 1
+    val kW = 2
+    val kH = 2
+    val dW = 1
+    val dH = 1
+    val padW = 0
+    val padH = 0
+    val layer = SpatialShareConvolution(nInputPlane, nOutputPlane, kW, kH, dW, dH,
+      padW, padH)
+
+    val inputData = Array(
+      1.0, 2, 3, 1,
+      4, 5, 6, 1,
+      7, 8, 9, 1,
+      1.0, 2, 3, 1,
+      4, 5, 6, 1,
+      7, 8, 9, 1,
+      1.0, 2, 3, 1,
+      4, 5, 6, 1,
+      7, 8, 9, 1
+    )
+
+    val kernelData = Array(
+      2.0, 3,
+      4, 5
+    )
+
+    val biasData = Array(0.0)
+
+    layer.weight.copy(Tensor(Storage(kernelData), 1,
+      Array(nOutputPlane, nInputPlane, kH, kW)))
+    layer.bias.copy(Tensor(Storage(biasData), 1, Array(nOutputPlane)))
+
+    val input = Tensor(Storage(inputData), 1, Array(3, 1, 3, 4))
+    val output = layer.updateOutput(input)
+
+    &gt; output
+res2: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+(1,1,.,.) =
+49.0    63.0    38.0
+91.0    105.0   56.0
+
+(2,1,.,.) =
+49.0    63.0    38.0
+91.0    105.0   56.0
+
+(3,1,.,.) =
+49.0    63.0    38.0
+91.0    105.0   56.0
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">nInputPlane = 1
+nOutputPlane = 1
+kW = 2
+kH = 2
+dW = 1
+dH = 1
+padW = 0
+padH = 0
+layer = SpatialShareConvolution(nInputPlane, nOutputPlane, kW, kH, dW, dH, padW, padH)
+
+input = np.array([
+      1.0, 2, 3, 1,
+      4, 5, 6, 1,
+      7, 8, 9, 1,
+      1.0, 2, 3, 1,
+      4, 5, 6, 1,
+      7, 8, 9, 1,
+      1.0, 2, 3, 1,
+      4, 5, 6, 1,
+      7, 8, 9, 1]
+    ).astype(&quot;float32&quot;).reshape(3, 1, 3, 4)
+layer.forward(input)
+
+&gt; print (output)
+array([[[[-3.55372381, -4.0352459 , -2.65861344],
+         [-4.99829054, -5.4798131 , -3.29477644]]],
+
+
+       [[[-3.55372381, -4.0352459 , -2.65861344],
+         [-4.99829054, -5.4798131 , -3.29477644]]],
+
+
+       [[[-3.55372381, -4.0352459 , -2.65861344],
+         [-4.99829054, -5.4798131 , -3.29477644]]]], dtype=float32)
+</code></pre>
+
+<h2 id="spatialconvolutionmap">SpatialConvolutionMap</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val layer = SpatialConvolutionMap(
+  connTable,
+  kW,
+  kH,
+  dW = 1,
+  dH = 1,
+  padW = 0,
+  padH = 0,
+  wRegularizer = null,
+  bRegularizer = null)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">layer = SpatialConvolutionMap(
+  conn_table,
+  kw,
+  kh,
+  dw=1,
+  dh=1,
+  pad_w=0,
+  pad_h=0,
+  wRegularizer=None,
+  bRegularizer=None)
+</code></pre>
+
+<p>This class is a generalization of SpatialConvolution.
+It uses a generic connection table between input and output features.
+The SpatialConvolution is equivalent to using a full connection table.<br />
+A Connection Table is the mapping of input/output feature map, stored in a 2D Tensor. The first column is the input feature maps. The second column is output feature maps.</p>
+<p><strong><em>Full Connection table:</em></strong></p>
+<pre><code class="scala">val conn = SpatialConvolutionMap.full(nin: Int, nout: In)
+</code></pre>
+
+<p><strong><em>One to One connection table:</em></strong></p>
+<pre><code class="scala">val conn = SpatialConvolutionMap.oneToOne(nfeat: Int)
+</code></pre>
+
+<p><strong><em>Random Connection table:</em></strong></p>
+<pre><code class="scala">val conn = SpatialConvolutionMap.random(nin: Int, nout: Int, nto: Int)
+</code></pre>
+
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor._
+
+val conn = SpatialConvolutionMap.oneToOne(3)
+</code></pre>
+
+<p><code>conn</code> is</p>
+<pre><code>conn: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+1.0 1.0
+2.0 2.0
+3.0 3.0
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3x2]
+</code></pre>
+
+<pre><code>val module = SpatialConvolutionMap(SpatialConvolutionMap.oneToOne(3), 2, 2)
+
+pritnln(module.forward(Tensor.range(1, 48, 1).resize(3, 4, 4)))
+</code></pre>
+
+<p>Output is</p>
+<pre><code>com.intel.analytics.bigdl.tensor.Tensor[Float] =
+(1,.,.) =
+4.5230045   5.8323975   7.1417904
+9.760576    11.069969   12.379362
+14.998148   16.30754    17.616934
+
+(2,.,.) =
+-5.6122046  -5.9227824  -6.233361
+-6.8545156  -7.165093   -7.4756703
+-8.096827   -8.407404   -8.71798
+
+(3,.,.) =
+13.534529   13.908197   14.281864
+15.029203   15.402873   15.77654
+16.523876   16.897545   17.271214
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 3x3x3]
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
+
+module = SpatialConvolutionMap(np.array([(1, 1), (2, 2), (3, 3)]), 2, 2)
+
+print(module.forward(np.arange(1, 49, 1).reshape(3, 4, 4)))
+</code></pre>
+
+<p>Output is</p>
+<pre><code>[array([[[-1.24280548, -1.70889318, -2.17498088],
+        [-3.10715604, -3.57324386, -4.03933144],
+        [-4.97150755, -5.43759441, -5.90368223]],
+
+       [[-5.22062826, -5.54696751, -5.87330723],
+        [-6.52598572, -6.85232496, -7.17866373],
+        [-7.8313427 , -8.15768337, -8.48402214]],
+
+       [[ 0.5065825 ,  0.55170798,  0.59683061],
+        [ 0.68707776,  0.73219943,  0.77732348],
+        [ 0.86757064,  0.91269422,  0.95781779]]], dtype=float32)]
 </code></pre>
 
   <br>

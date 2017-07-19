@@ -33,31 +33,31 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "MaskedSelect", url: "#maskedselect", children: [
-          ]},
-          {title: "Identity", url: "#identity", children: [
-          ]},
           {title: "Contiguous", url: "#contiguous", children: [
+          ]},
+          {title: "InferReshape", url: "#inferreshape", children: [
           ]},
           {title: "Replicate", url: "#replicate", children: [
           ]},
+          {title: "Narrow", url: "#narrow", children: [
+          ]},
+          {title: "Identity", url: "#identity", children: [
+          ]},
           {title: "Select", url: "#select", children: [
-          ]},
-          {title: "Index", url: "#index", children: [
-          ]},
-          {title: "View", url: "#view", children: [
-          ]},
-          {title: "Reshape", url: "#reshape", children: [
           ]},
           {title: "Unsqueeze", url: "#unsqueeze", children: [
           ]},
           {title: "Transpose", url: "#transpose", children: [
           ]},
-          {title: "InferReshape", url: "#inferreshape", children: [
+          {title: "Index", url: "#index", children: [
           ]},
-          {title: "Narrow", url: "#narrow", children: [
+          {title: "Reshape", url: "#reshape", children: [
           ]},
           {title: "Reverse", url: "#reverse", children: [
+          ]},
+          {title: "MaskedSelect", url: "#maskedselect", children: [
+          ]},
+          {title: "View", url: "#view", children: [
           ]},
           {title: "Squeeze", url: "#squeeze", children: [
           ]},
@@ -77,93 +77,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="maskedselect">MaskedSelect</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val module = MaskedSelect()
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">module = MaskedSelect()
-</code></pre>
-
-<p>Performs a torch.MaskedSelect on a Tensor. The mask is supplied as a tabular argument
- with the input on the forward and backward passes.</p>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.tensor.Tensor
-import com.intel.analytics.bigdl.utils.T
-import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-import scala.util.Random
-
-
-val layer = MaskedSelect()
-val input1 = Tensor(2, 2).apply1(e =&gt; Random.nextFloat())
-val mask = Tensor(2, 2)
-mask(Array(1, 1)) = 1
-mask(Array(1, 2)) = 0
-mask(Array(2, 1)) = 0
-mask(Array(2, 2)) = 1
-val input = T()
-input(1.0) = input1
-input(2.0) = mask
-&gt; print(layer.forward(input))
-0.2577119
-0.5061479
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.layer import *
-
-layer = MaskedSelect()
-input1 = np.random.rand(2,2)
-mask = np.array([[1,0], [0, 1]])
-&gt;layer.forward([input1, mask])
-array([ 0.1525335 ,  0.05474588], dtype=float32)
-</code></pre>
-
-<h2 id="identity">Identity</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val identity = Identity()
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">identity = Identity()
-</code></pre>
-
-<p>Identity just return input as the output which is useful in same parallel container to get an origin input</p>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.tensor._
-val identity = Identity()
-
-val input = Tensor(3, 3).rand()
-&gt; print(input)
-0.043098174 0.1035049   0.7522675   
-0.9999951   0.794151    0.18344955  
-0.9419861   0.02398399  0.6228095   
-[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3x3]
-
-&gt; print(identity.forward(input))
-0.043098174 0.1035049   0.7522675   
-0.9999951   0.794151    0.18344955  
-0.9419861   0.02398399  0.6228095   
-[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3x3]
-
-
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.layer import *
-identity = Identity()
-&gt;  identity.forward(np.array([[1, 2, 3], [4, 5, 6]]))
-[array([[ 1.,  2.,  3.],
-       [ 4.,  5.,  6.]], dtype=float32)]
-
-</code></pre>
-
-<h2 id="contiguous">Contiguous</h2>
+    <h2 id="contiguous">Contiguous</h2>
 <p>Be used to make input, gradOutput both contiguous</p>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val contiguous = Contiguous()
@@ -239,6 +153,86 @@ print gradInput
 <pre><code>[array([[ 2.,  3.,  4.,  5.,  6.]], dtype=float32)]
 </code></pre>
 
+<h2 id="inferreshape">InferReshape</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val layer = InferReshape(size, batchMode = false)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">layer = InferReshape(size, batch_mode=False)
+</code></pre>
+
+<p>Reshape the input tensor with automatic size inference support.
+Positive numbers in the <code>size</code> argument are used to reshape the input to the
+corresponding dimension size.</p>
+<p>There are also two special values allowed in <code>size</code>:</p>
+<ol>
+<li><code>0</code> means keep the corresponding dimension size of the input unchanged.
+      i.e., if the 1st dimension size of the input is 2,
+      the 1st dimension size of output will be set as 2 as well.</li>
+<li><code>-1</code> means infer this dimension size from other dimensions.
+      This dimension size is calculated by keeping the amount of output elements
+      consistent with the input.
+      Only one <code>-1</code> is allowable in <code>size</code>.</li>
+</ol>
+<p>For example,</p>
+<pre><code>   Input tensor with size: (4, 5, 6, 7)
+   -&gt; InferReshape(Array(4, 0, 3, -1))
+   Output tensor with size: (4, 5, 3, 14)
+</code></pre>
+
+<p>The 1st and 3rd dim are set to given sizes, keep the 2nd dim unchanged,
+and inferred the last dim as 14.</p>
+<p><strong>Parameters:</strong></p>
+<p><strong>size</strong>      -the target tensor size</p>
+<p><strong>batchMode</strong> -whether in batch mode</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.InferReshape
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.numeric.NumericFloat
+
+val layer = InferReshape(Array(0, 3, -1))
+val input = Tensor(1, 2, 3).rand()
+val gradOutput = Tensor(1, 3, 2).rand()
+
+val output = layer.forward(input)
+val grad = layer.backward(input, gradOutput)
+
+println(output)
+(1,.,.) =
+0.8170822   0.40073588
+0.49389255  0.3782435
+0.42660004  0.5917206
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x3x2]
+
+println(grad)
+(1,.,.) =
+0.8294597   0.57101834  0.90910035
+0.32783163  0.30494633  0.7339092
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x3]
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">layer = InferReshape([0, 3, -1])
+input = np.random.rand(1, 2, 3)
+
+gradOutput = np.random.rand(1, 3, 2)
+
+output = layer.forward(input)
+grad = layer.backward(input, gradOutput)
+
+print output
+[[[ 0.68635464  0.21277553]
+  [ 0.13390459  0.65662414]
+  [ 0.1021723   0.92319047]]]
+
+print grad
+[[[ 0.84927064  0.55205333  0.25077972]
+  [ 0.76105869  0.30828172  0.1237276 ]]]
+</code></pre>
+
 <h2 id="replicate">Replicate</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val module = Replicate(
@@ -310,6 +304,114 @@ print(module.forward(np.arange(1, 7, 1).reshape(1, 2, 3)))
          [ 4.,  5.,  6.]]]], dtype=float32)]
 </code></pre>
 
+<h2 id="narrow">Narrow</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val layer = Narrow(dimension, offset, length = 1)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">layer = Narrow(dimension, offset, length=1)
+</code></pre>
+
+<p>Narrow is an application of narrow operation in a module.
+The module further supports a negative length in order to handle inputs with an unknown size.</p>
+<p><strong>Parameters:</strong></p>
+<p><strong>dimension</strong> -narrow along this dimension</p>
+<p><strong>offset</strong> -the start index on the given dimension</p>
+<p><strong>length</strong> -length to narrow, default value is 1</p>
+<p><strong>Scala Example</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.Narrow
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.numeric.NumericFloat
+import com.intel.analytics.bigdl.utils.T
+
+val layer = Narrow(2, 2)
+val input = Tensor(T(
+  T(-1f, 2f, 3f),
+  T(-2f, 3f, 4f),
+  T(-3f, 4f, 5f)
+))
+
+val gradOutput = Tensor(T(3f, 4f, 5f))
+
+val output = layer.forward(input)
+2.0
+3.0
+4.0
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 3x1]
+
+val grad = layer.backward(input, gradOutput)
+0.0 3.0 0.0
+0.0 4.0 0.0
+0.0 5.0 0.0
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 3x3]
+</code></pre>
+
+<p><strong>Python Example</strong></p>
+<pre><code class="python">layer = Narrow(2, 2)
+input = np.array([
+  [-1.0, 2.0, 3.0],
+  [-2.0, 3.0, 4.0],
+  [-3.0, 4.0, 5.0]
+])
+
+gradOutput = np.array([3.0, 4.0, 5.0])
+
+output = layer.forward(input)
+grad = layer.backward(input, gradOutput)
+
+print output
+[[ 2.]
+ [ 3.]
+ [ 4.]]
+
+print grad
+[[ 0.  3.  0.]
+ [ 0.  4.  0.]
+ [ 0.  5.  0.]]
+</code></pre>
+
+<h2 id="identity">Identity</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val identity = Identity()
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">identity = Identity()
+</code></pre>
+
+<p>Identity just return input as the output which is useful in same parallel container to get an origin input</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor._
+val identity = Identity()
+
+val input = Tensor(3, 3).rand()
+&gt; print(input)
+0.043098174 0.1035049   0.7522675   
+0.9999951   0.794151    0.18344955  
+0.9419861   0.02398399  0.6228095   
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3x3]
+
+&gt; print(identity.forward(input))
+0.043098174 0.1035049   0.7522675   
+0.9999951   0.794151    0.18344955  
+0.9419861   0.02398399  0.6228095   
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3x3]
+
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+identity = Identity()
+&gt;  identity.forward(np.array([[1, 2, 3], [4, 5, 6]]))
+[array([[ 1.,  2.,  3.],
+       [ 4.,  5.,  6.]], dtype=float32)]
+
+</code></pre>
+
 <h2 id="select">Select</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val layer = Select(dim, index)
@@ -376,180 +478,6 @@ layer.backward(np.array([
 array([[ 0.        ,  0.        ,  0.        ],
        [ 0.1       ,  0.2       ,  0.30000001],
        [ 0.        ,  0.        ,  0.        ]], dtype=float32)
-</code></pre>
-
-<h2 id="index">Index</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val model = Index(dimension)
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">model = Index(dimension)
-</code></pre>
-
-<p>Applies the Tensor index operation along the given dimension.</p>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.tensor.Tensor
-import com.intel.analytics.bigdl.utils.T
-
-val input1 = Tensor(3).rand()
-val input2 = Tensor(4)
-input2(Array(1)) = 1.0f
-input2(Array(2)) = 2.0f
-input2(Array(3)) = 2.0f
-input2(Array(4)) = 3.0f
-
-val input = T(input1, input2)
-val model = Index(1)
-val output = model.forward(input)
-
-scala&gt; print(input)
- {
-    2: 1.0
-       2.0
-       2.0
-       3.0
-       [com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 4]
-    1: 0.124325536
-       0.8768922
-       0.6378146
-       [com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3]
- }
-scala&gt; print(output)
-0.124325536
-0.8768922
-0.8768922
-0.6378146
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 4]
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.layer import *
-import numpy as np
-
-input1 = np.random.randn(3)
-input2 = np.array([1, 2, 2, 3])
-input = [input1, input2]
-
-model = Index(1)
-output = model.forward(input)
-
-&gt;&gt;&gt; print(input)
-[array([-0.45804847, -0.20176707,  0.50963248]), array([1, 2, 2, 3])]
-
-&gt;&gt;&gt; print(output)
-[-0.45804846 -0.20176707 -0.20176707  0.50963247]
-</code></pre>
-
-<h2 id="view">View</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val view = View(2, 8)
-</code></pre>
-
-<p>or</p>
-<pre><code>val view = View(Array(2, 8))
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">view = View([2, 8])
-</code></pre>
-
-<p>This module creates a new view of the input tensor using the sizes passed to the constructor.
-The method setNumInputDims() allows to specify the expected number of dimensions of the inputs
-of the modules. This makes it possible to use minibatch inputs
-when using a size -1 for one of the dimensions.</p>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.nn.View
-import com.intel.analytics.bigdl.tensor.Tensor
-import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-
-val view = View(2, 8)
-
-val input = Tensor(4, 4).randn()
-val gradOutput = Tensor(2, 8).randn()
-
-val output = view.forward(input)
-val gradInput = view.backward(input, gradOutput)
-</code></pre>
-
-<p>The output is,</p>
-<pre><code>output: com.intel.analytics.bigdl.tensor.Tensor[Float] =
--0.43037438     1.2982363       -1.4723133      -0.2602826      0.7178128       -1.8763185      0.88629466      0.8346704
-0.20963766      -0.9349786      1.0376515       1.3153045       1.5450214       1.084113        -0.29929757     -0.18356979
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x8]
-</code></pre>
-
-<p>The gradInput is,</p>
-<pre><code>gradInput: com.intel.analytics.bigdl.tensor.Tensor[Float] =
-0.7360089       0.9133299       0.40443268      -0.94965595
-0.80520976      -0.09671917     -0.5498001      -0.098691925
--2.3119886      -0.8455147      0.75891125      1.2985301
-0.5023749       1.4983269       0.42038065      -1.7002305
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.layer import *
-from bigdl.nn.criterion import *
-from bigdl.optim.optimizer import *
-from bigdl.util.common import *
-
-view = View([2, 8])
-
-input = np.random.uniform(0, 1, [4, 4]).astype(&quot;float32&quot;)
-gradOutput = np.random.uniform(0, 1, [2, 8]).astype(&quot;float32&quot;)
-
-output = view.forward(input)
-gradInput = view.backward(input, gradOutput)
-
-print output
-print gradInput
-</code></pre>
-
-<h2 id="reshape">Reshape</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val reshape = Reshape(size, batchMode)
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">reshape = Reshape(size, batch_mode)
-</code></pre>
-
-<p>The <code>forward(input)</code> reshape the input tensor into <code>size(0) * size(1) * ...</code> tensor,
-taking the elements row-wise.</p>
-<p><strong>parameters</strong>
-<em> <strong>size</strong> - the size after reshape
-</em> <strong>batchMode</strong> - It is a optional argument. If it is set to <code>Some(true)</code>,
-                  the first dimension of input is considered as batch dimension,
-                  and thus keep this dimension size fixed. This is necessary
-                  when dealing with batch sizes of one. When set to <code>Some(false)</code>,
-                  it forces the entire input (including the first dimension) to be reshaped
-                  to the input size. Default is <code>None</code>, which means the module considers
-                  inputs with more elements than the product of provided sizes (size(0) *
-                  size(1) * ..) to be batches, otherwise in no batch mode.</p>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.utils.T
-import com.intel.analytics.bigdl.tensor.Tensor
-import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-
-val reshape = Reshape(Array(3, 2))
-val input = Tensor(2, 2, 3).rand()
-val output = reshape.forward(input)
--&gt; print(output.size().toList)      
-List(2, 3, 2)
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.layer import *
-from bigdl.nn.criterion import *
-import numpy as np
-reshape =  Reshape([3, 2])
-input = np.random.rand(2, 2, 3)
-output = reshape.forward(input)
--&gt; print output[0].shape
-(2, 3, 2)
 </code></pre>
 
 <h2 id="unsqueeze">Unsqueeze</h2>
@@ -662,151 +590,114 @@ output = layer.forward(input)
 
 </code></pre>
 
-<h2 id="inferreshape">InferReshape</h2>
+<h2 id="index">Index</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val layer = InferReshape(size, batchMode = false)
+<pre><code class="scala">val model = Index(dimension)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">layer = InferReshape(size, batch_mode=False)
+<pre><code class="python">model = Index(dimension)
 </code></pre>
 
-<p>Reshape the input tensor with automatic size inference support.
-Positive numbers in the <code>size</code> argument are used to reshape the input to the
-corresponding dimension size.</p>
-<p>There are also two special values allowed in <code>size</code>:</p>
-<ol>
-<li><code>0</code> means keep the corresponding dimension size of the input unchanged.
-      i.e., if the 1st dimension size of the input is 2,
-      the 1st dimension size of output will be set as 2 as well.</li>
-<li><code>-1</code> means infer this dimension size from other dimensions.
-      This dimension size is calculated by keeping the amount of output elements
-      consistent with the input.
-      Only one <code>-1</code> is allowable in <code>size</code>.</li>
-</ol>
-<p>For example,</p>
-<pre><code>   Input tensor with size: (4, 5, 6, 7)
-   -&gt; InferReshape(Array(4, 0, 3, -1))
-   Output tensor with size: (4, 5, 3, 14)
-</code></pre>
-
-<p>The 1st and 3rd dim are set to given sizes, keep the 2nd dim unchanged,
-and inferred the last dim as 14.</p>
-<p><strong>Parameters:</strong></p>
-<p><strong>size</strong>      -the target tensor size</p>
-<p><strong>batchMode</strong> -whether in batch mode</p>
+<p>Applies the Tensor index operation along the given dimension.</p>
 <p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.nn.InferReshape
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
 import com.intel.analytics.bigdl.tensor.Tensor
-import com.intel.analytics.bigdl.numeric.NumericFloat
+import com.intel.analytics.bigdl.utils.T
 
-val layer = InferReshape(Array(0, 3, -1))
-val input = Tensor(1, 2, 3).rand()
-val gradOutput = Tensor(1, 3, 2).rand()
+val input1 = Tensor(3).rand()
+val input2 = Tensor(4)
+input2(Array(1)) = 1.0f
+input2(Array(2)) = 2.0f
+input2(Array(3)) = 2.0f
+input2(Array(4)) = 3.0f
 
-val output = layer.forward(input)
-val grad = layer.backward(input, gradOutput)
+val input = T(input1, input2)
+val model = Index(1)
+val output = model.forward(input)
 
-println(output)
-(1,.,.) =
-0.8170822   0.40073588
-0.49389255  0.3782435
-0.42660004  0.5917206
-
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x3x2]
-
-println(grad)
-(1,.,.) =
-0.8294597   0.57101834  0.90910035
-0.32783163  0.30494633  0.7339092
-
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x3]
+scala&gt; print(input)
+ {
+    2: 1.0
+       2.0
+       2.0
+       3.0
+       [com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 4]
+    1: 0.124325536
+       0.8768922
+       0.6378146
+       [com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3]
+ }
+scala&gt; print(output)
+0.124325536
+0.8768922
+0.8768922
+0.6378146
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 4]
 </code></pre>
 
 <p><strong>Python example:</strong></p>
-<pre><code class="python">layer = InferReshape([0, 3, -1])
-input = np.random.rand(1, 2, 3)
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
 
-gradOutput = np.random.rand(1, 3, 2)
+input1 = np.random.randn(3)
+input2 = np.array([1, 2, 2, 3])
+input = [input1, input2]
 
-output = layer.forward(input)
-grad = layer.backward(input, gradOutput)
+model = Index(1)
+output = model.forward(input)
 
-print output
-[[[ 0.68635464  0.21277553]
-  [ 0.13390459  0.65662414]
-  [ 0.1021723   0.92319047]]]
+&gt;&gt;&gt; print(input)
+[array([-0.45804847, -0.20176707,  0.50963248]), array([1, 2, 2, 3])]
 
-print grad
-[[[ 0.84927064  0.55205333  0.25077972]
-  [ 0.76105869  0.30828172  0.1237276 ]]]
+&gt;&gt;&gt; print(output)
+[-0.45804846 -0.20176707 -0.20176707  0.50963247]
 </code></pre>
 
-<h2 id="narrow">Narrow</h2>
+<h2 id="reshape">Reshape</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val layer = Narrow(dimension, offset, length = 1)
+<pre><code class="scala">val reshape = Reshape(size, batchMode)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">layer = Narrow(dimension, offset, length=1)
+<pre><code class="python">reshape = Reshape(size, batch_mode)
 </code></pre>
 
-<p>Narrow is an application of narrow operation in a module.
-The module further supports a negative length in order to handle inputs with an unknown size.</p>
-<p><strong>Parameters:</strong></p>
-<p><strong>dimension</strong> -narrow along this dimension</p>
-<p><strong>offset</strong> -the start index on the given dimension</p>
-<p><strong>length</strong> -length to narrow, default value is 1</p>
-<p><strong>Scala Example</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.nn.Narrow
-import com.intel.analytics.bigdl.tensor.Tensor
-import com.intel.analytics.bigdl.numeric.NumericFloat
+<p>The <code>forward(input)</code> reshape the input tensor into <code>size(0) * size(1) * ...</code> tensor,
+taking the elements row-wise.</p>
+<p><strong>parameters</strong>
+<em> <strong>size</strong> - the size after reshape
+</em> <strong>batchMode</strong> - It is a optional argument. If it is set to <code>Some(true)</code>,
+                  the first dimension of input is considered as batch dimension,
+                  and thus keep this dimension size fixed. This is necessary
+                  when dealing with batch sizes of one. When set to <code>Some(false)</code>,
+                  it forces the entire input (including the first dimension) to be reshaped
+                  to the input size. Default is <code>None</code>, which means the module considers
+                  inputs with more elements than the product of provided sizes (size(0) *
+                  size(1) * ..) to be batches, otherwise in no batch mode.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
 import com.intel.analytics.bigdl.utils.T
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
 
-val layer = Narrow(2, 2)
-val input = Tensor(T(
-  T(-1f, 2f, 3f),
-  T(-2f, 3f, 4f),
-  T(-3f, 4f, 5f)
-))
-
-val gradOutput = Tensor(T(3f, 4f, 5f))
-
-val output = layer.forward(input)
-2.0
-3.0
-4.0
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 3x1]
-
-val grad = layer.backward(input, gradOutput)
-0.0 3.0 0.0
-0.0 4.0 0.0
-0.0 5.0 0.0
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 3x3]
+val reshape = Reshape(Array(3, 2))
+val input = Tensor(2, 2, 3).rand()
+val output = reshape.forward(input)
+-&gt; print(output.size().toList)      
+List(2, 3, 2)
 </code></pre>
 
-<p><strong>Python Example</strong></p>
-<pre><code class="python">layer = Narrow(2, 2)
-input = np.array([
-  [-1.0, 2.0, 3.0],
-  [-2.0, 3.0, 4.0],
-  [-3.0, 4.0, 5.0]
-])
-
-gradOutput = np.array([3.0, 4.0, 5.0])
-
-output = layer.forward(input)
-grad = layer.backward(input, gradOutput)
-
-print output
-[[ 2.]
- [ 3.]
- [ 4.]]
-
-print grad
-[[ 0.  3.  0.]
- [ 0.  4.  0.]
- [ 0.  5.  0.]]
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+from bigdl.nn.criterion import *
+import numpy as np
+reshape =  Reshape([3, 2])
+input = np.random.rand(2, 2, 3)
+output = reshape.forward(input)
+-&gt; print output[0].shape
+(2, 3, 2)
 </code></pre>
 
 <h2 id="reverse">Reverse</h2>
@@ -865,6 +756,115 @@ output:
  [ 0.89089715  0.07629756  0.30863783]]
 
 
+</code></pre>
+
+<h2 id="maskedselect">MaskedSelect</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val module = MaskedSelect()
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">module = MaskedSelect()
+</code></pre>
+
+<p>Performs a torch.MaskedSelect on a Tensor. The mask is supplied as a tabular argument
+ with the input on the forward and backward passes.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.utils.T
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import scala.util.Random
+
+
+val layer = MaskedSelect()
+val input1 = Tensor(2, 2).apply1(e =&gt; Random.nextFloat())
+val mask = Tensor(2, 2)
+mask(Array(1, 1)) = 1
+mask(Array(1, 2)) = 0
+mask(Array(2, 1)) = 0
+mask(Array(2, 2)) = 1
+val input = T()
+input(1.0) = input1
+input(2.0) = mask
+&gt; print(layer.forward(input))
+0.2577119
+0.5061479
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+
+layer = MaskedSelect()
+input1 = np.random.rand(2,2)
+mask = np.array([[1,0], [0, 1]])
+&gt;layer.forward([input1, mask])
+array([ 0.1525335 ,  0.05474588], dtype=float32)
+</code></pre>
+
+<h2 id="view">View</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val view = View(2, 8)
+</code></pre>
+
+<p>or</p>
+<pre><code>val view = View(Array(2, 8))
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">view = View([2, 8])
+</code></pre>
+
+<p>This module creates a new view of the input tensor using the sizes passed to the constructor.
+The method setNumInputDims() allows to specify the expected number of dimensions of the inputs
+of the modules. This makes it possible to use minibatch inputs
+when using a size -1 for one of the dimensions.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.View
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val view = View(2, 8)
+
+val input = Tensor(4, 4).randn()
+val gradOutput = Tensor(2, 8).randn()
+
+val output = view.forward(input)
+val gradInput = view.backward(input, gradOutput)
+</code></pre>
+
+<p>The output is,</p>
+<pre><code>output: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+-0.43037438     1.2982363       -1.4723133      -0.2602826      0.7178128       -1.8763185      0.88629466      0.8346704
+0.20963766      -0.9349786      1.0376515       1.3153045       1.5450214       1.084113        -0.29929757     -0.18356979
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x8]
+</code></pre>
+
+<p>The gradInput is,</p>
+<pre><code>gradInput: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+0.7360089       0.9133299       0.40443268      -0.94965595
+0.80520976      -0.09671917     -0.5498001      -0.098691925
+-2.3119886      -0.8455147      0.75891125      1.2985301
+0.5023749       1.4983269       0.42038065      -1.7002305
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+from bigdl.nn.criterion import *
+from bigdl.optim.optimizer import *
+from bigdl.util.common import *
+
+view = View([2, 8])
+
+input = np.random.uniform(0, 1, [4, 4]).astype(&quot;float32&quot;)
+gradOutput = np.random.uniform(0, 1, [2, 8]).astype(&quot;float32&quot;)
+
+output = view.forward(input)
+gradInput = view.backward(input, gradOutput)
+
+print output
+print gradInput
 </code></pre>
 
 <h2 id="squeeze">Squeeze</h2>
