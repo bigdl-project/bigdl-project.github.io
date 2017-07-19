@@ -36,17 +36,21 @@
     
 
     {# Logo and title #}
-    <a href="{{ name }}" class="wm-top-brand wm-top-link wm-vcenter">
-      {% if config.extra.logo %}
-        <img class="wm-top-logo" src="{{ base_url }}/{{ config.extra.logo }}"/>
-      {% endif %}
+    <div>
       <div class="wm-top-title">
-        {{ config.site_name }}
-        {% if config.extra.version %}
-          <select id="versions" class="wm-top-more wm-top-version-select" onchange="javascript:switchVersion(this)">
-          </select>
-        {% endif %}
+        <a href="{{ name }}" class="wm-top-brand wm-top-link wm-vcenter ">
+          {% if config.extra.logo %}
+            <img class="wm-top-logo" src="{{ base_url }}/{{ config.extra.logo }}"/>
+          {% endif %}
+          {{ config.site_name }}
+        </a>
       </div>
-    </a>
+      {% if config.extra.version %}
+      <div class="wm-top-title">
+          <select id="versions" class="wm-top-link wm-top-more wm-top-version-select" onchange="javascript:switchVersion(this)">
+          </select>
+      </div>
+      {% endif %}
+    </div>
   </div>
 </nav>
