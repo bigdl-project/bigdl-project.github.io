@@ -33,6 +33,7 @@
       </div>
     </div>
     {% endif %}
+    
 
     {# Logo and title #}
     <a href="{{ name }}" class="wm-top-brand wm-top-link wm-vcenter">
@@ -40,9 +41,10 @@
         <img class="wm-top-logo" src="{{ base_url }}/{{ config.extra.logo }}"/>
       {% endif %}
       <div class="wm-top-title">
-        {{ config.site_name }} &nbsp
+        {{ config.site_name }}
         {% if config.extra.version %}
-          <span class="wm-top-version">{{ config.extra.version }}</span>
+          <select id="versions" class="wm-top-more wm-top-version-select" onchange="javascript:switchVersion(this)">
+          </select>
         {% endif %}
       </div>
     </a>
