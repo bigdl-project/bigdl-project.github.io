@@ -1891,6 +1891,11 @@ You need to invoke collect() to trigger those action         as the returning re
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="bigdl.nn.layer.Layer.save_caffe">
+<code class="descname">save_caffe</code><span class="sig-paren">(</span><em>prototxt_path</em>, <em>model_path</em>, <em>use_v2=True</em>, <em>overwrite=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.save_caffe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.save_caffe" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="bigdl.nn.layer.Layer.setBRegularizer">
 <code class="descname">setBRegularizer</code><span class="sig-paren">(</span><em>bRegularizer</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.setBRegularizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.setBRegularizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>set bias regularizer
@@ -2325,7 +2330,7 @@ module in the back propagation.</p>
 <p>All inputs should be able to connect to outputs through some paths in the graph.
 It is allowed that some successors of the inputs node are not connect to outputs.
 If so, these nodes will be excluded in the computation.</p>
-<p>We also support initialzing a Graph directly from a tensorflow module. In this case, you should
+<p>We also support initializing a Graph directly from a tensorflow module. In this case, you should
 pass your tensorflow nodes as inputs and outputs and also specify the byte_order parameter (“little_endian”
 or “big_endian”) and node_type parameter (“bigdl” or “tensorflow”)
 node_type parameter.</p>
@@ -2368,6 +2373,27 @@ node_type parameter.</p>
 </dd></dl>
 
 <dl class="staticmethod">
+<dt id="bigdl.nn.layer.Model.load_caffe_model">
+<em class="property">static </em><code class="descname">load_caffe_model</code><span class="sig-paren">(</span><em>defPath</em>, <em>modelPath</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.load_caffe_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.load_caffe_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a pre-trained Caffe model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>defPath</strong> – The path containing the caffe model definition.</li>
+<li><strong>modelPath</strong> – The path containing the pre-trained caffe model.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A pre-trained model.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
 <dt id="bigdl.nn.layer.Model.load_tensorflow">
 <em class="property">static </em><code class="descname">load_tensorflow</code><span class="sig-paren">(</span><em>path</em>, <em>inputs</em>, <em>outputs</em>, <em>byte_order='little_endian'</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.load_tensorflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.load_tensorflow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a pre-trained Tensorflow model.
@@ -2389,6 +2415,22 @@ node_type parameter.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="bigdl.nn.layer.Model.save_tensorflow">
+<em class="property">static </em><code class="descname">save_tensorflow</code><span class="sig-paren">(</span><em>model</em>, <em>inputs</em>, <em>path</em>, <em>byte_order='little_endian'</em>, <em>data_format='nhwc'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.save_tensorflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.save_tensorflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a model to protobuf files so that it can be used in tensorflow inference.</p>
+<p>When saving the model, placeholders will be added to the tf model as input nodes. So
+you need to pass in the names and shapes of the placeholders. BigDL model doesn’t have
+such information. The order of the placeholder information should be same as the inputs
+of the graph model.
+:param model: the model to be saved
+:param inputs: placeholder information, should be an array of tuples (input_name, shape)
+where ‘input_name’ is a string and shape is an array of integer
+:param path: the path to be saved to
+:param byte_order: model byte order
+:param data_format: model data format, should be “nhwc” or “nchw”</p>
 </dd></dl>
 
 </dd></dl>
@@ -3400,9 +3442,18 @@ It can be changed by calling :ceil() or :floor() methods.</p>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.SpatialShareConvolution">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialShareConvolution</code><span class="sig-paren">(</span><em>n_input_plane</em>, <em>n_output_plane</em>, <em>kernel_w</em>, <em>kernel_h</em>, <em>stride_w=1</em>, <em>stride_h=1</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>n_group=1</em>, <em>propagate_back=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialShareConvolution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialShareConvolution" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialShareConvolution</code><span class="sig-paren">(</span><em>n_input_plane</em>, <em>n_output_plane</em>, <em>kernel_w</em>, <em>kernel_h</em>, <em>stride_w=1</em>, <em>stride_h=1</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>n_group=1</em>, <em>propagate_back=True</em>, <em>wRegularizer=None</em>, <em>bRegularizer=None</em>, <em>init_weight=None</em>, <em>init_bias=None</em>, <em>init_grad_weight=None</em>, <em>init_grad_bias=None</em>, <em>with_bias=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialShareConvolution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialShareConvolution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spatialShareConvolution</span> <span class="o">=</span> <span class="n">SpatialShareConvolution</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">creating: createSpatialShareConvolution</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">init_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">init_bias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">init_grad_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">init_grad_bias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">12</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conv</span> <span class="o">=</span> <span class="n">SpatialShareConvolution</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">init_weight</span><span class="p">,</span> <span class="n">init_bias</span><span class="p">,</span> <span class="n">init_grad_weight</span><span class="p">,</span> <span class="n">init_grad_bias</span><span class="p">)</span>
+<span class="go">creating: createL1Regularizer</span>
+<span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createSpatialShareConvolution</span>
 </pre></div>
 </div>

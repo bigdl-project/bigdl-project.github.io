@@ -39,13 +39,11 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Class that represents the features and labels of a data sample.</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>numeric type
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Class that represents the features and labels of a data sample.
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>numeric type
 </p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="TensorSample.html" class="extype" name="com.intel.analytics.bigdl.dataset.TensorSample">TensorSample</a></div>
         </div></div>
         
 
@@ -103,34 +101,79 @@
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="com.intel.analytics.bigdl.dataset.Sample#copy" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="copy(other:com.intel.analytics.bigdl.dataset.Sample[T]):Sample.this.type"></a>
-      <a id="copy(Sample[T]):Sample.this.type"></a>
+              <ol><li name="com.intel.analytics.bigdl.dataset.Sample#featureLength" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="featureLength(index:Int):Int"></a>
+      <a id="featureLength(Int):Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">copy</span><span class="params">(<span name="other">other: <a href="" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Sample.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>.this.type</span>
+        <span class="name">featureLength</span><span class="params">(<span name="index">index: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Copy other Sample's data to this Sample</p><div class="fullcomment"><div class="comment cmt"><p>Copy other Sample's data to this Sample</p></div><dl class="paramcmts block"><dt class="param">other</dt><dd class="cmt"><p>Sample to be copied.</p></dd><dt>returns</dt><dd class="cmt"><p>this
+      <p class="shortcomment cmt">First dimension length of index-th feature.</p><div class="fullcomment"><div class="comment cmt"><p>First dimension length of index-th feature.
+This function could be used to sort samples in <a href="DataSet$.html" class="extype" name="com.intel.analytics.bigdl.dataset.DataSet">DataSet</a>.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.dataset.Sample#featureLength" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="featureLength():Int"></a>
-      <a id="featureLength():Int"></a>
+    </li><li name="com.intel.analytics.bigdl.dataset.Sample#getData" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="getData():Array[T]"></a>
+      <a id="getData():Array[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">featureLength</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+        <span class="name">getData</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Sample.T">T</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Length of the feature.</p><div class="fullcomment"><div class="comment cmt"><p>Length of the feature.
-This function could be used to sort samples in <a href="DataSet$.html" class="extype" name="com.intel.analytics.bigdl.dataset.DataSet">DataSet</a>.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+      <p class="shortcomment cmt">Get data</p><div class="fullcomment"><div class="comment cmt"><p>Get data</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>data
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.dataset.Sample#getFeatureSize" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="getFeatureSize():Array[Array[Int]]"></a>
+      <a id="getFeatureSize():Array[Array[Int]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getFeatureSize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get feature sizes</p><div class="fullcomment"><div class="comment cmt"><p>Get feature sizes</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>feature sizes
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.dataset.Sample#getLabelSize" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="getLabelSize():Array[Array[Int]]"></a>
+      <a id="getLabelSize():Array[Array[Int]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getLabelSize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get label sizes</p><div class="fullcomment"><div class="comment cmt"><p>Get label sizes</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>label sizes
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.dataset.Sample#labelLength" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="labelLength(index:Int):Int"></a>
+      <a id="labelLength(Int):Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">labelLength</span><span class="params">(<span name="index">index: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">First dimension length of index-th label.</p><div class="fullcomment"><div class="comment cmt"><p>First dimension length of index-th label.
+This function could be used to find the longest label.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.dataset.Sample#numFeature" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="numFeature():Int"></a>
@@ -144,7 +187,9 @@ This function could be used to sort samples in <a href="DataSet$.html" class="ex
         <span class="name">numFeature</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Number of tensors in feature</p><div class="fullcomment"><div class="comment cmt"><p>Number of tensors in feature</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>number of tensors in feature
+      <p class="shortcomment cmt">Number of tensors in feature
+</p><div class="fullcomment"><div class="comment cmt"><p>Number of tensors in feature
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>number of tensors in feature
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.dataset.Sample#numLabel" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="numLabel():Int"></a>
@@ -158,8 +203,27 @@ This function could be used to sort samples in <a href="DataSet$.html" class="ex
         <span class="name">numLabel</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Number of tensors in label</p><div class="fullcomment"><div class="comment cmt"><p>Number of tensors in label</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>number of tensors in label
+      <p class="shortcomment cmt">Number of tensors in label
+</p><div class="fullcomment"><div class="comment cmt"><p>Number of tensors in label
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>number of tensors in label
 </p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.dataset.Sample#set" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="set(featureData:Array[T],labelData:Array[T],featureSize:Array[Int],labelSize:Array[Int])(implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.dataset.Sample[T]"></a>
+      <a id="set(Array[T],Array[T],Array[Int],Array[Int])(TensorNumeric[T]):Sample[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Old interface">set</span><span class="params">(<span name="featureData">featureData: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Sample.T">T</span>]</span>, <span name="labelData">labelData: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Sample.T">T</span>]</span>, <span name="featureSize">featureSize: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="labelSize">labelSize: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Sample.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Sample.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set data of feature and label.</p><div class="fullcomment"><div class="comment cmt"><p>Set data of feature and label.</p></div><dl class="paramcmts block"><dt class="param">featureData</dt><dd class="cmt"></dd><dt class="param">labelData</dt><dd class="cmt"></dd><dt class="param">featureSize</dt><dd class="cmt"></dd><dt class="param">labelSize</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.2.0)</i> Old interface</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -255,7 +319,7 @@ This function could be used to sort samples in <a href="DataSet$.html" class="ex
         <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>.this.type</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Deep clone</p><div class="fullcomment"><div class="comment cmt"><p>Deep clone</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a deep clone
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>A deep clone
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a> → AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
@@ -471,50 +535,40 @@ This function could be used to sort samples in <a href="DataSet$.html" class="ex
         <div id="values" class="values members">
               <h3>Deprecated Value Members</h3>
               <ol><li name="com.intel.analytics.bigdl.dataset.Sample#feature" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="feature():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="feature():Tensor[T]"></a>
+      <a id="feature()(implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="feature()(TensorNumeric[T]):Tensor[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Old interface">feature</span><span class="params">()</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Sample.T">T</span>]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Old interface">feature</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Sample.T">T</span>]</span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Sample.T">T</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Get feature tensor, for one feature Sample only.</p><div class="fullcomment"><div class="comment cmt"><p>Get feature tensor, for one feature Sample only.
+You don't need to override this, because we have add
+a default implement to throw exception.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>feature tensor
+</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.2.0)</i> Old interface</p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.dataset.Sample#label" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="label():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="label():Tensor[T]"></a>
+      <a id="label()(implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="label()(TensorNumeric[T]):Tensor[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Old interface">label</span><span class="params">()</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Sample.T">T</span>]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Old interface">label</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Sample.T">T</span>]</span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Sample.T">T</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.2.0)</i> Old interface</p></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.dataset.Sample#set" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="set(featureData:Array[T],labelData:Array[T],featureSize:Array[Int],labelSize:Array[Int]):com.intel.analytics.bigdl.dataset.Sample[T]"></a>
-      <a id="set(Array[T],Array[T],Array[Int],Array[Int]):Sample[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Old interface">set</span><span class="params">(<span name="featureData">featureData: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Sample.T">T</span>]</span>, <span name="labelData">labelData: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Sample.T">T</span>]</span>, <span name="featureSize">featureSize: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="labelSize">labelSize: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Sample.T">T</span>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Get label tensor, for one label Sample only.</p><div class="fullcomment"><div class="comment cmt"><p>Get label tensor, for one label Sample only.
+You don't need to override this, because we have add
+a default implement to throw exception.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>label tensor
+</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.2.0)</i> Old interface</p></dd></dl></div>

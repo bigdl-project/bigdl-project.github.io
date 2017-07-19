@@ -406,6 +406,19 @@ Such as runningMean and runningVar of BatchNormalization.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent">BiRecurrent</a> → <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#evaluate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="evaluate(dataSet:com.intel.analytics.bigdl.dataset.LocalDataSet[com.intel.analytics.bigdl.dataset.MiniBatch[T]],vMethods:Array[com.intel.analytics.bigdl.optim.ValidationMethod[T]]):Array[(com.intel.analytics.bigdl.optim.ValidationResult,com.intel.analytics.bigdl.optim.ValidationMethod[T])]"></a>
+      <a id="evaluate(LocalDataSet[MiniBatch[T]],Array[ValidationMethod[T]]):Array[(ValidationResult,ValidationMethod[T])]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">evaluate</span><span class="params">(<span name="dataSet">dataSet: <a href="../dataset/LocalDataSet.html" class="extype" name="com.intel.analytics.bigdl.dataset.LocalDataSet">LocalDataSet</a>[<a href="../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>]]</span>, <span name="vMethods">vMethods: <span class="extype" name="scala.Array">Array</span>[<a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="../optim/ValidationResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationResult">ValidationResult</a>, <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>])]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#evaluate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="evaluate(dataset:org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.dataset.Sample[T]],vMethods:Array[com.intel.analytics.bigdl.optim.ValidationMethod[T]],batchSize:Option[Int]):Array[(com.intel.analytics.bigdl.optim.ValidationResult,com.intel.analytics.bigdl.optim.ValidationMethod[T])]"></a>
       <a id="evaluate(RDD[Sample[T]],Array[ValidationMethod[T]],Option[Int]):Array[(ValidationResult,ValidationMethod[T])]"></a>
       <h4 class="signature">
@@ -916,6 +929,19 @@ Custom modules should override this function if they have parameters
             HDFS path should be like &quot;hdfs://[host]:[port]/xxx&quot;
             Amazon S3 path should be like &quot;s3a://bucket/xxx&quot;</p></dd><dt class="param">overWrite</dt><dd class="cmt"><p>if overwrite</p></dd><dt>returns</dt><dd class="cmt"><p>self
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveCaffe" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="saveCaffe(prototxtPath:String,modelPath:String,useV2:Boolean,overwrite:Boolean):AbstractModule.this.type"></a>
+      <a id="saveCaffe(String,String,Boolean,Boolean):BiRecurrent.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">saveCaffe</span><span class="params">(<span name="prototxtPath">prototxtPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="modelPath">modelPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="useV2">useV2: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="overwrite">overwrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent">BiRecurrent</a>.this.type</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveTorch" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveTorch(path:String,overWrite:Boolean):AbstractModule.this.type"></a>
       <a id="saveTorch(String,Boolean):BiRecurrent.this.type"></a>

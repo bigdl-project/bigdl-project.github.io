@@ -35,13 +35,16 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">SampleToBatch</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch.T">T</span>], <a href="MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch.T">T</span>]]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Use SampleToMiniBatch instead">SampleToBatch</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch.T">T</span>], <a href="MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch.T">T</span>]]</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Convert a sequence of <a href="TensorSample.html" class="extype" name="com.intel.analytics.bigdl.dataset.TensorSample">TensorSample</a> to a sequence of <a href="TensorMiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.TensorMiniBatch">TensorMiniBatch</a>,
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Convert a sequence of single-feature and single-label Sample to a sequence of MiniBatch,
 optionally padding all the features (or labels) in the mini-batch to the same length
-</p></div><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.2.0)</i> Use SampleToMiniBatch instead</p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch.T">T</span>], <a href="MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch.T">T</span>]], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -210,7 +213,9 @@ optionally padding all the features (or labels) in the mini-batch to the same le
         <span class="name">apply</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch.T">T</span>]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence">evidence: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<a href="MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch.T">T</span>]]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch.T">T</span>]]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Apply this transformer to rdd</p><div class="fullcomment"><div class="comment cmt"><p>Apply this transformer to rdd</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>
+      <p class="shortcomment cmt">Apply this transformer to rdd
+</p><div class="fullcomment"><div class="comment cmt"><p>Apply this transformer to rdd
+</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>

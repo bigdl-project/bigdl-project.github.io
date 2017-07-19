@@ -33,11 +33,11 @@
       var is_top_frame = false;
         
         var pageToc = [
+          {title: "Euclidean", url: "#euclidean", children: [
+          ]},
           {title: "PairwiseDistance", url: "#pairwisedistance", children: [
           ]},
           {title: "CosineDistance", url: "#cosinedistance", children: [
-          ]},
-          {title: "Euclidean", url: "#euclidean", children: [
           ]},
         ];
 
@@ -55,7 +55,54 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="pairwisedistance">PairwiseDistance</h2>
+    <h2 id="euclidean">Euclidean</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val module = Euclidean(
+  inputSize,
+  outputSize,
+  fastBackward = true)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">module = Euclidean(
+  input_size,
+  output_size,
+  fast_backward=True)
+</code></pre>
+
+<p>Outputs the Euclidean distance of the input to <code>outputSize</code> centers.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor._
+
+val module = Euclidean(3, 3)
+
+println(module.forward(Tensor.range(1, 3, 1)))
+</code></pre>
+
+<p>Output is</p>
+<pre><code>com.intel.analytics.bigdl.tensor.Tensor[Float] =
+4.0323668
+3.7177157
+3.8736997
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 3]
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
+
+module = Euclidean(3, 3)
+
+print(module.forward(np.arange(1, 4, 1)))
+</code></pre>
+
+<p>Output is</p>
+<pre><code>[array([ 3.86203027,  4.02212906,  3.2648952 ], dtype=float32)]
+</code></pre>
+
+<h2 id="pairwisedistance">PairwiseDistance</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val pd = PairwiseDistance(norm=2)
 </code></pre>
@@ -211,53 +258,6 @@ output = module.forward(input)
 
 &gt; output
 [ 0.97463191]
-</code></pre>
-
-<h2 id="euclidean">Euclidean</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val module = Euclidean(
-  inputSize,
-  outputSize,
-  fastBackward = true)
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">module = Euclidean(
-  input_size,
-  output_size,
-  fast_backward=True)
-</code></pre>
-
-<p>Outputs the Euclidean distance of the input to <code>outputSize</code> centers.</p>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.tensor._
-
-val module = Euclidean(3, 3)
-
-println(module.forward(Tensor.range(1, 3, 1)))
-</code></pre>
-
-<p>Output is</p>
-<pre><code>com.intel.analytics.bigdl.tensor.Tensor[Float] =
-4.0323668
-3.7177157
-3.8736997
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 3]
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.layer import *
-import numpy as np
-
-module = Euclidean(3, 3)
-
-print(module.forward(np.arange(1, 4, 1)))
-</code></pre>
-
-<p>Output is</p>
-<pre><code>[array([ 3.86203027,  4.02212906,  3.2648952 ], dtype=float32)]
 </code></pre>
 
   <br>

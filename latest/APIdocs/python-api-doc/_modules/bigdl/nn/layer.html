@@ -385,6 +385,10 @@
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;modelSave&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span>
                       <span class="n">over_write</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="Layer.save_caffe"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.save_caffe">[docs]</a>    <span class="k">def</span> <span class="nf">save_caffe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prototxt_path</span><span class="p">,</span> <span class="n">model_path</span><span class="p">,</span> <span class="n">use_v2</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">overwrite</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;saveCaffe&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">prototxt_path</span><span class="p">,</span>
+                      <span class="n">model_path</span><span class="p">,</span> <span class="n">use_v2</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Layer.setWRegularizer"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.setWRegularizer">[docs]</a>    <span class="k">def</span> <span class="nf">setWRegularizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        set weight regularizer</span>
@@ -437,7 +441,7 @@
 <span class="sd">    It is allowed that some successors of the inputs node are not connect to outputs.</span>
 <span class="sd">    If so, these nodes will be excluded in the computation.</span>
 <span class="sd">    </span>
-<span class="sd">    We also support initialzing a Graph directly from a tensorflow module. In this case, you should</span>
+<span class="sd">    We also support initializing a Graph directly from a tensorflow module. In this case, you should</span>
 <span class="sd">    pass your tensorflow nodes as inputs and outputs and also specify the byte_order parameter (&quot;little_endian&quot;</span>
 <span class="sd">     or &quot;big_endian&quot;) and node_type parameter (&quot;bigdl&quot; or &quot;tensorflow&quot;)</span>
 <span class="sd">    node_type parameter.</span>
@@ -493,6 +497,19 @@
         <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;loadCaffe&quot;</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">defPath</span><span class="p">,</span> <span class="n">modelPath</span><span class="p">,</span> <span class="n">match_all</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="Model.load_caffe_model"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.load_caffe_model">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">load_caffe_model</span><span class="p">(</span><span class="n">defPath</span><span class="p">,</span> <span class="n">modelPath</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load a pre-trained Caffe model.</span>
+
+
+<span class="sd">        :param defPath: The path containing the caffe model definition.</span>
+<span class="sd">        :param modelPath: The path containing the pre-trained caffe model.</span>
+<span class="sd">        :return: A pre-trained model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;loadCaffeModel&quot;</span><span class="p">,</span> <span class="n">defPath</span><span class="p">,</span> <span class="n">modelPath</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Model.load_tensorflow"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.load_tensorflow">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">load_tensorflow</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">byte_order</span> <span class="o">=</span> <span class="s2">&quot;little_endian&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -501,7 +518,25 @@
 <span class="sd">        :return: A pre-trained model.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;loadTF&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">byte_order</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Model</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">Model</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Model.save_tensorflow"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.save_tensorflow">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">save_tensorflow</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">byte_order</span><span class="o">=</span><span class="s2">&quot;little_endian&quot;</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;nhwc&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save a model to protobuf files so that it can be used in tensorflow inference.</span>
+
+<span class="sd">        When saving the model, placeholders will be added to the tf model as input nodes. So</span>
+<span class="sd">        you need to pass in the names and shapes of the placeholders. BigDL model doesn&#39;t have</span>
+<span class="sd">        such information. The order of the placeholder information should be same as the inputs</span>
+<span class="sd">        of the graph model.</span>
+<span class="sd">        :param model: the model to be saved</span>
+<span class="sd">        :param inputs: placeholder information, should be an array of tuples (input_name, shape)</span>
+<span class="sd">                       where &#39;input_name&#39; is a string and shape is an array of integer</span>
+<span class="sd">        :param path: the path to be saved to</span>
+<span class="sd">        :param byte_order: model byte order</span>
+<span class="sd">        :param data_format: model data format, should be &quot;nhwc&quot; or &quot;nchw&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;saveTF&quot;</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">byte_order</span><span class="p">,</span> <span class="n">data_format</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="Linear"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Linear">[docs]</a><span class="k">class</span> <span class="nc">Linear</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
@@ -2956,6 +2991,15 @@
 
 <span class="sd">    &gt;&gt;&gt; spatialShareConvolution = SpatialShareConvolution(1, 1, 1, 1)</span>
 <span class="sd">    creating: createSpatialShareConvolution</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; init_weight = np.random.randn(1, 12, 6, 5, 5)</span>
+<span class="sd">    &gt;&gt;&gt; init_bias = np.random.randn(12)</span>
+<span class="sd">    &gt;&gt;&gt; init_grad_weight = np.zeros([1, 12, 6, 5, 5])</span>
+<span class="sd">    &gt;&gt;&gt; init_grad_bias = np.zeros([12])</span>
+<span class="sd">    &gt;&gt;&gt; conv = SpatialShareConvolution(6, 12, 5, 5, 1, 1, 0, 0, 1, True, L1Regularizer(0.5), L1Regularizer(0.5), init_weight, init_bias, init_grad_weight, init_grad_bias)</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    creating: createSpatialShareConvolution</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
@@ -2969,6 +3013,13 @@
                  <span class="n">pad_h</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">n_group</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                  <span class="n">propagate_back</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">init_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">init_bias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">init_grad_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">init_grad_bias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">with_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SpatialShareConvolution</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                                       <span class="n">n_input_plane</span><span class="p">,</span>
@@ -2980,7 +3031,14 @@
                                                       <span class="n">pad_w</span><span class="p">,</span>
                                                       <span class="n">pad_h</span><span class="p">,</span>
                                                       <span class="n">n_group</span><span class="p">,</span>
-                                                      <span class="n">propagate_back</span><span class="p">)</span>
+                                                      <span class="n">propagate_back</span><span class="p">,</span>
+                                                      <span class="n">wRegularizer</span><span class="p">,</span>
+                                                      <span class="n">bRegularizer</span><span class="p">,</span>
+                                                      <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_weight</span><span class="p">),</span>
+                                                      <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_bias</span><span class="p">),</span>
+                                                      <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_grad_weight</span><span class="p">),</span>
+                                                      <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_grad_bias</span><span class="p">),</span>
+                                                      <span class="n">with_bias</span><span class="p">)</span>
 <div class="viewcode-block" id="SpatialShareConvolution.set_init_method"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SpatialShareConvolution.set_init_method">[docs]</a>    <span class="k">def</span> <span class="nf">set_init_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bias_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setInitMethod&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
                       <span class="n">weight_init_method</span><span class="p">,</span> <span class="n">bias_init_method</span><span class="p">)</span>

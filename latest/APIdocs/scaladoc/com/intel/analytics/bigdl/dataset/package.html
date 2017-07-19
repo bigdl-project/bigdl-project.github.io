@@ -110,6 +110,19 @@
       </span>
       </h4>
       <p class="comment cmt">A transformer chain two transformer together.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.DefaultPadding" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DefaultPaddingextendsPaddingStrategy"></a>
+      <a id="DefaultPadding:DefaultPadding"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultPadding.html"><span class="name">DefaultPadding</span></a><span class="result"> extends <a href="PaddingStrategy.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingStrategy">PaddingStrategy</a></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.dataset.DistributedDataSet" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="DistributedDataSet[T]extendsAbstractDataSet[T,org.apache.spark.rdd.RDD[T]]"></a>
       <a id="DistributedDataSet[T]:DistributedDataSet[T]"></a>
@@ -123,6 +136,19 @@
       </span>
       </h4>
       <p class="comment cmt">Represent a distributed data.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.FixedLength" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FixedLengthextendsPaddingStrategywithProductwithSerializable"></a>
+      <a id="FixedLength:FixedLength"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="FixedLength.html"><span class="name">FixedLength</span></a><span class="params">(<span name="fixedLength">fixedLength: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result"> extends <a href="PaddingStrategy.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingStrategy">PaddingStrategy</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Set the first dimension's length to fixed length.</p>
     </li><li name="com.intel.analytics.bigdl.dataset.Identity" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Identity[A]extendsTransformer[A,A]"></a>
       <a id="Identity[A]:Identity[A]"></a>
@@ -231,6 +257,46 @@
       </span>
       </h4>
       <p class="comment cmt">A interface for MiniBatch.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.PaddingLongest" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PaddingLongestextendsPaddingStrategywithProductwithSerializable"></a>
+      <a id="PaddingLongest:PaddingLongest"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="PaddingLongest.html"><span class="name">PaddingLongest</span></a><span class="params">(<span name="paddingLength">paddingLength: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result"> extends <a href="PaddingStrategy.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingStrategy">PaddingStrategy</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Add an constant length to longest feature in the first dimension
+</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.PaddingParam" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PaddingParam[T]extendsSerializablewithProduct"></a>
+      <a id="PaddingParam[T]:PaddingParam[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="PaddingParam.html"><span class="name">PaddingParam</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="paddingTensor">paddingTensor: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.PaddingParam.T">T</span>]]] = <span class="symbol">scala.None</span></span>, <span name="paddingStrategy">paddingStrategy: <a href="PaddingStrategy.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingStrategy">PaddingStrategy</a> = <span class="symbol">new DefaultPadding()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$14">evidence$14: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.PaddingParam.T">T</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span> with <span class="extype" name="scala.Product">Product</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Feature Padding param for MiniBatch.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.PaddingStrategy" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="PaddingStrategyextendsSerializable"></a>
+      <a id="PaddingStrategy:PaddingStrategy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="PaddingStrategy.html"><span class="name">PaddingStrategy</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.dataset.Sample" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="Sample[T]extendsSerializable"></a>
       <a id="Sample[T]:Sample[T]"></a>
@@ -244,21 +310,6 @@
       </span>
       </h4>
       <p class="comment cmt">Class that represents the features and labels of a data sample.</p>
-    </li><li name="com.intel.analytics.bigdl.dataset.SampleToBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SampleToBatch[T]extendsTransformer[com.intel.analytics.bigdl.dataset.Sample[T],com.intel.analytics.bigdl.dataset.MiniBatch[T]]"></a>
-      <a id="SampleToBatch[T]:SampleToBatch[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="SampleToBatch.html"><span class="name">SampleToBatch</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch.T">T</span>], <a href="MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch.T">T</span>]]</span>
-      </span>
-      </h4>
-      <p class="comment cmt">Convert a sequence of <a href="TensorSample.html" class="extype" name="com.intel.analytics.bigdl.dataset.TensorSample">TensorSample</a> to a sequence of <a href="TensorMiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.TensorMiniBatch">TensorMiniBatch</a>,
-optionally padding all the features (or labels) in the mini-batch to the same length
-</p>
     </li><li name="com.intel.analytics.bigdl.dataset.Sentence" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="Sentence[T]extendsSerializable"></a>
       <a id="Sentence[T]:Sentence[T]"></a>
@@ -273,32 +324,6 @@ optionally padding all the features (or labels) in the mini-batch to the same le
       </h4>
       <p class="comment cmt">Represent a sentence
 </p>
-    </li><li name="com.intel.analytics.bigdl.dataset.TensorMiniBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="TensorMiniBatch[T]extendsMiniBatch[T]"></a>
-      <a id="TensorMiniBatch[T]:TensorMiniBatch[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="TensorMiniBatch.html"><span class="name">TensorMiniBatch</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.TensorMiniBatch.T">T</span>]</span>
-      </span>
-      </h4>
-      <p class="comment cmt">A MiniBatch with <span class="extype" name="Tensor">Tensor</span> input and <span class="extype" name="Tensor">Tensor</span> target.</p>
-    </li><li name="com.intel.analytics.bigdl.dataset.TensorSample" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="TensorSample[T]extendsSample[T]"></a>
-      <a id="TensorSample[T]:TensorSample[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="TensorSample.html"><span class="name">TensorSample</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.TensorSample.T">T</span>]</span>
-      </span>
-      </h4>
-      <p class="comment cmt">A kind of sample.</p>
     </li><li name="com.intel.analytics.bigdl.dataset.Transformer" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="Transformer[A,B]extendsSerializable"></a>
       <a id="Transformer[A,B]:Transformer[A,B]"></a>
@@ -312,6 +337,21 @@ optionally padding all the features (or labels) in the mini-batch to the same le
       </span>
       </h4>
       <p class="comment cmt">Transform a data stream of type A to type B.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.SampleToBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SampleToBatch[T]extendsTransformer[com.intel.analytics.bigdl.dataset.Sample[T],com.intel.analytics.bigdl.dataset.MiniBatch[T]]"></a>
+      <a id="SampleToBatch[T]:SampleToBatch[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SampleToBatch.html"><span class="name deprecated" title="Deprecated: (Since version 0.2.0) Use SampleToMiniBatch instead">SampleToBatch</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch.T">T</span>], <a href="MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch.T">T</span>]]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Convert a sequence of single-feature and single-label Sample to a sequence of MiniBatch,
+optionally padding all the features (or labels) in the mini-batch to the same length
+</p>
     </li></ol>
             </div>
 

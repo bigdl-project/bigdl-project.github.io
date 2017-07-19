@@ -73,12 +73,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>You data need to be transformed into specific data structures in order to be fed into BigDL for training, evaluation and prediction.</p>
 <p>Below are several data structures that you need to know when using BigDL. </p>
 <ul>
-<li><code>Tensor</code> is a multi-dimensional array of basic numeric types (e.g., <code>Int</code>, <code>Float</code>,       <code>Double</code>, etc.) It is the most essential data structure in BigDL, composing the basic data flow inside the nerual network (i.e. the input, output, weight, bias and gradient of many layers). Refer to <a href="../APIdocs/Data/merged-Data#tensor">Tensor API doc</a> for details about the numeric computation functions provided in BigDL. </li>
+<li><code>Tensor</code> is a multi-dimensional array of basic numeric types (e.g., <code>Int</code>, <code>Float</code>,       <code>Double</code>, etc.) It is the most essential data structure in BigDL, composing the basic data flow inside the nerual network (i.e. the input, output, weight, bias and gradient of many layers). Refer to <a href="../APIdocs/Data/#tensor">Tensor API doc</a> for details about the numeric computation functions provided in BigDL. </li>
 <li>
 <p><code>Table</code> is key-value map. Usually we use Tables to map from digits to Tensors. Some of the layers has <code>Table</code> as input or output (e.g. <a href="../APIdocs/Layers/Containers/merged-Containers/#concattable">ConcatTable</a>). You can also use <code>T()</code> to create Tables in BigDL - just a syntax sugar. Refer to <a href="../APIdocs/Data/merged-Data#table">Table API doc</a> for detailed usage.</p>
 </li>
 <li>
-<p><code>Sample</code> is a <strong>(feature, label)</strong> pair. A <code>Sample</code> can be created from two <code>Tensors</code> (in Scala) or two <code>numpy arrays</code> (in Python). Refer to <a href="../APIdocs/Data/merged-Data#sample">Sample API doc</a> for detailed usage.</p>
+<p><code>Sample</code> is a <strong>(feature, label)</strong> pair. A <code>Sample</code> can be created from two <code>Tensors</code> (in Scala) or two <code>numpy arrays</code> (in Python). Refer to <a href="../APIdocs/Data/#sample">Sample API doc</a> for detailed usage.</p>
 </li>
 </ul>
 <p>You need to convert your dataset into <code>RDD</code> of <code>Samples</code> (both Scala and Python), and then feed your data into Optimizer for training, validation or prediction. Refer to <a href="../APIdocs/Optimizers/Optimizer/">Optimizer docs</a> for details.</p>
@@ -87,8 +87,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>If you have an existing model and want to use BigDL only for prediction, you need to first load the model, and then do prediction or evaluation. </p>
 <p>BigDL supports loading models trained and saved in BigDL, or a trained Tensorflow model. </p>
 <ul>
-<li>To load a BigDL model, you can use <code>Module.load</code> interface (Scala). Refer to <a href="../APIdocs/Module/Module/">Module API docs</a> for details.  </li>
+<li>To load a BigDL model, you can use <code>Module.load</code> interface (Scala). Refer to <a href="../APIdocs/Module/">Module API docs</a> for details.  </li>
 <li>To load a Tensorflow model, refer to <a href="../ProgrammingGuide/tensorflow-support/">Tensorflow Support</a> for details.</li>
+<li>To load a Caffe model, refer to <a href="ProgrammingGuide/caffe-support.md">Caffe Support</a> for details.</li>
 </ul>
 <p>Once you have a loaded model, you can call <code>Module.predict()</code> to do predictions. Note that you need to convert your input data into proper format which <code>predict</code> accepts. For how to prepare your data, refer to section <a href="#prepare-your-data">Prepare your Data</a>. </p>
 <p>If you are using predicted result as a component inside a Spark ML pipeline, refer to <a href="../ProgrammingGuide/MLPipeline/DLEstimator/">DLEsitimator API</a> and <a href="../ProgrammingGuide/MLPipeline/DLClassifier/">DLClassifier API</a> for usage. </p>
@@ -104,19 +105,19 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Before training models, please make sure BigDL is installed, BigDL engine initialized properly, and your data is in proper format. Refer to <a href="#before-using-bigdl">Before using BigDL</a> and <a href="#prepare-your-data">Prepare Your Data</a> for details.  </p>
 <p>The most recommended way to create your first model is to modify from an existing one. BigDL provides plenty of models for you to refer to. See <a href="../UserGuide/resources/">Scala Models/Examples</a> and <a href="../PythonSupport/python-resources/">Python Models/Examples and Tutorials</a>. </p>
 <p>To define a model, you can either use the Sequential API or Functional API. The Functional API is more flexible than Sequential API. Refer to <a href="../ProgrammingGuide/Model/Sequential/">Sequential API</a> and <a href="../ProgrammingGuide/Model/Functional/">Functional API</a> for how to define models in different shapes. Navigate to <em>Programming Guide/Layers</em> on the side bar to find the documenations of available layers and activation.</p>
-<p>After creating the model, you will have to deside which loss function to use in training. Find the details of losses defined in BigDL in <a href="../APIdocs/Losses/merged-Losses/">Losses</a>.  </p>
+<p>After creating the model, you will have to deside which loss function to use in training. Find the details of losses defined in BigDL in <a href="../APIdocs/Losses/">Losses</a>.  </p>
 <p>Now you create an <code>Optimizer</code> and set the loss function, input dataset along with other hyper parameters into the Optimizer. Then call <code>Optimizer.optimize</code> to train. Refer to <a href="../APIdocs/Optimizers/Optimizer/">Optimizer docs</a> for details. </p>
-<p>Evaluation can be performed periodically during a training. Before calling <code>Optimizer.optimize</code>, use <code>Optimizer.setValidation</code> (in Scala) or <code>Optimizer.set_validation</code> (in Python) to set validation configurations, e.g. validation dataset, validation metrics, etc. For a list of defined metrics, refer to <a href="../APIdocs/Metrics/merged-Metrics/">Metrics</a>.</p>
-<p>When <code>Optimizer.optimize</code> finishes, it will return a trained model. You can then use <code>module.predict</code> for predictions. Refer to <a href="../APIdocs/Module/Module/">Module API docs</a> for detailed usage.    </p>
+<p>Evaluation can be performed periodically during a training. Before calling <code>Optimizer.optimize</code>, use <code>Optimizer.setValidation</code> (in Scala) or <code>Optimizer.set_validation</code> (in Python) to set validation configurations, e.g. validation dataset, validation metrics, etc. For a list of defined metrics, refer to <a href="../APIdocs/Metrics/">Metrics</a>.</p>
+<p>When <code>Optimizer.optimize</code> finishes, it will return a trained model. You can then use <code>module.predict</code> for predictions. Refer to <a href="../APIdocs/Module/">Module API docs</a> for detailed usage.    </p>
 <h2 id="stop-and-resume-a-training"><strong>Stop and Resume a Training</strong></h2>
 <p>Training a deep learning model sometimes takes a very long time. It may be stopped or interrupted and we need the training to resume from where we have left. </p>
 <p>To enable this, you have to configure <code>Optimizer</code> to periodically dump the optimized model and optimization state into snapshot files. Use <code>Optimizer.setCheckpoint</code> (in Scala) or <code>optimizer.set_checkpoint</code> (in Python) to configure the frequency and paths of writing snapshots. Then during your training, you will find several snapshot files written in the checkpoint path. Refer to <a href="../APIdocs/Optimizers/Optimizer/">Optimizer API</a> for details. </p>
-<p>Later, after the training stops, you can resume from any saved point. Choose one of the model snapshots and the corresponding optimization state to resume (the iteration number of the the snapshots is in the file name suffix). Use <code>Module.load</code> to load the model snapshot into an object, and <code>OptimMethod.load</code> to load optimization state into an object. Then create a new <code>Optimizer</code> with the loaded model and optim method. Call <code>Optimizer.optimize</code>, you will resume from the point where the snapshot is taken. Refer to <a href="">OptimMethod API</a> and <a href="../APIdocs/Module/Module/">Module API</a> for details.</p>
+<p>Later, after the training stops, you can resume from any saved point. Choose one of the model snapshots and the corresponding optimization state to resume (the iteration number of the the snapshots is in the file name suffix). Use <code>Module.load</code> to load the model snapshot into an object, and <code>OptimMethod.load</code> to load optimization state into an object. Then create a new <code>Optimizer</code> with the loaded model and optim method. Call <code>Optimizer.optimize</code>, you will resume from the point where the snapshot is taken. Refer to <a href="">OptimMethod API</a> and <a href="../APIdocs/Module/">Module API</a> for details.</p>
 <p>You can also resume training without loading the optimization state, if you intend to change the learning rate schedule or even optimization method. Just create an <code>Optimizer</code> with loaded model and a new instance of OptimMethod. </p>
 <hr />
 <h2 id="use-pre-trained-modelslayers"><strong>Use Pre-trained Models/Layers</strong></h2>
 <p>Pre-train is a useful strategy when training deep learning models. You may use the pre-trained features (e.g. embeddings) in your model, or do a fine-tuning for a different dataset or target.</p>
-<p>To use a learnt model as a whole, you can use <code>Module.load</code> to load the entire model, Then create an <code>Optimizer</code> with the loaded model set into it. Refer to <a href="../APIdocs/Optimizers/Optimizer/">Optmizer API</a> and <a href="../APIdocs/Module/Module/">Module API</a> for details. </p>
+<p>To use a learnt model as a whole, you can use <code>Module.load</code> to load the entire model, Then create an <code>Optimizer</code> with the loaded model set into it. Refer to <a href="../APIdocs/Optimizers/Optimizer/">Optmizer API</a> and <a href="../APIdocs/Module/">Module API</a> for details. </p>
 <p>Instead of using an entire model, you can also use pre-trained weights/biases in certain layers. After a <code>Module</code>(Scala) or <code>Layer</code>(Python) is created, use <code>Module.setWeightsBias</code> (in Scala) or <code>layer.set_weights</code> (in Python) to initialize the weights with pre-trained weights. Then continue to train your model as usual. </p>
 <hr />
 <h2 id="monitor-your-training"><strong>Monitor your training</strong></h2>
@@ -145,10 +146,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h2 id="tuning"><strong>Tuning</strong></h2>
 <p>There're several strategies that may be useful when tuning an optimization. </p>
 <ul>
-<li>Change the learning Rate Schedule in SGD. Refer to <a href="../APIdocs/Optimizers/Optim-Methods/merged-Optim-Methods/#sgd">SGD docs</a> for details. </li>
-<li>If overfit is seen, try use Regularization. Refer to <a href="../APIdocs/Regularizers/merged-Regularizers/">Regularizers</a>. </li>
-<li>Try change the initialization methods. Refer to <a href="../APIdocs/Initializers/merged-Initializers/">Initailizers</a>.</li>
-<li>Try Adam or Adagrad at the first place. If they can't achive a good score, use SGD and find a proper learning rate schedule - it usually takes time, though. RMSProp is recommended for RNN models. Refer to <a href="../APIdocs/Optimizers/Optim-Methods/merged-Optim-Methods/">Optimization Algorithms</a> for a list of supported optimization methods. </li>
+<li>Change the learning Rate Schedule in SGD. Refer to <a href="../APIdocs/Optimizers/Optim-Methods/#sgd">SGD docs</a> for details. </li>
+<li>If overfit is seen, try use Regularization. Refer to <a href="../APIdocs/Regularizers/">Regularizers</a>. </li>
+<li>Try change the initialization methods. Refer to <a href="../APIdocs/Initializers/">Initailizers</a>.</li>
+<li>Try Adam or Adagrad at the first place. If they can't achive a good score, use SGD and find a proper learning rate schedule - it usually takes time, though. RMSProp is recommended for RNN models. Refer to <a href="../APIdocs/Optimizers/Optim-Methods/">Optimization Algorithms</a> for a list of supported optimization methods. </li>
 </ul>
 
   <br>
