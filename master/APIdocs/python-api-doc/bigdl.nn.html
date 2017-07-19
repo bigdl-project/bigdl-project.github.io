@@ -206,6 +206,21 @@ point on an (N-1)-dimensional simplex, where N is the number of classes.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.criterion.CosineDistanceCriterion">
+<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">CosineDistanceCriterion</code><span class="sig-paren">(</span><em>size_average=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#CosineDistanceCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.CosineDistanceCriterion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
+<p>Creates a criterion that measures the loss given an input and target,
+Loss = 1 - cos(x, y)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cosineDistanceCriterion</span> <span class="o">=</span> <span class="n">CosineDistanceCriterion</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">creating: createCosineDistanceCriterion</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cosineDistanceCriterion</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">]),</span>
+<span class="gp">... </span>                                  <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]))</span>
+<span class="go">0.07272728</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.criterion.CosineEmbeddingCriterion">
 <em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">CosineEmbeddingCriterion</code><span class="sig-paren">(</span><em>margin=0.0</em>, <em>size_average=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#CosineEmbeddingCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.CosineEmbeddingCriterion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
