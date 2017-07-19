@@ -33,23 +33,23 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "TimeDistributed", url: "#timedistributed", children: [
-          ]},
-          {title: "Concat", url: "#concat", children: [
-          ]},
           {title: "Container", url: "#container", children: [
           ]},
-          {title: "MapTable", url: "#maptable", children: [
+          {title: "Graph", url: "#graph", children: [
           ]},
           {title: "Bottle", url: "#bottle", children: [
           ]},
           {title: "Sequential", url: "#sequential", children: [
           ]},
-          {title: "ParallelTable", url: "#paralleltable", children: [
-          ]},
           {title: "ConcatTable", url: "#concattable", children: [
           ]},
-          {title: "Graph", url: "#graph", children: [
+          {title: "Concat", url: "#concat", children: [
+          ]},
+          {title: "MapTable", url: "#maptable", children: [
+          ]},
+          {title: "TimeDistributed", url: "#timedistributed", children: [
+          ]},
+          {title: "ParallelTable", url: "#paralleltable", children: [
           ]},
         ];
 
@@ -67,225 +67,112 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="timedistributed">TimeDistributed</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val layer = TimeDistributed(layer)
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">layer = TimeDistributed(layer)
-</code></pre>
-
-<p>This layer is intended to apply contained layer to each temporal time slice
-of input tensor.</p>
-<p>The input data format is [Batch, Time, Other dims]. For the contained layer, it must not change
-the Other dims length.</p>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.utils.T
-import com.intel.analytics.bigdl.tensor.Tensor
-import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-
-val layer = TimeDistributed(Sum(1, squeeze = false, nInputDims = 2))
-val input = Tensor(T(T(
-  T(
-    T(1.0f, 2.0f),
-    T(3.0f, 4.0f)
-  ),
-  T(
-    T(2.0f, 3.0f),
-    T(4.0f, 5.0f)
-  )
-)))
-layer.forward(input)
-layer.backward(input, Tensor(T(T(
-  T(
-    T(0.1f, 0.2f)
-  ),
-  T(
-    T(0.3f, 0.4f)
-  )
-))))
-</code></pre>
-
-<p>Its output should be</p>
-<pre><code>(1,1,.,.) =
-4.0     6.0
-
-(1,2,.,.) =
-6.0     8.0
-
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x1x2]
-
-(1,1,.,.) =
-0.1     0.2
-0.1     0.2
-
-(1,2,.,.) =
-0.3     0.4
-0.3     0.4
-
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x2x2]
-
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.layer import TimeDistributed,Sum
-import numpy as np
-
-layer = TimeDistributed(Sum(1, squeeze = False, n_input_dims = 2))
-
-input = np.array([[
-  [
-    [1.0, 2.0],
-    [3.0, 4.0]
-  ],
-  [
-    [2.0, 3.0],
-    [4.0, 5.0]
-  ]
-]])
-layer.forward(input)
-layer.backward(input, np.array([[
-  [
-    [0.1, 0.2]
-  ],
-  [
-    [0.3, 0.4]
-  ]
-]]))
-</code></pre>
-
-<p>Its output should be</p>
-<pre><code>array([[[[ 4.,  6.]],
-
-        [[ 6.,  8.]]]], dtype=float32)
-
-array([[[[ 0.1       ,  0.2       ],
-         [ 0.1       ,  0.2       ]],
-
-        [[ 0.30000001,  0.40000001],
-         [ 0.30000001,  0.40000001]]]], dtype=float32)
-</code></pre>
-
-<h2 id="concat">Concat</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val module = Concat(dimension)
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">module = Concat(dimension)
-</code></pre>
-
-<p>Concat is a container who concatenates the output of it's submodules along the
-provided <code>dimension</code>: all submodules take the same inputs, and their output is
-concatenated.</p>
-<pre><code>                 +----Concat----+
-            +----&gt;  submodule1  -----+
-            |    |              |    |
- input -----+----&gt;  submodule2  -----+----&gt; output
-            |    |              |    |
-            +----&gt;  submodule3  -----+
-                 +--------------+
-</code></pre>
-
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.tensor._
-
-val mlp = Concat(2)
-mlp.add(Linear(3,2))
-mlp.add(Linear(3,4))
-
-println(mlp.forward(Tensor(2, 3).rand()))
-</code></pre>
-
-<p>Output is</p>
-<pre><code>-0.17087375 0.12954286  0.15685591  -0.027277306    0.38549712  -0.20375136
--0.9473443  0.030516684 0.23380546  0.625985    -0.031360716    0.40449825
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x6]
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.layer import *
-import numpy as np
-
-mlp = Concat(2)
-mlp.add(Linear(3,2))
-mlp.add(Linear(3,4))
-print(mlp.forward(np.array([[1, 2, 3], [1, 2, 3]])))
-</code></pre>
-
-<p>Output is</p>
-<pre><code>[array([
-[-0.71994132,  2.17439198, -1.46522939,  0.64588934,  2.61534023, -2.39528942],
-[-0.89125222,  5.49583197, -2.8865242 ,  1.44914722,  5.26639175, -6.26586771]]
-      dtype=float32)]
-
-</code></pre>
-
-<h2 id="container">Container</h2>
+    <h2 id="container">Container</h2>
 <p>Container is a subclass of abstract class AbstractModule, which
 declares methods defined in all containers. A container usually
 contains some other modules in the <code>modules</code> variable. It overrides
 many module methods such that calls are propogated to the contained
 modules.</p>
-<h2 id="maptable">MapTable</h2>
+<h2 id="graph">Graph</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val mod = MapTable(module=null)
+<pre><code class="scala">val graph = Graph(Array(Node), Array(Node))
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">mod = MapTable(module=None)
+<pre><code class="python">model = Model([Node], [Node])
 </code></pre>
 
-<p>This class is a container for a single module which will be applied
-to all input elements. The member module is cloned as necessary to
-process all input elements.</p>
-<p><code>module</code> a member module.  </p>
-<pre><code>+----------+         +-----------+
-| {input1, +---------&gt; {member,  |
-|          |         |           |
-|  input2, +---------&gt;  clone,   |
-|          |         |           |
-|  input3} +---------&gt;  clone}   |
-+----------+         +-----------+
-</code></pre>
-
+<p>A graph container. Each node can have multiple inputs. The output of the node should be a tensor.
+ The output tensor can be connected to multiple nodes. So the module in each node can have a
+ tensor or table input, and should have a tensor output.</p>
+<p>The graph container can have multiple inputs and multiple outputs. If there's one input, the
+ input data fed to the graph module should be a tensor. If there're multiple inputs, the input
+ data fed to the graph module should be a table, which is actually an sequence of tensor. The
+ order of the input tensors should be same with the order of the input nodes. This is also
+ applied to the gradient from the module in the back propagation.</p>
+<p>All of the input modules must accept a tensor input. If your input module accept multiple
+ tensors as input, you should add some <a href="APIdocs/Layers/Utilities/Input.md">Input layer</a> before
+ it as input nodes and connect the output of the Input modules to that module.</p>
+<p>If there's one output, the module output is a tensor. If there're multiple outputs, the module
+ output is a table, which is actually an sequence of tensor. The order of the output tensors is
+ same with the order of the output modules. This is also applied to the gradient passed to the
+ module in the back propagation.</p>
+<p>All inputs should be able to connect to outputs through some paths in the graph. It is
+ allowed that some successors of the inputs node are not connect to outputs. If so, these nodes
+ will be excluded in the computation.</p>
 <p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-import com.intel.analytics.bigdl.nn._
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
 import com.intel.analytics.bigdl.tensor.Tensor
-import com.intel.analytics.bigdl.utils.T 
+import com.intel.analytics.bigdl.utils.T
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
 
-val map = MapTable()
-map.add(Linear(10, 3))
-val input = T(
-      Tensor(10).randn(),
-      Tensor(10).randn())
-&gt; print(map.forward(input))
-{
-    2: 0.2444828
-       -1.1700082
-       0.15887381
-       [com.intel.analytics.bigdl.tensor.DenseTensor of size 3]
-    1: 0.06696482
-       0.18692614
-       -1.432079
-       [com.intel.analytics.bigdl.tensor.DenseTensor of size 3]
+
+val input1 = Input()
+val input2 = Input()
+val cadd = CAddTable().inputs(input1, input2)
+val graph = Graph(Array(input1, input2), cadd)
+
+val output = graph.forward(T(Tensor(T(0.1f, 0.2f, -0.3f, -0.4f)),
+    Tensor(T(0.5f, 0.4f, -0.2f, -0.1f))))
+val gradInput = graph.backward(T(Tensor(T(0.1f, 0.2f, -0.3f, -0.4f)),
+    Tensor(T(0.5f, 0.4f, -0.2f, -0.1f))),
+    Tensor(T(0.1f, 0.2f, 0.3f, 0.4f)))
+
+&gt; println(output)
+output: com.intel.analytics.bigdl.nn.abstractnn.Activity =
+0.6
+0.6
+-0.5
+-0.5
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 4]
+
+&gt; println(gradInput)
+gradInput: com.intel.analytics.bigdl.nn.abstractnn.Activity =
+ {
+        2: 0.1
+           0.2
+           0.3
+           0.4
+           [com.intel.analytics.bigdl.tensor.DenseTensor of size 4]
+        1: 0.1
+           0.2
+           0.3
+           0.4
+           [com.intel.analytics.bigdl.tensor.DenseTensor of size 4]
  }
+
+
+
 </code></pre>
 
 <p><strong>Python example:</strong></p>
 <pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
 
-map = MapTable()
-map.add(Linear(10, 3))
-input = [np.random.rand(10), np.random.rand(10)]
-&gt;map.forward(input)
-[array([ 0.69586945, -0.70547599, -0.05802459], dtype=float32),
- array([ 0.47995114, -0.67459631, -0.52500772], dtype=float32)]
+
+input1 = Input()
+input2 = Input()
+cadd = CAddTable()([input1, input2])
+model = Model([input1, input2], [cadd])
+output = model.forward([
+    np.array([0.1, 0.2, -0.3, -0.4]),
+    np.array([0.5, 0.4, -0.2, -0.1])])
+
+&gt; output
+array([ 0.60000002,  0.60000002, -0.5       , -0.5       ], dtype=float32)
+
+gradInput = model.backward([
+        np.array([0.1, 0.2, -0.3, -0.4]),
+        np.array([0.5, 0.4, -0.2, -0.1])
+    ],
+    np.array([0.1, 0.2, 0.3, 0.4])
+)
+
+&gt; gradInput
+[array([ 0.1       ,  0.2       ,  0.30000001,  0.40000001], dtype=float32),
+    array([ 0.1       ,  0.2       ,  0.30000001,  0.40000001], dtype=float32)]
+
+
 </code></pre>
 
 <h2 id="bottle">Bottle</h2>
@@ -452,6 +339,280 @@ print gradInput
          2.06711197,  2.29631734, -3.39587498,  1.01093054, -0.54482007]], dtype=float32)]
 </code></pre>
 
+<h2 id="concattable">ConcatTable</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val module = ConcatTable()
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">module = ConcatTable()
+</code></pre>
+
+<p>ConcateTable is a container module like Concate. Applies an input
+to each member module, input can be a tensor or a table.</p>
+<p>ConcateTable usually works with CAddTable and CMulTable to
+ implement element wise add/multiply on outputs of two modules.</p>
+<pre><code>                   +-----------+
+             +----&gt; {member1, |
++-------+    |    |           |
+| input +----+----&gt;  member2, |
++-------+    |    |           |
+   or        +----&gt;  member3} |
+ {input}          +-----------+
+
+</code></pre>
+
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val mlp = ConcatTable()
+mlp.add(Linear(3, 2))
+mlp.add(Linear(3, 4))
+
+&gt; print(mlp.forward(Tensor(2, 3).rand()))
+
+{
+    2: -0.37111914  0.8542446   -0.362602   -0.75522065 
+       -0.28713673  0.6021913   -0.16525984 -0.44689763 
+       [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x4]
+    1: -0.79941726  0.8303885   
+       -0.8342782   0.89961016  
+       [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x2]
+ }
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+
+mlp = ConcatTable()
+mlp.add(Linear(3, 2))   
+mlp.add(Linear(3, 4))
+&gt; mlp.forward(np.array([[1, 2, 3], [1, 2, 3]]))
+out: [array([[ 1.16408789, -0.1508013 ],
+             [ 1.16408789, -0.1508013 ]], dtype=float32),
+      array([[-0.24672163, -0.56958938, -0.51390374,  0.64546645],
+             [-0.24672163, -0.56958938, -0.51390374,  0.64546645]], dtype=float32)]
+
+</code></pre>
+
+<h2 id="concat">Concat</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val module = Concat(dimension)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">module = Concat(dimension)
+</code></pre>
+
+<p>Concat is a container who concatenates the output of it's submodules along the
+provided <code>dimension</code>: all submodules take the same inputs, and their output is
+concatenated.</p>
+<pre><code>                 +----Concat----+
+            +----&gt;  submodule1  -----+
+            |    |              |    |
+ input -----+----&gt;  submodule2  -----+----&gt; output
+            |    |              |    |
+            +----&gt;  submodule3  -----+
+                 +--------------+
+</code></pre>
+
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor._
+
+val mlp = Concat(2)
+mlp.add(Linear(3,2))
+mlp.add(Linear(3,4))
+
+println(mlp.forward(Tensor(2, 3).rand()))
+</code></pre>
+
+<p>Output is</p>
+<pre><code>-0.17087375 0.12954286  0.15685591  -0.027277306    0.38549712  -0.20375136
+-0.9473443  0.030516684 0.23380546  0.625985    -0.031360716    0.40449825
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x6]
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
+
+mlp = Concat(2)
+mlp.add(Linear(3,2))
+mlp.add(Linear(3,4))
+print(mlp.forward(np.array([[1, 2, 3], [1, 2, 3]])))
+</code></pre>
+
+<p>Output is</p>
+<pre><code>[array([
+[-0.71994132,  2.17439198, -1.46522939,  0.64588934,  2.61534023, -2.39528942],
+[-0.89125222,  5.49583197, -2.8865242 ,  1.44914722,  5.26639175, -6.26586771]]
+      dtype=float32)]
+
+</code></pre>
+
+<h2 id="maptable">MapTable</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val mod = MapTable(module=null)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">mod = MapTable(module=None)
+</code></pre>
+
+<p>This class is a container for a single module which will be applied
+to all input elements. The member module is cloned as necessary to
+process all input elements.</p>
+<p><code>module</code> a member module.  </p>
+<pre><code>+----------+         +-----------+
+| {input1, +---------&gt; {member,  |
+|          |         |           |
+|  input2, +---------&gt;  clone,   |
+|          |         |           |
+|  input3} +---------&gt;  clone}   |
++----------+         +-----------+
+</code></pre>
+
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.utils.T 
+
+val map = MapTable()
+map.add(Linear(10, 3))
+val input = T(
+      Tensor(10).randn(),
+      Tensor(10).randn())
+&gt; print(map.forward(input))
+{
+    2: 0.2444828
+       -1.1700082
+       0.15887381
+       [com.intel.analytics.bigdl.tensor.DenseTensor of size 3]
+    1: 0.06696482
+       0.18692614
+       -1.432079
+       [com.intel.analytics.bigdl.tensor.DenseTensor of size 3]
+ }
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+
+map = MapTable()
+map.add(Linear(10, 3))
+input = [np.random.rand(10), np.random.rand(10)]
+&gt;map.forward(input)
+[array([ 0.69586945, -0.70547599, -0.05802459], dtype=float32),
+ array([ 0.47995114, -0.67459631, -0.52500772], dtype=float32)]
+</code></pre>
+
+<h2 id="timedistributed">TimeDistributed</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val layer = TimeDistributed(layer)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">layer = TimeDistributed(layer)
+</code></pre>
+
+<p>This layer is intended to apply contained layer to each temporal time slice
+of input tensor.</p>
+<p>The input data format is [Batch, Time, Other dims]. For the contained layer, it must not change
+the Other dims length.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.utils.T
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val layer = TimeDistributed(Sum(1, squeeze = false, nInputDims = 2))
+val input = Tensor(T(T(
+  T(
+    T(1.0f, 2.0f),
+    T(3.0f, 4.0f)
+  ),
+  T(
+    T(2.0f, 3.0f),
+    T(4.0f, 5.0f)
+  )
+)))
+layer.forward(input)
+layer.backward(input, Tensor(T(T(
+  T(
+    T(0.1f, 0.2f)
+  ),
+  T(
+    T(0.3f, 0.4f)
+  )
+))))
+</code></pre>
+
+<p>Its output should be</p>
+<pre><code>(1,1,.,.) =
+4.0     6.0
+
+(1,2,.,.) =
+6.0     8.0
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x1x2]
+
+(1,1,.,.) =
+0.1     0.2
+0.1     0.2
+
+(1,2,.,.) =
+0.3     0.4
+0.3     0.4
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x2x2]
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import TimeDistributed,Sum
+import numpy as np
+
+layer = TimeDistributed(Sum(1, squeeze = False, n_input_dims = 2))
+
+input = np.array([[
+  [
+    [1.0, 2.0],
+    [3.0, 4.0]
+  ],
+  [
+    [2.0, 3.0],
+    [4.0, 5.0]
+  ]
+]])
+layer.forward(input)
+layer.backward(input, np.array([[
+  [
+    [0.1, 0.2]
+  ],
+  [
+    [0.3, 0.4]
+  ]
+]]))
+</code></pre>
+
+<p>Its output should be</p>
+<pre><code>array([[[[ 4.,  6.]],
+
+        [[ 6.,  8.]]]], dtype=float32)
+
+array([[[[ 0.1       ,  0.2       ],
+         [ 0.1       ,  0.2       ]],
+
+        [[ 0.30000001,  0.40000001],
+         [ 0.30000001,  0.40000001]]]], dtype=float32)
+</code></pre>
+
 <h2 id="paralleltable">ParallelTable</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val module = ParallelTable()
@@ -515,167 +676,6 @@ input2 = np.random.rand(3)
         [-2.76213861, -1.77966928, -0.13652121],
         [-1.47725129, -0.03578046, -1.37736678]], dtype=float32),
  array([ 1.10634041,  1.46384597,  1.96525407], dtype=float32)]
-</code></pre>
-
-<h2 id="concattable">ConcatTable</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val module = ConcatTable()
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">module = ConcatTable()
-</code></pre>
-
-<p>ConcateTable is a container module like Concate. Applies an input
-to each member module, input can be a tensor or a table.</p>
-<p>ConcateTable usually works with CAddTable and CMulTable to
- implement element wise add/multiply on outputs of two modules.</p>
-<pre><code>                   +-----------+
-             +----&gt; {member1, |
-+-------+    |    |           |
-| input +----+----&gt;  member2, |
-+-------+    |    |           |
-   or        +----&gt;  member3} |
- {input}          +-----------+
-
-</code></pre>
-
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.tensor.Tensor
-import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-
-val mlp = ConcatTable()
-mlp.add(Linear(3, 2))
-mlp.add(Linear(3, 4))
-
-&gt; print(mlp.forward(Tensor(2, 3).rand()))
-
-{
-    2: -0.37111914  0.8542446   -0.362602   -0.75522065 
-       -0.28713673  0.6021913   -0.16525984 -0.44689763 
-       [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x4]
-    1: -0.79941726  0.8303885   
-       -0.8342782   0.89961016  
-       [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x2]
- }
-
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.layer import *
-
-mlp = ConcatTable()
-mlp.add(Linear(3, 2))   
-mlp.add(Linear(3, 4))
-&gt; mlp.forward(np.array([[1, 2, 3], [1, 2, 3]]))
-out: [array([[ 1.16408789, -0.1508013 ],
-             [ 1.16408789, -0.1508013 ]], dtype=float32),
-      array([[-0.24672163, -0.56958938, -0.51390374,  0.64546645],
-             [-0.24672163, -0.56958938, -0.51390374,  0.64546645]], dtype=float32)]
-
-</code></pre>
-
-<h2 id="graph">Graph</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val graph = Graph(Array(Node), Array(Node))
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">model = Model([Node], [Node])
-</code></pre>
-
-<p>A graph container. Each node can have multiple inputs. The output of the node should be a tensor.
- The output tensor can be connected to multiple nodes. So the module in each node can have a
- tensor or table input, and should have a tensor output.</p>
-<p>The graph container can have multiple inputs and multiple outputs. If there's one input, the
- input data fed to the graph module should be a tensor. If there're multiple inputs, the input
- data fed to the graph module should be a table, which is actually an sequence of tensor. The
- order of the input tensors should be same with the order of the input nodes. This is also
- applied to the gradient from the module in the back propagation.</p>
-<p>All of the input modules must accept a tensor input. If your input module accept multiple
- tensors as input, you should add some <a href="APIdocs/Layers/Utilities/Input.md">Input layer</a> before
- it as input nodes and connect the output of the Input modules to that module.</p>
-<p>If there's one output, the module output is a tensor. If there're multiple outputs, the module
- output is a table, which is actually an sequence of tensor. The order of the output tensors is
- same with the order of the output modules. This is also applied to the gradient passed to the
- module in the back propagation.</p>
-<p>All inputs should be able to connect to outputs through some paths in the graph. It is
- allowed that some successors of the inputs node are not connect to outputs. If so, these nodes
- will be excluded in the computation.</p>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.tensor.Tensor
-import com.intel.analytics.bigdl.utils.T
-import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-
-
-val input1 = Input()
-val input2 = Input()
-val cadd = CAddTable().inputs(input1, input2)
-val graph = Graph(Array(input1, input2), cadd)
-
-val output = graph.forward(T(Tensor(T(0.1f, 0.2f, -0.3f, -0.4f)),
-    Tensor(T(0.5f, 0.4f, -0.2f, -0.1f))))
-val gradInput = graph.backward(T(Tensor(T(0.1f, 0.2f, -0.3f, -0.4f)),
-    Tensor(T(0.5f, 0.4f, -0.2f, -0.1f))),
-    Tensor(T(0.1f, 0.2f, 0.3f, 0.4f)))
-
-&gt; println(output)
-output: com.intel.analytics.bigdl.nn.abstractnn.Activity =
-0.6
-0.6
--0.5
--0.5
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 4]
-
-&gt; println(gradInput)
-gradInput: com.intel.analytics.bigdl.nn.abstractnn.Activity =
- {
-        2: 0.1
-           0.2
-           0.3
-           0.4
-           [com.intel.analytics.bigdl.tensor.DenseTensor of size 4]
-        1: 0.1
-           0.2
-           0.3
-           0.4
-           [com.intel.analytics.bigdl.tensor.DenseTensor of size 4]
- }
-
-
-
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.layer import *
-import numpy as np
-
-
-input1 = Input()
-input2 = Input()
-cadd = CAddTable()([input1, input2])
-model = Model([input1, input2], [cadd])
-output = model.forward([
-    np.array([0.1, 0.2, -0.3, -0.4]),
-    np.array([0.5, 0.4, -0.2, -0.1])])
-
-&gt; output
-array([ 0.60000002,  0.60000002, -0.5       , -0.5       ], dtype=float32)
-
-gradInput = model.backward([
-        np.array([0.1, 0.2, -0.3, -0.4]),
-        np.array([0.5, 0.4, -0.2, -0.1])
-    ],
-    np.array([0.1, 0.2, 0.3, 0.4])
-)
-
-&gt; gradInput
-[array([ 0.1       ,  0.2       ,  0.30000001,  0.40000001], dtype=float32),
-    array([ 0.1       ,  0.2       ,  0.30000001,  0.40000001], dtype=float32)]
-
-
 </code></pre>
 
   <br>
