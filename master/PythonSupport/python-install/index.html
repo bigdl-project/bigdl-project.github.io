@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Install - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Use Python without pip Install", url: "#use-python-without-pip-install", children: [
+          ]},
+          {title: "Install BigDL-0.1.2 via pip", url: "#install-bigdl-012-via-pip", children: [
+          ]},
+          {title: "Install BigDL-0.2.0-snapshot", url: "#install-bigdl-020-snapshot", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+
+    <h2 id="use-python-without-pip-install"><strong>Use Python without pip Install</strong></h2>
+<p>You can use Python without pip install. Pip install only supports certain Spark versions and platforms now. You can always use Python this way if pip support is missing.   </p>
+<p>First of all, you need to obtain the BigDL libs. You can either download pre-built libs or build from source code. Refer to <a href="../../UserGuide/install-pre-built/">Use pre-built libs</a> and <a href="../../UserGuide/install-build-src/">Build from Source</a> for details. </p>
+<p>Then you can either use an interactive shell, run a python program on commandline, or use jupyter notebook. Refer to below sections for details. </p>
+<ul>
+<li><a href="../python-run/#user-an-interactive-shell-without-pip-install">Use an interactive shell (without pip install)</a></li>
+<li><a href="../python-run/#run-python-program-in-command-line-without-pip-install">Run Python program on Commandline (without pip install)</a></li>
+<li><a href="../python-run/#use-jupyter-notebook-without-pip-install">Use Jupyter notebook (without pip install)</a></li>
+</ul>
+<hr />
+<h2 id="install-bigdl-012-via-pip"><strong>Install BigDL-0.1.2 via pip</strong></h2>
+<p>1.Download Spark1.6.3:  </p>
+<pre><code class="bash">wget https://d3kbcqa49mib13.cloudfront.net/spark-1.6.3-bin-hadoop2.6.tgz 
+</code></pre>
+
+<p>2.Extract the tar ball and set SPARK_HOME</p>
+<pre><code class="bash">tar -zxvf spark-1.6.3-bin-hadoop2.6.tgz
+export SPARK_HOME=path to spark-1.6.3-bin-hadoop2.6.tgz
+</code></pre>
+
+<p>3.Install BigDL release via pip (we tested this on pip 9.0.1)</p>
+<pre><code class="bash">pip install --upgrade pip
+pip install BigDL==0.1.2     # for Python 2.7
+pip3 install BigDL==0.1.2  # for Python 3.n
+</code></pre>
+
+<h2 id="install-bigdl-020-snapshot"><strong>Install BigDL-0.2.0-snapshot</strong></h2>
+<p>1.Download Spark1.6.3:  </p>
+<pre><code class="bash">get https://d3kbcqa49mib13.cloudfront.net/spark-1.6.3-bin-hadoop2.6.tgz
+</code></pre>
+
+<p>2.Extract the tar ball and set SPARK_HOME</p>
+<pre><code class="bash">tar -zxvf spark-1.6.3-bin-hadoop2.6.tgz
+export SPARK_HOME=path to spark-1.6.3-bin-hadoop2.6
+</code></pre>
+
+<p>3.Install BigDL release via pip (we tested this on pip 9.0.1)</p>
+<pre><code class="bash">pip install --upgrade pip
+pip install BigDL==0.2.0.dev3     # for Python 2.7
+pip3 install BigDL==0.2.0.dev3  # for Python 3.n
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
