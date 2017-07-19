@@ -12,10 +12,10 @@
     <link rel="shortcut icon" href="../../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>Padding Layers - BigDL Project</title>
-    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
-    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
-    <link href="../../../../css/base.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
     <link href="../../../../extra.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -23,9 +23,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    <script src="../../../../js/jquery-3.2.1.min.js"></script>
-    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
-    <script src="../../../../js/highlight.pack.js"></script>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
     
     <base target="_top">
     <script>
@@ -33,14 +33,14 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "SpatialZeroPadding", url: "#spatialzeropadding", children: [
-          ]},
           {title: "Padding", url: "#padding", children: [
+          ]},
+          {title: "SpatialZeroPadding", url: "#spatialzeropadding", children: [
           ]},
         ];
 
     </script>
-    <script src="../../../../js/base.js"></script> 
+    <script src="/js/base.js"></script> 
 </head>
 
 <body>
@@ -53,68 +53,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="spatialzeropadding">SpatialZeroPadding</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val spatialZeroPadding = SpatialZeroPadding(padLeft, padRight, padTop, padBottom)
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">spatialZeroPadding = SpatialZeroPadding(pad_left, pad_right, pad_top, pad_bottom)
-</code></pre>
-
-<p>Each feature map of a given input is padded with specified number of zeros.</p>
-<p>If padding values are negative, then input will be cropped.</p>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.tensor._
-val spatialZeroPadding = SpatialZeroPadding(1, 0, -1, 0)
-val input = Tensor(3, 3, 3).rand()
-&gt; print(input)
-(1,.,.) =
-0.9494078   0.31556255  0.8432871   
-0.0064580487    0.6487367   0.151881    
-0.8822722   0.3634125   0.7034494   
-
-(2,.,.) =
-0.32691675  0.07487922  0.08813124  
-0.4564806   0.37191486  0.05507739  
-0.10097649  0.6589037   0.8721945   
-
-(3,.,.) =
-0.068939745 0.040364727 0.4893642   
-0.39481318  0.17923461  0.15748173  
-0.87117475  0.9933199   0.6097995
-
-[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3x3x3]
-
-&gt;  print(spatialZeroPadding.forward(input))
-(1,.,.) =
-0.0 0.0064580487    0.6487367   0.151881    
-0.0 0.8822722   0.3634125   0.7034494   
-
-(2,.,.) =
-0.0 0.4564806   0.37191486  0.05507739  
-0.0 0.10097649  0.6589037   0.8721945   
-
-(3,.,.) =
-0.0 0.39481318  0.17923461  0.15748173  
-0.0 0.87117475  0.9933199   0.6097995   
-
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 3x2x4]
-
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.layer import *
-spatialZeroPadding = SpatialZeroPadding(1, 0, -1, 0)
-&gt; spatialZeroPadding.forward(np.array([[[1, 2],[3, 4]],[[1, 2],[3, 4]]]))
-[array([[[ 0.,  3.,  4.]],
-       [[ 0.,  3.,  4.]]], dtype=float32)]
-
-</code></pre>
-
-<h2 id="padding">Padding</h2>
+    <h2 id="padding">Padding</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val module = Padding(dim,pad,nInputDim,value=0.0,nIndex=1)
 </code></pre>
@@ -201,6 +140,67 @@ array([[[ 0.        ],
 
        [[ 0.29855582],
         [ 0.47394153]]], dtype=float32)
+</code></pre>
+
+<h2 id="spatialzeropadding">SpatialZeroPadding</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val spatialZeroPadding = SpatialZeroPadding(padLeft, padRight, padTop, padBottom)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">spatialZeroPadding = SpatialZeroPadding(pad_left, pad_right, pad_top, pad_bottom)
+</code></pre>
+
+<p>Each feature map of a given input is padded with specified number of zeros.</p>
+<p>If padding values are negative, then input will be cropped.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor._
+val spatialZeroPadding = SpatialZeroPadding(1, 0, -1, 0)
+val input = Tensor(3, 3, 3).rand()
+&gt; print(input)
+(1,.,.) =
+0.9494078   0.31556255  0.8432871   
+0.0064580487    0.6487367   0.151881    
+0.8822722   0.3634125   0.7034494   
+
+(2,.,.) =
+0.32691675  0.07487922  0.08813124  
+0.4564806   0.37191486  0.05507739  
+0.10097649  0.6589037   0.8721945   
+
+(3,.,.) =
+0.068939745 0.040364727 0.4893642   
+0.39481318  0.17923461  0.15748173  
+0.87117475  0.9933199   0.6097995
+
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3x3x3]
+
+&gt;  print(spatialZeroPadding.forward(input))
+(1,.,.) =
+0.0 0.0064580487    0.6487367   0.151881    
+0.0 0.8822722   0.3634125   0.7034494   
+
+(2,.,.) =
+0.0 0.4564806   0.37191486  0.05507739  
+0.0 0.10097649  0.6589037   0.8721945   
+
+(3,.,.) =
+0.0 0.39481318  0.17923461  0.15748173  
+0.0 0.87117475  0.9933199   0.6097995   
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 3x2x4]
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+spatialZeroPadding = SpatialZeroPadding(1, 0, -1, 0)
+&gt; spatialZeroPadding.forward(np.array([[[1, 2],[3, 4]],[[1, 2],[3, 4]]]))
+[array([[[ 0.,  3.,  4.]],
+       [[ 0.,  3.,  4.]]], dtype=float32)]
+
 </code></pre>
 
   <br>

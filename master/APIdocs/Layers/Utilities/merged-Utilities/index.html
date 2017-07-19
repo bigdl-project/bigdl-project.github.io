@@ -12,10 +12,10 @@
     <link rel="shortcut icon" href="../../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>Utilities - BigDL Project</title>
-    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
-    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
-    <link href="../../../../css/base.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
     <link href="../../../../extra.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -23,9 +23,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    <script src="../../../../js/jquery-3.2.1.min.js"></script>
-    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
-    <script src="../../../../js/highlight.pack.js"></script>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
     
     <base target="_top">
     <script>
@@ -35,12 +35,10 @@
         var pageToc = [
           {title: "Echo", url: "#echo", children: [
           ]},
-          {title: "Echo", url: "#echo_1", children: [
-          ]},
         ];
 
     </script>
-    <script src="../../../../js/base.js"></script> 
+    <script src="/js/base.js"></script> 
 </head>
 
 <body>
@@ -54,50 +52,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h2 id="echo">Echo</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val module = Echo()
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">module = Echo()
-</code></pre>
-
-<p>This module is for debug purpose, which can print activation and gradient size in your model topology</p>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">val module = Echo()
-val input = Tensor(3, 2).rand()
-input: com.intel.analytics.bigdl.tensor.Tensor[Float] =
-0.24058184      0.22737113
-0.0028103297    0.18359558
-0.80443156      0.07047854
-[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3x2]
-
-module.forward(input)
-res13: com.intel.analytics.bigdl.tensor.Tensor[Float] =
-0.24058184      0.22737113
-0.0028103297    0.18359558
-0.80443156      0.07047854
-[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3x2]
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">module = Echo()
-input = np.random.rand(3,2)
-[array([
-[ 0.87273163,  0.59974301],
-[ 0.09416127,  0.135765  ],
-[ 0.11577505,  0.46095625]], dtype=float32)]
-
-module.forward(input)
-com.intel.analytics.bigdl.nn.Echo@535c681 : Activation size is 3x2
-[array([
-[ 0.87273163,  0.59974301],
-[ 0.09416127,  0.135765  ],
-[ 0.11577505,  0.46095625]], dtype=float32)]
-
-</code></pre>
-
-<h2 id="echo_1">Echo</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val module = Echo()
 </code></pre>

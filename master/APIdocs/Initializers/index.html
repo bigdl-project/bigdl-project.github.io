@@ -9,34 +9,35 @@
     
     
     
-    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>Initalizers - BigDL Project</title>
-    <link href="../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
-    <link href="../../../css/font-awesome-4.7.0.css" rel="stylesheet">
-    <link href="../../../css/base.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../../css/highlight.css">
-    <link href="../../../extra.css" rel="stylesheet">
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    <script src="../../../js/jquery-3.2.1.min.js"></script>
-    <script src="../../../js/bootstrap-3.3.7.min.js"></script>
-    <script src="../../../js/highlight.pack.js"></script>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
     
     <base target="_top">
     <script>
-      var base_url = '../../..';
+      var base_url = '../..';
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "CustomizedInitializer", url: "#customizedinitializer", children: [
-              {title: "Python", url: "#python" },
-          ]},
           {title: "Zeros", url: "#zeros", children: [
+          ]},
+          {title: "Ones", url: "#ones", children: [
+          ]},
+          {title: "ConstInitMethod", url: "#constinitmethod", children: [
           ]},
           {title: "Xavier", url: "#xavier", children: [
           ]},
@@ -44,16 +45,14 @@
           ]},
           {title: "RandomNormal", url: "#randomnormal", children: [
           ]},
-          {title: "Ones", url: "#ones", children: [
-          ]},
-          {title: "ConstInitMethod", url: "#constinitmethod", children: [
-          ]},
           {title: "RandomUniform", url: "#randomuniform", children: [
+          ]},
+          {title: "Define your own Initializer", url: "#define-your-own-initializer", children: [
           ]},
         ];
 
     </script>
-    <script src="../../../js/base.js"></script> 
+    <script src="/js/base.js"></script> 
 </head>
 
 <body>
@@ -66,33 +65,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="customizedinitializer">CustomizedInitializer</h2>
-<p>All customizedInitializer should implement the <code>InitializationMethod</code> trait</p>
-<pre><code class="scala">/**
- * Initialization method to initialize bias and weight.
- * The init method will be called in Module.reset()
- */
-
-trait InitializationMethod {
-
-  type Shape = Array[Int]
-
-  /**
-   * Initialize the given variable
-   *
-   * @param variable    the variable to initialize
-   * @param dataFormat  describe the meaning of each dimension of the variable
-   */
-  def init[T](variable: Tensor[T], dataFormat: VariableFormat)
-             (implicit ev: TensorNumeric[T]): Unit
-}
-</code></pre>
-
-<p>The <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/nn/InitializationMethod.scala#L163">RandomUniform</a>
-code should give you a good sense of how to implement this trait.</p>
-<h3 id="python">Python</h3>
-<p>Custom initialization method in python is not supported right now.</p>
-<h2 id="zeros">Zeros</h2>
+    <h2 id="zeros">Zeros</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val initMethod = Zeros
 
@@ -152,6 +125,133 @@ weight:
  [ 0.  0.  0.]]
 bias: 
 [ 0.  0.]
+</code></pre>
+
+<hr />
+<h2 id="ones">Ones</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = Ones
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = Ones()
+</code></pre>
+
+<p>Initialization method that set tensor to be ones.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val weightInitMethod = Ones
+val biasInitMethod = Ones
+val model = Linear(3, 2).setName(&quot;linear1&quot;)
+model.setInitMethod(weightInitMethod, biasInitMethod)
+println(model.getParametersTable().get(&quot;linear1&quot;).get)
+</code></pre>
+
+<pre><code> {
+    weight: 1.0 1.0 1.0 
+            1.0 1.0 1.0 
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+    bias: 1.0
+          1.0
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradBias: 0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradWeight: 0.0 0.0 0.0 
+                0.0 0.0 0.0 
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+ }
+
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+weight_init = Ones()
+bias_init = Ones()
+model = Linear(3, 2)
+model.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(model.get_weights()[0])
+print(&quot;bias: &quot;)
+print(model.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createOnes
+creating: createOnes
+creating: createLinear
+weight:
+[[ 1.  1.  1.]
+ [ 1.  1.  1.]]
+bias: 
+[ 1.  1.]
+
+</code></pre>
+
+<h2 id="constinitmethod">ConstInitMethod</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = ConstInitMethod(value: Double)
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = ConstInitMethod(value)
+</code></pre>
+
+<p>Initialization method that set tensor to the specified constant value.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+
+val weightInitMethod = ConstInitMethod(0.2)
+val biasInitMethod = ConstInitMethod(0.2)
+val linear = Linear(3, 2).setName(&quot;linear1&quot;)
+linear.setInitMethod(weightInitMethod, biasInitMethod)
+println(linear.getParametersTable().get(&quot;linear1&quot;).get)
+</code></pre>
+
+<pre><code> {
+    weight: 0.2 0.2 0.2
+            0.2 0.2 0.2
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+    bias: 0.2
+          0.2
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradBias: 0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradWeight: 0.0 0.0 0.0
+                0.0 0.0 0.0
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+ }
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+weight_init = ConstInitMethod(0.2)
+bias_init = ConstInitMethod(0.2)
+linear = Linear(3, 2)
+linear.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(linear.get_weights()[0])
+print(&quot;bias: &quot;)
+print(linear.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createConstInitMethod
+creating: createConstInitMethod
+creating: createLinear
+weight:
+[[ 0.2  0.2  0.2]
+ [ 0.2  0.2  0.2]]
+bias:
+[ 0.2  0.2]
+
 </code></pre>
 
 <h2 id="xavier">Xavier</h2>
@@ -409,132 +509,6 @@ bias:
 
 </code></pre>
 
-<h2 id="ones">Ones</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val initMethod = Ones
-
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">init_method = Ones()
-</code></pre>
-
-<p>Initialization method that set tensor to be ones.</p>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-
-val weightInitMethod = Ones
-val biasInitMethod = Ones
-val model = Linear(3, 2).setName(&quot;linear1&quot;)
-model.setInitMethod(weightInitMethod, biasInitMethod)
-println(model.getParametersTable().get(&quot;linear1&quot;).get)
-</code></pre>
-
-<pre><code> {
-    weight: 1.0 1.0 1.0 
-            1.0 1.0 1.0 
-            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
-    bias: 1.0
-          1.0
-          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
-    gradBias: 0.0
-              0.0
-              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
-    gradWeight: 0.0 0.0 0.0 
-                0.0 0.0 0.0 
-                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
- }
-
-
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.initialization_method import *
-weight_init = Ones()
-bias_init = Ones()
-model = Linear(3, 2)
-model.set_init_method(weight_init, bias_init)
-print(&quot;weight:&quot;)
-print(model.get_weights()[0])
-print(&quot;bias: &quot;)
-print(model.get_weights()[1])
-</code></pre>
-
-<pre><code>creating: createOnes
-creating: createOnes
-creating: createLinear
-weight:
-[[ 1.  1.  1.]
- [ 1.  1.  1.]]
-bias: 
-[ 1.  1.]
-
-</code></pre>
-
-<h2 id="constinitmethod">ConstInitMethod</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val initMethod = ConstInitMethod(value: Double)
-
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">init_method = ConstInitMethod(value)
-</code></pre>
-
-<p>Initialization method that set tensor to the specified constant value.</p>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-
-
-val weightInitMethod = ConstInitMethod(0.2)
-val biasInitMethod = ConstInitMethod(0.2)
-val linear = Linear(3, 2).setName(&quot;linear1&quot;)
-linear.setInitMethod(weightInitMethod, biasInitMethod)
-println(linear.getParametersTable().get(&quot;linear1&quot;).get)
-</code></pre>
-
-<pre><code> {
-    weight: 0.2 0.2 0.2
-            0.2 0.2 0.2
-            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
-    bias: 0.2
-          0.2
-          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
-    gradBias: 0.0
-              0.0
-              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
-    gradWeight: 0.0 0.0 0.0
-                0.0 0.0 0.0
-                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
- }
-
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.initialization_method import *
-weight_init = ConstInitMethod(0.2)
-bias_init = ConstInitMethod(0.2)
-linear = Linear(3, 2)
-linear.set_init_method(weight_init, bias_init)
-print(&quot;weight:&quot;)
-print(linear.get_weights()[0])
-print(&quot;bias: &quot;)
-print(linear.get_weights()[1])
-</code></pre>
-
-<pre><code>creating: createConstInitMethod
-creating: createConstInitMethod
-creating: createLinear
-weight:
-[[ 0.2  0.2  0.2]
- [ 0.2  0.2  0.2]]
-bias:
-[ 0.2  0.2]
-
-</code></pre>
-
 <h2 id="randomuniform">RandomUniform</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val initMethod = RandomUniform(lower, upper)
@@ -597,6 +571,33 @@ bias:
 [ 0.32058391  0.26307678]
 
 </code></pre>
+
+<h2 id="define-your-own-initializer">Define your own Initializer</h2>
+<p>All customizedInitializer should implement the <code>InitializationMethod</code> trait</p>
+<pre><code class="scala">/**
+ * Initialization method to initialize bias and weight.
+ * The init method will be called in Module.reset()
+ */
+
+trait InitializationMethod {
+
+  type Shape = Array[Int]
+
+  /**
+   * Initialize the given variable
+   *
+   * @param variable    the variable to initialize
+   * @param dataFormat  describe the meaning of each dimension of the variable
+   */
+  def init[T](variable: Tensor[T], dataFormat: VariableFormat)
+             (implicit ev: TensorNumeric[T]): Unit
+}
+</code></pre>
+
+<p>The <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/nn/InitializationMethod.scala#L163">RandomUniform</a>
+code should give you a good sense of how to implement this trait.</p>
+<p>_<strong>Python</strong>
+Custom initialization method in python is not supported right now.</p>
 
   <br>
 </div>
