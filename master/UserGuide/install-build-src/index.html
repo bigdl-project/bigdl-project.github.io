@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Build from Source Code - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Download BigDL Source", url: "#download-bigdl-source", children: [
+          ]},
+          {title: "Setup Build Environment", url: "#setup-build-environment", children: [
+          ]},
+          {title: "Build with script (Recommended)", url: "#build-with-script-recommended", children: [
+          ]},
+          {title: "Build for MacOS", url: "#build-for-macos", children: [
+          ]},
+          {title: "Build for Windows", url: "#build-for-windows", children: [
+          ]},
+          {title: "Build for Scala 2.10 or 2.11", url: "#build-for-scala-210-or-211", children: [
+          ]},
+          {title: "Build native libs", url: "#build-native-libs", children: [
+          ]},
+          {title: "Build with Maven", url: "#build-with-maven", children: [
+          ]},
+          {title: "Setup IDE", url: "#setup-ide", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+
+    <h2 id="download-bigdl-source"><strong>Download BigDL Source</strong></h2>
+<p>BigDL source code is available at <a href="https://github.com/intel-analytics/BigDL">GitHub</a></p>
+<pre><code class="bash">$ git clone https://github.com/intel-analytics/BigDL.git
+</code></pre>
+
+<p>By default, <code>git clone</code> will download the development version of BigDL, if you want a release version, you can use command <code>git checkout</code> to change the version. Available release versions is <a href="https://github.com/intel-analytics/BigDL/releases">BigDL releases</a>.</p>
+<h2 id="setup-build-environment"><strong>Setup Build Environment</strong></h2>
+<p>The following instructions are aligned with master code.</p>
+<p>Maven 3 is needed to build BigDL, you can download it from the <a href="https://maven.apache.org/download.cgi">maven website</a>.</p>
+<p>After installing Maven 3, please set the environment variable MAVEN_OPTS as follows:</p>
+<pre><code class="bash">$ export MAVEN_OPTS=&quot;-Xmx2g -XX:ReservedCodeCacheSize=512m&quot;
+</code></pre>
+
+<p>When compiling with Java 7, you need to add the option “-XX:MaxPermSize=1G”. </p>
+<h2 id="build-with-script-recommended"><strong>Build with script (Recommended)</strong></h2>
+<p>It is highly recommended that you build BigDL using the <a href="https://github.com/intel-analytics/BigDL/blob/master/make-dist.sh">make-dist.sh script</a>. And it will handle the MAVEN_OPTS variable.</p>
+<p>Once downloaded, you can build BigDL with the following commands:</p>
+<pre><code class="bash">$ bash make-dist.sh
+</code></pre>
+
+<p>After that, you can find a <code>dist</code> folder, which contains all the needed files to run a BigDL program. The files in <code>dist</code> include:</p>
+<ul>
+<li><strong>dist/bin/bigdl.sh</strong>: A script used to set up proper environment variables and launch the BigDL program.</li>
+<li><strong>dist/lib/bigdl-VERSION-jar-with-dependencies.jar</strong>: This jar package contains all dependencies except Spark classes.</li>
+<li><strong>dist/lib/bigdl-VERSION-python-api.zip</strong>: This zip package contains all Python files of BigDL.</li>
+<li><strong>dist/conf/spark-bigdl.conf</strong>: This file contains necessary property configurations. <code>Engine.createSparkConf</code> will populate these properties, so try to use that method in your code. Or you need to pass the file to Spark with the "--properties-file" option. </li>
+</ul>
+<h2 id="build-for-macos"><strong>Build for MacOS</strong></h2>
+<p>The instructions above will only build for Linux. To build BigDL for macOS, pass <code>-P mac</code> to the <code>make-dist.sh</code> script as follows:</p>
+<pre><code class="bash">$ bash make-dist.sh -P mac
+</code></pre>
+
+<h2 id="build-for-windows"><strong>Build for Windows</strong></h2>
+<p>To build BigDL for Windows, pass <code>-P win64</code> to the build command:</p>
+<pre><code class="bash">&gt; mvn clean package -DskipTests -P win64
+</code></pre>
+
+<p>Please note that we only test it on Windows 10</p>
+<ul>
+<li><strong>Build for Spark 2.0 and above</strong></li>
+</ul>
+<p>The instructions above will build BigDL with Spark 1.5.x or 1.6.x (using Scala 2.10); to build for Spark 2.0 and above (which uses Scala 2.11 by default), pass <code>-P spark_2.x</code> to the <code>make-dist.sh</code> script:</p>
+<pre><code class="bash">$ bash make-dist.sh -P spark_2.x
+</code></pre>
+
+<p>It is highly recommended to use <em><strong>Java 8</strong></em> when running with Spark 2.x; otherwise you may observe very poor performance.</p>
+<h2 id="build-for-scala-210-or-211"><strong>Build for Scala 2.10 or 2.11</strong></h2>
+<p>By default, <code>make-dist.sh</code> uses Scala 2.10 for Spark 1.5.x or 1.6.x, and Scala 2.11 for Spark 2.0.x or 2.1.x. To override the default behaviors, you can pass <code>-P scala_2.10</code> or <code>-P scala_2.11</code> to <code>make-dist.sh</code> as appropriate.</p>
+<hr />
+<h2 id="build-native-libs"><strong>Build native libs</strong></h2>
+<p>Note that the instructions above will skip the build of native library code, and pull the corresponding libraries from Maven Central. If you want to build the the native library code by yourself, follow the steps below:</p>
+<ol>
+<li>
+<p>Download and install <a href="https://software.intel.com//qualify-for-free-software/opensourcecontributor">Intel Parallel Studio XE</a> in your Linux box.</p>
+</li>
+<li>
+<p>Prepare build environment as follows:</p>
+</li>
+</ol>
+<pre><code class="bash">    $ source &lt;install-dir&gt;/bin/compilervars.sh intel64
+    $ source PATH_TO_MKL/bin/mklvars.sh intel64
+</code></pre>
+
+<pre><code>where the `PATH_TO_MKL` is the installation directory of the MKL.
+</code></pre>
+<ol>
+<li>Full build</li>
+</ol>
+<p>Clone BigDL as follows:</p>
+<pre><code class="bash">   git clone git@github.com:intel-analytics/BigDL.git --recursive 
+</code></pre>
+
+<p>For already cloned repos, just use:</p>
+<pre><code class="bash">   git submodule update --init --recursive 
+</code></pre>
+
+<p>If the Intel MKL is not installed to the default path <code>/opt/intel</code>, please pass your libiomp5.so's directory path to the <code>make-dist.sh</code> script:</p>
+<pre><code class="bash">   $ bash make-dist.sh -P full-build -DiompLibDir=&lt;PATH_TO_LIBIOMP5_DIR&gt; 
+</code></pre>
+
+<p>Otherwise, only pass <code>-P full-build</code> to the <code>make-dist.sh</code> script:</p>
+<pre><code class="bash">   $ bash make-dist.sh -P full-build
+</code></pre>
+
+<hr />
+<h2 id="build-with-maven"><strong>Build with Maven</strong></h2>
+<p>To build BigDL directly using Maven, run the command below:</p>
+<pre><code class="bash">$ mvn clean package -DskipTests
+</code></pre>
+
+<p>After that, you can find that the three jar packages in <code>PATH_To_BigDL</code>/target/, where <code>PATH_To_BigDL</code> is the path to the directory of the BigDL. </p>
+<p>Note that the instructions above will build BigDL with Spark 1.5.x or 1.6.x (using Scala 2.10) for Linux, and skip the build of native library code. Similarly, you may customize the default behaviors by passing the following parameters to maven:</p>
+<ul>
+<li><code>-P mac</code>: build for maxOS</li>
+<li><code>-P win64</code>: build for windows</li>
+<li><code>-P spark_2.x</code>: build for Spark 2.0 and above (using Scala 2.11). (Again, it is highly recommended to use <em><strong>Java 8</strong></em> when running with Spark 2.0; otherwise you may observe very poor performance.)</li>
+<li><code>-P full-build</code>: full build</li>
+<li><code>-P scala_2.10</code> (or <code>-P scala_2.11</code>): build using Scala 2.10 (or Scala 2.11) </li>
+</ul>
+<hr />
+<h2 id="setup-ide"><strong>Setup IDE</strong></h2>
+<p>We set the scope of spark related library to <code>provided</code> in pom.xml. The reason is that we don't want package spark related jars which will make bigdl a huge jar, and generally as bigdl is invoked by spark-submit, these dependencies will be provided by spark at run-time.</p>
+<p>This will cause a problem in IDE. When you run applications, it will throw <code>NoClassDefFoundError</code> because the library scope is <code>provided</code>.</p>
+<p>You can easily change the scopes by the <code>all-in-one</code> profile.</p>
+<ul>
+<li>In Intellij, go to View -&gt; Tools Windows -&gt; Maven Projects. Then in the Maven Projects panel, Profiles -&gt; click "all-in-one". </li>
+</ul>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

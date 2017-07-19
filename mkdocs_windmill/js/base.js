@@ -186,6 +186,48 @@ function cleanUrlPath(relUrl) {
 }
 
 /**
+ *function to load versions
+ */
+function loadVersion() {
+  var file = '/version-list'
+  var result = null;
+  var xmlhttp = new XMLHttpRequest();
+  var versionSelect = document.getElementById("versions")
+  xmlhttp.open("GET", file, true);
+  xmlhttp.send();
+  xmlhttp.onload = function () {
+    if (xmlhttp.status == 200) {
+      result = xmlhttp.responseText;
+      var versionsList = result.split(/\r?\n/);
+      var len = versionsList.length
+      for (var i = 0; i < len; i++) {
+        if (versionsList[i] === "") {
+          continue;   
+        }
+        
+        var opt = document.createElement('option');
+        opt.value = versionsList[i];
+        opt.innerHTML = versionsList[i];
+        versionSelect.appendChild(opt);
+      }
+      var path = window.location.pathname;
+      var dir = path.split("/")[1];
+      if (dir.includes("#")) {
+        dir = dir.split("#")[1];
+      }
+      versionSelect.value = dir;
+    }
+  }
+}
+
+/**
+ *function to switch versions
+ */
+function switchVersion(opt) {
+  window.location = "/" + opt.value + "/index.html"
+}
+
+/**
  * Initialize the main window.
  */
 function initMainWindow() {
@@ -254,6 +296,9 @@ function initMainWindow() {
   setTimeout(function() { updateIframe(false); }, 0);
   // For our usage, 'popstate' or 'hashchange' would work, but only 'hashchange' work on IE.
   $(window).on('hashchange', function() { updateIframe(true); });
+
+  // load version
+  loadVersion()
 }
 
 function onIframeBeforeLoad(url) {
