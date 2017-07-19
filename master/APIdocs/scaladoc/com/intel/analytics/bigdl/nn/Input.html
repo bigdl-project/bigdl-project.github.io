@@ -39,9 +39,11 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Each input node of the graph container should accept one tensor as input. If you want a module
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Input layer do nothing to the input tensors, just pass them. It should be used as input node
+when the first layer of your module accepts multiple tensors as inputs.</p><p>Each input node of the graph container should accept one tensor as input. If you want a module
 accepting multiple tensors as input, you should add some Input module before it and connect
-the outputs of the Input nodes to it.</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>The numeric type in the criterion, usually which are <span class="extype" name="Float">Float</span> or <span class="extype" name="Double">Double</span>
+the outputs of the Input nodes to it.</p><p>Please note that the return is not a layer but a Node containing input layer.
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>The numeric type in the criterion, usually which are <span class="extype" name="Float">Float</span> or <span class="extype" name="Double">Double</span>
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@SerialVersionUID</span><span class="args">(<span>
       
@@ -89,7 +91,7 @@ the outputs of the Input nodes to it.</p></div><dl class="paramcmts block"><dt c
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.Input#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;()(implicitevidence$6:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Input[T]"></a>
+      <a id="&lt;init&gt;()(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Input[T]"></a>
       <a id="&lt;init&gt;:Input[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -866,6 +868,19 @@ Custom modules should override this function if they have parameters
       </span>
       <span class="symbol">
         <span class="name">saveCaffe</span><span class="params">(<span name="prototxtPath">prototxtPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="modelPath">modelPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="useV2">useV2: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="overwrite">overwrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Input">Input</a>.this.type</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveTF" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="saveTF(inputs:Seq[(String,Seq[Int])],path:String,byteOrder:java.nio.ByteOrder,dataFormat:com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat):AbstractModule.this.type"></a>
+      <a id="saveTF(Seq[(String,Seq[Int])],String,ByteOrder,TensorflowDataFormat):Input.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">saveTF</span><span class="params">(<span name="inputs">inputs: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Int">Int</span>])]</span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="byteOrder">byteOrder: <span class="extype" name="java.nio.ByteOrder">ByteOrder</span> = <span class="symbol">ByteOrder.LITTLE_ENDIAN</span></span>, <span name="dataFormat">dataFormat: <a href="../utils/tf/TensorflowDataFormat.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat">TensorflowDataFormat</a> = <span class="symbol"><span class="name"><a href="../../../../package.html">TensorflowDataFormat.NHWC</a></span></span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Input">Input</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>

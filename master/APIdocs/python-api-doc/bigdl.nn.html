@@ -1617,6 +1617,23 @@ and inferred the last dim as 14.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.Input">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Input</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Input"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Node" title="bigdl.nn.layer.Node"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Node</span></code></a></p>
+<p>Input layer do nothing to the input tensors, just passing them through. It is used as input to
+the Graph container (add a link) when the first layer of the graph container accepts multiple
+tensors as inputs.</p>
+<p>Each input node of the graph container should accept one tensor as input. If you want a module
+accepting multiple tensors as input, you should add some Input module before it and connect
+the outputs of the Input nodes to it.</p>
+<p>Please note that the return is not a layer but a Node containing input layer.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">Input</span><span class="p">()</span>
+<span class="go">creating: createInput</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.JoinTable">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">JoinTable</code><span class="sig-paren">(</span><em>dimension</em>, <em>n_input_dims</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#JoinTable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.JoinTable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
@@ -1894,6 +1911,21 @@ You need to invoke collect() to trigger those action         as the returning re
 <dt id="bigdl.nn.layer.Layer.save_caffe">
 <code class="descname">save_caffe</code><span class="sig-paren">(</span><em>prototxt_path</em>, <em>model_path</em>, <em>use_v2=True</em>, <em>overwrite=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.save_caffe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.save_caffe" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="bigdl.nn.layer.Layer.save_tensorflow">
+<code class="descname">save_tensorflow</code><span class="sig-paren">(</span><em>inputs</em>, <em>path</em>, <em>byte_order='little_endian'</em>, <em>data_format='nhwc'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.save_tensorflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.save_tensorflow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a model to protobuf files so that it can be used in tensorflow inference.</p>
+<p>When saving the model, placeholders will be added to the tf model as input nodes. So
+you need to pass in the names and shapes of the placeholders. BigDL model doesn’t have
+such information. The order of the placeholder information should be same as the inputs
+of the graph model.
+:param inputs: placeholder information, should be an array of tuples (input_name, shape)
+where ‘input_name’ is a string and shape is an array of integer
+:param path: the path to be saved to
+:param byte_order: model byte order
+:param data_format: model data format, should be “nhwc” or “nchw”</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="bigdl.nn.layer.Layer.setBRegularizer">
@@ -2415,22 +2447,6 @@ node_type parameter.</p>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="bigdl.nn.layer.Model.save_tensorflow">
-<em class="property">static </em><code class="descname">save_tensorflow</code><span class="sig-paren">(</span><em>model</em>, <em>inputs</em>, <em>path</em>, <em>byte_order='little_endian'</em>, <em>data_format='nhwc'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.save_tensorflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.save_tensorflow" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save a model to protobuf files so that it can be used in tensorflow inference.</p>
-<p>When saving the model, placeholders will be added to the tf model as input nodes. So
-you need to pass in the names and shapes of the placeholders. BigDL model doesn’t have
-such information. The order of the placeholder information should be same as the inputs
-of the graph model.
-:param model: the model to be saved
-:param inputs: placeholder information, should be an array of tuples (input_name, shape)
-where ‘input_name’ is a string and shape is an array of integer
-:param path: the path to be saved to
-:param byte_order: model byte order
-:param data_format: model data format, should be “nhwc” or “nchw”</p>
 </dd></dl>
 
 </dd></dl>

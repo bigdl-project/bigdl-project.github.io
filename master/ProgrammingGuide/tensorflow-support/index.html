@@ -33,11 +33,14 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Loading a tensorflow model from tensorflow model file", url: "#loading-a-tensorflow-model-from-tensorflow-model-file", children: [
+          {title: "Loading a Tensorflow model into BigDL", url: "#loading-a-tensorflow-model-into-bigdl", children: [
+              {title: "Generate model definition file and checkpoints in Tensorflow", url: "#generate-model-definition-file-and-checkpoints-in-tensorflow" },
+              {title: "Freeze graph definition and checkpoints into a single \".pb\" file", url: "#freeze-graph-definition-and-checkpoints-into-a-single-pb-file" },
+              {title: "Load Tensorflow model in BigDL", url: "#load-tensorflow-model-in-bigdl" },
           ]},
-          {title: "Saving a BigDL Graph model to tensorflow model file", url: "#saving-a-bigdl-graph-model-to-tensorflow-model-file", children: [
+          {title: "Saving a BigDL functional model to Tensorflow model file", url: "#saving-a-bigdl-functional-model-to-tensorflow-model-file", children: [
           ]},
-          {title: "Build model using tensorflow and train with BigDL", url: "#build-model-using-tensorflow-and-train-with-bigdl", children: [
+          {title: "Build Tensorflow model and run on BigDL", url: "#build-tensorflow-model-and-run-on-bigdl", children: [
           ]},
         ];
 
@@ -55,14 +58,15 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="loading-a-tensorflow-model-from-tensorflow-model-file"><strong>Loading a tensorflow model from tensorflow model file</strong></h2>
-<p>If you have a pre-trained tensorflow model saved in a ".pb" file. You load it
-into BigDL using <code>Model.load_tensorflow</code> api. </p>
+    <h2 id="loading-a-tensorflow-model-into-bigdl"><strong>Loading a Tensorflow model into BigDL</strong></h2>
+<p>If you have a pre-trained Tensorflow model saved in a ".pb" file, you can load it
+into BigDL.</p>
 <p>For more information on how to generate
 the ".pb" file, you can refer to <a href="https://www.tensorflow.org/extend/tool_developers/">A Tool Developer's Guide to TensorFlow Model Files</a>.
 Specifically, you should generate a model definition file and a set of checkpoints, then use the <a href="https://github.com/tensorflow/tensorflow/blob/v1.0.0/tensorflow/python/tools/freeze_graph.py">freeze_graph</a>
 script to freeze the graph definition and weights in checkpoints into a single file.</p>
-<p><strong>Generate model definition file and checkpoints in python</strong></p>
+<h3 id="generate-model-definition-file-and-checkpoints-in-tensorflow">Generate model definition file and checkpoints in Tensorflow</h3>
+<p><strong>Python</strong></p>
 <pre><code class="python">import tensorflow as tf
 xs = tf.placeholder(tf.float32, [None, 1])
 W1 = tf.Variable(tf.zeros([1,10])+0.2)
@@ -78,31 +82,37 @@ with tf.Session() as sess:
     tf.train.write_graph(sess.graph, '/tmp/model', 'test.pbtxt')
 </code></pre>
 
-<p><strong>Freeze graph definition and checkpoints into a single ".pb" file in shell</strong></p>
+<h3 id="freeze-graph-definition-and-checkpoints-into-a-single-pb-file">Freeze graph definition and checkpoints into a single ".pb" file</h3>
+<p><strong>Shell</strong></p>
 <pre><code class="shell">wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.0.0/tensorflow/python/tools/freeze_graph.py
 python freeze_graph.py --input_graph /tmp/model/test.pbtxt --input_checkpoint /tmp/model/test.chkp --output_node_names=output --output_graph &quot;/tmp/model/test.pb&quot;
 </code></pre>
 
-<p><strong>Load tensorflow model in Scala</strong></p>
+<h3 id="load-tensorflow-model-in-bigdl">Load Tensorflow model in BigDL</h3>
+<p><strong>Scala</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.utils._
+import com.intel.analytics.bigdl.nn.Module
+import java.nio.ByteOrder
+
 val path = &quot;/tmp/model/test.pb&quot;
 val inputs = Seq(&quot;Placeholder&quot;)
 val outputs = Seq(&quot;output&quot;)
-val model = TensorflowLoader.load(path, Seq(&quot;Placeholder&quot;), Seq(&quot;output&quot;), ByteOrder.LITTLE_ENDIAN)
+val model = Module.loadTF(path, Seq(&quot;Placeholder&quot;), Seq(&quot;output&quot;), ByteOrder.LITTLE_ENDIAN)
 </code></pre>
 
-<p><strong>Load tensorflow model in python</strong></p>
-<pre><code class="python">path = &quot;/tmp/model/test.pb&quot;
+<p><strong>Python</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+path = &quot;/tmp/model/test.pb&quot;
 inputs = [&quot;Placeholder&quot;]
 outputs = [&quot;output&quot;]
 model = Model.load_tensorflow(path, inputs, outputs, byte_order = &quot;little_endian&quot;, bigdl_type=&quot;float&quot;)
 </code></pre>
 
 <hr />
-<h2 id="saving-a-bigdl-graph-model-to-tensorflow-model-file"><strong>Saving a BigDL Graph model to tensorflow model file</strong></h2>
-<p>You can also save a graph model to protobuf files so that it can be used in tensorflow inference.</p>
+<h2 id="saving-a-bigdl-functional-model-to-tensorflow-model-file"><strong>Saving a BigDL functional model to Tensorflow model file</strong></h2>
+<p>You can also save a <a href="../Model/Functional/">functional model</a> to protobuf files so that it can be used in Tensorflow inference.</p>
 <p>When saving the model, placeholders will be added to the tf model as input nodes. So
-you need to pass in the names and shapes of the placeholders. BigDL model doesn't have
+you need to pass in the names and shapes of the placeholders. BigDL model does not have
 such information. The order of the placeholder information should be same as the inputs
 of the graph model.</p>
 <p><strong>Scala</strong></p>
@@ -113,10 +123,10 @@ import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericF
 val linear = Linear(10, 2).inputs()
 val sigmoid = Sigmoid().inputs(linear)
 val softmax = SoftMax().inputs(sigmoid)
-val model = Graph(Seq[linear], Seq[softmax])
+val model = Graph(Array(linear), Array(softmax))
 
-// save it to tensorflow model file
-TensorflowSaver.saveGraph(model, Seq((&quot;input&quot;, Seq(4, 10))), &quot;/tmp/model.pb&quot;)
+// save it to Tensorflow model file
+model.saveTF(Seq((&quot;input&quot;, Seq(4, 10))), &quot;/tmp/model.pb&quot;)
 </code></pre>
 
 <p><strong>Python</strong></p>
@@ -128,20 +138,21 @@ from bigdl.util.common import *
 linear = Linear(10, 2)()
 sigmoid = Sigmoid()(linear)
 softmax = SoftMax()(sigmoid)
-model_original = Model([linear], [softmax])
+model = Model([linear], [softmax])
 
-# save it to tensorflow model file
-Model.save_tensorflow(model_original, [(&quot;input&quot;, [4, 10])], &quot;/tmp/model.pb&quot;)
+# save it to Tensorflow model file
+model.save_tensorflow([(&quot;input&quot;, [4, 10])], &quot;/tmp/model.pb&quot;)
 </code></pre>
 
 <hr />
-<h2 id="build-model-using-tensorflow-and-train-with-bigdl"><strong>Build model using tensorflow and train with BigDL</strong></h2>
+<h2 id="build-tensorflow-model-and-run-on-bigdl"><strong>Build Tensorflow model and run on BigDL</strong></h2>
 <p>You can construct your BigDL model directly from the input and output nodes of
-tensorflow model. That is to say, you can use tensorflow to define
+Tensorflow model. That is to say, you can use Tensorflow to define
 a model and use BigDL to run it.</p>
 <p><strong>Python:</strong></p>
 <pre><code class="python">import tensorflow as tf
 import numpy as np
+from bigdl.nn.layer import *
 
 tf.set_random_seed(1234)
 input = tf.placeholder(tf.float32, [None, 5])
@@ -150,7 +161,6 @@ bias = tf.Variable(tf.random_uniform([10]))
 middle = tf.nn.bias_add(tf.matmul(input, weight), bias)
 output = tf.nn.tanh(middle)
 
-tensor = np.random.rand(5, 5)
 # construct BigDL model and get the result form 
 bigdl_model = Model(input, output, model_type=&quot;tensorflow&quot;)
 </code></pre>

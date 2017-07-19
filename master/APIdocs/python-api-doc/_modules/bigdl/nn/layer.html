@@ -389,6 +389,23 @@
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;saveCaffe&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">prototxt_path</span><span class="p">,</span>
                       <span class="n">model_path</span><span class="p">,</span> <span class="n">use_v2</span><span class="p">,</span> <span class="n">overwrite</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="Layer.save_tensorflow"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.save_tensorflow">[docs]</a>    <span class="k">def</span> <span class="nf">save_tensorflow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">byte_order</span><span class="o">=</span><span class="s2">&quot;little_endian&quot;</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;nhwc&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save a model to protobuf files so that it can be used in tensorflow inference.</span>
+
+<span class="sd">        When saving the model, placeholders will be added to the tf model as input nodes. So</span>
+<span class="sd">        you need to pass in the names and shapes of the placeholders. BigDL model doesn&#39;t have</span>
+<span class="sd">        such information. The order of the placeholder information should be same as the inputs</span>
+<span class="sd">        of the graph model.</span>
+<span class="sd">        :param inputs: placeholder information, should be an array of tuples (input_name, shape)</span>
+<span class="sd">                       where &#39;input_name&#39; is a string and shape is an array of integer</span>
+<span class="sd">        :param path: the path to be saved to</span>
+<span class="sd">        :param byte_order: model byte order</span>
+<span class="sd">        :param data_format: model data format, should be &quot;nhwc&quot; or &quot;nchw&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;saveTF&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">byte_order</span><span class="p">,</span> <span class="n">data_format</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="Layer.setWRegularizer"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.setWRegularizer">[docs]</a>    <span class="k">def</span> <span class="nf">setWRegularizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        set weight regularizer</span>
@@ -518,25 +535,7 @@
 <span class="sd">        :return: A pre-trained model.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;loadTF&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">byte_order</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Model</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="Model.save_tensorflow"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.save_tensorflow">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">save_tensorflow</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">byte_order</span><span class="o">=</span><span class="s2">&quot;little_endian&quot;</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;nhwc&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Save a model to protobuf files so that it can be used in tensorflow inference.</span>
-
-<span class="sd">        When saving the model, placeholders will be added to the tf model as input nodes. So</span>
-<span class="sd">        you need to pass in the names and shapes of the placeholders. BigDL model doesn&#39;t have</span>
-<span class="sd">        such information. The order of the placeholder information should be same as the inputs</span>
-<span class="sd">        of the graph model.</span>
-<span class="sd">        :param model: the model to be saved</span>
-<span class="sd">        :param inputs: placeholder information, should be an array of tuples (input_name, shape)</span>
-<span class="sd">                       where &#39;input_name&#39; is a string and shape is an array of integer</span>
-<span class="sd">        :param path: the path to be saved to</span>
-<span class="sd">        :param byte_order: model byte order</span>
-<span class="sd">        :param data_format: model data format, should be &quot;nhwc&quot; or &quot;nchw&quot;</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;saveTF&quot;</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">byte_order</span><span class="p">,</span> <span class="n">data_format</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">Model</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="Linear"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Linear">[docs]</a><span class="k">class</span> <span class="nc">Linear</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
@@ -1709,6 +1708,27 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CosineDistance</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Input"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Input">[docs]</a><span class="k">class</span> <span class="nc">Input</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Input layer do nothing to the input tensors, just passing them through. It is used as input to</span>
+<span class="sd">    the Graph container (add a link) when the first layer of the graph container accepts multiple</span>
+<span class="sd">    tensors as inputs.</span>
+
+<span class="sd">    Each input node of the graph container should accept one tensor as input. If you want a module</span>
+<span class="sd">    accepting multiple tensors as input, you should add some Input module before it and connect</span>
+<span class="sd">    the outputs of the Input nodes to it.</span>
+
+<span class="sd">    Please note that the return is not a layer but a Node containing input layer.</span>
+
+<span class="sd">    &gt;&gt;&gt; input = Input()</span>
+<span class="sd">    creating: createInput</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Input</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="DotProduct"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.DotProduct">[docs]</a><span class="k">class</span> <span class="nc">DotProduct</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
