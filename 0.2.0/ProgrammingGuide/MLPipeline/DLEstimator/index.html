@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>DLEstimator - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+
+    <p><strong>Scala:</strong></p>
+<pre><code class="scala">val estimator = new DLEstimator(
+    model,
+    criterion,
+    featureSize,
+    labelSize
+  )
+</code></pre>
+
+<p><code>DLEstimator</code> helps to train a BigDL Model with the Spark ML <code>Estimator</code>/<code>Transfomer</code> pattern,
+thus Spark users can conveniently fit BigDL into Spark ML pipeline.</p>
+<p><code>DLEstimator</code> supports feature and label data in the format of <code>Array[Double], Array[Float],
+org.apache.spark.mllib.linalg.{Vector, VectorUDT}</code> for Spark 1.5, 1.6 and
+<code>org.apache.spark.ml.linalg.{Vector, VectorUDT}</code> for Spark 2.0+. Also label data can be of
+Double type.
+User should specify the feature data dimensions and label data dimensions via the constructor
+parameters <code>featureSize</code> and <code>labelSize</code> respectively. E.g., a sample from
+<a href="http://yann.lecun.com/exdb/mnist/">MNist</a> may have the <code>featureSize</code> as Array(28, 28) and
+<code>labelSize</code> as Array(1). And the feature column contains an array
+or a vector of 576 numbers. Internally the feature and label data are converted to BigDL
+tensors, to further train a BigDL model efficiently.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import org.apache.spark.ml.DLEstimator
+
+val model = Sequential().add(Linear(2, 2))
+val criterion = MSECriterion()
+val estimator = new DLEstimator(model, criterion, Array(2), Array(2))
+  .setBatchSize(4)
+  .setMaxEpoch(10)
+val data = sc.parallelize(Seq(
+  (Array(2.0, 1.0), Array(1.0, 2.0)),
+  (Array(1.0, 2.0), Array(2.0, 1.0)),
+  (Array(2.0, 1.0), Array(1.0, 2.0)),
+  (Array(1.0, 2.0), Array(2.0, 1.0))))
+val df: DataFrame = sqlContext.createDataFrame(data).toDF(&quot;features&quot;, &quot;label&quot;)
+
+val dlModel = estimator.fit(df)
+dlModel.transform(df).show(false)
+
+</code></pre>
+
+<p>Output is</p>
+<table>
+<thead>
+<tr>
+<th>features</th>
+<th>label</th>
+<th>prediction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[2.0, 1.0]</td>
+<td>[1.0, 2.0]</td>
+<td>[1.0034767389297485, 2.006068706512451]</td>
+</tr>
+<tr>
+<td>[1.0, 2.0]</td>
+<td>[2.0, 1.0]</td>
+<td>[2.006953001022339, 1.0039551258087158]</td>
+</tr>
+<tr>
+<td>[2.0, 1.0]</td>
+<td>[1.0, 2.0]</td>
+<td>[1.0034767389297485, 2.006068706512451]</td>
+</tr>
+<tr>
+<td>[1.0, 2.0]</td>
+<td>[2.0, 1.0]</td>
+<td>[2.006953001022339, 1.0039551258087158]</td>
+</tr>
+</tbody>
+</table>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

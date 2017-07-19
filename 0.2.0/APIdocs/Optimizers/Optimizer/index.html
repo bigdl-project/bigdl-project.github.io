@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Optimizer - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Optimizer", url: "#optimizer", children: [
+              {title: "Scala API", url: "#scala-api" },
+              {title: "Scala example", url: "#scala-example" },
+              {title: "Python API", url: "#python-api" },
+              {title: "Python example", url: "#python-example" },
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+
+    <h2 id="optimizer">Optimizer</h2>
+<p>An optimizer is in general to minimize any function with respect to a set of parameters. In case of training a neural network, an optimizer tries to minimize the loss of the neural net with respect to its weights/biases, over the training set.</p>
+<h3 id="scala-api">Scala API</h3>
+<p><strong><em>Factory method</em></strong></p>
+<pre><code class="scala">val optimizer = Opimizer[T: ClassTag](
+  model: Module[T],
+  sampleRDD: RDD[Sample[T]],
+  criterion: Criterion[T],
+  batchSize: Int)
+</code></pre>
+
+<p><code>T</code>: the numeric type(Float/Double).<br />
+<code>model</code>: the model will be optimized.<br />
+<code>sampleRDD</code>: an RDD of training Sample.<br />
+<code>criterion</code>: the Loss function.<br />
+<code>batchSize</code>: size of minibatch. </p>
+<pre><code class="scala">val optimizer = Opimizer[T: ClassTag, D](
+  model: Module[T],
+  dataset: DataSet[D],
+  criterion: Criterion[T])
+</code></pre>
+
+<p><code>T</code>: the numeric type(Float/Double).<br />
+<code>D</code>: should be a kind of MiniBatch.<br />
+<code>model</code>: the model will be optimized.<br />
+<code>dataset</code>: the training DataSet.<br />
+<code>criterion</code>: the Loss function.</p>
+<pre><code class="scala">def apply[T: ClassTag](
+      model: Module[T],
+      sampleRDD: RDD[Sample[T]],
+      criterion: Criterion[T],
+      batchSize: Int,
+      featurePaddingParam: PaddingParam[T],
+      labelPaddingParam: PaddingParam[T])
+</code></pre>
+
+<p>Apply an Optimizer who could apply padding to the Samples with a padding strategy.<br />
+<code>model</code>: model will be optimizied.<br />
+<code>sampleRDD</code>: training Samples.<br />
+<code>criterion</code>: loss function.<br />
+<code>batchSize</code>: mini batch size.<br />
+<code>featurePaddingParam</code>: feature padding strategy.<br />
+<code>labelPaddingParam</code>: label padding strategy.</p>
+<pre><code class="scala">def apply[T: ClassTag](
+      model: Module[T],
+      sampleRDD: RDD[Sample[T]],
+      criterion: Criterion[T],
+      batchSize: Int,
+      miniBatch: MiniBatch[T])
+</code></pre>
+
+<p>Apply an optimizer with User-Defined <code>MiniBatch</code>.<br />
+<code>model</code>: model will be optimizied.<br />
+<code>sampleRDD</code>: training Samples.<br />
+<code>criterion</code>: loss function.<br />
+<code>batchSize</code>: mini batch size.<br />
+<code>miniBatch</code>: An User-Defined MiniBatch to construct a mini batch.</p>
+<p><strong><em>Validation</em></strong></p>
+<p>Function setValidation is to set a validate evaluation in the <code>optimizer</code>.</p>
+<pre><code class="scala">optimizer.setValidation(
+  trigger: Trigger,
+  dataset: DataSet[MiniBatch[T]],
+  vMethods : Array[ValidationMethod[T])
+</code></pre>
+
+<p><code>trigger</code>: how often to evaluation validation set.<br />
+<code>dataset</code>: validate data set in type of DataSet[MiniBatch].<br />
+<code>vMethods</code>: a set of ValidationMethod.<br />
+ <br></p>
+<pre><code class="scala">optimizer.setValidation(
+  trigger: Trigger,
+  sampleRDD: RDD[Sample[T]],
+  vMethods: Array[ValidationMethod[T]],
+  batchSize: Int)
+</code></pre>
+
+<p><code>trigger</code>: how often to evaluation validation set.<br />
+<code>sampleRDD</code>: validate data set in type of RDD[Sample].<br />
+<code>vMethods</code>: a set of ValidationMethod.<br />
+<code>batchSize</code>: size of mini batch.</p>
+<p><strong><em>Checkpoint</em></strong></p>
+<pre><code class="scala">optimizer.setCheckpoint(path: String, trigger: Trigger)
+</code></pre>
+
+<p>Function setCheckPoint is used to set a check point saved at <code>path</code> triggered by <code>trigger</code>.<br />
+<code>path</code>: a local/HDFS directory to save checkpoint.<br />
+<code>trigger</code>: how often to save the check point.<br />
+ <br></p>
+<pre><code class="scala">val path = optimizer.getCheckpointPath()
+</code></pre>
+
+<p>Function getCheckpointPath is used to get the directory of saving checkpoint.<br />
+ <br></p>
+<pre><code class="scala">optimizer.overWriteCheckpoint()
+</code></pre>
+
+<p>Function overWriteCheckpoint is enable overwrite saving checkpoint.  </p>
+<p><strong><em>Summary</em></strong></p>
+<pre><code class="scala">optimizer.setTrainSummary(trainSummary: TrainSummary)
+</code></pre>
+
+<p>Function setTrainSummary is used to enable train summary in this optimizer.<br />
+<code>trainSummary</code>: an instance of TrainSummary.<br />
+ <br></p>
+<pre><code class="scala">optimizer.setValidationSummary(validationSummary: ValidationSummary)
+</code></pre>
+
+<p>Function setValidationSummary is used to enable validation summary in this optimizer.<br />
+<code>validationSummary</code>: an instance of ValidationSummary.  </p>
+<p><strong><em>Other important API</em></strong></p>
+<pre><code class="scala">val trainedModel = optimizer.optimize()
+</code></pre>
+
+<p>Function optimize will start the training.<br />
+ <br></p>
+<pre><code class="scala">optimizer.setModel(newModel: Module[T])
+</code></pre>
+
+<p>Function setModel will set a new model to the optimizer.<br />
+<code>newModel</code>: a model will replace the old model in optimizer.<br />
+ <br></p>
+<pre><code class="scala">optimizer.setState(state: Table)
+</code></pre>
+
+<p>Function setState is used to set a state(learning rate, epochs...) to the <code>optimizer</code>.<br />
+<code>state</code>: the state to be saved.<br />
+ <br></p>
+<pre><code class="scala">optimizer.setOptimMethod(method : OptimMethod[T])
+</code></pre>
+
+<p>Function setOptimMethod is used to set an optimization method in this <code>optimizer</code>.<br />
+<code>method</code>: the method the optimize the model in this <code>optimizer</code>.<br />
+ <br></p>
+<pre><code class="scala">optimizer.setEndWhen(endWhen: Trigger)
+</code></pre>
+
+<p>Function setEndWhen is used to declare when to stop the training invoked by <code>optimize()</code>.<br />
+<code>endWhen</code>: a trigger to stop the training.</p>
+<h3 id="scala-example">Scala example</h3>
+<p>Here is an example to new an Optimizer with SGD for optimizing LeNet5 model.</p>
+<pre><code class="scala">val trainingRDD = ...
+val valRDD = ...
+val batchSize = 12
+// Create an optimizer
+val optimizer = Optimizer(
+  model = LeNet5(classNum = 10),
+  sampleRDD = trainingRDD,
+  criterion = ClassNLLCriterion(),
+  batchSize = batchSize
+).setValidation(Trigger.everyEpoch, valRDD, Array(new Top1Accuracy), batchSize) // set validation method
+  .setEndWhen(Trigger.maxEpoch(15)) // set end trigger
+  .setOptimMethod(new SGD(learningRate = 0.05)) // set optimize method, Since 0.2.0. Older version should use optimizer.setOptimMethod(new SGD()).setState(T(&quot;learningRate&quot; -&gt; 0.05))
+
+val trainedModel = optimizer.optimize()
+</code></pre>
+
+<h3 id="python-api">Python API</h3>
+<p><strong><em>Factory method</em></strong></p>
+<pre><code class="python">optimizer =  Optimizer(model,
+                 training_rdd,
+                 criterion,
+                 end_trigger,
+                 batch_size,
+                 optim_method=None,
+                 bigdl_type=&quot;float&quot;)
+</code></pre>
+
+<p><code>model</code>: the model will be optimized.<br />
+<code>training_rdd</code>: the training dataset.<br />
+<code>criterion</code>: the Loss function.<br />
+<code>end_trigger</code>: when to end the optimization.<br />
+<code>batch_size</code>: size of minibatch.<br />
+<code>optim_method</code>:  the algorithm to use for optimization, e.g. SGD, Adagrad, etc. If optim_method is None, the default algorithm is SGD.<br />
+<code>bigdl_type</code>: the numeric type(Float/Double).  </p>
+<p><strong><em>Validation</em></strong></p>
+<p>Function setValidation is to set a validate evaluation in the <code>optimizer</code>.</p>
+<pre><code class="python">optimizer.set_validation(batch_size, val_rdd, trigger, val_method=[&quot;Top1Accuracy&quot;])
+</code></pre>
+
+<p><code>trigger</code>: how often to evaluation validation set.<br />
+<code>val_rdd</code>: validate data set in type of RDD[Sample].<br />
+<code>val_method</code>: a list of ValidationMethod, e.g. "Top1Accuracy", "Top5Accuracy", "Loss".<br />
+<code>batch_size</code>: size of mini batch.</p>
+<p><strong><em>Checkpoint</em></strong></p>
+<pre><code class="python">optimizer.set_checkpoint(checkpoint_trigger,
+                      checkpoint_path, isOverWrite=True)
+</code></pre>
+
+<p>Function setCheckPoint is used to set a check point saved at <code>path</code> triggered by <code>trigger</code>.<br />
+<code>checkpoint_trigger</code>: how often to save the check point.
+<code>checkpoint_path</code>: a local/HDFS directory to save checkpoint.<br />
+<code>isOverWrite</code>: whether to overwrite existing snapshots in path.default is True</p>
+<p><strong><em>Summary</em></strong></p>
+<pre><code class="python">optimizer.set_train_summary(summary)
+</code></pre>
+
+<p>Set train summary. A TrainSummary object contains information necessary for the optimizer to know how often the logs are recorded, where to store the logs and how to retrieve them, etc. For details, refer to the docs of TrainSummary.
+<code>summary</code>: an instance of TrainSummary.</p>
+<pre><code class="python">optimizer.set_validation_summary(summary)
+</code></pre>
+
+<p>Function setValidationSummary is used to set validation summary. A ValidationSummary object contains information necessary for the optimizer to know how often the logs are recorded, where to store the logs and how to retrieve them, etc. For details, refer to the docs of ValidationSummary.
+<code>summary</code>: an instance of ValidationSummary.</p>
+<p><strong><em>Start Training</em></strong></p>
+<pre><code class="python">trained_model = optimizer.optimize()
+</code></pre>
+
+<p>Function optimize will start the training.</p>
+<p><strong><em>Set Model</em></strong></p>
+<pre><code class="python">optimizer.set_model(model)
+</code></pre>
+
+<p>Function setModel will set a new model to the optimizer.<br />
+<code>model</code>: a model will replace the old model in optimizer.</p>
+<h3 id="python-example">Python example</h3>
+<p>Here is an example to new an Optimizer with SGD for optimizing LeNet5 model.</p>
+<pre><code class="python">train_data = ...
+test_data = ...
+batch_size = 12
+# Create an Optimizer, Since 0.2.0
+optimizer = Optimizer(
+  model=lenet_model,
+  training_rdd=train_data,
+  criterion=ClassNLLCriterion(),
+  optim_method=SGD(learningrate=0.01, learningrate_decay=0.0002), # set optim method
+  end_trigger=MaxEpoch(15),
+  batch_size=batch_size)
+
+# Older version, before 0.2.0, use following code: 
+# optimizer = Optimizer(
+#   model=model,
+#   training_rdd=train_data,
+#   criterion=ClassNLLCriterion(),
+#   optim_method=&quot;SGD&quot;,
+#   state={&quot;learningRate&quot;: 0.05},
+#   end_trigger=MaxEpoch(training_epochs),
+#   batch_size=batch_size)
+
+optimizer.set_validation(
+    batch_size=2048,
+    val_rdd=test_data,
+    trigger=EveryEpoch(),
+    val_method=[Top1Accuracy()]
+)
+
+# Older version, before 0.2.0, use following code: 
+#optimizer.set_validation(
+#    batch_size=2048,
+#    val_rdd=test_data,
+#    trigger=EveryEpoch(),
+#    val_method=[&quot;Top1Accuracy&quot;]
+#)
+
+trained_model = optimizer.optimize()
+
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
