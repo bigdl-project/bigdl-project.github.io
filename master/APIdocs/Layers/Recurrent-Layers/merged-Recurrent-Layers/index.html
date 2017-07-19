@@ -12,10 +12,10 @@
     <link rel="shortcut icon" href="../../../../img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>Recurrent Layers - BigDL Project</title>
-    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
-    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
-    <link href="/css/base.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
     <link href="../../../../extra.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -23,9 +23,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    <script src="/js/jquery-3.2.1.min.js"></script>
-    <script src="/js/bootstrap-3.3.7.min.js"></script>
-    <script src="/js/highlight.pack.js"></script>
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
     
     <base target="_top">
     <script>
@@ -33,24 +33,24 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "LSTMPeephole", url: "#lstmpeephole", children: [
-          ]},
           {title: "LSTM", url: "#lstm", children: [
-          ]},
-          {title: "GRU", url: "#gru", children: [
           ]},
           {title: "RNN", url: "#rnn", children: [
           ]},
           {title: "ConvLSTMPeephole", url: "#convlstmpeephole", children: [
           ]},
+          {title: "BiRecurrent", url: "#birecurrent", children: [
+          ]},
+          {title: "LSTMPeephole", url: "#lstmpeephole", children: [
+          ]},
           {title: "Recurrent", url: "#recurrent", children: [
           ]},
-          {title: "BiRecurrent", url: "#birecurrent", children: [
+          {title: "GRU", url: "#gru", children: [
           ]},
         ];
 
     </script>
-    <script src="/js/base.js"></script> 
+    <script src="../../../../js/base.js"></script> 
 </head>
 
 <body>
@@ -63,124 +63,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="lstmpeephole">LSTMPeephole</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val model = LSTMPeephole(
-  inputSize = 4,
-  hiddenSize = 3,
-  p = 0.0,
-  wRegularizer = null,
-  uRegularizer = null,
-  bRegularizer = null)
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">model = LSTMPeephole(
-  input_size,
-  hidden_size,
-  p=0.0,
-  wRegularizer=None,
-  uRegularizer=None,
-  bRegularizer=None)
-</code></pre>
-
-<p>Long Short Term Memory architecture with peephole.
-Ref. A.: http://arxiv.org/pdf/1303.5778v1 (blueprint for this module)
-B. http://web.eecs.utk.edu/~itamar/courses/ECE-692/Bobby_paper1.pdf
-C. http://arxiv.org/pdf/1503.04069v1.pdf
-D. https://github.com/wojzaremba/lstm</p>
-<ul>
-<li>param inputSize the size of each input vector</li>
-<li>param hiddenSize Hidden unit size in the LSTM</li>
-<li>param  p is used for [[Dropout]] probability. For more details about
-           RNN dropouts, please refer to
-           [RnnDrop: A Novel Dropout for RNNs in ASR]
-           (http://www.stat.berkeley.edu/~tsmoon/files/Conference/asru2015.pdf)
-           [A Theoretically Grounded Application of Dropout in Recurrent Neural Networks]
-           (https://arxiv.org/pdf/1512.05287.pdf)</li>
-<li>param wRegularizer: instance of [[Regularizer]]
-                   (eg. L1 or L2 regularization), applied to the input weights matrices.</li>
-<li>param uRegularizer: instance [[Regularizer]]
-          (eg. L1 or L2 regularization), applied to the recurrent weights matrices.</li>
-<li>param bRegularizer: instance of [[Regularizer]]
-          applied to the bias.</li>
-</ul>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.tensor.Tensor
-import com.intel.analytics.bigdl.utils.RandomGenerator._
-
-val hiddenSize = 4
-val inputSize = 6
-val outputSize = 5
-val seqLength = 5
-val batchSize = 1
-
-val input = Tensor(Array(batchSize, seqLength, inputSize))
-for (b &lt;- 1 to batchSize) {
-  for (i &lt;- 1 to seqLength) {
-    val rdmInput = Math.ceil(RNG.uniform(0.0, 1.0) * inputSize).toInt
-    input.setValue(b, i, rdmInput, 1.0f)
-  }
-}
-
-val rec = Recurrent(hiddenSize)
-val model = Sequential().add(rec.add(LSTMPeephole(inputSize, hiddenSize))).add(TimeDistributed(Linear(hiddenSize, outputSize)))
-val output = model.forward(input).toTensor
-
-scala&gt; print(input)
-(1,.,.) =
-1.0 0.0 0.0 0.0 0.0 0.0 
-0.0 0.0 0.0 0.0 0.0 1.0 
-0.0 1.0 0.0 0.0 0.0 0.0 
-0.0 0.0 0.0 0.0 0.0 1.0 
-1.0 0.0 0.0 0.0 0.0 0.0 
-
-[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x5x6]
-
-scala&gt; print(output)
-(1,.,.) =
-0.34764957  -0.31453514 -0.45646006 -0.42966008 -0.13651063 
-0.3624894   -0.2926056  -0.4347164  -0.40951455 -0.1775867  
-0.33391106  -0.29304913 -0.4748538  -0.45285955 -0.14919288 
-0.35499972  -0.29385415 -0.4419502  -0.42135617 -0.17544147 
-0.32911295  -0.30237123 -0.47175884 -0.4409852  -0.15733294 
-
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x5x5]
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.layer import *
-import numpy as np
-
-hiddenSize = 4
-inputSize = 6
-outputSize = 5
-seqLength = 5
-batchSize = 1
-
-input = np.random.randn(batchSize, seqLength, inputSize)
-rec = Recurrent(hiddenSize)
-model = Sequential().add(rec.add(LSTMPeephole(inputSize, hiddenSize))).add(TimeDistributed(Linear(hiddenSize, outputSize)))
-output = model.forward(input)
-
-&gt;&gt;&gt; print(input)
-[[[ 0.73624017 -0.91135209 -0.30627796 -1.07902111 -1.13549159  0.52868762]
-  [-0.07251559 -0.45596589  1.64020513  0.53218623  1.37993166 -0.47724947]
-  [-1.24958366 -1.22220259 -0.52454306  0.17382396  1.77666173 -1.2961758 ]
-  [ 0.45407533  0.82944329  0.02155243  1.82168093 -0.06022129  2.23823013]
-  [ 1.09100802  0.28555387 -0.94312648  0.55774033 -0.54895792  0.79885853]]]
-
-&gt;&gt;&gt; print(output)
-[[[ 0.4034881  -0.26156989  0.46799076  0.06283229  0.11794794]
-  [ 0.37359846 -0.17925361  0.31623816  0.06038529  0.10813089]
-  [ 0.34150451 -0.16565879  0.25264332  0.1187657   0.05118144]
-  [ 0.40773875 -0.2028828   0.24765283  0.0986848   0.12132661]
-  [ 0.40263647 -0.22403356  0.38489845  0.04720671  0.1686969 ]]]
-</code></pre>
-
-<h2 id="lstm">LSTM</h2>
+    <h2 id="lstm">LSTM</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val lstm = LSTM(inputSize, hiddenSize)
 </code></pre>
@@ -291,105 +174,6 @@ output = model.forward(input)
 loss = criterion.forward(input, labels)
 gradInput = criterion.backward(output, labels)
 model.backward(input, gradInput)
-</code></pre>
-
-<h2 id="gru">GRU</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val gru = GRU(inputSize, outputSize, p, wRegularizer, uRegularizer, bRegularizer)
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">gru = GRU(inputSize, outputSize, p, w_regularizer, u_regularizer, b_regularizer)
-</code></pre>
-
-<p>Gated Recurrent Units architecture. The first input in sequence uses zero value for cell and hidden state.</p>
-<p>Ref.
- 1. http://www.wildml.com/2015/10/recurrent-neural-network-tutorial-part-4-implementing-a-grulstm-rnn-with-python-and-theano/
- 2. https://github.com/Element-Research/rnn/blob/master/GRU.lua</p>
-<p><strong>Parameters:</strong>
-<em> <strong>inputSize</strong> - the size of each input vector
-</em> <strong>outputSize</strong> - hidden unit size in GRU
-<em> <strong>p</strong> - is used for [[Dropout]] probability. For more details about
-          RNN dropouts, please refer to
-           <a href="http://www.stat.berkeley.edu/~tsmoon/files/Conference/asru2015.pdf">RnnDrop: A Novel Dropout for RNNs in ASR</a>
-            and <a href="https://arxiv.org/pdf/1512.05287.pdf">A Theoretically Grounded Application of Dropout in Recurrent Neural Networks</a>. Default: 0.0
-</em> <strong>wRegularizer</strong> - instance of <code>Regularizer</code>(eg. L1 or L2 regularization), applied to the input weights matrices. Default: null
-<em> <strong>uRegularizer</strong> - instance of <code>Regularizer</code>(eg. L1 or L2 regularization), applied to the recurrent weights matrices. Default: null
-</em> <strong>bRegularizer</strong> - instance of <code>Regularizer</code>(eg. L1 or L2 regularization), applied to the bias. Default: null</p>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.utils.T
-import com.intel.analytics.bigdl.tensor.Tensor
-import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-
-val hiddenSize = 2
-val inputSize = 2
-val outputSize = 2
-val seqLength = 2
-val input = Tensor(T(
-  T(1.0f, 2.0f),
-  T(2.0f, 3.0f)
-)).resize(Array(1, seqLength, inputSize))
-val gradOutput = Tensor(T(
-  T(2.0f, 3.0f),
-  T(4.0f, 5.0f)
-)).resize(Array(1, seqLength, inputSize))
-val rec = Recurrent()
-
-val model = Sequential()
-    .add(rec.add(GRU(inputSize, hiddenSize)))
-    .add(TimeDistributed(Linear(hiddenSize, outputSize)))
-val output = model.forward(input)
-val gradient = model.backward(input, gradOutput)
-
--&gt; print(output)
-# There's random factor. An output could be
-(1,.,.) =
-0.3833429       0.0082434565    
--0.041063666    -0.08152798     
-
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x2]
-
-
--&gt; print(gradient)
-# There's random factor. An output could be
-(1,.,.) =
--0.7684499      -0.49320614     
--0.98002595     -0.47857404     
-
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x2]
-</code></pre>
-
-<p><strong>Python example:</strong></p>
-<pre><code class="python">from bigdl.nn.layer import *
-from bigdl.nn.criterion import *
-import numpy as np
-hidden_size = 2
-input_size = 2
-output_size = 2
-seq_length = 2
-input = np.array([[
-  [1.0, 2.0],
-  [2.0, 3.0]
-]])
-grad_output = np.array([[
-  [2.0, 3.0],
-  [4.0, 5.0]
-]])
-rec = Recurrent()
-
-model = Sequential() \
-    .add(rec.add(GRU(input_size, hidden_size))) \
-    .add(TimeDistributed(Linear(hidden_size, output_size)))
-output = model.forward(input)
-gradient = model.backward(input, grad_output)
--&gt; print output
-# There's random factor. An output could be
-[[[ 0.27857888  0.20263115]
-  [ 0.29470384  0.22594413]]]
--&gt; print gradient
-[[[-0.32956457  0.27405274]
-  [-0.32718879  0.32963118]]]
 </code></pre>
 
 <h2 id="rnn">RNN</h2>
@@ -706,6 +490,167 @@ output = model.forward(input)
     [-0.15700462 -0.17341313 -0.06551415]]]]]
 </code></pre>
 
+<h2 id="birecurrent">BiRecurrent</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val module = BiRecurrent(merge=null)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">module = BiRecurrent(merge=None,bigdl_type=&quot;float&quot;)
+</code></pre>
+
+<p>This layer implement a bidirectional recurrent neural network
+ * @param merge concat or add the output tensor of the two RNNs. Default is add</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">val module = BiRecurrent(CAddTable())
+.add(RnnCell(6, 4, Sigmoid()))
+val input = Tensor(Array(1, 2, 6)).rand()
+input: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+(1,.,.) =
+0.55511624      0.44330198      0.9025551       0.26096714      0.3434667       0.20060952
+0.24903035      0.24026379      0.89252585      0.23025699      0.8131796       0.4013688
+
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x2x6]
+
+module.forward(input)
+res10: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+(1,.,.) =
+1.3577285       0.8861933       0.52908427      0.86278
+1.2850789       0.82549953      0.5560188       0.81468254
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x4]
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">module = BiRecurrent(CAddTable()).add(RnnCell(6, 4, Sigmoid()))
+input = np.random.rand(1, 2, 6)
+array([[[ 0.75637438,  0.2642816 ,  0.61973312,  0.68565282,  0.73571443,
+          0.17167681],
+        [ 0.16439321,  0.06853251,  0.42257202,  0.42814042,  0.15706152,
+          0.57866659]]])
+
+module.forward(input)
+array([[[ 0.69091094,  0.97150528,  0.9562254 ,  1.14894259],
+        [ 0.83814102,  1.11358368,  0.96752423,  1.00913286]]], dtype=float32)
+</code></pre>
+
+<h2 id="lstmpeephole">LSTMPeephole</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val model = LSTMPeephole(
+  inputSize = 4,
+  hiddenSize = 3,
+  p = 0.0,
+  wRegularizer = null,
+  uRegularizer = null,
+  bRegularizer = null)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">model = LSTMPeephole(
+  input_size,
+  hidden_size,
+  p=0.0,
+  wRegularizer=None,
+  uRegularizer=None,
+  bRegularizer=None)
+</code></pre>
+
+<p>Long Short Term Memory architecture with peephole.
+Ref. A.: http://arxiv.org/pdf/1303.5778v1 (blueprint for this module)
+B. http://web.eecs.utk.edu/~itamar/courses/ECE-692/Bobby_paper1.pdf
+C. http://arxiv.org/pdf/1503.04069v1.pdf
+D. https://github.com/wojzaremba/lstm</p>
+<ul>
+<li>param inputSize the size of each input vector</li>
+<li>param hiddenSize Hidden unit size in the LSTM</li>
+<li>param  p is used for [[Dropout]] probability. For more details about
+           RNN dropouts, please refer to
+           [RnnDrop: A Novel Dropout for RNNs in ASR]
+           (http://www.stat.berkeley.edu/~tsmoon/files/Conference/asru2015.pdf)
+           [A Theoretically Grounded Application of Dropout in Recurrent Neural Networks]
+           (https://arxiv.org/pdf/1512.05287.pdf)</li>
+<li>param wRegularizer: instance of [[Regularizer]]
+                   (eg. L1 or L2 regularization), applied to the input weights matrices.</li>
+<li>param uRegularizer: instance [[Regularizer]]
+          (eg. L1 or L2 regularization), applied to the recurrent weights matrices.</li>
+<li>param bRegularizer: instance of [[Regularizer]]
+          applied to the bias.</li>
+</ul>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.utils.RandomGenerator._
+
+val hiddenSize = 4
+val inputSize = 6
+val outputSize = 5
+val seqLength = 5
+val batchSize = 1
+
+val input = Tensor(Array(batchSize, seqLength, inputSize))
+for (b &lt;- 1 to batchSize) {
+  for (i &lt;- 1 to seqLength) {
+    val rdmInput = Math.ceil(RNG.uniform(0.0, 1.0) * inputSize).toInt
+    input.setValue(b, i, rdmInput, 1.0f)
+  }
+}
+
+val rec = Recurrent(hiddenSize)
+val model = Sequential().add(rec.add(LSTMPeephole(inputSize, hiddenSize))).add(TimeDistributed(Linear(hiddenSize, outputSize)))
+val output = model.forward(input).toTensor
+
+scala&gt; print(input)
+(1,.,.) =
+1.0 0.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 1.0 
+0.0 1.0 0.0 0.0 0.0 0.0 
+0.0 0.0 0.0 0.0 0.0 1.0 
+1.0 0.0 0.0 0.0 0.0 0.0 
+
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x5x6]
+
+scala&gt; print(output)
+(1,.,.) =
+0.34764957  -0.31453514 -0.45646006 -0.42966008 -0.13651063 
+0.3624894   -0.2926056  -0.4347164  -0.40951455 -0.1775867  
+0.33391106  -0.29304913 -0.4748538  -0.45285955 -0.14919288 
+0.35499972  -0.29385415 -0.4419502  -0.42135617 -0.17544147 
+0.32911295  -0.30237123 -0.47175884 -0.4409852  -0.15733294 
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x5x5]
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
+
+hiddenSize = 4
+inputSize = 6
+outputSize = 5
+seqLength = 5
+batchSize = 1
+
+input = np.random.randn(batchSize, seqLength, inputSize)
+rec = Recurrent(hiddenSize)
+model = Sequential().add(rec.add(LSTMPeephole(inputSize, hiddenSize))).add(TimeDistributed(Linear(hiddenSize, outputSize)))
+output = model.forward(input)
+
+&gt;&gt;&gt; print(input)
+[[[ 0.73624017 -0.91135209 -0.30627796 -1.07902111 -1.13549159  0.52868762]
+  [-0.07251559 -0.45596589  1.64020513  0.53218623  1.37993166 -0.47724947]
+  [-1.24958366 -1.22220259 -0.52454306  0.17382396  1.77666173 -1.2961758 ]
+  [ 0.45407533  0.82944329  0.02155243  1.82168093 -0.06022129  2.23823013]
+  [ 1.09100802  0.28555387 -0.94312648  0.55774033 -0.54895792  0.79885853]]]
+
+&gt;&gt;&gt; print(output)
+[[[ 0.4034881  -0.26156989  0.46799076  0.06283229  0.11794794]
+  [ 0.37359846 -0.17925361  0.31623816  0.06038529  0.10813089]
+  [ 0.34150451 -0.16565879  0.25264332  0.1187657   0.05118144]
+  [ 0.40773875 -0.2028828   0.24765283  0.0986848   0.12132661]
+  [ 0.40263647 -0.22403356  0.38489845  0.04720671  0.1686969 ]]]
+</code></pre>
+
 <h2 id="recurrent">Recurrent</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val module = Recurrent()
@@ -778,48 +723,103 @@ output = module.forward(input)
          [ 0.451913  , -0.33519334, -0.61357468,  0.56650752]]], dtype=float32)]
 </code></pre>
 
-<h2 id="birecurrent">BiRecurrent</h2>
+<h2 id="gru">GRU</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val module = BiRecurrent(merge=null)
+<pre><code class="scala">val gru = GRU(inputSize, outputSize, p, wRegularizer, uRegularizer, bRegularizer)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">module = BiRecurrent(merge=None,bigdl_type=&quot;float&quot;)
+<pre><code class="python">gru = GRU(inputSize, outputSize, p, w_regularizer, u_regularizer, b_regularizer)
 </code></pre>
 
-<p>This layer implement a bidirectional recurrent neural network
- * @param merge concat or add the output tensor of the two RNNs. Default is add</p>
+<p>Gated Recurrent Units architecture. The first input in sequence uses zero value for cell and hidden state.</p>
+<p>Ref.
+ 1. http://www.wildml.com/2015/10/recurrent-neural-network-tutorial-part-4-implementing-a-grulstm-rnn-with-python-and-theano/
+ 2. https://github.com/Element-Research/rnn/blob/master/GRU.lua</p>
+<p><strong>Parameters:</strong>
+<em> <strong>inputSize</strong> - the size of each input vector
+</em> <strong>outputSize</strong> - hidden unit size in GRU
+<em> <strong>p</strong> - is used for [[Dropout]] probability. For more details about
+          RNN dropouts, please refer to
+           <a href="http://www.stat.berkeley.edu/~tsmoon/files/Conference/asru2015.pdf">RnnDrop: A Novel Dropout for RNNs in ASR</a>
+            and <a href="https://arxiv.org/pdf/1512.05287.pdf">A Theoretically Grounded Application of Dropout in Recurrent Neural Networks</a>. Default: 0.0
+</em> <strong>wRegularizer</strong> - instance of <code>Regularizer</code>(eg. L1 or L2 regularization), applied to the input weights matrices. Default: null
+<em> <strong>uRegularizer</strong> - instance of <code>Regularizer</code>(eg. L1 or L2 regularization), applied to the recurrent weights matrices. Default: null
+</em> <strong>bRegularizer</strong> - instance of <code>Regularizer</code>(eg. L1 or L2 regularization), applied to the bias. Default: null</p>
 <p><strong>Scala example:</strong></p>
-<pre><code class="scala">val module = BiRecurrent(CAddTable())
-.add(RnnCell(6, 4, Sigmoid()))
-val input = Tensor(Array(1, 2, 6)).rand()
-input: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.utils.T
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val hiddenSize = 2
+val inputSize = 2
+val outputSize = 2
+val seqLength = 2
+val input = Tensor(T(
+  T(1.0f, 2.0f),
+  T(2.0f, 3.0f)
+)).resize(Array(1, seqLength, inputSize))
+val gradOutput = Tensor(T(
+  T(2.0f, 3.0f),
+  T(4.0f, 5.0f)
+)).resize(Array(1, seqLength, inputSize))
+val rec = Recurrent()
+
+val model = Sequential()
+    .add(rec.add(GRU(inputSize, hiddenSize)))
+    .add(TimeDistributed(Linear(hiddenSize, outputSize)))
+val output = model.forward(input)
+val gradient = model.backward(input, gradOutput)
+
+-&gt; print(output)
+# There's random factor. An output could be
 (1,.,.) =
-0.55511624      0.44330198      0.9025551       0.26096714      0.3434667       0.20060952
-0.24903035      0.24026379      0.89252585      0.23025699      0.8131796       0.4013688
+0.3833429       0.0082434565    
+-0.041063666    -0.08152798     
 
-[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x2x6]
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x2]
 
-module.forward(input)
-res10: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+
+-&gt; print(gradient)
+# There's random factor. An output could be
 (1,.,.) =
-1.3577285       0.8861933       0.52908427      0.86278
-1.2850789       0.82549953      0.5560188       0.81468254
+-0.7684499      -0.49320614     
+-0.98002595     -0.47857404     
 
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x4]
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x2]
 </code></pre>
 
 <p><strong>Python example:</strong></p>
-<pre><code class="python">module = BiRecurrent(CAddTable()).add(RnnCell(6, 4, Sigmoid()))
-input = np.random.rand(1, 2, 6)
-array([[[ 0.75637438,  0.2642816 ,  0.61973312,  0.68565282,  0.73571443,
-          0.17167681],
-        [ 0.16439321,  0.06853251,  0.42257202,  0.42814042,  0.15706152,
-          0.57866659]]])
+<pre><code class="python">from bigdl.nn.layer import *
+from bigdl.nn.criterion import *
+import numpy as np
+hidden_size = 2
+input_size = 2
+output_size = 2
+seq_length = 2
+input = np.array([[
+  [1.0, 2.0],
+  [2.0, 3.0]
+]])
+grad_output = np.array([[
+  [2.0, 3.0],
+  [4.0, 5.0]
+]])
+rec = Recurrent()
 
-module.forward(input)
-array([[[ 0.69091094,  0.97150528,  0.9562254 ,  1.14894259],
-        [ 0.83814102,  1.11358368,  0.96752423,  1.00913286]]], dtype=float32)
+model = Sequential() \
+    .add(rec.add(GRU(input_size, hidden_size))) \
+    .add(TimeDistributed(Linear(hidden_size, output_size)))
+output = model.forward(input)
+gradient = model.backward(input, grad_output)
+-&gt; print output
+# There's random factor. An output could be
+[[[ 0.27857888  0.20263115]
+  [ 0.29470384  0.22594413]]]
+-&gt; print gradient
+[[[-0.32956457  0.27405274]
+  [-0.32718879  0.32963118]]]
 </code></pre>
 
   <br>
