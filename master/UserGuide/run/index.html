@@ -37,6 +37,10 @@
           ]},
           {title: "Run a BigDL Program", url: "#run-a-bigdl-program", children: [
           ]},
+          {title: "Run as a local Java/Scala program", url: "#run-as-a-local-javascala-program", children: [
+          ]},
+          {title: "For Windows User", url: "#for-windows-user", children: [
+          ]},
         ];
 
     </script>
@@ -134,6 +138,61 @@ res9: com.intel.analytics.bigdl.tensor.Tensor[Double] =
  val sc = new SparkContext(conf)
  Engine.init
 </code></pre>
+
+<hr />
+<h2 id="run-as-a-local-javascala-program"><strong>Run as a local Java/Scala program</strong></h2>
+<p>You can try BigDL program as a local Java/Scala program. </p>
+<p>To run the BigDL model as a local Java/Scala program, you need to set Java property <code>bigdl.localMode</code> to <code>true</code>. If you want to specify how many cores to be used for training/testing/prediction, you need to set Java property <code>bigdl.coreNumber</code> to the core number. You can either call <code>System.setProperty("bigdl.localMode", "true")</code> and <code>System.setProperty("bigdl.coreNumber", core_number)</code> in the Java/Scala code, or pass -Dbigdl.localMode=true and -Dbigdl.coreNumber=core_number when runing the program.</p>
+<p>For example, you may run the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/lenetLocal">Lenet</a> model as a local Scala/Java program as follows:</p>
+<p>1.First, you can download the MNIST Data from <a href="http://yann.lecun.com/exdb/mnist/">here</a>. Unzip all the files and put them in one folder(e.g. mnist).</p>
+<p>2.Run below command to train lenet as local Java/Scala program:</p>
+<pre><code class="bash">java -cp spark/dl/target/bigdl-VERSION-jar-with-dependencies-and-spark.jar \
+com.intel.analytics.bigdl.example.lenetLocal.Train \
+-f path_to_mnist_folder \
+-c core_number \
+-b batch_size \
+--checkpoint ./model
+</code></pre>
+
+<p>In the above commands
+<em> -f: where you put your MNIST data
+</em> -c: The core number on local machine used for this training. The default value is physical cores number. Get it through Runtime.getRuntime().availableProcessors() / 2
+<em> -b: The mini-batch size. It is expected that the mini-batch size is a multiple of core_number
+</em> --checkpoint: Where you cache the model/train_state snapshot. You should input a folder and
+make sure the folder is created when you run this example. The model snapshot will be named as
+model.#iteration_number, and train state will be named as state.#iteration_number. Note that if
+there are some files already exist in the folder, the old file will not be overwrite for the
+safety of your model files.</p>
+<p>3.The above commands will cache the model in specified path(--checkpoint). Run this command will
+   use the trained model to do a validation.</p>
+<pre><code class="bash">java -cp spark/dl/target/bigdl-VERSION-jar-with-dependencies-and-spark.jar \
+com.intel.analytics.bigdl.example.lenetLocal.Test \
+-f path_to_mnist_folder \
+--model ./model/model.iteration \
+-c core_number \
+-b batch_size
+</code></pre>
+
+<p>In the above command
+<em> -f: where you put your MNIST data
+</em> --model: the model snapshot file
+<em> -c: The core number on local machine used for this testing. The default value is physical cores number. Get it through Runtime.getRuntime().availableProcessors() / 2
+</em> -b: The mini-batch size. It is expected that the mini-batch size is a multiple of core_number   </p>
+<p>4.Run below command to predict with trained model:</p>
+<pre><code class="bash">java -cp spark/dl/target/bigdl-VERSION-jar-with-dependencies-and-spark.jar \
+com.intel.analytics.bigdl.example.lenetLocal.Predict \
+-f path_to_mnist_folder \
+-c core_number \
+--model ./model/model.iteration
+</code></pre>
+
+<p>In the above command
+<em> -f: where you put your MNIST data
+</em> -c: The core number on local machine used for this prediction. The default value is physical cores number. Get it through Runtime.getRuntime().availableProcessors() / 2
+* --model: the model snapshot file</p>
+<h2 id="for-windows-user">For Windows User</h2>
+<p>Some BigDL functions depends on Hadoop library, which requires winutils.exe installed on your machine. If you meet "Could not locate executable null\bin\winutils.exe", see
+the <a href="known-issues.md">known issue page</a>.</p>
 
   <br>
 </div>

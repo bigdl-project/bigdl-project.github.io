@@ -71,7 +71,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Apache Spark needs to be installed before you start using BigDL. </p>
 <p>BigDL provide both Scala/Java and Python API.  </p>
 <p>To use BigDL <em>Scala/Java</em> API, the first thing is to obtain the BigDL libraries. You can either download the pre-built BigDL libs (<a href="../release-download/">available here</a>), or build the libs from source code (available at <a href="https://github.com/intel-analytics/BigDL">BigDL Github</a>). When writing programs, you need to ensure the SparkContext is created successfully and initialize BigDL engine before calling BigDL APIs. Refer to <a href="../UserGuide/install-pre-built/">Use Prebuild Libs</a>, <a href="../UserGuide/install-build-src/">Build from Source</a>, and <a href="../UserGuide/run/">Run</a> for details about how to build BigDL and run a program in Scala.  </p>
-<p>To use BigDL <em>Python</em> API, besides using pre-built BigDL libs or building from source, you can also install BigDL python via pip (only support some spark versions). You may use Python API in an interactive shell, or run a program in commandline, or use Jupyter notebooks. Before calling BigDL API's in your program, you have to ensure the SparkContext is succesfully created and initialize BigDL engine. Refer to <a href="../PythonSupport/python-install/">Python Install</a> and <a href="../PythonSupport/python-run/">Python Run</a> for details about how to install python and run python programs.</p>
+<p>To use BigDL <em>Python</em> API, besides using pre-built BigDL libs or building from source, you can also install BigDL python via pip (only support some spark versions). You may use Python API in an interactive shell, or run a program in commandline, or use Jupyter notebooks. Before calling BigDL API's in your program, you have to ensure the SparkContext is succesfully created and initialize BigDL engine. Refer to <a href="PythonSupport/python-install.md">Python Install</a> and <a href="PythonSupport/python-run.md">Python Run</a> for details about how to install python and run python programs.</p>
 <hr />
 <h2 id="prepare-your-data"><strong>Prepare your Data</strong></h2>
 <p>You data need to be transformed into specific data structures in order to be fed into BigDL for training, evaluation and prediction.</p>
@@ -96,7 +96,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>To load a Caffe model, refer to <a href="../ProgrammingGuide/caffe-support/">Caffe Support</a> for details.</li>
 </ul>
 <p>Once you have a loaded model, you can call <code>model.predict()</code> to do predictions (refer to <a href="../APIdocs/Module/#model-prediction">Model Predict</a> for details). Note that you need to convert your input data into proper format which <code>predict</code> accepts. For how to prepare your data, refer to section <a href="#prepare-your-data">Prepare your Data</a>. </p>
-<p>If you are using predicted result as a component inside a Spark ML pipeline, refer to <a href="../ProgrammingGuide/MLPipeline/DLEstimator/">DLEsitimator API</a> and <a href="../ProgrammingGuide/MLPipeline/DLClassifier/">DLClassifier API</a> for usage. </p>
+<p>If you are using the trained model as a component inside a Spark ML pipeline, refer to
+<a href="../ProgrammingGuide/MLPipeline/">Using BigDL in Spark ML Pipeline</a> page for usage. </p>
 <hr />
 <h2 id="train-a-model-from-scratch"><strong>Train a Model from Scratch</strong></h2>
 <p>The procedure of training a model from scratch usually involves following steps:</p>
@@ -117,6 +118,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>When training is finished, you may need to save the final model for later use. </p>
 <p>Use <code>model.save</code> to save your BigDL model into a file (in BigDL model format) on local filesystem, HDFS, or Amazon s3 (refer to <a href="../APIdocs/Module.md/#model-save">Model Save</a>). </p>
 <p>You may also save the model to Tensorflow or Caffe format (refer to <a href="../ProgrammingGuide/caffe-support/">Caffe Support</a>, and <a href="../ProgrammingGuide/tensorflow-support/">Tensorflow Support</a> respectively).  </p>
+<p>If you prefer to train a model inside a Spark ML pipeline, please refer to <a href="ProgrammingGuide/MLPipeline/MLPipeline.md">Using BigDL in Spark ML Pipeline</a> page for usage. </p>
 <h2 id="stop-and-resume-a-training"><strong>Stop and Resume a Training</strong></h2>
 <p>Training a deep learning model sometimes takes a very long time. It may be stopped or interrupted and we need the training to resume from where we have left. </p>
 <p>To enable this, you have to configure <code>Optimizer</code> to periodically take snapshots of the model (trained weights, biases, etc.) and optim-method (configurations and states of the optimization) and dump them into files. Use <code>Optimizer.setCheckpoint</code> (in Scala) or <code>optimizer.set_checkpoint</code> (in Python) to configure the frequency and paths of writing snapshots. Then during training, you will find several snapshot files written in the checkpoint path. Refer to <a href="../APIdocs/Optimizers/Optimizer/">Optimizer API</a> for details. </p>

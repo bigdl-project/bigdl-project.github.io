@@ -39,10 +39,6 @@
           ]},
           {title: "Top5Accuracy", url: "#top5accuracy", children: [
           ]},
-          {title: "Scala Example", url: "#scala-example", children: [
-          ]},
-          {title: "Python Example:", url: "#python-example", children: [
-          ]},
         ];
 
     </script>
@@ -61,42 +57,16 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     <hr />
 <p>ValidationMethod is a method to validate the model during model trainning or evaluation.
-The trait can be extended by user-defined method. Now we have defined Top1Accuracy, Top5Accuracy, Loss.</p>
+The trait can be extended by user-defined method. Now we have defined Top1Accuracy, Top5Accuracy, Loss.
+You can use those methods to evaluate model, please refer to <a href="https://github.com/intel-analytics/BigDL/blob/master/docs/docs/APIdocs/Module.md">Module</a> for details.</p>
 <hr />
 <h2 id="loss">Loss</h2>
+<p>Calculate loss of output and target with criterion. The default criterion is ClassNLLCriterion.</p>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val loss = new Loss(criterion)
 </code></pre>
 
-<p><strong>Python:</strong></p>
-<pre><code class="python">loss = Loss(cri)
-</code></pre>
-
-<p>Calculate loss of output and target with criterion. The default criterion is ClassNLLCriterion.</p>
-<hr />
-<h2 id="top1accuracy">Top1Accuracy</h2>
-<p>Caculate the percentage that output's max probability index equals target.</p>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val top1accuracy = new Top1Accuracy()
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">top1accuracy = Top1Accuracy()
-</code></pre>
-
-<hr />
-<h2 id="top5accuracy">Top5Accuracy</h2>
-<p>Caculate the percentage that target in output's top5 probability indexes.</p>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val top5accuracy = new Top5Accuracy()
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">top5accuracy = Top5Accuracy()
-</code></pre>
-
-<hr />
-<h2 id="scala-example">Scala Example</h2>
+<p>example</p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn._
 import com.intel.analytics.bigdl.tensor.Tensor
 import com.intel.analytics.bigdl.optim._
@@ -120,14 +90,17 @@ while (i &lt; data.length) {
 val model = LeNet5(classNum = 10)
 val dataSet = sc.parallelize(data, 4)
 
-val result = model.evaluate(dataSet, Array(new Top1Accuracy[Float](), new Top5Accuracy[Float](), new Loss[Float]()))
+val result = model.evaluate(dataSet, Array(new Loss[Float]().asInstanceOf[ValidationMethod[Float]]))
+
+scala&gt; result
+res12: Array[(com.intel.analytics.bigdl.optim.ValidationResult, com.intel.analytics.bigdl.optim.ValidationMethod[Float])] = Array(((Loss: 9.339776, count: 4, Average Loss: 2.334944),Loss))
 </code></pre>
 
-<p>result is</p>
-<pre><code>result: Array[(com.intel.analytics.bigdl.optim.ValidationResult, com.intel.analytics.bigdl.optim.ValidationMethod[Float])] = Array((Accuracy(correct: 0, count: 10, accuracy: 0.0),Top1Accuracy), (Accuracy(correct: 10, count: 10, accuracy: 1.0),Top5Accuracy), ((Loss: 9.21948, count: 4, Average Loss: 2.30487),Loss))
+<p><strong>Python:</strong></p>
+<pre><code class="python">loss = Loss(cri)
 </code></pre>
 
-<h2 id="python-example">Python Example:</h2>
+<p>example</p>
 <pre><code>from pyspark.context import SparkContext
 from bigdl.util.common import *
 from bigdl.nn.layer import *
@@ -150,16 +123,58 @@ trainingData = sc.parallelize(range(0, data_len)).map(
 
 model = Sequential()
 model.add(Linear(4, 5))
-test_results = model.test(trainingData, batch_size, [Top1Accuracy(), Top5Accuracy(), Loss()])
+test_results = model.test(trainingData, batch_size, [Loss()])
+
+&gt;&gt;&gt; print test_results[0]
+Test result: 0.116546951234, total_num: 10, method: Loss
 </code></pre>
 
-<p>result is</p>
-<pre><code>&gt;&gt;&gt; print test_results[0]
+<hr />
+<h2 id="top1accuracy">Top1Accuracy</h2>
+<p>Caculate the percentage that output's max probability index equals target.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val top1accuracy = new Top1Accuracy()
+</code></pre>
+
+<p>set validation method as Top1Accuracy</p>
+<pre><code class="scala">val result = model.evaluate(dataSet, Array(new Top1Accuracy[Float]().asInstanceOf[ValidationMethod[Float]]))
+
+scala&gt; result
+res13: Array[(com.intel.analytics.bigdl.optim.ValidationResult, com.intel.analytics.bigdl.optim.ValidationMethod[Float])] = Array((Accuracy(correct: 0, count: 10, accuracy: 0.0),Top1Accuracy))
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">top1accuracy = Top1Accuracy()
+</code></pre>
+
+<pre><code class="python">test_results = model.test(trainingData, batch_size, [Top1Accuracy()])
+
+&gt;&gt;&gt; print test_results[0]
 Test result: 0.0, total_num: 10, method: Top1Accuracy
+</code></pre>
+
+<hr />
+<h2 id="top5accuracy">Top5Accuracy</h2>
+<p>Caculate the percentage that target in output's top5 probability indexes.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val top5accuracy = new Top5Accuracy()
+</code></pre>
+
+<p>set validation method as Top1Accuracy</p>
+<pre><code class="scala">val result = model.evaluate(dataSet, Array(new Top5Accuracy[Float]().asInstanceOf[ValidationMethod[Float]]))
+
+scala&gt; result
+res18: Array[(com.intel.analytics.bigdl.optim.ValidationResult, com.intel.analytics.bigdl.optim.ValidationMethod[Float])] = Array((Accuracy(correct: 10, count: 10, accuracy: 1.0),Top5Accuracy))
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">top5accuracy = Top5Accuracy()
+</code></pre>
+
+<pre><code class="python">test_results = model.test(trainingData, batch_size, [Top5Accuracy()])
+
 &gt;&gt;&gt; print test_results[1]
 Test result: 0.0, total_num: 10, method: Top5Accuracy
-&gt;&gt;&gt; print test_results[2]
-Test result: 0.116546951234, total_num: 10, method: Loss
 </code></pre>
 
   <br>
