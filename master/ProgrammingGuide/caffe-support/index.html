@@ -38,6 +38,7 @@
           {title: "Load Caffe Model Weights to Predefined BigDL Model", url: "#load-caffe-model-weights-to-predefined-bigdl-model", children: [
           ]},
           {title: "Save BigDL Model to Caffe Model", url: "#save-bigdl-model-to-caffe-model", children: [
+              {title: "Limitation", url: "#limitation" },
           ]},
         ];
 
@@ -107,6 +108,8 @@ bigdlModel.saveCaffe(prototxtPath, modelPath, useV2 = true, overwrite = false)
  otherwise, it will convert to caffe V1 layer.
 If <code>overwrite = true</code>, it will overwrite the existing files.</p>
 <p>Note: only graph model can be saved to caffe model.</p>
+<h3 id="limitation"><strong>Limitation</strong></h3>
+<p>This functionality has been tested with some common models like AlexNet, Inception, Resnet which were created with standard Caffe layers, for those models with customized layers such as SSD, it is going to be supported in future work, but you can define your customized conversion method for your own layers.</p>
 
   <br>
 </div>
