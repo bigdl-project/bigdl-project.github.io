@@ -33,8 +33,7 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Optimizer", url: "#optimizer", children: [
-              {title: "How to use Optimizer", url: "#how-to-use-optimizer" },
+          {title: "Use Optimizer for Training", url: "#use-optimizer-for-training", children: [
               {title: "Define when to end the training", url: "#define-when-to-end-the-training" },
               {title: "Change the optimization algorithm", url: "#change-the-optimization-algorithm" },
               {title: "Validate your model in training", url: "#validate-your-model-in-training" },
@@ -56,11 +55,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="optimizer">Optimizer</h2>
-<p>You can use Optimizer to distributed train your model with
-a spark cluster.</p>
-<h3 id="how-to-use-optimizer">How to use Optimizer</h3>
-<p>You need at least provide model, data, loss function and batch size.</p>
+    <h2 id="use-optimizer-for-training">Use Optimizer for Training</h2>
+<p>You can use <code>Optimizer</code> in BigDL to train a model. </p>
+<p>You need to first create an <code>Optimizer</code>, and then call <code>Optimizer.optimize</code> to start the training. </p>
+<p>To create an optimizer, you need at least provide model, data, loss function and batch size.</p>
 <ul>
 <li><strong>model</strong></li>
 </ul>
@@ -201,7 +199,7 @@ epochs. BigDL can easily do this by</p>
 <li>batch size: how many data evaluate in one time</li>
 </ul>
 <h3 id="visualize-training-process">Visualize training process</h3>
-<p>See <a href="https://bigdl-project.github.io/UserGuide/visualization-with-tensorboard/">Visualization with TensorBoard</a></p>
+<p>See <a href="../visualization/">Visualization</a></p>
 
   <br>
 </div>

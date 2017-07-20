@@ -68,34 +68,21 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h2 id="before-using-bigdl"><strong>Before using BigDL</strong></h2>
-<p>Apache Spark needs to be installed before you start using BigDL. </p>
-<p>BigDL provide both Scala/Java and Python API.  </p>
-<p>To use BigDL <em>Scala/Java</em> API, the first thing is to obtain the BigDL libraries. You can either download the pre-built BigDL libs (<a href="../release-download/">available here</a>), or build the libs from source code (available at <a href="https://github.com/intel-analytics/BigDL">BigDL Github</a>). When writing programs, you need to ensure the SparkContext is created successfully and initialize BigDL engine before calling BigDL APIs. Refer to <a href="../UserGuide/install-pre-built/">Use Prebuild Libs</a>, <a href="../UserGuide/install-build-src/">Build from Source</a>, and <a href="../UserGuide/run/">Run</a> for details about how to build BigDL and run a program in Scala.  </p>
-<p>To use BigDL <em>Python</em> API, besides using pre-built BigDL libs or building from source, you can also install BigDL python via pip (only support some spark versions). You may use Python API in an interactive shell, or run a program in commandline, or use Jupyter notebooks. Before calling BigDL API's in your program, you have to ensure the SparkContext is succesfully created and initialize BigDL engine. Refer to <a href="PythonSupport/python-install.md">Python Install</a> and <a href="PythonSupport/python-run.md">Python Run</a> for details about how to install python and run python programs.</p>
+<p>Before using BigDL, you need to install Apache Spark and obtain BigDL libraries. Then in your program, you need to ensure the SparkContext is created successfully and initialize BigDL engine before calling BigDL APIs. Navigate to <em>Scala User Guide/Install</em> or <em>Python User Guide/Install</em> for details about how to install BigDL, and <em>Scala User Guide/Run</em> or <em>Python User Guide/Run</em> for how to run programs.  </p>
 <hr />
 <h2 id="prepare-your-data"><strong>Prepare your Data</strong></h2>
-<p>You data need to be transformed into specific data structures in order to be fed into BigDL for training, evaluation and prediction.</p>
-<p>Below are several data structures that you need to know when using BigDL. </p>
-<ul>
-<li><code>Tensor</code> is a multi-dimensional array of basic numeric types (e.g., <code>Int</code>, <code>Float</code>,       <code>Double</code>, etc.) It is the most essential data structure in BigDL, composing the basic data flow inside the nerual network (i.e. the input, output, weight, bias and gradient of many layers). Refer to <a href="../APIdocs/Data/#tensor">Tensor API doc</a> for details about the numeric computation functions provided in BigDL. </li>
-<li>
-<p><code>Table</code> is key-value map. Usually we use Tables to map from digits to Tensors. Some of the layers has <code>Table</code> as input or output (e.g. <a href="../APIdocs/Layers/Containers/#concattable">ConcatTable</a>). You can also use <code>T()</code> to create Tables in BigDL - just a syntax sugar. Refer to <a href="../APIdocs/Data/#table">Table API doc</a> for detailed usage.</p>
-</li>
-<li>
-<p><code>Sample</code> is usually a <strong>(feature, label)</strong> pair. A <code>Sample</code> can be created from two <code>Tensors</code> (in Scala) or two <code>numpy arrays</code> (in Python). Refer to <a href="../APIdocs/Data/#sample">Sample API doc</a> for detailed usage.</p>
-</li>
-</ul>
-<p>You need to convert your dataset into <code>RDD</code> of <code>Samples</code> (both Scala and Python), and then feed your data into Optimizer for training, validation or prediction. Refer to <a href="../APIdocs/Optimizers/Optimizer/">Optimizer docs</a> for details.</p>
+<p>Your data need to be transformed into RDD of <a href="../APIdocs/Data/#sample">Sample</a> in order to be fed into BigDL for training, evaluation and prediction (also refer to <a href="../APIdocs/Optimizers/Optimizer/">Optimizer docs</a>). </p>
+<p><a href="../APIdocs/Data/#tensor">Tensor</a>, <a href="../APIdocs/Data/#table">Table</a> are essential data structures that composes the basic dataflow inside the nerual network( e.g. input/output, gradients, weights, etc.). You will need to understand them to get a better idea of layer behaviors. </p>
 <hr />
 <h2 id="use-bigdl-for-prediction-only"><strong>Use BigDL for Prediction only</strong></h2>
-<p>If you have an existing model and want to use BigDL only for prediction, you need to first load the model, and then do prediction or evaluation. </p>
-<p>BigDL supports loading models trained and saved in BigDL, or a trained Tensorflow model. </p>
+<p>If you have an existing model and want to use BigDL only for prediction, you need first load the model, and then do prediction or evaluation. </p>
+<p>BigDL supports loading models trained and saved in BigDL, or a trained Caffe or Tensorflow model. </p>
 <ul>
 <li>To load a BigDL model, you can use <code>Module.load</code> interface (Scala) or <code>Model.load</code> (in Python). Refer to <a href="../APIdocs/Module/#model-save">Model Save</a> for details.  </li>
 <li>To load a Tensorflow model, refer to <a href="../ProgrammingGuide/tensorflow-support/">Tensorflow Support</a> for details.</li>
 <li>To load a Caffe model, refer to <a href="../ProgrammingGuide/caffe-support/">Caffe Support</a> for details.</li>
 </ul>
-<p>Once you have a loaded model, you can call <code>model.predict()</code> to do predictions (refer to <a href="../APIdocs/Module/#model-prediction">Model Predict</a> for details). Note that you need to convert your input data into proper format which <code>predict</code> accepts. For how to prepare your data, refer to section <a href="#prepare-your-data">Prepare your Data</a>. </p>
+<p>Refer to <a href="../APIdocs/Module/#model-prediction">Model Predict</a> for details about how to use a model for prediction.</p>
 <p>If you are using the trained model as a component inside a Spark ML pipeline, refer to
 <a href="../ProgrammingGuide/MLPipeline/">Using BigDL in Spark ML Pipeline</a> page for usage. </p>
 <hr />
@@ -122,7 +109,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h2 id="stop-and-resume-a-training"><strong>Stop and Resume a Training</strong></h2>
 <p>Training a deep learning model sometimes takes a very long time. It may be stopped or interrupted and we need the training to resume from where we have left. </p>
 <p>To enable this, you have to configure <code>Optimizer</code> to periodically take snapshots of the model (trained weights, biases, etc.) and optim-method (configurations and states of the optimization) and dump them into files. Use <code>Optimizer.setCheckpoint</code> (in Scala) or <code>optimizer.set_checkpoint</code> (in Python) to configure the frequency and paths of writing snapshots. Then during training, you will find several snapshot files written in the checkpoint path. Refer to <a href="../APIdocs/Optimizers/Optimizer/">Optimizer API</a> for details. </p>
-<p>After training stops, you can resume from any saved point. Choose one of the model snapshots and the corresponding optim-method snapshot to resume (the iteration number of the the snapshots is in the file name suffix). Use <code>Module.load</code> (Scala) or <code>Model.load</code>(Python) to load the model snapshot into an model object, and <code>OptimMethod.load</code> (Scala only, Python does not support this yet) to load optimization method into an OptimMethod object. Then create a new <code>Optimizer</code> with the loaded model and optim method. Call <code>Optimizer.optimize</code>, and you will resume from the point where the snapshot is taken. Refer to <a href="">OptimMethod API</a> and <a href="../APIdocs/Module/">Module API</a> for details.</p>
+<p>After training stops, you can resume from any saved point. Choose one of the model snapshots and the corresponding optim-method snapshot to resume (the iteration number of the the snapshots is in the file name suffix). Use <code>Module.load</code> (Scala) or <code>Model.load</code>(Python) to load the model snapshot into an model object, and <code>OptimMethod.load</code> (Scala only, Python does not support this yet) to load optimization method into an OptimMethod object. Then create a new <code>Optimizer</code> with the loaded model and optim method. Call <code>Optimizer.optimize</code>, and you will resume from the point where the snapshot is taken. Refer to <a href="../APIdocs/Optimizers/OptimMethod/">OptimMethod API</a> and <a href="../APIdocs/Module/#model-load">Model Load</a> for details.</p>
 <p>You can also resume training without loading the optim method, if you intend to change the learning rate schedule or even the optimization algorithm. Just create an <code>Optimizer</code> with loaded model and a new instance of OptimMethod (both Scala and Python). </p>
 <hr />
 <h2 id="use-pre-trained-modelslayers"><strong>Use Pre-trained Models/Layers</strong></h2>
@@ -131,27 +118,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Instead of using an entire model, you can also use pre-trained weights/biases in certain layers. After a layer is created, use <code>setWeightsBias</code> (in Scala) or <code>set_weights</code> (in Python) on the layer to initialize the weights with pre-trained weights. Then continue to train your model as usual. </p>
 <hr />
 <h2 id="monitor-your-training"><strong>Monitor your training</strong></h2>
-<ul>
-<li>Visualization</li>
-</ul>
 <p>BigDL provides a convinient way to monitor/visualize your training progress. It writes the statistics collected during training/validation and they can be visualized in real-time using tensorboard. These statistics can also be retrieved into readable data structures later and visualized in other tools (e.g. Jupyter notebook). For details, refer to <a href="../ProgrammingGuide/visualization/">Visualization</a>. </p>
-<ul>
-<li>Logging</li>
-</ul>
-<p>BigDL also has a stright-forward logging output on the console along the training, as shown below. You can see real-time epoch/iteration/loss/throughput in the log.</p>
-<pre><code> 2017-01-10 10:03:55 INFO  DistriOptimizer$:241 - [Epoch 1 0/5000][Iteration 1][Wall Clock XXX] Train 512 in   XXXseconds. Throughput is XXX records/second. Loss is XXX.
- 2017-01-10 10:03:58 INFO  DistriOptimizer$:241 - [Epoch 1 512/5000][Iteration 2][Wall Clock XXX] Train 512    in XXXseconds. Throughput is XXX records/second. Loss is XXX.
- 2017-01-10 10:04:00 INFO  DistriOptimizer$:241 - [Epoch 1 1024/5000][Iteration 3][Wall Clock XXX] Train 512   in XXXseconds. Throughput is XXX records/second. Loss is XXX.
-</code></pre>
-
-<p>The DistriOptimizer log level is INFO by default. We implement a method named with <code>redirectSparkInfoLogs</code>  in <code>spark/utils/LoggerFilter.scala</code>. You can import and redirect at first.</p>
-<pre><code class="scala"> import com.intel.analytics.bigdl.utils.LoggerFilter
- LoggerFilter.redirectSparkInfoLogs()
-</code></pre>
-
-<p>This method will redirect all logs of <code>org</code>, <code>akka</code>, <code>breeze</code> to <code>bigdl.log</code> with <code>INFO</code> level, except <code>org.  apache.spark.SparkContext</code>. And it will output all <code>ERROR</code> message in console too.</p>
-<p>You can disable the redirection with java property <code>-Dbigdl.utils.LoggerFilter.disable=true</code>. By default,   it will do redirect of all examples and models in our code.</p>
-<p>You can set where the <code>bigdl.log</code> will be generated with <code>-Dbigdl.utils.LoggerFilter.logFile=&lt;path&gt;</code>. By    default, it will be generated under current workspace.</p>
 <hr />
 <h2 id="tuning"><strong>Tuning</strong></h2>
 <p>There're several strategies that may be useful when tuning an optimization. </p>

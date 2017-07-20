@@ -33,7 +33,7 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Use BigDL with Apache Spark ML pipeline", url: "#use-bigdl-with-apache-spark-ml-pipeline", children: [
+          {title: "Overview", url: "#overview", children: [
           ]},
           {title: "DLEstimator", url: "#dlestimator", children: [
           ]},
@@ -55,7 +55,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="use-bigdl-with-apache-spark-ml-pipeline">Use BigDL with Apache Spark ML pipeline</h2>
+    <h2 id="overview"><strong>Overview</strong></h2>
 <p>BigDL provides <code>DLEstimator</code> and <code>DLClassifier</code> for users with Apache Spark MLlib experience, which
 provides high level API for training a BigDL Model with the Apache Spark <code>Estimator</code>/<code>Transfomer</code>
 pattern, thus users can conveniently fit BigDL into a ML pipeline. The fitted model <code>DLModel</code> and
@@ -64,7 +64,8 @@ Alternatively users may also construct a <code>DLModel</code> with a pre-trained
 Spark ML Pipeline for prediction.</p>
 <p>Currently only scala interface are implemented for <code>DLEstimator</code> and <code>DLClassifier</code>. Python
 support will be added soon.</p>
-<h2 id="dlestimator">DLEstimator</h2>
+<hr />
+<h2 id="dlestimator"><strong>DLEstimator</strong></h2>
 <p><code>DLEstimator</code> extends <code>org.apache.spark.ml.Estimator</code> and supports model training from
 Apache Spark DataFrame/Dataset. </p>
 <p>Different from many algorithms in Spark MLlib, <code>DLEstimator</code> supports more data types for the
@@ -73,16 +74,18 @@ or other data collection. <code>DLEstimator</code> supports feature and label da
 of <code>Array[Double]</code>, <code>Array[Float]</code>, <code>org.apache.spark.mllib.linalg.Vector</code> (for Apache
 Spark 1.5, 1.6) and <code>org.apache.spark.ml.linalg.Vector</code> (for Apache Spark 2.0+). Also label
 data can be of Double type.</p>
-<p>To use <code>DLEstimator</code> for training, user should specify
-1. the model structure constructed from BigDL layers. You can also use some predefined model
-like LetNet or ResNet.
-2. the model criterion, which calculates the loss and gradient from model output and label.
-3. the feature data dimensions and label data dimensions (the constructor
+<p>To use <code>DLEstimator</code> for training, user should specify</p>
+<ul>
+<li>the model structure constructed from BigDL layers. You can also use some predefined model
+like LetNet or ResNet.</li>
+<li>the model criterion, which calculates the loss and gradient from model output and label.</li>
+<li>the feature data dimensions and label data dimensions (the constructor
 parameters <code>featureSize</code> and <code>labelSize</code> respectively). E.g., a sample from
 <a href="http://yann.lecun.com/exdb/mnist/">MNist</a> may have the <code>featureSize</code> as Array(28, 28) and
 <code>labelSize</code> as Array(1). And the feature column contains an array or a <code>Vector</code> of 784 (28 * 28)
 numbers. Internally the feature and label data are converted to BigDL tensors, to further train
-a BigDL model efficiently.</p>
+a BigDL model efficiently.</li>
+</ul>
 <p>The return result of <code>fit</code> function in <code>DLEstimator</code> is a <code>DLModel</code>, which contains the
 trained BigDL models and extends <code>org.apache.spark.ml.Transformer</code> to be used in prediction.</p>
 <p><strong>Scala example:</strong></p>
@@ -156,7 +159,8 @@ object DLEstimatorMultiLabelLR {
 </tr>
 </tbody>
 </table>
-<h2 id="dlclassifier">DLClassifier</h2>
+<hr />
+<h2 id="dlclassifier"><strong>DLClassifier</strong></h2>
 <p><code>DLClassifier</code> is a specialized <code>DLEstimator</code> that simplifies the data format for
 classification tasks. It only supports label column of DoubleType, and the fitted
 <code>DLClassifierModel</code> will have the prediction column of DoubleType.</p>

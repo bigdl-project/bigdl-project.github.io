@@ -33,6 +33,8 @@
       var is_top_frame = false;
         
         var pageToc = [
+          {title: "Linear", url: "#linear", children: [
+          ]},
           {title: "Reverse", url: "#reverse", children: [
           ]},
           {title: "Reshape", url: "#reshape", children: [
@@ -61,8 +63,6 @@
           ]},
           {title: "Contiguous", url: "#contiguous", children: [
           ]},
-          {title: "Linear", url: "#linear", children: [
-          ]},
         ];
 
     </script>
@@ -79,7 +79,74 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="reverse">Reverse</h2>
+    <h2 id="linear">Linear</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val module = Linear(
+  inputSize,
+  outputSize,
+  withBias = true,
+  wRegularizer = null,
+  bRegularizer = null,
+  initWeight = null,
+  initBias = null,
+  initGradWeight = null,
+  initGradBias = null)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">module = Linear(
+  input_size,
+  output_size,
+  init_method=&quot;default&quot;,
+  with_bias=True,
+  wRegularizer=None,
+  bRegularizer=None,
+  init_weight=None,
+  init_bias=None,
+  init_grad_weight=None,
+  init_grad_bias=None)
+</code></pre>
+
+<p>The <code>Linear</code> module applies a linear transformation to the input data,
+i.e. <code>y = Wx + b</code>. The <code>input</code> given in <code>forward(input)</code> must be either
+a vector (1D tensor) or matrix (2D tensor). If the input is a vector, it must
+have the size of <code>inputSize</code>. If it is a matrix, then each row is assumed to be
+an input sample of given batch (the number of rows means the batch size and
+the number of columns should be equal to the <code>inputSize</code>).</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor._
+
+val module = Linear(3, 5)
+
+println(module.forward(Tensor.range(1, 3, 1)))
+</code></pre>
+
+<p>Output is</p>
+<pre><code>com.intel.analytics.bigdl.tensor.Tensor[Float] =
+0.79338956
+-2.3417668
+-2.7557678
+-0.07507719
+-1.009765
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 5]
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
+
+module = Linear(3, 5)
+
+print(module.forward(np.arange(1, 4, 1)))
+</code></pre>
+
+<p>Output is</p>
+<pre><code>[array([ 0.31657887, -1.11062765, -1.16235781, -0.67723978,  0.74650359], dtype=float32)]
+</code></pre>
+
+<h2 id="reverse">Reverse</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val m = Reverse(dim = 1, isInplace = false)
 </code></pre>
@@ -902,73 +969,6 @@ print gradInput
 
 <p>The gradInput will be,</p>
 <pre><code>[array([[ 2.,  3.,  4.,  5.,  6.]], dtype=float32)]
-</code></pre>
-
-<h2 id="linear">Linear</h2>
-<p><strong>Scala:</strong></p>
-<pre><code class="scala">val module = Linear(
-  inputSize,
-  outputSize,
-  withBias = true,
-  wRegularizer = null,
-  bRegularizer = null,
-  initWeight = null,
-  initBias = null,
-  initGradWeight = null,
-  initGradBias = null)
-</code></pre>
-
-<p><strong>Python:</strong></p>
-<pre><code class="python">module = Linear(
-  input_size,
-  output_size,
-  init_method=&quot;default&quot;,
-  with_bias=True,
-  wRegularizer=None,
-  bRegularizer=None,
-  init_weight=None,
-  init_bias=None,
-  init_grad_weight=None,
-  init_grad_bias=None)
-</code></pre>
-
-<p>The <code>Linear</code> module applies a linear transformation to the input data,
-i.e. <code>y = Wx + b</code>. The <code>input</code> given in <code>forward(input)</code> must be either
-a vector (1D tensor) or matrix (2D tensor). If the input is a vector, it must
-have the size of <code>inputSize</code>. If it is a matrix, then each row is assumed to be
-an input sample of given batch (the number of rows means the batch size and
-the number of columns should be equal to the <code>inputSize</code>).</p>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
-import com.intel.analytics.bigdl.nn._
-import com.intel.analytics.bigdl.tensor._
-
-val module = Linear(3, 5)
-
-println(module.forward(Tensor.range(1, 3, 1)))
-</code></pre>
-
-<p>Output is
-```com.intel.analytics.bigdl.tensor.Tensor[Float] =
-0.79338956
--2.3417668
--2.7557678
--0.07507719
--1.009765
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 5]</p>
-<pre><code>
-**Python example:**
-```python
-from bigdl.nn.layer import *
-import numpy as np
-
-module = Linear(3, 5)
-
-print(module.forward(np.arange(1, 4, 1)))
-</code></pre>
-
-<p>Output is</p>
-<pre><code>[array([ 0.31657887, -1.11062765, -1.16235781, -0.67723978,  0.74650359], dtype=float32)]
 </code></pre>
 
   <br>

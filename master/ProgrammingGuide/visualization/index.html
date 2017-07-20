@@ -41,6 +41,8 @@
           ]},
           {title: "Visualizing training with Jupyter notebook", url: "#visualizing-training-with-jupyter-notebook", children: [
           ]},
+          {title: "Logging", url: "#logging", children: [
+          ]},
         ];
 
     </script>
@@ -156,6 +158,21 @@ plt.legend();
 </code></pre>
 
 <p><img alt="jupyter" src="../../Image/jupyter.png" /></p>
+<h2 id="logging"><strong>Logging</strong></h2>
+<p>BigDL also has a stright-forward logging output on the console along the    training, as shown below. You can see real-time epoch/iteration/loss/       throughput in the log.</p>
+<pre><code>  2017-01-10 10:03:55 INFO  DistriOptimizer$:241 - [Epoch 1 0/               5000][Iteration 1][Wall Clock XXX] Train 512 in   XXXseconds. Throughput    is XXX records/second. Loss is XXX.
+  2017-01-10 10:03:58 INFO  DistriOptimizer$:241 - [Epoch 1 512/             5000][Iteration 2][Wall Clock XXX] Train 512    in XXXseconds. Throughput   is XXX records/second. Loss is XXX.
+  2017-01-10 10:04:00 INFO  DistriOptimizer$:241 - [Epoch 1 1024/            5000][Iteration 3][Wall Clock XXX] Train 512   in XXXseconds. Throughput    is XXX records/second. Loss is XXX.
+</code></pre>
+
+<p>The DistriOptimizer log level is INFO by default. We implement a method     named with <code>redirectSparkInfoLogs</code>  in <code>spark/utils/LoggerFilter.scala</code>.    You can import and redirect at first.</p>
+<pre><code class="scala">  import com.intel.analytics.bigdl.utils.LoggerFilter
+  LoggerFilter.redirectSparkInfoLogs()
+</code></pre>
+
+<p>This method will redirect all logs of <code>org</code>, <code>akka</code>, <code>breeze</code> to <code>bigdl.    log</code> with <code>INFO</code> level, except <code>org.  apache.spark.SparkContext</code>. And it    will output all <code>ERROR</code> message in console too.</p>
+<p>You can disable the redirection with java property <code>-Dbigdl.utils.          LoggerFilter.disable=true</code>. By default,   it will do redirect of all        examples and models in our code.</p>
+<p>You can set where the <code>bigdl.log</code> will be generated with <code>-Dbigdl.utils.    LoggerFilter.logFile=&lt;path&gt;</code>. By    default, it will be generated under     current workspace.</p>
 
   <br>
 </div>
