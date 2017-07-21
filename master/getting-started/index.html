@@ -102,10 +102,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Model Evaluation can be performed periodically during a training. Refer to <a href="../ProgrammingGuide/optimization/#validate-your-model-in-training">Validate your Model in Training</a> for details.  For a list of defined metrics, refer to <a href="../APIdocs/Metrics/">Metrics</a>.</p>
 <p>When <code>Optimizer.optimize</code> finishes, it will return a trained model. You can then use the trained model for prediction or evaluation. Refer to <a href="../APIdocs/Module/#model-prediction">Model Prediction</a> and <a href="../APIdocs/Module/#model-evaluation">Model Evaluation</a> for detailed usage.    </p>
 <p>If you prefer to train a model inside a Spark ML pipeline, please refer to  <a href="../ProgrammingGuide/MLPipeline/MLPipeline.  md">Using BigDL in Spark ML Pipeline</a> page for usage.</p>
+<hr />
 <h2 id="save-a-model"><strong>Save a Model</strong></h2>
 <p>When training is finished, you may need to save the final model for later use. </p>
 <p>BigDL allows you to save your BigDL model on local filesystem, HDFS, or Amazon s3 (refer to <a href="../APIdocs/Module.md/#model-save">Model Save</a>). </p>
 <p>You may also save the model to Tensorflow or Caffe format (refer to <a href="../ProgrammingGuide/caffe-support/">Caffe Support</a>, and <a href="../ProgrammingGuide/tensorflow-support/">Tensorflow Support</a> respectively).  </p>
+<hr />
 <h2 id="stop-and-resume-a-training"><strong>Stop and Resume a Training</strong></h2>
 <p>Training a deep learning model sometimes takes a very long time. It may be stopped or interrupted and we need the training to resume from where we have left. </p>
 <p>To enable this, you have to configure <code>Optimizer</code> to periodically take snapshots of the model (trained weights, biases, etc.) and optim-method (configurations and states of the optimization) and dump them into files. Refer to <a href="../ProgrammingGuide/optimization/#checkpointing">Checkpointing</a> for details. </p>
