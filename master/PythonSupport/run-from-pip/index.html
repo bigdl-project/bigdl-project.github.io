@@ -41,6 +41,8 @@
           ]},
           {title: "Example code to verify if run successfully", url: "#example-code-to-verify-if-run-successfully", children: [
           ]},
+          {title: "BigDL Configuration", url: "#bigdl-configuration", children: [
+          ]},
         ];
 
     </script>
@@ -75,18 +77,21 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </ul>
 <p><a name="code.verification"></a></p>
 <h2 id="example-code-to-verify-if-run-successfully">Example code to verify if run successfully</h2>
-<pre><code class="python"> from bigdl.util.common import *
- from pyspark import SparkContext
- from bigdl.nn.layer import *
- import bigdl.version
+<pre><code class="python">from bigdl.util.common import *
+from pyspark import SparkContext
+from bigdl.nn.layer import *
+import bigdl.version
 
- # create sparkcontext with bigdl configuration
- sc = SparkContext.getOrCreate(conf=create_spark_conf()) 
- init_engine() # prepare the bigdl environment 
- bigdl.version.__version__ # Get the current BigDL version
- linear = Linear(2, 3) # Try to create a Linear layer
+# create sparkcontext with bigdl configuration
+sc = SparkContext.getOrCreate(conf=create_spark_conf()) 
+init_engine() # prepare the bigdl environment 
+bigdl.version.__version__ # Get the current BigDL version
+linear = Linear(2, 3) # Try to create a Linear layer
 
 </code></pre>
+
+<h2 id="bigdl-configuration">BigDL Configuration</h2>
+<p>Please check <a href="../../UserGuide/configuration/">this page</a></p>
 
   <br>
 </div>

@@ -154,15 +154,17 @@ com.intel.analytics.bigdl.example.lenetLocal.Train \
 --checkpoint ./model
 </code></pre>
 
-<p>In the above commands
-<em> -f: where you put your MNIST data
-</em> -c: The core number on local machine used for this training. The default value is physical cores number. Get it through Runtime.getRuntime().availableProcessors() / 2
-<em> -b: The mini-batch size. It is expected that the mini-batch size is a multiple of core_number
-</em> --checkpoint: Where you cache the model/train_state snapshot. You should input a folder and
+<p>In the above commands</p>
+<ul>
+<li>-f: where you put your MNIST data</li>
+<li>-c: The core number on local machine used for this training. The default value is physical cores number. Get it through Runtime.getRuntime().availableProcessors() / 2</li>
+<li>-b: The mini-batch size. It is expected that the mini-batch size is a multiple of core_number</li>
+<li>--checkpoint: Where you cache the model/train_state snapshot. You should input a folder and
 make sure the folder is created when you run this example. The model snapshot will be named as
 model.#iteration_number, and train state will be named as state.#iteration_number. Note that if
 there are some files already exist in the folder, the old file will not be overwrite for the
-safety of your model files.</p>
+safety of your model files.</li>
+</ul>
 <p>3.The above commands will cache the model in specified path(--checkpoint). Run this command will
    use the trained model to do a validation.</p>
 <pre><code class="bash">java -cp spark/dl/target/bigdl-VERSION-jar-with-dependencies-and-spark.jar \
@@ -173,11 +175,13 @@ com.intel.analytics.bigdl.example.lenetLocal.Test \
 -b batch_size
 </code></pre>
 
-<p>In the above command
-<em> -f: where you put your MNIST data
-</em> --model: the model snapshot file
-<em> -c: The core number on local machine used for this testing. The default value is physical cores number. Get it through Runtime.getRuntime().availableProcessors() / 2
-</em> -b: The mini-batch size. It is expected that the mini-batch size is a multiple of core_number   </p>
+<p>In the above command</p>
+<ul>
+<li>-f: where you put your MNIST data</li>
+<li>--model: the model snapshot file</li>
+<li>-c: The core number on local machine used for this testing. The default value is physical cores number. Get it through Runtime.getRuntime().availableProcessors() / 2</li>
+<li>-b: The mini-batch size. It is expected that the mini-batch size is a multiple of core_number   </li>
+</ul>
 <p>4.Run below command to predict with trained model:</p>
 <pre><code class="bash">java -cp spark/dl/target/bigdl-VERSION-jar-with-dependencies-and-spark.jar \
 com.intel.analytics.bigdl.example.lenetLocal.Predict \
@@ -186,13 +190,15 @@ com.intel.analytics.bigdl.example.lenetLocal.Predict \
 --model ./model/model.iteration
 </code></pre>
 
-<p>In the above command
-<em> -f: where you put your MNIST data
-</em> -c: The core number on local machine used for this prediction. The default value is physical cores number. Get it through Runtime.getRuntime().availableProcessors() / 2
-* --model: the model snapshot file</p>
+<p>In the above command</p>
+<ul>
+<li>-f: where you put your MNIST data</li>
+<li>-c: The core number on local machine used for this prediction. The default value is physical cores number. Get it through Runtime.getRuntime().availableProcessors() / 2</li>
+<li>--model: the model snapshot file</li>
+</ul>
 <h2 id="for-windows-user">For Windows User</h2>
 <p>Some BigDL functions depends on Hadoop library, which requires winutils.exe installed on your machine. If you meet "Could not locate executable null\bin\winutils.exe", see
-the <a href="known-issues.md">known issue page</a>.</p>
+the <a href="../../known-issues/">known issue page</a>.</p>
 
   <br>
 </div>
