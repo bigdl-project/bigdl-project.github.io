@@ -84,13 +84,14 @@ elements equal to <code>-1</code>.</p>
  -1, -1, -1]
 </code></pre>
 
-<p><strong>Parameters:</strong>
-* <strong>content</strong> the tensor to be encoded</p>
+<p>Parameters:
+* <code>content</code> the tensor to be encoded</p>
 <h2 id="treelstm">TreeLSTM</h2>
 <p>TreeLSTM is a base class of all other kinds of tree lstms,
 , as described in the paper 
 <a href="https://arxiv.org/abs/1503.00075">Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks</a>
  by Kai Sheng Tai, Richard Socher, and Christopher Manning.</p>
+<hr />
 <h2 id="binarytreelstm">BinaryTreeLSTM</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val treeLSTM = BinaryTreeLSTM(
@@ -113,11 +114,11 @@ receiving <a href="https://en.wikipedia.org/wiki/Parse_tree#Constituency-based_p
 Tree-LSTM is a kind of recursive neural networks, as described in the paper 
 <a href="https://arxiv.org/abs/1503.00075">Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks</a>
  by Kai Sheng Tai, Richard Socher, and Christopher Manning.</p>
-<p><strong>Parameters:</strong>
-<em> <strong>inputSize</strong> - the size of each input vector
-</em> <strong>hiddenSize</strong> - hidden unit size in GRU
-<em> <strong>gateOutput</strong> - whether gate the output. Default is <code>true</code>
-</em> <strong>withGraph</strong> - whether create lstms with <code>com.intel.analytics.bigdl.nn.Graph</code>. Default is <code>true</code>.</p>
+<p>Parameters:
+<em> <code>inputSize</code> the size of each input vector
+</em> <code>hiddenSize</code> hidden unit size in GRU
+<em> <code>gateOutput</code> whether gate the output. Default is <code>true</code>
+</em> <code>withGraph</code> whether create lstms with <code>com.intel.analytics.bigdl.nn.Graph</code>. Default is <code>true</code>.</p>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">    import com.intel.analytics.bigdl.numeric.NumericFloat
     import com.intel.analytics.bigdl.utils.RandomGenerator.RNG

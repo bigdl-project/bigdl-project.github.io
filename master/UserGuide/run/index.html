@@ -33,11 +33,11 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Use an Interactive Shell", url: "#use-an-interactive-shell", children: [
+          {title: "Use Interactive Spark Shell", url: "#use-interactive-spark-shell", children: [
           ]},
-          {title: "Run a BigDL Program", url: "#run-a-bigdl-program", children: [
+          {title: "Run as a Spark Program", url: "#run-as-a-spark-program", children: [
           ]},
-          {title: "Run as a local Java/Scala program", url: "#run-as-a-local-javascala-program", children: [
+          {title: "Run as a Local Java/Scala program", url: "#run-as-a-local-javascala-program", children: [
           ]},
           {title: "For Windows User", url: "#for-windows-user", children: [
           ]},
@@ -57,7 +57,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="use-an-interactive-shell"><strong>Use an Interactive Shell</strong></h2>
+    <h2 id="use-interactive-spark-shell"><strong>Use Interactive Spark Shell</strong></h2>
 <p>You can try BigDL easily using the Spark interactive shell. Run below command to start spark shell with BigDL support:</p>
 <pre><code class="bash">$ SPARK_HOME/bin/spark-shell --properties-file dist/conf/spark-bigdl.conf    \
   --jars bigdl-VERSION-jar-with-dependencies.jar
@@ -94,7 +94,7 @@ res9: com.intel.analytics.bigdl.tensor.Tensor[Double] =
 </code></pre>
 
 <hr />
-<h2 id="run-a-bigdl-program"><strong>Run a BigDL Program</strong></h2>
+<h2 id="run-as-a-spark-program"><strong>Run as a Spark Program</strong></h2>
 <p>You can run a BigDL program, e.g., the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/vgg">VGG</a> training, as a standard Spark program (running in either local mode or cluster mode) as follows:</p>
 <ol>
 <li>Download the CIFAR-10 data from <a href="https://www.cs.toronto.edu/%7Ekriz/cifar.html">here</a>. Remember to choose the binary version.</li>
@@ -140,7 +140,7 @@ res9: com.intel.analytics.bigdl.tensor.Tensor[Double] =
 </code></pre>
 
 <hr />
-<h2 id="run-as-a-local-javascala-program"><strong>Run as a local Java/Scala program</strong></h2>
+<h2 id="run-as-a-local-javascala-program"><strong>Run as a Local Java/Scala program</strong></h2>
 <p>You can try BigDL program as a local Java/Scala program. </p>
 <p>To run the BigDL model as a local Java/Scala program, you need to set Java property <code>bigdl.localMode</code> to <code>true</code>. If you want to specify how many cores to be used for training/testing/prediction, you need to set Java property <code>bigdl.coreNumber</code> to the core number. You can either call <code>System.setProperty("bigdl.localMode", "true")</code> and <code>System.setProperty("bigdl.coreNumber", core_number)</code> in the Java/Scala code, or pass -Dbigdl.localMode=true and -Dbigdl.coreNumber=core_number when runing the program.</p>
 <p>For example, you may run the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/lenetLocal">Lenet</a> model as a local Scala/Java program as follows:</p>

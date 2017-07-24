@@ -81,12 +81,12 @@ by Sergey Ioffe, Christian Szegedy</p>
 </code></pre>
 
 <p>where gamma and beta are learnable parameters.The learning of gamma and beta is optional.</p>
-<p><strong>Parameters:</strong></p>
+<p>Parameters:</p>
 <ul>
-<li><strong>nOutput</strong> - feature map number</li>
-<li><strong>eps</strong> - avoid divide zero. Default: 1e-5</li>
-<li><strong>momentum</strong> - momentum for weight update. Default: 0.1</li>
-<li><strong>affine</strong> - affine operation on output or not. Default: true</li>
+<li><code>nOutput</code> feature map number</li>
+<li><code>eps</code> avoid divide zero. Default: 1e-5</li>
+<li><code>momentum</code> momentum for weight update. Default: 0.1</li>
+<li><code>affine</code> affine operation on output or not. Default: true</li>
 </ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn._
@@ -142,6 +142,7 @@ gradient = bn.backward(input, grad_output)
  [  9.97191637e-06   1.55339364e-07]]
 </code></pre>
 
+<hr />
 <h2 id="spatialbatchnormalization">SpatialBatchNormalization</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val module = SpatialBatchNormalization(nOutput, eps=1e-5, momentum=0.1, affine=true,
@@ -238,6 +239,7 @@ array([[[[  5.70826093e-03,   9.06338100e-05],
          [  8.56826544e-01,  -5.35586655e-01]]]], dtype=float32)
 </code></pre>
 
+<hr />
 <h2 id="spatialcrossmaplrn">SpatialCrossMapLRN</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val spatialCrossMapLRN = SpatialCrossMapLRN(size = 5, alpha  = 1.0, beta = 0.75, k = 1.0)
@@ -323,6 +325,7 @@ spatialCrossMapLRN = SpatialCrossMapLRN(5, 0.01, 0.75, 1.0)
 
 </code></pre>
 
+<hr />
 <h2 id="normalize">Normalize</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val module = Normalize(p,eps=1e-10)
@@ -337,8 +340,8 @@ division by zero when the input contains all zero elements (default = 1e-10).
 The input can be 1d, 2d or 4d. If the input is 4d, it should follow the format (n, c, h, w) where n is the batch number,
 c is the channel number, h is the height and w is the width</p>
 <ul>
-<li>@param p L_p norm</li>
-<li>@param eps smoothing parameter</li>
+<li><code>p</code> L_p norm</li>
+<li><code>eps</code> smoothing parameter</li>
 </ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">val module = Normalize(2.0,eps=1e-10)
@@ -456,6 +459,7 @@ gradInput = layer.backward(input, gradOutput)
          [ 0.28016835,  0.03791744, -0.17803842, -0.27817759,  0.42473239]]], dtype=float32)]
 </code></pre>
 
+<hr />
 <h2 id="spatialsubtractivenormalization">SpatialSubtractiveNormalization</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val spatialSubtractiveNormalization = SpatialSubtractiveNormalization(nInputPlane = 1, kernel = null)
@@ -472,8 +476,8 @@ The operations will be much more efficient in this case.</p>
 of two pixel locations decrease with increasing distance. On the feature dimension,
 a uniform average is used since the weighting across features is not known.</p>
 <ul>
-<li>nInputPlane : number of input plane, default is 1.</li>
-<li>kernel : kernel tensor, default is a 9 x 9 tensor.</li>
+<li><code>nInputPlane</code>  number of input plane, default is 1.</li>
+<li><code>kernel</code> kernel tensor, default is a 9 x 9 tensor.</li>
 </ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
@@ -507,6 +511,7 @@ val input = Tensor(1, 1, 1, 5).rand()
 
 </code></pre>
 
+<hr />
 <p><strong>Python example:</strong></p>
 <pre><code class="python">from bigdl.nn.layer import *
 kernel=np.array([[1, 2, 3],[4, 5, 6],[7, 8, 9]])

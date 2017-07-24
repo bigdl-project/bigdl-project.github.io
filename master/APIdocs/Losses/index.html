@@ -152,6 +152,7 @@ gradInput = layer.backward(input, target)
         [ 1.,  1.]], dtype=float32)]
 </code></pre>
 
+<hr />
 <h2 id="timedistributedcriterion">TimeDistributedCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val module = TimeDistributedCriterion(critrn, sizeAverage)
@@ -163,8 +164,10 @@ gradInput = layer.backward(input, target)
 
 <p>This class is intended to support inputs with 3 or more dimensions.
 Apply Any Provided Criterion to every temporal slice of an input.</p>
-<p><code>critrn</code> embedded criterion</p>
-<p><code>sizeAverage</code> whether to divide the sequence length. Default is false.</p>
+<ul>
+<li><code>critrn</code> embedded criterion</li>
+<li><code>sizeAverage</code> whether to divide the sequence length. Default is false.</li>
+</ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn._
 import com.intel.analytics.bigdl.tensor.Tensor
@@ -230,6 +233,7 @@ target = np.array([[1,1],[2,2],[3,3]])
 0.8793184
 </code></pre>
 
+<hr />
 <h2 id="marginrankingcriterion">MarginRankingCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val mse = new MarginRankingCriterion(margin=1.0, sizeAverage=true)
@@ -239,12 +243,12 @@ target = np.array([[1,1],[2,2],[3,3]])
 <pre><code class="python">mse = MarginRankingCriterion(margin=1.0, size_average=true)
 </code></pre>
 
-<p>Creates a criterion that measures the loss given an input x = {x1, x2},
+<p>Creates a criterion that measures the loss given an input <code>x = {x1, x2}</code>,
 a table of two Tensors of size 1 (they contain only scalars), and a label y (1 or -1).
 In batch mode, x is a table of two Tensors of size batchsize, and y is a Tensor of size
 batchsize containing 1 or -1 for each corresponding pair of elements in the input Tensor.
-If y == 1 then it assumed the first input should be ranked higher (have a larger value) than
-the second input, and vice-versa for y == -1.</p>
+If <code>y == 1</code> then it assumed the first input should be ranked higher (have a larger value) than
+the second input, and vice-versa for <code>y == -1</code>.</p>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn.MarginRankingCriterion
 import com.intel.analytics.bigdl.tensor.Tensor
@@ -276,11 +280,11 @@ println(output)
 println(gradInput)
 </code></pre>
 
-<p>The output will be,</p>
+<p>Gives the output</p>
 <pre><code>output: Float = 0.8                                                                                                                                                                    [21/154]
 </code></pre>
 
-<p>The gradInput will be,</p>
+<p>Gives the gradInput,</p>
 <pre><code>gradInput: com.intel.analytics.bigdl.utils.Table =
  {
         2: -0.0
@@ -320,14 +324,15 @@ print output
 print gradInput
 </code></pre>
 
-<p>The output will be,</p>
+<p>Gives the output,</p>
 <pre><code>0.8
 </code></pre>
 
-<p>The gradInput will be,</p>
+<p>Gives the gradInput,</p>
 <pre><code>[array([ 0. , -0.2,  0.2, -0. , -0. ], dtype=float32), array([-0. ,  0.2, -0.2,  0. ,  0. ], dtype=float32)] 
 </code></pre>
 
+<hr />
 <h2 id="classnllcriterion">ClassNLLCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val criterion = ClassNLLCriterion(weights = null, sizeAverage = true)
@@ -347,9 +352,9 @@ achieved by adding a <code>LogSoftMax</code> layer in the last layer of your neu
 criterion expects a class index (1 to the number of class) as target when calling
 <code>forward(input, target)</code> and <code>backward(input, target)</code>.</p>
 <p>The loss can be described as:
-     loss(x, class) = -x[class]
+     <code>loss(x, class) = -x[class]</code>
  or in the case of the weights argument it is specified as follows:
-     loss(x, class) = -weights[class] * x[class]
+     <code>loss(x, class) = -weights[class] * x[class]</code>
  Due to the behaviour of the backend code, it is necessary to set sizeAverage to false when
  calculating losses in non-batch mode.</p>
 <p>Note that if the target is <code>-1</code>, the training process will skip this sample.
@@ -357,10 +362,12 @@ criterion expects a class index (1 to the number of class) as target when callin
  will also return zero <code>gradInput</code>.</p>
 <p>By default, the losses are averaged over observations for each minibatch. However, if the field
  <code>sizeAverage</code> is set to false, the losses are instead summed for each minibatch.</p>
-<p><strong>Parameters:</strong></p>
-<p><strong>weights</strong>     - weights of each element of the input</p>
-<p><strong>sizeAverage</strong> - A boolean indicating whether normalizing by the number of elements in the input.
-                  Default: true</p>
+<p>Parameters:</p>
+<ul>
+<li><code>weights</code> weights of each element of the input</li>
+<li><code>sizeAverage</code> A boolean indicating whether normalizing by the number of elements in the input.
+                  Default: true</li>
+</ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn.ClassNLLCriterion
 import com.intel.analytics.bigdl.tensor.Tensor
@@ -413,6 +420,7 @@ print gradient
  [ 0.          0.         -0.33333334]]
 </code></pre>
 
+<hr />
 <h2 id="softmaxwithcriterion">SoftmaxWithCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val model = SoftmaxWithCriterion(ignoreLabel, normalizeMode)
@@ -426,8 +434,8 @@ print gradient
 get a probability distribution over classes. It should be preferred over separate SoftmaxLayer + MultinomialLogisticLossLayer as 
 its gradient computation is more numerically stable.</p>
 <ul>
-<li>param ignoreLabel   (optional) Specify a label value that should be ignored when computing the loss.</li>
-<li>param normalizeMode How to normalize the output loss.</li>
+<li><code>ignoreLabel</code>   (optional) Specify a label value that should be ignored when computing the loss.</li>
+<li><code>normalizeMode</code> How to normalize the output loss.</li>
 </ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
@@ -495,6 +503,7 @@ output = model.forward(input, target)
 
 </code></pre>
 
+<hr />
 <h2 id="smoothl1criterion">SmoothL1Criterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val slc = SmoothL1Criterion(sizeAverage=true)
@@ -543,11 +552,11 @@ val output = slc.forward(input, target)
 val gradInput = slc.backward(input, target)
 </code></pre>
 
-<p>The output is,</p>
+<p>Gives the output,</p>
 <pre><code>output: Float = 0.0447365
 </code></pre>
 
-<p>The gradInput is,</p>
+<p>Gives the gradInput,</p>
 <pre><code>gradInput: com.intel.analytics.bigdl.tensor.Tensor[Float] =
 (1,.,.) =
 -0.06556566     -0.003568299
@@ -598,6 +607,7 @@ print output
 print gradInput
 </code></pre>
 
+<hr />
 <h2 id="smoothl1criterionwithweights">SmoothL1CriterionWithWeights</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val smcod = SmoothL1CriterionWithWeights[Float](sigma: Float = 2.4f, num: Int = 2)
@@ -669,6 +679,7 @@ gradInput = smcod.backward(input, target)
          0.07      ,  0.12      , -0.44000003], dtype=float32)]
 </code></pre>
 
+<hr />
 <h2 id="multimargincriterion">MultiMarginCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val loss = MultiMarginCriterion(p=1,weights=null,margin=1.0,sizeAverage=true)
@@ -734,7 +745,7 @@ grad_out = loss.backward(input,target)
 print &quot;grad out of loss is : &quot;,grad_out
 </code></pre>
 
-<p>produces output</p>
+<p>Gives the output,</p>
 <pre><code>input= [[ 0.46868305 -2.28562261]
  [ 0.8076243  -0.67809689]
  [-0.20342555 -0.66264743]]
@@ -748,6 +759,7 @@ grad out of loss is :  [[ 0.16666667 -0.16666667]
 
 </code></pre>
 
+<hr />
 <h2 id="hingeembeddingcriterion">HingeEmbeddingCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val m = HingeEmbeddingCriterion(margin = 1, sizeAverage = true)
@@ -818,6 +830,7 @@ creating: createHingeEmbeddingCriterion
 0.9
 </code></pre>
 
+<hr />
 <h2 id="margincriterion">MarginCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">criterion = MarginCriterion(margin=1.0, sizeAverage=true)
@@ -828,8 +841,8 @@ creating: createHingeEmbeddingCriterion
 </code></pre>
 
 <p>Creates a criterion that optimizes a two-class classification hinge loss (margin-based loss) between input x (a Tensor of dimension 1) and output y.
- * @param margin if unspecified, is by default 1.
- * @param sizeAverage whether to average the loss, is by default true</p>
+ * <code>margin</code> if unspecified, is by default 1.
+ * <code>sizeAverage</code> whether to average the loss, is by default true</p>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">val criterion = MarginCriterion(margin=1.0, sizeAverage=true)
 
@@ -867,6 +880,7 @@ criterion.forward(input, target)
 0.8166871
 </code></pre>
 
+<hr />
 <h2 id="cosineembeddingcriterion">CosineEmbeddingCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val cosineEmbeddingCriterion = CosineEmbeddingCriterion(margin  = 0.0, sizeAverage = true)
@@ -940,6 +954,7 @@ cosineEmbeddingCriterion = CosineEmbeddingCriterion(0.0, False)
 
 </code></pre>
 
+<hr />
 <h2 id="bcecriterion">BCECriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val criterion = BCECriterion[Float]()
@@ -1008,6 +1023,7 @@ gradInput = criterion.backward(input, target)
 
 </code></pre>
 
+<hr />
 <h2 id="dicecoefficientcriterion">DiceCoefficientCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val loss = DiceCoefficientCriterion(sizeAverage=true, epsilon=1.0f)
@@ -1078,6 +1094,7 @@ output of loss is : -0.17262316
 grad out of loss is : [[-0.38274616 -0.11200322]]
 </code></pre>
 
+<hr />
 <h2 id="msecriterion">MSECriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val criterion = MSECriterion()
@@ -1091,10 +1108,10 @@ grad out of loss is : [[-0.38274616 -0.11200322]]
 <pre><code>loss(a, b) = 1/n * sum(|a_i - b_i|^2)
 </code></pre>
 
-<p><strong>Parameters:</strong></p>
+<p>Parameters:</p>
 <ul>
-<li><strong>sizeAverage</strong> - a boolean indicating whether to divide the sum of squared error by n.
- Default: true</li>
+<li><code>sizeAverage</code> a boolean indicating whether to divide the sum of squared error by n. 
+                 Default: true</li>
 </ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn._
@@ -1143,6 +1160,7 @@ gradient= criterion.backward(input, target)
  [-0.5 -0.5]]
 </code></pre>
 
+<hr />
 <h2 id="softmargincriterion">SoftMarginCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val criterion = SoftMarginCriterion(sizeAverage)
@@ -1158,8 +1176,8 @@ input x (a Tensor of dimension 1) and output y (which is a tensor containing eit
 <pre><code>loss(x, y) = sum_i (log(1 + exp(-y[i]*x[i]))) / x:nElement()
 </code></pre>
 
-<p><strong>Parameters:</strong>
-* <strong>sizeAverage</strong> - A boolean indicating whether normalizing by the number of elements in the input.
+<p>Parameters:
+* <code>sizeAverage</code> A boolean indicating whether normalizing by the number of elements in the input.
                     Default: true</p>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn._
@@ -1208,6 +1226,7 @@ gradient = criterion.backward(input, target)
  [ 0.23814353 -0.00449655]]
 </code></pre>
 
+<hr />
 <h2 id="distkldivcriterion">DistKLDivCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val loss = DistKLDivCriterion[T](sizeAverage=true)
@@ -1269,7 +1288,7 @@ grad_out = loss.backward(input,target)
 print &quot;grad out of loss is :&quot;,grad_out
 </code></pre>
 
-<p>produces output:</p>
+<p>Gives the output</p>
 <pre><code class="python">input= [-1.14333924  0.97662296]
 target= [2 1]
 creating: createDistKLDivCriterion
@@ -1277,6 +1296,7 @@ output of loss is : 1.348175
 grad out of loss is : [-1.  -0.5]
 </code></pre>
 
+<hr />
 <h2 id="classsimplexcriterion">ClassSimplexCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val criterion = ClassSimplexCriterion(nClasses)
@@ -1289,8 +1309,8 @@ grad out of loss is : [-1.  -0.5]
 <p>ClassSimplexCriterion implements a criterion for classification.
 It learns an embedding per class, where each class' embedding is a
 point on an (N-1)-dimensional simplex, where N is the number of classes.</p>
-<p><strong>Parameters:</strong>
-* <strong>nClasses</strong> - An integer, the number of classes.</p>
+<p>Parameters:
+* <code>nClasses</code> An integer, the number of classes.</p>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn._
 import com.intel.analytics.bigdl.utils.T
@@ -1334,6 +1354,7 @@ gradient = criterion.backward(input, target)
  [ 0.60000002  1.          1.20000005  1.39999998  1.60000002]]
 </code></pre>
 
+<hr />
 <h2 id="l1hingeembeddingcriterion">L1HingeEmbeddingCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val model = L1HingeEmbeddingCriterion(margin)
@@ -1383,6 +1404,7 @@ output = model.forward(input, target)
 1.1
 </code></pre>
 
+<hr />
 <h2 id="crossentropycriterion">CrossEntropyCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val module = CrossEntropyCriterion(weights, sizeAverage)
@@ -1393,8 +1415,10 @@ output = model.forward(input, target)
 </code></pre>
 
 <p>This criterion combines LogSoftMax and ClassNLLCriterion in one single class.</p>
-<p><code>weights</code> A tensor assigning weight to each of the classes</p>
-<p><code>sizeAverage</code> whether to divide the sequence length. Default is true.</p>
+<ul>
+<li><code>weights</code> A tensor assigning weight to each of the classes</li>
+<li><code>sizeAverage</code> whether to divide the sequence length. Default is true.</li>
+</ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn._
 import com.intel.analytics.bigdl.tensor.Tensor
@@ -1439,6 +1463,7 @@ target = np.array([1, 2, 3])
 0.94830513
 </code></pre>
 
+<hr />
 <h2 id="parallelcriterion">ParallelCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val pc = ParallelCriterion(repeatTarget=false)
@@ -1477,12 +1502,12 @@ println(gradInput)
 
 </code></pre>
 
-<p>The output is,</p>
+<p>Gives the output,</p>
 <pre><code>100.75
 
 </code></pre>
 
-<p>The gradInput is,</p>
+<p>Gives the gradInput,</p>
 <pre><code> {
         2: 1.8000001    1.7     1.6     1.5     1.4     1.3000001       1.2     1.1     1.0     0.90000004
            0.8  0.7     0.6     0.5     0.4     0.3     0.2     0.1     0.0     -0.1
@@ -1530,7 +1555,7 @@ print &quot;output = %s &quot; % output
 print &quot;gradInput = %s &quot; % gradInput
 </code></pre>
 
-<p>The console will output,</p>
+<p>Gives the output,</p>
 <pre><code>input = 
  [array([[  1.,   2.,   3.,   4.,   5.,   6.,   7.,   8.,   9.,  10.],
        [ 11.,  12.,  13.,  14.,  15.,  16.,  17.,  18.,  19.,  20.]], dtype=float32), array([[ 19.,  18.,  17.,  16.,  15.,  14.,  13.,  12.,  11.,  10.],
@@ -1546,6 +1571,7 @@ gradInput = [array([[-0.25,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.  ,  0.
          0.30000001,  0.2       ,  0.1       ,  0.        , -0.1       ]], dtype=float32)]
 </code></pre>
 
+<hr />
 <h2 id="multilabelmargincriterion">MultiLabelMarginCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val multiLabelMarginCriterion = MultiLabelMarginCriterion(sizeAverage = true)
@@ -1599,6 +1625,7 @@ multiLabelMarginCriterion = MultiLabelMarginCriterion(False)
 
 </code></pre>
 
+<hr />
 <h2 id="multilabelsoftmargincriterion">MultiLabelSoftMarginCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val criterion = MultiLabelSoftMarginCriterion(weights = null, sizeAverage = true)
@@ -1646,6 +1673,7 @@ target = np.array([0, 1, 1])
 0.6081934
 </code></pre>
 
+<hr />
 <h2 id="abscriterion">AbsCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val criterion = AbsCriterion(sizeAverage)
@@ -1681,6 +1709,7 @@ output=criterion.forward(input, target)
 3.0
 </code></pre>
 
+<hr />
 <h2 id="multicriterion">MultiCriterion</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val criterion = MultiCriterion()
