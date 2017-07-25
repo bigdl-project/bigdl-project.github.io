@@ -106,7 +106,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   
     <ul class="wm-toctree wm-toc-repo">
       <li class="wm-toc-li wm-toc-lev1">
-      <a class="wm-article-link wm-toc-text" href="https://github.com/intel-analytics/BigDL">
+      <a class="wm-article-link wm-toc-text wm-toc-repolink" href="https://github.com/intel-analytics/BigDL">
+        <img class="wm-top-logo" src="/img/github.ico"/>
         Fork on GitHub 
       </a>
       </li>
@@ -114,8 +115,17 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <ul class="wm-toctree">
         <li class="wm-toc-li wm-toc-lev1 "><a href="." class="wm-article-link wm-toc-text">Overview</a>
 </li>
-        <li class="wm-toc-li wm-toc-lev1 "><a href="release/" class="wm-article-link wm-toc-text">Releases</a>
+        <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">Releases</span>
 </li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev2 "><a href="release-download/" class="wm-article-link wm-toc-text">Download</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="release-docs/" class="wm-article-link wm-toc-text">Documentation</a>
+</li>
+  </ul>
+</li>
+
         <li class="wm-toc-li wm-toc-lev1 "><a href="getting-started/" class="wm-article-link wm-toc-text">Getting Started</a>
 </li>
         <li class="wm-toc-li wm-toc-lev1 wm-toc-opener"><span class="wm-toc-text">Scala User Guide</span>
@@ -135,6 +145,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
       <li class="wm-toc-li wm-toc-lev2 "><a href="UserGuide/run/" class="wm-article-link wm-toc-text">Run</a>
 </li>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="UserGuide/configuration/" class="wm-article-link wm-toc-text">Configuration</a>
+</li>
       <li class="wm-toc-li wm-toc-lev2 "><a href="UserGuide/examples/" class="wm-article-link wm-toc-text">Examples</a>
 </li>
       <li class="wm-toc-li wm-toc-lev2 "><a href="UserGuide/resources/" class="wm-article-link wm-toc-text">More Resources</a>
@@ -146,10 +158,28 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 <li class="wm-toc-li-nested collapse">
   <ul class="wm-toctree">
-      <li class="wm-toc-li wm-toc-lev2 "><a href="PythonSupport/python-install/" class="wm-article-link wm-toc-text">Install</a>
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Install</span>
 </li>
-      <li class="wm-toc-li wm-toc-lev2 "><a href="PythonSupport/python-run/" class="wm-article-link wm-toc-text">Run</a>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 "><a href="PythonSupport/install-from-pip/" class="wm-article-link wm-toc-text">From pip</a>
 </li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="PythonSupport/install-without-pip/" class="wm-article-link wm-toc-text">Without pip</a>
+</li>
+  </ul>
+</li>
+
+      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Run</span>
+</li>
+<li class="wm-toc-li-nested collapse">
+  <ul class="wm-toctree">
+      <li class="wm-toc-li wm-toc-lev3 "><a href="PythonSupport/run-from-pip/" class="wm-article-link wm-toc-text">After pip install</a>
+</li>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="PythonSupport/run-without-pip/" class="wm-article-link wm-toc-text">Without pip install</a>
+</li>
+  </ul>
+</li>
+
       <li class="wm-toc-li wm-toc-lev2 "><a href="PythonSupport/python-examples/" class="wm-article-link wm-toc-text">Examples</a>
 </li>
       <li class="wm-toc-li wm-toc-lev2 "><a href="PythonSupport/python-resources/" class="wm-article-link wm-toc-text">More Examples and Tutorials</a>
@@ -174,17 +204,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
       <li class="wm-toc-li wm-toc-lev2 "><a href="ProgrammingGuide/optimization/" class="wm-article-link wm-toc-text">Optimization</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Use MLPipeline</span>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="ProgrammingGuide/MLPipeline/" class="wm-article-link wm-toc-text">Use Spark ML</a>
 </li>
-<li class="wm-toc-li-nested collapse">
-  <ul class="wm-toctree">
-      <li class="wm-toc-li wm-toc-lev3 "><a href="ProgrammingGuide/MLPipeline/DLEstimator/" class="wm-article-link wm-toc-text">DLEstimator</a>
-</li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="ProgrammingGuide/MLPipeline/DLClassifier/" class="wm-article-link wm-toc-text">DLClassifier</a>
-</li>
-  </ul>
-</li>
-
       <li class="wm-toc-li wm-toc-lev2 "><a href="ProgrammingGuide/visualization/" class="wm-article-link wm-toc-text">Visualization</a>
 </li>
       <li class="wm-toc-li wm-toc-lev2 "><a href="ProgrammingGuide/run-on-ec2/" class="wm-article-link wm-toc-text">Run on Amazon EC2</a>
@@ -202,41 +223,41 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
   <ul class="wm-toctree">
       <li class="wm-toc-li wm-toc-lev2 "><a href="APIdocs/Data/" class="wm-article-link wm-toc-text">Data</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev2 "><a href="APIdocs/Module/" class="wm-article-link wm-toc-text">Module</a>
+      <li class="wm-toc-li wm-toc-lev2 "><a href="APIdocs/Module/" class="wm-article-link wm-toc-text">Model</a>
 </li>
       <li class="wm-toc-li wm-toc-lev2 wm-toc-opener"><span class="wm-toc-text">Layers</span>
 </li>
 <li class="wm-toc-li-nested collapse">
   <ul class="wm-toctree">
-      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Containers/merged-Containers/" class="wm-article-link wm-toc-text">Containers</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Containers/" class="wm-article-link wm-toc-text">Containers</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Simple-Layers/merged-Simple-Layers/" class="wm-article-link wm-toc-text">Simple Layers</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Simple-Layers/" class="wm-article-link wm-toc-text">Simple Layers</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Convolution-Layers/merged-Convolution-Layers/" class="wm-article-link wm-toc-text">Convolution Layers</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Convolution-Layers/" class="wm-article-link wm-toc-text">Convolution Layers</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Pooling-Layers/merged-Pooling-Layers/" class="wm-article-link wm-toc-text">Pooling Layers</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Pooling-Layers/" class="wm-article-link wm-toc-text">Pooling Layers</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Linear-Layers/merged-Linear-Layers/" class="wm-article-link wm-toc-text">Linear Layers</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Activations/" class="wm-article-link wm-toc-text">Activations</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Non-linear-Activations/merged-Non-linear-Activations/" class="wm-article-link wm-toc-text">Non-linear Activations</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Embedding-Layers/" class="wm-article-link wm-toc-text">Embedding Layers</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Embedding-Layers/merged-Embedding-Layers/" class="wm-article-link wm-toc-text">Embedding Layers</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/MergeSplit-Layers/" class="wm-article-link wm-toc-text">Merge/Split Layers</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/MergeSplit-Layers/merged-MergeSplit-Layers/" class="wm-article-link wm-toc-text">Merge/Split Layers</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Math-Layers/" class="wm-article-link wm-toc-text">Math Layers</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Math-Layers/merged-Math-Layers/" class="wm-article-link wm-toc-text">Math Layers</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Padding-Layers/" class="wm-article-link wm-toc-text">Padding Layers</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Padding-Layers/merged-Padding-Layers/" class="wm-article-link wm-toc-text">Padding Layers</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Normalization-Layers/" class="wm-article-link wm-toc-text">Normalization Layers</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Normalization-Layers/merged-Normalization-Layers/" class="wm-article-link wm-toc-text">Normalization Layers</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Dropout-Layers/" class="wm-article-link wm-toc-text">Dropout Layers</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Dropout-Layers/merged-Dropout-Layers/" class="wm-article-link wm-toc-text">Dropout Layers</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Distance-Layers/" class="wm-article-link wm-toc-text">Distance Layers</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Distance-Layers/merged-Distance-Layers/" class="wm-article-link wm-toc-text">Distance Layers</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Recurrent-Layers/" class="wm-article-link wm-toc-text">Recurrent Layers</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Recurrent-Layers/merged-Recurrent-Layers/" class="wm-article-link wm-toc-text">Recurrent Layers</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Recursive-Layers/" class="wm-article-link wm-toc-text">Recursive Layers</a>
 </li>
-      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Utilities/merged-Utilities/" class="wm-article-link wm-toc-text">Utilities</a>
+      <li class="wm-toc-li wm-toc-lev3 "><a href="APIdocs/Layers/Utilities/" class="wm-article-link wm-toc-text">Utilities</a>
 </li>
   </ul>
 </li>
@@ -342,5 +363,5 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </html>
 <!--
 MkDocs version : 0.16.3
-Build Date UTC : 2017-07-19 07:16:06
+Build Date UTC : 2017-07-25 02:29:11
 -->

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Use Spark ML - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Overview", url: "#overview", children: [
+          ]},
+          {title: "DLEstimator", url: "#dlestimator", children: [
+          ]},
+          {title: "DLClassifier", url: "#dlclassifier", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+
+    <h2 id="overview"><strong>Overview</strong></h2>
+<p>BigDL provides <code>DLEstimator</code> and <code>DLClassifier</code> for users with Apache Spark MLlib experience, which
+provides high level API for training a BigDL Model with the Apache Spark <code>Estimator</code>/<code>Transfomer</code>
+pattern, thus users can conveniently fit BigDL into a ML pipeline. The fitted model <code>DLModel</code> and
+<code>DLClassiferModel</code> contains the trained BigDL model and extends the Spark ML <code>Model</code> class.
+Alternatively users may also construct a <code>DLModel</code> with a pre-trained BigDL model to use it in
+Spark ML Pipeline for prediction.</p>
+<p>Currently only scala interface are implemented for <code>DLEstimator</code> and <code>DLClassifier</code>. Python
+support will be added soon.</p>
+<hr />
+<h2 id="dlestimator"><strong>DLEstimator</strong></h2>
+<p><code>DLEstimator</code> extends <code>org.apache.spark.ml.Estimator</code> and supports model training from
+Apache Spark DataFrame/Dataset. </p>
+<p>Different from many algorithms in Spark MLlib, <code>DLEstimator</code> supports more data types for the
+label column. In many deep learning applications, the label data could be a sequence
+or other data collection. <code>DLEstimator</code> supports feature and label data in the format
+of <code>Array[Double]</code>, <code>Array[Float]</code>, <code>org.apache.spark.mllib.linalg.Vector</code> (for Apache
+Spark 1.5, 1.6) and <code>org.apache.spark.ml.linalg.Vector</code> (for Apache Spark 2.0+). Also label
+data can be of Double type.</p>
+<p>To use <code>DLEstimator</code> for training, user should specify</p>
+<ul>
+<li>the model structure constructed from BigDL layers. You can also use some predefined model
+like LetNet or ResNet.</li>
+<li>the model criterion, which calculates the loss and gradient from model output and label.</li>
+<li>the feature data dimensions and label data dimensions (the constructor
+parameters <code>featureSize</code> and <code>labelSize</code> respectively). E.g., a sample from
+<a href="http://yann.lecun.com/exdb/mnist/">MNist</a> may have the <code>featureSize</code> as Array(28, 28) and
+<code>labelSize</code> as Array(1). And the feature column contains an array or a <code>Vector</code> of 784 (28 * 28)
+numbers. Internally the feature and label data are converted to BigDL tensors, to further train
+a BigDL model efficiently.</li>
+</ul>
+<p>The return result of <code>fit</code> function in <code>DLEstimator</code> is a <code>DLModel</code>, which contains the
+trained BigDL models and extends <code>org.apache.spark.ml.Transformer</code> to be used in prediction.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.utils.Engine
+import org.apache.spark.SparkContext
+import org.apache.spark.ml.DLEstimator
+import org.apache.spark.sql.SQLContext
+
+/**
+ *  Multi-label regression with BigDL layers and DLEstimator
+ */
+object DLEstimatorMultiLabelLR {
+
+  def main(args: Array[String]): Unit = {
+    val conf = Engine.createSparkConf()
+      .setAppName(&quot;DLEstimatorMultiLabelLR&quot;)
+      .setMaster(&quot;local[1]&quot;)
+    val sc = new SparkContext(conf)
+    val sqlContext = SQLContext.getOrCreate(sc)
+    Engine.init
+
+    val model = Sequential().add(Linear(2, 2))
+    val criterion = MSECriterion()
+    val estimator = new DLEstimator(model, criterion, Array(2), Array(2))
+      .setBatchSize(4)
+      .setMaxEpoch(10)
+    val data = sc.parallelize(Seq(
+      (Array(2.0, 1.0), Array(1.0, 2.0)),
+      (Array(1.0, 2.0), Array(2.0, 1.0)),
+      (Array(2.0, 1.0), Array(1.0, 2.0)),
+      (Array(1.0, 2.0), Array(2.0, 1.0))))
+    val df = sqlContext.createDataFrame(data).toDF(&quot;features&quot;, &quot;label&quot;)
+    val dlModel = estimator.fit(df)
+    dlModel.transform(df).show(false)
+  }
+}
+
+</code></pre>
+
+<p>Output is</p>
+<table>
+<thead>
+<tr>
+<th>features</th>
+<th>label</th>
+<th>prediction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[2.0, 1.0]</td>
+<td>[1.0, 2.0]</td>
+<td>[1.0034767389297485, 2.006068706512451]</td>
+</tr>
+<tr>
+<td>[1.0, 2.0]</td>
+<td>[2.0, 1.0]</td>
+<td>[2.006953001022339, 1.0039551258087158]</td>
+</tr>
+<tr>
+<td>[2.0, 1.0]</td>
+<td>[1.0, 2.0]</td>
+<td>[1.0034767389297485, 2.006068706512451]</td>
+</tr>
+<tr>
+<td>[1.0, 2.0]</td>
+<td>[2.0, 1.0]</td>
+<td>[2.006953001022339, 1.0039551258087158]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="dlclassifier"><strong>DLClassifier</strong></h2>
+<p><code>DLClassifier</code> is a specialized <code>DLEstimator</code> that simplifies the data format for
+classification tasks. It only supports label column of DoubleType, and the fitted
+<code>DLClassifierModel</code> will have the prediction column of DoubleType.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.{ClassNLLCriterion, Linear, LogSoftMax, Sequential}
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.utils.Engine
+import org.apache.spark.SparkContext
+import org.apache.spark.ml.DLClassifier
+import org.apache.spark.sql.SQLContext
+
+/**
+ * Logistic Regression with BigDL layers and DLClassifier
+ */
+object DLClassifierLogisticRegression {
+
+  def main(args: Array[String]): Unit = {
+    val conf = Engine.createSparkConf()
+      .setAppName(&quot;DLClassifierLogisticRegression&quot;)
+      .setMaster(&quot;local[1]&quot;)
+    val sc = new SparkContext(conf)
+    val sqlContext = SQLContext.getOrCreate(sc)
+    Engine.init
+
+    val model = Sequential().add(Linear(2, 2)).add(LogSoftMax())
+    val criterion = ClassNLLCriterion()
+    val estimator = new DLClassifier(model, criterion, Array(2))
+      .setBatchSize(4)
+      .setMaxEpoch(10)
+    val data = sc.parallelize(Seq(
+      (Array(0.0, 1.0), 1.0),
+      (Array(1.0, 0.0), 2.0),
+      (Array(0.0, 1.0), 1.0),
+      (Array(1.0, 0.0), 2.0)))
+    val df = sqlContext.createDataFrame(data).toDF(&quot;features&quot;, &quot;label&quot;)
+    val dlModel = estimator.fit(df)
+    dlModel.transform(df).show(false)
+  }
+}
+</code></pre>
+
+<p>Output is</p>
+<table>
+<thead>
+<tr>
+<th>features</th>
+<th>label</th>
+<th>prediction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[0.0, 1.0]</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>[1.0, 0.0]</td>
+<td>2.0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>[0.0, 1.0]</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>[1.0, 0.0]</td>
+<td>2.0</td>
+<td>2.0</td>
+</tr>
+</tbody>
+</table>
+<p>More examples and the full example code can be found from package
+com.intel.analytics.bigdl.example.MLPipeline</p>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

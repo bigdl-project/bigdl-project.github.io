@@ -11,7 +11,7 @@
     
     <link rel="shortcut icon" href="/img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Module - BigDL Project</title>
+    <title>Model - BigDL Project</title>
     <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="/css/base.css" rel="stylesheet">
@@ -33,8 +33,6 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Module Class Overview", url: "#module-class-overview", children: [
-          ]},
           {title: "Model Save", url: "#model-save", children: [
           ]},
           {title: "Model Load", url: "#model-load", children: [
@@ -59,17 +57,19 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="module-class-overview">Module Class Overview</h2>
-<p>Module (Scala) or Model (Python) provides API to faciliate user's requirement to save model to specific path, load model from given path, evaluate model and predict with model, etc.</p>
-<h2 id="model-save">Model Save</h2>
-<p>BigDL supports different file systems like Linux file system, HDFS and AWS S3. Use <code>model.save</code> to save models. Below is an example of how to save a model to local file system. </p>
+    <h2 id="model-save">Model Save</h2>
+<p>BigDL supports saving models to local file system, HDFS and AWS S3. After a model is created, you can use <code>save</code> on created model to save it. Below example shows how to save a model. </p>
 <p><strong>Scala example</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn._
 import com.intel.analytics.bigdl.numeric.NumericFloat
 
 val model = Sequential().add(Linear(10, 5)).add(Sigmoid()).add(SoftMax())
 //...train
-model.save(&quot;/tmp/model.bigdl&quot;, true)
+
+model.save(&quot;/tmp/model.bigdl&quot;, true) //save to local fs
+model.save(&quot;hdfs://...&quot;) //save to hdfs
+model.save(&quot;s3://...&quot;) //save to s3
+
 </code></pre>
 
 <p><strong>Python example</strong></p>
@@ -79,24 +79,36 @@ from bigdl.optim.optimizer import *
 
 model = Sequential().add(Linear(10, 5)).add(Sigmoid()).add(SoftMax())
 //...train
-model.save(&quot;/tmp/model.bigdl&quot;, True)
+model.save(&quot;/tmp/model.bigdl&quot;, True) //save to local fs
+model.save(&quot;hdfs://...&quot;) //save to hdfs
+model.save(&quot;s3://...&quot;) //save to s3
 </code></pre>
 
 <p>In <code>model.save</code>, the first parameter is the path where we want to save our model, the second paramter is to specify if we need to overwrite the file if it already exists, it's set to false by default</p>
 <h2 id="model-load">Model Load</h2>
-<p>Use <code>Module.load</code>(in Scala) or <code>Model.load</code> (in Python) to load an existing model. We just need to specify the model path where we previously saved the model to load it to memory for resume training or prediction purpose</p>
+<p>Use <code>Module.load</code>(in Scala) or <code>Model.load</code> (in Python) to load an existing model.  <code>Module</code> (Scala) or <code>Model</code>(Python) is a utilily class provided in BigDL. We just need to specify the model path where we previously saved the model to load it to memory for resume training or prediction purpose.</p>
 <p><strong>Scala example</strong></p>
-<pre><code class="scala">val loadedModel = Module.load(&quot;/tmp/model.bigdl&quot;)
+<pre><code class="scala">val model = Module.load(&quot;/tmp/model.bigdl&quot;) //load from local fs
+val model = Module.load(&quot;hdfs://...&quot;) //load from hdfs
+val model = Module.load(&quot;s3://...&quot;) //load from s3
 </code></pre>
 
-<p><code>Module</code> above is a utilily  to manipulate module APIs</p>
 <p><strong>Python example</strong></p>
-<pre><code class="python">model = Model.load(&quot;/tmp/model.bigdl&quot;)
+<pre><code class="python">model = Model.load(&quot;/tmp/model.bigdl&quot;) //load from local fs
+model = Model.load(&quot;hdfs://...&quot;) //load from hdfs
+model = Model.load(&quot;s3://...&quot;) //load from s3
 </code></pre>
 
-<p><code>Model</code> is a utility for python mirroring <code>Module</code> in scala</p>
 <h2 id="model-evaluation">Model Evaluation</h2>
-<p>Use <code>model.evaluate</code> to evaluate the model with validation data.</p>
+<p><strong>Scala</strong></p>
+<pre><code class="scala">model.evaluate(dataset,vMethods,batchSize = None)
+</code></pre>
+
+<p><strong>Python</strong></p>
+<pre><code class="python">model.test(val_rdd, batch_size, val_methods)
+</code></pre>
+
+<p>Use <code>evaluate</code> on the model for evaluation. The parameter <code>dataset</code> (Scala) or <code>val_rdd</code> (Python) in is the validation dataset, and <code>vMethods</code> (Scala) or <code>val_methods</code>(Python) is an array of ValidationMethods. Refer to <a href="../Metrics/">Metrics</a> for the list of defined ValidationMethods. </p>
 <p><strong>Scala example</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.dataset.Sample
 import com.intel.analytics.bigdl.nn._
@@ -128,11 +140,21 @@ testSet = sc.parallelize(samples)
 
 //train a model or load an existing model...
 //model = ...
-evaluateResult = model.evaluate(testSet, 1, [Top1Accuracy])
+evaluateResult = model.test(testSet, 1, [Top1Accuracy])
 </code></pre>
 
 <h2 id="model-prediction">Model Prediction</h2>
-<p>Use <code>model.predict</code> for Prediction.</p>
+<p><strong>Scala</strong></p>
+<pre><code class="scala">model.predict(dataset)
+model.predictClass(dataset)
+</code></pre>
+
+<p><strong>Python</strong></p>
+<pre><code class="python">model.predict(data_rdd)
+model.predict_class(data_rdd)
+</code></pre>
+
+<p>Use <code>predict</code> or <code>predictClass</code> or <code>predict_class</code> on model for Prediction. <code>predict</code> returns return the probability distribution of each class, and <code>predictClass</code>/<code>predict_class</code> returns the predict label. They both accepts the test dataset as parameter. </p>
 <p><strong>Scala example</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.dataset.Sample
 import com.intel.analytics.bigdl.nn._

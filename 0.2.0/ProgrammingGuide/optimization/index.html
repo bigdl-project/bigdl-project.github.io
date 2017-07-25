@@ -33,12 +33,18 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Optimizer", url: "#optimizer", children: [
-              {title: "How to use Optimizer", url: "#how-to-use-optimizer" },
+          {title: "Use Optimizer for Training", url: "#use-optimizer-for-training", children: [
               {title: "Define when to end the training", url: "#define-when-to-end-the-training" },
-              {title: "Change the optimization algorithm", url: "#change-the-optimization-algorithm" },
-              {title: "Validate your model in training", url: "#validate-your-model-in-training" },
-              {title: "Visualize training process", url: "#visualize-training-process" },
+          ]},
+          {title: "Change the optimization algorithm", url: "#change-the-optimization-algorithm", children: [
+          ]},
+          {title: "Validate your model in training", url: "#validate-your-model-in-training", children: [
+          ]},
+          {title: "Checkpointing", url: "#checkpointing", children: [
+          ]},
+          {title: "Resume Training", url: "#resume-training", children: [
+          ]},
+          {title: "Monitor your training", url: "#monitor-your-training", children: [
           ]},
         ];
 
@@ -56,11 +62,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="optimizer">Optimizer</h2>
-<p>You can use Optimizer to distributed train your model with
-a spark cluster.</p>
-<h3 id="how-to-use-optimizer">How to use Optimizer</h3>
-<p>You need at least provide model, data, loss function and batch size.</p>
+    <h2 id="use-optimizer-for-training">Use Optimizer for Training</h2>
+<p>You can use <code>Optimizer</code> in BigDL to train a model. </p>
+<p>You need to first create an <code>Optimizer</code>, and then call <code>Optimizer.optimize</code> to start the training. </p>
+<p>To create an optimizer, you need at least provide model, data, loss function and batch size.</p>
 <ul>
 <li><strong>model</strong></li>
 </ul>
@@ -72,7 +77,7 @@ graph of layers.</p>
 <p>Your training data. As we train models on Spark, one of
 the most common distributed data structures is RDD. Of course
 you can use DataFrame. Please check the BigDL pipeline example.</p>
-<p>The element in the RDD is Sample, which is actually a sequence of
+<p>The element in the RDD is <a href="../../APIdocs/Data/#sample">Sample</a>, which is actually a sequence of
 Tensors. You need to convert your data record(image, audio, text)
 to Tensors before you feed them into Optimizer. We also provide
 many utilities to do it.</p>
@@ -83,7 +88,7 @@ many utilities to do it.</p>
 the model with the ground truth(the labels of the training data). It
 outputs a loss value to measure how good the model is(the lower the
 better). It also provides a gradient to indicate how to tune the model.</p>
-<p>In BigDL, all loss functions are subclass of Criterion.</p>
+<p>In BigDL, all loss functions are subclass of Criterion. Refer to <a href="../../APIdocs/Losses/">Losses</a> for a list of defined losses.</p>
 <ul>
 <li><strong>batch size</strong></li>
 </ul>
@@ -168,7 +173,7 @@ optimizer.setEndWhen(Trigger.maxEpoch(10))  // Change to 10 epoch
 optimizer = Optimizer(model, train_data, MSECriterion(), MaxIteration(100), 4)
 </code></pre>
 
-<h3 id="change-the-optimization-algorithm">Change the optimization algorithm</h3>
+<h2 id="change-the-optimization-algorithm">Change the optimization algorithm</h2>
 <p>Gradient based optimization algorithms are the most popular algorithms to train the neural
 network model. The most famous one is SGD. SGD has many variants, adagrad, adam, etc.</p>
 <p><strong>scala</strong></p>
@@ -181,7 +186,7 @@ optimizer.setOptimMethod(new Adam())  // Change to adam
 optimizer = Optimizer(model, train_data, MSECriterion(), MaxIteration(100), 4, optim_method = Adam())
 </code></pre>
 
-<h3 id="validate-your-model-in-training">Validate your model in training</h3>
+<h2 id="validate-your-model-in-training">Validate your model in training</h2>
 <p>Sometimes, people want to evaluate the model with a seperated dataset. When model
 performs well on train dataset, but bad on validation dataset, we call the model is overfit or
 weak generalization. People may want to evaluate the model every serveral iterations or 
@@ -190,6 +195,7 @@ epochs. BigDL can easily do this by</p>
 <pre><code class="scala">optimizer.setValidation(trigger, testData, validationMethod, batchSize)
 </code></pre>
 
+<p><strong>python</strong></p>
 <pre><code class="python">optimizer.set_validation(batch_size, val_rdd, trigger, validationMethod)
 </code></pre>
 
@@ -200,8 +206,47 @@ epochs. BigDL can easily do this by</p>
 <li>validation method: how to evaluate the model, maybe top1 accuracy, etc.</li>
 <li>batch size: how many data evaluate in one time</li>
 </ul>
-<h3 id="visualize-training-process">Visualize training process</h3>
-<p>See <a href="https://bigdl-project.github.io/UserGuide/visualization-with-tensorboard/">Visualization with TensorBoard</a></p>
+<h2 id="checkpointing">Checkpointing</h2>
+<p>You can configure the optimizer to periodically take snapshots of the model (trained weights, biases, etc.) and optim-method (configurations and states of the optimization) and dump them into files. </p>
+<p>The model snapshot will be named as <code>model.#iteration_number</code>, and optim method snapshot will be named as <code>state.#iteration_number</code>.</p>
+<p>Usage as below.</p>
+<p><strong>scala</strong></p>
+<pre><code class="scala">optimizer.setCheckpoint(path, trigger)
+</code></pre>
+
+<p><strong>python</strong></p>
+<pre><code class="python">optimizer.set_checkpoint(path, trigger,isOverWrite=True)
+</code></pre>
+
+<p>Parameters you need to specify are:</p>
+<ul>
+<li>path - the directory to save the snapshots</li>
+<li>trigger - how often to save the check point </li>
+</ul>
+<p>In scala, you can also use <code>overWriteCheckpoint()</code> to enable overwriting any existing snapshot files with the same name (default is disabled). In Python, you can just set parameter isOverWrite (default is True).</p>
+<p><strong>scala</strong></p>
+<pre><code class="scala">optimizer.overWriteCheckpoint()`
+</code></pre>
+
+<p><strong>python</strong></p>
+<pre><code class="python">optimizer.set_checkpoint(path, trigger,isOverWrite=True)
+</code></pre>
+
+<h2 id="resume-training">Resume Training</h2>
+<p>After training stops, you can resume from any saved point. Choose one of   the model snapshots and the corresponding optim-method snapshot to resume (saved in checkpoint path, details see <a href="##checkpointing">Checkpointing</a>).     Use <code>Module.load</code> (Scala) or <code>Model.load</code>(Python) to load the model         snapshot into an model object, and <code>OptimMethod.load</code> (Scala only, Python   does not support this yet) to load optimization method into an OptimMethod  object. Then create a new <code>Optimizer</code> with the loaded model and optim       method. Call <code>Optimizer.optimize</code>, and you will resume from the point       where the snapshot is taken. Refer to <a href="APIdocs/           Optimizers/OptimMethod.md#load-method">OptimMethod Load</a> and <a href="../APIdocs/Module.     md#model-load">Model Load</a> for details.</p>
+<p>You can also resume training without loading the optim method, if you       intend to change the learning rate schedule or even the optimization        algorithm. Just create an <code>Optimizer</code> with loaded model and a new instance  of OptimMethod (both Scala and Python).</p>
+<h2 id="monitor-your-training">Monitor your training</h2>
+<p><strong>scala</strong></p>
+<pre><code class="scala">optimizer.setTrainSummary(trainSummary)
+optimizer.setValidationSummary(validationSummary)
+</code></pre>
+
+<p><strong>python</strong></p>
+<pre><code class="python">set_train_summary(train_summary)
+optimizer.set_val_summary(val_summary)
+</code></pre>
+
+<p>See details in <a href="../visualization/">Visualization</a></p>
 
   <br>
 </div>
