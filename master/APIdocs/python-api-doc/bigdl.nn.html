@@ -1246,8 +1246,8 @@ A container usually contain some other modules which can be added through the �
 </dd></dl>
 
 <dl class="class">
-<dt id="bigdl.nn.layer.ConvLSTMPeephole">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ConvLSTMPeephole</code><span class="sig-paren">(</span><em>input_size</em>, <em>output_size</em>, <em>kernel_i</em>, <em>kernel_c</em>, <em>stride</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>with_peephole=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ConvLSTMPeephole"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ConvLSTMPeephole" title="Permalink to this definition">¶</a></dt>
+<dt id="bigdl.nn.layer.ConvLSTMPeephole2D">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ConvLSTMPeephole2D</code><span class="sig-paren">(</span><em>input_size</em>, <em>output_size</em>, <em>kernel_i</em>, <em>kernel_c</em>, <em>stride</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>with_peephole=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ConvLSTMPeephole2D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ConvLSTMPeephole2D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <div class="line-block">
 <div class="line">Convolution Long Short Term Memory architecture with peephole.</div>
@@ -1272,12 +1272,44 @@ A container usually contain some other modules which can be added through the �
 :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices
 :param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices
 :param bRegularizer: instance of [[Regularizer]]applied to the bias.
-:param with_peephold: whether use last cell status control a gate.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convlstm</span> <span class="o">=</span> <span class="n">ConvLSTMPeephole</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+:param with_peephole: whether use last cell status control a gate.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convlstm</span> <span class="o">=</span> <span class="n">ConvLSTMPeephole2D</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
-<span class="go">creating: createConvLSTMPeephole</span>
+<span class="go">creating: createConvLSTMPeephole2D</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.ConvLSTMPeephole3D">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ConvLSTMPeephole3D</code><span class="sig-paren">(</span><em>input_size</em>, <em>output_size</em>, <em>kernel_i</em>, <em>kernel_c</em>, <em>stride</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>with_peephole=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ConvLSTMPeephole3D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ConvLSTMPeephole3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>input_size</strong> – number of input planes in the image given into forward()</li>
+<li><strong>output_size</strong> – number of output planes the convolution layer will produce</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>:param kernel_i Convolutional filter size to convolve input
+:param kernel_c Convolutional filter size to convolve cell
+:param stride The step of the convolution
+:param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices
+:param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices
+:param bRegularizer: instance of [[Regularizer]]applied to the bias.
+:param with_peephole: whether use last cell status control a gate.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convlstm</span> <span class="o">=</span> <span class="n">ConvLSTMPeephole3D</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="go">creating: createL1Regularizer</span>
+<span class="go">creating: createL1Regularizer</span>
+<span class="go">creating: createL1Regularizer</span>
+<span class="go">creating: createConvLSTMPeephole3D</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -3126,7 +3158,7 @@ SoftPlus function: f_i(x) = 1/beta * log(1 + exp(beta * x_i))</p>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.SpatialAveragePooling">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialAveragePooling</code><span class="sig-paren">(</span><em>kw</em>, <em>kh</em>, <em>dw=1</em>, <em>dh=1</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>ceil_mode=False</em>, <em>count_include_pad=True</em>, <em>divide=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialAveragePooling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialAveragePooling" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialAveragePooling</code><span class="sig-paren">(</span><em>kw</em>, <em>kh</em>, <em>dw=1</em>, <em>dh=1</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>global_pooling=False</em>, <em>ceil_mode=False</em>, <em>count_include_pad=True</em>, <em>divide=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialAveragePooling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialAveragePooling" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <p>Applies 2D average-pooling operation in kWxkH regions by step size dWxdH steps.
 The number of output features is equal to the number of input planes.</p>
@@ -3141,14 +3173,16 @@ The number of output features is equal to the number of input planes.</p>
 <li><strong>dH</strong> – step height</li>
 <li><strong>padW</strong> – padding width</li>
 <li><strong>padH</strong> – padding height</li>
-<li><strong>ceilMode</strong> – whether the output size is to be ceiled or floored</li>
-<li><strong>countIncludePad</strong> – whether to include padding when dividing thenumber of elements in pooling region</li>
-<li><strong>divide</strong> – whether to do the averaging</li>
+<li><strong>global_pooling</strong> – If globalPooling then it will pool over the size of the input by doing</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+<p>kH = input-&gt;height and kW = input-&gt;width
+:param ceilMode: whether the output size is to be ceiled or floored
+:param countIncludePad: whether to include padding when dividing thenumber of elements in pooling region
+:param divide: whether to do the averaging</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spatialAveragePooling</span> <span class="o">=</span> <span class="n">SpatialAveragePooling</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
 <span class="go">creating: createSpatialAveragePooling</span>
 </pre></div>
@@ -3311,7 +3345,7 @@ Here, F is the number of feature maps.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>size</strong> – the number of channels to sum over (for cross channel LRN) or the side length ofthe square region to sum over (for within channel LRN)</li>
+<li><strong>size</strong> – the number of channels to sum over</li>
 <li><strong>alpha</strong> – the scaling parameter</li>
 <li><strong>beta</strong> – the exponent</li>
 <li><strong>k</strong> – a constant</li>
@@ -3542,6 +3576,22 @@ a uniform average is used since the weighting across features is not known.</p>
 <span class="go">creating: createSpatialSubtractiveNormalization</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">spatialSubtractiveNormalization</span> <span class="o">=</span> <span class="n">SpatialSubtractiveNormalization</span><span class="p">()</span>
 <span class="go">creating: createSpatialSubtractiveNormalization</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.SpatialWithinChannelLRN">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialWithinChannelLRN</code><span class="sig-paren">(</span><em>size=5</em>, <em>alpha=1.0</em>, <em>beta=0.75</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialWithinChannelLRN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialWithinChannelLRN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>The local response normalization layer performs a kind of lateral inhibition
+by normalizing over local input regions. the local regions extend spatially,
+in separate channels (i.e., they have shape 1 x local_size x local_size).</p>
+<p>:param size  the side length of the square region to sum over
+:param alpha the scaling parameter
+:param beta the exponent</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">layer</span> <span class="o">=</span> <span class="n">SpatialWithinChannelLRN</span><span class="p">()</span>
+<span class="go">creating: createSpatialWithinChannelLRN</span>
 </pre></div>
 </div>
 </dd></dl>

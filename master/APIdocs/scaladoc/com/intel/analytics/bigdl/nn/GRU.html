@@ -740,21 +740,21 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.GRU">GRU</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a> → AnyRef → Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.Cell#hidResize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hidResize(hidden:com.intel.analytics.bigdl.nn.abstractnn.Activity,size:Int,rows:Int,columns:Int):com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
-      <a id="hidResize(Activity,Int,Int,Int):Activity"></a>
+      <a id="hidResize(hidden:com.intel.analytics.bigdl.nn.abstractnn.Activity,batchSize:Int,imageSize:Array[Int]):com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
+      <a id="hidResize(Activity,Int,Array[Int]):Activity"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">hidResize</span><span class="params">(<span name="hidden">hidden: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>, <span name="size">size: <span class="extype" name="scala.Int">Int</span></span>, <span name="rows">rows: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="columns">columns: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
+        <span class="name">hidResize</span><span class="params">(<span name="hidden">hidden: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="imageSize">imageSize: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">resize the hidden parameters wrt the batch size, hiddens shapes.</p><div class="fullcomment"><div class="comment cmt"><p>resize the hidden parameters wrt the batch size, hiddens shapes.</p><p>e.g. RnnCell contains 1 hidden parameter (H), thus it will return Tensor(size)
      LSTM contains 2 hidden parameters (C and H) and will return T(Tensor(), Tensor())\
      and recursively intialize all the tensors in the Table.
-</p></div><dl class="paramcmts block"><dt class="param">hidden</dt><dd class="cmt"></dd><dt class="param">size</dt><dd class="cmt"><p>batchSize</p></dd><dt>returns</dt><dd class="cmt"><p>
+</p></div><dl class="paramcmts block"><dt class="param">hidden</dt><dd class="cmt"></dd><dt class="param">batchSize</dt><dd class="cmt"><p>batchSize</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cell.html" class="extype" name="com.intel.analytics.bigdl.nn.Cell">Cell</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.Cell#hiddensShape" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hiddensShape:Array[Int]"></a>
