@@ -923,8 +923,20 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Recurrent</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Recurrent</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
+<div class="viewcode-block" id="Recurrent.get_finalState_cellStatus"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Recurrent.get_finalState_cellStatus">[docs]</a>    <span class="k">def</span> <span class="nf">get_finalState_cellStatus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get final state and cell status.</span>
+<span class="sd">        </span>
+<span class="sd">        :return: list of final state and cell status</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">finalState_cellStatus</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getFinalStateAndCellStatus&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">tensor</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">finalState_cellStatus</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">tensor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">finalState_cellStatus</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">finalState_cellStatus</span></div></div>
 
 <div class="viewcode-block" id="LSTM"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.LSTM">[docs]</a><span class="k">class</span> <span class="nc">LSTM</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -3098,7 +3110,8 @@
 <span class="sd">    :param pad_w: The additional zeros added per width to the input planes.</span>
 <span class="sd">    :param pad_h: The additional zeros added per height to the input planes.</span>
 <span class="sd">    :param with_bias: whether with bias</span>
-<span class="sd">    :param init_method: Init method, Default, Xavier, Bilinear.</span>
+<span class="sd">    :param wRegularizer: instance of [[Regularizer]] (eg. L1 or L2 regularization), applied to the input weights matrices.</span>
+<span class="sd">    :param bRegularizer: instance of [[Regularizer]] applied to the bias.</span>
 
 
 <span class="sd">    &gt;&gt;&gt; volumetricConvolution = VolumetricConvolution(6, 12, 5, 5, 5, 1, 1, 1)</span>
@@ -3118,6 +3131,8 @@
                  <span class="n">pad_w</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">pad_h</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">with_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">VolumetricConvolution</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                                     <span class="n">n_input_plane</span><span class="p">,</span>
@@ -3131,7 +3146,9 @@
                                                     <span class="n">pad_t</span><span class="p">,</span>
                                                     <span class="n">pad_w</span><span class="p">,</span>
                                                     <span class="n">pad_h</span><span class="p">,</span>
-                                                    <span class="n">with_bias</span><span class="p">)</span>
+                                                    <span class="n">with_bias</span><span class="p">,</span>
+                                                    <span class="n">wRegularizer</span><span class="p">,</span>
+                                                    <span class="n">bRegularizer</span><span class="p">)</span>
 
 <div class="viewcode-block" id="VolumetricConvolution.set_init_method"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.VolumetricConvolution.set_init_method">[docs]</a>    <span class="k">def</span> <span class="nf">set_init_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bias_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setInitMethod&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>

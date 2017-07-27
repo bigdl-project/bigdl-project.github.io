@@ -2514,15 +2514,15 @@
       </h4>
       
     </li><li name="com.intel.analytics.bigdl.python.api.PythonBigDL#createVolumetricConvolution" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="createVolumetricConvolution(nInputPlane:Int,nOutputPlane:Int,kT:Int,kW:Int,kH:Int,dT:Int,dW:Int,dH:Int,padT:Int,padW:Int,padH:Int,withBias:Boolean):com.intel.analytics.bigdl.nn.VolumetricConvolution[T]"></a>
-      <a id="createVolumetricConvolution(Int,Int,Int,Int,Int,Int,Int,Int,Int,Int,Int,Boolean):VolumetricConvolution[T]"></a>
+      <a id="createVolumetricConvolution(nInputPlane:Int,nOutputPlane:Int,kT:Int,kW:Int,kH:Int,dT:Int,dW:Int,dH:Int,padT:Int,padW:Int,padH:Int,withBias:Boolean,wRegularizer:com.intel.analytics.bigdl.optim.Regularizer[T],bRegularizer:com.intel.analytics.bigdl.optim.Regularizer[T]):com.intel.analytics.bigdl.nn.VolumetricConvolution[T]"></a>
+      <a id="createVolumetricConvolution(Int,Int,Int,Int,Int,Int,Int,Int,Int,Int,Int,Boolean,Regularizer[T],Regularizer[T]):VolumetricConvolution[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">createVolumetricConvolution</span><span class="params">(<span name="nInputPlane">nInputPlane: <span class="extype" name="scala.Int">Int</span></span>, <span name="nOutputPlane">nOutputPlane: <span class="extype" name="scala.Int">Int</span></span>, <span name="kT">kT: <span class="extype" name="scala.Int">Int</span></span>, <span name="kW">kW: <span class="extype" name="scala.Int">Int</span></span>, <span name="kH">kH: <span class="extype" name="scala.Int">Int</span></span>, <span name="dT">dT: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="dW">dW: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="dH">dH: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="padT">padT: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="padW">padW: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="padH">padH: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="withBias">withBias: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <a href="../../nn/VolumetricConvolution.html" class="extype" name="com.intel.analytics.bigdl.nn.VolumetricConvolution">VolumetricConvolution</a>[<span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>]</span>
+        <span class="name">createVolumetricConvolution</span><span class="params">(<span name="nInputPlane">nInputPlane: <span class="extype" name="scala.Int">Int</span></span>, <span name="nOutputPlane">nOutputPlane: <span class="extype" name="scala.Int">Int</span></span>, <span name="kT">kT: <span class="extype" name="scala.Int">Int</span></span>, <span name="kW">kW: <span class="extype" name="scala.Int">Int</span></span>, <span name="kH">kH: <span class="extype" name="scala.Int">Int</span></span>, <span name="dT">dT: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="dW">dW: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="dH">dH: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="padT">padT: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="padW">padW: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="padH">padH: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="withBias">withBias: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="wRegularizer">wRegularizer: <a href="../../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>] = <span class="symbol">null</span></span>, <span name="bRegularizer">bRegularizer: <a href="../../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="../../nn/VolumetricConvolution.html" class="extype" name="com.intel.analytics.bigdl.nn.VolumetricConvolution">VolumetricConvolution</a>[<span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>]</span>
       </span>
       </h4>
       
@@ -2649,6 +2649,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.python.api.PythonBigDL#getFinalStateAndCellStatus" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getFinalStateAndCellStatus(rec:com.intel.analytics.bigdl.nn.Recurrent[T]):java.util.List[com.intel.analytics.bigdl.python.api.JTensor]"></a>
+      <a id="getFinalStateAndCellStatus(Recurrent[T]):List[JTensor]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getFinalStateAndCellStatus</span><span class="params">(<span name="rec">rec: <a href="../../nn/Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a>[<span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="java.util.List">List</span>[<a href="JTensor.html" class="extype" name="com.intel.analytics.bigdl.python.api.JTensor">JTensor</a>]</span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.python.api.PythonBigDL#getWeights" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getWeights(model:com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]):java.util.List[com.intel.analytics.bigdl.python.api.JTensor]"></a>
       <a id="getWeights(AbstractModule[Activity,Activity,T]):List[JTensor]"></a>
