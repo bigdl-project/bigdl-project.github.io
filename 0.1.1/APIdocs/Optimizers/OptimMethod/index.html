@@ -35,8 +35,8 @@
         var pageToc = [
           {title: "OptimMethod", url: "#optimmethod", children: [
               {title: "Set method", url: "#set-method" },
-              {title: "Save method", url: "#save-method" },
-              {title: "Load method", url: "#load-method" },
+              {title: "Save method parameters", url: "#save-method-parameters" },
+              {title: "Load method parameters", url: "#load-method-parameters" },
               {title: "Scala example", url: "#scala-example" },
               {title: "Python example", url: "#python-example" },
           ]},
@@ -59,11 +59,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h2 id="optimmethod">OptimMethod</h2>
 <p>OptimMethod is used to update model gradient parameters.We have defined SGD method, Adagrad method, etc.
 Details about those optim methods, you can refer to <a href="../Optim-Methods/">Optim-Methods</a>.
-Now, method construct parameters(e.g."learningRate") and internal training parameters(e.g."epoch") store in optim method instead of state(since version 0.2.0)
+Now, method parameters(e.g."learningRate") and internal training parameters(e.g."epoch") store in Table state.
 Here is mainly to describe how to use those methods when training</p>
 <h3 id="set-method">Set method</h3>
 <p><strong>scala</strong></p>
 <pre><code class="scala">optimizer.setOptimMethod(method : OptimMethod[T])
+optimizer.setState(state : Table) // set method parameters
 </code></pre>
 
 <p><strong>python</strong></p>
@@ -72,32 +73,30 @@ Here is mainly to describe how to use those methods when training</p>
     training_rdd,
     criterion,
     optim_method,
+    state,
     end_trigger,
     batch_size)
 </code></pre>
 
 <p>in python, you can set optim method when creating an optimizer</p>
-<h3 id="save-method">Save method</h3>
-<pre><code class="scala">method.save(path: String, overWrite: Boolean = false)
+<h3 id="save-method-parameters">Save method parameters</h3>
+<p>In this release, we can just support save parameters of optim method, but no method name.
+When training, you can use optimizer.setCheckPoint(for scala) or optimizer.set_checkpoint(for python) to save parameters at regular intervals.</p>
+<h3 id="load-method-parameters">Load method parameters</h3>
+<p>Method parameters are stored in state, so you can load state like this:</p>
+<pre><code class="scala">val state = T.load(path : String)
 </code></pre>
 
-<p><code>T</code>: path to save method<br />
-<code>overWrite</code>: whether to overwrite or not</p>
-<p>When training, you can use optimizer.setCheckPoint(for scala) or optimizer.set_checkpoint(for python) to save methods at regular intervals.</p>
-<h3 id="load-method">Load method</h3>
-<pre><code class="scala">val method = OptimMethod.load(path : String)
-</code></pre>
-
-<p><code>path</code>: file of optim method path</p>
-<p>Python can't support loading optim method from a snapshot now, but we are working on fixing it.</p>
+<p><code>path</code>: file of state path</p>
+<p>Python can't support loading optim method from a snapshot in this release.</p>
 <h3 id="scala-example">Scala example</h3>
-<p>Here is an example to train LeNet5 model with a loading method.</p>
+<p>Here is an example to train LeNet5 model with a loading state.</p>
 <pre><code class="scala">val trainingRDD = ...
 val valRDD = ...
 val batchSize = 12
 val methodPath = ...
 // Load optim method
-val method = OptimMethod.load(methodPath)
+val state = T.load(state)
 // Create an optimizer
 val optimizer = Optimizer(
   model = LeNet5(classNum = 10),
@@ -119,11 +118,14 @@ val trainedModel = optimizer.optimize()
 <pre><code class="python">train_data = ...
 test_data = ...
 batch_size = 12
+state = {&quot;learningRate&quot;: 0.01,
+         &quot;learningRateDecay&quot;: 0.0002}
 optimizer = Optimizer(
   model=lenet_model,
   training_rdd=train_data,
   criterion=ClassNLLCriterion(),
-  optim_method=SGD(learningrate=0.01, learningrate_decay=0.0002), # set optim method
+  optim_method=&quot;SGD&quot;,
+  state=state
   end_trigger=MaxEpoch(15),
   batch_size=batch_size)
 
@@ -131,7 +133,7 @@ optimizer.set_validation(
     batch_size=32,
     val_rdd=test_data,
     trigger=EveryEpoch(),
-    val_method=[Top1Accuracy()]
+    val_method=[&quot;Top1Accuracy&quot;]
 )
 
 optimizer.set_checkpoint(EveryEpoch(), checkpointPath) # set checkpoint to save model and optim method
