@@ -45,7 +45,7 @@
           ]},
           {title: "GRU", url: "#gru", children: [
           ]},
-          {title: "ConvLSTMPeephole2D", url: "#convlstmpeephole2d", children: [
+          {title: "ConvLSTMPeephole", url: "#convlstmpeephole", children: [
           ]},
           {title: "ConvLSTMPeephole3D", url: "#convlstmpeephole3d", children: [
           ]},
@@ -76,7 +76,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <pre><code class="python">module = Recurrent()
 </code></pre>
 
-<p>Recurrent module is a container of rnn cells. Different types of rnn cells can be added using add() function.</p>
+<p>Recurrent module is a container of rnn cells. Different types of rnn cells can be added using add() function.  </p>
+<p>Recurrent supports returning final state and cell status of its rnn cells by using getFinalStateAndCellStatus. output of getFinalStateAndCellStatus
+is a tuple. The first element is the output state at last time while the second elements is the cell status.  </p>
+<p>If contained cell is simple rnn, finalstate is <code>batch x hiddenSize</code>. cell is None<br />
+If contained cell is lstm, finalstate is <code>batch x hiddenSize</code>. cell is <code>batch x hiddenSize</code><br />
+If contained cell is convlstm2D, finalstate is <code>batch x outputPlane x height x width</code>. cell is <code>batch x outputPlane x height x width</code><br />
+If contained cell is convlstm3D, finalstate is <code>batch x outputPlane x height x width x length</code>. cell is <code>batch x outputPlane x height x width x length</code></p>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.tensor.Tensor
 import com.intel.analytics.bigdl.nn._
@@ -655,9 +661,9 @@ gradient = model.backward(input, grad_output)
 </code></pre>
 
 <hr />
-<h2 id="convlstmpeephole2d">ConvLSTMPeephole2D</h2>
+<h2 id="convlstmpeephole">ConvLSTMPeephole</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val model = ConvLSTMPeephole2D(
+<pre><code class="scala">val model = ConvLSTMPeephole(
   inputSize = 2,
   outputSize = 4,
   kernelI = 3,
@@ -666,11 +672,12 @@ gradient = model.backward(input, grad_output)
   wRegularizer = null,
   uRegularizer = null,
   bRegularizer = null,
+  cRegularizer = null,
   withPeephole = true)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">model = ConvLSTMPeephole2D(
+<pre><code class="python">model = ConvLSTMPeephole(
   input_size = 2,
   output_size = 4,
   kernel_i = 3,
@@ -679,11 +686,14 @@ gradient = model.backward(input, grad_output)
   wRegularizer=None,
   uRegularizer=None,
   bRegularizer=None,
+  cRegularizer = None,
   with_peephole = True)
 </code></pre>
 
 <p>Convolution Long Short Term Memory architecture with peephole for 2 dimension images.
-Ref.</p>
+The input tensor in <code>forward(input)</code> is expected to be a 5D tensor (<code>batch x time x nInputPlane x height x width</code>). output of
+<code>forward(input)</code> is also expected to be a 5D tensor (<code>batch x time x outputPlane x height x width</code>).</p>
+<p>Ref.</p>
 <ol>
 <li>https://arxiv.org/abs/1506.04214 (blueprint for this module)</li>
 <li>https://github.com/viorik/ConvLSTM</li>
@@ -701,6 +711,8 @@ Ref.</p>
           (eg. L1 or L2 regularization), applied to the recurrent weights matrices.</li>
 <li><code>bRegularizer</code> instance of [[Regularizer]]
           applied to the bias.</li>
+<li><code>cRegularizer</code> instance of [[Regularizer]]
+        applied to peephole.</li>
 <li><code>withPeephole</code> whether use last cell status control a gate</li>
 </ul>
 <p><strong>Scala example:</strong></p>
@@ -719,7 +731,7 @@ val input = Tensor(Array(batchSize, seqLength, inputSize, 3, 3)).rand()
 val rec = Recurrent()
     val model = Sequential()
       .add(rec
-        .add(ConvLSTMPeephole2D(inputSize, outputSize, 3, 3, 1, withPeephole = false)))
+        .add(ConvLSTMPeephole(inputSize, outputSize, 3, 3, 1, withPeephole = false)))
 
 val output = model.forward(input).toTensor
 
@@ -813,7 +825,7 @@ batch_size = 1
 input = np.random.randn(batch_size, seq_len, input_size, 3, 3)
 rec = Recurrent()
 model = Sequential().add(
-    rec.add(ConvLSTMPeephole2D(input_size, output_size, 3, 3, 1, with_peephole = False)))
+    rec.add(ConvLSTMPeephole(input_size, output_size, 3, 3, 1, with_peephole = False)))
 output = model.forward(input)
 
 &gt;&gt;&gt; print(input)
@@ -889,6 +901,7 @@ output = model.forward(input)
   wRegularizer = null,
   uRegularizer = null,
   bRegularizer = null,
+  cRegularizer = null,
   withPeephole = true)
 </code></pre>
 
@@ -902,10 +915,13 @@ output = model.forward(input)
   wRegularizer=None,
   uRegularizer=None,
   bRegularizer=None,
+  cRegularizer=None,
   with_peephole = True)
 </code></pre>
 
-<p>Similar to Convlstm2D, it's a Convolution Long Short Term Memory architecture with peephole but for 3 spatial dimension images.</p>
+<p>Similar to Convlstm2D, it's a Convolution Long Short Term Memory architecture with peephole but for 3 spatial dimension images.
+The input tensor in <code>forward(input)</code> is expected to be a 6D tensor (<code>batch x time x nInputPlane x height x width x length</code>). output of
+<code>forward(input)</code> is also expected to be a 6D tensor (<code>batch x time x outputPlane x height x width x length</code>).</p>
 <p>Parameters:</p>
 <ul>
 <li><code>inputSize</code> number of input planes in the image given into forward()</li>
@@ -919,6 +935,8 @@ output = model.forward(input)
           (eg. L1 or L2 regularization), applied to the recurrent weights matrices.</li>
 <li><code>bRegularizer</code> instance of [[Regularizer]]
           applied to the bias.</li>
+<li><code>cRegularizer</code> instance of [[Regularizer]]
+          applied to peephole.</li>
 <li><code>withPeephole</code> whether use last cell status control a gate</li>
 </ul>
 <p><strong>Scala example:</strong></p>

@@ -3725,7 +3725,7 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dimension</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Pack</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">dimension</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ConvLSTMPeephole2D"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.ConvLSTMPeephole2D">[docs]</a><span class="k">class</span> <span class="nc">ConvLSTMPeephole2D</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+<div class="viewcode-block" id="ConvLSTMPeephole"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.ConvLSTMPeephole">[docs]</a><span class="k">class</span> <span class="nc">ConvLSTMPeephole</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    </span>
 <span class="sd">|   Convolution Long Short Term Memory architecture with peephole.</span>
@@ -3740,19 +3740,21 @@
 <span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices</span>
 <span class="sd">    :param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices</span>
 <span class="sd">    :param bRegularizer: instance of [[Regularizer]]applied to the bias.</span>
+<span class="sd">    :param cRegularizer: instance of [[Regularizer]]applied to peephole.</span>
 <span class="sd">    :param with_peephole: whether use last cell status control a gate.</span>
 
-<span class="sd">    &gt;&gt;&gt; convlstm = ConvLSTMPeephole2D(4, 3, 3, 3, 1, L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
+<span class="sd">    &gt;&gt;&gt; convlstm = ConvLSTMPeephole(4, 3, 3, 3, 1, L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
-<span class="sd">    creating: createConvLSTMPeephole2D</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    creating: createConvLSTMPeephole</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">kernel_i</span><span class="p">,</span> <span class="n">kernel_c</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">with_peephole</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ConvLSTMPeephole2D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">kernel_i</span><span class="p">,</span> <span class="n">kernel_c</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span>
-                                                 <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">,</span> <span class="n">with_peephole</span><span class="p">)</span></div>
+                 <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">with_peephole</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ConvLSTMPeephole</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">kernel_i</span><span class="p">,</span> <span class="n">kernel_c</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span>
+                                                 <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">,</span> <span class="n">cRegularizer</span><span class="p">,</span> <span class="n">with_peephole</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ConvLSTMPeephole3D"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.ConvLSTMPeephole3D">[docs]</a><span class="k">class</span> <span class="nc">ConvLSTMPeephole3D</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
@@ -3766,9 +3768,11 @@
 <span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices</span>
 <span class="sd">    :param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices</span>
 <span class="sd">    :param bRegularizer: instance of [[Regularizer]]applied to the bias.</span>
+<span class="sd">    :param cRegularizer: instance of [[Regularizer]]applied to peephole.</span>
 <span class="sd">    :param with_peephole: whether use last cell status control a gate.</span>
 
-<span class="sd">    &gt;&gt;&gt; convlstm = ConvLSTMPeephole3D(4, 3, 3, 3, 1, L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
+<span class="sd">    &gt;&gt;&gt; convlstm = ConvLSTMPeephole3D(4, 3, 3, 3, 1, L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
+<span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
@@ -3776,9 +3780,9 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">kernel_i</span><span class="p">,</span> <span class="n">kernel_c</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">with_peephole</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+                 <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">with_peephole</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ConvLSTMPeephole3D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">kernel_i</span><span class="p">,</span> <span class="n">kernel_c</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span>
-                                                 <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">,</span> <span class="n">with_peephole</span><span class="p">)</span></div>
+                                                 <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">,</span> <span class="n">cRegularizer</span><span class="p">,</span> <span class="n">with_peephole</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
     <span class="kn">import</span> <span class="nn">doctest</span>
