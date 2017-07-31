@@ -76,12 +76,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <hr />
 <h2 id="use-bigdl-for-prediction-only"><strong>Use BigDL for Prediction only</strong></h2>
 <p>If you have an existing model and want to use BigDL only for prediction, you need first load the model, and then do prediction or evaluation. </p>
-<p>BigDL supports loading models trained and saved in BigDL, or a trained Caffe or Tensorflow model. </p>
-<ul>
-<li>To load a BigDL model, you can use <code>Module.load</code> interface (Scala) or <code>Model.load</code> (in Python). Refer to <a href="../APIdocs/Module/#model-save">Model Save</a> for details.  </li>
-<li>To load a Tensorflow model, refer to <a href="../ProgrammingGuide/tensorflow-support/">Tensorflow Support</a> for details.</li>
-<li>To load a Caffe model, refer to <a href="../ProgrammingGuide/caffe-support/">Caffe Support</a> for details.</li>
-</ul>
+<p>BigDL supports loading models trained and saved in BigDL. To load a BigDL model, you can use <code>Module.load</code> interface (Scala) or <code>Model.load</code> (in Python). Refer to <a href="../APIdocs/Module/#model-save">Model Save</a> for details.  </p>
 <p>Refer to <a href="../APIdocs/Module/#model-prediction">Model Predict</a> for details about how to use a model for prediction.</p>
 <p>If you are using the trained model as a component inside a Spark ML pipeline, refer to
 <a href="../ProgrammingGuide/MLPipeline/">Using BigDL in Spark ML Pipeline</a> page for usage. </p>
@@ -96,7 +91,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </ol>
 <p>Before training models, please make sure BigDL is installed, BigDL engine initialized properly, and your data is in proper format. Refer to <a href="#before-using-bigdl">Before using BigDL</a> and <a href="#prepare-your-data">Prepare Your Data</a> for details.  </p>
 <p>The most recommended way to create your first model is to modify from an existing one. BigDL provides plenty of models for you to refer to. See <a href="../UserGuide/resources/">Scala Models/Examples</a> and <a href="../PythonSupport/python-resources/">Python Models/Examples and Tutorials</a>. </p>
-<p>To define a model, you can either use the Sequential API or Functional API. The Functional API is more flexible than Sequential API. Refer to <a href="../ProgrammingGuide/Model/Sequential/">Sequential API</a> and <a href="../ProgrammingGuide/Model/Functional/">Functional API</a> for how to define models in different shapes. Navigate to <em>API Guide/Layers</em> on the side bar to find the documenations of available layers and activation.</p>
+<p>To know how to define a model step by step, refer to <a href="../ProgrammingGuide/Model/Sequential/">Model Definition</a>. Navigate to <em>API Guide/Layers</em> on the side bar to find the documenations of available layers and activations.</p>
 <p>After creating the model, you will have to deside which loss function to use in training. Find the details of losses defined in BigDL in <a href="../APIdocs/Losses/">Losses</a>.  </p>
 <p>Now you create an <code>Optimizer</code> and set the loss function, input dataset along with other hyper parameters into the Optimizer. Then call <code>Optimizer.optimize</code> to train. Refer to <a href="../ProgrammingGuide/optimization/">Optimization</a> and <a href="../APIdocs/Optimizers/Optimizer/">Optimizer API guide</a> for details. </p>
 <p>Model Evaluation can be performed periodically during a training. Refer to <a href="../ProgrammingGuide/optimization/#validate-your-model-in-training">Validate your Model in Training</a> for details.  For a list of defined metrics, refer to <a href="../APIdocs/Metrics/">Metrics</a>.</p>
@@ -105,7 +100,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h2 id="save-a-model"><strong>Save a Model</strong></h2>
 <p>When training is finished, you may need to save the final model for later use. </p>
 <p>BigDL allows you to save your BigDL model on local filesystem, HDFS, or Amazon s3 (refer to <a href="../APIdocs/Module.md/#model-save">Model Save</a>). </p>
-<p>You may also save the model to Tensorflow or Caffe format (refer to <a href="../ProgrammingGuide/caffe-support/">Caffe Support</a>, and <a href="../ProgrammingGuide/tensorflow-support/">Tensorflow Support</a> respectively).  </p>
 <hr />
 <h2 id="stop-and-resume-a-training"><strong>Stop and Resume a Training</strong></h2>
 <p>Training a deep learning model sometimes takes a very long time. It may be stopped or interrupted and we need the training to resume from where we have left. </p>
