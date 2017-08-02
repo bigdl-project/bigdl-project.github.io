@@ -37,8 +37,6 @@
           ]},
           {title: "Link with a release version", url: "#link-with-a-release-version", children: [
           ]},
-          {title: "Link with a development version", url: "#link-with-a-development-version", children: [
-          ]},
         ];
 
     </script>
@@ -100,27 +98,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
 <p>SBT developers can use</p>
 <pre><code class="sbt">libraryDependencies += &quot;com.intel.analytics.bigdl.native&quot; % &quot;mkl-java-mac&quot; % &quot;${BIGDL_VERSION}&quot; from &quot;http://repo1.maven.org/maven2/com/intel/analytics/bigdl/native/mkl-java-mac/${BIGDL_VERSION}/mkl-java-mac-${BIGDL_VERSION}.jar&quot;
-</code></pre>
-
-<hr />
-<h2 id="link-with-a-development-version"><strong>Link with a development version</strong></h2>
-<p>Currently, BigDL development version is hosted on <a href="https://oss.sonatype.org/content/groups/public/com/intel/analytics/bigdl/">SonaType</a>. </p>
-<p>To link your application with the latest BigDL development version, you should add some dependencies like <a href="#link-with-a-release-version">Linking with BigDL releases</a>, but set <code>${BIGDL_VERSION}</code> to <code>0.3.0-SNAPSHOT</code>, and add below repository to your pom.xml.</p>
-<pre><code class="xml">&lt;repository&gt;
-    &lt;id&gt;sonatype&lt;/id&gt;
-    &lt;name&gt;sonatype repository&lt;/name&gt;
-    &lt;url&gt;https://oss.sonatype.org/content/groups/public/&lt;/url&gt;
-    &lt;releases&gt;
-        &lt;enabled&gt;true&lt;/enabled&gt;
-    &lt;/releases&gt;
-    &lt;snapshots&gt;
-        &lt;enabled&gt;true&lt;/enabled&gt;
-    &lt;/snapshots&gt;
-&lt;/repository&gt;
-</code></pre>
-
-<p>SBT developers can use</p>
-<pre><code class="sbt">resolvers += &quot;Sonatype OSS Snapshots&quot; at &quot;https://oss.sonatype.org/content/repositories/snapshots&quot;
 </code></pre>
 
   <br>

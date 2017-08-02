@@ -41,7 +41,7 @@
           ]},
           {title: "Build for MacOS", url: "#build-for-macos", children: [
           ]},
-          {title: "Build for Windows", url: "#build-for-windows", children: [
+          {title: "Build for Spark 2.0 and above", url: "#build-for-spark-20-and-above", children: [
           ]},
           {title: "Build for Scala 2.10 or 2.11", url: "#build-for-scala-210-or-211", children: [
           ]},
@@ -99,17 +99,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <pre><code class="bash">$ bash make-dist.sh -P mac
 </code></pre>
 
-<h2 id="build-for-windows"><strong>Build for Windows</strong></h2>
-<p>To build BigDL for Windows, pass <code>-P win64</code> to the build command:</p>
-<pre><code class="bash">&gt; mvn clean package -DskipTests -P win64
-</code></pre>
-
-<p>Please note that we only test it on Windows 10</p>
-<ul>
-<li><strong>Build for Spark 2.0 and above</strong></li>
-</ul>
-<p>The instructions above will build BigDL with Spark 1.5.x or 1.6.x (using Scala 2.10); to build for Spark 2.0 and above (which uses Scala 2.11 by default), pass <code>-P spark_2.x</code> to the <code>make-dist.sh</code> script:</p>
-<pre><code class="bash">$ bash make-dist.sh -P spark_2.x
+<h2 id="build-for-spark-20-and-above"><strong>Build for Spark 2.0 and above</strong></h2>
+<p>The instructions above will build BigDL with Spark 1.5.x or 1.6.x (using Scala 2.10); to build for Spark 2.0 and above (which uses Scala 2.11 by default), pass <code>-P spark_2.0</code>, <code>-P spark_2.1</code> or <code>-P spark_2.1.1</code> to the <code>make-dist.sh</code> script:</p>
+<pre><code class="bash">$ bash make-dist.sh -P spark_2.1.1
 </code></pre>
 
 <p>It is highly recommended to use <em><strong>Java 8</strong></em> when running with Spark 2.x; otherwise you may observe very poor performance.</p>
