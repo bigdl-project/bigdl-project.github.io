@@ -85,11 +85,16 @@ Here is mainly to describe how to use those methods when training</p>
 <code>overWrite</code>: whether to overwrite or not</p>
 <p>When training, you can use optimizer.setCheckPoint(for scala) or optimizer.set_checkpoint(for python) to save methods at regular intervals.</p>
 <h3 id="load-method">Load method</h3>
+<p><strong>scala</strong></p>
 <pre><code class="scala">val method = OptimMethod.load(path : String)
 </code></pre>
 
 <p><code>path</code>: file of optim method path</p>
-<p>Python can't support loading optim method from a snapshot now, but we are working on fixing it.</p>
+<p><strong>python</strong></p>
+<pre><code class="scala">optimizer = OptimMethod.load(path, bigdl_type=&quot;float&quot;)
+</code></pre>
+
+<p><code>bigdl_type</code>: type of optim method, default is "float"</p>
 <h3 id="scala-example">Scala example</h3>
 <p>Here is an example to train LeNet5 model with a loading method.</p>
 <pre><code class="scala">val trainingRDD = ...

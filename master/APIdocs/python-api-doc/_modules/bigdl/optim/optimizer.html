@@ -88,6 +88,7 @@
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">callJavaFunc</span>
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">get_spark_context</span>
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">to_list</span>
+<span class="kn">from</span> <span class="nn">py4j.java_gateway</span> <span class="k">import</span> <span class="n">JavaObject</span>
 
 
 <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span> <span class="o">&gt;=</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
@@ -375,7 +376,35 @@
         <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">monitor</span><span class="p">,</span> <span class="n">factor</span><span class="p">,</span> <span class="n">patience</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span>
                            <span class="n">cooldown</span><span class="p">,</span> <span class="n">min_lr</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="SGD"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.SGD">[docs]</a><span class="k">class</span> <span class="nc">SGD</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+<div class="viewcode-block" id="OptimMethod"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.OptimMethod">[docs]</a><span class="k">class</span> <span class="nc">OptimMethod</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jvalue</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">jvalue</span><span class="p">):</span>
+            <span class="k">assert</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">jvalue</span><span class="p">)</span> <span class="o">==</span> <span class="n">JavaObject</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">jvalue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span>
+                <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">JavaValue</span><span class="o">.</span><span class="n">jvm_class_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
+
+<div class="viewcode-block" id="OptimMethod.load"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.OptimMethod.load">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        load optim method</span>
+<span class="sd">        :param path: file path</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;loadOptimMethod&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OptimMethod.save"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.OptimMethod.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">overWrite</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        save OptimMethod</span>
+<span class="sd">        :param path      path</span>
+<span class="sd">        :param overWrite whether to overwrite</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;saveOptimMethod&quot;</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">overWrite</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="SGD"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.SGD">[docs]</a><span class="k">class</span> <span class="nc">SGD</span><span class="p">(</span><span class="n">OptimMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A plain implementation of SGD</span>
 
@@ -402,12 +431,12 @@
                  <span class="n">learningrates</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">weightdecays</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">learningrate_decay</span><span class="p">,</span> <span class="n">weightdecay</span><span class="p">,</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SGD</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">learningrate_decay</span><span class="p">,</span> <span class="n">weightdecay</span><span class="p">,</span>
                            <span class="n">momentum</span><span class="p">,</span> <span class="n">dampening</span><span class="p">,</span> <span class="n">nesterov</span><span class="p">,</span>
                            <span class="n">leaningrate_schedule</span> <span class="k">if</span> <span class="p">(</span><span class="n">leaningrate_schedule</span><span class="p">)</span> <span class="k">else</span> <span class="n">Default</span><span class="p">(),</span>
                            <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">learningrates</span><span class="p">),</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">weightdecays</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="Adagrad"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Adagrad">[docs]</a><span class="k">class</span> <span class="nc">Adagrad</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+<div class="viewcode-block" id="Adagrad"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Adagrad">[docs]</a><span class="k">class</span> <span class="nc">Adagrad</span><span class="p">(</span><span class="n">OptimMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An implementation of Adagrad. See the original paper:</span>
 <span class="sd">    http://jmlr.org/papers/volume12/duchi11a/duchi11a.pdf</span>
@@ -423,9 +452,9 @@
                  <span class="n">learningrate_decay</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
                  <span class="n">weightdecay</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">learningrate_decay</span><span class="p">,</span> <span class="n">weightdecay</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Adagrad</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">learningrate_decay</span><span class="p">,</span> <span class="n">weightdecay</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="LBFGS"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.LBFGS">[docs]</a><span class="k">class</span> <span class="nc">LBFGS</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+<div class="viewcode-block" id="LBFGS"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.LBFGS">[docs]</a><span class="k">class</span> <span class="nc">LBFGS</span><span class="p">(</span><span class="n">OptimMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This implementation of L-BFGS relies on a user-provided line</span>
 <span class="sd">    search function (state.lineSearch). If this function is not</span>
@@ -462,10 +491,10 @@
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">linesearch</span> <span class="ow">or</span> <span class="n">linesearch_options</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;linesearch and linesearch_options must be None in LBFGS&#39;</span><span class="p">)</span>
-        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">max_iter</span><span class="p">,</span> <span class="n">max_eval</span><span class="p">,</span> <span class="n">tolfun</span><span class="p">,</span> <span class="n">tolx</span><span class="p">,</span>
-                           <span class="n">ncorrection</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="n">linesearch</span><span class="p">,</span> <span class="n">linesearch_options</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LBFGS</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">max_iter</span><span class="p">,</span> <span class="n">max_eval</span><span class="p">,</span> <span class="n">tolfun</span><span class="p">,</span> <span class="n">tolx</span><span class="p">,</span>
+                       <span class="n">ncorrection</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">verbose</span><span class="p">,</span> <span class="n">linesearch</span><span class="p">,</span> <span class="n">linesearch_options</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Adadelta"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Adadelta">[docs]</a><span class="k">class</span> <span class="nc">Adadelta</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+<div class="viewcode-block" id="Adadelta"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Adadelta">[docs]</a><span class="k">class</span> <span class="nc">Adadelta</span><span class="p">(</span><span class="n">OptimMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Adadelta implementation for SGD: http://arxiv.org/abs/1212.5701</span>
 
@@ -478,9 +507,9 @@
                  <span class="n">decayrate</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">,</span>
                  <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-10</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">decayrate</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Adadelta</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">decayrate</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Adam"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Adam">[docs]</a><span class="k">class</span> <span class="nc">Adam</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+<div class="viewcode-block" id="Adam"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Adam">[docs]</a><span class="k">class</span> <span class="nc">Adam</span><span class="p">(</span><span class="n">OptimMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An implementation of Adam http://arxiv.org/pdf/1412.6980.pdf</span>
 <span class="sd">    :param learningrate learning rate</span>
@@ -498,10 +527,10 @@
                  <span class="n">beta2</span> <span class="o">=</span> <span class="mf">0.999</span><span class="p">,</span>
                  <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-8</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">learningrate_decay</span><span class="p">,</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Adam</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">learningrate_decay</span><span class="p">,</span>
                            <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Adamax"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Adamax">[docs]</a><span class="k">class</span> <span class="nc">Adamax</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+<div class="viewcode-block" id="Adamax"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Adamax">[docs]</a><span class="k">class</span> <span class="nc">Adamax</span><span class="p">(</span><span class="n">OptimMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An implementation of Adamax http://arxiv.org/pdf/1412.6980.pdf</span>
 <span class="sd">    :param learningrate learning rate</span>
@@ -517,9 +546,9 @@
                  <span class="n">beta2</span> <span class="o">=</span> <span class="mf">0.999</span><span class="p">,</span>
                  <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-38</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Adamax</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RMSprop"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.RMSprop">[docs]</a><span class="k">class</span> <span class="nc">RMSprop</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+<div class="viewcode-block" id="RMSprop"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.RMSprop">[docs]</a><span class="k">class</span> <span class="nc">RMSprop</span><span class="p">(</span><span class="n">OptimMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An implementation of RMSprop</span>
 <span class="sd">    :param learningrate learning rate</span>
@@ -535,7 +564,7 @@
                  <span class="n">decayrate</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">,</span>
                  <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-8</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">learningrate_decay</span><span class="p">,</span> <span class="n">decayrate</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RMSprop</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">learningrate_decay</span><span class="p">,</span> <span class="n">decayrate</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MultiStep"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.MultiStep">[docs]</a><span class="k">class</span> <span class="nc">MultiStep</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
