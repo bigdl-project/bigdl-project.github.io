@@ -76,7 +76,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <hr />
 <h2 id="use-bigdl-for-prediction-only"><strong>Use BigDL for Prediction only</strong></h2>
 <p>If you have an existing model and want to use BigDL only for prediction, you need first load the model, and then do prediction or evaluation. </p>
-<p>BigDL supports loading models trained and saved in BigDL. To load a BigDL model, you can use <code>Module.load</code> interface (Scala) or <code>Model.load</code> (in Python). Refer to <a href="../APIdocs/Module/#model-save">Model Save</a> for details.  </p>
+<p>BigDL supports loading models trained and saved in BigDL. To load a BigDL model, you can use <code>Module.load</code> interface (Scala) or <code>Model.load</code> (in Python). Refer to <a href="../APIdocs/Module/#model-load">Model Load</a> for details.  </p>
 <p>Refer to <a href="../APIdocs/Module/#model-prediction">Model Predict</a> for details about how to use a model for prediction.</p>
 <p>If you are using the trained model as a component inside a Spark ML pipeline, refer to
 <a href="../ProgrammingGuide/MLPipeline/">Using BigDL in Spark ML Pipeline</a> page for usage. </p>
@@ -118,7 +118,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>There're several strategies that may be useful when tuning an optimization. </p>
 <ul>
 <li>Change the learning Rate Schedule in SGD. Refer to <a href="../APIdocs/Optimizers/Optim-Methods/#sgd">SGD docs</a> for details. </li>
-<li>If overfit is seen, try use Regularization. Refer to <a href="../APIdocs/Regularizers/">Regularizers</a>. </li>
 <li>Try change the initialization methods. Refer to <a href="../APIdocs/Initializers/">Initailizers</a>.</li>
 <li>Try Adam or Adagrad at the first place. If they can't achive a good score, use SGD and find a proper learning rate schedule - it usually takes time, though. RMSProp is recommended for RNN models. Refer to <a href="../APIdocs/Optimizers/Optim-Methods/">Optimization Algorithms</a> for a list of supported optimization methods. </li>
 </ul>
