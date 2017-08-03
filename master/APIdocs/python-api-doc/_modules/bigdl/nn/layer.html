@@ -3036,6 +3036,98 @@
                       <span class="n">weight_init_method</span><span class="p">,</span> <span class="n">bias_init_method</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div></div>
 
+<div class="viewcode-block" id="VolumetricFullConvolution"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.VolumetricFullConvolution">[docs]</a><span class="k">class</span> <span class="nc">VolumetricFullConvolution</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Apply a 3D full convolution over an 3D input image, a sequence of images, or a video etc.</span>
+<span class="sd">    The input tensor is expected to be a 4D or 5D(with batch) tensor. Note that instead</span>
+<span class="sd">    of setting adjT, adjW and adjH, `VolumetricFullConvolution` also accepts a table input</span>
+<span class="sd">    with two tensors: T(convInput, sizeTensor) where convInput is the standard input tensor,</span>
+<span class="sd">    and the size of sizeTensor is used to set the size of the output (will ignore the adjT, adjW and</span>
+<span class="sd">    adjH values used to construct the module). This module can be used without a bias by setting</span>
+<span class="sd">    parameter noBias = true while constructing the module.</span>
+
+
+<span class="sd">    If input is a 4D tensor nInputPlane x depth x height x width,</span>
+<span class="sd">    odepth = (depth  - 1) * dT - 2*padt + kT + adjT</span>
+<span class="sd">    owidth  = (width  - 1) * dW - 2*padW + kW + adjW</span>
+<span class="sd">    oheight = (height - 1) * dH - 2*padH + kH + adjH</span>
+
+
+<span class="sd">    Other frameworks call this operation &quot;In-network Upsampling&quot;, &quot;Fractionally-strided convolution&quot;,</span>
+<span class="sd">    &quot;Backwards Convolution,&quot; &quot;Deconvolution&quot;, or &quot;Upconvolution.&quot;</span>
+
+
+<span class="sd">    Reference Paper: Long J, Shelhamer E, Darrell T. Fully convolutional networks for semantic</span>
+<span class="sd">    segmentation[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition.</span>
+<span class="sd">    2015: 3431-3440.</span>
+
+<span class="sd">    :param nInputPlane The number of expected input planes in the image given into forward()</span>
+<span class="sd">    :param nOutputPlane The number of output planes the convolution layer will produce.</span>
+<span class="sd">    :param kT The kernel depth of the convolution.</span>
+<span class="sd">    :param kW The kernel width of the convolution.</span>
+<span class="sd">    :param kH The kernel height of the convolution.</span>
+<span class="sd">    :param dT The step of the convolution in the depth dimension. Default is 1.</span>
+<span class="sd">    :param dW The step of the convolution in the width dimension. Default is 1.</span>
+<span class="sd">    :param dH The step of the convolution in the height dimension. Default is 1.</span>
+<span class="sd">    :param padT The additional zeros added per depth to the input planes. Default is 0.</span>
+<span class="sd">    :param padW The additional zeros added per width to the input planes. Default is 0.</span>
+<span class="sd">    :param padH The additional zeros added per height to the input planes. Default is 0.</span>
+<span class="sd">    :param adjT Extra depth to add to the output image. Default is 0.</span>
+<span class="sd">    :param adjW Extra width to add to the output image. Default is 0.</span>
+<span class="sd">    :param adjH Extra height to add to the output image. Default is 0.</span>
+<span class="sd">    :param nGroup Kernel group number.</span>
+<span class="sd">    :param noBias If bias is needed.</span>
+<span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.</span>
+<span class="sd">    :param bRegularizer: instance of [[Regularizer]]applied to the bias.</span>
+
+
+<span class="sd">    &gt;&gt;&gt; volumetricFullConvolution = VolumetricFullConvolution(1, 1, 1, 1, 1, 1)</span>
+<span class="sd">    creating: createVolumetricFullConvolution</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">n_input_plane</span><span class="p">,</span>
+                 <span class="n">n_output_plane</span><span class="p">,</span>
+                 <span class="n">kt</span><span class="p">,</span>
+                 <span class="n">kw</span><span class="p">,</span>
+                 <span class="n">kh</span><span class="p">,</span>
+                 <span class="n">dt</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">dw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">dh</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">pad_t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">pad_w</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">pad_h</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">adj_t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">adj_w</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">adj_h</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">n_group</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">no_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VolumetricFullConvolution</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                                     <span class="n">n_input_plane</span><span class="p">,</span>
+                                                     <span class="n">n_output_plane</span><span class="p">,</span>
+                                                     <span class="n">kt</span><span class="p">,</span>
+                                                     <span class="n">kw</span><span class="p">,</span>
+                                                     <span class="n">kh</span><span class="p">,</span>
+                                                     <span class="n">dt</span><span class="p">,</span>
+                                                     <span class="n">dw</span><span class="p">,</span>
+                                                     <span class="n">dh</span><span class="p">,</span>
+                                                     <span class="n">pad_t</span><span class="p">,</span>
+                                                     <span class="n">pad_w</span><span class="p">,</span>
+                                                     <span class="n">pad_h</span><span class="p">,</span>
+                                                     <span class="n">adj_t</span><span class="p">,</span>
+                                                     <span class="n">adj_w</span><span class="p">,</span>
+                                                     <span class="n">adj_h</span><span class="p">,</span>
+                                                     <span class="n">n_group</span><span class="p">,</span>
+                                                     <span class="n">no_bias</span><span class="p">,</span>
+                                                     <span class="n">wRegularizer</span><span class="p">,</span>
+                                                     <span class="n">bRegularizer</span><span class="p">)</span>
+<div class="viewcode-block" id="VolumetricFullConvolution.set_init_method"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.VolumetricFullConvolution.set_init_method">[docs]</a>    <span class="k">def</span> <span class="nf">set_init_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bias_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setInitMethod&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                      <span class="n">weight_init_method</span><span class="p">,</span> <span class="n">bias_init_method</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
 
 <div class="viewcode-block" id="SpatialShareConvolution"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SpatialShareConvolution">[docs]</a><span class="k">class</span> <span class="nc">SpatialShareConvolution</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 

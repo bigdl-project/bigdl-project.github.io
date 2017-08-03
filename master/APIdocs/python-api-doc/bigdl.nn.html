@@ -3956,6 +3956,55 @@ in forward(input) is expected to be a 4D tensor (nInputPlane x time x height x w
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.VolumetricFullConvolution">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">VolumetricFullConvolution</code><span class="sig-paren">(</span><em>n_input_plane</em>, <em>n_output_plane</em>, <em>kt</em>, <em>kw</em>, <em>kh</em>, <em>dt=1</em>, <em>dw=1</em>, <em>dh=1</em>, <em>pad_t=0</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>adj_t=0</em>, <em>adj_w=0</em>, <em>adj_h=0</em>, <em>n_group=1</em>, <em>no_bias=False</em>, <em>wRegularizer=None</em>, <em>bRegularizer=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#VolumetricFullConvolution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.VolumetricFullConvolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Apply a 3D full convolution over an 3D input image, a sequence of images, or a video etc.
+The input tensor is expected to be a 4D or 5D(with batch) tensor. Note that instead
+of setting adjT, adjW and adjH, <cite>VolumetricFullConvolution</cite> also accepts a table input
+with two tensors: T(convInput, sizeTensor) where convInput is the standard input tensor,
+and the size of sizeTensor is used to set the size of the output (will ignore the adjT, adjW and
+adjH values used to construct the module). This module can be used without a bias by setting
+parameter noBias = true while constructing the module.</p>
+<p>If input is a 4D tensor nInputPlane x depth x height x width,
+odepth = (depth  - 1) * dT - 2*padt + kT + adjT
+owidth  = (width  - 1) * dW - 2*padW + kW + adjW
+oheight = (height - 1) * dH - 2*padH + kH + adjH</p>
+<p>Other frameworks call this operation “In-network Upsampling”, “Fractionally-strided convolution”,
+“Backwards Convolution,” “Deconvolution”, or “Upconvolution.”</p>
+<p>Reference Paper: Long J, Shelhamer E, Darrell T. Fully convolutional networks for semantic
+segmentation[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition.
+2015: 3431-3440.</p>
+<p>:param nInputPlane The number of expected input planes in the image given into forward()
+:param nOutputPlane The number of output planes the convolution layer will produce.
+:param kT The kernel depth of the convolution.
+:param kW The kernel width of the convolution.
+:param kH The kernel height of the convolution.
+:param dT The step of the convolution in the depth dimension. Default is 1.
+:param dW The step of the convolution in the width dimension. Default is 1.
+:param dH The step of the convolution in the height dimension. Default is 1.
+:param padT The additional zeros added per depth to the input planes. Default is 0.
+:param padW The additional zeros added per width to the input planes. Default is 0.
+:param padH The additional zeros added per height to the input planes. Default is 0.
+:param adjT Extra depth to add to the output image. Default is 0.
+:param adjW Extra width to add to the output image. Default is 0.
+:param adjH Extra height to add to the output image. Default is 0.
+:param nGroup Kernel group number.
+:param noBias If bias is needed.
+:param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.
+:param bRegularizer: instance of [[Regularizer]]applied to the bias.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">volumetricFullConvolution</span> <span class="o">=</span> <span class="n">VolumetricFullConvolution</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">creating: createVolumetricFullConvolution</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="bigdl.nn.layer.VolumetricFullConvolution.set_init_method">
+<code class="descname">set_init_method</code><span class="sig-paren">(</span><em>weight_init_method=None</em>, <em>bias_init_method=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#VolumetricFullConvolution.set_init_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.VolumetricFullConvolution.set_init_method" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.VolumetricMaxPooling">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">VolumetricMaxPooling</code><span class="sig-paren">(</span><em>k_t</em>, <em>k_w</em>, <em>k_h</em>, <em>d_t</em>, <em>d_w</em>, <em>d_h</em>, <em>pad_t=0</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#VolumetricMaxPooling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.VolumetricMaxPooling" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
