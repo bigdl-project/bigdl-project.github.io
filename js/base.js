@@ -212,7 +212,7 @@ function loadVersion() {
       }
       var path = window.location.pathname;
       var dir = path.split("/")[1];
-      var idx = dir.indexOf("#") 
+      var idx = dir.indexOf("#");
       if (idx != -1) {
         dir = dir.substring(idx + 1, dir.length);
       }
