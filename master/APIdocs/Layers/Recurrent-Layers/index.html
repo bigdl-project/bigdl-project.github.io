@@ -77,12 +77,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </code></pre>
 
 <p>Recurrent module is a container of rnn cells. Different types of rnn cells can be added using add() function.  </p>
-<p>Recurrent supports returning final state and cell status of its rnn cells by using getFinalStateAndCellStatus. output of getFinalStateAndCellStatus
-is a tuple. The first element is the output state at last time while the second elements is the cell status.  </p>
-<p>If contained cell is simple rnn, finalstate is <code>batch x hiddenSize</code>. cell is None<br />
-If contained cell is lstm, finalstate is <code>batch x hiddenSize</code>. cell is <code>batch x hiddenSize</code><br />
-If contained cell is convlstm2D, finalstate is <code>batch x outputPlane x height x width</code>. cell is <code>batch x outputPlane x height x width</code><br />
-If contained cell is convlstm3D, finalstate is <code>batch x outputPlane x height x width x length</code>. cell is <code>batch x outputPlane x height x width x length</code></p>
+<p>Recurrent supports returning state and cell of its rnn cells at last time step by using getState. output of getState
+is an Activity and it can be directly used for setState function, which will set hidden state and cell at the first time step.  </p>
+<p>If contained cell is simple rnn, getState return value is a tensor(hidden state) which is <code>batch x hiddenSize</code>.<br />
+If contained cell is lstm, getState return value is a table [hidden state, cell], both size is <code>batch x hiddenSize</code>.<br />
+If contained cell is convlstm, getState return value is a table [hidden state, cell], both size is <code>batch x outputPlane x height x width</code>.<br />
+If contained cell is convlstm3D, getState return value is a table [hidden state, cell], both size is <code>batch x outputPlane x height x width x length</code>.</p>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.tensor.Tensor
 import com.intel.analytics.bigdl.nn._
@@ -100,7 +100,8 @@ for (i &lt;- 1 to 5) {
 
 val output = module.forward(input)
 
-val (finalState, cellStatus) = module.getFinalStateAndCellStatus()
+val state = module.getState()
+module.setState(state)
 
 &gt; input
 (1,.,.) =
@@ -122,14 +123,6 @@ val (finalState, cellStatus) = module.getFinalStateAndCellStatus()
 
 [com.intel.analytics.bigdl.tensor.DenseTensor of size 1x5x4]
 
-&gt; finalState
-0.007001166 -0.7096118  -0.778529   -0.47429603
-
-[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x4]
-
-&gt; cellStatus
-null
-
 </code></pre>
 
 <p><strong>Python example:</strong></p>
@@ -148,7 +141,8 @@ input[0][4][0] = 1
 
 output = module.forward(input)
 
-res = module.get_finalState_cellStatus()
+res = module.get_state()
+module.set_state(res)
 
 &gt; input
 [[[ 0.  0.  0.  0.  1.]
@@ -164,13 +158,6 @@ res = module.get_finalState_cellStatus()
   [ 0.13328044  0.41262615  0.37388939  0.10983802]
   [-0.51452565  0.13222042  0.59192103  0.8393243 ]]]
 
-&gt; res[0]
-# final state
-[[-0.51452565  0.13222042  0.59192103  0.8393243 ]]
-
-&gt; res[1]
-# cell status
-None
 </code></pre>
 
 <hr />

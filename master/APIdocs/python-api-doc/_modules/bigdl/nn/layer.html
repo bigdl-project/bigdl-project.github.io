@@ -930,18 +930,24 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Recurrent</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Recurrent.get_finalState_cellStatus"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Recurrent.get_finalState_cellStatus">[docs]</a>    <span class="k">def</span> <span class="nf">get_finalState_cellStatus</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Recurrent.get_state"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Recurrent.get_state">[docs]</a>    <span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        get final state and cell status.</span>
+<span class="sd">        get hidden state and cell at last time step.</span>
 <span class="sd">        </span>
-<span class="sd">        :return: list of final state and cell status</span>
+<span class="sd">        :return: list of hidden state and cell</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">finalState_cellStatus</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getFinalStateAndCellStatus&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">tensor</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">finalState_cellStatus</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">tensor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="n">finalState_cellStatus</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getState&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">tensor</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+                <span class="n">state</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span>
 
-        <span class="k">return</span> <span class="n">finalState_cellStatus</span></div></div>
+        <span class="k">return</span> <span class="n">state</span></div>
+
+<div class="viewcode-block" id="Recurrent.set_state"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Recurrent.set_state">[docs]</a>    <span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        set hidden state and cell at first time step.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">jstate</span><span class="p">,</span> <span class="n">state_is_table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_input</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setState&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">jstate</span><span class="p">,</span> <span class="n">state_is_table</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="LSTM"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.LSTM">[docs]</a><span class="k">class</span> <span class="nc">LSTM</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
