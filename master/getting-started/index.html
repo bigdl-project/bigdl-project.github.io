@@ -71,8 +71,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Before using BigDL, you need to install Apache Spark and obtain BigDL libraries. Then in your program, you need to ensure the SparkContext is created successfully and initialize BigDL engine before calling BigDL APIs. Navigate to <em>Scala User Guide/Install</em> or <em>Python User Guide/Install</em> for details about how to install BigDL, and <em>Scala User Guide/Run</em> or <em>Python User Guide/Run</em> for how to run programs.  </p>
 <hr />
 <h2 id="prepare-your-data"><strong>Prepare your Data</strong></h2>
-<p>Your data need to be transformed into RDD of <a href="../APIdocs/Data/#sample">Sample</a> in order to be fed into BigDL for training, evaluation and prediction (also refer to <a href="../ProgrammingGuide/optimization/">Optimization</a> and <a href="../APIdocs/Optimizers/Optimizer/">Optimizer API guide</a>). </p>
-<p><a href="../APIdocs/Data/#tensor">Tensor</a>, <a href="../APIdocs/Data/#table">Table</a> are essential data structures that composes the basic dataflow inside the nerual network( e.g. input/output, gradients, weights, etc.). You will need to understand them to get a better idea of layer behaviors. </p>
+<p>Your data need to be transformed into RDD of <a href="APIdocs/Data.md#sample">Sample</a> in order to be fed into BigDL for training, evaluation and prediction (also refer to <a href="../ProgrammingGuide/optimization/">Optimization</a> and <a href="APIdocs/Optimizers/Optimizer.md">Optimizer API guide</a>). </p>
+<p><a href="APIdocs/Data.md#tensor">Tensor</a>, <a href="APIdocs/Data.md#table">Table</a> are essential data structures that composes the basic dataflow inside the nerual network( e.g. input/output, gradients, weights, etc.). You will need to understand them to get a better idea of layer behaviors. </p>
 <hr />
 <h2 id="use-bigdl-for-prediction-only"><strong>Use BigDL for Prediction only</strong></h2>
 <p>If you have an existing model and want to use BigDL only for prediction, you need first load the model, and then do prediction or evaluation. </p>
@@ -95,12 +95,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>evaluation (evaluate your model) </li>
 </ol>
 <p>Before training models, please make sure BigDL is installed, BigDL engine initialized properly, and your data is in proper format. Refer to <a href="#before-using-bigdl">Before using BigDL</a> and <a href="#prepare-your-data">Prepare Your Data</a> for details.  </p>
-<p>The most recommended way to create your first model is to modify from an existing one. BigDL provides plenty of models for you to refer to. See <a href="../UserGuide/resources/">Scala Models/Examples</a> and <a href="../PythonSupport/python-resources/">Python Models/Examples and Tutorials</a>. </p>
+<p>The most recommended way to create your first model is to modify from an existing one. BigDL provides plenty of models for you to refer to. See <a href="UserGuide/resources.md">Scala Models/Examples</a> and <a href="PythonSupport/python-resources.md">Python Models/Examples and Tutorials</a>. </p>
 <p>To define a model, you can either use the Sequential API or Functional API. The Functional API is more flexible than Sequential API. Refer to <a href="../ProgrammingGuide/Model/Sequential/">Sequential API</a> and <a href="../ProgrammingGuide/Model/Functional/">Functional API</a> for how to define models in different shapes. Navigate to <em>API Guide/Layers</em> on the side bar to find the documenations of available layers and activation.</p>
-<p>After creating the model, you will have to deside which loss function to use in training. Find the details of losses defined in BigDL in <a href="../APIdocs/Losses/">Losses</a>.  </p>
-<p>Now you create an <code>Optimizer</code> and set the loss function, input dataset along with other hyper parameters into the Optimizer. Then call <code>Optimizer.optimize</code> to train. Refer to <a href="../ProgrammingGuide/optimization/">Optimization</a> and <a href="../APIdocs/Optimizers/Optimizer/">Optimizer API guide</a> for details. </p>
-<p>Model Evaluation can be performed periodically during a training. Refer to <a href="../ProgrammingGuide/optimization/#validate-your-model-in-training">Validate your Model in Training</a> for details.  For a list of defined metrics, refer to <a href="../APIdocs/Metrics/">Metrics</a>.</p>
-<p>When <code>Optimizer.optimize</code> finishes, it will return a trained model. You can then use the trained model for prediction or evaluation. Refer to <a href="../APIdocs/Module/#model-prediction">Model Prediction</a> and <a href="../APIdocs/Module/#model-evaluation">Model Evaluation</a> for detailed usage.    </p>
+<p>After creating the model, you will have to deside which loss function to use in training. Find the details of losses defined in BigDL in <a href="APIdocs/Losses.md">Losses</a>.  </p>
+<p>Now you create an <code>Optimizer</code> and set the loss function, input dataset along with other hyper parameters into the Optimizer. Then call <code>Optimizer.optimize</code> to train. Refer to <a href="../ProgrammingGuide/optimization/">Optimization</a> and <a href="APIdocs/Optimizers/Optimizer.md">Optimizer API guide</a> for details. </p>
+<p>Model Evaluation can be performed periodically during a training. Refer to <a href="../ProgrammingGuide/optimization/#validate-your-model-in-training">Validate your Model in Training</a> for details.  For a list of defined metrics, refer to <a href="APIdocs/Metrics.md">Metrics</a>.</p>
+<p>When <code>Optimizer.optimize</code> finishes, it will return a trained model. You can then use the trained model for prediction or evaluation. Refer to <a href="APIdocs/Module.md#model-prediction">Model Prediction</a> and <a href="APIdocs/Module.md#model-evaluation">Model Evaluation</a> for detailed usage.    </p>
 <p>If you prefer to train a model inside a Spark ML pipeline, please refer to  <a href="../ProgrammingGuide/MLPipeline/MLPipeline.  md">Using BigDL in Spark ML Pipeline</a> page for usage.</p>
 <hr />
 <h2 id="save-a-model"><strong>Save a Model</strong></h2>
@@ -115,7 +115,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <hr />
 <h2 id="use-pre-trained-modelslayers"><strong>Use Pre-trained Models/Layers</strong></h2>
 <p>Pre-train is a useful strategy when training deep learning models. You may use the pre-trained features (e.g. embeddings) in your model, or do a fine-tuning for a different dataset or target.</p>
-<p>To use a learnt model as a whole, you can use <code>Module.load</code> to load the entire model, Then create an <code>Optimizer</code> with the loaded model set into it. Refer to <a href="../APIdocs/Optimizers/Optimizer/">Optmizer API</a> and <a href="../APIdocs/Module/">Module API</a> for details. </p>
+<p>To use a learnt model as a whole, you can use <code>Module.load</code> to load the entire model, Then create an <code>Optimizer</code> with the loaded model set into it. Refer to <a href="APIdocs/Optimizers/Optimizer.md">Optmizer API</a> and <a href="APIdocs/Module.md">Module API</a> for details. </p>
 <p>Instead of using an entire model, you can also use pre-trained weights/biases in certain layers. After a layer is created, use <code>setWeightsBias</code> (in Scala) or <code>set_weights</code> (in Python) on the layer to initialize the weights with pre-trained weights. Then continue to train your model as usual. </p>
 <hr />
 <h2 id="monitor-your-training"><strong>Monitor your training</strong></h2>
@@ -124,10 +124,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h2 id="tuning"><strong>Tuning</strong></h2>
 <p>There're several strategies that may be useful when tuning an optimization. </p>
 <ul>
-<li>Change the learning Rate Schedule in SGD. Refer to <a href="../APIdocs/Optimizers/Optim-Methods/#sgd">SGD docs</a> for details. </li>
-<li>If overfit is seen, try use Regularization. Refer to <a href="../APIdocs/Regularizers/">Regularizers</a>. </li>
-<li>Try change the initialization methods. Refer to <a href="../APIdocs/Initializers/">Initailizers</a>.</li>
-<li>Try Adam or Adagrad at the first place. If they can't achive a good score, use SGD and find a proper learning rate schedule - it usually takes time, though. RMSProp is recommended for RNN models. Refer to <a href="../APIdocs/Optimizers/Optim-Methods/">Optimization Algorithms</a> for a list of supported optimization methods. </li>
+<li>Change the learning Rate Schedule in SGD. Refer to <a href="APIdocs/Optimizers/Optim-Methods.md#sgd">SGD docs</a> for details. </li>
+<li>If overfit is seen, try use Regularization. Refer to <a href="APIdocs/Regularizers.md">Regularizers</a>. </li>
+<li>Try change the initialization methods. Refer to <a href="APIdocs/Initializers.md">Initailizers</a>.</li>
+<li>Try Adam or Adagrad at the first place. If they can't achive a good score, use SGD and find a proper learning rate schedule - it usually takes time, though. RMSProp is recommended for RNN models. Refer to <a href="APIdocs/Optimizers/Optim-Methods.md">Optimization Algorithms</a> for a list of supported optimization methods. </li>
 </ul>
 
   <br>
