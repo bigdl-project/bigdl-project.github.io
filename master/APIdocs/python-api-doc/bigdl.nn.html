@@ -1246,8 +1246,8 @@ A container usually contain some other modules which can be added through the �
 </dd></dl>
 
 <dl class="class">
-<dt id="bigdl.nn.layer.ConvLSTMPeephole">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ConvLSTMPeephole</code><span class="sig-paren">(</span><em>input_size</em>, <em>output_size</em>, <em>kernel_i</em>, <em>kernel_c</em>, <em>stride</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>cRegularizer=None</em>, <em>with_peephole=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ConvLSTMPeephole"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ConvLSTMPeephole" title="Permalink to this definition">¶</a></dt>
+<dt id="bigdl.nn.layer.ConvLSTMPeephole2D">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ConvLSTMPeephole2D</code><span class="sig-paren">(</span><em>input_size</em>, <em>output_size</em>, <em>kernel_i</em>, <em>kernel_c</em>, <em>stride</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>with_peephole=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ConvLSTMPeephole2D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ConvLSTMPeephole2D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <div class="line-block">
 <div class="line">Convolution Long Short Term Memory architecture with peephole.</div>
@@ -1272,21 +1272,19 @@ A container usually contain some other modules which can be added through the �
 :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices
 :param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices
 :param bRegularizer: instance of [[Regularizer]]applied to the bias.
-:param cRegularizer: instance of [[Regularizer]]applied to peephole.
 :param with_peephole: whether use last cell status control a gate.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convlstm</span> <span class="o">=</span> <span class="n">ConvLSTMPeephole</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convlstm</span> <span class="o">=</span> <span class="n">ConvLSTMPeephole2D</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
-<span class="go">creating: createL1Regularizer</span>
-<span class="go">creating: createConvLSTMPeephole</span>
+<span class="go">creating: createConvLSTMPeephole2D</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.ConvLSTMPeephole3D">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ConvLSTMPeephole3D</code><span class="sig-paren">(</span><em>input_size</em>, <em>output_size</em>, <em>kernel_i</em>, <em>kernel_c</em>, <em>stride</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>cRegularizer=None</em>, <em>with_peephole=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ConvLSTMPeephole3D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ConvLSTMPeephole3D" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ConvLSTMPeephole3D</code><span class="sig-paren">(</span><em>input_size</em>, <em>output_size</em>, <em>kernel_i</em>, <em>kernel_c</em>, <em>stride</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>with_peephole=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ConvLSTMPeephole3D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ConvLSTMPeephole3D" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1306,10 +1304,8 @@ A container usually contain some other modules which can be added through the �
 :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices
 :param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices
 :param bRegularizer: instance of [[Regularizer]]applied to the bias.
-:param cRegularizer: instance of [[Regularizer]]applied to peephole.
 :param with_peephole: whether use last cell status control a gate.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convlstm</span> <span class="o">=</span> <span class="n">ConvLSTMPeephole3D</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
-<span class="go">creating: createL1Regularizer</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convlstm</span> <span class="o">=</span> <span class="n">ConvLSTMPeephole3D</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
@@ -2840,23 +2836,17 @@ Different types of rnn cells can be added using add() function</p>
 </pre></div>
 </div>
 <dl class="method">
-<dt id="bigdl.nn.layer.Recurrent.get_state">
-<code class="descname">get_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Recurrent.get_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Recurrent.get_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>get hidden state and cell at last time step.</p>
+<dt id="bigdl.nn.layer.Recurrent.get_finalState_cellStatus">
+<code class="descname">get_finalState_cellStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Recurrent.get_finalState_cellStatus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Recurrent.get_finalState_cellStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>get final state and cell status.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of hidden state and cell</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of final state and cell status</td>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="method">
-<dt id="bigdl.nn.layer.Recurrent.set_state">
-<code class="descname">set_state</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Recurrent.set_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Recurrent.set_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>set hidden state and cell at first time step.</p>
 </dd></dl>
 
 </dd></dl>
@@ -3922,7 +3912,7 @@ for one of the dimensions.</p>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.VolumetricConvolution">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">VolumetricConvolution</code><span class="sig-paren">(</span><em>n_input_plane</em>, <em>n_output_plane</em>, <em>k_t</em>, <em>k_w</em>, <em>k_h</em>, <em>d_t=1</em>, <em>d_w=1</em>, <em>d_h=1</em>, <em>pad_t=0</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>with_bias=True</em>, <em>wRegularizer=None</em>, <em>bRegularizer=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#VolumetricConvolution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.VolumetricConvolution" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">VolumetricConvolution</code><span class="sig-paren">(</span><em>n_input_plane</em>, <em>n_output_plane</em>, <em>k_t</em>, <em>k_w</em>, <em>k_h</em>, <em>d_t=1</em>, <em>d_w=1</em>, <em>d_h=1</em>, <em>pad_t=0</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>with_bias=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#VolumetricConvolution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.VolumetricConvolution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <p>Applies a 3D convolution over an input image composed of several input planes. The input tensor
 in forward(input) is expected to be a 4D tensor (nInputPlane x time x height x width).</p>
@@ -3943,8 +3933,7 @@ in forward(input) is expected to be a 4D tensor (nInputPlane x time x height x w
 <li><strong>pad_w</strong> – The additional zeros added per width to the input planes.</li>
 <li><strong>pad_h</strong> – The additional zeros added per height to the input planes.</li>
 <li><strong>with_bias</strong> – whether with bias</li>
-<li><strong>wRegularizer</strong> – instance of [[Regularizer]] (eg. L1 or L2 regularization), applied to the input weights matrices.</li>
-<li><strong>bRegularizer</strong> – instance of [[Regularizer]] applied to the bias.</li>
+<li><strong>init_method</strong> – Init method, Default, Xavier, Bilinear.</li>
 </ul>
 </td>
 </tr>
@@ -3957,55 +3946,6 @@ in forward(input) is expected to be a 4D tensor (nInputPlane x time x height x w
 <dl class="method">
 <dt id="bigdl.nn.layer.VolumetricConvolution.set_init_method">
 <code class="descname">set_init_method</code><span class="sig-paren">(</span><em>weight_init_method=None</em>, <em>bias_init_method=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#VolumetricConvolution.set_init_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.VolumetricConvolution.set_init_method" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="bigdl.nn.layer.VolumetricFullConvolution">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">VolumetricFullConvolution</code><span class="sig-paren">(</span><em>n_input_plane</em>, <em>n_output_plane</em>, <em>kt</em>, <em>kw</em>, <em>kh</em>, <em>dt=1</em>, <em>dw=1</em>, <em>dh=1</em>, <em>pad_t=0</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>adj_t=0</em>, <em>adj_w=0</em>, <em>adj_h=0</em>, <em>n_group=1</em>, <em>no_bias=False</em>, <em>wRegularizer=None</em>, <em>bRegularizer=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#VolumetricFullConvolution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.VolumetricFullConvolution" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
-<p>Apply a 3D full convolution over an 3D input image, a sequence of images, or a video etc.
-The input tensor is expected to be a 4D or 5D(with batch) tensor. Note that instead
-of setting adjT, adjW and adjH, <cite>VolumetricFullConvolution</cite> also accepts a table input
-with two tensors: T(convInput, sizeTensor) where convInput is the standard input tensor,
-and the size of sizeTensor is used to set the size of the output (will ignore the adjT, adjW and
-adjH values used to construct the module). This module can be used without a bias by setting
-parameter noBias = true while constructing the module.</p>
-<p>If input is a 4D tensor nInputPlane x depth x height x width,
-odepth = (depth  - 1) * dT - 2*padt + kT + adjT
-owidth  = (width  - 1) * dW - 2*padW + kW + adjW
-oheight = (height - 1) * dH - 2*padH + kH + adjH</p>
-<p>Other frameworks call this operation “In-network Upsampling”, “Fractionally-strided convolution”,
-“Backwards Convolution,” “Deconvolution”, or “Upconvolution.”</p>
-<p>Reference Paper: Long J, Shelhamer E, Darrell T. Fully convolutional networks for semantic
-segmentation[C]//Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition.
-2015: 3431-3440.</p>
-<p>:param nInputPlane The number of expected input planes in the image given into forward()
-:param nOutputPlane The number of output planes the convolution layer will produce.
-:param kT The kernel depth of the convolution.
-:param kW The kernel width of the convolution.
-:param kH The kernel height of the convolution.
-:param dT The step of the convolution in the depth dimension. Default is 1.
-:param dW The step of the convolution in the width dimension. Default is 1.
-:param dH The step of the convolution in the height dimension. Default is 1.
-:param padT The additional zeros added per depth to the input planes. Default is 0.
-:param padW The additional zeros added per width to the input planes. Default is 0.
-:param padH The additional zeros added per height to the input planes. Default is 0.
-:param adjT Extra depth to add to the output image. Default is 0.
-:param adjW Extra width to add to the output image. Default is 0.
-:param adjH Extra height to add to the output image. Default is 0.
-:param nGroup Kernel group number.
-:param noBias If bias is needed.
-:param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.
-:param bRegularizer: instance of [[Regularizer]]applied to the bias.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">volumetricFullConvolution</span> <span class="o">=</span> <span class="n">VolumetricFullConvolution</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="go">creating: createVolumetricFullConvolution</span>
-</pre></div>
-</div>
-<dl class="method">
-<dt id="bigdl.nn.layer.VolumetricFullConvolution.set_init_method">
-<code class="descname">set_init_method</code><span class="sig-paren">(</span><em>weight_init_method=None</em>, <em>bias_init_method=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#VolumetricFullConvolution.set_init_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.VolumetricFullConvolution.set_init_method" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

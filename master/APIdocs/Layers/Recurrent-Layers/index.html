@@ -45,7 +45,7 @@
           ]},
           {title: "GRU", url: "#gru", children: [
           ]},
-          {title: "ConvLSTMPeephole", url: "#convlstmpeephole", children: [
+          {title: "ConvLSTMPeephole2D", url: "#convlstmpeephole2d", children: [
           ]},
           {title: "ConvLSTMPeephole3D", url: "#convlstmpeephole3d", children: [
           ]},
@@ -76,13 +76,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <pre><code class="python">module = Recurrent()
 </code></pre>
 
-<p>Recurrent module is a container of rnn cells. Different types of rnn cells can be added using add() function.  </p>
-<p>Recurrent supports returning state and cell of its rnn cells at last time step by using getState. output of getState
-is an Activity and it can be directly used for setState function, which will set hidden state and cell at the first time step.  </p>
-<p>If contained cell is simple rnn, getState return value is a tensor(hidden state) which is <code>batch x hiddenSize</code>.<br />
-If contained cell is lstm, getState return value is a table [hidden state, cell], both size is <code>batch x hiddenSize</code>.<br />
-If contained cell is convlstm, getState return value is a table [hidden state, cell], both size is <code>batch x outputPlane x height x width</code>.<br />
-If contained cell is convlstm3D, getState return value is a table [hidden state, cell], both size is <code>batch x outputPlane x height x width x length</code>.</p>
+<p>Recurrent module is a container of rnn cells. Different types of rnn cells can be added using add() function.</p>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.tensor.Tensor
 import com.intel.analytics.bigdl.nn._
@@ -100,8 +94,7 @@ for (i &lt;- 1 to 5) {
 
 val output = module.forward(input)
 
-val state = module.getState()
-module.setState(state)
+val (finalState, cellStatus) = module.getFinalStateAndCellStatus()
 
 &gt; input
 (1,.,.) =
@@ -123,6 +116,14 @@ module.setState(state)
 
 [com.intel.analytics.bigdl.tensor.DenseTensor of size 1x5x4]
 
+&gt; finalState
+0.007001166 -0.7096118  -0.778529   -0.47429603
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x4]
+
+&gt; cellStatus
+null
+
 </code></pre>
 
 <p><strong>Python example:</strong></p>
@@ -141,8 +142,7 @@ input[0][4][0] = 1
 
 output = module.forward(input)
 
-res = module.get_state()
-module.set_state(res)
+res = module.get_finalState_cellStatus()
 
 &gt; input
 [[[ 0.  0.  0.  0.  1.]
@@ -158,6 +158,13 @@ module.set_state(res)
   [ 0.13328044  0.41262615  0.37388939  0.10983802]
   [-0.51452565  0.13222042  0.59192103  0.8393243 ]]]
 
+&gt; res[0]
+# final state
+[[-0.51452565  0.13222042  0.59192103  0.8393243 ]]
+
+&gt; res[1]
+# cell status
+None
 </code></pre>
 
 <hr />
@@ -648,9 +655,9 @@ gradient = model.backward(input, grad_output)
 </code></pre>
 
 <hr />
-<h2 id="convlstmpeephole">ConvLSTMPeephole</h2>
+<h2 id="convlstmpeephole2d">ConvLSTMPeephole2D</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val model = ConvLSTMPeephole(
+<pre><code class="scala">val model = ConvLSTMPeephole2D(
   inputSize = 2,
   outputSize = 4,
   kernelI = 3,
@@ -659,12 +666,11 @@ gradient = model.backward(input, grad_output)
   wRegularizer = null,
   uRegularizer = null,
   bRegularizer = null,
-  cRegularizer = null,
   withPeephole = true)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">model = ConvLSTMPeephole(
+<pre><code class="python">model = ConvLSTMPeephole2D(
   input_size = 2,
   output_size = 4,
   kernel_i = 3,
@@ -673,14 +679,11 @@ gradient = model.backward(input, grad_output)
   wRegularizer=None,
   uRegularizer=None,
   bRegularizer=None,
-  cRegularizer = None,
   with_peephole = True)
 </code></pre>
 
 <p>Convolution Long Short Term Memory architecture with peephole for 2 dimension images.
-The input tensor in <code>forward(input)</code> is expected to be a 5D tensor (<code>batch x time x nInputPlane x height x width</code>). output of
-<code>forward(input)</code> is also expected to be a 5D tensor (<code>batch x time x outputPlane x height x width</code>).</p>
-<p>Ref.</p>
+Ref.</p>
 <ol>
 <li>https://arxiv.org/abs/1506.04214 (blueprint for this module)</li>
 <li>https://github.com/viorik/ConvLSTM</li>
@@ -698,8 +701,6 @@ The input tensor in <code>forward(input)</code> is expected to be a 5D tensor (<
           (eg. L1 or L2 regularization), applied to the recurrent weights matrices.</li>
 <li><code>bRegularizer</code> instance of [[Regularizer]]
           applied to the bias.</li>
-<li><code>cRegularizer</code> instance of [[Regularizer]]
-        applied to peephole.</li>
 <li><code>withPeephole</code> whether use last cell status control a gate</li>
 </ul>
 <p><strong>Scala example:</strong></p>
@@ -718,7 +719,7 @@ val input = Tensor(Array(batchSize, seqLength, inputSize, 3, 3)).rand()
 val rec = Recurrent()
     val model = Sequential()
       .add(rec
-        .add(ConvLSTMPeephole(inputSize, outputSize, 3, 3, 1, withPeephole = false)))
+        .add(ConvLSTMPeephole2D(inputSize, outputSize, 3, 3, 1, withPeephole = false)))
 
 val output = model.forward(input).toTensor
 
@@ -812,7 +813,7 @@ batch_size = 1
 input = np.random.randn(batch_size, seq_len, input_size, 3, 3)
 rec = Recurrent()
 model = Sequential().add(
-    rec.add(ConvLSTMPeephole(input_size, output_size, 3, 3, 1, with_peephole = False)))
+    rec.add(ConvLSTMPeephole2D(input_size, output_size, 3, 3, 1, with_peephole = False)))
 output = model.forward(input)
 
 &gt;&gt;&gt; print(input)
@@ -888,7 +889,6 @@ output = model.forward(input)
   wRegularizer = null,
   uRegularizer = null,
   bRegularizer = null,
-  cRegularizer = null,
   withPeephole = true)
 </code></pre>
 
@@ -902,13 +902,10 @@ output = model.forward(input)
   wRegularizer=None,
   uRegularizer=None,
   bRegularizer=None,
-  cRegularizer=None,
   with_peephole = True)
 </code></pre>
 
-<p>Similar to Convlstm2D, it's a Convolution Long Short Term Memory architecture with peephole but for 3 spatial dimension images.
-The input tensor in <code>forward(input)</code> is expected to be a 6D tensor (<code>batch x time x nInputPlane x height x width x length</code>). output of
-<code>forward(input)</code> is also expected to be a 6D tensor (<code>batch x time x outputPlane x height x width x length</code>).</p>
+<p>Similar to Convlstm2D, it's a Convolution Long Short Term Memory architecture with peephole but for 3 spatial dimension images.</p>
 <p>Parameters:</p>
 <ul>
 <li><code>inputSize</code> number of input planes in the image given into forward()</li>
@@ -922,8 +919,6 @@ The input tensor in <code>forward(input)</code> is expected to be a 6D tensor (<
           (eg. L1 or L2 regularization), applied to the recurrent weights matrices.</li>
 <li><code>bRegularizer</code> instance of [[Regularizer]]
           applied to the bias.</li>
-<li><code>cRegularizer</code> instance of [[Regularizer]]
-          applied to peephole.</li>
 <li><code>withPeephole</code> whether use last cell status control a gate</li>
 </ul>
 <p><strong>Scala example:</strong></p>
