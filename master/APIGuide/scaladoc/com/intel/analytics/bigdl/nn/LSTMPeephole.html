@@ -200,6 +200,19 @@ parameters is module dependent. The module is expected to accumulate the gradien
 respect to the parameters in some variable.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"></dd><dt class="param">gradOutput</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cell.html" class="extype" name="com.intel.analytics.bigdl.nn.Cell">Cell</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Cell#addTimes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="addTimes(other:com.intel.analytics.bigdl.nn.Cell[T]):Unit"></a>
+      <a id="addTimes(Cell[T]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addTimes</span><span class="params">(<span name="other">other: <a href="Cell.html" class="extype" name="com.intel.analytics.bigdl.nn.Cell">Cell</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.LSTMPeephole.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cell.html" class="extype" name="com.intel.analytics.bigdl.nn.Cell">Cell</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="apply(name:String):Option[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]"></a>
       <a id="apply(String):Option[AbstractModule[Activity,Activity,T]]"></a>
@@ -241,8 +254,8 @@ there are multiple modules with the given name, an exception will be thrown.</p>
       </span>
       </h4>
       
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#backward" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="backward(input:A,gradOutput:B):A"></a>
+    </li><li name="com.intel.analytics.bigdl.nn.Cell#backward" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="backward(input:com.intel.analytics.bigdl.utils.Table,gradOutput:com.intel.analytics.bigdl.utils.Table):com.intel.analytics.bigdl.utils.Table"></a>
       <a id="backward(Table,Table):Table"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -258,7 +271,7 @@ general this method makes the assumption forward(input) has been called before, 
 input. This is necessary for optimization reasons. If you do not respect this rule, backward()
 will compute incorrect gradients.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">gradOutput</dt><dd class="cmt"><p>gradient of next layer</p></dd><dt>returns</dt><dd class="cmt"><p>gradient corresponding to input data
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cell.html" class="extype" name="com.intel.analytics.bigdl.nn.Cell">Cell</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#backwardTime" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="backwardTime:Long"></a>
       <a id="backwardTime:Long"></a>
@@ -272,6 +285,19 @@ will compute incorrect gradients.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Cell#backwardTimes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="backwardTimes:Array[Long]"></a>
+      <a id="backwardTimes:Array[Long]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">backwardTimes</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Long">Long</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cell.html" class="extype" name="com.intel.analytics.bigdl.nn.Cell">Cell</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.LSTMPeephole#buildCell" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="buildCell()(input1:com.intel.analytics.bigdl.nn.Graph.ModuleNode[T],input2:com.intel.analytics.bigdl.nn.Graph.ModuleNode[T],input3:com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]):com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]"></a>
       <a id="buildCell()(ModuleNode[T],ModuleNode[T],ModuleNode[T]):ModuleNode[T]"></a>
@@ -630,6 +656,19 @@ the output state variable should have been updated to the new value.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Cell#forwardTimes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="forwardTimes:Array[Long]"></a>
+      <a id="forwardTimes:Array[Long]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">forwardTimes</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Long">Long</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cell.html" class="extype" name="com.intel.analytics.bigdl.nn.Cell">Cell</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -752,7 +791,7 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       <p class="shortcomment cmt">Get the scale of gradientWeight
 </p><div class="fullcomment"><div class="comment cmt"><p>Get the scale of gradientWeight
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#getTimes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.Cell#getTimes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getTimes():Array[(com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,T],Long,Long)]"></a>
       <a id="getTimes():Array[(AbstractModule[_&lt;:Activity,_&lt;:Activity,T],Long,Long)]"></a>
       <h4 class="signature">
@@ -764,7 +803,7 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
         <span class="name">getTimes</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[_ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, _ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.LSTMPeephole.T">T</span>], <span class="extype" name="scala.Long">Long</span>, <span class="extype" name="scala.Long">Long</span>)]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cell.html" class="extype" name="com.intel.analytics.bigdl.nn.Cell">Cell</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#getWeightsBias" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getWeightsBias():Array[com.intel.analytics.bigdl.tensor.Tensor[T]]"></a>
       <a id="getWeightsBias():Array[Tensor[T]]"></a>
@@ -1159,7 +1198,7 @@ is regularized
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.LSTMPeephole">LSTMPeephole</a> → <a href="Cell.html" class="extype" name="com.intel.analytics.bigdl.nn.Cell">Cell</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#resetTimes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.Cell#resetTimes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="resetTimes():Unit"></a>
       <a id="resetTimes():Unit"></a>
       <h4 class="signature">
@@ -1171,7 +1210,7 @@ is regularized
         <span class="name">resetTimes</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cell.html" class="extype" name="com.intel.analytics.bigdl.nn.Cell">Cell</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#save" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="save(path:String,overWrite:Boolean):AbstractModule.this.type"></a>
       <a id="save(String,Boolean):LSTMPeephole.this.type"></a>
@@ -1345,6 +1384,19 @@ before gradParameters being accumulated.
       </h4>
       <p class="shortcomment cmt">Set weight and bias for the module</p><div class="fullcomment"><div class="comment cmt"><p>Set weight and bias for the module</p></div><dl class="paramcmts block"><dt class="param">newWeights</dt><dd class="cmt"><p>array of weights and bias</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Cell#subModules" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="subModules:Array[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]"></a>
+      <a id="subModules:Array[AbstractModule[_&lt;:Activity,_&lt;:Activity,T]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">subModules</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[_ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, _ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.LSTMPeephole.T">T</span>]]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cell.html" class="extype" name="com.intel.analytics.bigdl.nn.Cell">Cell</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -1358,6 +1410,19 @@ before gradParameters being accumulated.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Cell#times" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="times:Array[(com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,T],Long,Long)]"></a>
+      <a id="times:Array[(AbstractModule[_&lt;:Activity,_&lt;:Activity,T],Long,Long)]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">times</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[_ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, _ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.LSTMPeephole.T">T</span>], <span class="extype" name="scala.Long">Long</span>, <span class="extype" name="scala.Long">Long</span>)]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cell.html" class="extype" name="com.intel.analytics.bigdl.nn.Cell">Cell</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.LSTMPeephole#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
