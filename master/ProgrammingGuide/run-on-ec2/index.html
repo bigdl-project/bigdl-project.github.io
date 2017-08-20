@@ -122,14 +122,28 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Before running the BigDL examples, you need to launch a Spark cluster on EC2 (you may refer to <a href="https://github.com/amplab/spark-ec2">https://github.com/amplab/spark-ec2</a> for more instructions). In addition, to run the Inception-v1 example, you also need to start a HDFS cluster on EC2 to store the input image data.</p>
 <hr />
 <h2 id="run-bigdl-examples"><strong>Run BigDL Examples</strong></h2>
-<p>You can run BigDL examples using the <code>run.example.sh</code> script in home directory of your BigDL Client instance (e.g. <code>/home/ubuntu/</code>) with the following parameters:
-* Mandatory parameters:
-  * <code>-m|--model</code> which model to train, including
-    * lenet: train the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/lenet">LeNet</a> example
-    * vgg: train the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/vgg">VGG</a> example
-    * inception-v1: train the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/inception">Inception v1</a> example
-    * perf: test the training speed using the <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/inception/Inception_v1.scala">Inception v1</a> model with dummy data</p>
+<p>You can run BigDL examples using the <code>run.example.sh</code> script in home directory of your BigDL Client instance (e.g. <code>/home/ubuntu/</code>) with the following parameters:</p>
 <ul>
+<li>
+<p>Mandatory parameters:</p>
+<ul>
+<li>
+<p><code>-m|--model</code> which model to train, including</p>
+<ul>
+<li>
+<p>lenet: train the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/lenet">LeNet</a> example</p>
+</li>
+<li>
+<p>vgg: train the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/vgg">VGG</a> example</p>
+</li>
+<li>
+<p>inception-v1: train the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/inception">Inception v1</a> example</p>
+</li>
+<li>
+<p>perf: test the training speed using the <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/inception/Inception_v1.scala">Inception v1</a> model with dummy data</p>
+</li>
+</ul>
+</li>
 <li>
 <p><code>-s|--spark-url</code> the master URL for the Spark cluster</p>
 </li>
@@ -148,9 +162,11 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>
 <p><code>-f|--hdfs-data-dir</code> HDFS directory for the input images (for the "inception-v1" model training only)</p>
 </li>
+</ul>
+</li>
 <li>
 <p>Optional parameters:</p>
-</li>
+<ul>
 <li>
 <p><code>-e|--max-epoch</code> the maximum number of epochs (i.e., going through all the input data once) used in the training; default to 90 if not specified</p>
 </li>
@@ -159,6 +175,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </li>
 <li>
 <p><code>-l|--learning-rate</code> by default the the example will use an initial learning rate of "0.01"; you can specify a different value here</p>
+</li>
+</ul>
 </li>
 </ul>
 <p>After the training, you can check the log files and generated models in the home directory (e.g., <code>/home/ubuntu/</code>).  </p>

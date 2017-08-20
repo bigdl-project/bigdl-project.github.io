@@ -838,22 +838,6 @@ Custom modules should override this function if they have parameters
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#save" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="save(path:String,overWrite:Boolean):AbstractModule.this.type"></a>
-      <a id="save(String,Boolean):Contiguous.this.type"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">save</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Contiguous">Contiguous</a>.this.type</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Save this module to path.</p><div class="fullcomment"><div class="comment cmt"><p>Save this module to path.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to save module, local file system, HDFS and Amazon S3 is supported.
-            HDFS path should be like &quot;hdfs://[host]:[port]/xxx&quot;
-            Amazon S3 path should be like &quot;s3a://bucket/xxx&quot;</p></dd><dt class="param">overWrite</dt><dd class="cmt"><p>if overwrite</p></dd><dt>returns</dt><dd class="cmt"><p>self
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveCaffe" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveCaffe(prototxtPath:String,modelPath:String,useV2:Boolean,overwrite:Boolean):AbstractModule.this.type"></a>
       <a id="saveCaffe(String,String,Boolean,Boolean):Contiguous.this.type"></a>
@@ -867,6 +851,38 @@ Custom modules should override this function if they have parameters
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveDefinition" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="saveDefinition(path:String,overWrite:Boolean):AbstractModule.this.type"></a>
+      <a id="saveDefinition(String,Boolean):Contiguous.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">saveDefinition</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Contiguous">Contiguous</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Save this module definition to path.</p><div class="fullcomment"><div class="comment cmt"><p>Save this module definition to path.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to save module, local file system, HDFS and Amazon S3 is supported.
+            HDFS path should be like &quot;hdfs://[host]:[port]/xxx&quot;
+            Amazon S3 path should be like &quot;s3a://bucket/xxx&quot;</p></dd><dt class="param">overWrite</dt><dd class="cmt"><p>if overwrite</p></dd><dt>returns</dt><dd class="cmt"><p>self
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveModule" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="saveModule(path:String,overWrite:Boolean):AbstractModule.this.type"></a>
+      <a id="saveModule(String,Boolean):Contiguous.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">saveModule</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Contiguous">Contiguous</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Save this module to path with protobuf format</p><div class="fullcomment"><div class="comment cmt"><p>Save this module to path with protobuf format</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to save module, local file system, HDFS and Amazon S3 is supported.
+            HDFS path should be like &quot;hdfs://[host]:[port]/xxx&quot;
+            Amazon S3 path should be like &quot;s3a://bucket/xxx&quot;</p></dd><dt class="param">overWrite</dt><dd class="cmt"><p>if overwrite</p></dd><dt>returns</dt><dd class="cmt"><p>self
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveTF" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveTF(inputs:Seq[(String,Seq[Int])],path:String,byteOrder:java.nio.ByteOrder,dataFormat:com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat):AbstractModule.this.type"></a>
       <a id="saveTF(Seq[(String,Seq[Int])],String,ByteOrder,TensorflowDataFormat):Contiguous.this.type"></a>
@@ -1187,7 +1203,29 @@ to these parameters. Otherwise, it does nothing.
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#save" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="save(path:String,overWrite:Boolean):AbstractModule.this.type"></a>
+      <a id="save(String,Boolean):Contiguous.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: please use recommended saveModule(path, overWrite)">save</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Contiguous">Contiguous</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Save this module to path.</p><div class="fullcomment"><div class="comment cmt"><p>Save this module to path.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to save module, local file system, HDFS and Amazon S3 is supported.
+            HDFS path should be like &quot;hdfs://[host]:[port]/xxx&quot;
+            Amazon S3 path should be like &quot;s3a://bucket/xxx&quot;</p></dd><dt class="param">overWrite</dt><dd class="cmt"><p>if overwrite</p></dd><dt>returns</dt><dd class="cmt"><p>self
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p>please use recommended saveModule(path, overWrite)</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
