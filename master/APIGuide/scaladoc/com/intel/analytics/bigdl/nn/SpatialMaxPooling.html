@@ -111,7 +111,7 @@ padLeft = padAlongWidth / 2
       </h4>
       
     </li><li name="com.intel.analytics.bigdl.nn.SpatialMaxPooling#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(kW:Int,kH:Int,dW:Int,dH:Int,padW:Int,padH:Int)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.SpatialMaxPooling[T]"></a>
+      <a id="&lt;init&gt;(kW:Int,kH:Int,dW:Int,dH:Int,padW:Int,padH:Int,format:com.intel.analytics.bigdl.nn.abstractnn.DataFormat)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.SpatialMaxPooling[T]"></a>
       <a id="&lt;init&gt;:SpatialMaxPooling[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -119,10 +119,11 @@ padLeft = padAlongWidth / 2
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">SpatialMaxPooling</span><span class="params">(<span name="kW">kW: <span class="extype" name="scala.Int">Int</span></span>, <span name="kH">kH: <span class="extype" name="scala.Int">Int</span></span>, <span name="dW">dW: <span class="extype" name="scala.Int">Int</span></span>, <span name="dH">dH: <span class="extype" name="scala.Int">Int</span></span>, <span name="padW">padW: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="padH">padH: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialMaxPooling.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialMaxPooling.T">T</span>]</span>)</span>
+        <span class="name">SpatialMaxPooling</span><span class="params">(<span name="kW">kW: <span class="extype" name="scala.Int">Int</span></span>, <span name="kH">kH: <span class="extype" name="scala.Int">Int</span></span>, <span name="dW">dW: <span class="extype" name="scala.Int">Int</span></span>, <span name="dH">dH: <span class="extype" name="scala.Int">Int</span></span>, <span name="padW">padW: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="padH">padH: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="format">format: <a href="abstractnn/DataFormat.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.DataFormat">DataFormat</a> = <span class="defval" name="com.intel.analytics.bigdl.nn.abstractnn.DataFormat.NCHW">...</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialMaxPooling.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialMaxPooling.T">T</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">kW</dt><dd class="cmt"><p>kernel width</p></dd><dt class="param">kH</dt><dd class="cmt"><p>kernel height</p></dd><dt class="param">dW</dt><dd class="cmt"><p>step size in width</p></dd><dt class="param">dH</dt><dd class="cmt"><p>step size in height</p></dd><dt class="param">padW</dt><dd class="cmt"><p>padding in width</p></dd><dt class="param">padH</dt><dd class="cmt"><p>padding in height
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">kW</dt><dd class="cmt"><p>kernel width</p></dd><dt class="param">kH</dt><dd class="cmt"><p>kernel height</p></dd><dt class="param">dW</dt><dd class="cmt"><p>step size in width</p></dd><dt class="param">dH</dt><dd class="cmt"><p>step size in height</p></dd><dt class="param">padW</dt><dd class="cmt"><p>padding in width</p></dd><dt class="param">padH</dt><dd class="cmt"><p>padding in height</p></dd><dt class="param">format</dt><dd class="cmt"><p>DataFormat.NCHW or DataFormat.NHWC, indicating the input
+                       data format
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -521,6 +522,21 @@ Such as runningMean and runningVar of BatchNormalization.
       </h4>
       <p class="shortcomment cmt">set floor mode</p><div class="fullcomment"><div class="comment cmt"><p>set floor mode</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>this
 </p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.SpatialMaxPooling#format" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="format:com.intel.analytics.bigdl.nn.abstractnn.DataFormat"></a>
+      <a id="format:DataFormat"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">format</span><span class="result">: <a href="abstractnn/DataFormat.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.DataFormat">DataFormat</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">DataFormat.</p><div class="fullcomment"><div class="comment cmt"><p>DataFormat.NCHW or DataFormat.NHWC, indicating the input
+                       data format
+</p></div></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#forward" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="forward(input:A):B"></a>
       <a id="forward(Tensor[T]):Tensor[T]"></a>
@@ -911,8 +927,7 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
         <span class="name">padH</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">padding in height
-</p>
+      <p class="shortcomment cmt">padding in height</p>
     </li><li name="com.intel.analytics.bigdl.nn.SpatialMaxPooling#padW" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="padW:Int"></a>
       <a id="padW:Int"></a>

@@ -3516,7 +3516,7 @@ segmentation[C]//Proceedings of the IEEE Conference on Computer Vision and Patte
 
 <dl class="class">
 <dt id="bigdl.nn.layer.SpatialMaxPooling">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialMaxPooling</code><span class="sig-paren">(</span><em>kw</em>, <em>kh</em>, <em>dw</em>, <em>dh</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>to_ceil=False</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialMaxPooling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialMaxPooling" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialMaxPooling</code><span class="sig-paren">(</span><em>kw</em>, <em>kh</em>, <em>dw</em>, <em>dh</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>to_ceil=False</em>, <em>format='NCHW'</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialMaxPooling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialMaxPooling" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <p>Applies 2D max-pooling operation in kWxkH regions by step size dWxdH steps.
 The number of output features is equal to the number of input planes.
@@ -3537,12 +3537,15 @@ It can be changed by calling :ceil() or :floor() methods.</p>
 <li><strong>dH</strong> – step size in height</li>
 <li><strong>padW</strong> – padding in width</li>
 <li><strong>padH</strong> – padding in height</li>
+<li><strong>format</strong> – “NCHW” or “NHWC”, indicating the input data format</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spatialMaxPooling</span> <span class="o">=</span> <span class="n">SpatialMaxPooling</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">creating: createSpatialMaxPooling</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spatialMaxPooling</span> <span class="o">=</span> <span class="n">SpatialMaxPooling</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;NHWC&quot;</span><span class="p">)</span>
 <span class="go">creating: createSpatialMaxPooling</span>
 </pre></div>
 </div>
