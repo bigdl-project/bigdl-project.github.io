@@ -436,7 +436,23 @@
 <span class="sd">        :param wRegularizer: bias regularizer</span>
 <span class="sd">        :return:</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">bRegularizer</span> <span class="o">=</span> <span class="n">bRegularizer</span><span class="o">.</span><span class="n">value</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">bRegularizer</span> <span class="o">=</span> <span class="n">bRegularizer</span><span class="o">.</span><span class="n">value</span></div>
+
+<div class="viewcode-block" id="Layer.freeze"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.freeze">[docs]</a>    <span class="k">def</span> <span class="nf">freeze</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        freeze layer</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span>
+                        <span class="s2">&quot;setLayerFreeze&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Layer.unfreeze"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.unfreeze">[docs]</a>    <span class="k">def</span> <span class="nf">unfreeze</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        unfreeze layer</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span>
+                        <span class="s2">&quot;setLayerUnFreeze&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div></div>
+
 
 
 <div class="viewcode-block" id="Container"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Container">[docs]</a><span class="k">class</span> <span class="nc">Container</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
@@ -551,7 +567,40 @@
 <span class="sd">        :return: A pre-trained model.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;loadTF&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">byte_order</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Model</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">Model</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Model.freeze"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.freeze">[docs]</a>    <span class="k">def</span> <span class="nf">freeze</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">freeze_layers</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        set an array of layers to be freezed</span>
+<span class="sd">        :param freeze_layers: an array of layer names</span>
+<span class="sd">        :param bigdl_type:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setFreeze&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">freeze_layers</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Model.unfreeze"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.unfreeze">[docs]</a>    <span class="k">def</span> <span class="nf">unfreeze</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        set all layers to be trainable</span>
+<span class="sd">        :param bigdl_type:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;unFreeze&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Model.stop_gradient"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.stop_gradient">[docs]</a>    <span class="k">def</span> <span class="nf">stop_gradient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stop_layers</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        stop the input gradient of layers that match the given ```names```</span>
+<span class="sd">        their input gradient are not computed.</span>
+<span class="sd">        And they will not contributed to the input gradient computation of</span>
+<span class="sd">        layers that depend on them.</span>
+<span class="sd">        :param stop_layers:  an array of layer names</span>
+<span class="sd">        :param bigdl_type:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setStopGradient&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">stop_layers</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
+
 
 
 <div class="viewcode-block" id="Linear"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Linear">[docs]</a><span class="k">class</span> <span class="nc">Linear</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
@@ -875,6 +924,18 @@
 <span class="sd">    oheight = op((height + 2*padH - kH) / dH + 1)</span>
 <span class="sd">    op is a rounding operator. By default, it is floor.</span>
 <span class="sd">    It can be changed by calling :ceil() or :floor() methods.</span>
+<span class="sd">    </span>
+<span class="sd">    When padW and padH are both -1, we use a padding algorithm similar to the &quot;SAME&quot;</span>
+<span class="sd">    padding of tensorflow. That is</span>
+<span class="sd"> </span>
+<span class="sd">     outHeight = Math.ceil(inHeight.toFloat/strideH.toFloat)</span>
+<span class="sd">     outWidth = Math.ceil(inWidth.toFloat/strideW.toFloat)</span>
+<span class="sd"> </span>
+<span class="sd">     padAlongHeight = Math.max(0, (outHeight - 1) * strideH + kernelH - inHeight)</span>
+<span class="sd">     padAlongWidth = Math.max(0, (outWidth - 1) * strideW + kernelW - inWidth)</span>
+<span class="sd"> </span>
+<span class="sd">     padTop = padAlongHeight / 2</span>
+<span class="sd">     padLeft = padAlongWidth / 2</span>
 
 <span class="sd">    :param kW:              kernel width</span>
 <span class="sd">    :param kH:              kernel height</span>
@@ -1137,7 +1198,18 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Applies 2D average-pooling operation in kWxkH regions by step size dWxdH steps.</span>
 <span class="sd">    The number of output features is equal to the number of input planes.</span>
-
+<span class="sd">    </span>
+<span class="sd">    When padW and padH are both -1, we use a padding algorithm similar to the &quot;SAME&quot;</span>
+<span class="sd">    padding of tensorflow. That is</span>
+<span class="sd"> </span>
+<span class="sd">     outHeight = Math.ceil(inHeight.toFloat/strideH.toFloat)</span>
+<span class="sd">     outWidth = Math.ceil(inWidth.toFloat/strideW.toFloat)</span>
+<span class="sd"> </span>
+<span class="sd">     padAlongHeight = Math.max(0, (outHeight - 1) * strideH + kernelH - inHeight)</span>
+<span class="sd">     padAlongWidth = Math.max(0, (outWidth - 1) * strideW + kernelW - inWidth)</span>
+<span class="sd"> </span>
+<span class="sd">     padTop = padAlongHeight / 2</span>
+<span class="sd">     padLeft = padAlongWidth / 2</span>
 
 <span class="sd">    :param kW: kernel width</span>
 <span class="sd">    :param kH: kernel height</span>
@@ -1150,9 +1222,12 @@
 <span class="sd">    :param ceilMode: whether the output size is to be ceiled or floored</span>
 <span class="sd">    :param countIncludePad: whether to include padding when dividing thenumber of elements in pooling region</span>
 <span class="sd">    :param divide: whether to do the averaging</span>
+<span class="sd">    :param format:          &quot;NCHW&quot; or &quot;NHWC&quot;, indicating the input data format</span>
 
 
 <span class="sd">    &gt;&gt;&gt; spatialAveragePooling = SpatialAveragePooling(7,7)</span>
+<span class="sd">    creating: createSpatialAveragePooling</span>
+<span class="sd">    &gt;&gt;&gt; spatialAveragePooling = SpatialAveragePooling(2, 2, 2, 2, -1, -1, True, &quot;NHWC&quot;)</span>
 <span class="sd">    creating: createSpatialAveragePooling</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
@@ -1167,6 +1242,7 @@
                  <span class="n">ceil_mode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">count_include_pad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">divide</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SpatialAveragePooling</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                                     <span class="n">kw</span><span class="p">,</span>
@@ -1178,7 +1254,8 @@
                                                     <span class="n">global_pooling</span><span class="p">,</span>
                                                     <span class="n">ceil_mode</span><span class="p">,</span>
                                                     <span class="n">count_include_pad</span><span class="p">,</span>
-                                                    <span class="n">divide</span><span class="p">)</span></div>
+                                                    <span class="n">divide</span><span class="p">,</span>
+                                                    <span class="nb">format</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="SpatialBatchNormalization"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SpatialBatchNormalization">[docs]</a><span class="k">class</span> <span class="nc">SpatialBatchNormalization</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
@@ -3686,6 +3763,18 @@
 <span class="sd">    This class is a generalization of SpatialConvolution.</span>
 <span class="sd">    It uses a generic connection table between input and output features.</span>
 <span class="sd">    The SpatialConvolution is equivalent to using a full connection table.</span>
+<span class="sd">    </span>
+<span class="sd">    When padW and padH are both -1, we use a padding algorithm similar to the &quot;SAME&quot;</span>
+<span class="sd">    padding of tensorflow. That is</span>
+<span class="sd"> </span>
+<span class="sd">     outHeight = Math.ceil(inHeight.toFloat/strideH.toFloat)</span>
+<span class="sd">     outWidth = Math.ceil(inWidth.toFloat/strideW.toFloat)</span>
+<span class="sd"> </span>
+<span class="sd">     padAlongHeight = Math.max(0, (outHeight - 1) * strideH + kernelH - inHeight)</span>
+<span class="sd">     padAlongWidth = Math.max(0, (outWidth - 1) * strideW + kernelW - inWidth)</span>
+<span class="sd"> </span>
+<span class="sd">     padTop = padAlongHeight / 2</span>
+<span class="sd">     padLeft = padAlongWidth / 2</span>
 
 <span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.</span>
 <span class="sd">    :param bRegularizer: instance of [[Regularizer]]applied to the bias.</span>

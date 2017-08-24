@@ -1884,6 +1884,12 @@ Takes an input object, and computes the corresponding output of the module</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="bigdl.nn.layer.Layer.freeze">
+<code class="descname">freeze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.freeze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.freeze" title="Permalink to this definition">¶</a></dt>
+<dd><p>freeze layer</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="bigdl.nn.layer.Layer.get_dtype">
 <code class="descname">get_dtype</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.get_dtype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.get_dtype" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2105,6 +2111,12 @@ consist of class name and UUID if user doesn’t set it.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.nn.layer.Layer.unfreeze">
+<code class="descname">unfreeze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.unfreeze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.unfreeze" title="Permalink to this definition">¶</a></dt>
+<dd><p>unfreeze layer</p>
 </dd></dl>
 
 <dl class="method">
@@ -2433,6 +2445,15 @@ If so, these nodes will be excluded in the computation.</p>
 pass your tensorflow nodes as inputs and outputs and also specify the byte_order parameter (“little_endian”
 or “big_endian”) and node_type parameter (“bigdl” or “tensorflow”)
 node_type parameter.</p>
+<dl class="method">
+<dt id="bigdl.nn.layer.Model.freeze">
+<code class="descname">freeze</code><span class="sig-paren">(</span><em>freeze_layers</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.freeze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.freeze" title="Permalink to this definition">¶</a></dt>
+<dd><p>set an array of layers to be freezed
+:param freeze_layers: an array of layer names
+:param bigdl_type:
+:return:</p>
+</dd></dl>
+
 <dl class="staticmethod">
 <dt id="bigdl.nn.layer.Model.load">
 <em class="property">static </em><code class="descname">load</code><span class="sig-paren">(</span><em>path</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.load" title="Permalink to this definition">¶</a></dt>
@@ -2514,6 +2535,26 @@ node_type parameter.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.nn.layer.Model.stop_gradient">
+<code class="descname">stop_gradient</code><span class="sig-paren">(</span><em>stop_layers</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.stop_gradient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.stop_gradient" title="Permalink to this definition">¶</a></dt>
+<dd><p>stop the input gradient of layers that match the given <code class="docutils literal"><span class="pre">`names`</span></code>
+their input gradient are not computed.
+And they will not contributed to the input gradient computation of
+layers that depend on them.
+:param stop_layers:  an array of layer names
+:param bigdl_type:
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.nn.layer.Model.unfreeze">
+<code class="descname">unfreeze</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.unfreeze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.unfreeze" title="Permalink to this definition">¶</a></dt>
+<dd><p>set all layers to be trainable
+:param bigdl_type:
+:return:</p>
 </dd></dl>
 
 </dd></dl>
@@ -3182,10 +3223,18 @@ SoftPlus function: f_i(x) = 1/beta * log(1 + exp(beta * x_i))</p>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.SpatialAveragePooling">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialAveragePooling</code><span class="sig-paren">(</span><em>kw</em>, <em>kh</em>, <em>dw=1</em>, <em>dh=1</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>global_pooling=False</em>, <em>ceil_mode=False</em>, <em>count_include_pad=True</em>, <em>divide=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialAveragePooling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialAveragePooling" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialAveragePooling</code><span class="sig-paren">(</span><em>kw</em>, <em>kh</em>, <em>dw=1</em>, <em>dh=1</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>global_pooling=False</em>, <em>ceil_mode=False</em>, <em>count_include_pad=True</em>, <em>divide=True</em>, <em>format='NCHW'</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialAveragePooling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialAveragePooling" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <p>Applies 2D average-pooling operation in kWxkH regions by step size dWxdH steps.
 The number of output features is equal to the number of input planes.</p>
+<p>When padW and padH are both -1, we use a padding algorithm similar to the “SAME”
+padding of tensorflow. That is</p>
+<p>outHeight = Math.ceil(inHeight.toFloat/strideH.toFloat)
+outWidth = Math.ceil(inWidth.toFloat/strideW.toFloat)</p>
+<p>padAlongHeight = Math.max(0, (outHeight - 1) * strideH + kernelH - inHeight)
+padAlongWidth = Math.max(0, (outWidth - 1) * strideW + kernelW - inWidth)</p>
+<p>padTop = padAlongHeight / 2
+padLeft = padAlongWidth / 2</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -3206,8 +3255,11 @@ The number of output features is equal to the number of input planes.</p>
 <p>kH = input-&gt;height and kW = input-&gt;width
 :param ceilMode: whether the output size is to be ceiled or floored
 :param countIncludePad: whether to include padding when dividing thenumber of elements in pooling region
-:param divide: whether to do the averaging</p>
+:param divide: whether to do the averaging
+:param format:          “NCHW” or “NHWC”, indicating the input data format</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spatialAveragePooling</span> <span class="o">=</span> <span class="n">SpatialAveragePooling</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+<span class="go">creating: createSpatialAveragePooling</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spatialAveragePooling</span> <span class="o">=</span> <span class="n">SpatialAveragePooling</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;NHWC&quot;</span><span class="p">)</span>
 <span class="go">creating: createSpatialAveragePooling</span>
 </pre></div>
 </div>
@@ -3334,6 +3386,14 @@ in the order of [batch_size, channels, height, width].</p>
 <p>This class is a generalization of SpatialConvolution.
 It uses a generic connection table between input and output features.
 The SpatialConvolution is equivalent to using a full connection table.</p>
+<p>When padW and padH are both -1, we use a padding algorithm similar to the “SAME”
+padding of tensorflow. That is</p>
+<p>outHeight = Math.ceil(inHeight.toFloat/strideH.toFloat)
+outWidth = Math.ceil(inWidth.toFloat/strideW.toFloat)</p>
+<p>padAlongHeight = Math.max(0, (outHeight - 1) * strideH + kernelH - inHeight)
+padAlongWidth = Math.max(0, (outWidth - 1) * strideW + kernelW - inWidth)</p>
+<p>padTop = padAlongHeight / 2
+padLeft = padAlongWidth / 2</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -3526,6 +3586,14 @@ owidth  = op((width  + 2*padW - kW) / dW + 1)
 oheight = op((height + 2*padH - kH) / dH + 1)
 op is a rounding operator. By default, it is floor.
 It can be changed by calling :ceil() or :floor() methods.</p>
+<p>When padW and padH are both -1, we use a padding algorithm similar to the “SAME”
+padding of tensorflow. That is</p>
+<p>outHeight = Math.ceil(inHeight.toFloat/strideH.toFloat)
+outWidth = Math.ceil(inWidth.toFloat/strideW.toFloat)</p>
+<p>padAlongHeight = Math.max(0, (outHeight - 1) * strideH + kernelH - inHeight)
+padAlongWidth = Math.max(0, (outWidth - 1) * strideW + kernelW - inWidth)</p>
+<p>padTop = padAlongHeight / 2
+padLeft = padAlongWidth / 2</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

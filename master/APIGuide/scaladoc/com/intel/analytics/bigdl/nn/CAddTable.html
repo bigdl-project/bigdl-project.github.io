@@ -279,8 +279,8 @@ will compute incorrect gradients.
       <p class="shortcomment cmt">get execution engine type
 </p><div class="fullcomment"><div class="comment cmt"><p>get execution engine type
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#clearState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="clearState():AbstractModule.this.type"></a>
+    </li><li name="com.intel.analytics.bigdl.nn.CAddTable#clearState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clearState():CAddTable.this.type"></a>
       <a id="clearState():CAddTable.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -295,7 +295,7 @@ will compute incorrect gradients.
 Tensor.set to keep some information like tensor share</p><p>The subclass should override this method if it allocate some extra resource, and call the
 super.clearState in the override method
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.CAddTable">CAddTable</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -459,6 +459,23 @@ the output state variable should have been updated to the new value.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#freeze" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="freeze():AbstractModule.this.type"></a>
+      <a id="freeze():CAddTable.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">freeze</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.CAddTable">CAddTable</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">freeze the layer, its parameters(weight/bias, if exists)
+are not changed in training process
+</p><div class="fullcomment"><div class="comment cmt"><p>freeze the layer, its parameters(weight/bias, if exists)
+are not changed in training process
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -1094,6 +1111,21 @@ before gradParameters being accumulated.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#unFreeze" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="unFreeze():AbstractModule.this.type"></a>
+      <a id="unFreeze():CAddTable.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">unFreeze</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.CAddTable">CAddTable</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">&quot;unfreeze&quot; layer, i.</p><div class="fullcomment"><div class="comment cmt"><p>&quot;unfreeze&quot; layer, i.e. make the layer parameters(weight/bias, if exists)
+to be trained(updated) in training process
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.CAddTable#updateGradInput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="updateGradInput(input:com.intel.analytics.bigdl.utils.Table,gradOutput:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.utils.Table"></a>
       <a id="updateGradInput(Table,Tensor[T]):Table"></a>
