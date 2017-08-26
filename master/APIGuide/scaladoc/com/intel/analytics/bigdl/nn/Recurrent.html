@@ -82,7 +82,7 @@ Different types of rnn cells can be added using add() function
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.Recurrent#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;()(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Recurrent[T]"></a>
+      <a id="&lt;init&gt;(batchNormParams:com.intel.analytics.bigdl.nn.BatchNormParams[T])(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Recurrent[T]"></a>
       <a id="&lt;init&gt;:Recurrent[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -90,7 +90,7 @@ Different types of rnn cells can be added using add() function
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Recurrent</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Recurrent.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Recurrent.T">T</span>]</span>)</span>
+        <span class="name">Recurrent</span><span class="params">(<span name="batchNormParams">batchNormParams: <a href="BatchNormParams.html" class="extype" name="com.intel.analytics.bigdl.nn.BatchNormParams">BatchNormParams</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Recurrent.T">T</span>] = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Recurrent.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Recurrent.T">T</span>]</span>)</span>
       </span>
       </h4>
       
@@ -199,7 +199,9 @@ respect to the parameters in some variable.
       </span>
       </h4>
       <p class="shortcomment cmt"> modules: -- preTopology
+          |- BatchNormalization (optional)
           |- topology (cell)</p><div class="fullcomment"><div class="comment cmt"><p> modules: -- preTopology
+          |- BatchNormalization (optional)
           |- topology (cell)</p><p>The topology (or cell) will be cloned for N times w.r.t the time dimension.
 The preTopology will be execute only once before the recurrence.
 </p></div><dl class="paramcmts block"><dt class="param">module</dt><dd class="cmt"><p>module to be add</p></dd><dt>returns</dt><dd class="cmt"><p>this container
@@ -263,6 +265,19 @@ will compute incorrect gradients.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#batchNormParams" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="batchNormParams:com.intel.analytics.bigdl.nn.BatchNormParams[T]"></a>
+      <a id="batchNormParams:BatchNormParams[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">batchNormParams</span><span class="result">: <a href="BatchNormParams.html" class="extype" name="com.intel.analytics.bigdl.nn.BatchNormParams">BatchNormParams</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Recurrent.T">T</span>]</span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.nn.Recurrent#canEqual" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="canEqual(other:Any):Boolean"></a>
       <a id="canEqual(Any):Boolean"></a>

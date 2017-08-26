@@ -1981,6 +1981,11 @@ You need to invoke collect() to trigger those action         as the returning re
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="bigdl.nn.layer.Layer.saveModel">
+<code class="descname">saveModel</code><span class="sig-paren">(</span><em>path</em>, <em>over_write=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.saveModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.saveModel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="bigdl.nn.layer.Layer.save_caffe">
 <code class="descname">save_caffe</code><span class="sig-paren">(</span><em>prototxt_path</em>, <em>model_path</em>, <em>use_v2=True</em>, <em>overwrite=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.save_caffe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.save_caffe" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2081,7 +2086,7 @@ consist of class name and UUID if user doesn’t set it.</p>
 <span class="gp">... </span><span class="k">except</span> <span class="n">Py4JJavaError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="o">.</span><span class="n">java_exception</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="go">java.lang.IllegalArgumentException: requirement failed: the number of input weight/bias is not consistant with number of weight/bias of this layer</span>
+<span class="go">java.lang.IllegalArgumentException: requirement failed: the number of input weight/bias is not consistant with number of weight/bias of this layer, number of input 1, number of output 2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cAdd</span> <span class="o">=</span> <span class="n">CAdd</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="go">creating: createCAdd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cAdd</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
@@ -2457,6 +2462,22 @@ node_type parameter.</p>
 <dl class="staticmethod">
 <dt id="bigdl.nn.layer.Model.load">
 <em class="property">static </em><code class="descname">load</code><span class="sig-paren">(</span><em>path</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a pre-trained Bigdl model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – The path containing the pre-trained model.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A pre-trained model.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="bigdl.nn.layer.Model.loadModel">
+<em class="property">static </em><code class="descname">loadModel</code><span class="sig-paren">(</span><em>path</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.loadModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.loadModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a pre-trained Bigdl model.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3259,10 +3280,15 @@ padLeft = padAlongWidth / 2</p>
 :param format:          “NCHW” or “NHWC”, indicating the input data format</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spatialAveragePooling</span> <span class="o">=</span> <span class="n">SpatialAveragePooling</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
 <span class="go">creating: createSpatialAveragePooling</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">spatialAveragePooling</span> <span class="o">=</span> <span class="n">SpatialAveragePooling</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;NHWC&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spatialAveragePooling</span> <span class="o">=</span> <span class="n">SpatialAveragePooling</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;NHWC&quot;</span><span class="p">)</span>
 <span class="go">creating: createSpatialAveragePooling</span>
 </pre></div>
 </div>
+<dl class="method">
+<dt id="bigdl.nn.layer.SpatialAveragePooling.set_weights">
+<code class="descname">set_weights</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialAveragePooling.set_weights"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialAveragePooling.set_weights" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="class">

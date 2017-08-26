@@ -373,7 +373,7 @@
 <span class="sd">        ... except Py4JJavaError as err:</span>
 <span class="sd">        ...     print(err.java_exception)</span>
 <span class="sd">        ...</span>
-<span class="sd">        java.lang.IllegalArgumentException: requirement failed: the number of input weight/bias is not consistant with number of weight/bias of this layer</span>
+<span class="sd">        java.lang.IllegalArgumentException: requirement failed: the number of input weight/bias is not consistant with number of weight/bias of this layer, number of input 1, number of output 2</span>
 <span class="sd">        &gt;&gt;&gt; cAdd = CAdd([4, 1])</span>
 <span class="sd">        creating: createCAdd</span>
 <span class="sd">        &gt;&gt;&gt; cAdd.set_weights(np.ones([4, 1]))</span>
@@ -399,6 +399,9 @@
 
 <div class="viewcode-block" id="Layer.save"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">over_write</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;modelSave&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span>
+                      <span class="n">over_write</span><span class="p">)</span></div>
+<div class="viewcode-block" id="Layer.saveModel"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.saveModel">[docs]</a>    <span class="k">def</span> <span class="nf">saveModel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">over_write</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;saveBigDLModule&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span>
                       <span class="n">over_write</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Layer.save_caffe"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.save_caffe">[docs]</a>    <span class="k">def</span> <span class="nf">save_caffe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prototxt_path</span><span class="p">,</span> <span class="n">model_path</span><span class="p">,</span> <span class="n">use_v2</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">overwrite</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
@@ -519,6 +522,17 @@
 <span class="sd">        :return: A pre-trained model.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;loadBigDL&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Model.loadModel"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.loadModel">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">loadModel</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load a pre-trained Bigdl model.</span>
+
+<span class="sd">        :param path: The path containing the pre-trained model.</span>
+<span class="sd">        :return: A pre-trained model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;loadBigDLModule&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.load_torch"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.load_torch">[docs]</a>    <span class="nd">@staticmethod</span>
@@ -1227,7 +1241,7 @@
 
 <span class="sd">    &gt;&gt;&gt; spatialAveragePooling = SpatialAveragePooling(7,7)</span>
 <span class="sd">    creating: createSpatialAveragePooling</span>
-<span class="sd">    &gt;&gt;&gt; spatialAveragePooling = SpatialAveragePooling(2, 2, 2, 2, -1, -1, True, &quot;NHWC&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; spatialAveragePooling = SpatialAveragePooling(2, 2, 2, 2, -1, -1, True, format=&quot;NHWC&quot;)</span>
 <span class="sd">    creating: createSpatialAveragePooling</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
@@ -1255,7 +1269,10 @@
                                                     <span class="n">ceil_mode</span><span class="p">,</span>
                                                     <span class="n">count_include_pad</span><span class="p">,</span>
                                                     <span class="n">divide</span><span class="p">,</span>
-                                                    <span class="nb">format</span><span class="p">)</span></div>
+                                                    <span class="nb">format</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SpatialAveragePooling.set_weights"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SpatialAveragePooling.set_weights">[docs]</a>    <span class="k">def</span> <span class="nf">set_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SpatialAveragePooling</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="SpatialBatchNormalization"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SpatialBatchNormalization">[docs]</a><span class="k">class</span> <span class="nc">SpatialBatchNormalization</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
