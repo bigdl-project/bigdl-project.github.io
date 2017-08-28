@@ -956,9 +956,25 @@ layers, use nn.SpatialBatchNormalization.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.BifurcateSplitTable">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">BifurcateSplitTable</code><span class="sig-paren">(</span><em>dimension</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#BifurcateSplitTable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.BifurcateSplitTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Model" title="bigdl.nn.layer.Model"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Model</span></code></a></p>
+<p>Creates a module that takes a Tensor as input and
+outputs two tables, splitting the Tensor along
+the specified dimension <cite>dimension</cite>.</p>
+<p>The input to this layer is expected to be a tensor, or a batch of tensors;</p>
+<p>:param dimension to be split along this dimension
+:param T Numeric type. Only support float/double now</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bifurcateSplitTable</span> <span class="o">=</span> <span class="n">BifurcateSplitTable</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">creating: createBifurcateSplitTable</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.Bilinear">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Bilinear</code><span class="sig-paren">(</span><em>input_size1</em>, <em>input_size2</em>, <em>output_size</em>, <em>bias_res=True</em>, <em>wRegularizer=None</em>, <em>bRegularizer=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Bilinear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Bilinear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Model" title="bigdl.nn.layer.Model"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Model</span></code></a></p>
 <p>a bilinear transformation with sparse inputs,
 The input tensor given in forward(input) is a table containing both inputs x_1 and x_2,
 which are tensors of size N x inputDimension1 and N x inputDimension2, respectively.</p>

@@ -147,7 +147,17 @@ sudo pip install numpy scipy pandas scikit-learn matplotlib seaborn wordcloud
 <p>Please check <a href="../../ScalaUserGuide/configuration/">this page</a></p>
 <h2 id="faq"><strong>FAQ</strong></h2>
 <ul>
-<li>TypeError: 'JavaPackage' object is not callable</li>
+<li>ImportError   from bigdl.nn.layer import *</li>
+<li>Check if the path is pointing to python-api.zip: <code>--py-files ${PYTHON_API_ZIP_PATH}</code></li>
+<li>Check if the path is pointing to python-api.zip: <code>export PYTHONPATH=${PYTHON_API_ZIP_PATH}:$PYTHONPATH</code></li>
+<li>Python in worker has different version 2.7 than that in driver 3.4</li>
+<li>export PYSPARK_PYTHON=/usr/local/bin/python3.4  # This path should be valid on every worker node.</li>
+<li>
+<p>export PYSPARK_DRIVER_PYTHON=/usr/local/bin/python3.4 # This path should be valid on every driver node.</p>
+</li>
+<li>
+<p>TypeError: 'JavaPackage' object is not callable</p>
+</li>
 <li>
 <p><code>Check if every path within the launch script is valid expecially the path end with jar</code></p>
 </li>

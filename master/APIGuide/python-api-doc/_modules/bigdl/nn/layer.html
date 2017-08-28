@@ -1546,7 +1546,29 @@
         <span class="k">return</span> <span class="bp">self</span></div></div>
 
 
-<div class="viewcode-block" id="Bilinear"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Bilinear">[docs]</a><span class="k">class</span> <span class="nc">Bilinear</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+<div class="viewcode-block" id="BifurcateSplitTable"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.BifurcateSplitTable">[docs]</a><span class="k">class</span> <span class="nc">BifurcateSplitTable</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Creates a module that takes a Tensor as input and</span>
+<span class="sd">    outputs two tables, splitting the Tensor along</span>
+<span class="sd">    the specified dimension `dimension`.</span>
+
+<span class="sd">    The input to this layer is expected to be a tensor, or a batch of tensors;</span>
+
+<span class="sd">    :param dimension to be split along this dimension</span>
+<span class="sd">    :param T Numeric type. Only support float/double now</span>
+
+<span class="sd">    &gt;&gt;&gt; bifurcateSplitTable = BifurcateSplitTable(1)</span>
+<span class="sd">    creating: createBifurcateSplitTable</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">dimension</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">BifurcateSplitTable</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                       <span class="n">dimension</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Bilinear"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Bilinear">[docs]</a><span class="k">class</span> <span class="nc">Bilinear</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    a bilinear transformation with sparse inputs,</span>
