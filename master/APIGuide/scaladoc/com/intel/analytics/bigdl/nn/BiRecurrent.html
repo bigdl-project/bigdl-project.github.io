@@ -81,7 +81,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.BiRecurrent#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(merge:com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.tensor.Tensor[T],T],batchNormParams:com.intel.analytics.bigdl.nn.BatchNormParams[T])(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.BiRecurrent[T]"></a>
+      <a id="&lt;init&gt;(merge:com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.tensor.Tensor[T],T],batchNormParams:com.intel.analytics.bigdl.nn.BatchNormParams[T],isSplitInput:Boolean)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.BiRecurrent[T]"></a>
       <a id="&lt;init&gt;:BiRecurrent[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -89,7 +89,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">BiRecurrent</span><span class="params">(<span name="merge">merge: <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>] = <span class="symbol">null</span></span>, <span name="batchNormParams">batchNormParams: <a href="BatchNormParams.html" class="extype" name="com.intel.analytics.bigdl.nn.BatchNormParams">BatchNormParams</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>] = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>]</span>)</span>
+        <span class="name">BiRecurrent</span><span class="params">(<span name="merge">merge: <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>] = <span class="symbol">null</span></span>, <span name="batchNormParams">batchNormParams: <a href="BatchNormParams.html" class="extype" name="com.intel.analytics.bigdl.nn.BatchNormParams">BatchNormParams</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>] = <span class="symbol">null</span></span>, <span name="isSplitInput">isSplitInput: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>]</span>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">merge</dt><dd class="cmt"><p>concat or add the output tensor of the two RNNs. Default is add</p></dd><dt class="param">ev</dt><dd class="cmt"><p>numeric operator</p></dd></dl></div>
@@ -433,6 +433,19 @@ Such as runningMean and runningVar of BatchNormalization.
       <p class="shortcomment cmt">use ValidationMethod to evaluate module</p><div class="fullcomment"><div class="comment cmt"><p>use ValidationMethod to evaluate module</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for test</p></dd><dt class="param">vMethods</dt><dd class="cmt"><p>validation methods</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchsize of all partitions,
                  optional param and default 4 * partitionNum of dataset</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.BiRecurrent#featDim" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="featDim:Int"></a>
+      <a id="featDim:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">featDim</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -713,6 +726,19 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.BiRecurrent#isSplitInput" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="isSplitInput:Boolean"></a>
+      <a id="isSplitInput:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isSplitInput</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#isTraining" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isTraining():Boolean"></a>
       <a id="isTraining():Boolean"></a>
