@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Configuration - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "BigDL Configuration", url: "#bigdl-configuration", children: [
+              {title: "How to set the properties", url: "#how-to-set-the-properties" },
+              {title: "Available Properties", url: "#available-properties" },
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+
+    <h1 id="bigdl-configuration">BigDL Configuration</h1>
+<p>BigDL uses Java properties to control its behavior. Here's the list of
+these properties.</p>
+<h2 id="how-to-set-the-properties">How to set the properties</h2>
+<h3 id="spark">Spark</h3>
+<p>If you run BigDL on Apache Spark, you can set the properties by passing
+spark-submit options. Here's an example:</p>
+<pre><code class="bash"># Say you want to set property FOO to value BAR
+
+spark-submit ...
+    --conf 'spark.executor.extraJavaOptions=-DFOO=BAR' # Set that property for executor process
+    --conf 'spark.driver.extraJavaOptions=-DFOO=BAR'   # Set that property for driver process
+    ...
+</code></pre>
+
+<h3 id="local-javascala-program">Local Java/Scala program</h3>
+<p>If you run BigDL in a local Java/Scala program, you can set the properties
+by passing JVM parameters. Here's an example:</p>
+<pre><code class="bash"># Say you want to set property FOO to value BAR
+java -cp xxx.jar -DFOO=BAR your.main.class.name
+</code></pre>
+
+<p>Note that to run BigDL in a local Java/Scala program, you need to set environment variable BIGDL_LOCAL_MODE to true.</p>
+<h2 id="available-properties">Available Properties</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Property</th>
+<th>Default value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Logging</strong></td>
+<td>bigdl.utils.LoggerFilter.disable</td>
+<td><em>false</em></td>
+<td>Disable redirecting logs of Spark and BigDL to  a file.</td>
+</tr>
+<tr>
+<td></td>
+<td>bigdl.utils.LoggerFilter.logFile</td>
+<td><em>Current_Working_Directory/bigdl.log</em></td>
+<td>Where is the redirecting log.</td>
+</tr>
+<tr>
+<td></td>
+<td>bigdl.utils.LoggerFilter.enableSparkLog</td>
+<td><em>true</em></td>
+<td>Enable redirecting Spark logs to logFile. Set it to false when you don't want to see Spark logs in the redirecting log file.</td>
+</tr>
+<tr>
+<td><strong>Multi-threading</strong></td>
+<td>bigdl.coreNumber</td>
+<td><em>half of the virtual core number</em></td>
+<td>How many cores BigDL use on your machine. It is only used when bigdl.localMode is set to true. If hyper thread is enabled on your machine, DO NOT set it larger than half of the virtual core number.</td>
+</tr>
+<tr>
+<td></td>
+<td>bigdl.Parameter.syncPoolSize</td>
+<td><em>4</em></td>
+<td>Thread pool size for syncing parameter between executors.</td>
+</tr>
+<tr>
+<td><strong>Distributed Training</strong></td>
+<td>bigdl.network.nio</td>
+<td><em>true</em></td>
+<td>Whether use NIO as BlockManager backend in Spark 1.5. If it is set to false, user can specify spark.shuffle.blockTransferService to change the BlockManager backend. <strong>ONLY</strong> used when running on Spark 1.5.</td>
+</tr>
+<tr>
+<td></td>
+<td>bigdl.failure.retryTimes</td>
+<td><em>5</em></td>
+<td>How many times to retry when there's failure in distributed Training.</td>
+</tr>
+<tr>
+<td></td>
+<td>bigdl.failure.retryTimeInterval</td>
+<td><em>120</em></td>
+<td>Unit is second. How long recount the retry times.</td>
+</tr>
+<tr>
+<td></td>
+<td>bigdl.check.singleton</td>
+<td><em>false</em></td>
+<td>Whether to check if multiple partition run on a same executor, which is bad for performance.</td>
+</tr>
+</tbody>
+</table>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

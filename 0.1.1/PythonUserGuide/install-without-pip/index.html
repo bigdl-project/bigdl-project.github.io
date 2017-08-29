@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Install - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Install without pip", url: "#install-without-pip", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+
+    <h2 id="install-without-pip"><strong>Install without pip</strong></h2>
+<ol>
+<li>
+<p><a href="https://spark.apache.org/downloads.html">Install Spark</a></p>
+</li>
+<li>
+<p>You can download the BigDL release and nightly build from the <a href="../../release-download/">Release Page</a>
+  or build the BigDL package from <a href="../../ScalaUserGuide/install-build-src/">source</a>. </p>
+</li>
+<li>
+<p>Install python dependencies:</p>
+<ul>
+<li>BigDL only depend on <code>Numpy</code> for now.  </li>
+<li>For Spark standalone cluster:<ul>
+<li><strong>if you're running in cluster mode, you need to install python dependencies on both client and each worker nodes</strong></li>
+<li>Install Numpy: 
+   <code>sudo apt-get install python-numpy</code> (Ubuntu)</li>
+</ul>
+</li>
+<li>For Yarn cluster:<ul>
+<li>You can run BigDL Python programs on YARN clusters without changes to the cluster (e.g., no need to pre-install the Python dependencies). You  can first package all the required Python dependency into a virtual environment on the localnode (where you will run the spark-submit command), and then directly use spark-submit to run the BigDL Python program on the YARN cluster (using that virtual environment). Please refer to this <a href="https://github.com/intel-analytics/BigDL/tree/master/pyspark/python_package">Packing-dependencies</a> for more details.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
