@@ -1131,12 +1131,15 @@
 <span class="sd">    :param input_size: the size of each input vector</span>
 <span class="sd">    :param hidden_size: Hidden unit size in simple RNN</span>
 <span class="sd">    :param activation: activation function</span>
+<span class="sd">    :param isInputWithBias: boolean</span>
+<span class="sd">    :param isHiddenWithBias: boolean</span>
+
 <span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.</span>
 <span class="sd">    :param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices.</span>
 <span class="sd">    :param bRegularizer: instance of [[Regularizer]](../regularizers.md),applied to the bias.</span>
 
 
-<span class="sd">    &gt;&gt;&gt; reshape = RnnCell(4, 3, Tanh(), L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
+<span class="sd">    &gt;&gt;&gt; reshape = RnnCell(4, 3, Tanh(), True, True, L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
 <span class="sd">    creating: createTanh</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>

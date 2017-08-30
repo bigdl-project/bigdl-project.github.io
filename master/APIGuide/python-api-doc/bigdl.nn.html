@@ -3021,6 +3021,8 @@ The input can be a Tensor or Table.</p>
 <li><strong>input_size</strong> – the size of each input vector</li>
 <li><strong>hidden_size</strong> – Hidden unit size in simple RNN</li>
 <li><strong>activation</strong> – activation function</li>
+<li><strong>isInputWithBias</strong> – boolean</li>
+<li><strong>isHiddenWithBias</strong> – boolean</li>
 <li><strong>wRegularizer</strong> – instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.</li>
 <li><strong>uRegularizer</strong> – instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices.</li>
 <li><strong>bRegularizer</strong> – instance of [[Regularizer]](../regularizers.md),applied to the bias.</li>
@@ -3029,7 +3031,7 @@ The input can be a Tensor or Table.</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reshape</span> <span class="o">=</span> <span class="n">RnnCell</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Tanh</span><span class="p">(),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reshape</span> <span class="o">=</span> <span class="n">RnnCell</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Tanh</span><span class="p">(),</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
 <span class="go">creating: createTanh</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
