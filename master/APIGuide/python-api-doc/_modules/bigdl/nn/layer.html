@@ -927,6 +927,32 @@
         <span class="k">return</span> <span class="bp">self</span></div></div>
 
 
+<div class="viewcode-block" id="TemporalMaxPooling"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.TemporalMaxPooling">[docs]</a><span class="k">class</span> <span class="nc">TemporalMaxPooling</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Applies 1D max-pooling operation in kW regions by step size dW steps.</span>
+<span class="sd">    Input sequence composed of nInputFrame frames.</span>
+<span class="sd">    The input tensor in forward(input) is expected to be a 2D tensor (nInputFrame x inputFrameSize)</span>
+<span class="sd">     or a 3D tensor (nBatchFrame x nInputFrame x inputFrameSize).</span>
+
+<span class="sd">    If the input sequence is a 2D tensor of dimension nInputFrame x inputFrameSize,</span>
+<span class="sd">    the output sequence will be nOutputFrame x inputFrameSize where</span>
+
+<span class="sd">    nOutputFrame = (nInputFrame - k_w) / d_w + 1</span>
+
+<span class="sd">    :param k_w:              kernel width</span>
+<span class="sd">    :param d_w:              step size in width</span>
+
+<span class="sd">    &gt;&gt;&gt; temporalMaxPooling = TemporalMaxPooling(2, 2)</span>
+<span class="sd">    creating: createTemporalMaxPooling</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">k_w</span><span class="p">,</span>
+                 <span class="n">d_w</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TemporalMaxPooling</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">k_w</span><span class="p">,</span>
+                                                <span class="n">d_w</span><span class="p">)</span></div>
 <div class="viewcode-block" id="SpatialMaxPooling"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SpatialMaxPooling">[docs]</a><span class="k">class</span> <span class="nc">SpatialMaxPooling</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
