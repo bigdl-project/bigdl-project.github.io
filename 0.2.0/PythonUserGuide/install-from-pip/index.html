@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>From pip - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "NOTES", url: "#notes", children: [
+          ]},
+          {title: "Install BigDL-0.2.1-SNAPSHOT", url: "#install-bigdl-021-snapshot", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+
+    <h2 id="notes"><strong>NOTES</strong></h2>
+<ul>
+<li>Pip install support <strong>mac</strong> and <strong>linux</strong> platform but only <strong>Spark1.6.x</strong> for now.</li>
+<li>Pip install only support run in <strong>local</strong>. Might support cluster mode in the future.</li>
+<li>We've tested this package with <strong>python 2.7</strong> and <strong>python 3.5</strong></li>
+</ul>
+<h2 id="install-bigdl-021-snapshot"><strong>Install BigDL-0.2.1-SNAPSHOT</strong></h2>
+<p>1.Download Spark1.6.3:  </p>
+<pre><code class="bash">wget https://d3kbcqa49mib13.cloudfront.net/spark-1.6.3-bin-hadoop2.6.tgz
+</code></pre>
+
+<p>2.Extract the tar ball and set SPARK_HOME</p>
+<pre><code class="bash">tar -zxvf spark-1.6.3-bin-hadoop2.6.tgz
+export SPARK_HOME=path to spark-1.6.3-bin-hadoop2.6
+</code></pre>
+
+<p>3.Install BigDL release via pip (we tested this on pip 9.0.1)
+- NOTE: you might need to <code>sudo</code> if without permission for the installation</p>
+<pre><code class="bash">pip install --upgrade pip
+pip install BigDL==0.2.1-SNAPSHOT     # for Python 2.7
+pip3 install BigDL==0.2.1-SNAPSHOT  # for Python 3.n
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

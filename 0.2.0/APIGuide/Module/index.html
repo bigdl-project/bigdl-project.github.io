@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Model - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Model Save", url: "#model-save", children: [
+          ]},
+          {title: "Model Load", url: "#model-load", children: [
+          ]},
+          {title: "Model Evaluation", url: "#model-evaluation", children: [
+          ]},
+          {title: "Model Prediction", url: "#model-prediction", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+
+    <h2 id="model-save">Model Save</h2>
+<p>BigDL supports saving models to local file system, HDFS and AWS S3. After a model is created, you can use <code>save</code> on created model to save it. Below example shows how to save a model. </p>
+<p><strong>Scala example</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.numeric.NumericFloat
+
+val model = Sequential().add(Linear(10, 5)).add(Sigmoid()).add(SoftMax())
+//...train
+
+model.save(&quot;/tmp/model.bigdl&quot;, true) //save to local fs
+model.save(&quot;hdfs://...&quot;) //save to hdfs
+model.save(&quot;s3://...&quot;) //save to s3
+
+</code></pre>
+
+<p><strong>Python example</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+from bigdl.util.common import *
+from bigdl.optim.optimizer import *
+
+model = Sequential().add(Linear(10, 5)).add(Sigmoid()).add(SoftMax())
+//...train
+model.save(&quot;/tmp/model.bigdl&quot;, True) //save to local fs
+model.save(&quot;hdfs://...&quot;) //save to hdfs
+model.save(&quot;s3://...&quot;) //save to s3
+</code></pre>
+
+<p>In <code>model.save</code>, the first parameter is the path where we want to save our model, the second paramter is to specify if we need to overwrite the file if it already exists, it's set to false by default</p>
+<h2 id="model-load">Model Load</h2>
+<p>Use <code>Module.load</code>(in Scala) or <code>Model.load</code> (in Python) to load an existing model.  <code>Module</code> (Scala) or <code>Model</code>(Python) is a utilily class provided in BigDL. We just need to specify the model path where we previously saved the model to load it to memory for resume training or prediction purpose.</p>
+<p><strong>Scala example</strong></p>
+<pre><code class="scala">val model = Module.load(&quot;/tmp/model.bigdl&quot;) //load from local fs
+val model = Module.load(&quot;hdfs://...&quot;) //load from hdfs
+val model = Module.load(&quot;s3://...&quot;) //load from s3
+</code></pre>
+
+<p><strong>Python example</strong></p>
+<pre><code class="python">model = Model.load(&quot;/tmp/model.bigdl&quot;) //load from local fs
+model = Model.load(&quot;hdfs://...&quot;) //load from hdfs
+model = Model.load(&quot;s3://...&quot;) //load from s3
+</code></pre>
+
+<h2 id="model-evaluation">Model Evaluation</h2>
+<p><strong>Scala</strong></p>
+<pre><code class="scala">model.evaluate(dataset,vMethods,batchSize = None)
+</code></pre>
+
+<p><strong>Python</strong></p>
+<pre><code class="python">model.test(val_rdd, batch_size, val_methods)
+</code></pre>
+
+<p>Use <code>evaluate</code> on the model for evaluation. The parameter <code>dataset</code> (Scala) or <code>val_rdd</code> (Python) in is the validation dataset, and <code>vMethods</code> (Scala) or <code>val_methods</code>(Python) is an array of ValidationMethods. Refer to <a href="../Metrics/">Metrics</a> for the list of defined ValidationMethods. </p>
+<p><strong>Scala example</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.dataset.Sample
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.numeric.NumericFloat
+import com.intel.analytics.bigdl.optim.Top1Accuracy
+import com.intel.analytics.bigdl.tensor.Tensor
+
+//create some dummy dataset for evaluation
+val feature = Tensor(10).rand()
+val label = Tensor(1).randn()
+
+val testSample = Sample(feature, label)
+//sc is is the SparkContxt instance
+val testSet = sc.parallelize(Seq(testSample))
+
+//train a new model or load an existing model
+//val model=...
+val evaluateResult = model.evaluate(testSet, Array(new Top1Accuracy))
+</code></pre>
+
+<p><strong>Python example</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+from bigdl.util.common import *
+from bigdl.optim.optimizer import *
+import numpy as np
+
+samples=[Sample.from_ndarray(np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]), np.array([2.0]))]
+testSet = sc.parallelize(samples)
+
+//train a model or load an existing model...
+//model = ...
+evaluateResult = model.test(testSet, 1, [Top1Accuracy])
+</code></pre>
+
+<h2 id="model-prediction">Model Prediction</h2>
+<p><strong>Scala</strong></p>
+<pre><code class="scala">model.predict(dataset)
+model.predictClass(dataset)
+</code></pre>
+
+<p><strong>Python</strong></p>
+<pre><code class="python">model.predict(data_rdd)
+model.predict_class(data_rdd)
+</code></pre>
+
+<p>Use <code>predict</code> or <code>predictClass</code> or <code>predict_class</code> on model for Prediction. <code>predict</code> returns return the probability distribution of each class, and <code>predictClass</code>/<code>predict_class</code> returns the predict label. They both accepts the test dataset as parameter. </p>
+<p><strong>Scala example</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.dataset.Sample
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.numeric.NumericFloat
+import com.intel.analytics.bigdl.optim.Top1Accuracy
+import com.intel.analytics.bigdl.tensor.Tensor
+
+//create some dummy dataset for prediction as example
+val feature = Tensor(10).rand()
+val label = Tensor(1).randn()
+val predictSample = Sample(feature, label)
+val predictSet = sc.parallelize(Seq(predictSample))
+
+//train a new model or load an existing model
+//val model=... 
+val preductResult = model.predict(predictSet)
+</code></pre>
+
+<p><strong>Python example</strong></p>
+<pre><code class="python"> from bigdl.nn.layer import *
+ from bigdl.util.common import *
+ from bigdl.optim.optimizer import *
+ import numpy as np
+
+ samples=[Sample.from_ndarray(np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]), np.  array([2.0]))]
+
+ predictSet = sc.parallelize(samples)
+
+ //train a model or load an existing model...
+ //model = ...
+ preductResult = model.predict(predictSet)
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
