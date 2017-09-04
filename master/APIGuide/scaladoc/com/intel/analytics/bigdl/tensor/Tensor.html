@@ -1157,6 +1157,22 @@ or an error will be thrown.</p></div><dl class="paramcmts block"><dt class="para
 </p><div class="fullcomment"><div class="comment cmt"><p>Check if the tensor is contiguous on the storage
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>true if it's contiguous
 </p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#isEmpty" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="isEmpty:Boolean"></a>
+      <a id="isEmpty:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isEmpty</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>whether this tensor is an empty tensor. Note that nDimension == 0 is not
+        sufficient to determine a tensor is empty, because a scalar tensor's nDimension
+        is also 0.
+</p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.Tensor#isSameSizeAs" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="isSameSizeAs(other:com.intel.analytics.bigdl.tensor.Tensor[_]):Boolean"></a>
       <a id="isSameSizeAs(Tensor[_]):Boolean"></a>
@@ -1172,6 +1188,20 @@ or an error will be thrown.</p></div><dl class="paramcmts block"><dt class="para
       <p class="shortcomment cmt">Check if the size is same with the give tensor
 </p><div class="fullcomment"><div class="comment cmt"><p>Check if the size is same with the give tensor
 </p></div><dl class="paramcmts block"><dt class="param">other</dt><dd class="cmt"><p>tensor to be compared</p></dd><dt>returns</dt><dd class="cmt"><p>true if they have same size
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#isScalar" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="isScalar:Boolean"></a>
+      <a id="isScalar:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isScalar</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>whether this tensor is a scalar
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#le" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="le(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
@@ -2020,6 +2050,20 @@ given tensor, and vice-versa. This is an efficient method, as there is no memory
       <p class="shortcomment cmt">Write the value on a given position.</p><div class="fullcomment"><div class="comment cmt"><p>Write the value on a given position. The number of parameters
 should be equal to the dimension number of the tensor.
 </p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>the written value</p></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#setValue" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="setValue(value:T):Tensor.this.type"></a>
+      <a id="setValue(T):Tensor.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setValue</span><span class="params">(<span name="value">value: <span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set value for a scalar tensor</p><div class="fullcomment"><div class="comment cmt"><p>Set value for a scalar tensor</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>the written value</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#sign" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="sign():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
