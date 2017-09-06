@@ -80,12 +80,12 @@
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">Sample</span>
 
 
-<div class="viewcode-block" id="normalizer"><a class="viewcode-back" href="../../../bigdl.dataset.html#bigdl.dataset.transformer.normalizer">[docs]</a><span class="k">def</span> <span class="nf">normalizer</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">):</span>
+<div class="viewcode-block" id="normalizer"><a class="viewcode-back" href="../../../bigdl.dataset.html#bigdl.dataset.transformer.normalizer">[docs]</a><span class="k">def</span> <span class="nf">normalizer</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Normalize features by standard deviation</span>
+<span class="sd">    data is a ndarray</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="k">lambda</span> <span class="n">sample</span><span class="p">:</span> <span class="n">Sample</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">((</span><span class="n">sample</span><span class="o">.</span><span class="n">features</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std</span><span class="p">,</span>
-                                              <span class="n">sample</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">sample</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std</span></div>
 </pre></div>
 
           </div>

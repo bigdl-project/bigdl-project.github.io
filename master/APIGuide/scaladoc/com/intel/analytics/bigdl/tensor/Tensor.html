@@ -2813,6 +2813,26 @@ but performs cross-correlation of the input with the kernel k.
       <p class="shortcomment cmt">Fill with zero.</p><div class="fullcomment"><div class="comment cmt"><p>Fill with zero. It will change the value of the current tensor and return itself
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>current tensor
 </p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#zipWith" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="zipWith[A,B](t1:com.intel.analytics.bigdl.tensor.Tensor[A],t2:com.intel.analytics.bigdl.tensor.Tensor[B],func:(A,B)=&gt;T)(implicitevidence$1:scala.reflect.ClassTag[A],implicitevidence$2:scala.reflect.ClassTag[B]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="zipWith[A,B](Tensor[A],Tensor[B],(A,B)⇒T)(ClassTag[A],ClassTag[B]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">zipWith</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="params">(<span name="t1">t1: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.zipWith.A">A</span>]</span>, <span name="t2">t2: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.zipWith.B">B</span>]</span>, <span name="func">func: (<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.zipWith.A">A</span>, <span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.zipWith.B">B</span>) ⇒ <span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.zipWith.A">A</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.zipWith.B">B</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Zip values of two other tensors with applying the function <code>func</code> on
+each two values element-wisely and assign the result value to the
+current tensor</p><div class="fullcomment"><div class="comment cmt"><p>Zip values of two other tensors with applying the function <code>func</code> on
+each two values element-wisely and assign the result value to the
+current tensor</p><p>The two given tensors should has the same size of the current tensor
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>numeric type of tensor 1</p></dd><dt class="tparam">B</dt><dd class="cmt"><p>numeric type of tensor 2
+</p></dd><dt class="param">t1</dt><dd class="cmt"><p>tensor 1</p></dd><dt class="param">t2</dt><dd class="cmt"><p>tensor 2</p></dd><dt class="param">func</dt><dd class="cmt"><p>zip with the function</p></dd><dt>returns</dt><dd class="cmt"><p>self
+</p></dd></dl></div>
     </li></ol>
             </div>
 
