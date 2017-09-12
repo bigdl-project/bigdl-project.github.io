@@ -40,7 +40,8 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This module is for debug purpose, which can print activation and gradient in your model
-topology
+topology</p><p>User can pass in a customized function to inspect more information from the activation. This is
+very useful in Debug.</p><p>Please note that the passed in customized function will not be persisted in serialization.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@SerialVersionUID</span><span class="args">(<span>
       
@@ -88,7 +89,7 @@ topology
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.Echo#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;()(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Echo[T]"></a>
+      <a id="&lt;init&gt;(feval:(com.intel.analytics.bigdl.nn.Echo[T],com.intel.analytics.bigdl.tensor.Tensor[T])=&gt;Unit,beval:(com.intel.analytics.bigdl.nn.Echo[T],com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T])=&gt;Unit)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Echo[T]"></a>
       <a id="&lt;init&gt;:Echo[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -96,7 +97,7 @@ topology
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Echo</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]</span>)</span>
+        <span class="name">Echo</span><span class="params">(<span name="feval">feval: (<a href="" class="extype" name="com.intel.analytics.bigdl.nn.Echo">Echo</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="beval">beval: (<a href="" class="extype" name="com.intel.analytics.bigdl.nn.Echo">Echo</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]</span>)</span>
       </span>
       </h4>
       
@@ -984,6 +985,34 @@ Custom modules should override this function if they have parameters
 before gradParameters being accumulated.</p><div class="fullcomment"><div class="comment cmt"><p>The scale of gradient weight and gradient bias
 before gradParameters being accumulated.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Echo#setBeval" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setBeval(beval:(com.intel.analytics.bigdl.nn.Echo[T],com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T])=&gt;Unit):Echo.this.type"></a>
+      <a id="setBeval((Echo[T],Tensor[T],Tensor[T])⇒Unit):Echo.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setBeval</span><span class="params">(<span name="beval">beval: (<a href="" class="extype" name="com.intel.analytics.bigdl.nn.Echo">Echo</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Echo">Echo</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set evaluation method for backward</p><div class="fullcomment"><div class="comment cmt"><p>Set evaluation method for backward</p></div><dl class="paramcmts block"><dt class="param">beval</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Echo#setFeval" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setFeval(feval:(com.intel.analytics.bigdl.nn.Echo[T],com.intel.analytics.bigdl.tensor.Tensor[T])=&gt;Unit):Echo.this.type"></a>
+      <a id="setFeval((Echo[T],Tensor[T])⇒Unit):Echo.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setFeval</span><span class="params">(<span name="feval">feval: (<a href="" class="extype" name="com.intel.analytics.bigdl.nn.Echo">Echo</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Echo">Echo</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set evaluation method for forward</p><div class="fullcomment"><div class="comment cmt"><p>Set evaluation method for forward</p></div><dl class="paramcmts block"><dt class="param">feval</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setLine" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setLine(line:String):AbstractModule.this.type"></a>
       <a id="setLine(String):Echo.this.type"></a>

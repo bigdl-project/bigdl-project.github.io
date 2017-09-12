@@ -35,13 +35,13 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">LogicalOr</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Operation.html" class="extype" name="com.intel.analytics.bigdl.nn.ops.Operation">Operation</a>[<a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>]</span>
+        <span class="name">LogicalOr</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Operation.html" class="extype" name="com.intel.analytics.bigdl.nn.ops.Operation">Operation</a>[<a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Boolean">Boolean</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>]</span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="Operation.html" class="extype" name="com.intel.analytics.bigdl.nn.ops.Operation">Operation</a>[<a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>], <a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="Operation.html" class="extype" name="com.intel.analytics.bigdl.nn.ops.Operation">Operation</a>[<a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Boolean">Boolean</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>], <a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Boolean">Boolean</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -167,15 +167,15 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.ops.Operation#accGradParameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="accGradParameters(input:A,gradOutput:com.intel.analytics.bigdl.tensor.Tensor[T]):Unit"></a>
-      <a id="accGradParameters(Table,Tensor[T]):Unit"></a>
+      <a id="accGradParameters(input:A,gradOutput:B):Unit"></a>
+      <a id="accGradParameters(Table,Tensor[Boolean]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">accGradParameters</span><span class="params">(<span name="input">input: <a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="gradOutput">gradOutput: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">accGradParameters</span><span class="params">(<span name="input">input: <a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="gradOutput">gradOutput: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Computing the gradient of the module with respect to its own parameters.</p><div class="fullcomment"><div class="comment cmt"><p>Computing the gradient of the module with respect to its own parameters. Many modules do not
@@ -213,15 +213,15 @@ there are multiple modules with the given name, an exception will be thrown.</p>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.ops.Operation#backward" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="backward(input:A,gradOutput:com.intel.analytics.bigdl.tensor.Tensor[T]):A"></a>
-      <a id="backward(Table,Tensor[T]):Table"></a>
+      <a id="backward(input:A,gradOutput:B):A"></a>
+      <a id="backward(Table,Tensor[Boolean]):Table"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">backward</span><span class="params">(<span name="input">input: <a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="gradOutput">gradOutput: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>]</span>)</span><span class="result">: <a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>
+        <span class="name">backward</span><span class="params">(<span name="input">input: <a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="gradOutput">gradOutput: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>)</span><span class="result">: <a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Performs a back-propagation step through the module, with respect to the given input.</p><div class="fullcomment"><div class="comment cmt"><p>Performs a back-propagation step through the module, with respect to the given input. In
@@ -309,14 +309,14 @@ super.clearState in the override method
         </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#cloneModule" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="cloneModule():com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[A,B,T]"></a>
-      <a id="cloneModule():AbstractModule[Table,Tensor[T],T]"></a>
+      <a id="cloneModule():AbstractModule[Table,Tensor[Boolean],T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cloneModule</span><span class="params">()</span><span class="result">: <a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>]</span>
+        <span class="name">cloneModule</span><span class="params">()</span><span class="result">: <a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Boolean">Boolean</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
@@ -424,14 +424,14 @@ Such as runningMean and runningVar of BatchNormalization.
         </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#forward" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="forward(input:A):B"></a>
-      <a id="forward(Table):Tensor[T]"></a>
+      <a id="forward(Table):Tensor[Boolean]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">forward</span><span class="params">(<span name="input">input: <a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>]</span>
+        <span class="name">forward</span><span class="params">(<span name="input">input: <a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Takes an input object, and computes the corresponding output of the module.</p><div class="fullcomment"><div class="comment cmt"><p>Takes an input object, and computes the corresponding output of the module. After a forward,
@@ -780,14 +780,14 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#output" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="output:B"></a>
-      <a id="output:Tensor[T]"></a>
+      <a id="output:Tensor[Boolean]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">output</span><span class="result">: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>]</span>
+        <span class="name">output</span><span class="result">: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">The cached output.</p><div class="fullcomment"><div class="comment cmt"><p>The cached output. So we don't compute it again when need it
@@ -1120,15 +1120,15 @@ before gradParameters being accumulated.
 to be trained(updated) in training process
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.ops.Operation#updateGradInput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="updateGradInput(input:A,gradOutput:com.intel.analytics.bigdl.tensor.Tensor[T]):A"></a>
-      <a id="updateGradInput(Table,Tensor[T]):Table"></a>
+      <a id="updateGradInput(input:A,gradOutput:B):A"></a>
+      <a id="updateGradInput(Table,Tensor[Boolean]):Table"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">updateGradInput</span><span class="params">(<span name="input">input: <a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="gradOutput">gradOutput: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>]</span>)</span><span class="result">: <a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>
+        <span class="name">updateGradInput</span><span class="params">(<span name="input">input: <a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="gradOutput">gradOutput: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>)</span><span class="result">: <a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Computing the gradient of the module with respect to its own input.</p><div class="fullcomment"><div class="comment cmt"><p>Computing the gradient of the module with respect to its own input. This is returned in
@@ -1136,15 +1136,15 @@ gradInput. Also, the gradInput state variable is updated accordingly.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"></dd><dt class="param">gradOutput</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Operation.html" class="extype" name="com.intel.analytics.bigdl.nn.ops.Operation">Operation</a> → <a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.ops.LogicalOr#updateOutput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="updateOutput(input:com.intel.analytics.bigdl.utils.Table):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="updateOutput(Table):Tensor[T]"></a>
+      <a id="updateOutput(input:com.intel.analytics.bigdl.utils.Table):com.intel.analytics.bigdl.tensor.Tensor[Boolean]"></a>
+      <a id="updateOutput(Table):Tensor[Boolean]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">updateOutput</span><span class="params">(<span name="input">input: <a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>]</span>
+        <span class="name">updateOutput</span><span class="params">(<span name="input">input: <a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Computes the output using the current parameter set of the class and input.</p><div class="fullcomment"><div class="comment cmt"><p>Computes the output using the current parameter set of the class and input. This function
@@ -1269,9 +1269,9 @@ to these parameters. Otherwise, it does nothing.
 
         <div id="inheritedMembers">
         <div class="parent" name="com.intel.analytics.bigdl.nn.ops.Operation">
-              <h3>Inherited from <a href="Operation.html" class="extype" name="com.intel.analytics.bigdl.nn.ops.Operation">Operation</a>[<a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>]</h3>
+              <h3>Inherited from <a href="Operation.html" class="extype" name="com.intel.analytics.bigdl.nn.ops.Operation">Operation</a>[<a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Boolean">Boolean</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>]</h3>
             </div><div class="parent" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">
-              <h3>Inherited from <a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>]</h3>
+              <h3>Inherited from <a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Boolean">Boolean</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.ops.LogicalOr.T">T</span>]</h3>
             </div><div class="parent" name="scala.Serializable">
               <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
             </div><div class="parent" name="java.io.Serializable">

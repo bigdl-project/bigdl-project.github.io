@@ -34,6 +34,7 @@
         
         var pageToc = [
           {title: "Generating summary info in BigDL", url: "#generating-summary-info-in-bigdl", children: [
+              {title: "Save graph model to summary so visualize model in tensorboard", url: "#save-graph-model-to-summary-so-visualize-model-in-tensorboard" },
           ]},
           {title: "Retrieving summary info as readable format", url: "#retrieving-summary-info-as-readable-format", children: [
           ]},
@@ -89,6 +90,22 @@ trainedModel = optimizer.optimize()
 </code></pre>
 
 <p>After you start to run your spark job, the train and validation summary will be saved to <code>mylogdir/myapp/train</code> and <code>mylogdir/myapp/validation</code> respectively (Note: you may want to use different <code>appName</code> for different job runs to avoid possible conflicts.)</p>
+<h3 id="save-graph-model-to-summary-so-visualize-model-in-tensorboard">Save graph model to summary so visualize model in tensorboard</h3>
+<p>Model structure is very important for people to create/understand model. For sequential models, you can
+just print them out by using the <code>toString</code> method. For complex graph model, you can use tensorboard
+to visualize it.</p>
+<p>Here's how to save your graph model to summary log path to display it in the tensorboard.</p>
+<p><strong>Example: Save graph model to summary in Scala</strong></p>
+<pre><code class="scala">val model = Graph(...)
+model.saveGraphTopology(&quot;logpath&quot;)
+</code></pre>
+
+<p><strong>Example: Save graph model to summary in Python</strong></p>
+<pre><code class="python">model=Model(...)
+model.save_graph_topology(&quot;logpath&quot;)
+
+</code></pre>
+
 <hr />
 <h2 id="retrieving-summary-info-as-readable-format"><strong>Retrieving summary info as readable format</strong></h2>
 <p>You can use provided API <code>readScalar</code>(Scala) and <code>read_scalar</code>(Python) to retrieve the summaries into readable format, and export them to other tools for further analysis or visualization.</p>
