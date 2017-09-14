@@ -81,7 +81,20 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="com.intel.analytics.bigdl.nn.ops.Equal" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="com.intel.analytics.bigdl.nn.ops.ControlOps" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ControlOps[T]extendsOperation[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]"></a>
+      <a id="ControlOps[T]:ControlOps[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ControlOps.html"><span class="name">ControlOps</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Operation.html" class="extype" name="com.intel.analytics.bigdl.nn.ops.Operation">Operation</a>[<a href="../abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.ops.ControlOps.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt"> Control flow related operations</p>
+    </li><li name="com.intel.analytics.bigdl.nn.ops.Equal" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Equal[T]extendsOperation[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.tensor.Tensor[Boolean],T]"></a>
       <a id="Equal[T]:Equal[T]"></a>
       <h4 class="signature">
@@ -107,6 +120,19 @@
       </span>
       </h4>
       
+    </li><li name="com.intel.analytics.bigdl.nn.ops.IdentityControl" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="IdentityControl[T]extendsControlOps[T]"></a>
+      <a id="IdentityControl[T]:IdentityControl[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="IdentityControl.html"><span class="name">IdentityControl</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="ControlOps.html" class="extype" name="com.intel.analytics.bigdl.nn.ops.ControlOps">ControlOps</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.IdentityControl.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Control flow related operations, and they just pass the input without modifying them</p>
     </li><li name="com.intel.analytics.bigdl.nn.ops.Less" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Less[T]extendsOperation[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.tensor.Tensor[Boolean],T]"></a>
       <a id="Less[T]:Less[T]"></a>
@@ -159,6 +185,19 @@
       </span>
       </h4>
       
+    </li><li name="com.intel.analytics.bigdl.nn.ops.MergeControlNode" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MergeControlNode[T]extendsNode[T]"></a>
+      <a id="MergeControlNode[T]:MergeControlNode[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="MergeControlNode.html"><span class="name">MergeControlNode</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="../../utils/Node.html" class="extype" name="com.intel.analytics.bigdl.utils.Node">Node</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.MergeControlNode.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A wrapper of node for merge operation.</p>
     </li><li name="com.intel.analytics.bigdl.nn.ops.ModuleToOperation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ModuleToOperation[T]extendsOperation[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]"></a>
       <a id="ModuleToOperation[T]:ModuleToOperation[T]"></a>
@@ -200,6 +239,19 @@ An operations has only forward functions and without backward functions.</p>
       </span>
       </h4>
       
+    </li><li name="com.intel.analytics.bigdl.nn.ops.SwitchControlNode" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SwitchControlNode[T]extendsNode[T]"></a>
+      <a id="SwitchControlNode[T]:SwitchControlNode[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SwitchControlNode.html"><span class="name">SwitchControlNode</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="../../utils/Node.html" class="extype" name="com.intel.analytics.bigdl.utils.Node">Node</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.SwitchControlNode.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A wrapper of node for switch operation.</p>
     </li></ol>
             </div>
 
@@ -220,6 +272,20 @@ An operations has only forward functions and without backward functions.</p>
       </span>
       </h4>
       
+    </li><li name="com.intel.analytics.bigdl.nn.ops.ControlNodes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ControlNodes"></a>
+      <a id="ControlNodes:ControlNodes"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ControlNodes$.html"><span class="name">ControlNodes</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Factory method of control flow related nodes
+</p>
     </li><li name="com.intel.analytics.bigdl.nn.ops.Divide" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Divide"></a>
       <a id="Divide:Divide"></a>
