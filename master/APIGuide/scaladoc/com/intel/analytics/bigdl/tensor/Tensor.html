@@ -958,6 +958,22 @@ the old storage
 vector.
 </p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="TensorMath.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath">TensorMath</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#emptyInstance" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="emptyInstance():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="emptyInstance():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">emptyInstance</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">return a new empty tensor of the same type
+</p><div class="fullcomment"><div class="comment cmt"><p>return a new empty tensor of the same type
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>new tensor
+</p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#eq" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="eq(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
       <a id="eq(Tensor[T],T):Tensor[T]"></a>
@@ -1047,6 +1063,37 @@ does not have size 1 will result in an error.
       </span>
       </h4>
       <p class="shortcomment cmt">Fill with a given value.</p><div class="fullcomment"><div class="comment cmt"><p>Fill with a given value. It will change the value of the current tensor and return itself
+</p></div><dl class="paramcmts block"><dt class="param">v</dt><dd class="cmt"><p>value to fill the tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#forceCopy" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="forceCopy(other:com.intel.analytics.bigdl.tensor.Tensor[_]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="forceCopy(Tensor[_]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">forceCopy</span><span class="params">(<span name="other">other: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[_]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Copy the value of the given tensor to the current.</p><div class="fullcomment"><div class="comment cmt"><p>Copy the value of the given tensor to the current. They should have same size.
+They should also have the same type.
+</p></div><dl class="paramcmts block"><dt class="param">other</dt><dd class="cmt"><p>source tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#forceFill" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="forceFill(v:Any):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="forceFill(Any):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">forceFill</span><span class="params">(<span name="v">v: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Fill with a given value.</p><div class="fullcomment"><div class="comment cmt"><p>Fill with a given value. It will change the value of the current tensor and return itself</p><p>Note the value should be an instance of T
 </p></div><dl class="paramcmts block"><dt class="param">v</dt><dd class="cmt"><p>value to fill the tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#gather" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">

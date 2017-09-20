@@ -300,6 +300,15 @@
         <span class="k">return</span> <span class="nb">dict</span><span class="p">((</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">to_ndarray</span><span class="p">(</span><span class="n">params</span><span class="p">))</span> <span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">params</span> <span class="ow">in</span>
                 <span class="n">name_to_params</span><span class="o">.</span><span class="n">items</span><span class="p">())</span></div>
 
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Evaluate the model to set train = false, useful when doing test/forward</span>
+<span class="sd">        :return: layer itself</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span>
+                      <span class="s2">&quot;evaluate&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
 <div class="viewcode-block" id="Layer.predict"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Model inference base on the given data.</span>
@@ -454,7 +463,37 @@
 <span class="sd">        unfreeze layer</span>
 <span class="sd">        &#39;&#39;&#39;</span>
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span>
-                        <span class="s2">&quot;setLayerUnFreeze&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div></div>
+                        <span class="s2">&quot;setLayerUnFreeze&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Layer.evaluate"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Set this layer in the evaluation mode</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">callJavaFunc</span><span class="p">(</span><span class="n">get_spark_context</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">evaluate</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Layer.training"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.training">[docs]</a>    <span class="k">def</span> <span class="nf">training</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Set this layer in the training mode </span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">callJavaFunc</span><span class="p">(</span><span class="n">get_spark_context</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">training</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Layer.is_training"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.is_training">[docs]</a>    <span class="k">def</span> <span class="nf">is_training</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        :return: Whether this layer is in the training mode</span>
+<span class="sd">        </span>
+<span class="sd">        &gt;&gt;&gt; layer = Dropout()</span>
+<span class="sd">        creating: createDropout</span>
+<span class="sd">        &gt;&gt;&gt; layer = layer.evaluate()</span>
+<span class="sd">        &gt;&gt;&gt; layer.is_training()</span>
+<span class="sd">        False</span>
+<span class="sd">        &gt;&gt;&gt; layer = layer.training()</span>
+<span class="sd">        &gt;&gt;&gt; layer.is_training()</span>
+<span class="sd">        True</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">return</span> <span class="n">callJavaFunc</span><span class="p">(</span><span class="n">get_spark_context</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">isTraining</span><span class="p">)</span></div></div>
+
 
 
 
@@ -582,6 +621,21 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;loadTF&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">byte_order</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Model</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Model.train"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.train">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">opt_method</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">end_when</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">bigdl.util.tf_utils</span> <span class="k">import</span> <span class="n">get_path</span>
+        <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">Sample</span>
+        <span class="n">output_name</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">get_path</span><span class="p">(</span><span class="n">output_name</span><span class="p">,</span> <span class="n">session</span><span class="p">)</span>
+        <span class="n">sc</span> <span class="o">=</span> <span class="n">get_spark_context</span><span class="p">()</span>
+        <span class="n">rdd_train_images</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">rdd_train_labels</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">rdd_train_sample</span> <span class="o">=</span> <span class="n">rdd_train_images</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">rdd_train_labels</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+                                                                      <span class="n">Sample</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">label</span><span class="p">))</span>
+        <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;trainTF&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">output_name</span><span class="p">,</span> <span class="n">rdd_train_sample</span><span class="p">,</span> <span class="n">opt_method</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">end_when</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Model</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="Model.freeze"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.freeze">[docs]</a>    <span class="k">def</span> <span class="nf">freeze</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">freeze_layers</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

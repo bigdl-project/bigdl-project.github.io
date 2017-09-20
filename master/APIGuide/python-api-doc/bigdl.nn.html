@@ -1883,6 +1883,12 @@ will compute incorrect gradients.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="bigdl.nn.layer.Layer.evaluate">
+<code class="descname">evaluate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set this layer in the evaluation mode</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="bigdl.nn.layer.Layer.forward">
 <code class="descname">forward</code><span class="sig-paren">(</span><em>input</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.forward" title="Permalink to this definition">¶</a></dt>
 <dd><p>NB: It’s for debug only, please use optimizer.optimize() in production.
@@ -1922,6 +1928,29 @@ Takes an input object, and computes the corresponding output of the module</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.nn.layer.Layer.is_training">
+<code class="descname">is_training</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.is_training"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.is_training" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Whether this layer is in the training mode</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">layer</span> <span class="o">=</span> <span class="n">Dropout</span><span class="p">()</span>
+<span class="go">creating: createDropout</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">layer</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">layer</span><span class="o">.</span><span class="n">is_training</span><span class="p">()</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">layer</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">training</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">layer</span><span class="o">.</span><span class="n">is_training</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -2132,6 +2161,12 @@ consist of class name and UUID if user doesn’t set it.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.nn.layer.Layer.training">
+<code class="descname">training</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.training"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.training" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set this layer in the training mode</p>
 </dd></dl>
 
 <dl class="method">
@@ -2594,6 +2629,11 @@ layers that depend on them.
 :param bigdl_type:
 :return:</p>
 </dd></dl>
+
+<dl class="staticmethod">
+<dt id="bigdl.nn.layer.Model.train">
+<em class="property">static </em><code class="descname">train</code><span class="sig-paren">(</span><em>output</em>, <em>data</em>, <em>label</em>, <em>opt_method</em>, <em>criterion</em>, <em>batch_size</em>, <em>end_when</em>, <em>session=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.train"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.train" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="bigdl.nn.layer.Model.unfreeze">
