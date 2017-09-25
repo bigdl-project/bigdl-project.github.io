@@ -618,7 +618,7 @@ an empty table
 </p></div><dl class="paramcmts block"><dt class="param">func</dt><dd class="cmt"><p>applied function</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.Tensor#applyFun" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="applyFun[A](t:com.intel.analytics.bigdl.tensor.Tensor[A],func:A=&gt;T)(implicitevidence$1:scala.reflect.ClassTag[A]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="applyFun[A](t:com.intel.analytics.bigdl.tensor.Tensor[A],func:A=&gt;T)(implicitevidence$2:scala.reflect.ClassTag[A]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
       <a id="applyFun[A](Tensor[A],(A)⇒T)(ClassTag[A]):Tensor[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -709,6 +709,24 @@ It will change the value of the current tensor and return itself
       </span>
       </h4>
       <p class="shortcomment cmt">res_i = res_i + batch1_i * batch2_i</p><div class="fullcomment"><div class="comment cmt"><p>res_i = res_i + batch1_i * batch2_i</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="TensorMath.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath">TensorMath</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#cast" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="cast[D](castTensor:com.intel.analytics.bigdl.tensor.Tensor[D])(implicitevidence$1:scala.reflect.ClassTag[D],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[D]):com.intel.analytics.bigdl.tensor.Tensor[D]"></a>
+      <a id="cast[D](Tensor[D])(ClassTag[D],TensorNumeric[D]):Tensor[D]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cast</span><span class="tparams">[<span name="D">D</span>]</span><span class="params">(<span name="castTensor">castTensor: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.cast.D">D</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.cast.D">D</span>]</span>, <span name="ev">ev: <a href="TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.cast.D">D</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.cast.D">D</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Cast the currenct tensor to a tensor with tensor numeric type D
+and set cast value to <code>castTensor</code>
+</p><div class="fullcomment"><div class="comment cmt"><p>Cast the currenct tensor to a tensor with tensor numeric type D
+and set cast value to <code>castTensor</code>
+</p></div><dl class="paramcmts block"><dt class="tparam">D</dt><dd class="cmt"><p>new numeric type</p></dd><dt class="param">castTensor</dt><dd class="cmt"><p>the cast value set to this tensor</p></dd><dt>returns</dt><dd class="cmt"><p>return castTensort
+</p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#cdiv" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="cdiv(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
       <a id="cdiv(Tensor[T],Tensor[T]):Tensor[T]"></a>
@@ -2893,7 +2911,7 @@ but performs cross-correlation of the input with the kernel k.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>current tensor
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.Tensor#zipWith" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="zipWith[A,B](t1:com.intel.analytics.bigdl.tensor.Tensor[A],t2:com.intel.analytics.bigdl.tensor.Tensor[B],func:(A,B)=&gt;T)(implicitevidence$2:scala.reflect.ClassTag[A],implicitevidence$3:scala.reflect.ClassTag[B]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="zipWith[A,B](t1:com.intel.analytics.bigdl.tensor.Tensor[A],t2:com.intel.analytics.bigdl.tensor.Tensor[B],func:(A,B)=&gt;T)(implicitevidence$3:scala.reflect.ClassTag[A],implicitevidence$4:scala.reflect.ClassTag[B]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
       <a id="zipWith[A,B](Tensor[A],Tensor[B],(A,B)⇒T)(ClassTag[A],ClassTag[B]):Tensor[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">

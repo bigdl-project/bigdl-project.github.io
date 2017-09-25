@@ -80,7 +80,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(graph:Seq[org.tensorflow.framework.NodeDef],context:scala.collection.mutable.HashMap[String,(com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T],Option[Seq[(Int,Int)]])])(implicitevidence$2:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl[T]"></a>
+      <a id="&lt;init&gt;(graph:Seq[org.tensorflow.framework.NodeDef],sc:org.apache.spark.SparkContext,context:scala.collection.mutable.HashMap[String,(com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T],Option[Seq[(Int,Int)]])])(implicitevidence$2:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl[T]"></a>
       <a id="&lt;init&gt;:BigDLSessionImpl[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -88,14 +88,30 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">BigDLSessionImpl</span><span class="params">(<span name="graph">graph: <span class="extype" name="scala.Seq">Seq</span>[<a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a>]</span>, <span name="context">context: <span class="extype" name="scala.collection.mutable.HashMap">HashMap</span>[<span class="extype" name="scala.Predef.String">String</span>, (<a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl.T">T</span>], <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl.T">T</span>], <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)]])]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl.T">T</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl.T">T</span>]</span>)</span>
+        <span class="name">BigDLSessionImpl</span><span class="params">(<span name="graph">graph: <span class="extype" name="scala.Seq">Seq</span>[<a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a>]</span>, <span name="sc">sc: <span class="extype" name="org.apache.spark.SparkContext">SparkContext</span></span>, <span name="context">context: <span class="extype" name="scala.collection.mutable.HashMap">HashMap</span>[<span class="extype" name="scala.Predef.String">String</span>, (<a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl.T">T</span>], <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl.T">T</span>], <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)]])]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl.T">T</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl.T">T</span>]</span>)</span>
       </span>
       </h4>
       
     </li></ol>
             </div>
 
-        
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl.DataCache" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DataCache=scala.collection.mutable.HashMap[String,Array[Seq[com.intel.analytics.bigdl.utils.Table]]]"></a>
+      <a id="DataCache:DataCache"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">DataCache</span><span class="result"> = <span class="extype" name="scala.collection.mutable.HashMap">HashMap</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Seq">Seq</span>[<a href="../Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>]]]</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
 
         
 
@@ -198,6 +214,19 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl#constructLocalData" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="constructLocalData(endPoints:Seq[String],cache:BigDLSessionImpl.this.DataCache):Seq[com.intel.analytics.bigdl.utils.Table]"></a>
+      <a id="constructLocalData(Seq[String],DataCache):Seq[Table]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">constructLocalData</span><span class="params">(<span name="endPoints">endPoints: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="cache">cache: <a href="#DataCache=scala.collection.mutable.HashMap[String,Array[Seq[com.intel.analytics.bigdl.utils.Table]]]" class="extmbr" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl.DataCache">DataCache</a></span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="../Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>]</span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -256,6 +285,22 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl#getRDD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getRDD(endPoints:Seq[String]):org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.utils.Table]"></a>
+      <a id="getRDD(Seq[String]):RDD[Table]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getRDD</span><span class="params">(<span name="endPoints">endPoints: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get and calculate the data up to the specified endpoints, and
+return as a RDD[Table]</p><div class="fullcomment"><div class="comment cmt"><p>Get and calculate the data up to the specified endpoints, and
+return as a RDD[Table]</p></div><dl class="paramcmts block"><dt class="param">endPoints</dt><dd class="cmt"><p>output endpoints</p></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -321,19 +366,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl#sc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="sc:org.apache.spark.SparkContext"></a>
-      <a id="sc:SparkContext"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">sc</span><span class="result">: <span class="extype" name="org.apache.spark.SparkContext">SparkContext</span></span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -372,7 +404,8 @@
         <span class="name">train</span><span class="params">(<span name="outputs">outputs: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="dataSet">dataSet: <a href="../../dataset/DistributedDataSet.html" class="extype" name="com.intel.analytics.bigdl.dataset.DistributedDataSet">DistributedDataSet</a>[<a href="../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl.T">T</span>]]</span>, <span name="optMethod">optMethod: <a href="../../optim/OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl.T">T</span>]</span>, <span name="criterion">criterion: <a href="../../package.html#Criterion[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Criterion">Criterion</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl.T">T</span>]</span>, <span name="endWhen">endWhen: <a href="../../optim/Trigger.html" class="extype" name="com.intel.analytics.bigdl.optim.Trigger">Trigger</a></span>)</span><span class="result">: <a href="../../nn/Graph.html" class="extype" name="com.intel.analytics.bigdl.nn.Graph">Graph</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl.T">T</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl">BigDLSessionImpl</a> → <a href="Session.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.Session">Session</a></dd></dl></div>
+      <p class="shortcomment cmt">Train the model specified by the model output</p><div class="fullcomment"><div class="comment cmt"><p>Train the model specified by the model output</p></div><dl class="paramcmts block"><dt class="param">outputs</dt><dd class="cmt"><p>model output</p></dd><dt class="param">dataSet</dt><dd class="cmt"><p>the training data set</p></dd><dt>returns</dt><dd class="cmt"><p>trained model
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl">BigDLSessionImpl</a> → <a href="Session.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.Session">Session</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>

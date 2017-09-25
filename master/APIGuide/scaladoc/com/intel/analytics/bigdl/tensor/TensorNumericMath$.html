@@ -82,7 +82,38 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+              <ol><li name="com.intel.analytics.bigdl.tensor.TensorNumericMath.NumericWildCard" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NumericWildCard=Any"></a>
+      <a id="NumericWildCard:NumericWildCard"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NumericWildCard</span><span class="result"> = <span class="extype" name="scala.Any">Any</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorNumericMath.NumericWildcard" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NumericWildcard=Any"></a>
+      <a id="NumericWildcard:NumericWildcard"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NumericWildcard</span><span class="result"> = <span class="extype" name="scala.Any">Any</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">This type is used to denote that the numeric type of tensor is not restricted.</p><div class="fullcomment"><div class="comment cmt"><p>This type is used to denote that the numeric type of tensor is not restricted.
+The use-case usually is used to do some tensor operations when we do not make sure
+their concrete types, but they must have the same type.</p><p>For example if we want to copy tensor1 from tensor2, and we only know they are
+the same type tensor without the information about their concrete type.</p><p>We can use the following code:</p><p><code>tensor1.asInstanceOf[Tensor[NumericWildcard]]
+.copy(tensor2.asInstanceOf[Tensor[NumericWildcard]])</code>
+</p></div></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="TensorNumeric[T]extendsSerializable"></a>
       <a id="TensorNumeric[T]:TensorNumeric[T]"></a>
       <h4 class="signature">
