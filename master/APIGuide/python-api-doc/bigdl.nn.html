@@ -3021,8 +3021,6 @@ The input can be a Tensor or Table.</p>
 <li><strong>input_size</strong> – the size of each input vector</li>
 <li><strong>hidden_size</strong> – Hidden unit size in simple RNN</li>
 <li><strong>activation</strong> – activation function</li>
-<li><strong>isInputWithBias</strong> – boolean</li>
-<li><strong>isHiddenWithBias</strong> – boolean</li>
 <li><strong>wRegularizer</strong> – instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.</li>
 <li><strong>uRegularizer</strong> – instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices.</li>
 <li><strong>bRegularizer</strong> – instance of [[Regularizer]](../regularizers.md),applied to the bias.</li>
@@ -3031,7 +3029,7 @@ The input can be a Tensor or Table.</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reshape</span> <span class="o">=</span> <span class="n">RnnCell</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Tanh</span><span class="p">(),</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reshape</span> <span class="o">=</span> <span class="n">RnnCell</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Tanh</span><span class="p">(),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
 <span class="go">creating: createTanh</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
@@ -3928,35 +3926,6 @@ applied to the bias.
 <code class="descname">set_init_method</code><span class="sig-paren">(</span><em>weight_init_method=None</em>, <em>bias_init_method=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#TemporalConvolution.set_init_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.TemporalConvolution.set_init_method" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</dd></dl>
-
-<dl class="class">
-<dt id="bigdl.nn.layer.TemporalMaxPooling">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">TemporalMaxPooling</code><span class="sig-paren">(</span><em>k_w</em>, <em>d_w</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#TemporalMaxPooling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.TemporalMaxPooling" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
-<p>Applies 1D max-pooling operation in kW regions by step size dW steps.
-Input sequence composed of nInputFrame frames.
-The input tensor in forward(input) is expected to be a 2D tensor (nInputFrame x inputFrameSize)
-or a 3D tensor (nBatchFrame x nInputFrame x inputFrameSize).</p>
-<p>If the input sequence is a 2D tensor of dimension nInputFrame x inputFrameSize,
-the output sequence will be nOutputFrame x inputFrameSize where</p>
-<p>nOutputFrame = (nInputFrame - k_w) / d_w + 1</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>k_w</strong> – kernel width</li>
-<li><strong>d_w</strong> – step size in width</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temporalMaxPooling</span> <span class="o">=</span> <span class="n">TemporalMaxPooling</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="go">creating: createTemporalMaxPooling</span>
-</pre></div>
-</div>
 </dd></dl>
 
 <dl class="class">
