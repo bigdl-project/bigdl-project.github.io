@@ -40,7 +40,8 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This module is for debug purpose, which can print activation and gradient in your model
-topology
+topology</p><p>User can pass in a customized function to inspect more information from the activation. This is
+very useful in Debug.</p><p>Please note that the passed in customized function will not be persisted in serialization.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@SerialVersionUID</span><span class="args">(<span>
       
@@ -88,7 +89,7 @@ topology
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.Echo#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;()(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Echo[T]"></a>
+      <a id="&lt;init&gt;(feval:(com.intel.analytics.bigdl.nn.Echo[T],com.intel.analytics.bigdl.tensor.Tensor[T])=&gt;Unit,beval:(com.intel.analytics.bigdl.nn.Echo[T],com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T])=&gt;Unit)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Echo[T]"></a>
       <a id="&lt;init&gt;:Echo[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -96,7 +97,7 @@ topology
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Echo</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]</span>)</span>
+        <span class="name">Echo</span><span class="params">(<span name="feval">feval: (<a href="" class="extype" name="com.intel.analytics.bigdl.nn.Echo">Echo</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="beval">beval: (<a href="" class="extype" name="com.intel.analytics.bigdl.nn.Echo">Echo</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]</span>)</span>
       </span>
       </h4>
       
@@ -652,6 +653,20 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a> → AnyRef → Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#inputs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="inputs(first:(com.intel.analytics.bigdl.nn.Graph.ModuleNode[T],Int),nodesWithIndex:(com.intel.analytics.bigdl.nn.Graph.ModuleNode[T],Int)*):com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]"></a>
+      <a id="inputs((ModuleNode[T],Int),(ModuleNode[T],Int)*):ModuleNode[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">inputs</span><span class="params">(<span name="first">first: (<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>], <span class="extype" name="scala.Int">Int</span>)</span>, <span name="nodesWithIndex">nodesWithIndex: (<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>], <span class="extype" name="scala.Int">Int</span>)*</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Build graph: some other modules point to current module</p><div class="fullcomment"><div class="comment cmt"><p>Build graph: some other modules point to current module</p></div><dl class="paramcmts block"><dt class="param">first</dt><dd class="cmt"><p>distinguish from another inputs when input parameter list is empty</p></dd><dt class="param">nodesWithIndex</dt><dd class="cmt"><p>upstream module nodes and the output tensor index. The start index is 1.</p></dd><dt>returns</dt><dd class="cmt"><p>node containing current module
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#inputs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="inputs(nodes:com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]*):com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]"></a>
       <a id="inputs(ModuleNode[T]*):ModuleNode[T]"></a>
       <h4 class="signature">
@@ -660,10 +675,10 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">inputs</span><span class="params">(<span name="nodes">nodes: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.tensor.Tensor[T],T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]*</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.tensor.Tensor[T],T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]</span>
+        <span class="name">inputs</span><span class="params">(<span name="nodes">nodes: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]*</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Some other modules point to current module</p><div class="fullcomment"><div class="comment cmt"><p>Some other modules point to current module</p></div><dl class="paramcmts block"><dt class="param">nodes</dt><dd class="cmt"><p>upstream module nodes</p></dd><dt>returns</dt><dd class="cmt"><p>node containing current module
+      <p class="shortcomment cmt">Build graph: some other modules point to current module</p><div class="fullcomment"><div class="comment cmt"><p>Build graph: some other modules point to current module</p></div><dl class="paramcmts block"><dt class="param">nodes</dt><dd class="cmt"><p>upstream module nodes</p></dd><dt>returns</dt><dd class="cmt"><p>node containing current module
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -803,32 +818,34 @@ Custom modules should override this function if they have parameters
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>(Array of weights, Array of grad)
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#predict" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="predict(dataset:org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.dataset.Sample[T]]):org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.nn.abstractnn.Activity]"></a>
-      <a id="predict(RDD[Sample[T]]):RDD[Activity]"></a>
+      <a id="predict(dataset:org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.dataset.Sample[T]],batchSize:Int,shareBuffer:Boolean):org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.nn.abstractnn.Activity]"></a>
+      <a id="predict(RDD[Sample[T]],Int,Boolean):RDD[Activity]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">predict</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>]</span>
+        <span class="name">predict</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="shareBuffer">shareBuffer: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">module predict, return the probability distribution</p><div class="fullcomment"><div class="comment cmt"><p>module predict, return the probability distribution</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for prediction
+      <p class="shortcomment cmt">module predict, return the probability distribution</p><div class="fullcomment"><div class="comment cmt"><p>module predict, return the probability distribution</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for prediction</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchSize for all partitions.
+                 if -1, default is 4 * partitionNumber of datatset</p></dd><dt class="param">shareBuffer</dt><dd class="cmt"><p>whether to share same memory for each batch predict results
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#predictClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="predictClass(dataset:org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.dataset.Sample[T]]):org.apache.spark.rdd.RDD[Int]"></a>
-      <a id="predictClass(RDD[Sample[T]]):RDD[Int]"></a>
+      <a id="predictClass(dataset:org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.dataset.Sample[T]],batchSize:Int):org.apache.spark.rdd.RDD[Int]"></a>
+      <a id="predictClass(RDD[Sample[T]],Int):RDD[Int]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">predictClass</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+        <span class="name">predictClass</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">module predict, return the predict label</p><div class="fullcomment"><div class="comment cmt"><p>module predict, return the predict label</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for prediction
+      <p class="shortcomment cmt">module predict, return the predict label</p><div class="fullcomment"><div class="comment cmt"><p>module predict, return the predict label</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for prediction</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchSize for all partitions.
+                 if -1, default is 4 * partitionNumber of dataset
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#reset" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="reset():Unit"></a>
@@ -970,6 +987,34 @@ Custom modules should override this function if they have parameters
 before gradParameters being accumulated.</p><div class="fullcomment"><div class="comment cmt"><p>The scale of gradient weight and gradient bias
 before gradParameters being accumulated.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Echo#setBeval" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setBeval(beval:(com.intel.analytics.bigdl.nn.Echo[T],com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T])=&gt;Unit):Echo.this.type"></a>
+      <a id="setBeval((Echo[T],Tensor[T],Tensor[T])⇒Unit):Echo.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setBeval</span><span class="params">(<span name="beval">beval: (<a href="" class="extype" name="com.intel.analytics.bigdl.nn.Echo">Echo</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Echo">Echo</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set evaluation method for backward</p><div class="fullcomment"><div class="comment cmt"><p>Set evaluation method for backward</p></div><dl class="paramcmts block"><dt class="param">beval</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Echo#setFeval" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setFeval(feval:(com.intel.analytics.bigdl.nn.Echo[T],com.intel.analytics.bigdl.tensor.Tensor[T])=&gt;Unit):Echo.this.type"></a>
+      <a id="setFeval((Echo[T],Tensor[T])⇒Unit):Echo.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setFeval</span><span class="params">(<span name="feval">feval: (<a href="" class="extype" name="com.intel.analytics.bigdl.nn.Echo">Echo</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Echo.T">T</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Echo">Echo</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set evaluation method for forward</p><div class="fullcomment"><div class="comment cmt"><p>Set evaluation method for forward</p></div><dl class="paramcmts block"><dt class="param">feval</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setLine" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setLine(line:String):AbstractModule.this.type"></a>
       <a id="setLine(String):Echo.this.type"></a>
