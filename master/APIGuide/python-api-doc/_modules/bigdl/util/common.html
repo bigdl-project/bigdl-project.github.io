@@ -90,7 +90,7 @@
 <span class="kn">from</span> <span class="nn">pyspark</span> <span class="k">import</span> <span class="n">SparkConf</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">threading</span>
-<span class="kn">from</span> <span class="nn">bigdl.util.engine</span> <span class="k">import</span> <span class="n">prepare_env</span>
+<span class="kn">from</span> <span class="nn">bigdl.util.engine</span> <span class="k">import</span> <span class="n">get_bigdl_classpath</span><span class="p">,</span> <span class="n">is_spark_below_2_2</span>
 
 <span class="n">INTMAX</span> <span class="o">=</span> <span class="mi">2147483647</span>
 <span class="n">INTMIN</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2147483648</span>
@@ -311,6 +311,22 @@
     <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;initEngine&quot;</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="redire_spark_logs"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.redire_spark_logs">[docs]</a><span class="k">def</span> <span class="nf">redire_spark_logs</span><span class="p">(</span><span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="n">logPath</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;/bigdl.log&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Redirect spark logs to the specified path.</span>
+<span class="sd">    :param bigdl_type: &quot;double&quot; or &quot;float&quot;</span>
+<span class="sd">    :param logPath: the file path to be redirected to; the default file is under the current workspace named `bigdl.log`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;redirectSparkLogs&quot;</span><span class="p">,</span> <span class="n">logPath</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="show_bigdl_info_logs"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.show_bigdl_info_logs">[docs]</a><span class="k">def</span> <span class="nf">show_bigdl_info_logs</span><span class="p">(</span><span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set BigDL log level to INFO.</span>
+<span class="sd">    :param bigdl_type: &quot;double&quot; or &quot;float&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;showBigDlInfoLogs&quot;</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="get_bigdl_conf"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_bigdl_conf">[docs]</a><span class="k">def</span> <span class="nf">get_bigdl_conf</span><span class="p">():</span>
     <span class="n">bigdl_conf_file</span> <span class="o">=</span> <span class="s2">&quot;spark-bigdl.conf&quot;</span>
     <span class="n">bigdl_python_wrapper</span> <span class="o">=</span> <span class="s2">&quot;python-api.zip&quot;</span>
@@ -339,11 +355,20 @@
     <span class="k">return</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span></div>
 
 
+<div class="viewcode-block" id="extend_spark_driver_cp"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.extend_spark_driver_cp">[docs]</a><span class="k">def</span> <span class="nf">extend_spark_driver_cp</span><span class="p">(</span><span class="n">sparkConf</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="n">original_driver_classpath</span> <span class="o">=</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">sparkConf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spark.driver.extraClassPath&quot;</span><span class="p">)</span> \
+        <span class="k">if</span> <span class="n">sparkConf</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;spark.driver.extraClassPath&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">sparkConf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.driver.extraClassPath&quot;</span><span class="p">,</span> <span class="n">path</span> <span class="o">+</span> <span class="n">original_driver_classpath</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="create_spark_conf"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.create_spark_conf">[docs]</a><span class="k">def</span> <span class="nf">create_spark_conf</span><span class="p">():</span>
     <span class="n">bigdl_conf</span> <span class="o">=</span> <span class="n">get_bigdl_conf</span><span class="p">()</span>
     <span class="n">sparkConf</span> <span class="o">=</span> <span class="n">SparkConf</span><span class="p">()</span>
     <span class="n">sparkConf</span><span class="o">.</span><span class="n">setAll</span><span class="p">(</span><span class="n">bigdl_conf</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_spark_below_2_2</span><span class="p">():</span>
+        <span class="n">extend_spark_driver_cp</span><span class="p">(</span><span class="n">sparkConf</span><span class="p">,</span> <span class="n">get_bigdl_classpath</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">sparkConf</span></div>
+
 
 <div class="viewcode-block" id="get_spark_context"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_spark_context">[docs]</a><span class="k">def</span> <span class="nf">get_spark_context</span><span class="p">(</span><span class="n">conf</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>

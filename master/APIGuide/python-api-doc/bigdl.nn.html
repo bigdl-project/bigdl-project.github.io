@@ -2989,6 +2989,24 @@ Different types of rnn cells can be added using add() function</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.RecurrentDecoder">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">RecurrentDecoder</code><span class="sig-paren">(</span><em>output_length</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#RecurrentDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.RecurrentDecoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Recurrent" title="bigdl.nn.layer.Recurrent"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Recurrent</span></code></a></p>
+<p>RecurrentDecoder module is a container of rnn cells which used to make
+a prediction of the next timestep based on the prediction we made from
+the previous timestep. Input for RecurrentDecoder is dynamically composed
+during training. input at t(i) is output at t(i-1), input at t(0) is
+user input, and user input has to be batch x ???(depends on cell type)
+without time information.</p>
+<p>Different types of rnn cells can be added using add() function. Currently
+only support lstmpeephole, convlstm, convlstm3D cell.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">recurrent_decoder</span> <span class="o">=</span> <span class="n">RecurrentDecoder</span><span class="p">(</span><span class="n">output_length</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">creating: createRecurrentDecoder</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.Replicate">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Replicate</code><span class="sig-paren">(</span><em>n_features</em>, <em>dim=1</em>, <em>n_dim=2147483647</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Replicate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Replicate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>

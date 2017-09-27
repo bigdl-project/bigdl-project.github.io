@@ -1121,6 +1121,26 @@
         <span class="n">jstate</span><span class="p">,</span> <span class="n">state_is_table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_input</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setState&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">jstate</span><span class="p">,</span> <span class="n">state_is_table</span><span class="p">)</span></div></div>
 
+
+<div class="viewcode-block" id="RecurrentDecoder"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.RecurrentDecoder">[docs]</a><span class="k">class</span> <span class="nc">RecurrentDecoder</span><span class="p">(</span><span class="n">Recurrent</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    RecurrentDecoder module is a container of rnn cells which used to make</span>
+<span class="sd">    a prediction of the next timestep based on the prediction we made from</span>
+<span class="sd">    the previous timestep. Input for RecurrentDecoder is dynamically composed</span>
+<span class="sd">    during training. input at t(i) is output at t(i-1), input at t(0) is</span>
+<span class="sd">    user input, and user input has to be batch x ???(depends on cell type)</span>
+<span class="sd">    without time information.</span>
+
+<span class="sd">    Different types of rnn cells can be added using add() function. Currently</span>
+<span class="sd">    only support lstmpeephole, convlstm, convlstm3D cell.</span>
+
+<span class="sd">    &gt;&gt;&gt; recurrent_decoder = RecurrentDecoder(output_length = 5)</span>
+<span class="sd">    creating: createRecurrentDecoder</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_length</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Recurrent</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">output_length</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="LSTM"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.LSTM">[docs]</a><span class="k">class</span> <span class="nc">LSTM</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">|   Long Short Term Memory architecture.</span>

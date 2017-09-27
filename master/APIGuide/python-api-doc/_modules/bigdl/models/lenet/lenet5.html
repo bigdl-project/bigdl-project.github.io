@@ -131,6 +131,8 @@
     <span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
 
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="p">(</span><span class="n">appName</span><span class="o">=</span><span class="s2">&quot;lenet5&quot;</span><span class="p">,</span> <span class="n">conf</span><span class="o">=</span><span class="n">create_spark_conf</span><span class="p">())</span>
+    <span class="n">redire_spark_logs</span><span class="p">()</span>
+    <span class="n">show_bigdl_info_logs</span><span class="p">()</span>
     <span class="n">init_engine</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;train&quot;</span><span class="p">:</span>
@@ -148,7 +150,6 @@
             <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">rec_tuple</span><span class="p">:</span> <span class="p">(</span><span class="n">normalizer</span><span class="p">(</span><span class="n">rec_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mnist</span><span class="o">.</span><span class="n">TEST_MEAN</span><span class="p">,</span> <span class="n">mnist</span><span class="o">.</span><span class="n">TEST_STD</span><span class="p">),</span>
                                <span class="n">rec_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>\
             <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">Sample</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-
         <span class="n">optimizer</span> <span class="o">=</span> <span class="n">Optimizer</span><span class="p">(</span>
             <span class="n">model</span><span class="o">=</span><span class="n">build_model</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
             <span class="n">training_rdd</span><span class="o">=</span><span class="n">train_data</span><span class="p">,</span>

@@ -97,23 +97,79 @@
 
 <span class="k">def</span> <span class="nf">__prepare_bigdl_env</span><span class="p">():</span>
     <span class="n">jar_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span> <span class="o">+</span> <span class="s2">&quot;/../../&quot;</span><span class="p">)</span>
-    <span class="n">jar_paths</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jar_dir</span><span class="p">,</span> <span class="s2">&quot;share/lib/*.jar&quot;</span><span class="p">))</span>
     <span class="n">conf_paths</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jar_dir</span><span class="p">,</span> <span class="s2">&quot;share/conf/*.conf&quot;</span><span class="p">))</span>
+    <span class="n">bigdl_classpath</span> <span class="o">=</span> <span class="n">get_bigdl_classpath</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">append_path</span><span class="p">(</span><span class="n">env_var_name</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Adding </span><span class="si">%s</span><span class="s2"> to </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">jar_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">env_var_name</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Adding </span><span class="si">%s</span><span class="s2"> to </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">env_var_name</span><span class="p">))</span>
             <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">env_var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span>
                 <span class="n">env_var_name</span><span class="p">]</span>  <span class="c1"># noqa</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">env_var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span>
 
-    <span class="k">if</span> <span class="n">conf_paths</span> <span class="ow">and</span> <span class="n">conf_paths</span><span class="p">:</span>
-        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">conf_paths</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Expecting one jar: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">jar_paths</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">conf_paths</span><span class="p">:</span>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">conf_paths</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Expecting one conf: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">conf_paths</span><span class="p">)</span>
-        <span class="n">append_path</span><span class="p">(</span><span class="s2">&quot;SPARK_CLASSPATH&quot;</span><span class="p">,</span> <span class="n">jar_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prepending </span><span class="si">%s</span><span class="s2"> to sys.path&quot;</span> <span class="o">%</span> <span class="n">conf_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">conf_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">bigdl_classpath</span> <span class="ow">and</span> <span class="n">is_spark_below_2_2</span><span class="p">():</span>
+        <span class="n">append_path</span><span class="p">(</span><span class="s2">&quot;SPARK_CLASSPATH&quot;</span><span class="p">,</span> <span class="n">bigdl_classpath</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_bigdl_classpath"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.engine.get_bigdl_classpath">[docs]</a><span class="k">def</span> <span class="nf">get_bigdl_classpath</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get and return the jar path for bigdl if exists.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BIGDL_CLASSPATH&quot;</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;BIGDL_CLASSPATH&quot;</span><span class="p">]</span>
+    <span class="n">jar_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span> <span class="o">+</span> <span class="s2">&quot;/../../&quot;</span><span class="p">)</span>
+    <span class="n">jar_paths</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jar_dir</span><span class="p">,</span> <span class="s2">&quot;share/lib/*.jar&quot;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">jar_paths</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">jar_paths</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Expecting one jar: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">jar_paths</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">jar_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="is_spark_below_2_2"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.engine.is_spark_below_2_2">[docs]</a><span class="k">def</span> <span class="nf">is_spark_below_2_2</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check if spark version is below 2.2</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">pyspark</span>
+    <span class="k">if</span><span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">pyspark</span><span class="p">,</span><span class="s2">&quot;version&quot;</span><span class="p">)):</span>
+        <span class="n">full_version</span> <span class="o">=</span> <span class="n">pyspark</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">__version__</span>
+        <span class="c1"># We only need the general spark version (eg, 1.6, 2.2).</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">full_version</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+        <span class="n">spark_version</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">compare_version</span><span class="p">(</span><span class="n">spark_version</span><span class="p">,</span> <span class="s2">&quot;2.2&quot;</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="compare_version"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.engine.compare_version">[docs]</a><span class="k">def</span> <span class="nf">compare_version</span><span class="p">(</span><span class="n">version1</span><span class="p">,</span> <span class="n">version2</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compare version strings.</span>
+<span class="sd">    :param version1;</span>
+<span class="sd">    :param version2;</span>
+<span class="sd">    :return: 1 if version1 is after version2; -1 if version1 is before version2; 0 if two versions are the same.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">v1Arr</span> <span class="o">=</span> <span class="n">version1</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+    <span class="n">v2Arr</span> <span class="o">=</span> <span class="n">version2</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+    <span class="n">len1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">v1Arr</span><span class="p">)</span>
+    <span class="n">len2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">v2Arr</span><span class="p">)</span>
+    <span class="n">lenMax</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">len1</span><span class="p">,</span> <span class="n">len2</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lenMax</span><span class="p">):</span>
+        <span class="n">v1Token</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">len1</span><span class="p">:</span>
+            <span class="n">v1Token</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">v1Arr</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+        <span class="n">v2Token</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">len2</span><span class="p">:</span>
+            <span class="n">v2Token</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">v2Arr</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">v1Token</span> <span class="o">&lt;</span> <span class="n">v2Token</span><span class="p">:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">v1Token</span> <span class="o">&gt;</span> <span class="n">v2Token</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="mi">0</span></div>
 
 
 <div class="viewcode-block" id="prepare_env"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.engine.prepare_env">[docs]</a><span class="k">def</span> <span class="nf">prepare_env</span><span class="p">():</span>
