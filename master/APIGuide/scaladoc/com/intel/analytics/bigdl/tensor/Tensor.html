@@ -617,24 +617,6 @@ an empty table
 </p><div class="fullcomment"><div class="comment cmt"><p>Apply a function to each element of the tensor and modified it value if it return a double
 </p></div><dl class="paramcmts block"><dt class="param">func</dt><dd class="cmt"><p>applied function</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
 </p></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#applyFun" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="applyFun[A](t:com.intel.analytics.bigdl.tensor.Tensor[A],func:A=&gt;T)(implicitevidence$2:scala.reflect.ClassTag[A]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="applyFun[A](Tensor[A],(A)⇒T)(ClassTag[A]):Tensor[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">applyFun</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="t">t: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.applyFun.A">A</span>]</span>, <span name="func">func: (<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.applyFun.A">A</span>) ⇒ <span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.applyFun.A">A</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Apply a function to each element of the tensor <code>t</code>
-and set each value to self
-</p><div class="fullcomment"><div class="comment cmt"><p>Apply a function to each element of the tensor <code>t</code>
-and set each value to self
-</p></div><dl class="paramcmts block"><dt class="param">t</dt><dd class="cmt"><p>tensor to be modified</p></dd><dt class="param">func</dt><dd class="cmt"><p>applied function</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
-</p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#baddbmm" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="baddbmm(alpha:T,batch1:com.intel.analytics.bigdl.tensor.Tensor[T],batch2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
       <a id="baddbmm(T,Tensor[T],Tensor[T]):Tensor[T]"></a>
@@ -709,24 +691,6 @@ It will change the value of the current tensor and return itself
       </span>
       </h4>
       <p class="shortcomment cmt">res_i = res_i + batch1_i * batch2_i</p><div class="fullcomment"><div class="comment cmt"><p>res_i = res_i + batch1_i * batch2_i</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="TensorMath.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath">TensorMath</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#cast" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="cast[D](castTensor:com.intel.analytics.bigdl.tensor.Tensor[D])(implicitevidence$1:scala.reflect.ClassTag[D],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[D]):com.intel.analytics.bigdl.tensor.Tensor[D]"></a>
-      <a id="cast[D](Tensor[D])(ClassTag[D],TensorNumeric[D]):Tensor[D]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">cast</span><span class="tparams">[<span name="D">D</span>]</span><span class="params">(<span name="castTensor">castTensor: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.cast.D">D</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.cast.D">D</span>]</span>, <span name="ev">ev: <a href="TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.cast.D">D</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.cast.D">D</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Cast the currenct tensor to a tensor with tensor numeric type D
-and set cast value to <code>castTensor</code>
-</p><div class="fullcomment"><div class="comment cmt"><p>Cast the currenct tensor to a tensor with tensor numeric type D
-and set cast value to <code>castTensor</code>
-</p></div><dl class="paramcmts block"><dt class="tparam">D</dt><dd class="cmt"><p>new numeric type</p></dd><dt class="param">castTensor</dt><dd class="cmt"><p>the cast value set to this tensor</p></dd><dt>returns</dt><dd class="cmt"><p>return castTensort
-</p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#cdiv" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="cdiv(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
       <a id="cdiv(Tensor[T],Tensor[T]):Tensor[T]"></a>
@@ -976,22 +940,6 @@ the old storage
 vector.
 </p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="TensorMath.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath">TensorMath</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#emptyInstance" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="emptyInstance():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="emptyInstance():Tensor[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">emptyInstance</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">return a new empty tensor of the same type
-</p><div class="fullcomment"><div class="comment cmt"><p>return a new empty tensor of the same type
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>new tensor
-</p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#eq" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="eq(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
       <a id="eq(Tensor[T],T):Tensor[T]"></a>
@@ -1081,37 +1029,6 @@ does not have size 1 will result in an error.
       </span>
       </h4>
       <p class="shortcomment cmt">Fill with a given value.</p><div class="fullcomment"><div class="comment cmt"><p>Fill with a given value. It will change the value of the current tensor and return itself
-</p></div><dl class="paramcmts block"><dt class="param">v</dt><dd class="cmt"><p>value to fill the tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
-</p></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#forceCopy" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="forceCopy(other:com.intel.analytics.bigdl.tensor.Tensor[_]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="forceCopy(Tensor[_]):Tensor[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">forceCopy</span><span class="params">(<span name="other">other: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[_]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Copy the value of the given tensor to the current.</p><div class="fullcomment"><div class="comment cmt"><p>Copy the value of the given tensor to the current. They should have same size.
-They should also have the same type.
-</p></div><dl class="paramcmts block"><dt class="param">other</dt><dd class="cmt"><p>source tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
-</p></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#forceFill" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="forceFill(v:Any):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="forceFill(Any):Tensor[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">forceFill</span><span class="params">(<span name="v">v: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Fill with a given value.</p><div class="fullcomment"><div class="comment cmt"><p>Fill with a given value. It will change the value of the current tensor and return itself</p><p>Note the value should be an instance of T
 </p></div><dl class="paramcmts block"><dt class="param">v</dt><dd class="cmt"><p>value to fill the tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#gather" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -1240,22 +1157,6 @@ or an error will be thrown.</p></div><dl class="paramcmts block"><dt class="para
 </p><div class="fullcomment"><div class="comment cmt"><p>Check if the tensor is contiguous on the storage
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>true if it's contiguous
 </p></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#isEmpty" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="isEmpty:Boolean"></a>
-      <a id="isEmpty:Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">isEmpty</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>whether this tensor is an empty tensor. Note that nDimension == 0 is not
-        sufficient to determine a tensor is empty, because a scalar tensor's nDimension
-        is also 0.
-</p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.Tensor#isSameSizeAs" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="isSameSizeAs(other:com.intel.analytics.bigdl.tensor.Tensor[_]):Boolean"></a>
       <a id="isSameSizeAs(Tensor[_]):Boolean"></a>
@@ -1271,20 +1172,6 @@ or an error will be thrown.</p></div><dl class="paramcmts block"><dt class="para
       <p class="shortcomment cmt">Check if the size is same with the give tensor
 </p><div class="fullcomment"><div class="comment cmt"><p>Check if the size is same with the give tensor
 </p></div><dl class="paramcmts block"><dt class="param">other</dt><dd class="cmt"><p>tensor to be compared</p></dd><dt>returns</dt><dd class="cmt"><p>true if they have same size
-</p></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#isScalar" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="isScalar:Boolean"></a>
-      <a id="isScalar:Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">isScalar</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>whether this tensor is a scalar
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#le" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="le(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
@@ -2134,20 +2021,6 @@ given tensor, and vice-versa. This is an efficient method, as there is no memory
 should be equal to the dimension number of the tensor.
 </p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>the written value</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#setValue" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="setValue(value:T):Tensor.this.type"></a>
-      <a id="setValue(T):Tensor.this.type"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">setValue</span><span class="params">(<span name="value">value: <span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>.this.type</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Set value for a scalar tensor</p><div class="fullcomment"><div class="comment cmt"><p>Set value for a scalar tensor</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>the written value</p></dd><dt>returns</dt><dd class="cmt"><p>
-</p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#sign" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="sign():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
       <a id="sign():Tensor[T]"></a>
@@ -2782,20 +2655,6 @@ has the same size of the given tensor
 the given value
 </p></div><dl class="paramcmts block"><dt class="param">index</dt><dd class="cmt"><p>index</p></dd><dt class="param">value</dt><dd class="cmt"><p>value to write
 </p></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#value" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="value():T"></a>
-      <a id="value():T"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">value</span><span class="params">()</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the value of a scalar. Requires the tensor to be a scalar.
-</p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.Tensor#valueAt" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="valueAt(d1:Int,d2:Int,d3:Int,d4:Int,d5:Int):T"></a>
       <a id="valueAt(Int,Int,Int,Int,Int):T"></a>
@@ -2909,26 +2768,6 @@ but performs cross-correlation of the input with the kernel k.
       </h4>
       <p class="shortcomment cmt">Fill with zero.</p><div class="fullcomment"><div class="comment cmt"><p>Fill with zero. It will change the value of the current tensor and return itself
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>current tensor
-</p></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#zipWith" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="zipWith[A,B](t1:com.intel.analytics.bigdl.tensor.Tensor[A],t2:com.intel.analytics.bigdl.tensor.Tensor[B],func:(A,B)=&gt;T)(implicitevidence$3:scala.reflect.ClassTag[A],implicitevidence$4:scala.reflect.ClassTag[B]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="zipWith[A,B](Tensor[A],Tensor[B],(A,B)⇒T)(ClassTag[A],ClassTag[B]):Tensor[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">zipWith</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="params">(<span name="t1">t1: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.zipWith.A">A</span>]</span>, <span name="t2">t2: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.zipWith.B">B</span>]</span>, <span name="func">func: (<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.zipWith.A">A</span>, <span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.zipWith.B">B</span>) ⇒ <span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.zipWith.A">A</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.zipWith.B">B</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Zip values of two other tensors with applying the function <code>func</code> on
-each two values element-wisely and assign the result value to the
-current tensor</p><div class="fullcomment"><div class="comment cmt"><p>Zip values of two other tensors with applying the function <code>func</code> on
-each two values element-wisely and assign the result value to the
-current tensor</p><p>The two given tensors should has the same size of the current tensor
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>numeric type of tensor 1</p></dd><dt class="tparam">B</dt><dd class="cmt"><p>numeric type of tensor 2
-</p></dd><dt class="param">t1</dt><dd class="cmt"><p>tensor 1</p></dd><dt class="param">t2</dt><dd class="cmt"><p>tensor 2</p></dd><dt class="param">func</dt><dd class="cmt"><p>zip with the function</p></dd><dt>returns</dt><dd class="cmt"><p>self
 </p></dd></dl></div>
     </li></ol>
             </div>

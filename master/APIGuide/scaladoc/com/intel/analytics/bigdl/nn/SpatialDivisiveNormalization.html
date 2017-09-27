@@ -877,34 +877,32 @@ Custom modules should override this function if they have parameters
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>(Array of weights, Array of grad)
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#predict" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="predict(dataset:org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.dataset.Sample[T]],batchSize:Int,shareBuffer:Boolean):org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.nn.abstractnn.Activity]"></a>
-      <a id="predict(RDD[Sample[T]],Int,Boolean):RDD[Activity]"></a>
+      <a id="predict(dataset:org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.dataset.Sample[T]]):org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.nn.abstractnn.Activity]"></a>
+      <a id="predict(RDD[Sample[T]]):RDD[Activity]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">predict</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialDivisiveNormalization.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="shareBuffer">shareBuffer: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>]</span>
+        <span class="name">predict</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialDivisiveNormalization.T">T</span>]]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">module predict, return the probability distribution</p><div class="fullcomment"><div class="comment cmt"><p>module predict, return the probability distribution</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for prediction</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchSize for all partitions.
-                 if -1, default is 4 * partitionNumber of datatset</p></dd><dt class="param">shareBuffer</dt><dd class="cmt"><p>whether to share same memory for each batch predict results
+      <p class="shortcomment cmt">module predict, return the probability distribution</p><div class="fullcomment"><div class="comment cmt"><p>module predict, return the probability distribution</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for prediction
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#predictClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="predictClass(dataset:org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.dataset.Sample[T]],batchSize:Int):org.apache.spark.rdd.RDD[Int]"></a>
-      <a id="predictClass(RDD[Sample[T]],Int):RDD[Int]"></a>
+      <a id="predictClass(dataset:org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.dataset.Sample[T]]):org.apache.spark.rdd.RDD[Int]"></a>
+      <a id="predictClass(RDD[Sample[T]]):RDD[Int]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">predictClass</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialDivisiveNormalization.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+        <span class="name">predictClass</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialDivisiveNormalization.T">T</span>]]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">module predict, return the predict label</p><div class="fullcomment"><div class="comment cmt"><p>module predict, return the predict label</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for prediction</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchSize for all partitions.
-                 if -1, default is 4 * partitionNumber of dataset
+      <p class="shortcomment cmt">module predict, return the predict label</p><div class="fullcomment"><div class="comment cmt"><p>module predict, return the predict label</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for prediction
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#reset" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="reset():Unit"></a>
