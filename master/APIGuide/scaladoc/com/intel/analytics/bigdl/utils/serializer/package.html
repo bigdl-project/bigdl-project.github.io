@@ -86,6 +86,19 @@
       <p class="comment cmt">Trait which defines get attribute value from saved protobuf data and convert BigDL object to
 protobuf format attribute data
 </p>
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.DeserializeContext" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DeserializeContextextendsProductwithSerializable"></a>
+      <a id="DeserializeContext:DeserializeContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DeserializeContext.html"><span class="name">DeserializeContext</span></a><span class="params">(<span name="bigdlModule">bigdlModule: <span class="extype" name="serialization.Bigdl.BigDLModule">BigDLModule</span></span>, <span name="storages">storages: <span class="extype" name="scala.collection.mutable.HashMap">HashMap</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Any">Any</span>]</span>, <span name="storageType">storageType: <a href="StorageType.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.StorageType">StorageType</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.utils.serializer.Loadable" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="LoadableextendsAnyRef"></a>
       <a id="Loadable:Loadable"></a>
@@ -108,7 +121,7 @@ protobuf format attribute data
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="ModuleData.html"><span class="name">ModuleData</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="module">module: <a href="../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleData.T">T</span>]</span>, <span name="pre">pre: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="next">next: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$15">evidence$15: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleData.T">T</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="ModuleData.html"><span class="name">ModuleData</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="module">module: <a href="../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleData.T">T</span>]</span>, <span name="pre">pre: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="next">next: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$14">evidence$14: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleData.T">T</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -138,6 +151,45 @@ it provides default implementation from <a href="ModuleSerializer$.html" class="
       </span>
       <span class="symbol">
         <a href="Savable.html"><span class="name">Savable</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.SerializeContext" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SerializeContext[T]extendsProductwithSerializable"></a>
+      <a id="SerializeContext[T]:SerializeContext[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="SerializeContext.html"><span class="name">SerializeContext</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="moduleData">moduleData: <a href="ModuleData.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleData">ModuleData</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.SerializeContext.T">T</span>]</span>, <span name="storages">storages: <span class="extype" name="scala.collection.mutable.HashMap">HashMap</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Any">Any</span>]</span>, <span name="storageType">storageType: <a href="StorageType.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.StorageType">StorageType</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$13">evidence$13: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.SerializeContext.T">T</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.SerializeResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SerializeResultextendsProductwithSerializable"></a>
+      <a id="SerializeResult:SerializeResult"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="SerializeResult.html"><span class="name">SerializeResult</span></a><span class="params">(<span name="bigDLModule">bigDLModule: <span class="extype" name="serialization.Bigdl.BigDLModule">BigDLModule</span></span>, <span name="storages">storages: <span class="extype" name="scala.collection.mutable.HashMap">HashMap</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.StorageType" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="StorageTypeextendsAnyRef"></a>
+      <a id="StorageType:StorageType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="StorageType.html"><span class="name">StorageType</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
@@ -211,6 +263,19 @@ it provides default implementation from <a href="ModuleSerializer$.html" class="
       </span>
       <span class="symbol">
         <a href="ModuleSerializer$.html"><span class="name">ModuleSerializer</span></a><span class="result"> extends <a href="ModuleSerializable.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable">ModuleSerializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.ProtoStorageType" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ProtoStorageType"></a>
+      <a id="ProtoStorageType:ProtoStorageType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ProtoStorageType$.html"><span class="name">ProtoStorageType</span></a><span class="result"> extends <a href="StorageType.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.StorageType">StorageType</a></span>
       </span>
       </h4>
       

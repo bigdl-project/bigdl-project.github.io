@@ -333,7 +333,7 @@
                                <span class="s2">&quot;modelPredictClass&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span></div>
 
-    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val_rdd</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">val_methods</span><span class="p">):</span>
+<div class="viewcode-block" id="Layer.test"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.test">[docs]</a>    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val_rdd</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">val_methods</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A method to benchmark the model quality.</span>
 
@@ -343,9 +343,9 @@
 <span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span>
-                             <span class="s2">&quot;modelEvaluate&quot;</span><span class="p">,</span>
+                             <span class="s2">&quot;modelTest&quot;</span><span class="p">,</span>
                              <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                             <span class="n">val_rdd</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">val_methods</span><span class="p">)</span>
+                             <span class="n">val_rdd</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">val_methods</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Layer.set_weights"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.set_weights">[docs]</a>    <span class="k">def</span> <span class="nf">set_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
