@@ -39,7 +39,7 @@
           ]},
           {title: "Use Jupyter Notebook", url: "#use-jupyter-notebook", children: [
           ]},
-          {title: "Example code to verify if run successfully", url: "#example-code-to-verify-if-run-successfully", children: [
+          {title: "Example code to verify if BigDL can run successfully", url: "#example-code-to-verify-if-bigdl-can-run-successfully", children: [
           ]},
           {title: "BigDL Configuration", url: "#bigdl-configuration", children: [
           ]},
@@ -65,18 +65,20 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </ul>
 <h2 id="use-an-interactive-shell"><strong>Use an Interactive Shell</strong></h2>
 <ul>
-<li>export SPARK_HOME=path to spark-1.6.3-bin-hadoop2.6 </li>
-<li>type <code>python</code> in commandline to start a REPL</li>
+<li><code>export SPARK_HOME=path to spark-1.6.3-bin-hadoop2.6</code></li>
+<li>Type <code>python</code> in the command line to start a REPL</li>
+<li><strong>NOTE</strong>: Only <strong>Python 2.7</strong> and <strong>Python 3.5</strong> are supported for now.</li>
 </ul>
 <h2 id="use-jupyter-notebook"><strong>Use Jupyter Notebook</strong></h2>
 <ul>
-<li>export SPARK_HOME=path to spark-1.6.3-bin-hadoop2.6 </li>
-<li>Start jupyter notebook as you normally did, e.g.
- <code>bash
- jupyter notebook --notebook-dir=./ --ip=* --no-browser</code></li>
+<li><code>export SPARK_HOME=path to spark-1.6.3-bin-hadoop2.6</code></li>
+<li>Start jupyter notebook as you normally do, e.g.</li>
 </ul>
+<pre><code class="bash"> jupyter notebook --notebook-dir=./ --ip=* --no-browser
+</code></pre>
+
 <p><a name="code.verification"></a></p>
-<h2 id="example-code-to-verify-if-run-successfully">Example code to verify if run successfully</h2>
+<h2 id="example-code-to-verify-if-bigdl-can-run-successfully">Example code to verify if BigDL can run successfully</h2>
 <pre><code class="python">from bigdl.util.common import *
 from pyspark import SparkContext
 from bigdl.nn.layer import *

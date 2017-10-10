@@ -69,11 +69,11 @@ ${SPARK_HOME}/bin/pyspark --master local[4] \
 --properties-file ../conf/spark-bigdl.conf 
 </code></pre>
 
-<p><a href="../run-from-pip/#code.verification">Example code to verify if run successfully</a></p>
+<p><a href="../run-from-pip/#code.verification">Example code to verify if BigDL can run successfully</a></p>
 <h2 id="run-from-spark-submit"><strong>Run from spark-submit</strong></h2>
 <ul>
-<li>A BigDL Python program runs as a standard PySPark program, which requires all Python dependency (e.g., NumPy) used by the program be installed on each node in the Spark cluster. You can try run the BigDL <a href="https://github.com/intel-analytics/BigDL/tree/master/pyspark/bigdl/models/lenet">lenet Python example</a> using <a href="http://spark.apache.org/docs/latest/submitting-applications.html">spark-submit</a> as follows:</li>
-<li><strong>Ensure every path is valid</strong> </li>
+<li>A BigDL Python program runs as a standard pyspark program, which requires all Python dependencies (e.g., NumPy) used by the program to be installed on each node in the Spark cluster. You can try running the BigDL <a href="https://github.com/intel-analytics/BigDL/tree/master/pyspark/bigdl/models/lenet">lenet Python example</a> using <a href="http://spark.apache.org/docs/latest/submitting-applications.html">spark-submit</a> as follows:</li>
+<li><strong>Ensure every path is valid.</strong></li>
 </ul>
 <pre><code class="bash">   BigDL_HOME=...
    SPARK_HOME=...
@@ -86,10 +86,10 @@ ${SPARK_HOME}/bin/pyspark --master local[4] \
    ${SPARK_HOME}/bin/spark-submit \
        --master ${MASTER} \
        --driver-cores 5  \
-      --driver-memory 10g  \
-      --total-executor-cores 80  \
-      --executor-cores 10  \
-      --executor-memory 20g \
+       --driver-memory 10g  \
+       --total-executor-cores 80  \
+       --executor-cores 10  \
+       --executor-memory 20g \
        --py-files ${PYTHON_API_ZIP_PATH},${BigDL_HOME}/pyspark/bigdl/models/lenet/lenet5.py  \
        --properties-file ${BigDL_HOME}/dist/conf/spark-bigdl.conf \
        --jars ${BigDL_JAR_PATH} \
@@ -113,8 +113,8 @@ sudo pip install numpy scipy pandas scikit-learn matplotlib seaborn wordcloud
 </code></pre>
 
 <ul>
-<li>Then, you can launch the Jupyter notebook as follows:</li>
-<li><strong>Ensure every path is valid</strong> </li>
+<li>Then, you can launch the Jupyter notebook as follows:
+  <strong>Ensure every path is valid.</strong></li>
 </ul>
 <pre><code class="bash">   BigDL_HOME=...                                                                                         
    BIGDL_VERSION=...
@@ -131,10 +131,10 @@ sudo pip install numpy scipy pandas scikit-learn matplotlib seaborn wordcloud
        --master ${MASTER} \
        --properties-file ${BigDL_HOME}/dist/conf/spark-bigdl.conf \
        --driver-cores 5  \
-      --driver-memory 10g  \
-      --total-executor-cores 8  \
-      --executor-cores 1  \
-      --executor-memory 20g \
+       --driver-memory 10g  \
+       --total-executor-cores 8  \
+       --executor-cores 1  \
+       --executor-memory 20g \
        --py-files ${PYTHON_API_ZIP_PATH} \
        --jars ${BigDL_JAR_PATH} \
        --conf spark.driver.extraClassPath=${BigDL_JAR_PATH} \
@@ -149,22 +149,26 @@ sudo pip install numpy scipy pandas scikit-learn matplotlib seaborn wordcloud
 <ul>
 <li>ImportError   from bigdl.nn.layer import *</li>
 <li>Check if the path is pointing to python-api.zip: <code>--py-files ${PYTHON_API_ZIP_PATH}</code></li>
-<li>Check if the path is pointing to python-api.zip: <code>export PYTHONPATH=${PYTHON_API_ZIP_PATH}:$PYTHONPATH</code></li>
-<li>Python in worker has different version 2.7 than that in driver 3.4</li>
-<li>export PYSPARK_PYTHON=/usr/local/bin/python3.4  # This path should be valid on every worker node.</li>
 <li>
-<p>export PYSPARK_DRIVER_PYTHON=/usr/local/bin/python3.4 # This path should be valid on every driver node.</p>
+<p>Check if the path is pointing to python-api.zip: <code>export PYTHONPATH=${PYTHON_API_ZIP_PATH}:$PYTHONPATH</code></p>
+</li>
+<li>
+<p>Python in worker has a different version 2.7 than that in driver 3.4</p>
+</li>
+<li><code>export PYSPARK_PYTHON=/usr/local/bin/python3.4</code>  This path should be valid on every worker node.</li>
+<li>
+<p><code>export PYSPARK_DRIVER_PYTHON=/usr/local/bin/python3.4</code>  This path should be valid on every driver node.</p>
 </li>
 <li>
 <p>TypeError: 'JavaPackage' object is not callable</p>
 </li>
 <li>
-<p><code>Check if every path within the launch script is valid expecially the path end with jar</code></p>
+<p>Check if every path within the launch script is valid especially the path that ends with jar.</p>
 </li>
 <li>
 <p>java.lang.NoSuchMethodError:XXX</p>
 </li>
-<li><code>Check if the spark version is match i.e you are using Spark2.x but the underneath BigDL compiled with Spark1.6</code></li>
+<li>Check if the Spark version matches, i.e check if you are using Spark2.x but the underneath BigDL is compiled with Spark1.6.</li>
 </ul>
 
   <br>
