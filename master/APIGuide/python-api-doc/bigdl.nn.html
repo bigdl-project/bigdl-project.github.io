@@ -958,7 +958,7 @@ layers, use nn.SpatialBatchNormalization.</p>
 <dl class="class">
 <dt id="bigdl.nn.layer.BifurcateSplitTable">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">BifurcateSplitTable</code><span class="sig-paren">(</span><em>dimension</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#BifurcateSplitTable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.BifurcateSplitTable" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Model" title="bigdl.nn.layer.Model"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Model</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <p>Creates a module that takes a Tensor as input and
 outputs two tables, splitting the Tensor along
 the specified dimension <cite>dimension</cite>.</p>
@@ -974,7 +974,7 @@ the specified dimension <cite>dimension</cite>.</p>
 <dl class="class">
 <dt id="bigdl.nn.layer.Bilinear">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Bilinear</code><span class="sig-paren">(</span><em>input_size1</em>, <em>input_size2</em>, <em>output_size</em>, <em>bias_res=True</em>, <em>wRegularizer=None</em>, <em>bRegularizer=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Bilinear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Bilinear" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Model" title="bigdl.nn.layer.Model"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Model</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <p>a bilinear transformation with sparse inputs,
 The input tensor given in forward(input) is a table containing both inputs x_1 and x_2,
 which are tensors of size N x inputDimension1 and N x inputDimension2, respectively.</p>
@@ -2614,7 +2614,8 @@ node_type parameter.</p>
 <code class="descname">save_graph_topology</code><span class="sig-paren">(</span><em>log_path</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.save_graph_topology"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.save_graph_topology" title="Permalink to this definition">¶</a></dt>
 <dd><p>save current model graph to a folder, which can be display in tensorboard by running
 tensorboard –logdir logPath
-:param log_path: 
+:param log_path: path to save the model graph
+:param bigdl_type:
 :return:</p>
 </dd></dl>
 
@@ -3055,7 +3056,7 @@ elements row-wise.</p>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.ResizeBilinear">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ResizeBilinear</code><span class="sig-paren">(</span><em>output_height</em>, <em>output_width</em>, <em>align_corner</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ResizeBilinear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ResizeBilinear" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ResizeBilinear</code><span class="sig-paren">(</span><em>output_height</em>, <em>output_width</em>, <em>align_corner</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ResizeBilinear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ResizeBilinear" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <p>Resize the input image with bilinear interpolation. The input image must be a float tensor with
 NHWC layout</p>
@@ -3072,7 +3073,8 @@ NHWC layout</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resizeBilinear</span> <span class="o">=</span> <span class="n">ResizeBilinear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">false</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resizeBilinear</span> <span class="o">=</span> <span class="n">ResizeBilinear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="go">creating: createResizeBilinear</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -3101,7 +3103,7 @@ The input can be a Tensor or Table.</p>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.RnnCell">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">RnnCell</code><span class="sig-paren">(</span><em>input_size</em>, <em>hidden_size</em>, <em>activation</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#RnnCell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.RnnCell" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">RnnCell</code><span class="sig-paren">(</span><em>input_size</em>, <em>hidden_size</em>, <em>activation</em>, <em>isInputWithBias=True</em>, <em>isHiddenWithBias=True</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#RnnCell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.RnnCell" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <p>It is a simple RNN. User can pass an activation function to the RNN.</p>
 <table class="docutils field-list" frame="void" rules="none">

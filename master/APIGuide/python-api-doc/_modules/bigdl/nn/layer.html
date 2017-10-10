@@ -631,8 +631,8 @@
         <span class="n">sc</span> <span class="o">=</span> <span class="n">get_spark_context</span><span class="p">()</span>
         <span class="n">rdd_train_images</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="n">rdd_train_labels</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-        <span class="n">rdd_train_sample</span> <span class="o">=</span> <span class="n">rdd_train_images</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">rdd_train_labels</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
-                                                                      <span class="n">Sample</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">label</span><span class="p">))</span>
+        <span class="n">rdd_train_sample</span> <span class="o">=</span> <span class="n">rdd_train_images</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">rdd_train_labels</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="nb">input</span><span class="p">:</span>
+                                                                      <span class="n">Sample</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
         <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;trainTF&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">output_name</span><span class="p">,</span> <span class="n">rdd_train_sample</span><span class="p">,</span> <span class="n">opt_method</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">end_when</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Model</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div>
 
@@ -673,10 +673,13 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        save current model graph to a folder, which can be display in tensorboard by running</span>
 <span class="sd">            tensorboard --logdir logPath</span>
-<span class="sd">        :param log_path: </span>
-<span class="sd">        :return: </span>
+<span class="sd">        :param log_path: path to save the model graph</span>
+<span class="sd">        :param bigdl_type:</span>
+<span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;saveGraphTopology&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">log_path</span><span class="p">)</span></div></div>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;saveGraphTopology&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">log_path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
+
 
 <div class="viewcode-block" id="Linear"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Linear">[docs]</a><span class="k">class</span> <span class="nc">Linear</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
@@ -1258,11 +1261,13 @@
                  <span class="n">input_size</span><span class="p">,</span>
                  <span class="n">hidden_size</span><span class="p">,</span>
                  <span class="n">activation</span><span class="p">,</span>
+                 <span class="n">isInputWithBias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">isHiddenWithBias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">uRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">RnnCell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">activation</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RnnCell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">activation</span><span class="p">,</span> <span class="n">isInputWithBias</span><span class="p">,</span> <span class="n">isHiddenWithBias</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TimeDistributed"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.TimeDistributed">[docs]</a><span class="k">class</span> <span class="nc">TimeDistributed</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
@@ -1656,7 +1661,7 @@
         <span class="k">return</span> <span class="bp">self</span></div></div>
 
 
-<div class="viewcode-block" id="BifurcateSplitTable"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.BifurcateSplitTable">[docs]</a><span class="k">class</span> <span class="nc">BifurcateSplitTable</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<div class="viewcode-block" id="BifurcateSplitTable"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.BifurcateSplitTable">[docs]</a><span class="k">class</span> <span class="nc">BifurcateSplitTable</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Creates a module that takes a Tensor as input and</span>
 <span class="sd">    outputs two tables, splitting the Tensor along</span>
@@ -1678,7 +1683,7 @@
                                        <span class="n">dimension</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="Bilinear"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Bilinear">[docs]</a><span class="k">class</span> <span class="nc">Bilinear</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+<div class="viewcode-block" id="Bilinear"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Bilinear">[docs]</a><span class="k">class</span> <span class="nc">Bilinear</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    a bilinear transformation with sparse inputs,</span>
@@ -4144,10 +4149,11 @@
 <span class="sd">    :param output_width: output width</span>
 <span class="sd">    :param align_corner: align corner or not</span>
 <span class="sd">    </span>
-<span class="sd">    &gt;&gt;&gt; resizeBilinear = ResizeBilinear(10, 20, false)</span>
+<span class="sd">    &gt;&gt;&gt; resizeBilinear = ResizeBilinear(10, 20, False)</span>
+<span class="sd">    creating: createResizeBilinear</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_height</span><span class="p">,</span> <span class="n">output_width</span><span class="p">,</span> <span class="n">align_corner</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ResizeBilinear</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">output_height</span><span class="p">,</span> <span class="n">output_width</span><span class="p">,</span> <span class="n">align_corner</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_height</span><span class="p">,</span> <span class="n">output_width</span><span class="p">,</span> <span class="n">align_corner</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ResizeBilinear</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">output_height</span><span class="p">,</span> <span class="n">output_width</span><span class="p">,</span> <span class="n">align_corner</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
     <span class="kn">import</span> <span class="nn">doctest</span>
