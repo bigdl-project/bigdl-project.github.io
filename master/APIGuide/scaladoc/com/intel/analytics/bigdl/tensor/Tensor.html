@@ -563,13 +563,13 @@ res_ij = (v1 * mat_ij) + (v2 * vec1_i * vec2_j)
         <span class="name">apply</span><span class="params">(<span name="t">t: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Subset the tensor by apply the element of the given table to corresponding dimension of the
-tensor.</p><div class="fullcomment"><div class="comment cmt"><p>Subset the tensor by apply the element of the given table to corresponding dimension of the
-tensor. The element of the given table can be an Int or another Table.
+      <p class="shortcomment cmt">Subset the tensor by apply the elements of the given table to the corresponding dimension
+of the tensor.</p><div class="fullcomment"><div class="comment cmt"><p>Subset the tensor by apply the elements of the given table to the corresponding dimension
+of the tensor. The elements of the given table can be an Int or another Table.
 An Int means select on current dimension; A table means narrow on current dimension,
-the table should has two elements, of which the first is start index and
-the second is the end index. An empty table is equals to Table(1, size_of_current_dimension)
-If the table length is less than the tensor dimension, the missing dimension is applied by
+the table should have two elements, of which the first is the start index and
+the second is the end index. An empty table is equal to Table(1, size_of_current_dimension)
+If the table length is less than the tensor dimension, each missing dimension is token up by
 an empty table
 </p></div><dl class="paramcmts block"><dt class="param">t</dt><dd class="cmt"><p>The table length should be less than or equal to the tensor dimensions</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>narrow</p></span><span class="cmt"><p>select</p></span></dd></dl></div>
@@ -1670,7 +1670,7 @@ The another tensor should has the same size of the current tensor
       </span>
       </h4>
       <p class="shortcomment cmt">Get a subset of the tensor on dim-th dimension.</p><div class="fullcomment"><div class="comment cmt"><p>Get a subset of the tensor on dim-th dimension. The offset is given by index, and length is
-give by size. The important difference with select is that it will not reduce the dimension
+given by size. The important difference with select is that it will not reduce the dimension
 number. For Instance
 tensor =
 1 2 3
@@ -2207,9 +2207,9 @@ should be equal to the dimension number of the tensor.
         <span class="name">size</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Size of tensor.</p><div class="fullcomment"><div class="comment cmt"><p>Size of tensor. Return an array of which each value represent the size on the
-dimension(i + 1), i is the index of the corresponding value
-It will generate a new array each time you invoke the method
+      <p class="shortcomment cmt">Size of tensor.</p><div class="fullcomment"><div class="comment cmt"><p>Size of tensor. Return an array of which each value represents the size on the
+dimension(i + 1), i is the index of the corresponding value.
+It will generate a new array each time method is invoked.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>size array
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.Tensor#split" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -2364,7 +2364,7 @@ Argument dim defaults to 1.
         <span class="name">stride</span><span class="params">(<span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Jumps between element on the given dimension in the storage.</p><div class="fullcomment"><div class="comment cmt"><p>Jumps between element on the given dimension in the storage.
+      <p class="shortcomment cmt">Jumps between elements on the given dimension in the storage.</p><div class="fullcomment"><div class="comment cmt"><p>Jumps between elements on the given dimension in the storage.
 </p></div><dl class="paramcmts block"><dt class="param">dim</dt><dd class="cmt"><p>dimension, count from 1</p></dd><dt>returns</dt><dd class="cmt"><p>jump
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.Tensor#stride" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -2379,8 +2379,8 @@ Argument dim defaults to 1.
         <span class="name">stride</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Jumps between element on the each dimension in the storage.</p><div class="fullcomment"><div class="comment cmt"><p>Jumps between element on the each dimension in the storage.
-It will generate a new array each time you invoke the method
+      <p class="shortcomment cmt">Jumps between elements on the each dimension in the storage.</p><div class="fullcomment"><div class="comment cmt"><p>Jumps between elements on the each dimension in the storage.
+It will generate a new array each time method is invoked.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>strides array
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#sub" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -2721,13 +2721,13 @@ if args.length = 2, return [args(0), args(1)]
         <span class="name">update</span><span class="params">(<span name="t">t: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="src">src: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Copy the given tensor value to the select subset of the current tensor
-The element of the given table can be an Int or another Table.</p><div class="fullcomment"><div class="comment cmt"><p>Copy the given tensor value to the select subset of the current tensor
-The element of the given table can be an Int or another Table. An Int means select on current
+      <p class="shortcomment cmt">Copy the given tensor values to the selected subset of the current tensor
+Each element of the given table can be an Int or another Table.</p><div class="fullcomment"><div class="comment cmt"><p>Copy the given tensor values to the selected subset of the current tensor
+Each element of the given table can be an Int or another Table. An Int means select on current
 dimension; A table means narrow on current dimension, the table should has two elements,
-of which the first is start index and the second is the end index. An empty table is equals
-to Table(1, size_of_current_dimension) If the table length is less than the tensor dimension,
-the missing dimension is applied by an empty table
+of which the first is start index and the second is the end index. An empty table is equal
+to Table(1, size_of_current_dimension). If the table's length is smaller than the tensor's
+dimension, the missing dimension is applied by an empty table.
 </p></div><dl class="paramcmts block"><dt class="param">t</dt><dd class="cmt"><p>subset table</p></dd><dt class="param">src</dt><dd class="cmt"><p>tensor to copy
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.Tensor#update" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -2744,10 +2744,10 @@ the missing dimension is applied by an empty table
       </h4>
       <p class="shortcomment cmt">Fill the select subset of the current tensor with the given value.</p><div class="fullcomment"><div class="comment cmt"><p>Fill the select subset of the current tensor with the given value.
 The element of the given table can be an Int or another Table. An Int means select on current
-dimension; A tablemeans narrow on current dimension, the table should has two elements,
-of which the first is start index and the second is the end index. An empty table is equals
+dimension; A table means narrow on the current dimension, the table should has two elements,
+of which the first is the start index and the second is the end index. An empty table is equal
 to Table(1, size_of_current_dimension) If the table length is less than the tensor dimension,
-the missing dimension is applied by an empty table
+each missing dimension is applied by an empty table
 </p></div><dl class="paramcmts block"><dt class="param">t</dt><dd class="cmt"><p>subset table</p></dd><dt class="param">value</dt><dd class="cmt"><p>value to write
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.Tensor#update" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -2762,8 +2762,8 @@ the missing dimension is applied by an empty table
         <span class="name">update</span><span class="params">(<span name="indexes">indexes: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="value">value: <span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Write the value to the value indexed by the given index array
-</p><div class="fullcomment"><div class="comment cmt"><p>Write the value to the value indexed by the given index array
+      <p class="shortcomment cmt">Write the value to the positions indexed by the given index array
+</p><div class="fullcomment"><div class="comment cmt"><p>Write the value to the positions indexed by the given index array
 </p></div><dl class="paramcmts block"><dt class="param">indexes</dt><dd class="cmt"><p>index array. It should has same length with the tensor dimension</p></dd><dt class="param">value</dt><dd class="cmt"><p>value to write
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.Tensor#update" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -2779,8 +2779,7 @@ the missing dimension is applied by an empty table
       </span>
       </h4>
       <p class="shortcomment cmt">Copy the give tensor value to the select subset of the current tensor by the given index.</p><div class="fullcomment"><div class="comment cmt"><p>Copy the give tensor value to the select subset of the current tensor by the given index.
-The subset should
-has the same size of the given tensor
+The subset should have the same size of the given tensor
 </p></div><dl class="paramcmts block"><dt class="param">index</dt><dd class="cmt"><p>index</p></dd><dt class="param">src</dt><dd class="cmt"><p>tensor to write
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.Tensor#update" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -3229,6 +3228,19 @@ If element wise difference is less than delta, return true.</p></div><dl class="
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#resize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="resize(sizes:Array[Int],nElement:Int):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="resize(Array[Int],Int):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">resize</span><span class="params">(<span name="sizes">sizes: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="nElement">nElement: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.T">T</span>]</span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

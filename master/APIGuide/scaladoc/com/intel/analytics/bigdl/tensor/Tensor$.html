@@ -455,6 +455,21 @@ as possible in memory.
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#dense" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dense[T](sparseTensor:com.intel.analytics.bigdl.tensor.Tensor[T],res:com.intel.analytics.bigdl.tensor.Tensor[T])(implicitevidence$31:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="dense[T](Tensor[T],Tensor[T])(ClassTag[T],TensorNumeric[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dense</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sparseTensor">sparseTensor: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.dense.T">T</span>]</span>, <span name="res">res: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.dense.T">T</span>] = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.dense.T">T</span>]</span>, <span name="ev">ev: <a href="TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.dense.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.dense.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Transform a sparseTensor to DenseTensor.</p><div class="fullcomment"><div class="comment cmt"><p>Transform a sparseTensor to DenseTensor.
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"></dd><dt class="param">sparseTensor</dt><dd class="cmt"><p>a sparse tensor</p></dd><dt class="param">res</dt><dd class="cmt"><p>if defined, override to res, else will generate a new tensor.</p></dd><dt class="param">ev</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>a DenseTensor.
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -707,6 +722,94 @@ as possible in memory.
       </span>
       </h4>
       <p class="shortcomment cmt">Create a scalar tensor of this value</p><div class="fullcomment"><div class="comment cmt"><p>Create a scalar tensor of this value</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the created scalar tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#sparse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sparse[T](shape:Array[Int],nElement:Int)(implicitevidence$30:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sparse[T](Array[Int],Int)(ClassTag[T],TensorNumeric[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sparse</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="shape">shape: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="nElement">nElement: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>, <span name="ev">ev: <a href="TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a sparse tensor with shape and number of non-zero elements.</p><div class="fullcomment"><div class="comment cmt"><p>Create a sparse tensor with shape and number of non-zero elements.</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"></dd><dt class="param">shape</dt><dd class="cmt"><p>tensor's shape.</p></dd><dt class="param">nElement</dt><dd class="cmt"><p>number of non-zero elements.</p></dd><dt class="param">ev</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#sparse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sparse[T](denseTensor:com.intel.analytics.bigdl.tensor.Tensor[T])(implicitevidence$29:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sparse[T](Tensor[T])(ClassTag[T],TensorNumeric[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sparse</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="denseTensor">denseTensor: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>, <span name="ev">ev: <a href="TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Transform a DenseTensor to SparseTensor.</p><div class="fullcomment"><div class="comment cmt"><p>Transform a DenseTensor to SparseTensor.</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"></dd><dt class="param">denseTensor</dt><dd class="cmt"></dd><dt class="param">ev</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#sparse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sparse[T](indices:Array[Array[Int]],values:Array[T],shape:Array[Int],dimension:Int)(implicitevidence$28:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sparse[T](Array[Array[Int]],Array[T],Array[Int],Int)(ClassTag[T],TensorNumeric[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sparse</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="indices">indices: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]]</span>, <span name="values">values: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>, <span name="shape">shape: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="dimension">dimension: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>, <span name="ev">ev: <a href="TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a SparseTensor.</p><div class="fullcomment"><div class="comment cmt"><p>Create a SparseTensor.
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"></dd><dt class="param">indices</dt><dd class="cmt"><p>dimension-D array to describe the indices of values.</p></dd><dt class="param">values</dt><dd class="cmt"><p>non-zero values in this SparseTensor.</p></dd><dt class="param">shape</dt><dd class="cmt"><p>shape</p></dd><dt class="param">dimension</dt><dd class="cmt"><p>dimension</p></dd><dt class="param">ev</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#sparse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sparse[T](indices:Array[Array[Int]],values:com.intel.analytics.bigdl.tensor.Storage[T],shape:Array[Int],dimension:Int)(implicitevidence$27:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sparse[T](Array[Array[Int]],Storage[T],Array[Int],Int)(ClassTag[T],TensorNumeric[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sparse</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="indices">indices: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]]</span>, <span name="values">values: <a href="Storage.html" class="extype" name="com.intel.analytics.bigdl.tensor.Storage">Storage</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>, <span name="shape">shape: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="dimension">dimension: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>, <span name="ev">ev: <a href="TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a SparseTensor.</p><div class="fullcomment"><div class="comment cmt"><p>Create a SparseTensor.
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"></dd><dt class="param">indices</dt><dd class="cmt"><p>dimension-D array to describe the indices of values.</p></dd><dt class="param">values</dt><dd class="cmt"><p>non-zero values in this SparseTensor.</p></dd><dt class="param">shape</dt><dd class="cmt"><p>shape</p></dd><dt class="param">dimension</dt><dd class="cmt"><p>dimension</p></dd><dt class="param">ev</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#sparse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sparse[T](indices:Array[Array[Int]],values:Array[T],shape:Array[Int])(implicitevidence$26:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sparse[T](Array[Array[Int]],Array[T],Array[Int])(ClassTag[T],TensorNumeric[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sparse</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="indices">indices: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]]</span>, <span name="values">values: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>, <span name="shape">shape: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>, <span name="ev">ev: <a href="TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a SparseTensor.</p><div class="fullcomment"><div class="comment cmt"><p>Create a SparseTensor.
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"></dd><dt class="param">indices</dt><dd class="cmt"><p>dimension-D array to describe the indices of values.</p></dd><dt class="param">values</dt><dd class="cmt"><p>non-zero values in this SparseTensor.</p></dd><dt class="param">shape</dt><dd class="cmt"><p>shape</p></dd><dt class="param">ev</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#sparse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sparse[T](indices:Array[Array[Int]],values:com.intel.analytics.bigdl.tensor.Storage[T],shape:Array[Int])(implicitevidence$25:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sparse[T](Array[Array[Int]],Storage[T],Array[Int])(ClassTag[T],TensorNumeric[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sparse</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="indices">indices: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]]</span>, <span name="values">values: <a href="Storage.html" class="extype" name="com.intel.analytics.bigdl.tensor.Storage">Storage</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>, <span name="shape">shape: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>, <span name="ev">ev: <a href="TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.Tensor.sparse.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a SparseTensor.</p><div class="fullcomment"><div class="comment cmt"><p>Create a SparseTensor.
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"></dd><dt class="param">indices</dt><dd class="cmt"><p>dimension-D array to describe the indices of values.</p></dd><dt class="param">values</dt><dd class="cmt"><p>non-zero values in this SparseTensor.</p></dd><dt class="param">shape</dt><dd class="cmt"><p>shape</p></dd><dt class="param">ev</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>

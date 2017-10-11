@@ -1884,8 +1884,28 @@ will compute incorrect gradients.</p>
 
 <dl class="method">
 <dt id="bigdl.nn.layer.Layer.evaluate">
-<code class="descname">evaluate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.evaluate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set this layer in the evaluation mode</p>
+<code class="descname">evaluate</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>No argument passed in:
+Evaluate the model to set train = false, useful when doing test/forward
+:return: layer itself</p>
+<p>Three arguments passed in:
+A method to benchmark the model quality.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>val_rdd</strong> – the input data</li>
+<li><strong>batch_size</strong> – batch size</li>
+<li><strong>val_methods</strong> – a list of validation methods. i.e: Top1Accuracy,Top5Accuracy and Loss.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -2015,6 +2035,89 @@ You need to invoke collect() to trigger those action         as the returning re
 </dd></dl>
 
 <dl class="method">
+<dt id="bigdl.nn.layer.Layer.quantize">
+<code class="descname">quantize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.quantize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.quantize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clone self and quantize it, at last return a new quantized model.
+:return: A new quantized model.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fc</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">creating: createLinear</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc</span><span class="o">.</span><span class="n">set_weights</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,))])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="go">array([[ 5.,  5.],</span>
+<span class="go">[ 5.,  5.]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_fc</span> <span class="o">=</span> <span class="n">fc</span><span class="o">.</span><span class="n">quantize</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_fc</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="go">array([[ 5.,  5.],</span>
+<span class="go">[ 5.,  5.]], dtype=float32)</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">(</span><span class="s2">&quot;quantized.Linear&quot;</span> <span class="ow">in</span> <span class="n">quantized_fc</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conv</span> <span class="o">=</span> <span class="n">SpatialConvolution</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">creating: createSpatialConvolution</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conv</span><span class="o">.</span><span class="n">set_weights</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,))])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conv</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="go">array([[[[ 9.,  9.],</span>
+<span class="go">[ 9.,  9.]],</span>
+
+<span class="go">[[ 9.,  9.],</span>
+<span class="go">[ 9.,  9.]]],</span>
+
+
+<span class="go">[[[ 9.,  9.],</span>
+<span class="go">[ 9.,  9.]],</span>
+
+<span class="go">[[ 9.,  9.],</span>
+<span class="go">[ 9.,  9.]]]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_conv</span> <span class="o">=</span> <span class="n">conv</span><span class="o">.</span><span class="n">quantize</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_conv</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="go">array([[[[ 9.,  9.],</span>
+<span class="go">[ 9.,  9.]],</span>
+
+<span class="go">[[ 9.,  9.],</span>
+<span class="go">[ 9.,  9.]]],</span>
+
+
+<span class="go">[[[ 9.,  9.],</span>
+<span class="go">[ 9.,  9.]],</span>
+
+<span class="go">[[ 9.,  9.],</span>
+<span class="go">[ 9.,  9.]]]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">(</span><span class="s2">&quot;quantized.SpatialConvolution&quot;</span> <span class="ow">in</span> <span class="n">quantized_conv</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="go">creating: createSequential</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">conv</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Reshape</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="kc">False</span><span class="p">))</span>
+<span class="go">creating: createReshape</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="go">array([[ 37.,  37.],</span>
+<span class="go">[ 37.,  37.],</span>
+<span class="go">[ 37.,  37.],</span>
+<span class="go">[ 37.,  37.],</span>
+<span class="go">[ 37.,  37.],</span>
+<span class="go">[ 37.,  37.],</span>
+<span class="go">[ 37.,  37.],</span>
+<span class="go">[ 37.,  37.]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">quantize</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_seq</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="go">array([[ 37.,  37.],</span>
+<span class="go">[ 37.,  37.],</span>
+<span class="go">[ 37.,  37.],</span>
+<span class="go">[ 37.,  37.],</span>
+<span class="go">[ 37.,  37.],</span>
+<span class="go">[ 37.,  37.],</span>
+<span class="go">[ 37.,  37.],</span>
+<span class="go">[ 37.,  37.]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">(</span><span class="s2">&quot;quantized.Linear&quot;</span> <span class="ow">in</span> <span class="n">quantized_seq</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">(</span><span class="s2">&quot;quantized.SpatialConvolution&quot;</span> <span class="ow">in</span> <span class="n">quantized_seq</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
 <dt id="bigdl.nn.layer.Layer.reset">
 <code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize the model weights.</p>
@@ -2139,28 +2242,6 @@ consist of class name and UUID if user doesn’t set it.</p>
 <span class="go">True</span>
 </pre></div>
 </div>
-</dd></dl>
-
-<dl class="method">
-<dt id="bigdl.nn.layer.Layer.test">
-<code class="descname">test</code><span class="sig-paren">(</span><em>val_rdd</em>, <em>batch_size</em>, <em>val_methods</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.test" title="Permalink to this definition">¶</a></dt>
-<dd><p>A method to benchmark the model quality.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>val_rdd</strong> – the input data</li>
-<li><strong>batch_size</strong> – batch size</li>
-<li><strong>val_methods</strong> – a list of validation methods. i.e: Top1Accuracy,Top5Accuracy and Loss.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
-</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="method">

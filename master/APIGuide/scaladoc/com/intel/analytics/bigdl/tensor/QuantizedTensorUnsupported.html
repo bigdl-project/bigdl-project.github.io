@@ -251,9 +251,9 @@ given tensor, and vice-versa. This is an efficient method, as there is no memory
         <span class="name">size</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Size of tensor.</p><div class="fullcomment"><div class="comment cmt"><p>Size of tensor. Return an array of which each value represent the size on the
-dimension(i + 1), i is the index of the corresponding value
-It will generate a new array each time you invoke the method
+      <p class="shortcomment cmt">Size of tensor.</p><div class="fullcomment"><div class="comment cmt"><p>Size of tensor. Return an array of which each value represents the size on the
+dimension(i + 1), i is the index of the corresponding value.
+It will generate a new array each time method is invoked.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>size array
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.Tensor#stride" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -268,7 +268,7 @@ It will generate a new array each time you invoke the method
         <span class="name">stride</span><span class="params">(<span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Jumps between element on the given dimension in the storage.</p><div class="fullcomment"><div class="comment cmt"><p>Jumps between element on the given dimension in the storage.
+      <p class="shortcomment cmt">Jumps between elements on the given dimension in the storage.</p><div class="fullcomment"><div class="comment cmt"><p>Jumps between elements on the given dimension in the storage.
 </p></div><dl class="paramcmts block"><dt class="param">dim</dt><dd class="cmt"><p>dimension, count from 1</p></dd><dt>returns</dt><dd class="cmt"><p>jump
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.Tensor#stride" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -283,8 +283,8 @@ It will generate a new array each time you invoke the method
         <span class="name">stride</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Jumps between element on the each dimension in the storage.</p><div class="fullcomment"><div class="comment cmt"><p>Jumps between element on the each dimension in the storage.
-It will generate a new array each time you invoke the method
+      <p class="shortcomment cmt">Jumps between elements on the each dimension in the storage.</p><div class="fullcomment"><div class="comment cmt"><p>Jumps between elements on the each dimension in the storage.
+It will generate a new array each time method is invoked.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>strides array
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a></dd></dl></div>
     </li></ol>
@@ -2401,6 +2401,19 @@ is resized. sizes specify the number of times the tensor is repeated in each dim
 </p><div class="fullcomment"><div class="comment cmt"><p>Resize the current tensor to the give shape
 </p></div><dl class="paramcmts block"><dt class="param">sizes</dt><dd class="cmt"><p>Array describe the size</p></dd><dt class="param">strides</dt><dd class="cmt"><p>Array describe the jumps</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.tensor.QuantizedTensorUnsupported">QuantizedTensorUnsupported</a> → <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.Tensor#resize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="resize(sizes:Array[Int],nElement:Int):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="resize(Array[Int],Int):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">resize</span><span class="params">(<span name="sizes">sizes: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="nElement">nElement: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.QuantizedTensorUnsupported.T">T</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.QuantizedTensorUnsupported#resizeAs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="resizeAs(src:com.intel.analytics.bigdl.tensor.Tensor[_]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
       <a id="resizeAs(Tensor[_]):Tensor[T]"></a>

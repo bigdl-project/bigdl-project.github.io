@@ -35,13 +35,13 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">SpatialDilatedConvolution</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">SpatialDilatedConvolution</span><span class="result"> extends <a href="quantized/Quantizable.html" class="extype" name="com.intel.analytics.bigdl.nn.quantized.Quantizable">Quantizable</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="quantized/Quantizable.html" class="extype" name="com.intel.analytics.bigdl.nn.quantized.Quantizable">Quantizable</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -59,7 +59,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.intel.analytics.bigdl.nn.SpatialDilatedConvolution"><span>SpatialDilatedConvolution</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.intel.analytics.bigdl.nn.SpatialDilatedConvolution"><span>SpatialDilatedConvolution</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="com.intel.analytics.bigdl.nn.quantized.Quantizable"><span>Quantizable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -318,6 +318,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.SpatialDilatedConvolution#quantize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="quantize[T](module:com.intel.analytics.bigdl.Module[T])(implicitevidence$3:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.Module[T]"></a>
+      <a id="quantize[T](Module[T])(ClassTag[T],TensorNumeric[T]):Module[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">quantize</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="module">module: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialDilatedConvolution.quantize.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialDilatedConvolution.quantize.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialDilatedConvolution.quantize.T">T</span>]</span>)</span><span class="result">: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialDilatedConvolution.quantize.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">module</dt><dd class="cmt"><p>module will be quantized. we will do nothing by default.
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.SpatialDilatedConvolution">SpatialDilatedConvolution</a> → <a href="quantized/Quantizable.html" class="extype" name="com.intel.analytics.bigdl.nn.quantized.Quantizable">Quantizable</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -414,6 +428,8 @@
               <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
             </div><div class="parent" name="java.io.Serializable">
               <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="com.intel.analytics.bigdl.nn.quantized.Quantizable">
+              <h3>Inherited from <a href="quantized/Quantizable.html" class="extype" name="com.intel.analytics.bigdl.nn.quantized.Quantizable">Quantizable</a></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
