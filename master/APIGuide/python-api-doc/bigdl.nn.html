@@ -375,6 +375,15 @@ input: Tensor,target: Tensor</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.criterion.GaussianCriterion">
+<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">GaussianCriterion</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#GaussianCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.GaussianCriterion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
+<p>Computes the log-likelihood of a sample x given a Gaussian distribution p.
+&gt;&gt;&gt; GaussianCriterion = GaussianCriterion()
+creating: createGaussianCriterion</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.criterion.HingeEmbeddingCriterion">
 <em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">HingeEmbeddingCriterion</code><span class="sig-paren">(</span><em>margin=1.0</em>, <em>size_average=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#HingeEmbeddingCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.HingeEmbeddingCriterion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
@@ -392,6 +401,15 @@ value of 1, or can be set in the constructor.</p>
 <span class="go">creating: createHingeEmbeddingCriterion</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.criterion.KLDCriterion">
+<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">KLDCriterion</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#KLDCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.KLDCriterion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
+<p>Computes the KL-divergence of the Gaussian distribution.
+&gt;&gt;&gt; KLDCriterion = KLDCriterion()
+creating: createKLDCriterion</p>
 </dd></dl>
 
 <dl class="class">
@@ -1528,6 +1546,15 @@ The first input in sequence uses zero value for cell and hidden state</p>
 <span class="go">creating: createGRU</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.GaussianSampler">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">GaussianSampler</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#GaussianSampler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.GaussianSampler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Takes {mean, log_variance} as input and samples from the Gaussian distribution
+&gt;&gt;&gt; sampler = GaussianSampler()
+creating: createGaussianSampler</p>
 </dd></dl>
 
 <dl class="class">

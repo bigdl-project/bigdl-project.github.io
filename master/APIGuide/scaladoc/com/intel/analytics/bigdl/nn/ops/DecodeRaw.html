@@ -80,7 +80,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.ops.DecodeRaw#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(outType:org.tensorflow.framework.DataType,byteOrder:java.nio.ByteOrder)(implicitevidence$5:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.ops.DecodeRaw[T]"></a>
+      <a id="&lt;init&gt;(outType:org.tensorflow.framework.DataType,littleEndian:Boolean)(implicitevidence$5:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.ops.DecodeRaw[T]"></a>
       <a id="&lt;init&gt;:DecodeRaw[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -88,7 +88,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">DecodeRaw</span><span class="params">(<span name="outType">outType: <a href="../../../../../../org/tensorflow/framework/DataType.html" class="extype" name="org.tensorflow.framework.DataType">DataType</a></span>, <span name="byteOrder">byteOrder: <span class="extype" name="java.nio.ByteOrder">ByteOrder</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.DecodeRaw.T">T</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.DecodeRaw.T">T</span>]</span>)</span>
+        <span class="name">DecodeRaw</span><span class="params">(<span name="outType">outType: <a href="../../../../../../org/tensorflow/framework/DataType.html" class="extype" name="org.tensorflow.framework.DataType">DataType</a></span>, <span name="littleEndian">littleEndian: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.DecodeRaw.T">T</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.DecodeRaw.T">T</span>]</span>)</span>
       </span>
       </h4>
       
@@ -243,19 +243,6 @@ will compute incorrect gradients.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.ops.DecodeRaw#byteOrder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="byteOrder:java.nio.ByteOrder"></a>
-      <a id="byteOrder:ByteOrder"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">byteOrder</span><span class="result">: <span class="extype" name="java.nio.ByteOrder">ByteOrder</span></span>
-      </span>
-      </h4>
-      
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#canEqual" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="canEqual(other:Any):Boolean"></a>
       <a id="canEqual(Any):Boolean"></a>
@@ -749,6 +736,19 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.ops.DecodeRaw#littleEndian" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="littleEndian:Boolean"></a>
+      <a id="littleEndian:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">littleEndian</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#loadModelWeights" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="loadModelWeights(srcModel:com.intel.analytics.bigdl.Module[Float],matchAll:Boolean):AbstractModule.this.type"></a>
       <a id="loadModelWeights(Module[Float],Boolean):DecodeRaw.this.type"></a>
