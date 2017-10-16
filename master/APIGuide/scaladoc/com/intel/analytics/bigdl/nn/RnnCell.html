@@ -760,7 +760,7 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.RnnCell">RnnCell</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a> → AnyRef → Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.Cell#hidResize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hidResize(hidden:com.intel.analytics.bigdl.nn.abstractnn.Activity,batchSize:Int,imageSize:Array[Int]):com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
+      <a id="hidResize(hidden:com.intel.analytics.bigdl.nn.abstractnn.Activity,batchSize:Int,stepShape:Array[Int]):com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
       <a id="hidResize(Activity,Int,Array[Int]):Activity"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -768,14 +768,28 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">hidResize</span><span class="params">(<span name="hidden">hidden: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="imageSize">imageSize: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
+        <span class="name">hidResize</span><span class="params">(<span name="hidden">hidden: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="stepShape">stepShape: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">resize the hidden parameters wrt the batch size, hiddens shapes.</p><div class="fullcomment"><div class="comment cmt"><p>resize the hidden parameters wrt the batch size, hiddens shapes.</p><p>e.g. RnnCell contains 1 hidden parameter (H), thus it will return Tensor(size)
      LSTM contains 2 hidden parameters (C and H) and will return T(Tensor(), Tensor())\
      and recursively intialize all the tensors in the Table.
-</p></div><dl class="paramcmts block"><dt class="param">hidden</dt><dd class="cmt"></dd><dt class="param">batchSize</dt><dd class="cmt"><p>batchSize</p></dd><dt>returns</dt><dd class="cmt"><p>
+</p></div><dl class="paramcmts block"><dt class="param">hidden</dt><dd class="cmt"></dd><dt class="param">batchSize</dt><dd class="cmt"><p>batchSize</p></dd><dt class="param">stepShape</dt><dd class="cmt"><p>For rnn/lstm/gru, it's embedding size. For convlstm/
+                    convlstm3D, it's a list of outputPlane, length, width, height</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cell.html" class="extype" name="com.intel.analytics.bigdl.nn.Cell">Cell</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.RnnCell#hiddenSize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="hiddenSize:Int"></a>
+      <a id="hiddenSize:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hiddenSize</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">hidden layer size</p>
     </li><li name="com.intel.analytics.bigdl.nn.Cell#hiddenSizeOfPreTopo" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hiddenSizeOfPreTopo:Int"></a>
       <a id="hiddenSizeOfPreTopo:Int"></a>
@@ -802,6 +816,19 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cell.html" class="extype" name="com.intel.analytics.bigdl.nn.Cell">Cell</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.RnnCell#inputSize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="inputSize:Int"></a>
+      <a id="inputSize:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">inputSize</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">input size</p>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#inputs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="inputs(first:(com.intel.analytics.bigdl.nn.Graph.ModuleNode[T],Int),nodesWithIndex:(com.intel.analytics.bigdl.nn.Graph.ModuleNode[T],Int)*):com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]"></a>
       <a id="inputs((ModuleNode[T],Int),(ModuleNode[T],Int)*):ModuleNode[T]"></a>
@@ -830,6 +857,32 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       </h4>
       <p class="shortcomment cmt">Build graph: some other modules point to current module</p><div class="fullcomment"><div class="comment cmt"><p>Build graph: some other modules point to current module</p></div><dl class="paramcmts block"><dt class="param">nodes</dt><dd class="cmt"><p>upstream module nodes</p></dd><dt>returns</dt><dd class="cmt"><p>node containing current module
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.RnnCell#isHiddenWithBias" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="isHiddenWithBias:Boolean"></a>
+      <a id="isHiddenWithBias:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isHiddenWithBias</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.RnnCell#isInputWithBias" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="isInputWithBias:Boolean"></a>
+      <a id="isInputWithBias:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInputWithBias</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -968,15 +1021,15 @@ Custom modules should override this function if they have parameters
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>(Array of weights, Array of grad)
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Cell.html" class="extype" name="com.intel.analytics.bigdl.nn.Cell">Cell</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.RnnCell#preTopology" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="preTopology:com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]"></a>
-      <a id="preTopology:AbstractModule[Activity,Activity,T]"></a>
+      <a id="preTopology:com.intel.analytics.bigdl.nn.abstractnn.TensorModule[T]"></a>
+      <a id="preTopology:TensorModule[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">preTopology</span><span class="result">: <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.RnnCell.T">T</span>]</span>
+        <span class="name">preTopology</span><span class="result">: <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RnnCell.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">The preTopology defines operations to pre-process the input when it is not dependent

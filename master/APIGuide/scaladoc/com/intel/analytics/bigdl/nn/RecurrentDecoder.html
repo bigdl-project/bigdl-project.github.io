@@ -43,10 +43,8 @@
 a prediction of the next timestep based on the prediction we made from
 the previous timestep. Input for RecurrentDecoder is dynamically composed
 during training. input at t(i) is output at t(i-1), input at t(0) is
-user input, and user input has to be batch x ???(depends on cell type)
-without time information.</p><p>Different types of rnn cells can be added using add() function. Currently
-only support lstmpeephole, convlstm, convlstm3D cell.
-</p></div><div class="toggleContainer block">
+user input, and user input has to be batch x stepShape(shape of the input
+at a single time step).</p><p>Different types of rnn cells can be added using add() function.</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>], <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>], <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -86,7 +84,7 @@ only support lstmpeephole, convlstm, convlstm3D cell.
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="com.intel.analytics.bigdl.nn.RecurrentDecoder#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="com.intel.analytics.bigdl.nn.RecurrentDecoder#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="&lt;init&gt;(seqLength:Int)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.RecurrentDecoder[T]"></a>
       <a id="&lt;init&gt;:RecurrentDecoder[T]"></a>
       <h4 class="signature">
@@ -98,7 +96,8 @@ only support lstmpeephole, convlstm, convlstm3D cell.
         <span class="name">RecurrentDecoder</span><span class="params">(<span name="seqLength">seqLength: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>]</span>)</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">seqLength</dt><dd class="cmt"><p>sequence length of the output
+</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -204,8 +203,8 @@ parameters is module dependent. The module is expected to accumulate the gradien
 respect to the parameters in some variable.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"></dd><dt class="param">gradOutput</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder">RecurrentDecoder</a> → <a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#add" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="add(module:com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,T]):Recurrent.this.type"></a>
+    </li><li name="com.intel.analytics.bigdl.nn.RecurrentDecoder#add" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="add(module:com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,T]):RecurrentDecoder.this.type"></a>
       <a id="add(AbstractModule[_&lt;:Activity,_&lt;:Activity,T]):RecurrentDecoder.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -217,13 +216,11 @@ respect to the parameters in some variable.
       </span>
       </h4>
       <p class="shortcomment cmt"> modules: -- preTopology
-          |- BatchNormalization (optional)
           |- topology (cell)</p><div class="fullcomment"><div class="comment cmt"><p> modules: -- preTopology
-          |- BatchNormalization (optional)
           |- topology (cell)</p><p>The topology (or cell) will be cloned for N times w.r.t the time dimension.
 The preTopology will be execute only once before the recurrence.
 </p></div><dl class="paramcmts block"><dt class="param">module</dt><dd class="cmt"><p>module to be add</p></dd><dt>returns</dt><dd class="cmt"><p>this container
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a> → <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder">RecurrentDecoder</a> → <a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a> → <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.Container#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="apply(name:String):Option[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]"></a>
       <a id="apply(String):Option[AbstractModule[Activity,Activity,T]]"></a>
@@ -399,6 +396,19 @@ super.clearState in the override method
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#cloneCells" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="cloneCells():Unit"></a>
+      <a id="cloneCells():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cloneCells</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#cloneModule" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="cloneModule():com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[A,B,T]"></a>
       <a id="cloneModule():AbstractModule[Tensor[T],Tensor[T],T]"></a>
@@ -447,7 +457,7 @@ Such as runningMean and runningVar of BatchNormalization.
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">var</span>
       </span>
       <span class="symbol">
         <span class="name">currentInput</span><span class="result">: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>
@@ -521,19 +531,6 @@ Such as runningMean and runningVar of BatchNormalization.
       <p class="shortcomment cmt">use ValidationMethod to evaluate module</p><div class="fullcomment"><div class="comment cmt"><p>use ValidationMethod to evaluate module</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for test</p></dd><dt class="param">vMethods</dt><dd class="cmt"><p>validation methods</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchsize of all partitions,
                  optional param and default 4 * partitionNum of dataset</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#extend" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="extend(sizes:Array[Int]):Unit"></a>
-      <a id="extend(Array[Int]):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">extend</span><span class="params">(<span name="sizes">sizes: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Clone N models; N depends on the time dimension of the input</p><div class="fullcomment"><div class="comment cmt"><p>Clone N models; N depends on the time dimension of the input</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -638,6 +635,19 @@ are not changed in training process
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#getHiddenState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getHiddenState():com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
+      <a id="getHiddenState():Activity"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getHiddenState</span><span class="params">()</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#getName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getName():String"></a>
       <a id="getName():String"></a>
@@ -697,7 +707,7 @@ are not changed in training process
 to use optim method
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Container#getParametersTable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.RecurrentDecoder#getParametersTable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getParametersTable():com.intel.analytics.bigdl.utils.Table"></a>
       <a id="getParametersTable():Table"></a>
       <h4 class="signature">
@@ -716,7 +726,7 @@ The result table is a structure of Table(ModuleName -&gt; Table(ParameterName -&
 and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get the weight of a module named conv1:
   table[Table](&quot;conv1&quot;)[Tensor[T]](&quot;weight&quot;).</p><p>Custom modules should override this function if they have parameters.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>Table
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder">RecurrentDecoder</a> → <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#getPrintName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getPrintName():String"></a>
       <a id="getPrintName():String"></a>
@@ -760,19 +770,6 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       <p class="shortcomment cmt">Get the scale of gradientWeight
 </p><div class="fullcomment"><div class="comment cmt"><p>Get the scale of gradientWeight
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#getState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getState():com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
-      <a id="getState():Activity"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getState</span><span class="params">()</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.Recurrent#getTimes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getTimes():Array[(com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,T],Long,Long)]"></a>
       <a id="getTimes():Array[(AbstractModule[_&lt;:Activity,_&lt;:Activity,T],Long,Long)]"></a>
@@ -826,16 +823,16 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       </h4>
       <p class="shortcomment cmt">The cached gradient of activities.</p><div class="fullcomment"><div class="comment cmt"><p>The cached gradient of activities. So we don't compute it again when need it
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#gradInputCell" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="gradInputCell:com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="gradInputCell:Tensor[T]"></a>
+    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#gradInput2Cell" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="gradInput2Cell:com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="gradInput2Cell:Tensor[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">gradInputCell</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>]</span>
+        <span class="name">gradInput2Cell</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
@@ -904,16 +901,42 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#initState" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="initState:com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
-      <a id="initState:Activity"></a>
+    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#initHidden" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="initHidden(sizes:Array[Int]):Unit"></a>
+      <a id="initHidden(Array[Int]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">initHidden</span><span class="params">(<span name="sizes">sizes: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Clone N models; N depends on the time dimension of the input</p><div class="fullcomment"><div class="comment cmt"><p>Clone N models; N depends on the time dimension of the input</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#initHiddenState" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="initHiddenState:com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
+      <a id="initHiddenState:Activity"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">initState</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
+        <span class="name">initHiddenState</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#input2Cell" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="input2Cell:com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="input2Cell:Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">input2Cell</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
@@ -1092,33 +1115,7 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       </h4>
       <p class="shortcomment cmt">The cached output.</p><div class="fullcomment"><div class="comment cmt"><p>The cached output. So we don't compute it again when need it
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#outputBuffer" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="outputBuffer:com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="outputBuffer:Tensor[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">outputBuffer</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#outputCell" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="outputCell:com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="outputCell:Tensor[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">var</span>
-      </span>
-      <span class="symbol">
-        <span class="name">outputCell</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Container#parameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.RecurrentDecoder#parameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="parameters():(Array[com.intel.analytics.bigdl.tensor.Tensor[T]],Array[com.intel.analytics.bigdl.tensor.Tensor[T]])"></a>
       <a id="parameters():(Array[Tensor[T]],Array[Tensor[T]])"></a>
       <h4 class="signature">
@@ -1133,7 +1130,7 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       <p class="shortcomment cmt">This function returns two arrays.</p><div class="fullcomment"><div class="comment cmt"><p>This function returns two arrays. One for the weights and the other the gradients
 Custom modules should override this function if they have parameters
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>(Array of weights, Array of grad)
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder">RecurrentDecoder</a> → <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.Recurrent#preTopology" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="preTopology:com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]"></a>
       <a id="preTopology:AbstractModule[Activity,Activity,T]"></a>
@@ -1330,6 +1327,33 @@ Custom modules should override this function if they have parameters
 before gradParameters being accumulated.</p><div class="fullcomment"><div class="comment cmt"><p>The scale of gradient weight and gradient bias
 before gradParameters being accumulated.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.RecurrentDecoder#seqLength" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="seqLength:Int"></a>
+      <a id="seqLength:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">seqLength</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">sequence length of the output
+</p>
+    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#setHiddenState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setHiddenState(hiddenState:com.intel.analytics.bigdl.nn.abstractnn.Activity):Unit"></a>
+      <a id="setHiddenState(Activity):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setHiddenState</span><span class="params">(<span name="hiddenState">hiddenState: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setLine" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setLine(line:String):AbstractModule.this.type"></a>
       <a id="setLine(String):RecurrentDecoder.this.type"></a>
@@ -1404,19 +1428,6 @@ before gradParameters being accumulated.
 </p><div class="fullcomment"><div class="comment cmt"><p>Set the scale of gradientWeight
 </p></div><dl class="paramcmts block"><dt class="param">w</dt><dd class="cmt"><p>the value of the scale of gradientWeight</p></dd><dt>returns</dt><dd class="cmt"><p>this
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#setState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setState(state:com.intel.analytics.bigdl.nn.abstractnn.Activity):Unit"></a>
-      <a id="setState(Activity):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">setState</span><span class="params">(<span name="state">state: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setWeightsBias" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setWeightsBias(newWeights:Array[com.intel.analytics.bigdl.tensor.Tensor[T]]):AbstractModule.this.type"></a>
       <a id="setWeightsBias(Array[Tensor[T]]):RecurrentDecoder.this.type"></a>
@@ -1445,6 +1456,32 @@ before gradParameters being accumulated.
       </h4>
       <p class="shortcomment cmt">Sharing weights, bias, gradWeights across all the cells in time dim</p><div class="fullcomment"><div class="comment cmt"><p>Sharing weights, bias, gradWeights across all the cells in time dim</p></div><dl class="paramcmts block"><dt class="param">cells</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#stepGradBuffer" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="stepGradBuffer:com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="stepGradBuffer:Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">stepGradBuffer</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Recurrent#stepInput2CellBuf" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="stepInput2CellBuf:com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="stepInput2CellBuf:Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">stepInput2CellBuf</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RecurrentDecoder.T">T</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

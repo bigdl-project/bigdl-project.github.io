@@ -241,7 +241,7 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        User should always use Sample.from_ndarray to construct Sample.</span>
-<span class="sd">        :param features: a JTensor</span>
+<span class="sd">        :param features: a list of JTensors</span>
 <span class="sd">        :param label: a JTensor</span>
 <span class="sd">        :param bigdl_type: &quot;double&quot; or &quot;float&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -253,21 +253,27 @@
     <span class="k">def</span> <span class="nf">from_ndarray</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Convert a ndarray of features and label to Sample, which would be used in Java side.</span>
+<span class="sd">        :param features: an ndarray or a list of ndarrays</span>
+<span class="sd">        :param label: an ndarray or a scalar</span>
+<span class="sd">        :param bigdl_type: &quot;double&quot; or &quot;float&quot;</span>
 
 <span class="sd">        &gt;&gt;&gt; import numpy as np</span>
 <span class="sd">        &gt;&gt;&gt; from bigdl.util.common import callBigDlFunc</span>
 <span class="sd">        &gt;&gt;&gt; from numpy.testing import assert_allclose</span>
 <span class="sd">        &gt;&gt;&gt; sample = Sample.from_ndarray(np.random.random((2,3)), np.random.random((2,3)))</span>
 <span class="sd">        &gt;&gt;&gt; sample_back = callBigDlFunc(&quot;float&quot;, &quot;testSample&quot;, sample)</span>
-<span class="sd">        &gt;&gt;&gt; assert_allclose(sample.features.to_ndarray(), sample_back.features.to_ndarray())</span>
+<span class="sd">        &gt;&gt;&gt; assert_allclose(sample.features[0].to_ndarray(), sample_back.features[0].to_ndarray())</span>
 <span class="sd">        &gt;&gt;&gt; assert_allclose(sample.label.to_ndarray(), sample_back.label.to_ndarray())</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">),</span> \
-            <span class="s2">&quot;features should be a np.ndarray, not </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="n">features</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">),</span> \
+                <span class="s2">&quot;features should be a list of np.ndarray, not </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span> <span class="c1"># in case label is a scalar.</span>
             <span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
-            <span class="n">features</span><span class="o">=</span><span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">features</span><span class="p">),</span>
+            <span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">features</span><span class="p">],</span>
             <span class="n">label</span><span class="o">=</span><span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">label</span><span class="p">),</span>
             <span class="n">bigdl_type</span><span class="o">=</span><span class="n">bigdl_type</span><span class="p">)</span></div>
 

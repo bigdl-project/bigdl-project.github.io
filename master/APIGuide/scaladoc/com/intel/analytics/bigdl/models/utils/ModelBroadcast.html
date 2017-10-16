@@ -39,9 +39,9 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>ModelBroadcast is used to broadcast model when doing model inference.
-Note: do not use it in model training since the broadcast models share weights and biases
-It shortens the broadcast time, which is especially useful when the model size is large</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>data type
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>ModelBroadcast is used to broadcast model.</p><p>Note: If you want to use this to broadcast training model, please use value(true) to get
+the model. And before broadcasting please make sure the model's parameter is compacted.
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>data type
 </p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -369,20 +369,22 @@ then broadcast the parameters and model(without parameters) separately</p></div>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.models.utils.ModelBroadcast#value" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="value():com.intel.analytics.bigdl.Module[T]"></a>
-      <a id="value():Module[T]"></a>
+      <a id="value(initGradient:Boolean):com.intel.analytics.bigdl.Module[T]"></a>
+      <a id="value(Boolean):Module[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">value</span><span class="params">()</span><span class="result">: <a href="../../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.models.utils.ModelBroadcast.T">T</span>]</span>
+        <span class="name">value</span><span class="params">(<span name="initGradient">initGradient: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="../../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.models.utils.ModelBroadcast.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">get the broadcast model
-put the weight and bias back to the model</p><div class="fullcomment"><div class="comment cmt"><p>get the broadcast model
-put the weight and bias back to the model</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>model
+put the weight and bias back to the model
+</p><div class="fullcomment"><div class="comment cmt"><p>get the broadcast model
+put the weight and bias back to the model
+</p></div><dl class="paramcmts block"><dt class="param">initGradient</dt><dd class="cmt"><p>if init gradParameter.</p></dd><dt>returns</dt><dd class="cmt"><p>model
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>

@@ -806,6 +806,74 @@
                                    <span class="n">weight_init_method</span><span class="p">,</span> <span class="n">bias_init_method</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div></div>
 
+<div class="viewcode-block" id="SparseLinear"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SparseLinear">[docs]</a><span class="k">class</span> <span class="nc">SparseLinear</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    SparseLinear is the sparse version of module Linear. SparseLinear has two different from Linear:</span>
+<span class="sd">    firstly, SparseLinear&#39;s input Tensor is a SparseTensor. Secondly, SparseLinear doesn&#39;t backward</span>
+<span class="sd">    gradient to next layer in the backpropagation by default, as the gradInput of SparseLinear is</span>
+<span class="sd">    useless and very big in most cases.</span>
+
+<span class="sd">    But, considering model like Wide&amp;Deep, we provide backwardStart and backwardLength to backward</span>
+<span class="sd">    part of the gradient to next layer.</span>
+
+<span class="sd">    :param input_size the size the each input sample</span>
+<span class="sd">    :param output_size the size of the module output of each sample</span>
+<span class="sd">    :param backwardStart backwardStart index, counting from 1</span>
+<span class="sd">    :param backwardLength backward length</span>
+<span class="sd">    :param withBias if has bias</span>
+<span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.</span>
+<span class="sd">    :param bRegularizer: instance of [[Regularizer]]applied to the bias.</span>
+<span class="sd">    :param init_weight: the optional initial value for the weight</span>
+<span class="sd">    :param init_bias: the optional initial value for the bias</span>
+<span class="sd">    :param init_grad_weight: the optional initial value for the grad_weight</span>
+<span class="sd">    :param init_grad_bias: the optional initial value for the grad_bias</span>
+
+
+<span class="sd">    &gt;&gt;&gt; sparselinear = SparseLinear(100, 10, True, wRegularizer=L1Regularizer(0.5), bRegularizer=L1Regularizer(0.5))</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    creating: createSparseLinear</span>
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; init_weight = np.random.randn(10, 100)</span>
+<span class="sd">    &gt;&gt;&gt; init_bias = np.random.randn(10)</span>
+<span class="sd">    &gt;&gt;&gt; init_grad_weight = np.zeros([10, 100])</span>
+<span class="sd">    &gt;&gt;&gt; init_grad_bias = np.zeros([10])</span>
+<span class="sd">    &gt;&gt;&gt; sparselinear = SparseLinear(100, 10, True, 1, 5, L1Regularizer(0.5), L1Regularizer(0.5), init_weight, init_bias, init_grad_weight, init_grad_bias)</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    creating: createSparseLinear</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">with_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">backwardStart</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">backwardLength</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">init_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">init_bias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">init_grad_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">init_grad_bias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SparseLinear</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span>
+                                     <span class="n">with_bias</span><span class="p">,</span> <span class="n">backwardStart</span><span class="p">,</span> <span class="n">backwardLength</span><span class="p">,</span>
+                                     <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">,</span>
+                                     <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_weight</span><span class="p">),</span>
+                                     <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_bias</span><span class="p">),</span>
+                                     <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_grad_weight</span><span class="p">),</span>
+                                     <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_grad_bias</span><span class="p">))</span>
+
+<div class="viewcode-block" id="SparseLinear.set_init_method"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SparseLinear.set_init_method">[docs]</a>    <span class="k">def</span> <span class="nf">set_init_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bias_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setInitMethod&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                      <span class="n">weight_init_method</span><span class="p">,</span> <span class="n">bias_init_method</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
+
+<div class="viewcode-block" id="DenseToSparse"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.DenseToSparse">[docs]</a><span class="k">class</span> <span class="nc">DenseToSparse</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Convert DenseTensor to SparseTensor.</span>
+
+
+<span class="sd">    &gt;&gt;&gt; DenseToSparse = DenseToSparse()</span>
+<span class="sd">    creating: createDenseToSparse</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DenseToSparse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ReLU"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.ReLU">[docs]</a><span class="k">class</span> <span class="nc">ReLU</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
@@ -1181,25 +1249,24 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Recurrent</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Recurrent.get_state"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Recurrent.get_state">[docs]</a>    <span class="k">def</span> <span class="nf">get_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Recurrent.get_hidden_state"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Recurrent.get_hidden_state">[docs]</a>    <span class="k">def</span> <span class="nf">get_hidden_state</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        get hidden state and cell at last time step.</span>
 <span class="sd">        </span>
 <span class="sd">        :return: list of hidden state and cell</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">state</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getState&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getHiddenState&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>        
         <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">tensor</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
-                <span class="n">state</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span>
+            <span class="n">state</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">state</span></div>
-
-<div class="viewcode-block" id="Recurrent.set_state"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Recurrent.set_state">[docs]</a>    <span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+    
+<div class="viewcode-block" id="Recurrent.set_hidden_state"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Recurrent.set_hidden_state">[docs]</a>    <span class="k">def</span> <span class="nf">set_hidden_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">states</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        set hidden state and cell at first time step.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">jstate</span><span class="p">,</span> <span class="n">state_is_table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_input</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
-        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setState&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">jstate</span><span class="p">,</span> <span class="n">state_is_table</span><span class="p">)</span></div></div>
-
+        <span class="n">jstate</span><span class="p">,</span> <span class="n">state_is_table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_input</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setHiddenState&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">jstate</span><span class="p">,</span> <span class="n">state_is_table</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="RecurrentDecoder"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.RecurrentDecoder">[docs]</a><span class="k">class</span> <span class="nc">RecurrentDecoder</span><span class="p">(</span><span class="n">Recurrent</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -1207,11 +1274,10 @@
 <span class="sd">    a prediction of the next timestep based on the prediction we made from</span>
 <span class="sd">    the previous timestep. Input for RecurrentDecoder is dynamically composed</span>
 <span class="sd">    during training. input at t(i) is output at t(i-1), input at t(0) is</span>
-<span class="sd">    user input, and user input has to be batch x ???(depends on cell type)</span>
-<span class="sd">    without time information.</span>
+<span class="sd">    user input, and user input has to be batch x stepShape(shape of the input</span>
+<span class="sd">    at a single time step).</span>
 
-<span class="sd">    Different types of rnn cells can be added using add() function. Currently</span>
-<span class="sd">    only support lstmpeephole, convlstm, convlstm3D cell.</span>
+<span class="sd">    Different types of rnn cells can be added using add() function.</span>
 
 <span class="sd">    &gt;&gt;&gt; recurrent_decoder = RecurrentDecoder(output_length = 5)</span>
 <span class="sd">    creating: createRecurrentDecoder</span>
@@ -2357,6 +2423,28 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">JoinTable</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                         <span class="n">dimension</span><span class="p">,</span>
                                         <span class="n">n_input_dims</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SparseJoinTable"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SparseJoinTable">[docs]</a><span class="k">class</span> <span class="nc">SparseJoinTable</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    :: Experimental ::</span>
+
+<span class="sd">    Sparse version of JoinTable. Backward just pass the origin gradOutput back to</span>
+<span class="sd">    the next layers without split. So this layer may just works in Wide&amp;Deep like models.</span>
+
+
+<span class="sd">    :param dimension: to be join in this dimension</span>
+
+
+<span class="sd">    &gt;&gt;&gt; joinTable = SparseJoinTable(1)</span>
+<span class="sd">    creating: createSparseJoinTable</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">dimension</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SparseJoinTable</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                        <span class="n">dimension</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="L1Penalty"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.L1Penalty">[docs]</a><span class="k">class</span> <span class="nc">L1Penalty</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>

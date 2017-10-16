@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>Linear - bigdl 0.3.0-SNAPSHOT API - com.intel.analytics.bigdl.nn.Linear</title>
-          <meta name="description" content="Linear - bigdl 0.3.0 - SNAPSHOT API - com.intel.analytics.bigdl.nn.Linear" />
-          <meta name="keywords" content="Linear bigdl 0.3.0 SNAPSHOT API com.intel.analytics.bigdl.nn.Linear" />
+          <title>DenseToSparse - bigdl 0.3.0-SNAPSHOT API - com.intel.analytics.bigdl.nn.DenseToSparse</title>
+          <meta name="description" content="DenseToSparse - bigdl 0.3.0 - SNAPSHOT API - com.intel.analytics.bigdl.nn.DenseToSparse" />
+          <meta name="keywords" content="DenseToSparse bigdl 0.3.0 SNAPSHOT API com.intel.analytics.bigdl.nn.DenseToSparse" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -12,7 +12,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
-            var hash = 'com.intel.analytics.bigdl.nn.Linear';
+            var hash = 'com.intel.analytics.bigdl.nn.DenseToSparse';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -24,9 +24,9 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="Linear$.html" title="Go to companion"><img src="../../../../../lib/class_to_object_big.png" /></a>
+        <a href="DenseToSparse$.html" title="Go to companion"><img src="../../../../../lib/class_to_object_big.png" /></a>
         <p id="owner"><a href="../../../../package.html" class="extype" name="com">com</a>.<a href="../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.nn">nn</a></p>
-        <h1><a href="Linear$.html" title="Go to companion">Linear</a></h1>
+        <h1><a href="DenseToSparse$.html" title="Go to companion">DenseToSparse</a></h1>
       </div>
 
       <h4 id="signature" class="signature">
@@ -35,28 +35,14 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">Linear</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>] with <a href="abstractnn/Initializable.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">Initializable</a></span>
+        <span class="name">DenseToSparse</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>The <code>Linear</code> module applies a linear transformation to the input data,
-i.e. <code>y = Wx + b</code>. The <code>input</code> given in <code>forward(input)</code> must be either
-a vector (1D tensor) or matrix (2D tensor). If the input is a vector, it must
-have the size of <code>inputSize</code>. If it is a matrix, then each row is assumed to be
-an input sample of given batch (the number of rows means the batch size and
-the number of columns should be equal to the <code>inputSize</code>).
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@SerialVersionUID</span><span class="args">(<span>
-      
-      <span class="symbol">359656776803598943L</span>
-    </span>)</span>
-              
-        </dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Convert DenseTensor to SparseTensor.</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>The numeric type in the criterion, usually which are <span class="extype" name="Float">Float</span> or <span class="extype" name="Double">Double</span>
+</p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="abstractnn/Initializable.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">Initializable</a>, <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>], <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="SparseLinear.html" class="extype" name="com.intel.analytics.bigdl.nn.SparseLinear">SparseLinear</a></div>
+          <div class="superTypes hiddenContent"><a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>], <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -74,7 +60,7 @@ the number of columns should be equal to the <code>inputSize</code>).
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.intel.analytics.bigdl.nn.Linear"><span>Linear</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable"><span>Initializable</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule"><span>TensorModule</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule"><span>AbstractModule</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.intel.analytics.bigdl.nn.DenseToSparse"><span>DenseToSparse</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule"><span>TensorModule</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule"><span>AbstractModule</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -94,19 +80,19 @@ the number of columns should be equal to the <code>inputSize</code>).
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="com.intel.analytics.bigdl.nn.Linear#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(inputSize:Int,outputSize:Int,withBias:Boolean,wRegularizer:com.intel.analytics.bigdl.optim.Regularizer[T],bRegularizer:com.intel.analytics.bigdl.optim.Regularizer[T],initWeight:com.intel.analytics.bigdl.tensor.Tensor[T],initBias:com.intel.analytics.bigdl.tensor.Tensor[T],initGradWeight:com.intel.analytics.bigdl.tensor.Tensor[T],initGradBias:com.intel.analytics.bigdl.tensor.Tensor[T])(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Linear[T]"></a>
-      <a id="&lt;init&gt;:Linear[T]"></a>
+              <ol><li name="com.intel.analytics.bigdl.nn.DenseToSparse#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;()(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.DenseToSparse[T]"></a>
+      <a id="&lt;init&gt;:DenseToSparse[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Linear</span><span class="params">(<span name="inputSize">inputSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="outputSize">outputSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="withBias">withBias: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="wRegularizer">wRegularizer: <a href="../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>] = <span class="symbol">null</span></span>, <span name="bRegularizer">bRegularizer: <a href="../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>] = <span class="symbol">null</span></span>, <span name="initWeight">initWeight: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>] = <span class="symbol">null</span></span>, <span name="initBias">initBias: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>] = <span class="symbol">null</span></span>, <span name="initGradWeight">initGradWeight: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>] = <span class="symbol">null</span></span>, <span name="initGradBias">initGradBias: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>] = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>)</span>
+        <span class="name">DenseToSparse</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">inputSize</dt><dd class="cmt"><p>the size the each input sample</p></dd><dt class="param">outputSize</dt><dd class="cmt"><p>the size of the module output of each sample</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">ev</dt><dd class="cmt"></dd></dl></div>
     </li></ol>
             </div>
 
@@ -181,8 +167,8 @@ the number of columns should be equal to the <code>inputSize</code>).
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#accGradParameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="accGradParameters(input:com.intel.analytics.bigdl.tensor.Tensor[T],gradOutput:com.intel.analytics.bigdl.tensor.Tensor[T]):Unit"></a>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#accGradParameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="accGradParameters(input:A,gradOutput:B):Unit"></a>
       <a id="accGradParameters(Tensor[T],Tensor[T]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -190,7 +176,7 @@ the number of columns should be equal to the <code>inputSize</code>).
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">accGradParameters</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>, <span name="gradOutput">gradOutput: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">accGradParameters</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>, <span name="gradOutput">gradOutput: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Computing the gradient of the module with respect to its own parameters.</p><div class="fullcomment"><div class="comment cmt"><p>Computing the gradient of the module with respect to its own parameters. Many modules do not
@@ -198,20 +184,7 @@ perform this step as they do not have any parameters. The state variable name fo
 parameters is module dependent. The module is expected to accumulate the gradients with
 respect to the parameters in some variable.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"></dd><dt class="param">gradOutput</dt><dd class="cmt"><p>
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#addBuffer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="addBuffer:com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="addBuffer:Tensor[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">addBuffer</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
-      </span>
-      </h4>
-      
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="apply(name:String):Option[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]"></a>
       <a id="apply(String):Option[AbstractModule[Activity,Activity,T]]"></a>
@@ -221,7 +194,7 @@ respect to the parameters in some variable.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]]</span>
+        <span class="name">apply</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Find a module with given name.</p><div class="fullcomment"><div class="comment cmt"><p>Find a module with given name. If there is no module with given name, it will return None. If
@@ -240,19 +213,6 @@ there are multiple modules with the given name, an exception will be thrown.</p>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#bRegularizer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="bRegularizer:com.intel.analytics.bigdl.optim.Regularizer[T]"></a>
-      <a id="bRegularizer:Regularizer[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">var</span>
-      </span>
-      <span class="symbol">
-        <span class="name">bRegularizer</span><span class="result">: <a href="../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
-      </span>
-      </h4>
-      
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#backward" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="backward(input:A,gradOutput:B):A"></a>
       <a id="backward(Tensor[T],Tensor[T]):Tensor[T]"></a>
@@ -262,7 +222,7 @@ there are multiple modules with the given name, an exception will be thrown.</p>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">backward</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>, <span name="gradOutput">gradOutput: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
+        <span class="name">backward</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>, <span name="gradOutput">gradOutput: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Performs a back-propagation step through the module, with respect to the given input.</p><div class="fullcomment"><div class="comment cmt"><p>Performs a back-propagation step through the module, with respect to the given input. In
@@ -284,32 +244,6 @@ will compute incorrect gradients.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#bias" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="bias:com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="bias:Tensor[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">bias</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
-      </span>
-      </h4>
-      
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.Initializable#biasInitMethod" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="biasInitMethod:com.intel.analytics.bigdl.nn.InitializationMethod"></a>
-      <a id="biasInitMethod:InitializationMethod"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">var</span>
-      </span>
-      <span class="symbol">
-        <span class="name">biasInitMethod</span><span class="result">: <a href="InitializationMethod.html" class="extype" name="com.intel.analytics.bigdl.nn.InitializationMethod">InitializationMethod</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/Initializable.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">Initializable</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#canEqual" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="canEqual(other:Any):Boolean"></a>
       <a id="canEqual(Any):Boolean"></a>
@@ -325,36 +259,36 @@ will compute incorrect gradients.
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#checkEngineType" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkEngineType():AbstractModule.this.type"></a>
-      <a id="checkEngineType():Linear.this.type"></a>
+      <a id="checkEngineType():DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">checkEngineType</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">checkEngineType</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">get execution engine type
 </p><div class="fullcomment"><div class="comment cmt"><p>get execution engine type
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#clearState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="clearState():Linear.this.type"></a>
-      <a id="clearState():Linear.this.type"></a>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#clearState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clearState():AbstractModule.this.type"></a>
+      <a id="clearState():DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clearState</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">clearState</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Clear cached activities to save storage space or network bandwidth.</p><div class="fullcomment"><div class="comment cmt"><p>Clear cached activities to save storage space or network bandwidth. Note that we use
 Tensor.set to keep some information like tensor share</p><p>The subclass should override this method if it allocate some extra resource, and call the
 super.clearState in the override method
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -383,20 +317,20 @@ super.clearState in the override method
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cloneModule</span><span class="params">()</span><span class="result">: <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
+        <span class="name">cloneModule</span><span class="params">()</span><span class="result">: <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#copyStatus" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="copyStatus(src:com.intel.analytics.bigdl.Module[T]):AbstractModule.this.type"></a>
-      <a id="copyStatus(Module[T]):Linear.this.type"></a>
+      <a id="copyStatus(Module[T]):DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">copyStatus</span><span class="params">(<span name="src">src: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">copyStatus</span><span class="params">(<span name="src">src: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Copy the useful running status from src to this.</p><div class="fullcomment"><div class="comment cmt"><p>Copy the useful running status from src to this.</p><p>The subclass should override this method if it has some parameters besides weight and bias.
@@ -416,8 +350,8 @@ Such as runningMean and runningVar of BatchNormalization.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="equals(obj:Any):Boolean"></a>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(other:Any):Boolean"></a>
       <a id="equals(Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -425,10 +359,10 @@ Such as runningMean and runningVar of BatchNormalization.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="obj">obj: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">equals</span><span class="params">(<span name="other">other: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a> → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a> → AnyRef → Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#evaluate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="evaluate(dataSet:com.intel.analytics.bigdl.dataset.LocalDataSet[com.intel.analytics.bigdl.dataset.MiniBatch[T]],vMethods:Array[com.intel.analytics.bigdl.optim.ValidationMethod[T]]):Array[(com.intel.analytics.bigdl.optim.ValidationResult,com.intel.analytics.bigdl.optim.ValidationMethod[T])]"></a>
       <a id="evaluate(LocalDataSet[MiniBatch[T]],Array[ValidationMethod[T]]):Array[(ValidationResult,ValidationMethod[T])]"></a>
@@ -438,7 +372,7 @@ Such as runningMean and runningVar of BatchNormalization.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">evaluate</span><span class="params">(<span name="dataSet">dataSet: <a href="../dataset/LocalDataSet.html" class="extype" name="com.intel.analytics.bigdl.dataset.LocalDataSet">LocalDataSet</a>[<a href="../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]]</span>, <span name="vMethods">vMethods: <span class="extype" name="scala.Array">Array</span>[<a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="../optim/ValidationResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationResult">ValidationResult</a>, <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>])]</span>
+        <span class="name">evaluate</span><span class="params">(<span name="dataSet">dataSet: <a href="../dataset/LocalDataSet.html" class="extype" name="com.intel.analytics.bigdl.dataset.LocalDataSet">LocalDataSet</a>[<a href="../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]]</span>, <span name="vMethods">vMethods: <span class="extype" name="scala.Array">Array</span>[<a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="../optim/ValidationResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationResult">ValidationResult</a>, <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>])]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
@@ -451,7 +385,7 @@ Such as runningMean and runningVar of BatchNormalization.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">evaluate</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]]</span>, <span name="vMethods">vMethods: <span class="extype" name="scala.Array">Array</span>[<a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="../optim/ValidationResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationResult">ValidationResult</a>, <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>])]</span>
+        <span class="name">evaluate</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]]</span>, <span name="vMethods">vMethods: <span class="extype" name="scala.Array">Array</span>[<a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="../optim/ValidationResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationResult">ValidationResult</a>, <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">use ValidationMethod to evaluate module</p><div class="fullcomment"><div class="comment cmt"><p>use ValidationMethod to evaluate module</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for test</p></dd><dt class="param">vMethods</dt><dd class="cmt"><p>validation methods</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchsize of all partitions,
@@ -459,14 +393,14 @@ Such as runningMean and runningVar of BatchNormalization.
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#evaluate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="evaluate():AbstractModule.this.type"></a>
-      <a id="evaluate():Linear.this.type"></a>
+      <a id="evaluate():DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">evaluate</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">evaluate</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
@@ -498,7 +432,7 @@ Such as runningMean and runningVar of BatchNormalization.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">forward</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
+        <span class="name">forward</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Takes an input object, and computes the corresponding output of the module.</p><div class="fullcomment"><div class="comment cmt"><p>Takes an input object, and computes the corresponding output of the module. After a forward,
@@ -520,14 +454,14 @@ the output state variable should have been updated to the new value.
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#freeze" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="freeze():AbstractModule.this.type"></a>
-      <a id="freeze():Linear.this.type"></a>
+      <a id="freeze():DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">freeze</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">freeze</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">freeze the layer, its parameters(weight/bias, if exists)
@@ -600,14 +534,14 @@ are not changed in training process
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getParameters</span><span class="params">()</span><span class="result">: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>])</span>
+        <span class="name">getParameters</span><span class="params">()</span><span class="result">: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>])</span>
       </span>
       </h4>
       <p class="shortcomment cmt">This method compact all parameters and gradients of the model into two tensors.</p><div class="fullcomment"><div class="comment cmt"><p>This method compact all parameters and gradients of the model into two tensors. So it's easier
 to use optim method
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#getParametersTable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#getParametersTable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getParametersTable():com.intel.analytics.bigdl.utils.Table"></a>
       <a id="getParametersTable():Table"></a>
       <h4 class="signature">
@@ -626,7 +560,7 @@ The result table is a structure of Table(ModuleName -&gt; Table(ParameterName -&
 and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get the weight of a module named conv1:
   table[Table](&quot;conv1&quot;)[Tensor[T]](&quot;weight&quot;).</p><p>Custom modules should override this function if they have parameters.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>Table
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#getPrintName" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getPrintName():String"></a>
       <a id="getPrintName():String"></a>
@@ -679,7 +613,7 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getTimes</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[_ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, _ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>], <span class="extype" name="scala.Long">Long</span>, <span class="extype" name="scala.Long">Long</span>)]</span>
+        <span class="name">getTimes</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[_ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, _ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>], <span class="extype" name="scala.Long">Long</span>, <span class="extype" name="scala.Long">Long</span>)]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
@@ -692,23 +626,10 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getWeightsBias</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]]</span>
+        <span class="name">getWeightsBias</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Get weight and bias for the module</p><div class="fullcomment"><div class="comment cmt"><p>Get weight and bias for the module</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>array of weights and bias</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#gradBias" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="gradBias:com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="gradBias:Tensor[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">gradBias</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
-      </span>
-      </h4>
-      
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#gradInput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="gradInput:A"></a>
       <a id="gradInput:Tensor[T]"></a>
@@ -718,24 +639,11 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">gradInput</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
+        <span class="name">gradInput</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">The cached gradient of activities.</p><div class="fullcomment"><div class="comment cmt"><p>The cached gradient of activities. So we don't compute it again when need it
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#gradWeight" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="gradWeight:com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="gradWeight:Tensor[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">gradWeight</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
-      </span>
-      </h4>
-      
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#hasName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hasName:Boolean"></a>
       <a id="hasName:Boolean"></a>
@@ -749,7 +657,7 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
       <h4 class="signature">
@@ -761,20 +669,7 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a> → AnyRef → Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#inputSize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="inputSize:Int"></a>
-      <a id="inputSize:Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">inputSize</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">the size the each input sample</p>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a> → AnyRef → Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#inputs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="inputs(first:(com.intel.analytics.bigdl.nn.Graph.ModuleNode[T],Int),nodesWithIndex:(com.intel.analytics.bigdl.nn.Graph.ModuleNode[T],Int)*):com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]"></a>
       <a id="inputs((ModuleNode[T],Int),(ModuleNode[T],Int)*):ModuleNode[T]"></a>
@@ -784,7 +679,7 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">inputs</span><span class="params">(<span name="first">first: (<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>], <span class="extype" name="scala.Int">Int</span>)</span>, <span name="nodesWithIndex">nodesWithIndex: (<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>], <span class="extype" name="scala.Int">Int</span>)*</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
+        <span class="name">inputs</span><span class="params">(<span name="first">first: (<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>], <span class="extype" name="scala.Int">Int</span>)</span>, <span name="nodesWithIndex">nodesWithIndex: (<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>], <span class="extype" name="scala.Int">Int</span>)*</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Build graph: some other modules point to current module</p><div class="fullcomment"><div class="comment cmt"><p>Build graph: some other modules point to current module</p></div><dl class="paramcmts block"><dt class="param">first</dt><dd class="cmt"><p>distinguish from another inputs when input parameter list is empty</p></dd><dt class="param">nodesWithIndex</dt><dd class="cmt"><p>upstream module nodes and the output tensor index. The start index is 1.</p></dd><dt>returns</dt><dd class="cmt"><p>node containing current module
@@ -798,7 +693,7 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">inputs</span><span class="params">(<span name="nodes">nodes: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]*</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
+        <span class="name">inputs</span><span class="params">(<span name="nodes">nodes: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]*</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Build graph: some other modules point to current module</p><div class="fullcomment"><div class="comment cmt"><p>Build graph: some other modules point to current module</p></div><dl class="paramcmts block"><dt class="param">nodes</dt><dd class="cmt"><p>upstream module nodes</p></dd><dt>returns</dt><dd class="cmt"><p>node containing current module
@@ -844,28 +739,28 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#loadModelWeights" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="loadModelWeights(srcModel:com.intel.analytics.bigdl.Module[Float],matchAll:Boolean):AbstractModule.this.type"></a>
-      <a id="loadModelWeights(Module[Float],Boolean):Linear.this.type"></a>
+      <a id="loadModelWeights(Module[Float],Boolean):DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">loadModelWeights</span><span class="params">(<span name="srcModel">srcModel: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="matchAll">matchAll: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">loadModelWeights</span><span class="params">(<span name="srcModel">srcModel: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="matchAll">matchAll: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">copy weights from another model, mapping by layer name</p><div class="fullcomment"><div class="comment cmt"><p>copy weights from another model, mapping by layer name</p></div><dl class="paramcmts block"><dt class="param">srcModel</dt><dd class="cmt"><p>model to copy from</p></dd><dt class="param">matchAll</dt><dd class="cmt"><p>whether to match all layers' weights and bias,</p></dd><dt>returns</dt><dd class="cmt"><p>current module
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#loadWeights" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="loadWeights(weightPath:String,matchAll:Boolean):AbstractModule.this.type"></a>
-      <a id="loadWeights(String,Boolean):Linear.this.type"></a>
+      <a id="loadWeights(String,Boolean):DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">loadWeights</span><span class="params">(<span name="weightPath">weightPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="matchAll">matchAll: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">loadWeights</span><span class="params">(<span name="weightPath">weightPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="matchAll">matchAll: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">load pretrained weights and bias to current module</p><div class="fullcomment"><div class="comment cmt"><p>load pretrained weights and bias to current module</p></div><dl class="paramcmts block"><dt class="param">weightPath</dt><dd class="cmt"><p>file to store weights and bias</p></dd><dt class="param">matchAll</dt><dd class="cmt"><p>whether to match all layers' weights and bias,
@@ -919,25 +814,12 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">output</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
+        <span class="name">output</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">The cached output.</p><div class="fullcomment"><div class="comment cmt"><p>The cached output. So we don't compute it again when need it
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#outputSize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="outputSize:Int"></a>
-      <a id="outputSize:Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">outputSize</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">the size of the module output of each sample</p>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#parameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#parameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="parameters():(Array[com.intel.analytics.bigdl.tensor.Tensor[T]],Array[com.intel.analytics.bigdl.tensor.Tensor[T]])"></a>
       <a id="parameters():(Array[Tensor[T]],Array[Tensor[T]])"></a>
       <h4 class="signature">
@@ -946,13 +828,13 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">parameters</span><span class="params">()</span><span class="result">: (<span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]], <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]])</span>
+        <span class="name">parameters</span><span class="params">()</span><span class="result">: (<span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]], <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]])</span>
       </span>
       </h4>
       <p class="shortcomment cmt">This function returns two arrays.</p><div class="fullcomment"><div class="comment cmt"><p>This function returns two arrays. One for the weights and the other the gradients
 Custom modules should override this function if they have parameters
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>(Array of weights, Array of grad)
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#predict" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="predict(dataset:org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.dataset.Sample[T]],batchSize:Int,shareBuffer:Boolean):org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.nn.abstractnn.Activity]"></a>
       <a id="predict(RDD[Sample[T]],Int,Boolean):RDD[Activity]"></a>
@@ -962,7 +844,7 @@ Custom modules should override this function if they have parameters
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">predict</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="shareBuffer">shareBuffer: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>]</span>
+        <span class="name">predict</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="shareBuffer">shareBuffer: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">module predict, return the probability distribution</p><div class="fullcomment"><div class="comment cmt"><p>module predict, return the probability distribution</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for prediction</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchSize for all partitions.
@@ -977,7 +859,7 @@ Custom modules should override this function if they have parameters
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">predictClass</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+        <span class="name">predictClass</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">module predict, return the predict label</p><div class="fullcomment"><div class="comment cmt"><p>module predict, return the predict label</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for prediction</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchSize for all partitions.
@@ -992,11 +874,11 @@ Custom modules should override this function if they have parameters
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">quantize</span><span class="params">()</span><span class="result">: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
+        <span class="name">quantize</span><span class="params">()</span><span class="result">: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#reset" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#reset" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="reset():Unit"></a>
       <a id="reset():Unit"></a>
       <h4 class="signature">
@@ -1008,7 +890,7 @@ Custom modules should override this function if they have parameters
         <span class="name">reset</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a> → <a href="abstractnn/Initializable.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">Initializable</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#resetTimes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="resetTimes():Unit"></a>
       <a id="resetTimes():Unit"></a>
@@ -1024,27 +906,27 @@ Custom modules should override this function if they have parameters
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveCaffe" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveCaffe(prototxtPath:String,modelPath:String,useV2:Boolean,overwrite:Boolean):AbstractModule.this.type"></a>
-      <a id="saveCaffe(String,String,Boolean,Boolean):Linear.this.type"></a>
+      <a id="saveCaffe(String,String,Boolean,Boolean):DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">saveCaffe</span><span class="params">(<span name="prototxtPath">prototxtPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="modelPath">modelPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="useV2">useV2: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="overwrite">overwrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">saveCaffe</span><span class="params">(<span name="prototxtPath">prototxtPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="modelPath">modelPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="useV2">useV2: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="overwrite">overwrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveDefinition" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveDefinition(path:String,overWrite:Boolean):AbstractModule.this.type"></a>
-      <a id="saveDefinition(String,Boolean):Linear.this.type"></a>
+      <a id="saveDefinition(String,Boolean):DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">saveDefinition</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">saveDefinition</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Save this module definition to path.</p><div class="fullcomment"><div class="comment cmt"><p>Save this module definition to path.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to save module, local file system, HDFS and Amazon S3 is supported.
@@ -1053,14 +935,14 @@ Custom modules should override this function if they have parameters
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveModule" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveModule(path:String,overWrite:Boolean):AbstractModule.this.type"></a>
-      <a id="saveModule(String,Boolean):Linear.this.type"></a>
+      <a id="saveModule(String,Boolean):DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">saveModule</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">saveModule</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Save this module to path with protobuf format</p><div class="fullcomment"><div class="comment cmt"><p>Save this module to path with protobuf format</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to save module, local file system, HDFS and Amazon S3 is supported.
@@ -1069,27 +951,27 @@ Custom modules should override this function if they have parameters
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveTF" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveTF(inputs:Seq[(String,Seq[Int])],path:String,byteOrder:java.nio.ByteOrder,dataFormat:com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat):AbstractModule.this.type"></a>
-      <a id="saveTF(Seq[(String,Seq[Int])],String,ByteOrder,TensorflowDataFormat):Linear.this.type"></a>
+      <a id="saveTF(Seq[(String,Seq[Int])],String,ByteOrder,TensorflowDataFormat):DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">saveTF</span><span class="params">(<span name="inputs">inputs: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Int">Int</span>])]</span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="byteOrder">byteOrder: <span class="extype" name="java.nio.ByteOrder">ByteOrder</span> = <span class="symbol">ByteOrder.LITTLE_ENDIAN</span></span>, <span name="dataFormat">dataFormat: <a href="../utils/tf/TensorflowDataFormat.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat">TensorflowDataFormat</a> = <span class="symbol"><span class="name"><a href="../../../../package.html">TensorflowDataFormat.NHWC</a></span></span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">saveTF</span><span class="params">(<span name="inputs">inputs: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Int">Int</span>])]</span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="byteOrder">byteOrder: <span class="extype" name="java.nio.ByteOrder">ByteOrder</span> = <span class="symbol">ByteOrder.LITTLE_ENDIAN</span></span>, <span name="dataFormat">dataFormat: <a href="../utils/tf/TensorflowDataFormat.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat">TensorflowDataFormat</a> = <span class="symbol"><span class="name"><a href="../../../../package.html">TensorflowDataFormat.NHWC</a></span></span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveTorch" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveTorch(path:String,overWrite:Boolean):AbstractModule.this.type"></a>
-      <a id="saveTorch(String,Boolean):Linear.this.type"></a>
+      <a id="saveTorch(String,Boolean):DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">saveTorch</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">saveTorch</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
@@ -1136,42 +1018,29 @@ Custom modules should override this function if they have parameters
 before gradParameters being accumulated.</p><div class="fullcomment"><div class="comment cmt"><p>The scale of gradient weight and gradient bias
 before gradParameters being accumulated.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.Initializable#setInitMethod" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setInitMethod(weightInitMethod:com.intel.analytics.bigdl.nn.InitializationMethod,biasInitMethod:com.intel.analytics.bigdl.nn.InitializationMethod):Initializable.this.type"></a>
-      <a id="setInitMethod(InitializationMethod,InitializationMethod):Linear.this.type"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">setInitMethod</span><span class="params">(<span name="weightInitMethod">weightInitMethod: <a href="InitializationMethod.html" class="extype" name="com.intel.analytics.bigdl.nn.InitializationMethod">InitializationMethod</a> = <span class="symbol">null</span></span>, <span name="biasInitMethod">biasInitMethod: <a href="InitializationMethod.html" class="extype" name="com.intel.analytics.bigdl.nn.InitializationMethod">InitializationMethod</a> = <span class="symbol">null</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/Initializable.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">Initializable</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setLine" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setLine(line:String):AbstractModule.this.type"></a>
-      <a id="setLine(String):Linear.this.type"></a>
+      <a id="setLine(String):DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setLine</span><span class="params">(<span name="line">line: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">setLine</span><span class="params">(<span name="line">line: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setName(name:String):AbstractModule.this.type"></a>
-      <a id="setName(String):Linear.this.type"></a>
+      <a id="setName(String):DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setName</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">setName</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set the module name
@@ -1193,14 +1062,14 @@ before gradParameters being accumulated.
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setScaleB" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setScaleB(b:Double):AbstractModule.this.type"></a>
-      <a id="setScaleB(Double):Linear.this.type"></a>
+      <a id="setScaleB(Double):DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setScaleB</span><span class="params">(<span name="b">b: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">setScaleB</span><span class="params">(<span name="b">b: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set the scale of gradientBias
@@ -1209,14 +1078,14 @@ before gradParameters being accumulated.
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setScaleW" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setScaleW(w:Double):AbstractModule.this.type"></a>
-      <a id="setScaleW(Double):Linear.this.type"></a>
+      <a id="setScaleW(Double):DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setScaleW</span><span class="params">(<span name="w">w: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">setScaleW</span><span class="params">(<span name="w">w: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set the scale of gradientWeight
@@ -1225,14 +1094,14 @@ before gradParameters being accumulated.
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setWeightsBias" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setWeightsBias(newWeights:Array[com.intel.analytics.bigdl.tensor.Tensor[T]]):AbstractModule.this.type"></a>
-      <a id="setWeightsBias(Array[Tensor[T]]):Linear.this.type"></a>
+      <a id="setWeightsBias(Array[Tensor[T]]):DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setWeightsBias</span><span class="params">(<span name="newWeights">newWeights: <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">setWeightsBias</span><span class="params">(<span name="newWeights">newWeights: <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set weight and bias for the module</p><div class="fullcomment"><div class="comment cmt"><p>Set weight and bias for the module</p></div><dl class="paramcmts block"><dt class="param">newWeights</dt><dd class="cmt"><p>array of weights and bias</p></dd><dt>returns</dt><dd class="cmt"><p>
@@ -1250,7 +1119,7 @@ before gradParameters being accumulated.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.DenseToSparse#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
       <h4 class="signature">
@@ -1262,7 +1131,7 @@ before gradParameters being accumulated.
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a> → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a> → AnyRef → Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#train" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="train:Boolean"></a>
       <a id="train:Boolean"></a>
@@ -1279,33 +1148,33 @@ before gradParameters being accumulated.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#training" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="training():AbstractModule.this.type"></a>
-      <a id="training():Linear.this.type"></a>
+      <a id="training():DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">training</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">training</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#unFreeze" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="unFreeze():AbstractModule.this.type"></a>
-      <a id="unFreeze():Linear.this.type"></a>
+      <a id="unFreeze():DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">unFreeze</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name">unFreeze</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">&quot;unfreeze&quot; layer, i.</p><div class="fullcomment"><div class="comment cmt"><p>&quot;unfreeze&quot; layer, i.e. make the layer parameters(weight/bias, if exists)
 to be trained(updated) in training process
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#updateGradInput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.DenseToSparse#updateGradInput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="updateGradInput(input:com.intel.analytics.bigdl.tensor.Tensor[T],gradOutput:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
       <a id="updateGradInput(Tensor[T],Tensor[T]):Tensor[T]"></a>
       <h4 class="signature">
@@ -1314,14 +1183,14 @@ to be trained(updated) in training process
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">updateGradInput</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>, <span name="gradOutput">gradOutput: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
+        <span class="name">updateGradInput</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>, <span name="gradOutput">gradOutput: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Computing the gradient of the module with respect to its own input.</p><div class="fullcomment"><div class="comment cmt"><p>Computing the gradient of the module with respect to its own input. This is returned in
 gradInput. Also, the gradInput state variable is updated accordingly.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"></dd><dt class="param">gradOutput</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#updateOutput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.DenseToSparse#updateOutput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="updateOutput(input:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
       <a id="updateOutput(Tensor[T]):Tensor[T]"></a>
       <h4 class="signature">
@@ -1330,14 +1199,14 @@ gradInput. Also, the gradInput state variable is updated accordingly.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">updateOutput</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
+        <span class="name">updateOutput</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Computes the output using the current parameter set of the class and input.</p><div class="fullcomment"><div class="comment cmt"><p>Computes the output using the current parameter set of the class and input. This function
 returns the result which is stored in the output field.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#updateParameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#updateParameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="updateParameters(learningRate:T):Unit"></a>
       <a id="updateParameters(T):Unit"></a>
       <h4 class="signature">
@@ -1346,23 +1215,10 @@ returns the result which is stored in the output field.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">updateParameters</span><span class="params">(<span name="learningRate">learningRate: <span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">updateParameters</span><span class="params">(<span name="learningRate">learningRate: <span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#wRegularizer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="wRegularizer:com.intel.analytics.bigdl.optim.Regularizer[T]"></a>
-      <a id="wRegularizer:Regularizer[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">var</span>
-      </span>
-      <span class="symbol">
-        <span class="name">wRegularizer</span><span class="result">: <a href="../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
-      </span>
-      </h4>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -1420,46 +1276,7 @@ returns the result which is stored in the output field.
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#weight" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="weight:com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="weight:Tensor[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">weight</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</span>
-      </span>
-      </h4>
-      
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.Initializable#weightInitMethod" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="weightInitMethod:com.intel.analytics.bigdl.nn.InitializationMethod"></a>
-      <a id="weightInitMethod:InitializationMethod"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">var</span>
-      </span>
-      <span class="symbol">
-        <span class="name">weightInitMethod</span><span class="result">: <a href="InitializationMethod.html" class="extype" name="com.intel.analytics.bigdl.nn.InitializationMethod">InitializationMethod</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/Initializable.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">Initializable</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#withBias" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="withBias:Boolean"></a>
-      <a id="withBias:Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">withBias</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="com.intel.analytics.bigdl.nn.Linear#zeroGradParameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#zeroGradParameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="zeroGradParameters():Unit"></a>
       <a id="zeroGradParameters():Unit"></a>
       <h4 class="signature">
@@ -1474,7 +1291,7 @@ returns the result which is stored in the output field.
       <p class="shortcomment cmt">If the module has parameters, this will zero the accumulation of the gradients with respect
 to these parameters.</p><div class="fullcomment"><div class="comment cmt"><p>If the module has parameters, this will zero the accumulation of the gradients with respect
 to these parameters. Otherwise, it does nothing.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li></ol>
             </div>
 
@@ -1484,14 +1301,14 @@ to these parameters. Otherwise, it does nothing.
               <h3>Deprecated Value Members</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#save" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="save(path:String,overWrite:Boolean):AbstractModule.this.type"></a>
-      <a id="save(String,Boolean):Linear.this.type"></a>
+      <a id="save(String,Boolean):DenseToSparse.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: please use recommended saveModule(path, overWrite)">save</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Linear">Linear</a>.this.type</span>
+        <span class="name deprecated" title="Deprecated: please use recommended saveModule(path, overWrite)">save</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse">DenseToSparse</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Save this module to path.</p><div class="fullcomment"><div class="comment cmt"><p>Save this module to path.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to save module, local file system, HDFS and Amazon S3 is supported.
@@ -1506,12 +1323,10 @@ to these parameters. Otherwise, it does nothing.
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">
-              <h3>Inherited from <a href="abstractnn/Initializable.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">Initializable</a></h3>
-            </div><div class="parent" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">
-              <h3>Inherited from <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</h3>
+        <div class="parent" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">
+              <h3>Inherited from <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</h3>
             </div><div class="parent" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">
-              <h3>Inherited from <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.Linear.T">T</span>]</h3>
+              <h3>Inherited from <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</h3>
             </div><div class="parent" name="scala.Serializable">
               <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
             </div><div class="parent" name="java.io.Serializable">

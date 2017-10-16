@@ -1396,6 +1396,17 @@ columns should be equal to the inputSize).</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.DenseToSparse">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">DenseToSparse</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#DenseToSparse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.DenseToSparse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Convert DenseTensor to SparseTensor.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">DenseToSparse</span> <span class="o">=</span> <span class="n">DenseToSparse</span><span class="p">()</span>
+<span class="go">creating: createDenseToSparse</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.DotProduct">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">DotProduct</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#DotProduct"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.DotProduct" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
@@ -3076,8 +3087,8 @@ Different types of rnn cells can be added using add() function</p>
 </pre></div>
 </div>
 <dl class="method">
-<dt id="bigdl.nn.layer.Recurrent.get_state">
-<code class="descname">get_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Recurrent.get_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Recurrent.get_state" title="Permalink to this definition">¶</a></dt>
+<dt id="bigdl.nn.layer.Recurrent.get_hidden_state">
+<code class="descname">get_hidden_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Recurrent.get_hidden_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Recurrent.get_hidden_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>get hidden state and cell at last time step.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3090,8 +3101,8 @@ Different types of rnn cells can be added using add() function</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="bigdl.nn.layer.Recurrent.set_state">
-<code class="descname">set_state</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Recurrent.set_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Recurrent.set_state" title="Permalink to this definition">¶</a></dt>
+<dt id="bigdl.nn.layer.Recurrent.set_hidden_state">
+<code class="descname">set_hidden_state</code><span class="sig-paren">(</span><em>states</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Recurrent.set_hidden_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Recurrent.set_hidden_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>set hidden state and cell at first time step.</p>
 </dd></dl>
 
@@ -3105,10 +3116,9 @@ Different types of rnn cells can be added using add() function</p>
 a prediction of the next timestep based on the prediction we made from
 the previous timestep. Input for RecurrentDecoder is dynamically composed
 during training. input at t(i) is output at t(i-1), input at t(0) is
-user input, and user input has to be batch x ???(depends on cell type)
-without time information.</p>
-<p>Different types of rnn cells can be added using add() function. Currently
-only support lstmpeephole, convlstm, convlstm3D cell.</p>
+user input, and user input has to be batch x stepShape(shape of the input
+at a single time step).</p>
+<p>Different types of rnn cells can be added using add() function.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">recurrent_decoder</span> <span class="o">=</span> <span class="n">RecurrentDecoder</span><span class="p">(</span><span class="n">output_length</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 <span class="go">creating: createRecurrentDecoder</span>
 </pre></div>
@@ -3459,6 +3469,70 @@ SoftPlus function: f_i(x) = 1/beta * log(1 + exp(beta * x_i))</p>
 <span class="go">creating: createSoftSign</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.SparseJoinTable">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SparseJoinTable</code><span class="sig-paren">(</span><em>dimension</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SparseJoinTable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SparseJoinTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>:: Experimental</p>
+<p>Sparse version of JoinTable. Backward just pass the origin gradOutput back to
+the next layers without split. So this layer may just works in Wide&amp;Deep like models.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dimension</strong> – to be join in this dimension</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">joinTable</span> <span class="o">=</span> <span class="n">SparseJoinTable</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">creating: createSparseJoinTable</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.SparseLinear">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SparseLinear</code><span class="sig-paren">(</span><em>input_size</em>, <em>output_size</em>, <em>with_bias=True</em>, <em>backwardStart=-1</em>, <em>backwardLength=-1</em>, <em>wRegularizer=None</em>, <em>bRegularizer=None</em>, <em>init_weight=None</em>, <em>init_bias=None</em>, <em>init_grad_weight=None</em>, <em>init_grad_bias=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SparseLinear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SparseLinear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>SparseLinear is the sparse version of module Linear. SparseLinear has two different from Linear:
+firstly, SparseLinear’s input Tensor is a SparseTensor. Secondly, SparseLinear doesn’t backward
+gradient to next layer in the backpropagation by default, as the gradInput of SparseLinear is
+useless and very big in most cases.</p>
+<p>But, considering model like Wide&amp;Deep, we provide backwardStart and backwardLength to backward
+part of the gradient to next layer.</p>
+<p>:param input_size the size the each input sample
+:param output_size the size of the module output of each sample
+:param backwardStart backwardStart index, counting from 1
+:param backwardLength backward length
+:param withBias if has bias
+:param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.
+:param bRegularizer: instance of [[Regularizer]]applied to the bias.
+:param init_weight: the optional initial value for the weight
+:param init_bias: the optional initial value for the bias
+:param init_grad_weight: the optional initial value for the grad_weight
+:param init_grad_bias: the optional initial value for the grad_bias</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sparselinear</span> <span class="o">=</span> <span class="n">SparseLinear</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="o">=</span><span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">bRegularizer</span><span class="o">=</span><span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="go">creating: createL1Regularizer</span>
+<span class="go">creating: createL1Regularizer</span>
+<span class="go">creating: createSparseLinear</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">init_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">init_bias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">init_grad_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">init_grad_bias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sparselinear</span> <span class="o">=</span> <span class="n">SparseLinear</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">init_weight</span><span class="p">,</span> <span class="n">init_bias</span><span class="p">,</span> <span class="n">init_grad_weight</span><span class="p">,</span> <span class="n">init_grad_bias</span><span class="p">)</span>
+<span class="go">creating: createL1Regularizer</span>
+<span class="go">creating: createL1Regularizer</span>
+<span class="go">creating: createSparseLinear</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="bigdl.nn.layer.SparseLinear.set_init_method">
+<code class="descname">set_init_method</code><span class="sig-paren">(</span><em>weight_init_method=None</em>, <em>bias_init_method=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SparseLinear.set_init_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SparseLinear.set_init_method" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="class">

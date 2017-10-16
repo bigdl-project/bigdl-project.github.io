@@ -79,12 +79,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </code></pre>
 
 <p>Recurrent module is a container of rnn cells. Different types of rnn cells can be added using add() function.  </p>
-<p>Recurrent supports returning state and cell of its rnn cells at last time step by using getState. output of getState
-is an Activity and it can be directly used for setState function, which will set hidden state and cell at the first time step.  </p>
-<p>If contained cell is simple rnn, getState return value is a tensor(hidden state) which is <code>batch x hiddenSize</code>.<br />
-If contained cell is lstm, getState return value is a table [hidden state, cell], both size is <code>batch x hiddenSize</code>.<br />
-If contained cell is convlstm, getState return value is a table [hidden state, cell], both size is <code>batch x outputPlane x height x width</code>.<br />
-If contained cell is convlstm3D, getState return value is a table [hidden state, cell], both size is <code>batch x outputPlane x height x width x length</code>.</p>
+<p>Recurrent supports returning state and cell of its rnn cells at last time step by using getHiddenState. output of getHiddenState
+is an Activity and it can be directly used for setHiddenState function, which will set hidden state and cell at the first time step.  </p>
+<p>If contained cell is simple rnn, getHiddenState return value is a tensor(hidden state) which is <code>batch x hiddenSize</code>.<br />
+If contained cell is lstm, getHiddenState return value is a table [hidden state, cell], both size is <code>batch x hiddenSize</code>.<br />
+If contained cell is convlstm, getHiddenState return value is a table [hidden state, cell], both size is <code>batch x outputPlane x height x width</code>.<br />
+If contained cell is convlstm3D, getHiddenState return value is a table [hidden state, cell], both size is <code>batch x outputPlane x height x width x length</code>.</p>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.tensor.Tensor
 import com.intel.analytics.bigdl.nn._
@@ -102,8 +102,8 @@ for (i &lt;- 1 to 5) {
 
 val output = module.forward(input)
 
-val state = module.getState()
-module.setState(state)
+val state = module.getHiddenState()
+module.setHiddenState(state)
 
 &gt; input
 (1,.,.) =
@@ -143,8 +143,8 @@ input[0][4][0] = 1
 
 output = module.forward(input)
 
-res = module.get_state()
-module.set_state(res)
+res = module.get_hidden_state()
+module.set_hidden_state(res)
 
 &gt; input
 [[[ 0.  0.  0.  0.  1.]
@@ -222,10 +222,10 @@ array([[[ 0.69091094,  0.97150528,  0.9562254 ,  1.14894259],
 <p>RecurrentDecoder module is a container of rnn cells which used to make
 a prediction of the next timestep based on the prediction we made from
 the previous timestep.</p>
-<p>Input for RecurrentDecoder has to be batch x ???(depends on cell type) without time information. </p>
+<p>Input for RecurrentDecoder has to be batch x stepShape(shape of the input at a single time step). </p>
 <p>During training, input at t(i) is output at t(i-1), input at t(0) is
 user input.</p>
-<p>Output for RecurrentDecoder has to be batch x outputLen???(depends on cell type).</p>
+<p>Output for RecurrentDecoder has to be batch x outputLen x shape.</p>
 <p>With RecurrentDecoder, inputsize and hiddensize of the cell must be the same.</p>
 <p>Different types of rnn cells can be added using add() function.</p>
 <p>Parameters:</p>
