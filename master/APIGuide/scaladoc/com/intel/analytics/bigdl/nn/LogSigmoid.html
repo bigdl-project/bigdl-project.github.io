@@ -460,22 +460,24 @@ the output state variable should have been updated to the new value.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#freeze" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="freeze():AbstractModule.this.type"></a>
-      <a id="freeze():LogSigmoid.this.type"></a>
+      <a id="freeze(names:String*):AbstractModule.this.type"></a>
+      <a id="freeze(String*):LogSigmoid.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">freeze</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.LogSigmoid">LogSigmoid</a>.this.type</span>
+        <span class="name">freeze</span><span class="params">(<span name="names">names: <span class="extype" name="scala.Predef.String">String</span>*</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.LogSigmoid">LogSigmoid</a>.this.type</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">freeze the layer, its parameters(weight/bias, if exists)
-are not changed in training process
-</p><div class="fullcomment"><div class="comment cmt"><p>freeze the layer, its parameters(weight/bias, if exists)
-are not changed in training process
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+      <p class="shortcomment cmt">freeze the module,
+i.</p><div class="fullcomment"><div class="comment cmt"><p>freeze the module,
+i.e. their parameters(weight/bias, if exists) are not changed in training process
+if names is not empty,
+set an array of layers that match the given <code><code><code>names</code></code></code> to be &quot;freezed&quot;,
+</p></div><dl class="paramcmts block"><dt class="param">names</dt><dd class="cmt"><p>an array of layer names</p></dd><dt>returns</dt><dd class="cmt"><p>current graph model
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -1167,20 +1169,22 @@ before gradParameters being accumulated.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#unFreeze" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="unFreeze():AbstractModule.this.type"></a>
-      <a id="unFreeze():LogSigmoid.this.type"></a>
+      <a id="unFreeze(names:String*):AbstractModule.this.type"></a>
+      <a id="unFreeze(String*):LogSigmoid.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">unFreeze</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.LogSigmoid">LogSigmoid</a>.this.type</span>
+        <span class="name">unFreeze</span><span class="params">(<span name="names">names: <span class="extype" name="scala.Predef.String">String</span>*</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.LogSigmoid">LogSigmoid</a>.this.type</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">&quot;unfreeze&quot; layer, i.</p><div class="fullcomment"><div class="comment cmt"><p>&quot;unfreeze&quot; layer, i.e. make the layer parameters(weight/bias, if exists)
+      <p class="shortcomment cmt">&quot;unfreeze&quot; module, i.</p><div class="fullcomment"><div class="comment cmt"><p>&quot;unfreeze&quot; module, i.e. make the module parameters(weight/bias, if exists)
 to be trained(updated) in training process
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+if names is not empty, unfreeze layers that match given names
+</p></div><dl class="paramcmts block"><dt class="param">names</dt><dd class="cmt"><p>array of module names to unFreeze
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.LogSigmoid#updateGradInput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="updateGradInput(input:com.intel.analytics.bigdl.tensor.Tensor[T],gradOutput:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
       <a id="updateGradInput(Tensor[T],Tensor[T]):Tensor[T]"></a>

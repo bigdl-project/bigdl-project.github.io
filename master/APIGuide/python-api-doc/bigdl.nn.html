@@ -1965,8 +1965,11 @@ Takes an input object, and computes the corresponding output of the module</p>
 
 <dl class="method">
 <dt id="bigdl.nn.layer.Layer.freeze">
-<code class="descname">freeze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.freeze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.freeze" title="Permalink to this definition">¶</a></dt>
-<dd><p>freeze layer</p>
+<code class="descname">freeze</code><span class="sig-paren">(</span><em>names=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.freeze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.freeze" title="Permalink to this definition">¶</a></dt>
+<dd><p>freeze module, if names is not None, set an array of layers that match given names
+to be freezed
+:param names: an array of layer names
+:return:</p>
 </dd></dl>
 
 <dl class="method">
@@ -2290,8 +2293,10 @@ consist of class name and UUID if user doesn’t set it.</p>
 
 <dl class="method">
 <dt id="bigdl.nn.layer.Layer.unfreeze">
-<code class="descname">unfreeze</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.unfreeze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.unfreeze" title="Permalink to this definition">¶</a></dt>
-<dd><p>unfreeze layer</p>
+<code class="descname">unfreeze</code><span class="sig-paren">(</span><em>names=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.unfreeze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.unfreeze" title="Permalink to this definition">¶</a></dt>
+<dd><p>unfreeze module, if names is not None, unfreeze layers that match given names
+:param names: an array of layer names
+:return:</p>
 </dd></dl>
 
 <dl class="method">
@@ -2620,15 +2625,6 @@ If so, these nodes will be excluded in the computation.</p>
 pass your tensorflow nodes as inputs and outputs and also specify the byte_order parameter (“little_endian”
 or “big_endian”) and node_type parameter (“bigdl” or “tensorflow”)
 node_type parameter.</p>
-<dl class="method">
-<dt id="bigdl.nn.layer.Model.freeze">
-<code class="descname">freeze</code><span class="sig-paren">(</span><em>freeze_layers</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.freeze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.freeze" title="Permalink to this definition">¶</a></dt>
-<dd><p>set an array of layers to be freezed
-:param freeze_layers: an array of layer names
-:param bigdl_type:
-:return:</p>
-</dd></dl>
-
 <dl class="staticmethod">
 <dt id="bigdl.nn.layer.Model.load">
 <em class="property">static </em><code class="descname">load</code><span class="sig-paren">(</span><em>path</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.load" title="Permalink to this definition">¶</a></dt>
@@ -2754,14 +2750,6 @@ layers that depend on them.
 <dt id="bigdl.nn.layer.Model.train">
 <em class="property">static </em><code class="descname">train</code><span class="sig-paren">(</span><em>output</em>, <em>data</em>, <em>label</em>, <em>opt_method</em>, <em>criterion</em>, <em>batch_size</em>, <em>end_when</em>, <em>session=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.train"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.train" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="method">
-<dt id="bigdl.nn.layer.Model.unfreeze">
-<code class="descname">unfreeze</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.unfreeze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.unfreeze" title="Permalink to this definition">¶</a></dt>
-<dd><p>set all layers to be trainable
-:param bigdl_type:
-:return:</p>
-</dd></dl>
 
 </dd></dl>
 

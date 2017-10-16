@@ -197,28 +197,25 @@ val preductResult = model.predict(predictSet)
 
 <h2 id="module-freeze">Module Freeze</h2>
 <p>To "freeze" a module means to exclude some layers of model from training.</p>
-<pre><code class="scala">layer.freeze()
-layer.unFreeze()
-model.freeze(Array(&quot;layer1&quot;, &quot;layer2&quot;))
-model.unFreeze()
-model.stopGradient(Array(&quot;layer1&quot;))
+<pre><code class="scala">module.freeze(&quot;layer1&quot;, &quot;layer2&quot;)
+module.unFreeze(&quot;layer1&quot;, &quot;layer2&quot;)
+module.stopGradient(Array(&quot;layer1&quot;))
 </code></pre>
 
 <ul>
-<li>A single layer can be "freezed" by calling <code>freeze()</code>. If a layer is freezed,
-its parameters(weight/bias, if exists) are not changed in training process</li>
-<li>A single layer can be "unFreezed" by calling <code>unFreeze()</code>.</li>
-<li>User can set freeze of list of layers in model by calling <code>freeze</code></li>
-<li>User can unfreeze all layers by calling <code>unFreeze</code></li>
+<li>The whole module can be "freezed" by calling <code>freeze()</code>. If a module is freezed,
+its parameters(weight/bias, if exists) are not changed in training process.
+If module names are passed, then layers that match the given names will be freezed.</li>
+<li>The whole module can be "unFreezed" by calling <code>unFreeze()</code>.
+If module names are provided, then layers that match the given names will be unFreezed.</li>
 <li>stop the input gradient of layers that match the given names. Their input gradient are not computed.
 And they will not contributed to the input gradient computation of layers that depend on them.</li>
 </ul>
+<p>Note that stopGradient is only supported in Graph model.</p>
 <p><strong>Python</strong></p>
-<pre><code class="python">layer.freeze()
-layer.unfreeze()
-model.freeze([&quot;layer1&quot;, &quot;layer2&quot;])
-model.unfreeze()
-model.stop_gradient([&quot;layer1&quot;])
+<pre><code class="python">module.freeze([&quot;layer1&quot;, &quot;layer2&quot;])
+module.unfreeze([&quot;layer1&quot;, &quot;layer2&quot;])
+module.stop_gradient([&quot;layer1&quot;])
 </code></pre>
 
 <p><strong>Scala</strong>
@@ -264,7 +261,7 @@ println(&quot;fc2 weight \n&quot;, fc2.element.parameters()._1(0))
 <pre><code class="scala">fc1.element.getParameters()._1.apply1(_ =&gt; 1.0f)
 fc2.element.getParameters()._1.apply1(_ =&gt; 2.0f)
 model.zeroGradParameters()
-model.freeze(Array(&quot;fc2&quot;))
+model.freeze(&quot;fc2&quot;)
 println(&quot;output2: \n&quot;, model.forward(input))
 model.backward(input, gradOutput)
 model.updateParameters(1)
@@ -345,9 +342,6 @@ println(&quot;fc2 weight \n&quot;, fc2.element.parameters()._1(0))
 
 <p><strong>Python</strong></p>
 <pre><code class="python">from bigdl.nn.layer import *
-import numpy as np
-
-from bigdl.nn.layer import *
 import numpy as np
 
 reshape = Reshape([4])()
