@@ -39,11 +39,13 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Transform labeled sentences to one-hot format samples
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>if oneHot = true:
+Transform labeled sentences to one-hot format samples
 e.g. sentence._data: [0, 2, 3]
      sentence._label: [2, 3, 1]
      vocabLength: 4</p><h3>&gt; input: <span class="extype" name="1,">0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1</span>
-        target: [3, 4, 2]
+        target: [3, 4, 2]</h3><p>else:
+The model will use LookupTable for word embedding.</p><h3>&gt; input: [1, 2, 3]</h3><h3>&gt; label: [2, 3, 4]
 The input is an iterator of LabeledSentence class
 The output is an iterator of Sample class
 </h3></div><div class="toggleContainer block">
@@ -87,7 +89,7 @@ The output is an iterator of Sample class
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.dataset.text.LabeledSentenceToSample#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(vocabLength:Int,fixDataLength:Option[Int],fixLabelLength:Option[Int])(implicitevidence$2:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.dataset.text.LabeledSentenceToSample[T]"></a>
+      <a id="&lt;init&gt;(vocabLength:Int,fixDataLength:Option[Int],fixLabelLength:Option[Int],oneHot:Boolean)(implicitevidence$3:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.dataset.text.LabeledSentenceToSample[T]"></a>
       <a id="&lt;init&gt;:LabeledSentenceToSample[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -95,7 +97,7 @@ The output is an iterator of Sample class
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">LabeledSentenceToSample</span><span class="params">(<span name="vocabLength">vocabLength: <span class="extype" name="scala.Int">Int</span></span>, <span name="fixDataLength">fixDataLength: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="fixLabelLength">fixLabelLength: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.text.LabeledSentenceToSample.T">T</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.text.LabeledSentenceToSample.T">T</span>]</span>)</span>
+        <span class="name">LabeledSentenceToSample</span><span class="params">(<span name="vocabLength">vocabLength: <span class="extype" name="scala.Int">Int</span></span>, <span name="fixDataLength">fixDataLength: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="fixLabelLength">fixLabelLength: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="oneHot">oneHot: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.text.LabeledSentenceToSample.T">T</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.text.LabeledSentenceToSample.T">T</span>]</span>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">vocabLength</dt><dd class="cmt"><p>length of dictionary</p></dd><dt class="param">fixDataLength</dt><dd class="cmt"><p>optional parameter for fixed length of input data</p></dd><dt class="param">fixLabelLength</dt><dd class="cmt"><p>optional parameter for fixed length of labels

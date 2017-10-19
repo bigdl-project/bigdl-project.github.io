@@ -43,6 +43,8 @@
           ]},
           {title: "BigDL Configuration", url: "#bigdl-configuration", children: [
           ]},
+          {title: "NOTES", url: "#notes", children: [
+          ]},
         ];
 
     </script>
@@ -65,20 +67,18 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </ul>
 <h2 id="use-an-interactive-shell"><strong>Use an Interactive Shell</strong></h2>
 <ul>
-<li><code>export SPARK_HOME=path to spark-1.6.3-bin-hadoop2.6</code></li>
 <li>Type <code>python</code> in the command line to start a REPL</li>
 <li><strong>NOTE</strong>: Only <strong>Python 2.7</strong> and <strong>Python 3.5</strong> are supported for now.</li>
 </ul>
 <h2 id="use-jupyter-notebook"><strong>Use Jupyter Notebook</strong></h2>
 <ul>
-<li><code>export SPARK_HOME=path to spark-1.6.3-bin-hadoop2.6</code></li>
-<li>Start jupyter notebook as you normally do, e.g.</li>
+<li>Just start jupyter notebook as you normally do, e.g.</li>
 </ul>
 <pre><code class="bash"> jupyter notebook --notebook-dir=./ --ip=* --no-browser
 </code></pre>
 
 <p><a name="code.verification"></a></p>
-<h2 id="example-code-to-verify-if-bigdl-can-run-successfully">Example code to verify if BigDL can run successfully</h2>
+<h2 id="example-code-to-verify-if-bigdl-can-run-successfully"><strong>Example code to verify if BigDL can run successfully</strong></h2>
 <pre><code class="python">from bigdl.util.common import *
 from pyspark import SparkContext
 from bigdl.nn.layer import *
@@ -89,14 +89,24 @@ sc = SparkContext.getOrCreate(conf=create_spark_conf())
 init_engine() # prepare the bigdl environment 
 bigdl.version.__version__ # Get the current BigDL version
 linear = Linear(2, 3) # Try to create a Linear layer
-
 </code></pre>
 
-<h2 id="bigdl-configuration">BigDL Configuration</h2>
+<h2 id="bigdl-configuration"><strong>BigDL Configuration</strong></h2>
 <ul>
-<li>Increase memory</li>
+<li>Increase memory<ul>
 <li>export SPARK_DRIVER_MEMORY=20g</li>
 </ul>
+</li>
+</ul>
+<h2 id="notes"><strong>NOTES</strong></h2>
+<ul>
+<li>If you want to redirect spark logs to file and keep BigDL logs in console only, call the following API before you train your model:</li>
+</ul>
+<pre><code class="python">from bigdl.util.common import *
+
+redire_spark_logs(log_path=file path to redirect logs to)
+show_bigdl_info_logs()
+</code></pre>
 
   <br>
 </div>

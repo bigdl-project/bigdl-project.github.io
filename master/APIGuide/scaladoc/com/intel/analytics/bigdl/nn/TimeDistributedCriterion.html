@@ -82,7 +82,7 @@ Apply Any Provided Criterion to every temporal slice of an input.
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.TimeDistributedCriterion#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(critrn:com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion[T],sizeAverage:Boolean)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.TimeDistributedCriterion[T]"></a>
+      <a id="&lt;init&gt;(critrn:com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion[T],sizeAverage:Boolean,dimension:Int)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.TimeDistributedCriterion[T]"></a>
       <a id="&lt;init&gt;:TimeDistributedCriterion[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -90,10 +90,12 @@ Apply Any Provided Criterion to every temporal slice of an input.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">TimeDistributedCriterion</span><span class="params">(<span name="critrn">critrn: <a href="abstractnn/TensorCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion">TensorCriterion</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.TimeDistributedCriterion.T">T</span>]</span>, <span name="sizeAverage">sizeAverage: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.TimeDistributedCriterion.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.TimeDistributedCriterion.T">T</span>]</span>)</span>
+        <span class="name">TimeDistributedCriterion</span><span class="params">(<span name="critrn">critrn: <a href="abstractnn/TensorCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion">TensorCriterion</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.TimeDistributedCriterion.T">T</span>]</span>, <span name="sizeAverage">sizeAverage: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="dimension">dimension: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">2</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.TimeDistributedCriterion.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.TimeDistributedCriterion.T">T</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">critrn</dt><dd class="cmt"><p>embedded criterion</p></dd><dt class="param">sizeAverage</dt><dd class="cmt"><p>whether to divide the sequence length
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">critrn</dt><dd class="cmt"><p>embedded criterion</p></dd><dt class="param">sizeAverage</dt><dd class="cmt"><p>whether to divide the length of input along dimension.</p></dd><dt class="param">dimension</dt><dd class="cmt"><p>to compute criterion loss along the input and target dimension
+                 if sizeAverage=true, and dimension=1, it means to divide the batch size;
+                 if sizeAverage=true, and dimension=2, it means to divide the sequence length
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -256,6 +258,22 @@ Apply Any Provided Criterion to every temporal slice of an input.
       </span>
       </h4>
       <p class="shortcomment cmt">embedded criterion</p>
+    </li><li name="com.intel.analytics.bigdl.nn.TimeDistributedCriterion#dimension" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="dimension:Int"></a>
+      <a id="dimension:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dimension</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">to compute criterion loss along the input and target dimension
+                 if sizeAverage=true, and dimension=1, it means to divide the batch size;
+                 if sizeAverage=true, and dimension=2, it means to divide the sequence length
+</p>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -447,8 +465,7 @@ compared with <code>target</code>.
         <span class="name">sizeAverage</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">whether to divide the sequence length
-</p>
+      <p class="shortcomment cmt">whether to divide the length of input along dimension.</p>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

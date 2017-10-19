@@ -33,6 +33,8 @@
       var is_top_frame = false;
         
         var pageToc = [
+          {title: "Precondition", url: "#precondition", children: [
+          ]},
           {title: "A quick launch for local mode", url: "#a-quick-launch-for-local-mode", children: [
           ]},
           {title: "Run from spark-submit", url: "#run-from-spark-submit", children: [
@@ -59,7 +61,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <p>First of all, you need to obtain the BigDL libs. Refer to <a href="../../ScalaUserGuide/install-pre-built/">Install from pre built</a> or <a href="../../ScalaUserGuide/install-build-src/">Install from source code</a> for more details</p>
+    <h2 id="precondition"><strong>Precondition</strong></h2>
+<p>First of all, you need to obtain the BigDL libs. Refer to <a href="../../ScalaUserGuide/install-pre-built/">Install from pre built</a> or <a href="../../ScalaUserGuide/install-build-src/">Install from source code</a> for more details</p>
 <h2 id="a-quick-launch-for-local-mode"><strong>A quick launch for local mode</strong></h2>
 <pre><code class="bash">cd $BIGDL_HOME/dist/lib 
 BIGDL_VERSION=...
@@ -143,33 +146,45 @@ sudo pip install numpy scipy pandas scikit-learn matplotlib seaborn wordcloud
 
 <p>After successfully launching Jupyter, you will be able to navigate to the notebook dashboard using your browser. You can find the exact URL in the console output when you started Jupyter; by default, the dashboard URL is http://your_node:8888/</p>
 <p><a href="../run-from-pip/#code.verification">Example code to verify if run successfully</a></p>
-<h2 id="bigdl-configuration">BigDL Configuration</h2>
+<h2 id="bigdl-configuration"><strong>BigDL Configuration</strong></h2>
 <p>Please check <a href="../../ScalaUserGuide/configuration/">this page</a></p>
 <h2 id="faq"><strong>FAQ</strong></h2>
-<ul>
-<li>ImportError   from bigdl.nn.layer import *</li>
-<li>Check if the path is pointing to python-api.zip: <code>--py-files ${PYTHON_API_ZIP_PATH}</code></li>
+<ol>
 <li>
-<p>Check if the path is pointing to python-api.zip: <code>export PYTHONPATH=${PYTHON_API_ZIP_PATH}:$PYTHONPATH</code></p>
+<p>ImportError   from bigdl.nn.layer import *</p>
+<ul>
+<li>Check if the path is pointing to python-api.zip: <code>--py-files ${PYTHON_API_ZIP_PATH}</code></li>
+<li>Check if the path is pointing to python-api.zip: <code>export PYTHONPATH=${PYTHON_API_ZIP_PATH}:$PYTHONPATH</code></li>
+</ul>
 </li>
 <li>
 <p>Python in worker has a different version 2.7 than that in driver 3.4</p>
-</li>
+<ul>
 <li><code>export PYSPARK_PYTHON=/usr/local/bin/python3.4</code>  This path should be valid on every worker node.</li>
-<li>
-<p><code>export PYSPARK_DRIVER_PYTHON=/usr/local/bin/python3.4</code>  This path should be valid on every driver node.</p>
+<li><code>export PYSPARK_DRIVER_PYTHON=/usr/local/bin/python3.4</code>  This path should be valid on every driver node.</li>
+</ul>
 </li>
 <li>
 <p>TypeError: 'JavaPackage' object is not callable</p>
-</li>
-<li>
-<p>Check if every path within the launch script is valid especially the path that ends with jar.</p>
+<ul>
+<li>Check if every path within the launch script is valid especially the path that ends with jar.</li>
+</ul>
 </li>
 <li>
 <p>java.lang.NoSuchMethodError:XXX</p>
-</li>
+<ul>
 <li>Check if the Spark version matches, i.e check if you are using Spark2.x but the underneath BigDL is compiled with Spark1.6.</li>
 </ul>
+</li>
+<li>
+<p>If you want to redirect spark logs to file and keep BigDL logs in console only, call the following API before you train your model:</p>
+</li>
+</ol>
+<pre><code class="python">from bigdl.util.common import *
+
+redire_spark_logs(log_path=file path to redirect logs to)
+show_bigdl_info_logs()
+</code></pre>
 
   <br>
 </div>
