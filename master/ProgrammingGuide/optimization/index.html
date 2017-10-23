@@ -46,7 +46,7 @@
           ]},
           {title: "Monitor your training", url: "#monitor-your-training", children: [
           ]},
-          {title: "Performance tunning", url: "#performance-tunning", children: [
+          {title: "Performance tuning", url: "#performance-tuning", children: [
           ]},
         ];
 
@@ -189,9 +189,9 @@ optimizer = Optimizer(model, train_data, MSECriterion(), MaxIteration(100), 4, o
 </code></pre>
 
 <h2 id="validate-your-model-in-training">Validate your model in training</h2>
-<p>Sometimes, people want to evaluate the model with a seperated dataset. When model
+<p>Sometimes, people want to evaluate the model with a separated dataset. When model
 performs well on train dataset, but bad on validation dataset, we call the model is overfit or
-weak generalization. People may want to evaluate the model every serveral iterations or 
+weak generalization. People may want to evaluate the model every several iterations or 
 epochs. BigDL can easily do this by</p>
 <p><strong>scala</strong></p>
 <pre><code class="scala">optimizer.setValidation(trigger, testData, validationMethod, batchSize)
@@ -204,7 +204,7 @@ epochs. BigDL can easily do this by</p>
 <p>For validation, you need to provide</p>
 <ul>
 <li>trigger: how often to do validation, maybe each several iterations or epochs</li>
-<li>test data: the seperate dataset for test</li>
+<li>test data: the separate dataset for test</li>
 <li>validation method: how to evaluate the model, maybe top1 accuracy, etc.</li>
 <li>batch size: how many data evaluate in one time</li>
 </ul>
@@ -249,7 +249,7 @@ optimizer.set_val_summary(val_summary)
 </code></pre>
 
 <p>See details in <a href="../visualization/">Visualization</a></p>
-<h2 id="performance-tunning">Performance tunning</h2>
+<h2 id="performance-tuning">Performance tuning</h2>
 <p>For performance investigation, BigDL records the time-consuming distribution on each node for each step(e.g. sync weight, computing).The information can be displayed in the driver log. By default, it is suspended.To turn it on, please follow these steps:</p>
 <p>1.Prepare a log4j property file</p>
 <pre><code># Root logger option

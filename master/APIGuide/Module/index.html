@@ -86,9 +86,9 @@ model.save(&quot;hdfs://...&quot;) //save to hdfs
 model.save(&quot;s3://...&quot;) //save to s3
 </code></pre>
 
-<p>In <code>model.save</code>, the first parameter is the path where we want to save our model, the second paramter is to specify if we need to overwrite the file if it already exists, it's set to false by default</p>
+<p>In <code>model.save</code>, the first parameter is the path where we want to save our model, the second parameter is to specify if we need to overwrite the file if it already exists, it's set to false by default</p>
 <h2 id="model-load">Model Load</h2>
-<p>Use <code>Module.load</code>(in Scala) or <code>Model.load</code> (in Python) to load an existing model.  <code>Module</code> (Scala) or <code>Model</code>(Python) is a utilily class provided in BigDL. We just need to specify the model path where we previously saved the model to load it to memory for resume training or prediction purpose.</p>
+<p>Use <code>Module.load</code>(in Scala) or <code>Model.load</code> (in Python) to load an existing model.  <code>Module</code> (Scala) or <code>Model</code>(Python) is a utility class provided in BigDL. We just need to specify the model path where we previously saved the model to load it to memory for resume training or prediction purpose.</p>
 <p><strong>Scala example</strong></p>
 <pre><code class="scala">val model = Module.load(&quot;/tmp/model.bigdl&quot;) //load from local fs
 val model = Module.load(&quot;hdfs://...&quot;) //load from hdfs

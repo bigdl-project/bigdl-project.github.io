@@ -100,7 +100,7 @@ b: com.intel.analytics.bigdl.tensor.Tensor[Float] =
 [com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 2x3]
 </code></pre>
 
-<p><code>+</code> <code>-</code> <code>*</code> <code>/</code> can be applied to tensor. When the second parameter is a constant value, <code>+</code> <code>-</code> <code>*</code> <code>*</code> is element-wise operation. But when the second parameter is a tensor, <code>+</code> <code>-</code> <code>/</code> is element-wise operation to the tensor too, but <code>*</code> is a matrix multipy on two 2D tensors. </p>
+<p><code>+</code> <code>-</code> <code>*</code> <code>/</code> can be applied to tensor. When the second parameter is a constant value, <code>+</code> <code>-</code> <code>*</code> <code>*</code> is element-wise operation. But when the second parameter is a tensor, <code>+</code> <code>-</code> <code>/</code> is element-wise operation to the tensor too, but <code>*</code> is a matrix multiply on two 2D tensors. </p>
 <pre><code class="scala">scala&gt; a + 1
 res: com.intel.analytics.bigdl.tensor.Tensor[Float] =
 2.0 3.0 4.0
@@ -327,7 +327,7 @@ println(miniBatch.getTarget())
 
 <h2 id="dataset"><strong>DataSet</strong></h2>
 <p><code>DataSet</code> is a set of data which is used in the model optimization process. You can use <code>DataSet.array()</code> and <code>DataSet.rdd()</code> function to create a <code>Dataset</code>. The <code>DataSet</code> can be accessed in a random data sample sequence. In the training process, the data sequence is a looped endless sequence. While in the validation process, the data sequence is a limited length sequence. User can use the <code>data()</code> method to get the data sequence. </p>
-<p>Notice: In most case, we recommand using a RDD[Sample] for <code>Optimizer</code>. Only when you want to write an application with some advanced optimization, using <code>DataSet</code> directly is recommanded.  </p>
+<p>Notice: In most case, we recommend using a RDD[Sample] for <code>Optimizer</code>. Only when you want to write an application with some advanced optimization, using <code>DataSet</code> directly is recommended.  </p>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.utils.T
 import com.intel.analytics.bigdl.tensor.Tensor
