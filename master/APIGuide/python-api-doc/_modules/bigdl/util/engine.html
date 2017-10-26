@@ -79,24 +79,35 @@
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 
 <div class="viewcode-block" id="exist_pyspark"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.engine.exist_pyspark">[docs]</a><span class="k">def</span> <span class="nf">exist_pyspark</span><span class="p">():</span>
+    <span class="c1"># check whether pyspark package exists</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span> <span class="nn">pyspark</span>
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span></div>
 
+<div class="viewcode-block" id="check_spark_source_conflict"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.engine.check_spark_source_conflict">[docs]</a><span class="k">def</span> <span class="nf">check_spark_source_conflict</span><span class="p">(</span><span class="n">spark_home</span><span class="p">,</span> <span class="n">pyspark_path</span><span class="p">):</span>
+    <span class="c1"># check if both spark_home env var and pyspark package exist</span>
+    <span class="c1"># trigger a warning if two spark sources don&#39;t match</span>
+    <span class="k">if</span> <span class="n">spark_home</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">pyspark_path</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">spark_home</span><span class="p">):</span>
+        <span class="n">warning_msg</span> <span class="o">=</span> <span class="s2">&quot;Find both SPARK_HOME and pyspark. You may need to check whether they &quot;</span> <span class="o">+</span> \
+                      <span class="s2">&quot;match with each other. SPARK_HOME environment variable is set to: &quot;</span> <span class="o">+</span> <span class="n">spark_home</span> <span class="o">+</span> \
+                      <span class="s2">&quot;, and pyspark is found in: &quot;</span> <span class="o">+</span> <span class="n">pyspark_path</span> <span class="o">+</span> <span class="s2">&quot;. If they are unmatched, &quot;</span> <span class="o">+</span> \
+                      <span class="s2">&quot;please use one source only to avoid conflict. &quot;</span> <span class="o">+</span> \
+                      <span class="s2">&quot;For example, you can unset SPARK_HOME and use pyspark only.&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">warning_msg</span><span class="p">)</span></div>
+
 <span class="k">def</span> <span class="nf">__prepare_spark_env</span><span class="p">():</span>
     <span class="n">spark_home</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SPARK_HOME&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">exist_pyspark</span><span class="p">():</span>
+        <span class="c1"># use pyspark as the spark source</span>
         <span class="kn">import</span> <span class="nn">pyspark</span>
-        <span class="k">if</span> <span class="n">spark_home</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">pyspark</span><span class="o">.</span><span class="vm">__file__</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">spark_home</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
-                <span class="sd">&quot;&quot;&quot;Find two unmatched spark sources. pyspark is found in &quot;&quot;&quot;</span>
-                <span class="o">+</span> <span class="n">pyspark</span><span class="o">.</span><span class="vm">__file__</span> <span class="o">+</span> <span class="s2">&quot;, while SPARK_HOME env is set to &quot;</span> <span class="o">+</span> <span class="n">spark_home</span>
-                <span class="o">+</span> <span class="s2">&quot;. Please use one spark source only. For example, you can unset SPARK_HOME and use pyspark only.&quot;</span><span class="p">)</span>
+        <span class="n">check_spark_source_conflict</span><span class="p">(</span><span class="n">spark_home</span><span class="p">,</span> <span class="n">pyspark</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># use SPARK_HOME as the spark source</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">spark_home</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="sd">&quot;&quot;&quot;Could not find Spark. Please make sure SPARK_HOME env is set:</span>

@@ -1888,8 +1888,8 @@ will compute incorrect gradients.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>input</strong> – ndarray or list of ndarray</li>
-<li><strong>grad_output</strong> – ndarray or list of ndarray</li>
+<li><strong>input</strong> – ndarray or list of ndarray or JTensor or list of JTensor.</li>
+<li><strong>grad_output</strong> – ndarray or list of ndarray or JTensor or list of JTensor.</li>
 </ul>
 </td>
 </tr>
@@ -1907,7 +1907,7 @@ will compute incorrect gradients.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>input</strong> – ndarray or list of ndarray</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>input</strong> – ndarray or list of ndarray or JTensor or list of JTensor.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(list of JTensor, isTable)</td>
 </tr>
@@ -1955,9 +1955,14 @@ Takes an input object, and computes the corresponding output of the module</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>input</strong> – ndarray or list of ndarray</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input</strong> – ndarray or list of ndarray</li>
+<li><strong>input</strong> – ndarray or list of ndarray or JTensor or list of JTensor.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">ndarray or list of ndarray</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">ndarray or list of ndarray</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -3533,6 +3538,15 @@ part of the gradient to next layer.</p>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createSparseLinear</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">init_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">init_bias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sparselinear</span> <span class="o">=</span> <span class="n">SparseLinear</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">init_weight</span><span class="o">=</span><span class="n">init_weight</span><span class="p">,</span> <span class="n">init_bias</span><span class="o">=</span><span class="n">init_bias</span><span class="p">)</span>
+<span class="go">creating: createSparseLinear</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">sparse</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sparselinear</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">))</span>
+<span class="go">[[ 10.09569263 -10.94844246  -4.1086688    1.02527523  11.80737209]</span>
+<span class="go">[  7.9651413    9.7131443  -10.22719955   0.02345783  -3.74368906]]</span>
 </pre></div>
 </div>
 <dl class="method">

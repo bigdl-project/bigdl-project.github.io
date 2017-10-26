@@ -193,21 +193,22 @@
 <div class="viewcode-block" id="Layer.check_input"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.check_input">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">check_input</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        :param input: ndarray or list of ndarray</span>
+<span class="sd">        :param input: ndarray or list of ndarray or JTensor or list of JTensor.</span>
 <span class="sd">        :return: (list of JTensor, isTable)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">to_jtensor</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">JTensor</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">i</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Error unknown input type </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Error when checking: empty input&#39;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;shape&#39;</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
-                    <span class="s1">&#39;Error when checking: expecting list of ndarray&#39;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="p">[</span><span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">input</span><span class="p">],</span> <span class="kc">True</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">to_jtensor</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="nb">input</span><span class="p">)),</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="s1">&#39;shape&#39;</span><span class="p">):</span>
-                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
-                    <span class="s1">&#39;Error when checking: expecting list of ndarray&#39;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="p">[</span><span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="nb">input</span><span class="p">)],</span> <span class="kc">False</span></div>
+            <span class="k">return</span> <span class="p">[</span><span class="n">to_jtensor</span><span class="p">(</span><span class="nb">input</span><span class="p">)],</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="Layer.convert_output"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.convert_output">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">convert_output</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
@@ -224,6 +225,7 @@
 <span class="sd">        Takes an input object, and computes the corresponding output of the module</span>
 
 <span class="sd">        :param input: ndarray or list of ndarray</span>
+<span class="sd">        :param input: ndarray or list of ndarray or JTensor or list of JTensor.</span>
 <span class="sd">        :return: ndarray or list of ndarray</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">jinput</span><span class="p">,</span> <span class="n">input_is_table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_input</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
@@ -242,8 +244,8 @@
 <span class="sd">        input. This is necessary for optimization reasons. If you do not respect this rule, backward()</span>
 <span class="sd">        will compute incorrect gradients.</span>
 
-<span class="sd">        :param input: ndarray or list of ndarray</span>
-<span class="sd">        :param grad_output: ndarray or list of ndarray</span>
+<span class="sd">        :param input: ndarray or list of ndarray or JTensor or list of JTensor.</span>
+<span class="sd">        :param grad_output: ndarray or list of ndarray or JTensor or list of JTensor.</span>
 <span class="sd">        :return: ndarray or list of ndarray</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">jinput</span><span class="p">,</span> <span class="n">input_is_table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_input</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
@@ -827,6 +829,15 @@
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createSparseLinear</span>
+<span class="sd">    &gt;&gt;&gt; np.random.seed(123)</span>
+<span class="sd">    &gt;&gt;&gt; init_weight = np.random.randn(5, 1000)</span>
+<span class="sd">    &gt;&gt;&gt; init_bias = np.random.randn(5)</span>
+<span class="sd">    &gt;&gt;&gt; sparselinear = SparseLinear(1000, 5, init_weight=init_weight, init_bias=init_bias)</span>
+<span class="sd">    creating: createSparseLinear</span>
+<span class="sd">    &gt;&gt;&gt; input = JTensor.sparse(np.array([1, 3, 5, 2, 4, 6]), np.array([0, 0, 0, 1, 1, 1, 1, 5, 300, 2, 100, 500]), np.array([2, 1000]))</span>
+<span class="sd">    &gt;&gt;&gt; print(sparselinear.forward(input))</span>
+<span class="sd">    [[ 10.09569263 -10.94844246  -4.1086688    1.02527523  11.80737209]</span>
+<span class="sd">     [  7.9651413    9.7131443  -10.22719955   0.02345783  -3.74368906]]</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">with_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">backwardStart</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">backwardLength</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
