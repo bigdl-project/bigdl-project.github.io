@@ -1,0 +1,326 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>bigdl.dataset package &#8212; BigDL  documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="bigdl.models package" href="bigdl.models.html" />
+    <link rel="prev" title="bigdl package" href="bigdl.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="bigdl.models.html" title="bigdl.models package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="bigdl.html" title="bigdl package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="bigdl.html" accesskey="U">bigdl package</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">bigdl.dataset package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-bigdl.dataset.base">bigdl.dataset.base module</a></li>
+<li><a class="reference internal" href="#module-bigdl.dataset.mnist">bigdl.dataset.mnist module</a></li>
+<li><a class="reference internal" href="#module-bigdl.dataset.movielens">bigdl.dataset.movielens module</a></li>
+<li><a class="reference internal" href="#module-bigdl.dataset.news20">bigdl.dataset.news20 module</a></li>
+<li><a class="reference internal" href="#bigdl-dataset-sentence-module">bigdl.dataset.sentence module</a></li>
+<li><a class="reference internal" href="#module-bigdl.dataset.transformer">bigdl.dataset.transformer module</a></li>
+<li><a class="reference internal" href="#module-bigdl.dataset">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="bigdl.html"
+                        title="previous chapter">bigdl package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="bigdl.models.html"
+                        title="next chapter">bigdl.models package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/bigdl.dataset.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="bigdl-dataset-package">
+<h1>bigdl.dataset package<a class="headerlink" href="#bigdl-dataset-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-bigdl.dataset.base">
+<span id="bigdl-dataset-base-module"></span><h2>bigdl.dataset.base module<a class="headerlink" href="#module-bigdl.dataset.base" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="bigdl.dataset.base.Progbar">
+<em class="property">class </em><code class="descclassname">bigdl.dataset.base.</code><code class="descname">Progbar</code><span class="sig-paren">(</span><em>target</em>, <em>width=30</em>, <em>verbose=1</em>, <em>interval=0.01</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/base.html#Progbar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.base.Progbar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="bigdl.dataset.base.Progbar.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>n</em>, <em>values=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/base.html#Progbar.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.base.Progbar.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bigdl.dataset.base.Progbar.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>current</em>, <em>values=[]</em>, <em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/base.html#Progbar.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.base.Progbar.update" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>current</strong> – index of current step</li>
+<li><strong>values</strong> – list of tuples (name, value_for_last_step).The progress bar will display averages for these values.</li>
+<li><strong>force</strong> – force visual progress update</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.dataset.base.display_table">
+<code class="descclassname">bigdl.dataset.base.</code><code class="descname">display_table</code><span class="sig-paren">(</span><em>rows</em>, <em>positions</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/base.html#display_table"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.base.display_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.dataset.base.maybe_download">
+<code class="descclassname">bigdl.dataset.base.</code><code class="descname">maybe_download</code><span class="sig-paren">(</span><em>filename</em>, <em>work_directory</em>, <em>source_url</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/base.html#maybe_download"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.base.maybe_download" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.dataset.base.urlretrieve">
+<code class="descclassname">bigdl.dataset.base.</code><code class="descname">urlretrieve</code><span class="sig-paren">(</span><em>url</em>, <em>filename</em>, <em>reporthook=None</em>, <em>data=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/base.html#urlretrieve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.base.urlretrieve" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-bigdl.dataset.mnist">
+<span id="bigdl-dataset-mnist-module"></span><h2>bigdl.dataset.mnist module<a class="headerlink" href="#module-bigdl.dataset.mnist" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="bigdl.dataset.mnist.extract_images">
+<code class="descclassname">bigdl.dataset.mnist.</code><code class="descname">extract_images</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/mnist.html#extract_images"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.mnist.extract_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract the images into a 4D uint8 numpy array [index, y, x, depth].</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Param:</th><td class="field-body">f: A file object that can be passed into a gzip reader.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">data: A 4D unit8 numpy array [index, y, x, depth].</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raise:</th><td class="field-body">ValueError: If the bytestream does not start with 2051.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.dataset.mnist.extract_labels">
+<code class="descclassname">bigdl.dataset.mnist.</code><code class="descname">extract_labels</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/mnist.html#extract_labels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.mnist.extract_labels" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.dataset.mnist.read_data_sets">
+<code class="descclassname">bigdl.dataset.mnist.</code><code class="descname">read_data_sets</code><span class="sig-paren">(</span><em>train_dir</em>, <em>data_type='train'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/mnist.html#read_data_sets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.mnist.read_data_sets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse or download mnist data if train_dir is empty.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Param:</th><td class="field-body">train_dir: The directory storing the mnist data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Param:</th><td class="field-body">data_type: Reading training set or testing set.It can be either “train” or “test”</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">ndarray</span><span class="p">)</span> <span class="n">representing</span> <span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="n">features</span> <span class="ow">is</span> <span class="n">a</span> <span class="mi">4</span><span class="n">D</span> <span class="n">unit8</span> <span class="n">numpy</span> <span class="n">array</span> <span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">depth</span><span class="p">]</span> <span class="n">representing</span> <span class="n">each</span> <span class="n">pixel</span> <span class="n">valued</span> <span class="kn">from</span> <span class="mi">0</span> <span class="n">to</span> <span class="mf">255.</span>
+<span class="n">labels</span> <span class="ow">is</span> <span class="mi">1</span><span class="n">D</span> <span class="n">unit8</span> <span class="n">nunpy</span> <span class="n">array</span> <span class="n">representing</span> <span class="n">the</span> <span class="n">label</span> <span class="n">valued</span> <span class="kn">from</span> <span class="mi">0</span> <span class="n">to</span> <span class="mf">9.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-bigdl.dataset.movielens">
+<span id="bigdl-dataset-movielens-module"></span><h2>bigdl.dataset.movielens module<a class="headerlink" href="#module-bigdl.dataset.movielens" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="bigdl.dataset.movielens.get_id_pairs">
+<code class="descclassname">bigdl.dataset.movielens.</code><code class="descname">get_id_pairs</code><span class="sig-paren">(</span><em>data_dir</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/movielens.html#get_id_pairs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.movielens.get_id_pairs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.dataset.movielens.get_id_ratings">
+<code class="descclassname">bigdl.dataset.movielens.</code><code class="descname">get_id_ratings</code><span class="sig-paren">(</span><em>data_dir</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/movielens.html#get_id_ratings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.movielens.get_id_ratings" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.dataset.movielens.read_data_sets">
+<code class="descclassname">bigdl.dataset.movielens.</code><code class="descname">read_data_sets</code><span class="sig-paren">(</span><em>data_dir</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/movielens.html#read_data_sets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.movielens.read_data_sets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse or download movielens 1m  data if train_dir is empty.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data_dir</strong> – The directory storing the movielens data</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a 2D numpy array with user index and item index in each row</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-bigdl.dataset.news20">
+<span id="bigdl-dataset-news20-module"></span><h2>bigdl.dataset.news20 module<a class="headerlink" href="#module-bigdl.dataset.news20" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="bigdl.dataset.news20.download_glove_w2v">
+<code class="descclassname">bigdl.dataset.news20.</code><code class="descname">download_glove_w2v</code><span class="sig-paren">(</span><em>dest_dir</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/news20.html#download_glove_w2v"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.news20.download_glove_w2v" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.dataset.news20.download_news20">
+<code class="descclassname">bigdl.dataset.news20.</code><code class="descname">download_news20</code><span class="sig-paren">(</span><em>dest_dir</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/news20.html#download_news20"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.news20.download_news20" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.dataset.news20.get_glove_w2v">
+<code class="descclassname">bigdl.dataset.news20.</code><code class="descname">get_glove_w2v</code><span class="sig-paren">(</span><em>source_dir='/tmp/news20/'</em>, <em>dim=100</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/news20.html#get_glove_w2v"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.news20.get_glove_w2v" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse or download the pre-trained glove word2vec if source_dir is empty.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>source_dir</strong> – The directory storing the pre-trained word2vec</li>
+<li><strong>dim</strong> – The dimension of a vector</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dict mapping from word to vector</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.dataset.news20.get_news20">
+<code class="descclassname">bigdl.dataset.news20.</code><code class="descname">get_news20</code><span class="sig-paren">(</span><em>source_dir='/tmp/news20/'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/news20.html#get_news20"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.news20.get_news20" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse or download news20 if source_dir is empty.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>source_dir</strong> – The directory storing news data.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of (tokens, label)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="bigdl-dataset-sentence-module">
+<h2>bigdl.dataset.sentence module<a class="headerlink" href="#bigdl-dataset-sentence-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-bigdl.dataset.transformer">
+<span id="bigdl-dataset-transformer-module"></span><h2>bigdl.dataset.transformer module<a class="headerlink" href="#module-bigdl.dataset.transformer" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="bigdl.dataset.transformer.normalizer">
+<code class="descclassname">bigdl.dataset.transformer.</code><code class="descname">normalizer</code><span class="sig-paren">(</span><em>data</em>, <em>mean</em>, <em>std</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dataset/transformer.html#normalizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dataset.transformer.normalizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize features by standard deviation
+data is a ndarray</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-bigdl.dataset">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bigdl.dataset" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="bigdl.models.html" title="bigdl.models package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="bigdl.html" title="bigdl package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="bigdl.html" >bigdl package</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Intel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>
