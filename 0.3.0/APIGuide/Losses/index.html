@@ -81,6 +81,10 @@
           ]},
           {title: "MultiCriterion", url: "#multicriterion", children: [
           ]},
+          {title: "GaussianCriterion", url: "#gaussiancriterion", children: [
+          ]},
+          {title: "KLDCriterion", url: "#kldcriterion", children: [
+          ]},
         ];
 
     </script>
@@ -1775,6 +1779,115 @@ output = criterion.forward(input, target)
 
 &gt; output
 3.6099546
+</code></pre>
+
+<h2 id="gaussiancriterion">GaussianCriterion</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val criterion = GaussianCriterion()
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">criterion = GaussianCriterion()
+</code></pre>
+
+<p>GaussianCriterion computes the log-likelihood of a sample given a Gaussian distribution.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn.GaussianCriterion
+import com.intel.analytics.bigdl.utils.T
+
+val criterion = GaussianCriterion()
+
+val input1 = Tensor[Float](2, 3).range(1, 6, 1)
+val input2 = Tensor[Float](2, 3).range(1, 12, 2)
+val input = T(input1, input2)
+
+val target = Tensor[Float](2, 3).range(2, 13, 2)
+
+val loss = criterion.forward(input, target)
+
+&gt; loss
+loss: Float = 23.836603
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">import numpy as np
+from bigdl.nn.layer import *
+from bigdl.nn.criterion import *
+from bigdl.optim.optimizer import *
+from bigdl.util.common import *
+
+criterion = GaussianCriterion()
+
+input1 = np.arange(1, 7, 1).astype(&quot;float32&quot;)
+input2 = np.arange(1, 12, 2).astype(&quot;float32&quot;)
+input1 = input1.reshape(2, 3)
+input2 = input2.reshape(2, 3)
+input = [input1, input2]
+
+target = np.arange(2, 13, 2).astype(&quot;float32&quot;)
+target = target.reshape(2, 3)
+
+loss = criterion.forward(input, target)
+
+&gt; output
+23.836603
+</code></pre>
+
+<h2 id="kldcriterion">KLDCriterion</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val criterion = KLDCriterion()
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">criterion = KLDCriterion()
+</code></pre>
+
+<p>Computes the KL-divergence of the Gaussian distribution.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn.KLDCriterion
+import com.intel.analytics.bigdl.utils.T
+
+val criterion = KLDCriterion()
+
+val input1 = Tensor[Float](2, 3).range(1, 6, 1)
+val input2 = Tensor[Float](2, 3).range(1, 12, 2)
+val input = T(input1, input2)
+
+val target = Tensor[Float](2, 3).range(2, 13, 2)
+
+val loss = criterion.forward(input, target)
+
+&gt; loss
+loss: Float = 34562.04
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">import numpy as np
+from bigdl.nn.criterion import *
+from bigdl.optim.optimizer import *
+from bigdl.util.common import *
+
+criterion = KLDCriterion()
+
+input1 = np.arange(1, 7, 1).astype(&quot;float32&quot;)
+input2 = np.arange(1, 12, 2).astype(&quot;float32&quot;)
+input1 = input1.reshape(2, 3)
+input2 = input2.reshape(2, 3)
+input = [input1, input2]
+
+target = np.arange(2, 13, 2).astype(&quot;float32&quot;)
+target = target.reshape(2, 3)
+
+loss = criterion.forward(input, target)
+
+&gt; loss
+34562.04
 </code></pre>
 
   <br>

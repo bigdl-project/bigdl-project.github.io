@@ -41,6 +41,10 @@
           ]},
           {title: "Max Iteration", url: "#max-iteration", children: [
           ]},
+          {title: "Max Score", url: "#max-score", children: [
+          ]},
+          {title: "Min Loss", url: "#min-loss", children: [
+          ]},
         ];
 
     </script>
@@ -70,7 +74,7 @@ s reached.</p>
 <pre><code class="python"> trigger = EveryEpoch()
 </code></pre>
 
-<p>A trigger that triggers an action when each epoch finishs.
+<p>A trigger that triggers an action when each epoch finishes.
    Could be used as trigger in <code>setValidation</code> and <code>setCheckpoint</code>
    in Optimizer, and also in <code>TrainSummary.setSummaryTrigger</code>.</p>
 <hr />
@@ -112,6 +116,30 @@ s reached.</p>
 <p>A trigger that triggers an action when training reaches
   the number of iterations specified by "max".
   Usually used in <code>Optimizer.setEndWhen</code>.</p>
+<hr />
+<h2 id="max-score">Max Score</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala"> val trigger = Trigger.maxScore(max)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python"> trigger = MaxScore(max)
+</code></pre>
+
+<p>A trigger that triggers an action when validation score
+ larger than "max" score</p>
+<hr />
+<h2 id="min-loss">Min Loss</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala"> val trigger = Trigger.minLoss(min)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python"> trigger = MinLoss(min)
+</code></pre>
+
+<p>A trigger that triggers an action when training loss
+ less than "min" loss</p>
 
   <br>
 </div>

@@ -56,7 +56,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <hr />
-<p>ValidationMethod is a method to validate the model during model trainning or evaluation.
+<p>ValidationMethod is a method to validate the model during model training or evaluation.
 The trait can be extended by user-defined method. Now we have defined Top1Accuracy, Top5Accuracy, Loss.
 You can use those methods to evaluate model, please refer to <a href="https://github.com/intel-analytics/BigDL/blob/master/docs/docs/APIdocs/Module.md">Module</a> for details.</p>
 <hr />
@@ -96,9 +96,12 @@ scala&gt; result
 res12: Array[(com.intel.analytics.bigdl.optim.ValidationResult, com.intel.analytics.bigdl.optim.ValidationMethod[Float])] = Array(((Loss: 9.339776, count: 4, Average Loss: 2.334944),Loss))
 </code></pre>
 
-<p><strong>Python:</strong>
-Just support setting string name "Loss", example code:</p>
-<pre><code>from pyspark.context import SparkContext
+<p><strong>Python:</strong></p>
+<pre><code class="python">loss = Loss(cri)
+</code></pre>
+
+<p>example</p>
+<pre><code>from pyspark import SparkContext
 from bigdl.util.common import *
 from bigdl.nn.layer import *
 from bigdl.optim.optimizer import *
@@ -120,7 +123,7 @@ trainingData = sc.parallelize(range(0, data_len)).map(
 
 model = Sequential()
 model.add(Linear(4, 5))
-test_results = model.test(trainingData, batch_size, [&quot;Loss&quot;])
+test_results = model.evaluate(trainingData, batch_size, [Loss()])
 
 &gt;&gt;&gt; print test_results[0]
 Test result: 0.116546951234, total_num: 10, method: Loss
@@ -140,9 +143,11 @@ scala&gt; result
 res13: Array[(com.intel.analytics.bigdl.optim.ValidationResult, com.intel.analytics.bigdl.optim.ValidationMethod[Float])] = Array((Accuracy(correct: 0, count: 10, accuracy: 0.0),Top1Accuracy))
 </code></pre>
 
-<p><strong>Python:</strong>
-set "Top1Accuracy", example code:</p>
-<pre><code class="python">test_results = model.test(trainingData, batch_size, [&quot;Top1Accuracy&quot;])
+<p><strong>Python:</strong></p>
+<pre><code class="python">top1accuracy = Top1Accuracy()
+</code></pre>
+
+<pre><code class="python">test_results = model.evaluate(trainingData, batch_size, [Top1Accuracy()])
 
 &gt;&gt;&gt; print test_results[0]
 Test result: 0.0, total_num: 10, method: Top1Accuracy
@@ -162,11 +167,13 @@ scala&gt; result
 res18: Array[(com.intel.analytics.bigdl.optim.ValidationResult, com.intel.analytics.bigdl.optim.ValidationMethod[Float])] = Array((Accuracy(correct: 10, count: 10, accuracy: 1.0),Top5Accuracy))
 </code></pre>
 
-<p><strong>Python:</strong>
-set "Top5Accuracy", example code:</p>
-<pre><code class="python">test_results = model.test(trainingData, batch_size, [&quot;Top5Accuracy&quot;])
+<p><strong>Python:</strong></p>
+<pre><code class="python">top5accuracy = Top5Accuracy()
+</code></pre>
 
-&gt;&gt;&gt; print test_results[1]
+<pre><code class="python">test_results = model.evaluate(trainingData, batch_size, [Top5Accuracy()])
+
+&gt;&gt;&gt; print test_results[0]
 Test result: 0.0, total_num: 10, method: Top5Accuracy
 </code></pre>
 

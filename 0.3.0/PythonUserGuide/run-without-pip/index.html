@@ -11,7 +11,7 @@
     
     <link rel="shortcut icon" href="/img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Run - BigDL Project</title>
+    <title>Without pip install - BigDL Project</title>
     <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="/css/base.css" rel="stylesheet">
@@ -33,7 +33,7 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Before running python programs", url: "#before-running-python-programs", children: [
+          {title: "Precondition", url: "#precondition", children: [
           ]},
           {title: "A quick launch for local mode", url: "#a-quick-launch-for-local-mode", children: [
           ]},
@@ -61,9 +61,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="before-running-python-programs"><strong>Before running python programs</strong></h2>
-<p>First of all, you need to obtain the BigDL libs. Refer to <a href="../install-without-pip/">Install</a> for more details. </p>
-<p>Then, set environmental variables as described in <a href="../../ScalaUserGuide/run/#set-environment-variables">Set Environment         Variables</a>.</p>
+    <h2 id="precondition"><strong>Precondition</strong></h2>
+<p>First of all, you need to obtain the BigDL libs. Refer to <a href="../../ScalaUserGuide/install-pre-built/">Install from pre built</a> or <a href="../../ScalaUserGuide/install-build-src/">Install from source code</a> for more details</p>
 <h2 id="a-quick-launch-for-local-mode"><strong>A quick launch for local mode</strong></h2>
 <pre><code class="bash">cd $BIGDL_HOME/dist/lib 
 BIGDL_VERSION=...
@@ -73,22 +72,11 @@ ${SPARK_HOME}/bin/pyspark --master local[4] \
 --properties-file ../conf/spark-bigdl.conf 
 </code></pre>
 
-<p>_<strong>Example code to verify if run successfully</strong>
- ```python
- from bigdl.util.common import <em>
- from pyspark import SparkContext
- from bigdl.nn.layer import </em>
- import bigdl.version</p>
-<p># create sparkcontext with bigdl configuration
- sc = SparkContext.getOrCreate(conf=create_spark_conf())
- init_engine() # prepare the bigdl environment
- bigdl.version.<strong>version</strong> # Get the current BigDL version
- linear = Linear(2, 3) # Try to create a Linear layer</p>
-<p>```</p>
+<p><a href="../run-from-pip/#code.verification">Example code to verify if BigDL can run successfully</a></p>
 <h2 id="run-from-spark-submit"><strong>Run from spark-submit</strong></h2>
 <ul>
-<li>A BigDL Python program runs as a standard PySPark program, which requires all Python dependency (e.g., NumPy) used by the program be installed on each node in the Spark cluster. You can try run the BigDL <a href="https://github.com/intel-analytics/BigDL/tree/master/pyspark/bigdl/models/lenet">lenet Python example</a> using <a href="http://spark.apache.org/docs/latest/submitting-applications.html">spark-submit</a> as follows:</li>
-<li><strong>Ensure every path is valid</strong> </li>
+<li>A BigDL Python program runs as a standard pyspark program, which requires all Python dependencies (e.g., NumPy) used by the program to be installed on each node in the Spark cluster. You can try running the BigDL <a href="https://github.com/intel-analytics/BigDL/tree/master/pyspark/bigdl/models/lenet">lenet Python example</a> using <a href="http://spark.apache.org/docs/latest/submitting-applications.html">spark-submit</a> as follows:</li>
+<li><strong>Ensure every path is valid.</strong></li>
 </ul>
 <pre><code class="bash">   BigDL_HOME=...
    SPARK_HOME=...
@@ -101,10 +89,10 @@ ${SPARK_HOME}/bin/pyspark --master local[4] \
    ${SPARK_HOME}/bin/spark-submit \
        --master ${MASTER} \
        --driver-cores 5  \
-      --driver-memory 10g  \
-      --total-executor-cores 80  \
-      --executor-cores 10  \
-      --executor-memory 20g \
+       --driver-memory 10g  \
+       --total-executor-cores 80  \
+       --executor-cores 10  \
+       --executor-memory 20g \
        --py-files ${PYTHON_API_ZIP_PATH},${BigDL_HOME}/pyspark/bigdl/models/lenet/lenet5.py  \
        --properties-file ${BigDL_HOME}/dist/conf/spark-bigdl.conf \
        --jars ${BigDL_JAR_PATH} \
@@ -128,8 +116,8 @@ sudo pip install numpy scipy pandas scikit-learn matplotlib seaborn wordcloud
 </code></pre>
 
 <ul>
-<li>Then, you can launch the Jupyter notebook as follows:</li>
-<li><strong>Ensure every path is valid</strong> </li>
+<li>Then, you can launch the Jupyter notebook as follows:
+  <strong>Ensure every path is valid.</strong></li>
 </ul>
 <pre><code class="bash">   BigDL_HOME=...                                                                                         
    BIGDL_VERSION=...
@@ -146,10 +134,10 @@ sudo pip install numpy scipy pandas scikit-learn matplotlib seaborn wordcloud
        --master ${MASTER} \
        --properties-file ${BigDL_HOME}/dist/conf/spark-bigdl.conf \
        --driver-cores 5  \
-      --driver-memory 10g  \
-      --total-executor-cores 8  \
-      --executor-cores 1  \
-      --executor-memory 20g \
+       --driver-memory 10g  \
+       --total-executor-cores 8  \
+       --executor-cores 1  \
+       --executor-memory 20g \
        --py-files ${PYTHON_API_ZIP_PATH} \
        --jars ${BigDL_JAR_PATH} \
        --conf spark.driver.extraClassPath=${BigDL_JAR_PATH} \
@@ -157,31 +145,46 @@ sudo pip install numpy scipy pandas scikit-learn matplotlib seaborn wordcloud
 </code></pre>
 
 <p>After successfully launching Jupyter, you will be able to navigate to the notebook dashboard using your browser. You can find the exact URL in the console output when you started Jupyter; by default, the dashboard URL is http://your_node:8888/</p>
-<p>_<strong>Example code to verify if run successfully</strong>
- ```python
- from bigdl.util.common import <em>
- from pyspark import SparkContext
- from bigdl.nn.layer import </em>
- import bigdl.version</p>
-<p># create sparkcontext with bigdl configuration
- sc = SparkContext.getOrCreate(conf=create_spark_conf())
- init_engine() # prepare the bigdl environment
- bigdl.version.<strong>version</strong> # Get the current BigDL version
- linear = Linear(2, 3) # Try to create a Linear layer</p>
-<p>```</p>
-<h2 id="bigdl-configuration">BigDL Configuration</h2>
+<p><a href="../run-from-pip/#code.verification">Example code to verify if run successfully</a></p>
+<h2 id="bigdl-configuration"><strong>BigDL Configuration</strong></h2>
 <p>Please check <a href="../../ScalaUserGuide/configuration/">this page</a></p>
 <h2 id="faq"><strong>FAQ</strong></h2>
-<ul>
-<li>TypeError: 'JavaPackage' object is not callable</li>
+<ol>
 <li>
-<p><code>Check if every path within the launch script is valid expecially the path end with jar</code></p>
+<p>ImportError   from bigdl.nn.layer import *</p>
+<ul>
+<li>Check if the path is pointing to python-api.zip: <code>--py-files ${PYTHON_API_ZIP_PATH}</code></li>
+<li>Check if the path is pointing to python-api.zip: <code>export PYTHONPATH=${PYTHON_API_ZIP_PATH}:$PYTHONPATH</code></li>
+</ul>
+</li>
+<li>
+<p>Python in worker has a different version 2.7 than that in driver 3.4</p>
+<ul>
+<li><code>export PYSPARK_PYTHON=/usr/local/bin/python3.4</code>  This path should be valid on every worker node.</li>
+<li><code>export PYSPARK_DRIVER_PYTHON=/usr/local/bin/python3.4</code>  This path should be valid on every driver node.</li>
+</ul>
+</li>
+<li>
+<p>TypeError: 'JavaPackage' object is not callable</p>
+<ul>
+<li>Check if every path within the launch script is valid especially the path that ends with jar.</li>
+</ul>
 </li>
 <li>
 <p>java.lang.NoSuchMethodError:XXX</p>
-</li>
-<li><code>Check if the spark version is match i.e you are using Spark2.x but the underneath BigDL compiled with Spark1.6</code></li>
+<ul>
+<li>Check if the Spark version matches, i.e check if you are using Spark2.x but the underneath BigDL is compiled with Spark1.6.</li>
 </ul>
+</li>
+<li>
+<p>If you want to redirect spark logs to file and keep BigDL logs in console only, call the following API before you train your model:</p>
+</li>
+</ol>
+<pre><code class="python">from bigdl.util.common import *
+
+redire_spark_logs(log_path=file path to redirect logs to)
+show_bigdl_info_logs()
+</code></pre>
 
   <br>
 </div>

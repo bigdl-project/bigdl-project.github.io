@@ -93,7 +93,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </code></pre>
 
 <p>Apply an Optimizer who could apply padding to the Samples with a padding strategy.<br />
-<code>model</code>: model will be optimizied.<br />
+<code>model</code>: model will be optimized.<br />
 <code>sampleRDD</code>: training Samples.<br />
 <code>criterion</code>: loss function.<br />
 <code>batchSize</code>: mini batch size.<br />
@@ -108,7 +108,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </code></pre>
 
 <p>Apply an optimizer with User-Defined <code>MiniBatch</code>.<br />
-<code>model</code>: model will be optimizied.<br />
+<code>model</code>: model will be optimized.<br />
 <code>sampleRDD</code>: training Samples.<br />
 <code>criterion</code>: loss function.<br />
 <code>batchSize</code>: mini batch size.<br />
@@ -207,7 +207,7 @@ val optimizer = Optimizer(
   batchSize = batchSize
 ).setValidation(Trigger.everyEpoch, valRDD, Array(new Top1Accuracy), batchSize) // set validation method
   .setEndWhen(Trigger.maxEpoch(15)) // set end trigger
-  .setState(T(&quot;learningRate&quot; -&gt; 0.05)) // set optimize method
+  .setOptimMethod(new SGD(learningRate = 0.05)) // set optimize method, Since 0.2.0. Older version should use optimizer.setOptimMethod(new SGD()).setState(T(&quot;learningRate&quot; -&gt; 0.05))
 
 val trainedModel = optimizer.optimize()
 </code></pre>
@@ -219,8 +219,7 @@ val trainedModel = optimizer.optimize()
                  criterion,
                  end_trigger,
                  batch_size,
-                 optim_method=&quot;SGD&quot;,
-                 state={},
+                 optim_method=None,
                  bigdl_type=&quot;float&quot;)
 </code></pre>
 
@@ -229,8 +228,7 @@ val trainedModel = optimizer.optimize()
 <code>criterion</code>: the Loss function.<br />
 <code>end_trigger</code>: when to end the optimization.<br />
 <code>batch_size</code>: size of minibatch.<br />
-<code>optim_method</code>: the algorithm to use for optimization, e.g. SGD, Adagrad, etc.
-<code>state</code>: a set of initial configurations for optimizer, provided as a dict e.g. configurable params include: learningRate, learningRateDecay,etc.
+<code>optim_method</code>:  the algorithm to use for optimization, e.g. SGD, Adagrad, etc. If optim_method is None, the default algorithm is SGD.<br />
 <code>bigdl_type</code>: the numeric type(Float/Double).  </p>
 <p><strong><em>Validation</em></strong></p>
 <p>Function setValidation is to set a validate evaluation in the <code>optimizer</code>.</p>
@@ -279,20 +277,37 @@ test_data = ...
 batch_size = 12
 # Create an Optimizer, Since 0.2.0
 optimizer = Optimizer(
-   model=model,
-   training_rdd=train_data,
-   criterion=ClassNLLCriterion(),
-   optim_method=&quot;SGD&quot;,
-   state={&quot;learningRate&quot;: 0.05},
-   end_trigger=MaxEpoch(training_epochs),
-   batch_size=batch_size)
+  model=lenet_model,
+  training_rdd=train_data,
+  criterion=ClassNLLCriterion(),
+  optim_method=SGD(learningrate=0.01, learningrate_decay=0.0002), # set optim method
+  end_trigger=MaxEpoch(15),
+  batch_size=batch_size)
+
+# Older version, before 0.2.0, use following code: 
+# optimizer = Optimizer(
+#   model=model,
+#   training_rdd=train_data,
+#   criterion=ClassNLLCriterion(),
+#   optim_method=&quot;SGD&quot;,
+#   state={&quot;learningRate&quot;: 0.05},
+#   end_trigger=MaxEpoch(training_epochs),
+#   batch_size=batch_size)
 
 optimizer.set_validation(
     batch_size=2048,
     val_rdd=test_data,
     trigger=EveryEpoch(),
-    val_method=[&quot;Top1Accuracy&quot;]
+    val_method=[Top1Accuracy()]
 )
+
+# Older version, before 0.2.0, use following code: 
+#optimizer.set_validation(
+#    batch_size=2048,
+#    val_rdd=test_data,
+#    trigger=EveryEpoch(),
+#    val_method=[&quot;Top1Accuracy&quot;]
+#)
 
 trained_model = optimizer.optimize()
 

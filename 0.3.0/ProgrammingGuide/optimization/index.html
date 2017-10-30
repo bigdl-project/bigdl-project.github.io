@@ -46,6 +46,8 @@
           ]},
           {title: "Monitor your training", url: "#monitor-your-training", children: [
           ]},
+          {title: "Performance tuning", url: "#performance-tuning", children: [
+          ]},
         ];
 
     </script>
@@ -183,13 +185,13 @@ optimizer.setOptimMethod(new Adam())  // Change to adam
 
 <p><strong>python</strong></p>
 <pre><code># Python need to define the optimization algorithm in the constructor
-optimizer = Optimizer(model, train_data, MSECriterion(), MaxIteration(100), 4, optim_method = &quot;Adam&quot;)
+optimizer = Optimizer(model, train_data, MSECriterion(), MaxIteration(100), 4, optim_method = Adam())
 </code></pre>
 
 <h2 id="validate-your-model-in-training">Validate your model in training</h2>
-<p>Sometimes, people want to evaluate the model with a seperated dataset. When model
+<p>Sometimes, people want to evaluate the model with a separated dataset. When model
 performs well on train dataset, but bad on validation dataset, we call the model is overfit or
-weak generalization. People may want to evaluate the model every serveral iterations or 
+weak generalization. People may want to evaluate the model every several iterations or 
 epochs. BigDL can easily do this by</p>
 <p><strong>scala</strong></p>
 <pre><code class="scala">optimizer.setValidation(trigger, testData, validationMethod, batchSize)
@@ -202,7 +204,7 @@ epochs. BigDL can easily do this by</p>
 <p>For validation, you need to provide</p>
 <ul>
 <li>trigger: how often to do validation, maybe each several iterations or epochs</li>
-<li>test data: the seperate dataset for test</li>
+<li>test data: the separate dataset for test</li>
 <li>validation method: how to evaluate the model, maybe top1 accuracy, etc.</li>
 <li>batch size: how many data evaluate in one time</li>
 </ul>
@@ -233,8 +235,8 @@ epochs. BigDL can easily do this by</p>
 </code></pre>
 
 <h2 id="resume-training">Resume Training</h2>
-<p>After training stops, you can resume from any saved point. Choose one of   the model snapshots and the corresponding optim-method snapshot to resume (saved in checkpoint path, details see <a href="#checkpointing">Checkpointing</a>).     Use <code>Module.load</code> (Scala) or <code>Model.load</code>(Python) to load the model         snapshot into an model object, and <code>T.load</code> (Scala only, Python   does not support this yet) to load state which stores optimization method parameters. Then create a new <code>Optimizer</code> with the loaded model and Table state . Call <code>Optimizer.optimize</code>, and you will resume from the point       where the snapshot is taken. Refer to <a href="../../APIGuide/Optimizers/OptimMethod/#load-method">OptimMethod Load</a> and <a href="../../APIGuide/Module/#model-load">Model Load</a> for details.</p>
-<p>You can also resume training without loading state, if you       intend to change the learning rate schedule or even the optimization        algorithm. Just create an <code>Optimizer</code> with loaded model and a new instance  of Table state (both Scala and Python).</p>
+<p>After training stops, you can resume from any saved point. Choose one of   the model snapshots and the corresponding optim-method snapshot to resume (saved in checkpoint path, details see <a href="#checkpointing">Checkpointing</a>).     Use <code>Module.load</code> (Scala) or <code>Model.load</code>(Python) to load the model         snapshot into an model object, and <code>OptimMethod.load</code> (Scala and Python) to load optimization method into an OptimMethod  object. Then create a new <code>Optimizer</code> with the loaded model and optim       method. Call <code>Optimizer.optimize</code>, and you will resume from the point       where the snapshot is taken. Refer to <a href="../../APIGuide/Optimizers/OptimMethod/#load-method">OptimMethod Load</a> and <a href="../../APIGuide/Module/#model-load">Model Load</a> for details.</p>
+<p>You can also resume training without loading the optim method, if you       intend to change the learning rate schedule or even the optimization        algorithm. Just create an <code>Optimizer</code> with loaded model and a new instance  of OptimMethod (both Scala and Python).</p>
 <h2 id="monitor-your-training">Monitor your training</h2>
 <p><strong>scala</strong></p>
 <pre><code class="scala">optimizer.setTrainSummary(trainSummary)
@@ -247,6 +249,22 @@ optimizer.set_val_summary(val_summary)
 </code></pre>
 
 <p>See details in <a href="../visualization/">Visualization</a></p>
+<h2 id="performance-tuning">Performance tuning</h2>
+<p>For performance investigation, BigDL records the time-consuming distribution on each node for each step(e.g. sync weight, computing).The information can be displayed in the driver log. By default, it is suspended.To turn it on, please follow these steps:</p>
+<p>1.Prepare a log4j property file</p>
+<pre><code># Root logger option
+log4j.rootLogger=INFO, stdout
+# Direct log messages to stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.out
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+log4j.logger.com.intel.analytics.bigdl.optim=DEBUG
+
+</code></pre>
+
+<p>2.Add an option to your spark-submit command</p>
+<p>--conf "spark.driver.extraJavaOptions=-Dlog4j.configuration=file:where_is_your_log4j_file"</p>
 
   <br>
 </div>

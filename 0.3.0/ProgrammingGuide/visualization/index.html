@@ -34,6 +34,7 @@
         
         var pageToc = [
           {title: "Generating summary info in BigDL", url: "#generating-summary-info-in-bigdl", children: [
+              {title: "Save graph model to summary so visualize model in tensorboard", url: "#save-graph-model-to-summary-so-visualize-model-in-tensorboard" },
           ]},
           {title: "Retrieving summary info as readable format", url: "#retrieving-summary-info-as-readable-format", children: [
           ]},
@@ -89,6 +90,22 @@ trainedModel = optimizer.optimize()
 </code></pre>
 
 <p>After you start to run your spark job, the train and validation summary will be saved to <code>mylogdir/myapp/train</code> and <code>mylogdir/myapp/validation</code> respectively (Note: you may want to use different <code>appName</code> for different job runs to avoid possible conflicts.)</p>
+<h3 id="save-graph-model-to-summary-so-visualize-model-in-tensorboard">Save graph model to summary so visualize model in tensorboard</h3>
+<p>Model structure is very important for people to create/understand model. For sequential models, you can
+just print them out by using the <code>toString</code> method. For complex graph model, you can use tensorboard
+to visualize it.</p>
+<p>Here's how to save your graph model to summary log path to display it in the tensorboard.</p>
+<p><strong>Example: Save graph model to summary in Scala</strong></p>
+<pre><code class="scala">val model = Graph(...)
+model.saveGraphTopology(&quot;logpath&quot;)
+</code></pre>
+
+<p><strong>Example: Save graph model to summary in Python</strong></p>
+<pre><code class="python">model=Model(...)
+model.save_graph_topology(&quot;logpath&quot;)
+
+</code></pre>
+
 <hr />
 <h2 id="retrieving-summary-info-as-readable-format"><strong>Retrieving summary info as readable format</strong></h2>
 <p>You can use provided API <code>readScalar</code>(Scala) and <code>read_scalar</code>(Python) to retrieve the summaries into readable format, and export them to other tools for further analysis or visualization.</p>
@@ -143,7 +160,7 @@ valloss = np.array(val_summary.read_scalar('Loss'))
 <hr />
 <h2 id="visualizing-training-with-jupyter-notebook"><strong>Visualizing training with Jupyter notebook</strong></h2>
 <p>If you're using Jupyter notebook, you can also draw the training curves using popular plotting tools (e.g. matplotlib) and show the plots inline. </p>
-<p>First, retrieve the summaries as instructed in <a href="#retrieving-summary-info-as-readable-format">Retrieve Summary</a>. The retrived summary is a list of tuples. Each tuple is a recorded event in format (iteration count, recorded value, timestamp). You can convert it to numpy array or dataframe to plot it. See example below:  </p>
+<p>First, retrieve the summaries as instructed in <a href="#retrieving-summary-info-as-readable-format">Retrieve Summary</a>. The retrieved summary is a list of tuples. Each tuple is a recorded event in format (iteration count, recorded value, timestamp). You can convert it to numpy array or dataframe to plot it. See example below:  </p>
 <p><em><strong>Example: Plot the train/validation loss in Jupyter</strong></em></p>
 <pre><code class="python">#retrieve train and validation summary object and read the loss data into ndarray's. 
 loss = np.array(train_summary.read_scalar(&quot;Loss&quot;))
@@ -159,7 +176,7 @@ plt.legend();
 
 <p><img alt="jupyter" src="../../Image/jupyter.png" /></p>
 <h2 id="logging"><strong>Logging</strong></h2>
-<p>BigDL also has a stright-forward logging output on the console along the    training, as shown below. You can see real-time epoch/iteration/loss/       throughput in the log.</p>
+<p>BigDL also has a straight-forward logging output on the console along the    training, as shown below. You can see real-time epoch/iteration/loss/       throughput in the log.</p>
 <pre><code>  2017-01-10 10:03:55 INFO  DistriOptimizer$:241 - [Epoch 1 0/               5000][Iteration 1][Wall Clock XXX] Train 512 in   XXXseconds. Throughput    is XXX records/second. Loss is XXX.
   2017-01-10 10:03:58 INFO  DistriOptimizer$:241 - [Epoch 1 512/             5000][Iteration 2][Wall Clock XXX] Train 512    in XXXseconds. Throughput   is XXX records/second. Loss is XXX.
   2017-01-10 10:04:00 INFO  DistriOptimizer$:241 - [Epoch 1 1024/            5000][Iteration 3][Wall Clock XXX] Train 512   in XXXseconds. Throughput    is XXX records/second. Loss is XXX.

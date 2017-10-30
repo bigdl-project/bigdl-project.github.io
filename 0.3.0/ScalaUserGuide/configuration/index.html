@@ -75,7 +75,6 @@ by passing JVM parameters. Here's an example:</p>
 java -cp xxx.jar -DFOO=BAR your.main.class.name
 </code></pre>
 
-<p>Note that to run BigDL in a local Java/Scala program, you need to set environment variable BIGDL_LOCAL_MODE to true.</p>
 <h2 id="available-properties">Available Properties</h2>
 <table>
 <thead>
@@ -104,6 +103,12 @@ java -cp xxx.jar -DFOO=BAR your.main.class.name
 <td>bigdl.utils.LoggerFilter.enableSparkLog</td>
 <td><em>true</em></td>
 <td>Enable redirecting Spark logs to logFile. Set it to false when you don't want to see Spark logs in the redirecting log file.</td>
+</tr>
+<tr>
+<td><strong>Mode</strong></td>
+<td>bigdl.localMode</td>
+<td><em>false</em></td>
+<td>Whether BigDL is running as a local Java/Scala program.</td>
 </tr>
 <tr>
 <td><strong>Multi-threading</strong></td>
@@ -140,6 +145,12 @@ java -cp xxx.jar -DFOO=BAR your.main.class.name
 <td>bigdl.check.singleton</td>
 <td><em>false</em></td>
 <td>Whether to check if multiple partition run on a same executor, which is bad for performance.</td>
+</tr>
+<tr>
+<td><strong>Tensor</strong></td>
+<td>bigdl.tensor.fold</td>
+<td>1000</td>
+<td>How many elements in a tensor to determine it is a large tensor, and thus print only part of it.</td>
 </tr>
 </tbody>
 </table>

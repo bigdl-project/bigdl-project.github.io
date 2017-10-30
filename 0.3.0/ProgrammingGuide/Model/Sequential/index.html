@@ -11,7 +11,7 @@
     
     <link rel="shortcut icon" href="/img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Define a Model - BigDL Project</title>
+    <title>Using Sequential API - BigDL Project</title>
     <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="/css/base.css" rel="stylesheet">
@@ -57,7 +57,10 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="define-a-simple-model"><strong>Define a simple model</strong></h2>
+    <p>BigDL supports two different model definition styles: Sequential API and Functional API.</p>
+<p>Here we introduce how to define a model in Sequential API.</p>
+<hr />
+<h2 id="define-a-simple-model"><strong>Define a simple model</strong></h2>
 <p>Suppose we want to define a model with three layers</p>
 <pre><code>Linear -&gt; Sigmoid -&gt; Softmax
 </code></pre>
@@ -172,7 +175,7 @@ val branches = ParallelTable()
 val branch1 = Sequential().add(Linear(...)).add(ReLU())
 val branch2 = Sequential().add(Linear(...)).add(ReLU())
 branches.add(branch1).add(branch2)
-model.add(branches).add(CAddTable)
+model.add(branches).add(CAddTable())
 </code></pre>
 
 <p><strong>Python</strong></p>
@@ -181,7 +184,7 @@ branches = ParallelTable()
 branch1 = Sequential().add(Linear(...)).add(ReLU())
 branch2 = Sequential().add(Linear(...)).add(ReLU())
 branches.add(branch1).add(branch2)
-model.add(branches).add(CAddTable)
+model.add(branches).add(CAddTable())
 </code></pre>
 
 <p>In the above code, we use ParallelTable to handle the multiple inputs. ParallelTable also

@@ -35,7 +35,15 @@
         var pageToc = [
           {title: "Overview", url: "#overview", children: [
           ]},
-          {title: "DLClassifier", url: "#dlclassifier", children: [
+          {title: "Define a DLEstimator", url: "#define-a-dlestimator", children: [
+          ]},
+          {title: "Define a DLClassifier", url: "#define-a-dlclassifier", children: [
+          ]},
+          {title: "Hyperparameter setting", url: "#hyperparameter-setting", children: [
+          ]},
+          {title: "Prepare the data and start the training process", url: "#prepare-the-data-and-start-the-training-process", children: [
+          ]},
+          {title: "Make prediction on chosen data by using DLModel/DLClassifierModel", url: "#make-prediction-on-chosen-data-by-using-dlmodeldlclassifiermodel", children: [
           ]},
         ];
 
@@ -54,72 +62,108 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h2 id="overview"><strong>Overview</strong></h2>
-<p>BigDL provides <code>DLClassifier</code> for users with Apache Spark MLlib experience, which
-provides high level API for training a BigDL Model with the Apache Spark <code>Transfomer</code>
-pattern, thus users can conveniently fit BigDL into a ML pipeline and do prediction.</p>
-<p>Currently only scala interface are implemented for <code>DLClassifier</code>.</p>
+<p>BigDL provides <code>DLEstimator</code> and <code>DLClassifier</code> for users with Apache Spark MLlib experience, which
+provides high level API for training a BigDL Model with the Apache Spark
+<a href="https://spark.apache.org/docs/2.1.1/ml-pipeline.html#estimators">Estimator</a>/
+<a href="https://spark.apache.org/docs/2.1.1/ml-pipeline.html#transformers">Transfomer</a>
+pattern, thus users can conveniently fit BigDL into a ML pipeline. The fitted model <code>DLModel</code> and
+<code>DLClassiferModel</code> contains the trained BigDL model and extends the Spark ML <code>Model</code> class.
+Alternatively users may also construct a <code>DLModel</code> with a pre-trained BigDL model to use it in
+Spark ML Pipeline for prediction. We are going to show you how to define a DLEstimator and
+DLClassifier and how to use it. For advanced users, please check our
+<a href="../../APIGuide/MLPipeline/DLEstimator_DLClassifier/">ML Pipeline API</a> for detailed usage.</p>
 <hr />
-<h2 id="dlclassifier"><strong>DLClassifier</strong></h2>
-<p><code>DLClassifier</code> extends <code>org.apache.spark.ml.Transformer</code> and supports model prediction from
-Apache Spark DataFrame/Dataset. </p>
-<p>To use <code>DLClassifier</code> for prediction, user should specify</p>
-<ul>
-<li>the model structure constructed from BigDL layers. You can also use some predefined model
-like LetNet or ResNet.</li>
-<li>batch shape, defined as <code>Array(batchsize, featuresize)</code>. Internally the feature data are converted to BigDL tensors, to predict more efficiently.</li>
-</ul>
-<p><strong>Scala example:</strong></p>
-<pre><code class="scala">package com.intel.analytics.bigdl.example.imageclassification
+<h2 id="define-a-dlestimator"><strong>Define a DLEstimator</strong></h2>
+<p>Before we are trying to use DLEstimator to automate the training process, we need to make clear
+which model used to be updated parameters and gradients, which criterion used to measure the loss,
+the dimension of the features and the label. These are the key elements the DLEstimator required to
+prepare for the training. If you are unfamiliar with creating a model and criterion, check out
+<a href="../Model/Sequential/">Model</a> and <a href="../../APIGuide/Losses/">Losses</a> sections with provided links.</p>
+<p>So, suppose we create a model with single linear layer and use  MSECriterion as loss function here.
+You can choose any other model or criterion for your own good when you start your own training.</p>
+<p>Then basically one can write code like this:</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val model = Sequential().add(Linear(2, 2))
+val estimator = new DLEstimator(model, criterion, Array(2), Array(2))
+</code></pre>
 
-import java.nio.file.Paths
-import com.intel.analytics.bigdl.dataset.image._
-import com.intel.analytics.bigdl.example.imageclassification.MlUtils._
-import com.intel.analytics.bigdl.numeric.NumericFloat
-import com.intel.analytics.bigdl.utils.{Engine, LoggerFilter}
-import org.apache.log4j.{Level, Logger}
-import org.apache.spark.SparkContext
-import org.apache.spark.ml.param.ParamMap
-import org.apache.spark.ml.DLClassifier
-import org.apache.spark.sql.SQLContext
+<p><strong>Python:</strong></p>
+<pre><code class="python">linear_model = Sequential().add(Linear(2, 2))
+mse_criterion = MSECriterion()
+estimator = DLEstimator(model=linear_model, criterion=mse_criterion,
+feature_size=[2], label_size=[2])
+</code></pre>
 
-/**
- * An example to show how to use DLClassifier Transform
- */
-object ImagePredictor {
-  def main(args: Array[String]): Unit = {
-    predictParser.parse(args, new PredictParams()).map(param =&gt; {
-      val conf = Engine.createSparkConf()
-      conf.setAppName(&quot;Predict with trained model&quot;)
-      val sc = new SparkContext(conf)
-      Engine.init
-      val sqlContext = new SQLContext(sc)
+<p>Now, you have a DLEstimator based on your own choice of model, criterion. Also, make sure your specified
+feature size and label size consistent with the actual ones otherwise exception will be encountered.</p>
+<h2 id="define-a-dlclassifier"><strong>Define a DLClassifier</strong></h2>
+<p>Since DLlassifier is the subclass of DLEstimator, the way of defining a DLClassifier is almost the same
+like creating a DLEstimator except that you don't need to specify the label size because it's set to
+default binary value and pay attention to choosing the criterion suitable for classification problem wisely.</p>
+<p>Suppose we still create a model with single linear layer and use  ClassNLL criterion as loss
+function here.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val model = Sequential().add(Linear(2, 2)).add(LogSoftMax())
+val criterion = ClassNLLCriterion()
+val estimator = new DLClassifier(model, criterion, Array(2))
+</code></pre>
 
-      val partitionNum = Engine.nodeNumber() * Engine.coreNumber()
-      val model = loadModel(param)
-      val valTrans = new DLClassifier().setInputCol(&quot;features&quot;).setOutputCol(&quot;predict&quot;)
+<p><strong>Python:</strong></p>
+<pre><code class="python">linear_model = Sequential().add(Linear(2, 2))
+classNLL_criterion = ClassNLLCriterion()
+classifier = DLClassifier(model=linear_model, criterion=classNLL_criterion,
+feature_size=[2])
+</code></pre>
 
-      val paramsTrans = ParamMap(
-        valTrans.modelTrain -&gt; model,
-        valTrans.batchShape -&gt;
-        Array(param.batchSize, 3, imageSize, imageSize))
+<h2 id="hyperparameter-setting">Hyperparameter setting</h2>
+<p>Prior to the commencement of the training process, you can modify the batch size, the epoch number of your
+training, and learning rate to meet your goal or DLEstimator/DLClassifier will use the default value.</p>
+<p>Continue the codes above, DLEstimator and DLClassifier can be setted in the same way.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">//for esitmator
+estimator.setBatchSize(4).setMaxEpoch(10).setLearningRate(0.01)
+//for classifier
+classifier.setBatchSize(4).setMaxEpoch(10).setLearningRate(0.01)
+</code></pre>
 
-      // load image set from local
-      val paths = LocalImageFiles.readPaths(Paths.get(param.folder), hasLabel = false)
-      val valRDD = sc.parallelize(imagesLoad(paths, 256), partitionNum)
+<p><strong>Python:</strong></p>
+<pre><code class="python"># for esitmator
+estimator.setBatchSize(4).setMaxEpoch(10).setLearningRate(0.01)
+# for classifier
+classifier.setBatchSize(4).setMaxEpoch(10).setLearningRate(0.01)
 
-      val transf = RowToByteRecords() -&gt;
-          BytesToBGRImg() -&gt;
-          BGRImgCropper(imageSize, imageSize) -&gt;
-          BGRImgNormalizer(testMean, testStd) -&gt;
-          BGRImgToImageVector()
+</code></pre>
 
-      val valDF = transformDF(sqlContext.createDataFrame(valRDD), transf)
+<h2 id="prepare-the-data-and-start-the-training-process">Prepare the data and start the training process</h2>
+<p>Users need to convert the data into Spark's
+<a href="https://spark.apache.org/docs/latest/sql-programming-guide.html#datasets-and-dataframes">DataFrame/DataSet</a>
+to feed to the DLEstimator/DLCLassifer.
+Then after these steps, we can start training now.</p>
+<p>Suppose <code>df</code> is the training data, simple call <code>fit</code> method and let BigDL train the model for you. You will
+get a DLModel or DLClassifierModel based on which one you choose from DLEstimator and DLClassifier.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">//get a DLModel
+val dlModel = estimator.fit(df)
+//get a DLClassifierModel
+val dlClassifierModel = classifier.fit(df)
+</code></pre>
 
-      valTrans.transform(valDF, paramsTrans)
-      sc.stop()
-    })
-  }
-}
+<p><strong>Python:</strong></p>
+<pre><code class="python"># get a DLModel
+dlModel = estimator.fit(df)
+# get a DLClassifierModel
+dlClassifierModel = classifier.fit(df)
+</code></pre>
+
+<h2 id="make-prediction-on-chosen-data-by-using-dlmodeldlclassifiermodel">Make prediction on chosen data by using DLModel/DLClassifierModel</h2>
+<p>Since DLModel/DLClassifierModel inherits from Spark's Transformer abstract class, simply call <code>transform</code>
+ method on DLModel/DLClassifierModel to make prediction.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">dlModel.transform(df).show(false)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">dlModel.transform(df).show(false)
 </code></pre>
 
   <br>
