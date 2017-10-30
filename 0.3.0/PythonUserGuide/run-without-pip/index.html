@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Run - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Before running python programs", url: "#before-running-python-programs", children: [
+          ]},
+          {title: "A quick launch for local mode", url: "#a-quick-launch-for-local-mode", children: [
+          ]},
+          {title: "Run from spark-submit", url: "#run-from-spark-submit", children: [
+          ]},
+          {title: "Run from pyspark + Jupyter", url: "#run-from-pyspark-jupyter", children: [
+          ]},
+          {title: "BigDL Configuration", url: "#bigdl-configuration", children: [
+          ]},
+          {title: "FAQ", url: "#faq", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+
+    <h2 id="before-running-python-programs"><strong>Before running python programs</strong></h2>
+<p>First of all, you need to obtain the BigDL libs. Refer to <a href="../install-without-pip/">Install</a> for more details. </p>
+<p>Then, set environmental variables as described in <a href="../../ScalaUserGuide/run/#set-environment-variables">Set Environment         Variables</a>.</p>
+<h2 id="a-quick-launch-for-local-mode"><strong>A quick launch for local mode</strong></h2>
+<pre><code class="bash">cd $BIGDL_HOME/dist/lib 
+BIGDL_VERSION=...
+${SPARK_HOME}/bin/pyspark --master local[4] \
+--conf spark.driver.extraClassPath=bigdl-${BIGDL_VERSION}-jar-with-dependencies.jar \
+--py-files bigdl-${BIGDL_VERSION}-python-api.zip \
+--properties-file ../conf/spark-bigdl.conf 
+</code></pre>
+
+<p>_<strong>Example code to verify if run successfully</strong>
+ ```python
+ from bigdl.util.common import <em>
+ from pyspark import SparkContext
+ from bigdl.nn.layer import </em>
+ import bigdl.version</p>
+<p># create sparkcontext with bigdl configuration
+ sc = SparkContext.getOrCreate(conf=create_spark_conf())
+ init_engine() # prepare the bigdl environment
+ bigdl.version.<strong>version</strong> # Get the current BigDL version
+ linear = Linear(2, 3) # Try to create a Linear layer</p>
+<p>```</p>
+<h2 id="run-from-spark-submit"><strong>Run from spark-submit</strong></h2>
+<ul>
+<li>A BigDL Python program runs as a standard PySPark program, which requires all Python dependency (e.g., NumPy) used by the program be installed on each node in the Spark cluster. You can try run the BigDL <a href="https://github.com/intel-analytics/BigDL/tree/master/pyspark/bigdl/models/lenet">lenet Python example</a> using <a href="http://spark.apache.org/docs/latest/submitting-applications.html">spark-submit</a> as follows:</li>
+<li><strong>Ensure every path is valid</strong> </li>
+</ul>
+<pre><code class="bash">   BigDL_HOME=...
+   SPARK_HOME=...
+   BIGDL_VERSION=...
+   MASTER=...
+   PYTHON_API_ZIP_PATH=${BigDL_HOME}/dist/lib/bigdl-${BIGDL_VERSION}-python-api.zip
+   BigDL_JAR_PATH=${BigDL_HOME}/dist/lib/bigdl-${BIGDL_VERSION}-jar-with-dependencies.jar
+   PYTHONPATH=${PYTHON_API_ZIP_PATH}:$PYTHONPATH
+
+   ${SPARK_HOME}/bin/spark-submit \
+       --master ${MASTER} \
+       --driver-cores 5  \
+      --driver-memory 10g  \
+      --total-executor-cores 80  \
+      --executor-cores 10  \
+      --executor-memory 20g \
+       --py-files ${PYTHON_API_ZIP_PATH},${BigDL_HOME}/pyspark/bigdl/models/lenet/lenet5.py  \
+       --properties-file ${BigDL_HOME}/dist/conf/spark-bigdl.conf \
+       --jars ${BigDL_JAR_PATH} \
+       --conf spark.driver.extraClassPath=${BigDL_JAR_PATH} \
+       --conf spark.executor.extraClassPath=bigdl-${BIGDL_VERSION}-jar-with-dependencies.jar \
+       ${BigDL_HOME}/pyspark/bigdl/models/lenet/lenet5.py
+</code></pre>
+
+<h2 id="run-from-pyspark-jupyter"><strong>Run from pyspark + Jupyter</strong></h2>
+<ul>
+<li>
+<p>With the full Python API support in BigDL, users can now use BigDL together with powerful notebooks (such as Jupyter notebook) in a distributed fashion across the cluster, combining Python libraries, Spark SQL / dataframes and MLlib, deep learning models in BigDL, as well as interactive visualization tools.</p>
+</li>
+<li>
+<p>First, install all the necessary libraries on the local node where you will run Jupyter, e.g., </p>
+</li>
+</ul>
+<pre><code class="bash">sudo apt install python
+sudo apt install python-pip
+sudo pip install numpy scipy pandas scikit-learn matplotlib seaborn wordcloud
+</code></pre>
+
+<ul>
+<li>Then, you can launch the Jupyter notebook as follows:</li>
+<li><strong>Ensure every path is valid</strong> </li>
+</ul>
+<pre><code class="bash">   BigDL_HOME=...                                                                                         
+   BIGDL_VERSION=...
+   SPARK_HOME=...
+   MASTER=...
+   PYTHON_API_ZIP_PATH=${BigDL_HOME}/dist/lib/bigdl-${BIGDL_VERSION}-python-api.zip
+   BigDL_JAR_PATH=${BigDL_HOME}/dist/lib/bigdl-${BIGDL_VERSION}-jar-with-dependencies.jar
+
+   export PYTHONPATH=${PYTHON_API_ZIP_PATH}:$PYTHONPATH
+   export PYSPARK_DRIVER_PYTHON=jupyter
+   export PYSPARK_DRIVER_PYTHON_OPTS=&quot;notebook --notebook-dir=./  --ip=* --no-browser&quot;
+
+   ${SPARK_HOME}/bin/pyspark \
+       --master ${MASTER} \
+       --properties-file ${BigDL_HOME}/dist/conf/spark-bigdl.conf \
+       --driver-cores 5  \
+      --driver-memory 10g  \
+      --total-executor-cores 8  \
+      --executor-cores 1  \
+      --executor-memory 20g \
+       --py-files ${PYTHON_API_ZIP_PATH} \
+       --jars ${BigDL_JAR_PATH} \
+       --conf spark.driver.extraClassPath=${BigDL_JAR_PATH} \
+       --conf spark.executor.extraClassPath=bigdl-${BIGDL_VERSION}-jar-with-dependencies.jar
+</code></pre>
+
+<p>After successfully launching Jupyter, you will be able to navigate to the notebook dashboard using your browser. You can find the exact URL in the console output when you started Jupyter; by default, the dashboard URL is http://your_node:8888/</p>
+<p>_<strong>Example code to verify if run successfully</strong>
+ ```python
+ from bigdl.util.common import <em>
+ from pyspark import SparkContext
+ from bigdl.nn.layer import </em>
+ import bigdl.version</p>
+<p># create sparkcontext with bigdl configuration
+ sc = SparkContext.getOrCreate(conf=create_spark_conf())
+ init_engine() # prepare the bigdl environment
+ bigdl.version.<strong>version</strong> # Get the current BigDL version
+ linear = Linear(2, 3) # Try to create a Linear layer</p>
+<p>```</p>
+<h2 id="bigdl-configuration">BigDL Configuration</h2>
+<p>Please check <a href="../../ScalaUserGuide/configuration/">this page</a></p>
+<h2 id="faq"><strong>FAQ</strong></h2>
+<ul>
+<li>TypeError: 'JavaPackage' object is not callable</li>
+<li>
+<p><code>Check if every path within the launch script is valid expecially the path end with jar</code></p>
+</li>
+<li>
+<p>java.lang.NoSuchMethodError:XXX</p>
+</li>
+<li><code>Check if the spark version is match i.e you are using Spark2.x but the underneath BigDL compiled with Spark1.6</code></li>
+</ul>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
