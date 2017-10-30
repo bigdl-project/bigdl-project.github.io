@@ -148,7 +148,7 @@ Please refer the <a href="../../ScalaUserGuide/install-build-src/">Build Page</a
 <p>For example, you may run the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/lenetLocal">Lenet</a> model as a local Scala/Java program as follows:</p>
 <p>1.First, you can download the MNIST Data from <a href="http://yann.lecun.com/exdb/mnist/">here</a>. Unzip all the files and put them in one folder(e.g. mnist).</p>
 <p>2.Run below command to train lenet as local Java/Scala program:</p>
-<pre><code class="bash">scala -cp spark/dl/target/bigdl-VERSION-jar-with-dependencies-and-spark.jar \
+<pre><code class="bash">java -cp spark/dl/target/bigdl-VERSION-jar-with-dependencies-and-spark.jar \
 com.intel.analytics.bigdl.example.lenetLocal.Train \
 -f path_to_mnist_folder \
 -c core_number \
@@ -169,7 +169,7 @@ safety of your model files.</li>
 </ul>
 <p>3.The above commands will cache the model in specified path(--checkpoint). Run this command will
    use the trained model to do a validation.</p>
-<pre><code class="bash">scala -cp spark/dl/target/bigdl-VERSION-jar-with-dependencies-and-spark.jar \
+<pre><code class="bash">java -cp spark/dl/target/bigdl-VERSION-jar-with-dependencies-and-spark.jar \
 com.intel.analytics.bigdl.example.lenetLocal.Test \
 -f path_to_mnist_folder \
 --model ./model/model.iteration \
@@ -185,7 +185,7 @@ com.intel.analytics.bigdl.example.lenetLocal.Test \
 <li>-b: The mini-batch size. It is expected that the mini-batch size is a multiple of core_number   </li>
 </ul>
 <p>4.Run below command to predict with trained model:</p>
-<pre><code class="bash">scala -cp spark/dl/target/bigdl-VERSION-jar-with-dependencies-and-spark.jar \
+<pre><code class="bash">java -cp spark/dl/target/bigdl-VERSION-jar-with-dependencies-and-spark.jar \
 com.intel.analytics.bigdl.example.lenetLocal.Predict \
 -f path_to_mnist_folder \
 -c core_number \
