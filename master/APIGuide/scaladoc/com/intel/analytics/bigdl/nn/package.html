@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>nn - bigdl 0.3.0-SNAPSHOT API - com.intel.analytics.bigdl.nn</title>
-          <meta name="description" content="nn - bigdl 0.3.0 - SNAPSHOT API - com.intel.analytics.bigdl.nn" />
-          <meta name="keywords" content="nn bigdl 0.3.0 SNAPSHOT API com.intel.analytics.bigdl.nn" />
+          <title>nn - bigdl 0.4.0-SNAPSHOT API - com.intel.analytics.bigdl.nn</title>
+          <meta name="description" content="nn - bigdl 0.4.0 - SNAPSHOT API - com.intel.analytics.bigdl.nn" />
+          <meta name="keywords" content="nn bigdl 0.4.0 SNAPSHOT API com.intel.analytics.bigdl.nn" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -201,6 +201,19 @@ the specified dimension <code>dimension</code>.</p>
       <p class="comment cmt">a bilinear transformation with sparse inputs,
 The input tensor given in forward(input) is a table containing both inputs x_1 and x_2,
 which are tensors of size N x inputDimension1 and N x inputDimension2, respectively.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.BinaryThreshold" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BinaryThreshold[T]extendsTensorModule[T]"></a>
+      <a id="BinaryThreshold[T]:BinaryThreshold[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="BinaryThreshold.html"><span class="name">BinaryThreshold</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.BinaryThreshold.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Threshold input Tensor.</p>
     </li><li name="com.intel.analytics.bigdl.nn.BinaryTreeLSTM" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="BinaryTreeLSTM[T]extendsTreeLSTM[T]"></a>
       <a id="BinaryTreeLSTM[T]:BinaryTreeLSTM[T]"></a>
@@ -1199,6 +1212,20 @@ a table of two Tensors of size 1 (they contain only scalars), and a label y (1 o
       </h4>
       <p class="comment cmt">Creates a module that takes a table {gater, experts} as input and outputs the mixture of
 experts (a Tensor or table of Tensors) using a gater Tensor.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.MsraFiller" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MsraFillerextendsInitializationMethodwithProductwithSerializable"></a>
+      <a id="MsraFiller:MsraFiller"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="MsraFiller.html"><span class="name">MsraFiller</span></a><span class="params">(<span name="varianceNormAverage">varianceNormAverage: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result"> extends <a href="InitializationMethod.html" class="extype" name="com.intel.analytics.bigdl.nn.InitializationMethod">InitializationMethod</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A Filler based on the paper [He, Zhang, Ren and Sun 2015]: Specifically
+accounts for ReLU nonlinearities.</p>
     </li><li name="com.intel.analytics.bigdl.nn.Mul" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Mul[T]extendsTensorModule[T]withInitializable"></a>
       <a id="Mul[T]:Mul[T]"></a>
@@ -2198,6 +2225,19 @@ during the forward process:
       </span>
       </h4>
       <p class="comment cmt">Threshold input Tensor.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.Tile" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Tile[T]extendsTensorModule[T]"></a>
+      <a id="Tile[T]:Tile[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Tile.html"><span class="name">Tile</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Tile.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Tile repeats input <code>nFeatures</code> times along its <code>dim</code> dimension</p>
     </li><li name="com.intel.analytics.bigdl.nn.TimeDistributed" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="TimeDistributed[T]extendsTensorModule[T]"></a>
       <a id="TimeDistributed[T]:TimeDistributed[T]"></a>
@@ -2468,6 +2508,19 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       </h4>
       <p class="comment cmt">Initialize the weight with coefficients for bilinear interpolation.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.BinaryThreshold" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BinaryThreshold"></a>
+      <a id="BinaryThreshold:BinaryThreshold"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="BinaryThreshold$.html"><span class="name">BinaryThreshold</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.nn.BinaryTreeLSTM" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="BinaryTreeLSTM"></a>
       <a id="BinaryTreeLSTM:BinaryTreeLSTM"></a>
@@ -4324,6 +4377,19 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       <span class="symbol">
         <a href="Threshold$.html"><span class="name">Threshold</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.Tile" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Tile"></a>
+      <a id="Tile:Tile"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Tile$.html"><span class="name">Tile</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
