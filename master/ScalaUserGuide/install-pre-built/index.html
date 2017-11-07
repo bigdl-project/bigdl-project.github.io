@@ -62,50 +62,21 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Currently, BigDL releases are hosted on maven central; here's an example to add the BigDL dependency to your own project:</p>
 <pre><code class="xml">&lt;dependency&gt;
     &lt;groupId&gt;com.intel.analytics.bigdl&lt;/groupId&gt;
-    &lt;artifactId&gt;bigdl&lt;/artifactId&gt;
+    &lt;artifactId&gt;bigdl-[SPARK_1.5|SPARK_1.6|SPARK_2.1|SPARK_2.2]&lt;/artifactId&gt;
     &lt;version&gt;${BIGDL_VERSION}&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
+<p>Please choose the suffix according to your Spark platform.</p>
 <p>SBT developers can use</p>
-<pre><code class="sbt">libraryDependencies += &quot;com.intel.analytics.bigdl&quot; % &quot;bigdl&quot; % &quot;${BIGDL_VERSION}&quot;
+<pre><code class="sbt">libraryDependencies += &quot;com.intel.analytics.bigdl&quot; % &quot;bigdl-[SPARK_1.5|SPARK_1.6|SPARK_2.1|SPARK_2.2]&quot; % &quot;${BIGDL_VERSION}&quot;
 </code></pre>
 
 <p>You can find the optional <code>${BIGDL_VERSION}</code> from the <a href="../../release-download/">Release Page</a>.</p>
-<p><em>Note</em>: the BigDL lib default supports Spark 1.5.x and 1.6.x; if your project runs on Spark 2.0 and 2.1, use this</p>
-<pre><code class="xml">&lt;dependency&gt;
-    &lt;groupId&gt;com.intel.analytics.bigdl&lt;/groupId&gt;
-    &lt;artifactId&gt;bigdl-SPARK_2.0&lt;/artifactId&gt;
-    &lt;version&gt;${BIGDL_VERSION}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
-
-<p>SBT developers can use</p>
-<pre><code class="sbt">libraryDependencies += &quot;com.intel.analytics.bigdl&quot; % &quot;bigdl-SPARK_2.0&quot; % &quot;${BIGDL_VERSION}&quot;
-</code></pre>
-
-<p>If your project runs on MacOS, you should add the dependency below,</p>
-<pre><code class="xml">&lt;dependency&gt;
-    &lt;groupId&gt;com.intel.analytics.bigdl.native&lt;/groupId&gt;
-    &lt;artifactId&gt;mkl-java-mac&lt;/artifactId&gt;
-    &lt;version&gt;${BIGDL_VERSION}&lt;/version&gt;
-    &lt;exclusions&gt;
-        &lt;exclusion&gt;
-            &lt;groupId&gt;com.intel.analytics.bigdl.native&lt;/groupId&gt;
-            &lt;artifactId&gt;bigdl-native&lt;/artifactId&gt;
-        &lt;/exclusion&gt;
-    &lt;/exclusions&gt;
-&lt;/dependency&gt;
-</code></pre>
-
-<p>SBT developers can use</p>
-<pre><code class="sbt">libraryDependencies += &quot;com.intel.analytics.bigdl.native&quot; % &quot;mkl-java-mac&quot; % &quot;${BIGDL_VERSION}&quot; from &quot;http://repo1.maven.org/maven2/com/intel/analytics/bigdl/native/mkl-java-mac/${BIGDL_VERSION}/mkl-java-mac-${BIGDL_VERSION}.jar&quot;
-</code></pre>
-
 <hr />
 <h2 id="link-with-a-development-version"><strong>Link with a development version</strong></h2>
 <p>Currently, BigDL development version is hosted on <a href="https://oss.sonatype.org/content/groups/public/com/intel/analytics/bigdl/">SonaType</a>. </p>
-<p>To link your application with the latest BigDL development version, you should add some dependencies like <a href="#link-with-a-release-version">Linking with BigDL releases</a>, but set <code>${BIGDL_VERSION}</code> to <code>0.3.0-SNAPSHOT</code>, and add below repository to your pom.xml.</p>
+<p>To link your application with the latest BigDL development version, you should add some dependencies like <a href="#link-with-a-release-version">Linking with BigDL releases</a>, but set <code>${BIGDL_VERSION}</code> to <code>0.4.0-SNAPSHOT</code>, and add below repository to your pom.xml.</p>
 <pre><code class="xml">&lt;repository&gt;
     &lt;id&gt;sonatype&lt;/id&gt;
     &lt;name&gt;sonatype repository&lt;/name&gt;
