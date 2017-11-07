@@ -804,14 +804,6 @@ The init method will be called in Module.reset()</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="bigdl.nn.initialization_method.MsraFiller">
-<em class="property">class </em><code class="descclassname">bigdl.nn.initialization_method.</code><code class="descname">MsraFiller</code><span class="sig-paren">(</span><em>varianceNormAverage=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/initialization_method.html#MsraFiller"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.initialization_method.MsraFiller" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.initialization_method.InitializationMethod" title="bigdl.nn.initialization_method.InitializationMethod"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.initialization_method.InitializationMethod</span></code></a></p>
-<p>MsraFiller Initializer.
-See <a class="reference external" href="https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/He_Delving_Deep_into_ICCV_2015_paper.pdf">https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/He_Delving_Deep_into_ICCV_2015_paper.pdf</a></p>
-</dd></dl>
-
-<dl class="class">
 <dt id="bigdl.nn.initialization_method.Ones">
 <em class="property">class </em><code class="descclassname">bigdl.nn.initialization_method.</code><code class="descname">Ones</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/initialization_method.html#Ones"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.initialization_method.Ones" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.initialization_method.InitializationMethod" title="bigdl.nn.initialization_method.InitializationMethod"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.initialization_method.InitializationMethod</span></code></a></p>
@@ -1020,15 +1012,6 @@ which are tensors of size N x inputDimension1 and N x inputDimension2, respectiv
 <code class="descname">set_init_method</code><span class="sig-paren">(</span><em>weight_init_method=None</em>, <em>bias_init_method=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Bilinear.set_init_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Bilinear.set_init_method" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</dd></dl>
-
-<dl class="class">
-<dt id="bigdl.nn.layer.BinaryThreshold">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">BinaryThreshold</code><span class="sig-paren">(</span><em>th=1e-06</em>, <em>ip=False</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#BinaryThreshold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.BinaryThreshold" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
-<p>Binary threshold, 1 if value &gt; th, 0 otherwise
-&gt;&gt;&gt; layer = BinaryThreshold(0.1, False)
-creating: createBinaryThreshold</p>
 </dd></dl>
 
 <dl class="class">
@@ -4293,17 +4276,6 @@ If values in the Tensor smaller than th, then replace it with v</p>
 </table>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">threshold</span> <span class="o">=</span> <span class="n">Threshold</span><span class="p">(</span><span class="mf">1e-5</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 <span class="go">creating: createThreshold</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="class">
-<dt id="bigdl.nn.layer.Tile">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Tile</code><span class="sig-paren">(</span><em>dim=1</em>, <em>copies=2</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Tile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Tile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
-<p>Replicate ‘copies’ copy along ‘dim’ dimension</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">layer</span> <span class="o">=</span> <span class="n">Tile</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="go">creating: createTile</span>
 </pre></div>
 </div>
 </dd></dl>
