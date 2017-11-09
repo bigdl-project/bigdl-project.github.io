@@ -163,6 +163,12 @@ calculated as base_lr * gamma ^ (floor(iter / step_size))</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.optim.optimizer.DistriOptimizer">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">DistriOptimizer</code><span class="sig-paren">(</span><em>model</em>, <em>training_rdd</em>, <em>criterion</em>, <em>end_trigger</em>, <em>batch_size</em>, <em>optim_method=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#DistriOptimizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.DistriOptimizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.optim.optimizer.EveryEpoch">
 <em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">EveryEpoch</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#EveryEpoch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.EveryEpoch" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
@@ -242,6 +248,38 @@ rate allows a reduction of confidence in the step size.</p>
 :param linesearch_options If no line search provided, then a fixed step size is used
 &gt;&gt;&gt; lbfgs = LBFGS()
 creating: createLBFGS</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.LocalOptimizer">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">LocalOptimizer</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>model</em>, <em>criterion</em>, <em>end_trigger</em>, <em>batch_size</em>, <em>optim_method=None</em>, <em>cores=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#LocalOptimizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.LocalOptimizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Create an optimizer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>model</strong> – the neural net model</li>
+<li><strong>X</strong> – the training features which is an ndarray or list of ndarray</li>
+<li><strong>Y</strong> – the training label which is an ndarray</li>
+<li><strong>criterion</strong> – the loss function</li>
+<li><strong>optim_method</strong> – the algorithm to use for optimization,</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>e.g. SGD, Adagrad, etc. If optim_method is None, the default algorithm is SGD.
+:param end_trigger: when to end the optimization
+:param batch_size: training batch size
+:param cores: by default is the total physical cores.</p>
+<dl class="method">
+<dt id="bigdl.optim.optimizer.LocalOptimizer.optimize">
+<code class="descname">optimize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#LocalOptimizer.optimize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.LocalOptimizer.optimize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do an optimization.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -371,8 +409,10 @@ Usually used as end_trigger when creating an Optimizer.</p>
 <dt id="bigdl.optim.optimizer.Optimizer">
 <em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Optimizer</code><span class="sig-paren">(</span><em>model</em>, <em>training_rdd</em>, <em>criterion</em>, <em>end_trigger</em>, <em>batch_size</em>, <em>optim_method=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Optimizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Optimizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
-<p>An optimizer is in general to minimize any function with respect
-to a set of parameters. In case of training a neural network,
+<p>This is a distrubuted optimizer.
+An optimizer is in general to minimize any function with respect
+to a set of parameters.
+In case of training a neural network,
 an optimizer tries to minimize the loss of the neural net with
 respect to its weights/biases, over the training set.</p>
 <dl class="method">

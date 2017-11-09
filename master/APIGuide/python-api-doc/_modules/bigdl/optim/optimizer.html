@@ -89,7 +89,7 @@
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">get_spark_context</span>
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">to_list</span>
 <span class="kn">from</span> <span class="nn">py4j.java_gateway</span> <span class="k">import</span> <span class="n">JavaObject</span>
-
+<span class="kn">import</span> <span class="nn">multiprocessing</span>
 
 <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span> <span class="o">&gt;=</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
     <span class="n">long</span> <span class="o">=</span> <span class="nb">int</span>
@@ -582,10 +582,81 @@
         <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">step_sizes</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="DistriOptimizer"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.DistriOptimizer">[docs]</a><span class="k">class</span> <span class="nc">DistriOptimizer</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">model</span><span class="p">,</span>
+                 <span class="n">training_rdd</span><span class="p">,</span>
+                 <span class="n">criterion</span><span class="p">,</span>
+                 <span class="n">end_trigger</span><span class="p">,</span>
+                 <span class="n">batch_size</span><span class="p">,</span>
+                 <span class="n">optim_method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create an optimizer.</span>
+
+
+<span class="sd">        :param model: the neural net model</span>
+<span class="sd">        :param training_data: the training dataset</span>
+<span class="sd">        :param criterion: the loss function</span>
+<span class="sd">        :param optim_method: the algorithm to use for optimization,</span>
+<span class="sd">           e.g. SGD, Adagrad, etc. If optim_method is None, the default algorithm is SGD.</span>
+<span class="sd">        :param end_trigger: when to end the optimization</span>
+<span class="sd">        :param batch_size: training batch size</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                           <span class="n">training_rdd</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span>
+                           <span class="n">optim_method</span> <span class="k">if</span> <span class="n">optim_method</span> <span class="k">else</span> <span class="n">SGD</span><span class="p">(),</span> <span class="n">end_trigger</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LocalOptimizer"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.LocalOptimizer">[docs]</a><span class="k">class</span> <span class="nc">LocalOptimizer</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create an optimizer.</span>
+
+
+<span class="sd">    :param model: the neural net model</span>
+<span class="sd">    :param X: the training features which is an ndarray or list of ndarray</span>
+<span class="sd">    :param Y: the training label which is an ndarray</span>
+<span class="sd">    :param criterion: the loss function</span>
+<span class="sd">    :param optim_method: the algorithm to use for optimization,</span>
+<span class="sd">       e.g. SGD, Adagrad, etc. If optim_method is None, the default algorithm is SGD.</span>
+<span class="sd">    :param end_trigger: when to end the optimization</span>
+<span class="sd">    :param batch_size: training batch size</span>
+<span class="sd">    :param cores: by default is the total physical cores.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">X</span><span class="p">,</span>
+                 <span class="n">y</span><span class="p">,</span>
+                 <span class="n">model</span><span class="p">,</span>
+                 <span class="n">criterion</span><span class="p">,</span>
+                 <span class="n">end_trigger</span><span class="p">,</span>
+                 <span class="n">batch_size</span><span class="p">,</span>
+                 <span class="n">optim_method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">cores</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">cores</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cores</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                           <span class="p">[</span><span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="k">for</span> <span class="n">X</span> <span class="ow">in</span> <span class="n">to_list</span><span class="p">(</span><span class="n">X</span><span class="p">)],</span>
+                           <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">y</span><span class="p">),</span>
+                           <span class="n">model</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                           <span class="n">criterion</span><span class="p">,</span>
+                           <span class="n">optim_method</span> <span class="k">if</span> <span class="n">optim_method</span> <span class="k">else</span> <span class="n">SGD</span><span class="p">(),</span> <span class="n">end_trigger</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">cores</span><span class="p">)</span>
+
+<div class="viewcode-block" id="LocalOptimizer.optimize"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.LocalOptimizer.optimize">[docs]</a>    <span class="k">def</span> <span class="nf">optimize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Do an optimization.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callJavaFunc</span><span class="p">(</span><span class="n">get_spark_context</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">optimize</span><span class="p">)</span>
+        <span class="kn">from</span> <span class="nn">bigdl.nn.layer</span> <span class="k">import</span> <span class="n">Layer</span>
+        <span class="k">return</span> <span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div></div>
+
+
 <div class="viewcode-block" id="Optimizer"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Optimizer">[docs]</a><span class="k">class</span> <span class="nc">Optimizer</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is a distrubuted optimizer.</span>
 <span class="sd">    An optimizer is in general to minimize any function with respect</span>
-<span class="sd">    to a set of parameters. In case of training a neural network,</span>
+<span class="sd">    to a set of parameters.</span>
+<span class="sd">    In case of training a neural network,</span>
 <span class="sd">    an optimizer tries to minimize the loss of the neural net with</span>
 <span class="sd">    respect to its weights/biases, over the training set.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -597,21 +668,29 @@
                  <span class="n">batch_size</span><span class="p">,</span>
                  <span class="n">optim_method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-       <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">       Create an optimizer.</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create an optimizer.</span>
 
 
-<span class="sd">       :param model: the neural net model</span>
-<span class="sd">       :param training_rdd: the training dataset</span>
-<span class="sd">       :param criterion: the loss function</span>
-<span class="sd">       :param optim_method: the algorithm to use for optimization, </span>
-<span class="sd">          e.g. SGD, Adagrad, etc. If optim_method is None, the default algorithm is SGD.</span>
-<span class="sd">       :param end_trigger: when to end the optimization</span>
-<span class="sd">       :param batch_size: training batch size</span>
-<span class="sd">       &quot;&quot;&quot;</span>
-       <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                           <span class="n">training_rdd</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span>
-                          <span class="n">optim_method</span> <span class="k">if</span> <span class="n">optim_method</span> <span class="k">else</span> <span class="n">SGD</span><span class="p">(),</span> <span class="n">end_trigger</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
+<span class="sd">        :param model: the neural net model</span>
+<span class="sd">        :param training_rdd: the training dataset</span>
+<span class="sd">        :param criterion: the loss function</span>
+<span class="sd">        :param optim_method: the algorithm to use for optimization,</span>
+<span class="sd">           e.g. SGD, Adagrad, etc. If optim_method is None, the default algorithm is SGD.</span>
+<span class="sd">        :param end_trigger: when to end the optimization</span>
+<span class="sd">        :param batch_size: training batch size</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pvalue</span> <span class="o">=</span> <span class="n">DistriOptimizer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span>
+                                      <span class="n">training_rdd</span><span class="p">,</span>
+                                      <span class="n">criterion</span><span class="p">,</span>
+                                      <span class="n">end_trigger</span><span class="p">,</span>
+                                      <span class="n">batch_size</span><span class="p">,</span>
+                                      <span class="n">optim_method</span><span class="p">,</span>
+                                      <span class="n">bigdl_type</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pvalue</span><span class="o">.</span><span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pvalue</span><span class="o">.</span><span class="n">bigdl_type</span>
+
+
 
 <div class="viewcode-block" id="Optimizer.set_validation"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Optimizer.set_validation">[docs]</a>    <span class="k">def</span> <span class="nf">set_validation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">val_rdd</span><span class="p">,</span> <span class="n">trigger</span><span class="p">,</span> <span class="n">val_method</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
