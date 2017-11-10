@@ -24,14 +24,14 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="Adapter$.html" title="Go to companion"><img src="../../../../../../../lib/class_to_object_big.png" /></a>
+        <img src="../../../../../../../lib/class_big.png" />
         <p id="owner"><a href="../../../../../../package.html" class="extype" name="com">com</a>.<a href="../../../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../../../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="../../package.html" class="extype" name="com.intel.analytics.bigdl.utils">utils</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl.utils.tf">tf</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders">loaders</a></p>
-        <h1><a href="Adapter$.html" title="Go to companion">Adapter</a></h1>
+        <h1>Adapter</h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">abstract </span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
@@ -44,7 +44,10 @@ module at module define time. In such case, you can use the AdapterOperation to 
 module and create it in runtime.</p><p>Please note you must guarantee the input parameter won't change each time.</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Numeric type. Only support float/double now
 </p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="../../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Adapter.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Adapter.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">scala.Any</span></div>
+        </div><div class="toggleContainer block">
+          <span class="toggle">Known Subclasses</span>
+          <div class="subClasses hiddenContent"><a href="ConcatV2LoadTF.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.ConcatV2LoadTF">ConcatV2LoadTF</a>, <a href="ExpandDimsLoadTF.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.ExpandDimsLoadTF">ExpandDimsLoadTF</a>, <a href="MeanLoadTF.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.MeanLoadTF">MeanLoadTF</a>, <a href="PadLoadTF.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.PadLoadTF">PadLoadTF</a>, <a href="ProdLoadTF.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.ProdLoadTF">ProdLoadTF</a>, <a href="ReshapeLoadTF.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.ReshapeLoadTF">ReshapeLoadTF</a>, <a href="SliceLoadTF.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.SliceLoadTF">SliceLoadTF</a>, <a href="SplitLoadTF.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.SplitLoadTF">SplitLoadTF</a>, <a href="StridedSliceLoadTF.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.StridedSliceLoadTF">StridedSliceLoadTF</a>, <a href="TopKV2LoadTF.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.TopKV2LoadTF">TopKV2LoadTF</a>, <a href="TransposeLoadTF.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.TransposeLoadTF">TransposeLoadTF</a></div>
         </div></div>
         
 
@@ -83,7 +86,7 @@ module and create it in runtime.</p><p>Please note you must guarantee the input 
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.utils.tf.loaders.Adapter#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(configIndexes:Array[Int],build:Array[com.intel.analytics.bigdl.tensor.Tensor[_]]=&gt;com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T])(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.utils.tf.loaders.Adapter[T]"></a>
+      <a id="&lt;init&gt;(configIndexes:Array[Int])(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.utils.tf.loaders.Adapter[T]"></a>
       <a id="&lt;init&gt;:Adapter[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -91,19 +94,35 @@ module and create it in runtime.</p><p>Please note you must guarantee the input 
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Adapter</span><span class="params">(<span name="configIndexes">configIndexes: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="build">build: (<span class="extype" name="scala.Array">Array</span>[<a href="../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[_]]) ⇒ <a href="../../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Adapter.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Adapter.T">T</span>]</span>, <span name="ev">ev: <a href="../../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Adapter.T">T</span>]</span>)</span>
+        <span class="name">Adapter</span><span class="params">(<span name="configIndexes">configIndexes: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Adapter.T">T</span>]</span>, <span name="ev">ev: <a href="../../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Adapter.T">T</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">configIndexes</dt><dd class="cmt"><p>configuration tensor indexes, start from 1 and -1 specify the last one</p></dd><dt class="param">build</dt><dd class="cmt"><p>build function</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">configIndexes</dt><dd class="cmt"><p>configuration tensor indexes, start from 1 and -1 specify the last one</p></dd></dl></div>
     </li></ol>
             </div>
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Abstract Value Members</h3>
+              <ol><li name="com.intel.analytics.bigdl.utils.tf.loaders.Adapter#build" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="build(tensorArrays:Array[com.intel.analytics.bigdl.tensor.Tensor[_]]):com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]"></a>
+      <a id="build(Array[Tensor[_]]):AbstractModule[Activity,Activity,T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">build</span><span class="params">(<span name="tensorArrays">tensorArrays: <span class="extype" name="scala.Array">Array</span>[<a href="../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[_]]</span>)</span><span class="result">: <a href="../../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Adapter.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
 
         <div id="values" class="values members">
-              <h3>Value Members</h3>
+              <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
@@ -119,14 +138,14 @@ module and create it in runtime.</p><p>Please note you must guarantee the input 
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
-      <a id="!=(Any):Boolean"></a>
+      <a id="!=(scala.Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">scala.Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -158,14 +177,14 @@ module and create it in runtime.</p><p>Please note you must guarantee the input 
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
-      <a id="==(Any):Boolean"></a>
+      <a id="==(scala.Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">scala.Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -246,29 +265,16 @@ will compute incorrect gradients.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.utils.tf.loaders.Adapter#build" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="build:Array[com.intel.analytics.bigdl.tensor.Tensor[_]]=&gt;com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]"></a>
-      <a id="build:(Array[Tensor[_]])⇒AbstractModule[Activity,Activity,T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">build</span><span class="result">: (<span class="extype" name="scala.Array">Array</span>[<a href="../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[_]]) ⇒ <a href="../../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Adapter.T">T</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">build function</p>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#canEqual" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="canEqual(other:Any):Boolean"></a>
-      <a id="canEqual(Any):Boolean"></a>
+      <a id="canEqual(scala.Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">canEqual</span><span class="params">(<span name="other">other: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">canEqual</span><span class="params">(<span name="other">other: <span class="extype" name="scala.Any">scala.Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
@@ -380,14 +386,14 @@ Such as runningMean and runningVar of BatchNormalization.
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(other:Any):Boolean"></a>
-      <a id="equals(Any):Boolean"></a>
+      <a id="equals(scala.Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="other">other: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">equals</span><span class="params">(<span name="other">other: <span class="extype" name="scala.Any">scala.Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a> → AnyRef → Any</dd></dl></div>
@@ -1378,7 +1384,7 @@ to these parameters. Otherwise, it does nothing.
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
-              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+              <h3>Inherited from <span class="extype" name="scala.Any">scala.Any</span></h3>
             </div>
         
         </div>
