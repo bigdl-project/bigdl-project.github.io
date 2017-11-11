@@ -1298,7 +1298,7 @@ A container usually contain some other modules which can be added through the â€
 
 <dl class="class">
 <dt id="bigdl.nn.layer.ConvLSTMPeephole">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ConvLSTMPeephole</code><span class="sig-paren">(</span><em>input_size</em>, <em>output_size</em>, <em>kernel_i</em>, <em>kernel_c</em>, <em>stride</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>cRegularizer=None</em>, <em>with_peephole=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ConvLSTMPeephole"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ConvLSTMPeephole" title="Permalink to this definition">Â¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ConvLSTMPeephole</code><span class="sig-paren">(</span><em>input_size</em>, <em>output_size</em>, <em>kernel_i</em>, <em>kernel_c</em>, <em>stride=1</em>, <em>padding=-1</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>cRegularizer=None</em>, <em>with_peephole=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ConvLSTMPeephole"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ConvLSTMPeephole" title="Permalink to this definition">Â¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <div class="line-block">
 <div class="line">Convolution Long Short Term Memory architecture with peephole.</div>
@@ -1319,13 +1319,14 @@ A container usually contain some other modules which can be added through the â€
 </table>
 <p>:param kernel_i Convolutional filter size to convolve input
 :param kernel_c Convolutional filter size to convolve cell
-:param stride The step of the convolution
+:param stride The step of the convolution, default is 1
+:param padding The additional zeros added, default is -1
 :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices
 :param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices
 :param bRegularizer: instance of [[Regularizer]]applied to the bias.
 :param cRegularizer: instance of [[Regularizer]]applied to peephole.
 :param with_peephole: whether use last cell status control a gate.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convlstm</span> <span class="o">=</span> <span class="n">ConvLSTMPeephole</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convlstm</span> <span class="o">=</span> <span class="n">ConvLSTMPeephole</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
@@ -1337,7 +1338,7 @@ A container usually contain some other modules which can be added through the â€
 
 <dl class="class">
 <dt id="bigdl.nn.layer.ConvLSTMPeephole3D">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ConvLSTMPeephole3D</code><span class="sig-paren">(</span><em>input_size</em>, <em>output_size</em>, <em>kernel_i</em>, <em>kernel_c</em>, <em>stride</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>cRegularizer=None</em>, <em>with_peephole=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ConvLSTMPeephole3D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ConvLSTMPeephole3D" title="Permalink to this definition">Â¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ConvLSTMPeephole3D</code><span class="sig-paren">(</span><em>input_size</em>, <em>output_size</em>, <em>kernel_i</em>, <em>kernel_c</em>, <em>stride=1</em>, <em>padding=-1</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>cRegularizer=None</em>, <em>with_peephole=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ConvLSTMPeephole3D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ConvLSTMPeephole3D" title="Permalink to this definition">Â¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1354,12 +1355,13 @@ A container usually contain some other modules which can be added through the â€
 <p>:param kernel_i Convolutional filter size to convolve input
 :param kernel_c Convolutional filter size to convolve cell
 :param stride The step of the convolution
+:param padding The additional zeros added
 :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices
 :param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices
 :param bRegularizer: instance of [[Regularizer]]applied to the bias.
 :param cRegularizer: instance of [[Regularizer]]applied to peephole.
 :param with_peephole: whether use last cell status control a gate.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convlstm</span> <span class="o">=</span> <span class="n">ConvLSTMPeephole3D</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convlstm</span> <span class="o">=</span> <span class="n">ConvLSTMPeephole3D</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>

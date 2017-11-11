@@ -757,6 +757,7 @@ gradient = model.backward(input, grad_output)
   kernelI = 3,
   kernelC = 3,
   stride = 1,
+  padding = -1,
   wRegularizer = null,
   uRegularizer = null,
   bRegularizer = null,
@@ -771,6 +772,7 @@ gradient = model.backward(input, grad_output)
   kernel_i = 3,
   kernel_c = 3,
   stride = 1,
+  padding = -1,
   wRegularizer=None,
   uRegularizer=None,
   bRegularizer=None,
@@ -795,7 +797,9 @@ If ConvLSTM work with Recurrent, input is 5D tensor (<code>batch x time x nInput
 <li><code>outputSize</code> number of output planes the convolution layer will produce</li>
 <li><code>kernelI</code> convolutional filter size to convolve input</li>
 <li><code>kernelC</code> convolutional filter size to convolve cell</li>
-<li><code>stride</code> step of the convolution</li>
+<li><code>stride</code> step of the convolution, default is 1</li>
+<li><code>padding</code> step of the convolution, default is -1, behaves same with SAME padding in tensorflow
+                 Default stride,padding value ensure last 2 dim of output shape is the same with input</li>
 <li><code>wRegularizer</code> instance of [[Regularizer]]
                    (eg. L1 or L2 regularization), applied to the input weights matrices.</li>
 <li><code>uRegularizer</code> instance [[Regularizer]]
@@ -989,6 +993,7 @@ output = model.forward(input)
   kernelI = 3,
   kernelC = 3,
   stride = 1,
+  padding = -1,
   wRegularizer = null,
   uRegularizer = null,
   bRegularizer = null,
@@ -1003,6 +1008,7 @@ output = model.forward(input)
   kernel_i = 3,
   kernel_c = 3,
   stride = 1,
+  padding = -1,
   wRegularizer=None,
   uRegularizer=None,
   bRegularizer=None,
@@ -1022,7 +1028,9 @@ If work with Recurrent, input is 6D tensor (<code>batch x time x nInputPlane x h
 <li><code>outputSize</code> number of output planes the convolution layer will produce</li>
 <li><code>kernelI</code> convolutional filter size to convolve input</li>
 <li><code>kernelC</code> convolutional filter size to convolve cell</li>
-<li><code>stride</code> step of the convolution</li>
+<li><code>stride</code> step of the convolution, default is 1</li>
+<li><code>padding</code> step of the convolution, default is -1, behaves same with SAME padding in tensorflow
+                 Default stride,padding value ensure last 3 dim of output shape is the same with input</li>
 <li><code>wRegularizer</code> instance of [[Regularizer]]
                    (eg. L1 or L2 regularization), applied to the input weights matrices.</li>
 <li><code>uRegularizer</code> instance [[Regularizer]]

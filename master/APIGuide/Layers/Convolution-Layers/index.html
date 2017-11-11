@@ -258,7 +258,8 @@ grad input of m is : [[[[-0.02344826 -0.06515953 -0.03618064]
 in forward(input) is expected to be a 5D tensor (<code>batch x nInputPlane x depth(time) x height x width</code>) or
 a 4D tensor (<code>nInputPlane x depth x height x width</code>).
 Output of forward(input) is also expected to be a 5D tensor (<code>batch x depth(time) x outputPlane x height x width</code>) or
-a 4D tensor (<code>outputPlane x depth x height x width</code>).</p>
+a 4D tensor (<code>outputPlane x depth x height x width</code>).
+As for padding, when padW,padH, padT are all -1, we use a padding algorithm similar to the "SAME" padding of tensorflow.</p>
 <ul>
 <li><code>nInputPlane</code> The number of expected input planes in the image given into forward()</li>
 <li><code>nOutputPlane</code> The number of output planes the convolution layer will produce.</li>

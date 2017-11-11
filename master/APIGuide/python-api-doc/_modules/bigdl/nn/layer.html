@@ -4305,14 +4305,15 @@
 <span class="sd">    :param output_size: number of output planes the convolution layer will produce</span>
 <span class="sd">    :param kernel_i Convolutional filter size to convolve input</span>
 <span class="sd">    :param kernel_c Convolutional filter size to convolve cell</span>
-<span class="sd">    :param stride The step of the convolution</span>
+<span class="sd">    :param stride The step of the convolution, default is 1</span>
+<span class="sd">    :param padding The additional zeros added, default is -1</span>
 <span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices</span>
 <span class="sd">    :param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices</span>
 <span class="sd">    :param bRegularizer: instance of [[Regularizer]]applied to the bias.</span>
 <span class="sd">    :param cRegularizer: instance of [[Regularizer]]applied to peephole.</span>
 <span class="sd">    :param with_peephole: whether use last cell status control a gate.</span>
 
-<span class="sd">    &gt;&gt;&gt; convlstm = ConvLSTMPeephole(4, 3, 3, 3, 1, L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
+<span class="sd">    &gt;&gt;&gt; convlstm = ConvLSTMPeephole(4, 3, 3, 3, 1, -1, L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
@@ -4320,10 +4321,10 @@
 <span class="sd">    creating: createConvLSTMPeephole</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">kernel_i</span><span class="p">,</span> <span class="n">kernel_c</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">kernel_i</span><span class="p">,</span> <span class="n">kernel_c</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">with_peephole</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ConvLSTMPeephole</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">kernel_i</span><span class="p">,</span> <span class="n">kernel_c</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span>
-                                                 <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">,</span> <span class="n">cRegularizer</span><span class="p">,</span> <span class="n">with_peephole</span><span class="p">)</span></div>
+                                                <span class="n">padding</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">,</span> <span class="n">cRegularizer</span><span class="p">,</span> <span class="n">with_peephole</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Tile"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Tile">[docs]</a><span class="k">class</span> <span class="nc">Tile</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -4352,13 +4353,14 @@
 <span class="sd">    :param kernel_i Convolutional filter size to convolve input</span>
 <span class="sd">    :param kernel_c Convolutional filter size to convolve cell</span>
 <span class="sd">    :param stride The step of the convolution</span>
+<span class="sd">    :param padding The additional zeros added</span>
 <span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices</span>
 <span class="sd">    :param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices</span>
 <span class="sd">    :param bRegularizer: instance of [[Regularizer]]applied to the bias.</span>
 <span class="sd">    :param cRegularizer: instance of [[Regularizer]]applied to peephole.</span>
 <span class="sd">    :param with_peephole: whether use last cell status control a gate.</span>
 
-<span class="sd">    &gt;&gt;&gt; convlstm = ConvLSTMPeephole3D(4, 3, 3, 3, 1, L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
+<span class="sd">    &gt;&gt;&gt; convlstm = ConvLSTMPeephole3D(4, 3, 3, 3, 1, -1, L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
@@ -4366,10 +4368,10 @@
 <span class="sd">    creating: createConvLSTMPeephole3D</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">kernel_i</span><span class="p">,</span> <span class="n">kernel_c</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">kernel_i</span><span class="p">,</span> <span class="n">kernel_c</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">with_peephole</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ConvLSTMPeephole3D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">kernel_i</span><span class="p">,</span> <span class="n">kernel_c</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span>
-                                                 <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">,</span> <span class="n">cRegularizer</span><span class="p">,</span> <span class="n">with_peephole</span><span class="p">)</span></div>
+                                                 <span class="n">padding</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">,</span> <span class="n">cRegularizer</span><span class="p">,</span> <span class="n">with_peephole</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ResizeBilinear"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.ResizeBilinear">[docs]</a><span class="k">class</span> <span class="nc">ResizeBilinear</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
