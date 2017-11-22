@@ -140,18 +140,19 @@ between the target and the output</p>
 
 <dl class="class">
 <dt id="bigdl.nn.criterion.ClassNLLCriterion">
-<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">ClassNLLCriterion</code><span class="sig-paren">(</span><em>weights=None</em>, <em>size_average=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#ClassNLLCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.ClassNLLCriterion" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">ClassNLLCriterion</code><span class="sig-paren">(</span><em>weights=None</em>, <em>size_average=True</em>, <em>logProbAsInput=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#ClassNLLCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.ClassNLLCriterion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
 <p>The negative log likelihood criterion. It is useful to train a classification problem with n
 classes. If provided, the optional argument weights should be a 1D Tensor assigning weight to
 each of the classes. This is particularly useful when you have an unbalanced training set.</p>
-<p>The input given through a forward() is expected to contain log-probabilities of each class:
-input has to be a 1D Tensor of size n. Obtaining log-probabilities in a neural network is easily
-achieved by adding a LogSoftMax layer in the last layer of your neural network. You may use
-CrossEntropyCriterion instead, if you prefer not to add an extra layer to your network. This
-criterion expects a class index (1 to the number of class) as target when calling
-forward(input, target) and backward(input, target).</p>
-<p>The loss can be described as:
+<p>The input given through a forward() is expected to contain log-probabilities/probabilities of
+each class: input has to be a 1D Tensor of size n. Obtaining log-probabilities/probabilities
+in a neural network is easily achieved by adding a LogSoftMax/SoftMax layer in the last layer
+of your neural network. You may use CrossEntropyCriterion instead, if you prefer not to add an
+extra layer to your network. This criterion expects a class index (1 to the number of class) as
+target when calling forward(input, target) and backward(input, target).</p>
+<p>In the log-probabilities case,
+The loss can be described as:
 loss(x, class) = -x[class]
 or in the case of the weights argument it is specified as follows:
 loss(x, class) = -weights[class] * x[class]
@@ -162,6 +163,8 @@ In other will, the forward process will return zero output and the backward proc
 will also return zero <cite>gradInput</cite>.</p>
 <p>By default, the losses are averaged over observations for each minibatch. However, if the field
 sizeAverage is set to false, the losses are instead summed for each minibatch.</p>
+<p>In particular, when weights=None, size_average=True and logProbAsInput=False, this is same as
+<cite>sparse_categorical_crossentropy</cite> loss in keras.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -169,6 +172,7 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>weights</strong> – weights of each class</li>
 <li><strong>size_average</strong> – whether to average or not</li>
+<li><strong>logProbAsInput</strong> – indicating whether to accept log-probabilities or probabilities as input.</li>
 </ul>
 </td>
 </tr>
@@ -176,7 +180,7 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
 </table>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">classNLLCriterion</span> <span class="o">=</span> <span class="n">ClassNLLCriterion</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">classNLLCriterion</span> <span class="o">=</span> <span class="n">ClassNLLCriterion</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 <span class="go">creating: createClassNLLCriterion</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">classNLLCriterion</span> <span class="o">=</span> <span class="n">ClassNLLCriterion</span><span class="p">()</span>
 <span class="go">creating: createClassNLLCriterion</span>
@@ -475,10 +479,12 @@ if the field sizeAverage is set to false, the losses are instead summed.</p>
 
 <dl class="class">
 <dt id="bigdl.nn.criterion.MarginCriterion">
-<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">MarginCriterion</code><span class="sig-paren">(</span><em>margin=1.0</em>, <em>size_average=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#MarginCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.MarginCriterion" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">MarginCriterion</code><span class="sig-paren">(</span><em>margin=1.0</em>, <em>size_average=True</em>, <em>squared=False</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#MarginCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.MarginCriterion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
 <p>Creates a criterion that optimizes a two-class classification hinge loss (margin-based loss)
 between input x (a Tensor of dimension 1) and output y.</p>
+<p>When margin = 1, size_average = True and squared = False, this is the same as hinge loss in keras;
+When margin = 1, size_average = False and squared = True, this is the same as squared_hinge loss in keras.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -486,12 +492,13 @@ between input x (a Tensor of dimension 1) and output y.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>margin</strong> – if unspecified, is by default 1.</li>
 <li><strong>size_average</strong> – size average in a mini-batch</li>
+<li><strong>squared</strong> – whether to calculate the squared hinge loss</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">marginCriterion</span> <span class="o">=</span> <span class="n">MarginCriterion</span><span class="p">(</span><span class="mf">1e-5</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">marginCriterion</span> <span class="o">=</span> <span class="n">MarginCriterion</span><span class="p">(</span><span class="mf">1e-5</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 <span class="go">creating: createMarginCriterion</span>
 </pre></div>
 </div>
@@ -1124,6 +1131,26 @@ table is actually an array of tensor with same size.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.CAveTable">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">CAveTable</code><span class="sig-paren">(</span><em>inplace=False</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#CAveTable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.CAveTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Merge the input tensors in the input table by element wise taking the average. The input
+table is actually an array of tensor with same size.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inplace</strong> – reuse the input memory</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cAveTable</span> <span class="o">=</span> <span class="n">CAveTable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">creating: createCAveTable</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.CDivTable">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">CDivTable</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#CDivTable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.CDivTable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
@@ -1281,6 +1308,11 @@ A container usually contain some other modules which can be added through the �
 <dl class="method">
 <dt id="bigdl.nn.layer.Container.add">
 <code class="descname">add</code><span class="sig-paren">(</span><em>model</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Container.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Container.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bigdl.nn.layer.Container.layers">
+<code class="descname">layers</code><a class="headerlink" href="#bigdl.nn.layer.Container.layers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1635,6 +1667,22 @@ by default</p>
 </table>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hardShrink</span> <span class="o">=</span> <span class="n">HardShrink</span><span class="p">(</span><span class="mf">1e-5</span><span class="p">)</span>
 <span class="go">creating: createHardShrink</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.HardSigmoid">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">HardSigmoid</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#HardSigmoid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.HardSigmoid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Apply Hard-sigmoid function</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>       <span class="o">|</span>  <span class="mi">0</span><span class="p">,</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">2.5</span>
+<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="o">|</span>  <span class="mi">1</span><span class="p">,</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mf">2.5</span>
+       <span class="o">|</span>  <span class="mf">0.2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">otherwise</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hardSigmoid</span> <span class="o">=</span> <span class="n">HardSigmoid</span><span class="p">()</span>
+<span class="go">creating: createHardSigmoid</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -2039,6 +2087,11 @@ to be freezed
 </dd></dl>
 
 <dl class="method">
+<dt id="bigdl.nn.layer.Layer.is_with_weights">
+<code class="descname">is_with_weights</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.is_with_weights"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.is_with_weights" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="bigdl.nn.layer.Layer.name">
 <code class="descname">name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name of this layer</p>
@@ -2136,7 +2189,7 @@ You need to invoke collect() to trigger those action         as the returning re
 :return: A new quantized model.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fc</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="go">creating: createLinear</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fc</span><span class="o">.</span><span class="n">set_weights</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,))])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc</span><span class="o">.</span><span class="n">set_weights</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,))])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fc</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="go">array([[ 5.,  5.],</span>
@@ -2272,6 +2325,32 @@ consist of class name and UUID if user doesn’t set it.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="bigdl.nn.layer.Layer.set_running_mean">
+<code class="descname">set_running_mean</code><span class="sig-paren">(</span><em>running_mean</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.set_running_mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.set_running_mean" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>running_mean</strong> – a ndarray</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.nn.layer.Layer.set_running_std">
+<code class="descname">set_running_std</code><span class="sig-paren">(</span><em>running_std</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.set_running_std"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.set_running_std" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>running_mean</strong> – a ndarray</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="bigdl.nn.layer.Layer.set_seed">
 <code class="descname">set_seed</code><span class="sig-paren">(</span><em>seed=123</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.set_seed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.set_seed" title="Permalink to this definition">¶</a></dt>
 <dd><p>You can control the random seed which used to init weights for this model.</p>
@@ -2341,8 +2420,8 @@ consist of class name and UUID if user doesn’t set it.</p>
 
 <dl class="method">
 <dt id="bigdl.nn.layer.Layer.training">
-<code class="descname">training</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.training"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.training" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set this layer in the training mode</p>
+<code class="descname">training</code><span class="sig-paren">(</span><em>is_training=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.training"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.training" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set this layer in the training mode or in predition mode if is_training=False</p>
 </dd></dl>
 
 <dl class="method">
@@ -2658,7 +2737,7 @@ more, and for a 1D or 2D gater, i.e. for single examples or mini-batches.</p>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.Model">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Model</code><span class="sig-paren">(</span><em>inputs</em>, <em>outputs</em>, <em>bigdl_type='float'</em>, <em>byte_order='little_endian'</em>, <em>model_type='bigdl'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Model</code><span class="sig-paren">(</span><em>inputs</em>, <em>outputs</em>, <em>jvalue=None</em>, <em>bigdl_type='float'</em>, <em>byte_order='little_endian'</em>, <em>model_type='bigdl'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Container" title="bigdl.nn.layer.Container"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Container</span></code></a></p>
 <p>A graph container. Each node can have multiple inputs. The output of the node should be a
 tensor. The output tensor can be connected to multiple nodes. So the module in each node can
@@ -2679,6 +2758,14 @@ If so, these nodes will be excluded in the computation.</p>
 pass your tensorflow nodes as inputs and outputs and also specify the byte_order parameter (“little_endian”
 or “big_endian”) and node_type parameter (“bigdl” or “tensorflow”)
 node_type parameter.</p>
+<dl class="staticmethod">
+<dt id="bigdl.nn.layer.Model.from_jvalue">
+<em class="property">static </em><code class="descname">from_jvalue</code><span class="sig-paren">(</span><em>jvalue</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.from_jvalue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.from_jvalue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Python Model base on the given java value
+:param jvalue: Java object create by Py4j
+:return: A Python Model</p>
+</dd></dl>
+
 <dl class="staticmethod">
 <dt id="bigdl.nn.layer.Model.load">
 <em class="property">static </em><code class="descname">load</code><span class="sig-paren">(</span><em>path</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.load" title="Permalink to this definition">¶</a></dt>
@@ -2744,6 +2831,27 @@ node_type parameter.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>defPath</strong> – The path containing the caffe model definition.</li>
 <li><strong>modelPath</strong> – The path containing the pre-trained caffe model.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A pre-trained model.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="bigdl.nn.layer.Model.load_keras">
+<em class="property">static </em><code class="descname">load_keras</code><span class="sig-paren">(</span><em>def_path</em>, <em>weights_path=None</em>, <em>by_name=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.load_keras"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.load_keras" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a pre-trained Keras model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>def_path</strong> – The json path containing the keras model definition.</li>
+<li><strong>weights_path</strong> – The HDF5 path containing the pre-trained keras model weights.</li>
 </ul>
 </td>
 </tr>
@@ -4419,6 +4527,41 @@ for one of the dimensions.</p>
 </table>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">view</span> <span class="o">=</span> <span class="n">View</span><span class="p">([</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
 <span class="go">creating: createView</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.VolumetricAveragePooling">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">VolumetricAveragePooling</code><span class="sig-paren">(</span><em>k_t</em>, <em>k_w</em>, <em>k_h</em>, <em>d_t</em>, <em>d_w</em>, <em>d_h</em>, <em>pad_t=0</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>count_include_pad=True</em>, <em>ceil_mode=False</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#VolumetricAveragePooling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.VolumetricAveragePooling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Applies 3D average-pooling operation in kTxkWxkH regions by step size dTxdWxdH.
+The number of output features is equal to the number of input planes / dT.
+The input can optionally be padded with zeros. Padding should be smaller than
+half of kernel size. That is, padT &lt; kT/2, padW &lt; kW/2 and padH &lt; kH/2</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>k_t</strong> – The kernel size</li>
+<li><strong>k_w</strong> – The kernel width</li>
+<li><strong>k_h</strong> – The kernel height</li>
+<li><strong>d_t</strong> – The step in the time dimension</li>
+<li><strong>d_w</strong> – The step in the width dimension</li>
+<li><strong>d_h</strong> – The step in the height dimension</li>
+<li><strong>pad_t</strong> – The padding in the time dimension</li>
+<li><strong>pad_w</strong> – The padding in the width dimension</li>
+<li><strong>pad_h</strong> – The padding in the height dimension</li>
+<li><strong>count_include_pad</strong> – whether to include padding when dividing the number of elements in pooling region</li>
+<li><strong>ceil_mode</strong> – whether the output size is to be ceiled or floored</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">volumetricAveragePooling</span> <span class="o">=</span> <span class="n">VolumetricAveragePooling</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">creating: createVolumetricAveragePooling</span>
 </pre></div>
 </div>
 </dd></dl>

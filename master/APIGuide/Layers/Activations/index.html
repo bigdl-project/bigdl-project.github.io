@@ -73,6 +73,8 @@
           ]},
           {title: "Threshold", url: "#threshold", children: [
           ]},
+          {title: "HardSigmoid", url: "#hardsigmoid", children: [
+          ]},
         ];
 
     </script>
@@ -1349,6 +1351,60 @@ output = module.forward(input)
 
        [[ 2.32017946,  1.00003302],
         [ 0.80000001,  0.80000001]]], dtype=float32)]
+</code></pre>
+
+<h2 id="hardsigmoid">HardSigmoid</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val module = HardSigmoid()
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">module = HardSigmoid()
+</code></pre>
+
+<p>Activate each element as below</p>
+<pre><code>           ⎧  0, if x &lt; -2.5
+    f(x) = ⎨  1, if x &gt; 2.5
+           ⎩  0.2 * x + 0.5, otherwise
+</code></pre>
+
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val module = HardSigmoid()
+val input = Tensor(2, 2).randn()
+val output = module.forward(input)
+
+&gt; input
+-1.7260494  -0.17521624 
+-1.6705151  0.013930867 
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 2x2]
+
+&gt; output
+0.15479012  0.46495676  
+0.16589698  0.50278616  
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 2x2]
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
+
+module = HardSigmoid()
+input = np.random.randn(2, 2)
+output = module.forward(input)
+
+&gt; input
+array([[-1.45094354, -1.78217815],
+       [ 0.84914007,  0.7104982 ]])
+
+&gt; output
+array([[ 0.20981129,  0.14356437],
+       [ 0.669828  ,  0.64209962]], dtype=float32)
+
 </code></pre>
 
   <br>

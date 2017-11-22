@@ -128,6 +128,22 @@
                 <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">JavaValue</span><span class="o">.</span><span class="n">jvm_class_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
 
+<div class="viewcode-block" id="Layer.set_running_mean"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.set_running_mean">[docs]</a>    <span class="k">def</span> <span class="nf">set_running_mean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">running_mean</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param running_mean: a ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setRunningMean&quot;</span><span class="p">,</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">running_mean</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Layer.set_running_std"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.set_running_std">[docs]</a>    <span class="k">def</span> <span class="nf">set_running_std</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">running_std</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param running_mean: a ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setRunningStd&quot;</span><span class="p">,</span>
+                      <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">running_std</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &gt;&gt;&gt; conv2 = SpatialConvolution(6, 12, 5, 5).set_name(&quot;conv2&quot;)</span>
@@ -449,6 +465,10 @@
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The layer does not have weight/bias&quot;</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">None</span></div>
 
+<div class="viewcode-block" id="Layer.is_with_weights"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.is_with_weights">[docs]</a>    <span class="k">def</span> <span class="nf">is_with_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span>
+                  <span class="s2">&quot;isWithWeights&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Layer.save"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">over_write</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;modelSave&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span>
                       <span class="n">over_write</span><span class="p">)</span></div>
@@ -512,17 +532,20 @@
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;unFreeze&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">names</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="Layer.training"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.training">[docs]</a>    <span class="k">def</span> <span class="nf">training</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Layer.training"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.training">[docs]</a>    <span class="k">def</span> <span class="nf">training</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_training</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">        Set this layer in the training mode </span>
+<span class="sd">        Set this layer in the training mode or in predition mode if is_training=False</span>
 <span class="sd">        &#39;&#39;&#39;</span>
-        <span class="n">callJavaFunc</span><span class="p">(</span><span class="n">get_spark_context</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">training</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">is_training</span><span class="p">:</span>
+            <span class="n">callJavaFunc</span><span class="p">(</span><span class="n">get_spark_context</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">training</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">callJavaFunc</span><span class="p">(</span><span class="n">get_spark_context</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">evaluate</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="Layer.is_training"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.is_training">[docs]</a>    <span class="k">def</span> <span class="nf">is_training</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        :return: Whether this layer is in the training mode</span>
-<span class="sd">        </span>
+
 <span class="sd">        &gt;&gt;&gt; layer = Dropout()</span>
 <span class="sd">        creating: createDropout</span>
 <span class="sd">        &gt;&gt;&gt; layer = layer.evaluate()</span>
@@ -541,7 +564,7 @@
 
 <span class="sd">        &gt;&gt;&gt; fc = Linear(4, 2)</span>
 <span class="sd">        creating: createLinear</span>
-<span class="sd">        &gt;&gt;&gt; fc.set_weights([np.ones((4, 2)), np.ones((2,))])</span>
+<span class="sd">        &gt;&gt;&gt; fc.set_weights([np.ones((2, 4)), np.ones((2,))])</span>
 <span class="sd">        &gt;&gt;&gt; input = np.ones((2, 4))</span>
 <span class="sd">        &gt;&gt;&gt; fc.forward(input)</span>
 <span class="sd">        array([[ 5.,  5.],</span>
@@ -628,7 +651,13 @@
 
 <div class="viewcode-block" id="Container.add"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Container.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">layers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">jlayers</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getContainerModules&quot;</span> <span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jlayer</span><span class="p">)</span> <span class="k">for</span> <span class="n">jlayer</span> <span class="ow">in</span> <span class="n">jlayers</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">layers</span></div>
 
 
 <div class="viewcode-block" id="Model"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model">[docs]</a><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">Container</span><span class="p">):</span>
@@ -661,8 +690,12 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">inputs</span><span class="p">,</span>
                  <span class="n">outputs</span><span class="p">,</span>
+                 <span class="n">jvalue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="n">byte_order</span><span class="o">=</span><span class="s2">&quot;little_endian&quot;</span><span class="p">,</span> <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;bigdl&quot;</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;bigdl&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">jvalue</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">jvalue</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
+        <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;bigdl&quot;</span><span class="p">:</span>
             <span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                     <span class="n">to_list</span><span class="p">(</span><span class="n">inputs</span><span class="p">),</span>
                                     <span class="n">to_list</span><span class="p">(</span><span class="n">outputs</span><span class="p">))</span>
@@ -671,6 +704,20 @@
             <span class="n">model</span> <span class="o">=</span> <span class="n">convert</span><span class="p">(</span><span class="n">to_list</span><span class="p">(</span><span class="n">inputs</span><span class="p">),</span> <span class="n">to_list</span><span class="p">(</span><span class="n">outputs</span><span class="p">),</span> <span class="n">byte_order</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
             <span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
+
+<div class="viewcode-block" id="Model.from_jvalue"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.from_jvalue">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">from_jvalue</span><span class="p">(</span><span class="n">jvalue</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a Python Model base on the given java value</span>
+<span class="sd">        :param jvalue: Java object create by Py4j</span>
+<span class="sd">        :return: A Python Model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">jvalue</span><span class="o">=</span><span class="n">jvalue</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">jvalue</span>
+        <span class="k">return</span> <span class="n">model</span></div>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;-&gt;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">())</span>
 
 <div class="viewcode-block" id="Model.load"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.load">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
@@ -704,6 +751,22 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;loadTorch&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Model.load_keras"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.load_keras">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">load_keras</span><span class="p">(</span><span class="n">def_path</span><span class="p">,</span> <span class="n">weights_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">by_name</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load a pre-trained Keras model.</span>
+
+<span class="sd">        :param def_path: The json path containing the keras model definition.</span>
+<span class="sd">        :param weights_path: The HDF5 path containing the pre-trained keras model weights.</span>
+<span class="sd">        :return: A pre-trained model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">bigdl.keras.converter</span> <span class="k">import</span> <span class="n">DefinitionLoader</span><span class="p">,</span> <span class="n">WeightLoader</span>
+        <span class="k">if</span> <span class="n">weights_path</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">WeightLoader</span><span class="o">.</span><span class="n">load_weights_from_json_hdf5</span><span class="p">(</span><span class="n">def_path</span><span class="p">,</span> <span class="n">weights_path</span><span class="p">,</span> <span class="n">by_name</span><span class="o">=</span><span class="n">by_name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">DefinitionLoader</span><span class="o">.</span><span class="n">from_json_path</span><span class="p">(</span><span class="n">def_path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">bmodel</span></div>
 
 <div class="viewcode-block" id="Model.load_caffe"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.load_caffe">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">load_caffe</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">defPath</span><span class="p">,</span> <span class="n">modelPath</span><span class="p">,</span> <span class="n">match_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
@@ -1287,12 +1350,12 @@
 <span class="sd">        </span>
 <span class="sd">        :return: list of hidden state and cell</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">state</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getHiddenState&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>        
+        <span class="n">state</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getHiddenState&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">tensor</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
             <span class="n">state</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">state</span></div>
-    
+
 <div class="viewcode-block" id="Recurrent.set_hidden_state"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Recurrent.set_hidden_state">[docs]</a>    <span class="k">def</span> <span class="nf">set_hidden_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">states</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        set hidden state and cell at first time step.</span>
@@ -1829,6 +1892,7 @@
                                                  <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_bias</span><span class="p">),</span>
                                                  <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_grad_weight</span><span class="p">),</span>
                                                  <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_grad_bias</span><span class="p">))</span>
+
 <div class="viewcode-block" id="BatchNormalization.set_init_method"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.BatchNormalization.set_init_method">[docs]</a>    <span class="k">def</span> <span class="nf">set_init_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bias_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setInitMethod&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
                       <span class="n">weight_init_method</span><span class="p">,</span> <span class="n">bias_init_method</span><span class="p">)</span>
@@ -1973,6 +2037,26 @@
                  <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CAddTable</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                        <span class="n">inplace</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CAveTable"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.CAveTable">[docs]</a><span class="k">class</span> <span class="nc">CAveTable</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Merge the input tensors in the input table by element wise taking the average. The input</span>
+<span class="sd">    table is actually an array of tensor with same size.</span>
+
+
+<span class="sd">    :param inplace: reuse the input memory</span>
+
+
+<span class="sd">    &gt;&gt;&gt; cAveTable = CAveTable(True)</span>
+<span class="sd">    creating: createCAveTable</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CAveTable</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                         <span class="n">inplace</span><span class="p">)</span></div>
 
 
@@ -3742,6 +3826,57 @@
                                                     <span class="n">pad_h</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="VolumetricAveragePooling"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.VolumetricAveragePooling">[docs]</a><span class="k">class</span> <span class="nc">VolumetricAveragePooling</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Applies 3D average-pooling operation in kTxkWxkH regions by step size dTxdWxdH.</span>
+<span class="sd">    The number of output features is equal to the number of input planes / dT.</span>
+<span class="sd">    The input can optionally be padded with zeros. Padding should be smaller than</span>
+<span class="sd">    half of kernel size. That is, padT &lt; kT/2, padW &lt; kW/2 and padH &lt; kH/2</span>
+
+<span class="sd">    :param k_t: The kernel size</span>
+<span class="sd">    :param k_w: The kernel width</span>
+<span class="sd">    :param k_h: The kernel height</span>
+<span class="sd">    :param d_t: The step in the time dimension</span>
+<span class="sd">    :param d_w: The step in the width dimension</span>
+<span class="sd">    :param d_h: The step in the height dimension</span>
+<span class="sd">    :param pad_t: The padding in the time dimension</span>
+<span class="sd">    :param pad_w: The padding in the width dimension</span>
+<span class="sd">    :param pad_h: The padding in the height dimension</span>
+<span class="sd">    :param count_include_pad: whether to include padding when dividing the number of elements in pooling region</span>
+<span class="sd">    :param ceil_mode: whether the output size is to be ceiled or floored</span>
+
+
+<span class="sd">    &gt;&gt;&gt; volumetricAveragePooling = VolumetricAveragePooling(5, 5, 5, 1, 1, 1)</span>
+<span class="sd">    creating: createVolumetricAveragePooling</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">k_t</span><span class="p">,</span>
+                 <span class="n">k_w</span><span class="p">,</span>
+                 <span class="n">k_h</span><span class="p">,</span>
+                 <span class="n">d_t</span><span class="p">,</span>
+                 <span class="n">d_w</span><span class="p">,</span>
+                 <span class="n">d_h</span><span class="p">,</span>
+                 <span class="n">pad_t</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">pad_w</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">pad_h</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">count_include_pad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">ceil_mode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">VolumetricAveragePooling</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                                        <span class="n">k_t</span><span class="p">,</span>
+                                                        <span class="n">k_w</span><span class="p">,</span>
+                                                        <span class="n">k_h</span><span class="p">,</span>
+                                                        <span class="n">d_t</span><span class="p">,</span>
+                                                        <span class="n">d_w</span><span class="p">,</span>
+                                                        <span class="n">d_h</span><span class="p">,</span>
+                                                        <span class="n">pad_t</span><span class="p">,</span>
+                                                        <span class="n">pad_w</span><span class="p">,</span>
+                                                        <span class="n">pad_h</span><span class="p">,</span>
+                                                        <span class="n">count_include_pad</span><span class="p">,</span>
+                                                        <span class="n">ceil_mode</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="SpatialZeroPadding"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SpatialZeroPadding">[docs]</a><span class="k">class</span> <span class="nc">SpatialZeroPadding</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
@@ -4377,11 +4512,11 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Resize the input image with bilinear interpolation. The input image must be a float tensor with</span>
 <span class="sd">    NHWC layout</span>
-<span class="sd">    </span>
+
 <span class="sd">    :param output_height: output height</span>
 <span class="sd">    :param output_width: output width</span>
 <span class="sd">    :param align_corner: align corner or not</span>
-<span class="sd">    </span>
+
 <span class="sd">    &gt;&gt;&gt; resizeBilinear = ResizeBilinear(10, 20, False)</span>
 <span class="sd">    creating: createResizeBilinear</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -4396,6 +4531,20 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">GaussianSampler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HardSigmoid"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.HardSigmoid">[docs]</a><span class="k">class</span> <span class="nc">HardSigmoid</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply Hard-sigmoid function</span>
+<span class="sd">```   </span>
+<span class="sd">               |  0, if x &lt; -2.5</span>
+<span class="sd">        f(x) = |  1, if x &gt; 2.5</span>
+<span class="sd">               |  0.2 * x + 0.5, otherwise</span>
+<span class="sd">```</span>
+<span class="sd">    &gt;&gt;&gt; hardSigmoid = HardSigmoid()</span>
+<span class="sd">    creating: createHardSigmoid</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">HardSigmoid</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
     <span class="kn">import</span> <span class="nn">doctest</span>

@@ -267,6 +267,19 @@ that accepts input of nInputDim dimensions, and generates output of nOutputDim d
       </span>
       </h4>
       <p class="comment cmt">Merge the input tensors in the input table by element wise adding them together.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.CAveTable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CAveTable[T]extendsAbstractModule[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
+      <a id="CAveTable[T]:CAveTable[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CAveTable.html"><span class="name">CAveTable</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.CAveTable.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.CAveTable.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Merge the input tensors in the input table by element wise taking the average.</p>
     </li><li name="com.intel.analytics.bigdl.nn.CDivTable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="CDivTable[T]extendsAbstractModule[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.tensor.Tensor[_],T]"></a>
       <a id="CDivTable[T]:CDivTable[T]"></a>
@@ -781,6 +794,19 @@ and passes it to the preceding layer.</p>
       </h4>
       <p class="comment cmt">This is a transfer layer which applies the hard shrinkage function
 element-wise to the input Tensor.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.HardSigmoid" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="HardSigmoid[T]extendsTensorModule[T]"></a>
+      <a id="HardSigmoid[T]:HardSigmoid[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="HardSigmoid.html"><span class="name">HardSigmoid</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.HardSigmoid.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Apply Segment-wise linear approximation of sigmoid.</p>
     </li><li name="com.intel.analytics.bigdl.nn.HardTanh" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="HardTanh[T,D]extendsAbstractModule[com.intel.analytics.bigdl.tensor.Tensor[D],com.intel.analytics.bigdl.tensor.Tensor[D],T]"></a>
       <a id="HardTanh[T,D]:HardTanh[T,D]"></a>
@@ -1129,8 +1155,8 @@ to all input elements.</p>
         <a href="MarginCriterion.html"><span class="name">MarginCriterion</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion">TensorCriterion</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MarginCriterion.T">T</span>]</span>
       </span>
       </h4>
-      <p class="comment cmt">Creates a criterion that optimizes a two-class classification hinge loss (margin-based loss)
-between input x (a Tensor of dimension 1) and output y.</p>
+      <p class="comment cmt">Creates a criterion that optimizes a two-class classification (squared)
+hinge loss (margin-based loss) between input x (a Tensor of dimension 1) and output y.</p>
     </li><li name="com.intel.analytics.bigdl.nn.MarginRankingCriterion" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MarginRankingCriterion[T]extendsAbstractCriterion[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.utils.Table,T]"></a>
       <a id="MarginRankingCriterion[T]:MarginRankingCriterion[T]"></a>
@@ -2332,6 +2358,19 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       </h4>
       <p class="comment cmt">This module creates a new view of the input tensor using the sizes passed to the constructor.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.VolumetricAveragePooling" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="VolumetricAveragePooling[T]extendsTensorModule[T]"></a>
+      <a id="VolumetricAveragePooling[T]:VolumetricAveragePooling[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="VolumetricAveragePooling.html"><span class="name">VolumetricAveragePooling</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.VolumetricAveragePooling.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Applies 3D average-pooling operation in kTxkWxkH regions by step size dTxdWxdH.</p>
     </li><li name="com.intel.analytics.bigdl.nn.VolumetricConvolution" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="VolumetricConvolution[T]extendsTensorModule[T]withInitializable"></a>
       <a id="VolumetricConvolution[T]:VolumetricConvolution[T]"></a>
@@ -2570,6 +2609,19 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       <span class="symbol">
         <a href="CAddTable$.html"><span class="name">CAddTable</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.CAveTable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CAveTable"></a>
+      <a id="CAveTable:CAveTable"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CAveTable$.html"><span class="name">CAveTable</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -3051,6 +3103,19 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       <span class="symbol">
         <a href="HardShrink$.html"><span class="name">HardShrink</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.HardSigmoid" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="HardSigmoid"></a>
+      <a id="HardSigmoid:HardSigmoid"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="HardSigmoid$.html"><span class="name">HardSigmoid</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -4481,6 +4546,19 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       <span class="symbol">
         <a href="View$.html"><span class="name">View</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.VolumetricAveragePooling" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="VolumetricAveragePooling"></a>
+      <a id="VolumetricAveragePooling:VolumetricAveragePooling"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="VolumetricAveragePooling$.html"><span class="name">VolumetricAveragePooling</span></a><span class="result"> extends <a href="../utils/serializer/ModuleSerializable.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable">ModuleSerializable</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       

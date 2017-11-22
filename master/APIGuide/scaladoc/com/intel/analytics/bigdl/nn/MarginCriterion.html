@@ -39,8 +39,10 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Creates a criterion that optimizes a two-class classification hinge loss (margin-based loss)
-between input x (a Tensor of dimension 1) and output y.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Creates a criterion that optimizes a two-class classification (squared)
+hinge loss (margin-based loss) between input x (a Tensor of dimension 1) and output y.</p><p>When margin = 1, sizeAverage = True and squared = False, this is the same as hinge loss in keras;
+When margin = 1, sizeAverage = False and squared = True, this is the same as squared_hinge loss
+in keras.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@SerialVersionUID</span><span class="args">(<span>
       
@@ -88,7 +90,7 @@ between input x (a Tensor of dimension 1) and output y.
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.MarginCriterion#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(margin:Double,sizeAverage:Boolean)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.MarginCriterion[T]"></a>
+      <a id="&lt;init&gt;(margin:Double,sizeAverage:Boolean,squared:Boolean)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.MarginCriterion[T]"></a>
       <a id="&lt;init&gt;:MarginCriterion[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -96,10 +98,10 @@ between input x (a Tensor of dimension 1) and output y.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">MarginCriterion</span><span class="params">(<span name="margin">margin: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1.0</span></span>, <span name="sizeAverage">sizeAverage: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.MarginCriterion.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MarginCriterion.T">T</span>]</span>)</span>
+        <span class="name">MarginCriterion</span><span class="params">(<span name="margin">margin: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1.0</span></span>, <span name="sizeAverage">sizeAverage: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="squared">squared: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.MarginCriterion.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MarginCriterion.T">T</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">margin</dt><dd class="cmt"><p>if unspecified, is by default 1.</p></dd><dt class="param">sizeAverage</dt><dd class="cmt"><p>whether to average the loss
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">margin</dt><dd class="cmt"><p>if unspecified, is by default 1.</p></dd><dt class="param">sizeAverage</dt><dd class="cmt"><p>whether to average the loss</p></dd><dt class="param">squared</dt><dd class="cmt"><p>whether to calculate the squared hinge loss
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -440,8 +442,7 @@ compared with <code>target</code>.
         <span class="name">sizeAverage</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">whether to average the loss
-</p>
+      <p class="shortcomment cmt">whether to average the loss</p>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

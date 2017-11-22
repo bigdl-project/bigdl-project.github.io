@@ -165,13 +165,14 @@
 <span class="sd">    classes. If provided, the optional argument weights should be a 1D Tensor assigning weight to</span>
 <span class="sd">    each of the classes. This is particularly useful when you have an unbalanced training set.</span>
 
-<span class="sd">    The input given through a forward() is expected to contain log-probabilities of each class:</span>
-<span class="sd">    input has to be a 1D Tensor of size n. Obtaining log-probabilities in a neural network is easily</span>
-<span class="sd">    achieved by adding a LogSoftMax layer in the last layer of your neural network. You may use</span>
-<span class="sd">    CrossEntropyCriterion instead, if you prefer not to add an extra layer to your network. This</span>
-<span class="sd">    criterion expects a class index (1 to the number of class) as target when calling</span>
-<span class="sd">    forward(input, target) and backward(input, target).</span>
+<span class="sd">    The input given through a forward() is expected to contain log-probabilities/probabilities of</span>
+<span class="sd">    each class: input has to be a 1D Tensor of size n. Obtaining log-probabilities/probabilities</span>
+<span class="sd">    in a neural network is easily achieved by adding a LogSoftMax/SoftMax layer in the last layer</span>
+<span class="sd">    of your neural network. You may use CrossEntropyCriterion instead, if you prefer not to add an</span>
+<span class="sd">    extra layer to your network. This criterion expects a class index (1 to the number of class) as</span>
+<span class="sd">    target when calling forward(input, target) and backward(input, target).</span>
 
+<span class="sd">    In the log-probabilities case,</span>
 <span class="sd">    The loss can be described as:</span>
 <span class="sd">        loss(x, class) = -x[class]</span>
 <span class="sd">    or in the case of the weights argument it is specified as follows:</span>
@@ -186,14 +187,18 @@
 <span class="sd">    By default, the losses are averaged over observations for each minibatch. However, if the field</span>
 <span class="sd">    sizeAverage is set to false, the losses are instead summed for each minibatch.</span>
 
+<span class="sd">    In particular, when weights=None, size_average=True and logProbAsInput=False, this is same as</span>
+<span class="sd">    `sparse_categorical_crossentropy` loss in keras.</span>
+
 
 <span class="sd">    :param weights: weights of each class</span>
 <span class="sd">    :param size_average: whether to average or not</span>
+<span class="sd">    :param logProbAsInput: indicating whether to accept log-probabilities or probabilities as input.</span>
 
 
 <span class="sd">    &gt;&gt;&gt; np.random.seed(123)</span>
 <span class="sd">    &gt;&gt;&gt; weights = np.random.uniform(0, 1, (2,)).astype(&quot;float32&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; classNLLCriterion = ClassNLLCriterion(weights,True)</span>
+<span class="sd">    &gt;&gt;&gt; classNLLCriterion = ClassNLLCriterion(weights, True, True)</span>
 <span class="sd">    creating: createClassNLLCriterion</span>
 <span class="sd">    &gt;&gt;&gt; classNLLCriterion = ClassNLLCriterion()</span>
 <span class="sd">    creating: createClassNLLCriterion</span>
@@ -202,10 +207,11 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">logProbAsInput</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ClassNLLCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                                 <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">weights</span><span class="p">),</span>
-                                                <span class="n">size_average</span><span class="p">)</span></div>
+                                                <span class="n">size_average</span><span class="p">,</span> <span class="n">logProbAsInput</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MSECriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.MSECriterion">[docs]</a><span class="k">class</span> <span class="nc">MSECriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -406,22 +412,27 @@
 <span class="sd">    Creates a criterion that optimizes a two-class classification hinge loss (margin-based loss)</span>
 <span class="sd">    between input x (a Tensor of dimension 1) and output y.</span>
 
+<span class="sd">    When margin = 1, size_average = True and squared = False, this is the same as hinge loss in keras;</span>
+<span class="sd">    When margin = 1, size_average = False and squared = True, this is the same as squared_hinge loss in keras.</span>
 
 <span class="sd">    :param margin: if unspecified, is by default 1.</span>
 <span class="sd">    :param size_average: size average in a mini-batch</span>
+<span class="sd">    :param squared: whether to calculate the squared hinge loss</span>
 
 
-<span class="sd">    &gt;&gt;&gt; marginCriterion = MarginCriterion(1e-5, True)</span>
+<span class="sd">    &gt;&gt;&gt; marginCriterion = MarginCriterion(1e-5, True, False)</span>
 <span class="sd">    creating: createMarginCriterion</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">margin</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                  <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MarginCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                               <span class="n">margin</span><span class="p">,</span>
-                                              <span class="n">size_average</span><span class="p">)</span></div>
+                                              <span class="n">size_average</span><span class="p">,</span>
+                                              <span class="n">squared</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="MarginRankingCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.MarginRankingCriterion">[docs]</a><span class="k">class</span> <span class="nc">MarginRankingCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>

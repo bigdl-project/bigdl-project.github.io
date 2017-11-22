@@ -49,6 +49,10 @@
           ]},
           {title: "Setup IDE", url: "#setup-ide", children: [
           ]},
+          {title: "Build BigDL-core on different platforms", url: "#build-bigdl-core-on-different-platforms", children: [
+              {title: "Environments Setup", url: "#environments-setup" },
+              {title: "Build &amp; Deploy", url: "#build-deploy" },
+          ]},
         ];
 
     </script>
@@ -136,6 +140,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <pre><code class="bash">   $ bash make-dist.sh -P full-build
 </code></pre>
 
+<p>The defailts of building libraries on different platforms is at the end.</p>
 <hr />
 <h2 id="build-with-maven"><strong>Build with Maven</strong></h2>
 <p>To build BigDL directly using Maven, run the command below:</p>
@@ -157,6 +162,141 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <ul>
 <li>In Intellij, go to View -&gt; Tools Windows -&gt; Maven Projects. Then in the Maven Projects panel, Profiles -&gt; click "all-in-one". </li>
 </ul>
+<hr />
+<h2 id="build-bigdl-core-on-different-platforms"><strong>Build BigDL-core on different platforms</strong></h2>
+<h3 id="environments-setup">Environments Setup</h3>
+<p>For building BigDL-core, there should have</p>
+<ol>
+<li>JDK 1.7+</li>
+<li>maven</li>
+<li>make</li>
+<li>g++-7</li>
+<li>Intel Parallel Studio</li>
+<li>Git.</li>
+</ol>
+<p>BigDL-core is a JNI project, <code>mkl2017-xeon-blas</code> needs MKL libraries with icc and <code>bigquant</code> needs g++-7. We use <code>maven</code> + <code>make</code> to control the build process where maven for java and make for c/c++ code.</p>
+<h4 id="centos">CentOS</h4>
+<ol>
+<li>Build GCC-7.2</li>
+<li>Download GCC 7.2 source code<ol>
+<li><code>git clone https://github.com/gcc-mirror/gcc.git</code></li>
+<li><code>git checkout gcc-7_2_0-release</code></li>
+</ol>
+</li>
+<li>contrib/download_prerequisites<ol>
+<li>base_url='http://gcc.gnu.org/pub/gcc/infrastructure/' # should change ftp to http because of proxy</li>
+</ol>
+</li>
+<li><code>./configure --prefix=/opt/gcc-7.2.0 --enable-languages=c,c++ --disable-multilib --disable-nls</code></li>
+<li><code>make -j4 &amp;&amp; make install</code></li>
+<li><code>ln -s /opt/gcc-7.2.0 /opt/gcc</code></li>
+<li>binutils 2.29</li>
+<li><code>wget https://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.gz</code></li>
+<li><code>tar zxvf binutils-2.29.tar.gz -C /tmp/ &amp;&amp; cd /tmp/binutils-2.29</code></li>
+<li><code>./configure --prefix=/opt/binutils-2.29</code></li>
+<li><code>make &amp;&amp; make install</code></li>
+<li><code>ln -s /opt/binutils-2.29 /opt/binutils/</code></li>
+<li>Install Git</li>
+<li><code>./configure --prefix=/opt/git-2.9.5</code></li>
+<li><code>make -j4 &amp;&amp; make install</code></li>
+<li><code>ln -s /opt/git-2.9.5 /opt/git</code></li>
+<li>
+<p>set environment variables
+    ```
+    export MAVEN_HOME=/opt/maven
+    export PATH=$MAVEN_HOME/bin:$PATH
+    export MAVEN_OPTS="-Xmx28g -Xss10M -XX:ReservedCodeCacheSize=512m -XX:MaxPermSize=128m"</p>
+<p>GCC_7_HOME=/opt/gcc
+LIBDIR=${GCC_7_HOME}/lib/../lib64
+export LD_LIBRARY_PATH=${LIBDIR}:${LD_LIBRARY_PATH}
+export LIBRARY_PATH=${LIBDIR}:${LIBRARY_PATH}
+export LD_RUN_PATH=${LIBDIR}:${LD_RUN_PATH}
+export PATH=${GCC_7_HOME}/bin/:${PATH}
+export C_INCLUDE_PATH=/opt/gcc/include/:${C_INCLUDE_PATH}
+export CPLUS_INCLUDE_PATH=/opt/gcc/include/:${CPLUS_INCLUDE_PATH}</p>
+<p>GIT_HOME=/opt/git
+export PATH=${GIT_HOME}/bin:${PATH}</p>
+<p>BINUTILS_HOME=/opt/binutils
+export LD_LIBRARY_PATH=${BINUTILS_HOME}/lib:${LD_LIBRARY_PATH}
+export PATH=${BINUTILS_HOME}/bin:${PATH}
+```</p>
+</li>
+</ol>
+<h4 id="ubuntudebian">Ubuntu/Debian</h4>
+<ol>
+<li>Install g++-7</li>
+</ol>
+<p><code>sudo add-apt-repository ppa:jonathonf/gcc-7.1
+   sudo apt-get update
+   sudo apt-get install gcc-7 g++-7
+   sudo apt-get install build-essential</code></p>
+<ol>
+<li>Install Parallel Studio XE</li>
+</ol>
+<h4 id="windows">Windows</h4>
+<ol>
+<li>Install Visual Studio 2015</li>
+<li>Install Intel Parallel Studio XE 2018</li>
+<li>
+<p>Install MinGW: https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/7.2.0/threads-win32/sjlj/x86_64-7.2.0-release-win32-sjlj-rt_v5-rev0.7z</p>
+</li>
+<li>
+<p>Unzip it to C:\MinGW.</p>
+</li>
+<li>Set the environment</li>
+<li>Copy ming32-make.exe to make.exe</li>
+<li>Copy g++ to g++-7</li>
+<li>Open a cmd terminal and input <code>g++-7 -v</code> , should output like below,
+      <code>Using built-in specs.
+      COLLECT_GCC=g++-7
+      COLLECT_LTO_WRAPPER=C:/MinGW/bin/../libexec/gcc/x86_64-w64-mingw32/7.1.0/lto-wrapper.exe
+      Target: x86_64-w64-mingw32
+      Configured with: ../../../src/gcc-7.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-ingw32 --prefix=/mingw64 --with-sysroot=/c/mingw710/x86_64-710-win32-sjlj-rt_v5-rev2/mingw64 --enable-shared --enable-static --enable-targets=all --enable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=win32 --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --enable-sjlj-exceptions --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch-32=i686 --with-arch-64=nocona --with-tune-32=generic --with-tune-64=core2 --with-libiconv --with-system-zlib --with-gmp=/c/mingw710/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/mingw710/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/mingw710/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/mingw710/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-win32-sjlj-rev2, Built by MinGW-W64 project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/c/mingw710/x86_64-710-win32-sjlj-rt_v5-rev2/mingw64/opt/include -I/c/mingw710/prerequisites/x86_64-zlib-static/include -I/c/mingw710/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/mingw710/x86_64-710-win32-sjlj-rt_v5-rev2/mingw64/opt/include -I/c/mingw710/prerequisites/x86_64-zlib-static/include -I/c/mingw710/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/mingw710/x86_64-710-win32-sjlj-rt_v5-rev2/mingw64/opt/include -I/c/mingw710/prerequisites/x86_64-zlib-static/include -I/c/mingw710/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/mingw710/x86_64-710-win32-sjlj-rt_v5-rev2/mingw64/opt/lib -L/c/mingw710/prerequisites/x86_64-zlib-static/lib -L/c/mingw710/prerequisites/x86_64-w64-mingw32-static/lib '
+      Thread model: win32
+      gcc version 7.1.0 (x86_64-win32-sjlj-rev2, Built by MinGW-W64 project)</code></li>
+</ol>
+<h4 id="macos">macOS</h4>
+<ol>
+<li>Install Parallel Studio XE.</li>
+<li>Install g++-7: <code>brew install gcc@7</code></li>
+</ol>
+<h3 id="build-deploy">Build &amp; Deploy</h3>
+<p>We use maven profile to control the build process. For different platforms has different profiles.</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th align="center">Profile</th>
+<th align="center">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td align="center">linux</td>
+<td align="center"><code>mvn clean package -P linux</code></td>
+</tr>
+<tr>
+<td>RedHat5</td>
+<td align="center">rh5</td>
+<td align="center"><code>mvn clean package -P rh5</code></td>
+</tr>
+<tr>
+<td>macOS</td>
+<td align="center">mac</td>
+<td align="center"><code>mvn clean package -P mac</code></td>
+</tr>
+<tr>
+<td>Windows</td>
+<td align="center">win64</td>
+<td align="center"><code>mvn clean package -P win64</code></td>
+</tr>
+</tbody>
+</table>
+<p>There two ways to deploy. We should use <code>mvn deploy -P deploy</code> at the end.
+1. Build the jar on specific platform and deploy it. For example, we want to deploy bigquant of linux.
+    <code>mvn clean deploy -P 'linux' -pl 'bigquant/bigquant-java-x86_64-linux'</code>
+2. Copy the prebuilt libraries from every platform to a main machine, and deploy it.</p>
 
   <br>
 </div>
