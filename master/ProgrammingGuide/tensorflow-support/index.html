@@ -33,14 +33,10 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Loading a Tensorflow model into BigDL", url: "#loading-a-tensorflow-model-into-bigdl", children: [
-              {title: "Generate model definition file and checkpoints in Tensorflow", url: "#generate-model-definition-file-and-checkpoints-in-tensorflow" },
-              {title: "Freeze graph definition and checkpoints into a single \".pb\" file", url: "#freeze-graph-definition-and-checkpoints-into-a-single-pb-file" },
-              {title: "Load Tensorflow model in BigDL", url: "#load-tensorflow-model-in-bigdl" },
-          ]},
-          {title: "Saving a BigDL functional model to Tensorflow model file", url: "#saving-a-bigdl-functional-model-to-tensorflow-model-file", children: [
-          ]},
-          {title: "Build Tensorflow model and run on BigDL", url: "#build-tensorflow-model-and-run-on-bigdl", children: [
+          {title: "Tensorflow Support", url: "#tensorflow-support", children: [
+              {title: "Loading a Tensorflow model into BigDL", url: "#loading-a-tensorflow-model-into-bigdl" },
+              {title: "Saving a BigDL functional model to Tensorflow model file", url: "#saving-a-bigdl-functional-model-to-tensorflow-model-file" },
+              {title: "Build Tensorflow model and run on BigDL", url: "#build-tensorflow-model-and-run-on-bigdl" },
           ]},
         ];
 
@@ -58,54 +54,56 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="loading-a-tensorflow-model-into-bigdl"><strong>Loading a Tensorflow model into BigDL</strong></h2>
-<p>If you have a pre-trained Tensorflow model saved in a ".pb" file, you can load it
-into BigDL.</p>
-<p>For more information on how to generate
-the ".pb" file, you can refer to <a href="https://www.tensorflow.org/extend/tool_developers/">A Tool Developer's Guide to TensorFlow Model Files</a>.
-Specifically, you should generate a model definition file and a set of checkpoints, then use the <a href="https://github.com/tensorflow/tensorflow/blob/v1.0.0/tensorflow/python/tools/freeze_graph.py">freeze_graph</a>
-script to freeze the graph definition and weights in checkpoints into a single file.</p>
-<h3 id="generate-model-definition-file-and-checkpoints-in-tensorflow">Generate model definition file and checkpoints in Tensorflow</h3>
+    <h1 id="tensorflow-support">Tensorflow Support</h1>
+<p>BigDL supports loading and saving tensorflow models.
+This page will give you a basic introduction of this feature. For more
+interesting and sophisticated examples, please checkout <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/tensorflow">here</a>.</p>
+<h2 id="loading-a-tensorflow-model-into-bigdl"><strong>Loading a Tensorflow model into BigDL</strong></h2>
+<p>BigDL supports loading tensorflow model with only a few lines of code.</p>
+<h3 id="generate-model-definition-file-and-variable-binary-file">Generate model definition file and variable binary file</h3>
 <p><strong>Python</strong></p>
 <pre><code class="python">import tensorflow as tf
+
+# This is your model definition.
 xs = tf.placeholder(tf.float32, [None, 1])
+
 W1 = tf.Variable(tf.zeros([1,10])+0.2)
 b1 = tf.Variable(tf.zeros([10])+0.1)
 Wx_plus_b1 = tf.nn.bias_add(tf.matmul(xs,W1), b1)
 output = tf.nn.tanh(Wx_plus_b1, name=&quot;output&quot;)
 
-saver = tf.train.Saver()
-with tf.Session() as sess:
-    init = tf.global_variables_initializer()
-    sess.run(init)
-    checkpointpath = saver.save(sess, '/tmp/model/test.chkp')
-    tf.train.write_graph(sess.graph, '/tmp/model', 'test.pbtxt')
+# Adding the following lines right after your model definition 
+from bigdl.util.tf_utils import dump_model
+dump_model_path = &quot;/tmp/model&quot;
+# This line of code will create a Session and initialized all the Variable and
+# save the model definition and variable to dump_model_path as BigDL readable format.
+dump_model(path=dump_model_path)
 </code></pre>
 
-<h3 id="freeze-graph-definition-and-checkpoints-into-a-single-pb-file">Freeze graph definition and checkpoints into a single ".pb" file</h3>
-<p><strong>Shell</strong></p>
-<pre><code class="shell">wget https://raw.githubusercontent.com/tensorflow/tensorflow/v1.0.0/tensorflow/python/tools/freeze_graph.py
-python freeze_graph.py --input_graph /tmp/model/test.pbtxt --input_checkpoint /tmp/model/test.chkp --output_node_names=output --output_graph &quot;/tmp/model/test.pb&quot;
-</code></pre>
-
+<p>Optionally, you can also pass in a initialized (either from scratch or from a checkpoint) Session object containing
+all the variables of your model or pass in a pre-trained checkpoint path directly. See the <code>dump_model</code> doc in this
+<a href="https://github.com/intel-analytics/BigDL/blob/master/pyspark/bigdl/util/tf_utils.py">file</a>.</p>
 <h3 id="load-tensorflow-model-in-bigdl">Load Tensorflow model in BigDL</h3>
 <p><strong>Scala</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.utils._
 import com.intel.analytics.bigdl.nn.Module
 import java.nio.ByteOrder
 
-val path = &quot;/tmp/model/test.pb&quot;
+val modelPath = &quot;/tmp/model/model.pb&quot;
+val binPath = &quot;/tmp/model/model.bin&quot;
 val inputs = Seq(&quot;Placeholder&quot;)
 val outputs = Seq(&quot;output&quot;)
-val model = Module.loadTF(path, Seq(&quot;Placeholder&quot;), Seq(&quot;output&quot;), ByteOrder.LITTLE_ENDIAN)
+val model = Module.loadTF(modelPath, Seq(&quot;Placeholder&quot;),
+    Seq(&quot;output&quot;), ByteOrder.LITTLE_ENDIAN, Some(binPath))
 </code></pre>
 
 <p><strong>Python</strong></p>
 <pre><code class="python">from bigdl.nn.layer import *
-path = &quot;/tmp/model/test.pb&quot;
+model_def = &quot;/tmp/model/model.pb&quot;
+model_variable = &quot;/tmp/model/model.bin&quot;
 inputs = [&quot;Placeholder&quot;]
 outputs = [&quot;output&quot;]
-model = Model.load_tensorflow(path, inputs, outputs, byte_order = &quot;little_endian&quot;, bigdl_type=&quot;float&quot;)
+model = Model.load_tensorflow(model_def, inputs, outputs, byte_order = &quot;little_endian&quot;, bigdl_type=&quot;float&quot;, bin_file=model_variable)
 </code></pre>
 
 <hr />

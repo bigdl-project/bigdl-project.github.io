@@ -2864,9 +2864,13 @@ node_type parameter.</p>
 
 <dl class="staticmethod">
 <dt id="bigdl.nn.layer.Model.load_tensorflow">
-<em class="property">static </em><code class="descname">load_tensorflow</code><span class="sig-paren">(</span><em>path</em>, <em>inputs</em>, <em>outputs</em>, <em>byte_order='little_endian'</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.load_tensorflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.load_tensorflow" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">load_tensorflow</code><span class="sig-paren">(</span><em>path</em>, <em>inputs</em>, <em>outputs</em>, <em>byte_order='little_endian'</em>, <em>bin_file=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.load_tensorflow"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.load_tensorflow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a pre-trained Tensorflow model.
 :param path: The path containing the pre-trained model.
+:param inputs: The input node of this graph
+:param outputs: The output node of this graph
+:param byte_order: byte_order of the file, <cite>little_endian</cite> or <cite>big_endian</cite>
+:param bin_file: the optional bin file produced by bigdl dump_model util function to store the weights
 :return: A pre-trained model.</p>
 </dd></dl>
 
