@@ -249,6 +249,22 @@ a table of two Tensors, and a Tensor label y with values 1 or -1.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.criterion.CosineProximityCriterion">
+<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">CosineProximityCriterion</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#CosineProximityCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.CosineProximityCriterion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
+<p>compute the negative of the mean cosine proximity between predictions and targets.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">x</span><span class="s1">&#39;(i) = x(i) / sqrt(max(sum(x(i)^2), 1e-12))</span>
+<span class="n">y</span><span class="s1">&#39;(i) = y(i) / sqrt(max(sum(x(i)^2), 1e-12))</span>
+<span class="n">cosine_proximity</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">sum_i</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">x</span><span class="s1">&#39;(i) * y&#39;</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cosineProximityCriterion</span> <span class="o">=</span> <span class="n">CosineProximityCriterion</span><span class="p">()</span>
+<span class="go">creating: createCosineProximityCriterion</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.criterion.Criterion">
 <em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">Criterion</code><span class="sig-paren">(</span><em>jvalue</em>, <em>bigdl_type</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#Criterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.Criterion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
@@ -1311,6 +1327,11 @@ A container usually contain some other modules which can be added through the �
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="bigdl.nn.layer.Container.flattened_layers">
+<code class="descname">flattened_layers</code><a class="headerlink" href="#bigdl.nn.layer.Container.flattened_layers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="bigdl.nn.layer.Container.layers">
 <code class="descname">layers</code><a class="headerlink" href="#bigdl.nn.layer.Container.layers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1330,7 +1351,7 @@ A container usually contain some other modules which can be added through the �
 
 <dl class="class">
 <dt id="bigdl.nn.layer.ConvLSTMPeephole">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ConvLSTMPeephole</code><span class="sig-paren">(</span><em>input_size</em>, <em>output_size</em>, <em>kernel_i</em>, <em>kernel_c</em>, <em>stride=1</em>, <em>padding=-1</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>cRegularizer=None</em>, <em>with_peephole=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ConvLSTMPeephole"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ConvLSTMPeephole" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ConvLSTMPeephole</code><span class="sig-paren">(</span><em>input_size</em>, <em>output_size</em>, <em>kernel_i</em>, <em>kernel_c</em>, <em>stride=1</em>, <em>padding=-1</em>, <em>activation=None</em>, <em>inner_activation=None</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>cRegularizer=None</em>, <em>with_peephole=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ConvLSTMPeephole"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ConvLSTMPeephole" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <div class="line-block">
 <div class="line">Convolution Long Short Term Memory architecture with peephole.</div>
@@ -1344,21 +1365,27 @@ A container usually contain some other modules which can be added through the �
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>input_size</strong> – number of input planes in the image given into forward()</li>
 <li><strong>output_size</strong> – number of output planes the convolution layer will produce</li>
+<li><strong>kernel_i</strong> – Convolutional filter size to convolve input</li>
+<li><strong>kernel_c</strong> – Convolutional filter size to convolve cell</li>
+<li><strong>stride</strong> – The step of the convolution, default is 1</li>
+<li><strong>padding</strong> – The additional zeros added, default is -1</li>
+<li><strong>activation</strong> – activation function, by default to be Tanh if not specified.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<p>:param kernel_i Convolutional filter size to convolve input
-:param kernel_c Convolutional filter size to convolve cell
-:param stride The step of the convolution, default is 1
-:param padding The additional zeros added, default is -1
+<p>It can also be the name of an existing activation as a string.
+:param inner_activation: activation function for the inner cells, by default to be Sigmoid if not specified.
+It can also be the name of an existing activation as a string.
 :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices
 :param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices
 :param bRegularizer: instance of [[Regularizer]]applied to the bias.
 :param cRegularizer: instance of [[Regularizer]]applied to peephole.
 :param with_peephole: whether use last cell status control a gate.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convlstm</span> <span class="o">=</span> <span class="n">ConvLSTMPeephole</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">convlstm</span> <span class="o">=</span> <span class="n">ConvLSTMPeephole</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">Tanh</span><span class="p">(),</span> <span class="n">HardSigmoid</span><span class="p">(),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="go">creating: createTanh</span>
+<span class="go">creating: createHardSigmoid</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
@@ -1576,7 +1603,7 @@ table will be produced</p>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.GRU">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">GRU</code><span class="sig-paren">(</span><em>input_size</em>, <em>hidden_size</em>, <em>p=0.0</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#GRU"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.GRU" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">GRU</code><span class="sig-paren">(</span><em>input_size</em>, <em>hidden_size</em>, <em>p=0.0</em>, <em>activation=None</em>, <em>inner_activation=None</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#GRU"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.GRU" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <p>Gated Recurrent Units architecture.
 The first input in sequence uses zero value for cell and hidden state</p>
@@ -1593,19 +1620,69 @@ The first input in sequence uses zero value for cell and hidden state</p>
 <li><strong>input_size</strong> – the size of each input vector</li>
 <li><strong>hidden_size</strong> – Hidden unit size in GRU</li>
 <li><strong>p</strong> – is used for [[Dropout]] probability. For more details aboutRNN dropouts, please refer to[RnnDrop: A Novel Dropout for RNNs in ASR](<a class="reference external" href="http://www.stat.berkeley.edu/~tsmoon/files/Conference/asru2015.pdf)[A">http://www.stat.berkeley.edu/~tsmoon/files/Conference/asru2015.pdf)[A</a> Theoretically Grounded Application of Dropout in Recurrent Neural Networks](<a class="reference external" href="https://arxiv.org/pdf/1512.05287.pdf">https://arxiv.org/pdf/1512.05287.pdf</a>)</li>
-<li><strong>wRegularizer</strong> – instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.</li>
-<li><strong>uRegularizer</strong> – instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices.</li>
-<li><strong>bRegularizer</strong> – instance of [[Regularizer]]applied to the bias.</li>
+<li><strong>activation</strong> – activation function, by default to be Tanh if not specified.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gru</span> <span class="o">=</span> <span class="n">GRU</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<p>It can also be the name of an existing activation as a string.
+:param inner_activation: activation function for the inner cells, by default to be Sigmoid if not specified.
+It can also be the name of an existing activation as a string.
+:param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.
+:param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices.
+:param bRegularizer: instance of [[Regularizer]]applied to the bias.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gru</span> <span class="o">=</span> <span class="n">GRU</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">Tanh</span><span class="p">(),</span> <span class="n">Sigmoid</span><span class="p">(),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="go">creating: createTanh</span>
+<span class="go">creating: createSigmoid</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createGRU</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.GaussianDropout">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">GaussianDropout</code><span class="sig-paren">(</span><em>rate</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#GaussianDropout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.GaussianDropout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Apply multiplicative 1-centered Gaussian noise.
+The multiplicative noise will have standard deviation <a href="#id1"><span class="problematic" id="id2">`</span></a>sqrt(rate / (1 - rate)).</p>
+<p>As it is a regularization layer, it is only active at training time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rate</strong> – drop probability (as with <cite>Dropout</cite>).</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">GaussianDropout</span> <span class="o">=</span> <span class="n">GaussianDropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="go">creating: createGaussianDropout</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.GaussianNoise">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">GaussianNoise</code><span class="sig-paren">(</span><em>stddev</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#GaussianNoise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.GaussianNoise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Apply additive zero-centered Gaussian noise.
+This is useful to mitigate overfitting
+(you could see it as a form of random data augmentation).
+Gaussian Noise (GS) is a natural choice as corruption process for real valued inputs.</p>
+<p>As it is a regularization layer, it is only active at training time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stdev</strong> – standard deviation of the noise distribution</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">GaussianNoise</span> <span class="o">=</span> <span class="n">GaussianNoise</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="go">creating: createGaussianNoise</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1714,6 +1791,23 @@ by default</p>
 <span class="go">creating: createHardTanh</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hardTanh</span> <span class="o">=</span> <span class="n">HardTanh</span><span class="p">()</span>
 <span class="go">creating: createHardTanh</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.Highway">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Highway</code><span class="sig-paren">(</span><em>size</em>, <em>with_bias=True</em>, <em>activation=None</em>, <em>wRegularizer=None</em>, <em>bRegularizer=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Highway"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Highway" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Densely connected highway network.
+Highway layers are a natural extension of LSTMs to feedforward networks.</p>
+<p>:param size input size
+:param with_bias whether to include a bias
+:param activation name of activation function to use
+:param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.
+:param bRegularizer: instance of [[Regularizer]]applied to the bias.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">highway</span> <span class="o">=</span> <span class="n">Highway</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">creating: createHighway</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1862,7 +1956,7 @@ it in the module’s loss field. During backward propagation: gradInput = gradOu
 
 <dl class="class">
 <dt id="bigdl.nn.layer.LSTM">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">LSTM</code><span class="sig-paren">(</span><em>input_size</em>, <em>hidden_size</em>, <em>p=0.0</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#LSTM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.LSTM" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">LSTM</code><span class="sig-paren">(</span><em>input_size</em>, <em>hidden_size</em>, <em>p=0.0</em>, <em>activation=None</em>, <em>inner_activation=None</em>, <em>wRegularizer=None</em>, <em>uRegularizer=None</em>, <em>bRegularizer=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#LSTM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.LSTM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <div class="line-block">
 <div class="line">Long Short Term Memory architecture.</div>
@@ -1881,18 +1975,24 @@ it in the module’s loss field. During backward propagation: gradInput = gradOu
 <li><strong>inputSize</strong> – the size of each input vector</li>
 <li><strong>hiddenSize</strong> – Hidden unit size in the LSTM</li>
 <li><strong>p</strong> – is used for [[Dropout]] probability. For more details aboutRNN dropouts, please refer to[RnnDrop: A Novel Dropout for RNNs in ASR](<a class="reference external" href="http://www.stat.berkeley.edu/~tsmoon/files/Conference/asru2015.pdf)[A">http://www.stat.berkeley.edu/~tsmoon/files/Conference/asru2015.pdf)[A</a> Theoretically Grounded Application of Dropout in Recurrent Neural Networks](<a class="reference external" href="https://arxiv.org/pdf/1512.05287.pdf">https://arxiv.org/pdf/1512.05287.pdf</a>)</li>
-<li><strong>wRegularizer</strong> – instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.</li>
-<li><strong>uRegularizer</strong> – instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices.</li>
-<li><strong>bRegularizer</strong> – instance of [[Regularizer]]applied to the bias.</li>
+<li><strong>activation</strong> – activation function, by default to be Tanh if not specified.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lstm</span> <span class="o">=</span> <span class="n">LSTM</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<p>It can also be the name of an existing activation as a string.
+:param inner_activation: activation function for the inner cells, by default to be Sigmoid if not specified.
+It can also be the name of an existing activation as a string.
+:param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.
+:param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices.
+:param bRegularizer: instance of [[Regularizer]]applied to the bias.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lstm</span> <span class="o">=</span> <span class="n">LSTM</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;tanh&#39;</span><span class="p">,</span> <span class="n">Sigmoid</span><span class="p">(),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="go">creating: createSigmoid</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
+<span class="go">creating: createTanh</span>
 <span class="go">creating: createLSTM</span>
 </pre></div>
 </div>
@@ -3404,7 +3504,7 @@ The input can be a Tensor or Table.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>input_size</strong> – the size of each input vector</li>
 <li><strong>hidden_size</strong> – Hidden unit size in simple RNN</li>
-<li><strong>activation</strong> – activation function</li>
+<li><strong>activation</strong> – activation function. It can also be the name of an existing activation as a string.</li>
 <li><strong>isInputWithBias</strong> – boolean</li>
 <li><strong>isHiddenWithBias</strong> – boolean</li>
 <li><strong>wRegularizer</strong> – instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.</li>
@@ -3415,7 +3515,7 @@ The input can be a Tensor or Table.</p>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">reshape</span> <span class="o">=</span> <span class="n">RnnCell</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Tanh</span><span class="p">(),</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rnn</span> <span class="o">=</span> <span class="n">RnnCell</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Tanh</span><span class="p">(),</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
 <span class="go">creating: createTanh</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
@@ -4511,6 +4611,19 @@ there are dim + 1 possible positions to insert the singleton dimension.</p>
 <span class="go">creating: createUnsqueeze</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.UpSampling3D">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">UpSampling3D</code><span class="sig-paren">(</span><em>size</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#UpSampling3D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.UpSampling3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Upsampling layer for 3D inputs.
+Repeats the 1st, 2nd and 3rd dimensions
+of the data by size[0], size[1] and size[2] respectively.
+The input data is assumed to be of the form <cite>minibatch x channels x depth x height x width</cite>.</p>
+<p>:param size Repeats the depth, height, width dimensions of the data by
+&gt;&gt;&gt; upsample3d = UpSampling3D([1, 2, 3])
+creating: createUpSampling3D</p>
 </dd></dl>
 
 <dl class="class">

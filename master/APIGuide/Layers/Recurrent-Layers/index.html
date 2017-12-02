@@ -53,6 +53,8 @@
           ]},
           {title: "TimeDistributed", url: "#timedistributed", children: [
           ]},
+          {title: "Highway", url: "#highway", children: [
+          ]},
         ];
 
     </script>
@@ -304,11 +306,27 @@ output = module.forward(input)
 <hr />
 <h2 id="rnn">RNN</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val rnnCell = RnnCell[Double](inputSize, hiddenSize, activation, wRegularizer, uRegularizer, bRegularizer)
+<pre><code class="scala">val rnnCell = RnnCell[Double](
+  inputSize,
+  hiddenSize,
+  activation,
+  isInputWithBias = true,
+  isHiddenWithBias = true,
+  wRegularizer = null,
+  uRegularizer = null,
+  bRegularizer = null)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">rnnCell = RnnCell(input_size, hidden_size, Tanh(), w_regularizer, u_regularizer, b_regularizer)
+<pre><code class="python">rnnCell = RnnCell(
+  input_size,
+  hidden_size,
+  activation,
+  isInputWithBias=True,
+  isHiddenWithBias=True,
+  wRegularizer=None,
+  uRegularizer=None,
+  bRegularizer=None)
 </code></pre>
 
 <p>Implementation of vanilla recurrent neural network cell</p>
@@ -325,7 +343,10 @@ output = module.forward(input)
 <ul>
 <li><code>inputSize</code> input size. Default: 4</li>
 <li><code>hiddenSize</code>  hidden layer size. Default: 3</li>
-<li><code>activation</code> activation function f for non-linearity</li>
+<li><code>activation</code> instance of activation function for non-linearity.
+  For Python, one can also pass the name of an existing activation as a string, eg. 'tanh', 'relu', 'sigmoid', 'hard_sigmoid', 'softmax' etc.</li>
+<li><code>isInputWithBias</code> boolean, whether to contain bias for input. Default: true</li>
+<li><code>isHiddenWithBias</code> boolean, whether to contain bias for hidden layer. Default: true</li>
 <li><code>wRegularizer</code> instance of <code>Regularizer</code>(eg. L1 or L2 regularization), applied to the input weights matrices. Default: null</li>
 <li><code>uRegularizer</code> instance of <code>Regularizer</code>(eg. L1 or L2 regularization), applied to the recurrent weights matrices. Default: null</li>
 <li><code>bRegularizer</code> instance of <code>Regularizer</code>(eg. L1 or L2 regularization), applied to the bias. Default: null</li>
@@ -408,11 +429,27 @@ gradient = model.backward(input, grad_output)
 <hr />
 <h2 id="lstm">LSTM</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val lstm = LSTM(inputSize, hiddenSize)
+<pre><code class="scala">val lstm = LSTM(
+  inputSize,
+  hiddenSize,
+  p = 0.0,
+  activation = null,
+  innerActivation = null,
+  wRegularizer = null,
+  uRegularizer = null,
+  bRegularizer = null)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">lstm = LSTM(input_size, hidden_size)
+<pre><code class="python">lstm = LSTM(
+  input_size,
+  hidden_size,
+  p=0.0,
+  activation=None,
+  inner_activation=None,
+  wRegularizer=None,
+  uRegularizer=None,
+  bRegularizer=None)
 </code></pre>
 
 <p>Long Short Term Memory architecture.
@@ -425,6 +462,26 @@ The input tensor in <code>forward(input)</code> is expected to be a 3D tensor (<
 <li>http://arxiv.org/pdf/1503.04069v1.pdf</li>
 <li>https://github.com/wojzaremba/lstm</li>
 </ol>
+<p>Parameters:</p>
+<ul>
+<li><code>inputSize</code> the size of each input vector</li>
+<li><code>hiddenSize</code> Hidden unit size in the LSTM</li>
+<li><code>p</code> is used for [[Dropout]] probability. For more details about
+           RNN dropouts, please refer to
+           [RnnDrop: A Novel Dropout for RNNs in ASR]
+           (http://www.stat.berkeley.edu/~tsmoon/files/Conference/asru2015.pdf)
+           [A Theoretically Grounded Application of Dropout in Recurrent Neural Networks]
+           (https://arxiv.org/pdf/1512.05287.pdf)</li>
+<li><code>activation</code> activation function, by default to be <code>Tanh</code> if not specified.
+  For Python, one can also pass the name of an existing activation as a string, eg. 'tanh', 'relu', 'sigmoid', 'hard_sigmoid', 'softmax' etc.</li>
+<li><code>innerActivation</code> activation function for inner cells, by default to be <code>Sigmoid</code> if not specified.
+  For Python, one can also pass the name of an existing activation as a string, eg. 'tanh', 'relu', 'sigmoid', 'hard_sigmoid', 'softmax' etc.</li>
+<li><code>wRegularizer</code> instance of [[Regularizer]]
+                   (eg. L1 or L2 regularization), applied to the input weights matrices.</li>
+<li><code>uRegularizer</code> instance [[Regularizer]]
+          (eg. L1 or L2 regularization), applied to the recurrent weights matrices.</li>
+<li><code>bRegularizer</code> instance of [[Regularizer]] applied to the bias.</li>
+</ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn._
 import com.intel.analytics.bigdl.utils.T
@@ -544,29 +601,31 @@ model.backward(input, gradInput)
 </code></pre>
 
 <p>Long Short Term Memory architecture with peephole.
-Ref.
 The input tensor in <code>forward(input)</code> is expected to be a 3D tensor (<code>batch x time x inputSize</code>). output of
 <code>forward(input)</code> is also expected to be a 3D tensor (<code>batch x time x hiddenSize</code>).</p>
+<p>Ref.</p>
 <ol>
 <li>http://arxiv.org/pdf/1303.5778v1 (blueprint for this module)</li>
 <li>http://web.eecs.utk.edu/~itamar/courses/ECE-692/Bobby_paper1.pdf</li>
 <li>http://arxiv.org/pdf/1503.04069v1.pdf</li>
 <li>https://github.com/wojzaremba/lstm</li>
 </ol>
-<p>Parameters:
-<em> <code>inputSize</code> the size of each input vector
-</em> <code>hiddenSize</code> Hidden unit size in the LSTM
-<em> <code>p</code> is used for [[Dropout]] probability. For more details about
+<p>Parameters:</p>
+<ul>
+<li><code>inputSize</code> the size of each input vector</li>
+<li><code>hiddenSize</code> Hidden unit size in the LSTM</li>
+<li><code>p</code> is used for [[Dropout]] probability. For more details about
            RNN dropouts, please refer to
            [RnnDrop: A Novel Dropout for RNNs in ASR]
            (http://www.stat.berkeley.edu/~tsmoon/files/Conference/asru2015.pdf)
            [A Theoretically Grounded Application of Dropout in Recurrent Neural Networks]
-           (https://arxiv.org/pdf/1512.05287.pdf)
-</em> <code>wRegularizer</code> instance of [[Regularizer]]
-                   (eg. L1 or L2 regularization), applied to the input weights matrices.
-<em> <code>uRegularizer</code> instance [[Regularizer]]
-          (eg. L1 or L2 regularization), applied to the recurrent weights matrices.
-</em> <code>bRegularizer</code> instance of [[Regularizer]] applied to the bias.</p>
+           (https://arxiv.org/pdf/1512.05287.pdf)</li>
+<li><code>wRegularizer</code> instance of [[Regularizer]]
+                   (eg. L1 or L2 regularization), applied to the input weights matrices.</li>
+<li><code>uRegularizer</code> instance [[Regularizer]]
+          (eg. L1 or L2 regularization), applied to the recurrent weights matrices.</li>
+<li><code>bRegularizer</code> instance of [[Regularizer]] applied to the bias.</li>
+</ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
 import com.intel.analytics.bigdl.nn._
@@ -645,11 +704,27 @@ output = model.forward(input)
 <hr />
 <h2 id="gru">GRU</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val gru = GRU(inputSize, outputSize, p, wRegularizer, uRegularizer, bRegularizer)
+<pre><code class="scala">val gru = GRU(
+  inputSize,
+  outputSize,
+  p = 0.0,
+  activation = null,
+  innerActivation = null,
+  wRegularizer = null,
+  uRegularizer = null,
+  bRegularizer = null)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">gru = GRU(inputSize, outputSize, p, w_regularizer, u_regularizer, b_regularizer)
+<pre><code class="python">gru = GRU(
+  inputSize,
+  outputSize,
+  p=0.0,
+  activation=None,
+  inner_activation=None,
+  wRegularizer=None,
+  uRegularizer=None,
+  bRegularizer=None)
 </code></pre>
 
 <p>Gated Recurrent Units architecture. The first input in sequence uses zero value for cell and hidden state.
@@ -668,6 +743,10 @@ The input tensor in <code>forward(input)</code> is expected to be a 3D tensor (<
           RNN dropouts, please refer to
            <a href="http://www.stat.berkeley.edu/~tsmoon/files/Conference/asru2015.pdf">RnnDrop: A Novel Dropout for RNNs in ASR</a>
             and <a href="https://arxiv.org/pdf/1512.05287.pdf">A Theoretically Grounded Application of Dropout in Recurrent Neural Networks</a>. Default: 0.0</li>
+<li><code>activation</code> activation function, by default to be <code>Tanh</code> if not specified.
+  For Python, one can also pass the name of an existing activation as a string, eg. 'tanh', 'relu', 'sigmoid', 'hard_sigmoid', 'softmax' etc.</li>
+<li><code>innerActivation</code> activation function for inner cells, by default to be <code>Sigmoid</code> if not specified.
+  For Python, one can also pass the name of an existing activation as a string, eg. 'tanh', 'relu', 'sigmoid', 'hard_sigmoid', 'softmax' etc.</li>
 <li><code>wRegularizer</code> instance of <code>Regularizer</code>(eg. L1 or L2 regularization), applied to the input weights matrices. Default: null</li>
 <li><code>uRegularizer</code> instance of <code>Regularizer</code>(eg. L1 or L2 regularization), applied to the recurrent weights matrices. Default: null</li>
 <li><code>bRegularizer</code> instance of <code>Regularizer</code>(eg. L1 or L2 regularization), applied to the bias. Default: null</li>
@@ -758,6 +837,8 @@ gradient = model.backward(input, grad_output)
   kernelC = 3,
   stride = 1,
   padding = -1,
+  activation = null,
+  innerActivation = null,
   wRegularizer = null,
   uRegularizer = null,
   bRegularizer = null,
@@ -773,9 +854,11 @@ gradient = model.backward(input, grad_output)
   kernel_c = 3,
   stride = 1,
   padding = -1,
-  wRegularizer=None,
-  uRegularizer=None,
-  bRegularizer=None,
+  activation = None,
+  inner_activation = None,
+  wRegularizer = None,
+  uRegularizer = None,
+  bRegularizer = None,
   cRegularizer = None,
   with_peephole = True)
 </code></pre>
@@ -800,6 +883,10 @@ If ConvLSTM work with Recurrent, input is 5D tensor (<code>batch x time x nInput
 <li><code>stride</code> step of the convolution, default is 1</li>
 <li><code>padding</code> step of the convolution, default is -1, behaves same with SAME padding in tensorflow
                  Default stride,padding value ensure last 2 dim of output shape is the same with input</li>
+<li><code>activation</code> activation function, by default to be <code>Tanh</code> if not specified.
+  For Python, one can also pass the name of an existing activation as a string, eg. 'tanh', 'relu', 'sigmoid', 'hard_sigmoid', 'softmax' etc.</li>
+<li><code>innerActivation</code> activation function for inner cells, by default to be <code>Sigmoid</code> if not specified.
+  For Python, one can also pass the name of an existing activation as a string, eg. 'tanh', 'relu', 'sigmoid', 'hard_sigmoid', 'softmax' etc.</li>
 <li><code>wRegularizer</code> instance of [[Regularizer]]
                    (eg. L1 or L2 regularization), applied to the input weights matrices.</li>
 <li><code>uRegularizer</code> instance [[Regularizer]]
@@ -1580,6 +1667,66 @@ array([[[[ 0.1       ,  0.2       ],
 
         [[ 0.30000001,  0.40000001],
          [ 0.30000001,  0.40000001]]]], dtype=float32)
+</code></pre>
+
+<hr />
+<h2 id="highway">Highway</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val layer = Highway(size: Int, withBias: Boolean, activation: String,
+                        wRegularizer: Regularizer[T] = null,
+                        bRegularizer: Regularizer[T] = null)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">layer = Highway(size, with_bias, activation, wRegularizer, bRegularizer)
+</code></pre>
+
+<p>This layer is Densely connected highway network.
+Highway layers are a natural extension of LSTMs to feedforward networks.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val module = Highway(2, activation = &quot;tanh&quot;)
+
+val input = Tensor(3, 2).randn()
+println(input)
+val output = module.forward(input)
+println(output)
+</code></pre>
+
+<p>Gives the output,</p>
+<pre><code>1.096164    0.08578972
+0.2580359   1.629636
+-0.7571692  0.28832582
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 3x2]
+0.65883696  0.108842306
+-0.032798193    0.047720015
+-0.5495165  -0.16949607
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 3x2]
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
+
+input = np.random.rand(3, 2)
+print &quot;input is :&quot;,input
+
+m = Highway(2, activation = &quot;tanh&quot;)
+out = m.forward(input)
+print &quot;output is :&quot;,out
+</code></pre>
+
+<p>Gives the output,</p>
+<pre><code>input is : [[ 0.65776902  0.63354682]
+ [ 0.57766285  0.50117516]
+ [ 0.15317826  0.60807496]]
+creating: createHighway
+output is : [[ 0.44779509 -0.10608637]
+ [ 0.41307163 -0.14994906]
+ [ 0.25687078  0.00718814]]
 </code></pre>
 
   <br>

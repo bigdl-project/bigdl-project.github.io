@@ -80,6 +80,7 @@
 <span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">six</span>
 
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">JTensor</span>
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">JavaValue</span>
@@ -88,6 +89,7 @@
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">get_spark_context</span>
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">to_list</span>
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">INTMAX</span><span class="p">,</span> <span class="n">INTMIN</span><span class="p">,</span> <span class="n">DOUBLEMAX</span>
+<span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">get_activation_by_name</span>
 <span class="kn">from</span> <span class="nn">bigdl.optim.optimizer</span> <span class="k">import</span> <span class="n">L1Regularizer</span><span class="p">,</span> <span class="n">L2Regularizer</span><span class="p">,</span> <span class="n">L1L2Regularizer</span>
 <span class="kn">from</span> <span class="nn">py4j.java_gateway</span> <span class="k">import</span> <span class="n">JavaObject</span>
 
@@ -657,6 +659,12 @@
     <span class="k">def</span> <span class="nf">layers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">jlayers</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getContainerModules&quot;</span> <span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
         <span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jlayer</span><span class="p">)</span> <span class="k">for</span> <span class="n">jlayer</span> <span class="ow">in</span> <span class="n">jlayers</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">layers</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">flattened_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">jlayers</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getFlattenModules&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jlayer</span><span class="p">)</span> <span class="k">for</span> <span class="n">jlayer</span> <span class="ow">in</span> <span class="n">jlayers</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">layers</span></div>
 
 
@@ -1007,6 +1015,21 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Tanh</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Sigmoid"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Sigmoid">[docs]</a><span class="k">class</span> <span class="nc">Sigmoid</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Applies the Sigmoid function element-wise to the input Tensor,</span>
+<span class="sd">    thus outputting a Tensor of the same dimension.</span>
+
+<span class="sd">    &gt;&gt;&gt; sigmoid = Sigmoid()</span>
+<span class="sd">    creating: createSigmoid</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sigmoid</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Echo"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Echo">[docs]</a><span class="k">class</span> <span class="nc">Echo</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
@@ -1399,21 +1422,37 @@
 
 <span class="sd">    :param inputSize: the size of each input vector</span>
 <span class="sd">    :param hiddenSize: Hidden unit size in the LSTM</span>
-<span class="sd">    :param  p: is used for [[Dropout]] probability. For more details aboutRNN dropouts, please refer to[RnnDrop: A Novel Dropout for RNNs in ASR](http://www.stat.berkeley.edu/~tsmoon/files/Conference/asru2015.pdf)[A Theoretically Grounded Application of Dropout in Recurrent Neural Networks](https://arxiv.org/pdf/1512.05287.pdf)</span>
+<span class="sd">    :param p: is used for [[Dropout]] probability. For more details aboutRNN dropouts, please refer to[RnnDrop: A Novel Dropout for RNNs in ASR](http://www.stat.berkeley.edu/~tsmoon/files/Conference/asru2015.pdf)[A Theoretically Grounded Application of Dropout in Recurrent Neural Networks](https://arxiv.org/pdf/1512.05287.pdf)</span>
+<span class="sd">    :param activation: activation function, by default to be Tanh if not specified.</span>
+<span class="sd">                        It can also be the name of an existing activation as a string.</span>
+<span class="sd">    :param inner_activation: activation function for the inner cells, by default to be Sigmoid if not specified.</span>
+<span class="sd">                            It can also be the name of an existing activation as a string.</span>
 <span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.</span>
 <span class="sd">    :param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices.</span>
 <span class="sd">    :param bRegularizer: instance of [[Regularizer]]applied to the bias.</span>
 
 
-<span class="sd">    &gt;&gt;&gt; lstm = LSTM(4, 3, 0.5, L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
+<span class="sd">    &gt;&gt;&gt; lstm = LSTM(4, 3, 0.5, &#39;tanh&#39;, Sigmoid(), L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
+<span class="sd">    creating: createSigmoid</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    creating: createTanh</span>
 <span class="sd">    creating: createLSTM</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">LSTM</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inner_activation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">activation</span><span class="p">:</span>
+            <span class="n">activation</span> <span class="o">=</span> <span class="n">Tanh</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">inner_activation</span><span class="p">:</span>
+            <span class="n">inner_activation</span> <span class="o">=</span> <span class="n">Sigmoid</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">activation</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+            <span class="n">activation</span> <span class="o">=</span> <span class="n">get_activation_by_name</span><span class="p">(</span><span class="n">activation</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inner_activation</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+            <span class="n">inner_activation</span> <span class="o">=</span> <span class="n">get_activation_by_name</span><span class="p">(</span><span class="n">inner_activation</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LSTM</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span>
+                                   <span class="n">activation</span><span class="p">,</span> <span class="n">inner_activation</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="LSTMPeephole"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.LSTMPeephole">[docs]</a><span class="k">class</span> <span class="nc">LSTMPeephole</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
@@ -1457,22 +1496,38 @@
 
 <span class="sd">    :param input_size: the size of each input vector</span>
 <span class="sd">    :param hidden_size: Hidden unit size in GRU</span>
-<span class="sd">    :param  p: is used for [[Dropout]] probability. For more details aboutRNN dropouts, please refer to[RnnDrop: A Novel Dropout for RNNs in ASR](http://www.stat.berkeley.edu/~tsmoon/files/Conference/asru2015.pdf)[A Theoretically Grounded Application of Dropout in Recurrent Neural Networks](https://arxiv.org/pdf/1512.05287.pdf)</span>
+<span class="sd">    :param p: is used for [[Dropout]] probability. For more details aboutRNN dropouts, please refer to[RnnDrop: A Novel Dropout for RNNs in ASR](http://www.stat.berkeley.edu/~tsmoon/files/Conference/asru2015.pdf)[A Theoretically Grounded Application of Dropout in Recurrent Neural Networks](https://arxiv.org/pdf/1512.05287.pdf)</span>
+<span class="sd">    :param activation: activation function, by default to be Tanh if not specified.</span>
+<span class="sd">                        It can also be the name of an existing activation as a string.</span>
+<span class="sd">    :param inner_activation: activation function for the inner cells, by default to be Sigmoid if not specified.</span>
+<span class="sd">                            It can also be the name of an existing activation as a string.</span>
 <span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.</span>
 <span class="sd">    :param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices.</span>
 <span class="sd">    :param bRegularizer: instance of [[Regularizer]]applied to the bias.</span>
 
 
 
-<span class="sd">    &gt;&gt;&gt; gru = GRU(4, 3, 0.5, L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
+<span class="sd">    &gt;&gt;&gt; gru = GRU(4, 3, 0.5, Tanh(), Sigmoid(), L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
+<span class="sd">    creating: createTanh</span>
+<span class="sd">    creating: createSigmoid</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createGRU</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">GRU</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inner_activation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">activation</span><span class="p">:</span>
+            <span class="n">activation</span> <span class="o">=</span> <span class="n">Tanh</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">inner_activation</span><span class="p">:</span>
+            <span class="n">inner_activation</span> <span class="o">=</span> <span class="n">Sigmoid</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">activation</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+            <span class="n">activation</span> <span class="o">=</span> <span class="n">get_activation_by_name</span><span class="p">(</span><span class="n">activation</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inner_activation</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+            <span class="n">inner_activation</span> <span class="o">=</span> <span class="n">get_activation_by_name</span><span class="p">(</span><span class="n">inner_activation</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GRU</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">activation</span><span class="p">,</span> <span class="n">inner_activation</span><span class="p">,</span>
+                                  <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="RnnCell"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.RnnCell">[docs]</a><span class="k">class</span> <span class="nc">RnnCell</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
@@ -1482,16 +1537,15 @@
 
 <span class="sd">    :param input_size: the size of each input vector</span>
 <span class="sd">    :param hidden_size: Hidden unit size in simple RNN</span>
-<span class="sd">    :param activation: activation function</span>
+<span class="sd">    :param activation: activation function. It can also be the name of an existing activation as a string.</span>
 <span class="sd">    :param isInputWithBias: boolean</span>
 <span class="sd">    :param isHiddenWithBias: boolean</span>
-
 <span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.</span>
 <span class="sd">    :param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices.</span>
 <span class="sd">    :param bRegularizer: instance of [[Regularizer]](../regularizers.md),applied to the bias.</span>
 
 
-<span class="sd">    &gt;&gt;&gt; reshape = RnnCell(4, 3, Tanh(), True, True, L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
+<span class="sd">    &gt;&gt;&gt; rnn = RnnCell(4, 3, Tanh(), True, True, L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
 <span class="sd">    creating: createTanh</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
@@ -1509,6 +1563,8 @@
                  <span class="n">uRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">activation</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+            <span class="n">activation</span> <span class="o">=</span> <span class="n">get_activation_by_name</span><span class="p">(</span><span class="n">activation</span><span class="p">)</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">RnnCell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">activation</span><span class="p">,</span> <span class="n">isInputWithBias</span><span class="p">,</span> <span class="n">isHiddenWithBias</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">)</span></div>
 
 
@@ -1755,6 +1811,49 @@
                                       <span class="n">inplace</span><span class="p">,</span>
                                       <span class="n">scale</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="GaussianDropout"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.GaussianDropout">[docs]</a><span class="k">class</span> <span class="nc">GaussianDropout</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Apply multiplicative 1-centered Gaussian noise.</span>
+<span class="sd">    The multiplicative noise will have standard deviation `sqrt(rate / (1 - rate)).</span>
+
+<span class="sd">    As it is a regularization layer, it is only active at training time.</span>
+
+<span class="sd">    :param rate: drop probability (as with `Dropout`).</span>
+
+
+<span class="sd">    &gt;&gt;&gt; GaussianDropout = GaussianDropout(0.5)</span>
+<span class="sd">    creating: createGaussianDropout</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">rate</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GaussianDropout</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                              <span class="n">rate</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GaussianNoise"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.GaussianNoise">[docs]</a><span class="k">class</span> <span class="nc">GaussianNoise</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Apply additive zero-centered Gaussian noise.</span>
+<span class="sd">    This is useful to mitigate overfitting</span>
+<span class="sd">    (you could see it as a form of random data augmentation).</span>
+<span class="sd">    Gaussian Noise (GS) is a natural choice as corruption process for real valued inputs.</span>
+
+<span class="sd">    As it is a regularization layer, it is only active at training time.</span>
+
+<span class="sd">    :param stdev: standard deviation of the noise distribution</span>
+
+<span class="sd">    &gt;&gt;&gt; GaussianNoise = GaussianNoise(0.5)</span>
+<span class="sd">    creating: createGaussianNoise</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">stddev</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GaussianNoise</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                            <span class="n">stddev</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="View"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.View">[docs]</a><span class="k">class</span> <span class="nc">View</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
@@ -3299,21 +3398,6 @@
                                           <span class="n">index</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="Sigmoid"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Sigmoid">[docs]</a><span class="k">class</span> <span class="nc">Sigmoid</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
-
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Applies the Sigmoid function element-wise to the input Tensor,</span>
-<span class="sd">    thus outputting a Tensor of the same dimension.</span>
-
-<span class="sd">    &gt;&gt;&gt; sigmoid = Sigmoid()</span>
-<span class="sd">    creating: createSigmoid</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Sigmoid</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
-
-
 <div class="viewcode-block" id="SoftMax"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SoftMax">[docs]</a><span class="k">class</span> <span class="nc">SoftMax</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
@@ -4443,17 +4527,23 @@
 
 <span class="sd">    :param input_size: number of input planes in the image given into forward()</span>
 <span class="sd">    :param output_size: number of output planes the convolution layer will produce</span>
-<span class="sd">    :param kernel_i Convolutional filter size to convolve input</span>
-<span class="sd">    :param kernel_c Convolutional filter size to convolve cell</span>
-<span class="sd">    :param stride The step of the convolution, default is 1</span>
-<span class="sd">    :param padding The additional zeros added, default is -1</span>
+<span class="sd">    :param kernel_i: Convolutional filter size to convolve input</span>
+<span class="sd">    :param kernel_c: Convolutional filter size to convolve cell</span>
+<span class="sd">    :param stride: The step of the convolution, default is 1</span>
+<span class="sd">    :param padding: The additional zeros added, default is -1</span>
+<span class="sd">    :param activation: activation function, by default to be Tanh if not specified.</span>
+<span class="sd">                        It can also be the name of an existing activation as a string.</span>
+<span class="sd">    :param inner_activation: activation function for the inner cells, by default to be Sigmoid if not specified.</span>
+<span class="sd">                            It can also be the name of an existing activation as a string.</span>
 <span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices</span>
 <span class="sd">    :param uRegularizer: instance [[Regularizer]](eg. L1 or L2 regularization), applied to the recurrent weights matrices</span>
 <span class="sd">    :param bRegularizer: instance of [[Regularizer]]applied to the bias.</span>
 <span class="sd">    :param cRegularizer: instance of [[Regularizer]]applied to peephole.</span>
 <span class="sd">    :param with_peephole: whether use last cell status control a gate.</span>
 
-<span class="sd">    &gt;&gt;&gt; convlstm = ConvLSTMPeephole(4, 3, 3, 3, 1, -1, L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
+<span class="sd">    &gt;&gt;&gt; convlstm = ConvLSTMPeephole(4, 3, 3, 3, 1, -1, Tanh(), HardSigmoid(), L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
+<span class="sd">    creating: createTanh</span>
+<span class="sd">    creating: createHardSigmoid</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
 <span class="sd">    creating: createL1Regularizer</span>
@@ -4461,10 +4551,21 @@
 <span class="sd">    creating: createConvLSTMPeephole</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">kernel_i</span><span class="p">,</span> <span class="n">kernel_c</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">with_peephole</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ConvLSTMPeephole</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">kernel_i</span><span class="p">,</span> <span class="n">kernel_c</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span>
-                                                <span class="n">padding</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">,</span> <span class="n">cRegularizer</span><span class="p">,</span> <span class="n">with_peephole</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">kernel_i</span><span class="p">,</span> <span class="n">kernel_c</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padding</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">activation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inner_activation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">with_peephole</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">activation</span><span class="p">:</span>
+            <span class="n">activation</span> <span class="o">=</span> <span class="n">Tanh</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">inner_activation</span><span class="p">:</span>
+            <span class="n">inner_activation</span> <span class="o">=</span> <span class="n">Sigmoid</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">activation</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+            <span class="n">activation</span> <span class="o">=</span> <span class="n">get_activation_by_name</span><span class="p">(</span><span class="n">activation</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inner_activation</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+            <span class="n">inner_activation</span> <span class="o">=</span> <span class="n">get_activation_by_name</span><span class="p">(</span><span class="n">inner_activation</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ConvLSTMPeephole</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">kernel_i</span><span class="p">,</span> <span class="n">kernel_c</span><span class="p">,</span>
+                                               <span class="n">stride</span><span class="p">,</span> <span class="n">padding</span><span class="p">,</span> <span class="n">activation</span><span class="p">,</span> <span class="n">inner_activation</span><span class="p">,</span>
+                                               <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">uRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">,</span> <span class="n">cRegularizer</span><span class="p">,</span> <span class="n">with_peephole</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Tile"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Tile">[docs]</a><span class="k">class</span> <span class="nc">Tile</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -4550,6 +4651,37 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">HardSigmoid</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Highway"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Highway">[docs]</a><span class="k">class</span> <span class="nc">Highway</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Densely connected highway network.</span>
+<span class="sd">    Highway layers are a natural extension of LSTMs to feedforward networks.</span>
+
+<span class="sd">    :param size input size</span>
+<span class="sd">    :param with_bias whether to include a bias</span>
+<span class="sd">    :param activation name of activation function to use</span>
+<span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.</span>
+<span class="sd">    :param bRegularizer: instance of [[Regularizer]]applied to the bias.</span>
+
+<span class="sd">    &gt;&gt;&gt; highway = Highway(2)</span>
+<span class="sd">    creating: createHighway</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">with_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Highway</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">with_bias</span><span class="p">,</span> <span class="n">activation</span><span class="p">,</span> <span class="n">wRegularizer</span><span class="p">,</span> <span class="n">bRegularizer</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UpSampling3D"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.UpSampling3D">[docs]</a><span class="k">class</span> <span class="nc">UpSampling3D</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Upsampling layer for 3D inputs.</span>
+<span class="sd">    Repeats the 1st, 2nd and 3rd dimensions</span>
+<span class="sd">    of the data by size[0], size[1] and size[2] respectively.</span>
+<span class="sd">    The input data is assumed to be of the form `minibatch x channels x depth x height x width`.</span>
+
+<span class="sd">    :param size Repeats the depth, height, width dimensions of the data by</span>
+<span class="sd">    &gt;&gt;&gt; upsample3d = UpSampling3D([1, 2, 3])</span>
+<span class="sd">    creating: createUpSampling3D</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">UpSampling3D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
     <span class="kn">import</span> <span class="nn">doctest</span>

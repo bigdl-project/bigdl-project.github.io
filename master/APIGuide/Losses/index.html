@@ -85,6 +85,8 @@
           ]},
           {title: "KLDCriterion", url: "#kldcriterion", children: [
           ]},
+          {title: "CosineProximityCriterion", url: "#cosineproximitycriterion", children: [
+          ]},
         ];
 
     </script>
@@ -1892,6 +1894,51 @@ loss = criterion.forward(input, target)
 
 &gt; loss
 34562.04
+</code></pre>
+
+<h2 id="cosineproximitycriterion">CosineProximityCriterion</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val criterion = CosineProximityCriterion()
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">criterion = CosineProximityCriterion()
+</code></pre>
+
+<p>Computes the negative of the mean cosine proximity between predictions and targets.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn.CosineProximityCriterion
+
+val criterion = CosineProximityCriterion()
+
+val input = Tensor[Float](2, 3).rand()
+
+val target = Tensor[Float](2, 3).rand()
+
+val loss = criterion.forward(input, target)
+
+&gt; loss
+loss: Float = -0.28007346
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">import numpy as np
+from bigdl.nn.criterion import *
+
+criterion = CosineProximityCriterion()
+
+input = np.arange(1, 7, 1).astype(&quot;float32&quot;)
+input = input.reshape(2, 3)
+target = np.arange(2, 13, 2).astype(&quot;float32&quot;)
+target = target.reshape(2, 3)
+
+loss = criterion.forward(input, target)
+
+&gt; loss
+-0.3333333
 </code></pre>
 
   <br>
