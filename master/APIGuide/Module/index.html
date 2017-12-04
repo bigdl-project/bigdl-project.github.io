@@ -36,6 +36,8 @@
           {title: "Model Save", url: "#model-save", children: [
           ]},
           {title: "Model Load", url: "#model-load", children: [
+              {title: "Load BigDL model", url: "#load-bigdl-model" },
+              {title: "Load Tensorflow model", url: "#load-tensorflow-model" },
           ]},
           {title: "Model Evaluation", url: "#model-evaluation", children: [
           ]},
@@ -88,6 +90,7 @@ model.save(&quot;s3://...&quot;) //save to s3
 
 <p>In <code>model.save</code>, the first parameter is the path where we want to save our model, the second parameter is to specify if we need to overwrite the file if it already exists, it's set to false by default</p>
 <h2 id="model-load">Model Load</h2>
+<h3 id="load-bigdl-model">Load BigDL model</h3>
 <p>Use <code>Module.load</code>(in Scala) or <code>Model.load</code> (in Python) to load an existing model.  <code>Module</code> (Scala) or <code>Model</code>(Python) is a utility class provided in BigDL. We just need to specify the model path where we previously saved the model to load it to memory for resume training or prediction purpose.</p>
 <p><strong>Scala example</strong></p>
 <pre><code class="scala">val model = Module.load(&quot;/tmp/model.bigdl&quot;) //load from local fs
@@ -99,6 +102,66 @@ val model = Module.load(&quot;s3://...&quot;) //load from s3
 <pre><code class="python">model = Model.load(&quot;/tmp/model.bigdl&quot;) //load from local fs
 model = Model.load(&quot;hdfs://...&quot;) //load from hdfs
 model = Model.load(&quot;s3://...&quot;) //load from s3
+</code></pre>
+
+<h3 id="load-tensorflow-model">Load Tensorflow model</h3>
+<p>BigDL also provides utilities to load tensorflow model. See <a href="https://bigdl-project.github.io/master/#ProgrammingGuide/tensorflow-support/">tensorflow support</a>
+for more information.</p>
+<p>If we already have a freezed graph protobuf file, we can use the <code>loadTF</code> api directly to
+load the tensorflow model. </p>
+<p>Otherwise, we should first use the <code>export_tf_checkpoint.py</code> script provided by BigDL's distribution
+package, or the <code>dump_model</code> function defined in <a href="https://github.com/intel-analytics/BigDL/blob/master/pyspark/bigdl/util/tf_utils.py">here</a> to
+generate the model definition file (<code>model.pb</code>) and variable binary file (<code>model.bin</code>). </p>
+<p><strong>Use Script</strong></p>
+<pre><code class="shell">GRAPH_META_FILE=/tmp/tensorflow/model.ckpt.meta
+CKPT_FILE_PREFIX=/tmp/tensorflow/model.ckpt
+SAVE_PATH=/tmp/model/
+python export_tf_checkpoint.py $GRAPH_META_FILE $CKPT_FILE_PREFIX $SAVE_PATH
+</code></pre>
+
+<p><strong>Use python function</strong></p>
+<pre><code class="python">import tensorflow as tf
+
+# This is your model definition.
+xs = tf.placeholder(tf.float32, [None, 1])
+
+W1 = tf.Variable(tf.zeros([1,10])+0.2)
+b1 = tf.Variable(tf.zeros([10])+0.1)
+Wx_plus_b1 = tf.nn.bias_add(tf.matmul(xs,W1), b1)
+output = tf.nn.tanh(Wx_plus_b1, name=&quot;output&quot;)
+
+# Adding the following lines right after your model definition 
+from bigdl.util.tf_utils import dump_model
+dump_model_path = &quot;/tmp/model&quot;
+# This line of code will create a Session and initialized all the Variable and
+# save the model definition and variable to dump_model_path as BigDL readable format.
+dump_model(path=dump_model_path)
+</code></pre>
+
+<p>Then we can use the <code>loadTF</code> api to load the tensorflow model into BigDL.</p>
+<p><strong>Scala example</strong></p>
+<pre><code class="scala">val modelPath = &quot;/tmp/model/model.pb&quot;
+val binPath = &quot;/tmp/model/model.bin&quot;
+val inputs = Seq(&quot;Placeholder&quot;)
+val outputs = Seq(&quot;output&quot;)
+
+// For tensorflow freezed graph or graph without Variables
+val model = Module.loadTF(modelPath, inputs, outputs, ByteOrder.LITTLE_ENDIAN)
+
+// For tensorflow graph with Variables
+val model = Module.loadTF(modelPath, inputs, outputs, ByteOrder.LITTLE_ENDIAN, Some(binPath))
+</code></pre>
+
+<p><strong>Python example</strong></p>
+<pre><code class="python">model_def = &quot;/tmp/model/model.pb&quot;
+model_variable = &quot;/tmp/model/model.bin&quot;
+inputs = [&quot;Placeholder&quot;]
+outputs = [&quot;output&quot;]
+# For tensorflow freezed graph or graph without Variables
+model = Model.load_tensorflow(model_def, inputs, outputs, byte_order = &quot;little_endian&quot;, bigdl_type=&quot;float&quot;)
+
+# For tensorflow graph with Variables
+model = Model.load_tensorflow(model_def, inputs, outputs, byte_order = &quot;little_endian&quot;, bigdl_type=&quot;float&quot;, bin_file=model_variable)
 </code></pre>
 
 <h2 id="model-evaluation">Model Evaluation</h2>

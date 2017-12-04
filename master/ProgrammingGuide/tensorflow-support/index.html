@@ -60,8 +60,20 @@ This page will give you a basic introduction of this feature. For more
 interesting and sophisticated examples, please checkout <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/tensorflow">here</a>.</p>
 <h2 id="loading-a-tensorflow-model-into-bigdl"><strong>Loading a Tensorflow model into BigDL</strong></h2>
 <p>BigDL supports loading tensorflow model with only a few lines of code.</p>
+<p>If we already have a freezed graph protobuf file, we can use the <code>loadTF</code> api directly to
+load the tensorflow model. </p>
+<p>Otherwise, we should first use the <code>export_tf_checkpoint.py</code> script provided by BigDL's distribution
+package, or the <code>dump_model</code> function defined in <a href="https://github.com/intel-analytics/BigDL/blob/master/pyspark/bigdl/util/tf_utils.py">here</a> to
+generate the model definition file (<code>model.pb</code>) and variable binary file (<code>model.bin</code>). </p>
 <h3 id="generate-model-definition-file-and-variable-binary-file">Generate model definition file and variable binary file</h3>
-<p><strong>Python</strong></p>
+<p><strong>Use Script</strong></p>
+<pre><code class="shell">GRAPH_META_FILE=/tmp/tensorflow/model.ckpt.meta
+CKPT_FILE_PREFIX=/tmp/tensorflow/model.ckpt
+SAVE_PATH=/tmp/model/
+python export_tf_checkpoint.py $GRAPH_META_FILE $CKPT_FILE_PREFIX $SAVE_PATH
+</code></pre>
+
+<p><strong>Use python function</strong></p>
 <pre><code class="python">import tensorflow as tf
 
 # This is your model definition.
