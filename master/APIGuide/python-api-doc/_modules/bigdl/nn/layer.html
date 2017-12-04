@@ -661,11 +661,10 @@
         <span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jlayer</span><span class="p">)</span> <span class="k">for</span> <span class="n">jlayer</span> <span class="ow">in</span> <span class="n">jlayers</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">layers</span>
 
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">flattened_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">jlayers</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getFlattenModules&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+<div class="viewcode-block" id="Container.flattened_layers"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Container.flattened_layers">[docs]</a>    <span class="k">def</span> <span class="nf">flattened_layers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">include_container</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">jlayers</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getFlattenModules&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">include_container</span><span class="p">)</span>
         <span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jlayer</span><span class="p">)</span> <span class="k">for</span> <span class="n">jlayer</span> <span class="ow">in</span> <span class="n">jlayers</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">layers</span></div>
+        <span class="k">return</span> <span class="n">layers</span></div></div>
 
 
 <div class="viewcode-block" id="Model"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model">[docs]</a><span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">Container</span><span class="p">):</span>
