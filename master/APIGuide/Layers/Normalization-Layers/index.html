@@ -179,6 +179,9 @@ The operation implemented is:</p>
 <li><code>initBias</code>  initial bias tensor</li>
 <li><code>initGradWeight</code> initial gradient weight </li>
 <li><code>initGradBias</code> initial gradient bias</li>
+<li><code>data_format</code> a string value (or DataFormat Object in Scala) of "NHWC" or "NCHW" to specify the input data format of this layer. In "NHWC" format
+                        data is stored in the order of [batch_size, height, width, channels], in "NCHW" format data is stored
+                        in the order of [batch_size, channels, height, width].</li>
 </ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn._
@@ -259,6 +262,15 @@ array([[[[  5.70826093e-03,   9.06338100e-05],
 where  l1 corresponds to `max(0,f-ceil(size/2))` and l2 to `min(F, f-ceil(size/2) + size)`, `F` is the number  of feature maps       
 </code></pre>
 
+<ul>
+<li><code>size</code>  the number of channels to sum over</li>
+<li><code>alpha</code>  the scaling parameter</li>
+<li><code>beta</code>   the exponent</li>
+<li><code>k</code> a constant</li>
+<li><code>data_format</code> a string value (or DataFormat Object in Scala) of "NHWC" or "NCHW" to specify the input data format of this layer. In "NHWC" format
+                        data is stored in the order of [batch_size, height, width, channels], in "NCHW" format data is stored
+                        in the order of [batch_size, channels, height, width]</li>
+</ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
 import com.intel.analytics.bigdl.nn._

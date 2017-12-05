@@ -887,6 +887,29 @@ uniform distribution within [-limit, limit] where “limit” is “1/sqrt(fan_i
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.ActivityRegularization">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ActivityRegularization</code><span class="sig-paren">(</span><em>l1=0.0</em>, <em>l2=0.0</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ActivityRegularization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ActivityRegularization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Layer that applies an update to the cost function based input activity.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>l1</strong> – L1 regularization factor (positive float).</li>
+<li><strong>l2</strong> – L2 regularization factor (positive float).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ar</span> <span class="o">=</span> <span class="n">ActivityRegularization</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
+<span class="go">creating: createActivityRegularization</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.Add">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Add</code><span class="sig-paren">(</span><em>input_size</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
@@ -2378,7 +2401,7 @@ You need to invoke collect() to trigger those action         as the returning re
 
 <dl class="method">
 <dt id="bigdl.nn.layer.Layer.saveModel">
-<code class="descname">saveModel</code><span class="sig-paren">(</span><em>path</em>, <em>over_write=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.saveModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.saveModel" title="Permalink to this definition">¶</a></dt>
+<code class="descname">saveModel</code><span class="sig-paren">(</span><em>modelPath</em>, <em>weightPath=None</em>, <em>over_write=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.saveModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.saveModel" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2884,7 +2907,7 @@ node_type parameter.</p>
 
 <dl class="staticmethod">
 <dt id="bigdl.nn.layer.Model.loadModel">
-<em class="property">static </em><code class="descname">loadModel</code><span class="sig-paren">(</span><em>path</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.loadModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.loadModel" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">loadModel</code><span class="sig-paren">(</span><em>modelPath</em>, <em>weightPath=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.loadModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.loadModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a pre-trained Bigdl model.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3573,6 +3596,45 @@ Pooling is applied independently to each feature map channel</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.SReLU">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SReLU</code><span class="sig-paren">(</span><em>share_axes=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SReLU"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SReLU" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>S-shaped Rectified Linear Unit.</p>
+<p>It follows:
+<cite>f(x) = t^r + a^r(x - t^r) for x &gt;= t^r</cite>,
+<cite>f(x) = x for t^r &gt; x &gt; t^l</cite>,
+<cite>f(x) = t^l + a^l(x - t^l) for x &lt;= t^l</cite>.</p>
+<p># References
+- [Deep Learning with S-shaped Rectified Linear Activation Units](<a class="reference external" href="http://arxiv.org/abs/1512.07030">http://arxiv.org/abs/1512.07030</a>)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>shared_axes</strong> – the axes along which to share learnable</td>
+</tr>
+</tbody>
+</table>
+<p>parameters for the activation function.
+For example, if the incoming feature maps
+are from a 2D convolution
+with output shape <cite>(batch, height, width, channels)</cite>,
+and you wish to share parameters across space
+so that each filter only has one set of parameters,
+set <cite>shared_axes=[1, 2]</cite>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">srelu</span> <span class="o">=</span> <span class="n">SReLU</span><span class="p">()</span>
+<span class="go">creating: createSReLU</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">srelu</span> <span class="o">=</span> <span class="n">SReLU</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="go">creating: createSReLU</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="bigdl.nn.layer.SReLU.set_init_method">
+<code class="descname">set_init_method</code><span class="sig-paren">(</span><em>tLeftInit=None</em>, <em>aLeftInit=None</em>, <em>tRightInit=None</em>, <em>aRightInit=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SReLU.set_init_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SReLU.set_init_method" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.Scale">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Scale</code><span class="sig-paren">(</span><em>size</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Scale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Scale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
@@ -3878,7 +3940,7 @@ padLeft = padAlongWidth / 2</p>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.SpatialBatchNormalization">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialBatchNormalization</code><span class="sig-paren">(</span><em>n_output</em>, <em>eps=1e-05</em>, <em>momentum=0.1</em>, <em>affine=True</em>, <em>init_weight=None</em>, <em>init_bias=None</em>, <em>init_grad_weight=None</em>, <em>init_grad_bias=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialBatchNormalization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialBatchNormalization" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialBatchNormalization</code><span class="sig-paren">(</span><em>n_output</em>, <em>eps=1e-05</em>, <em>momentum=0.1</em>, <em>affine=True</em>, <em>init_weight=None</em>, <em>init_bias=None</em>, <em>init_grad_weight=None</em>, <em>init_grad_bias=None</em>, <em>data_format='NCHW'</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialBatchNormalization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialBatchNormalization" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <p>This file implements Batch Normalization as described in the paper:
 “Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift”
@@ -3893,6 +3955,23 @@ The operation implemented is:</p>
 </div>
 <p>where gamma and beta are learnable parameters.
 The learning of gamma and beta is optional.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>n_output</strong> – output feature map number</li>
+<li><strong>eps</strong> – avoid divide zero</li>
+<li><strong>momentum</strong> – momentum for weight update</li>
+<li><strong>affine</strong> – affine operation on output or not</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>:param data_format a string value (or DataFormat Object in Scala) of “NHWC” or “NCHW” to specify the input data format of this layer. In “NHWC” format
+data is stored in the order of [batch_size, height, width, channels], in “NCHW” format data is stored
+in the order of [batch_size, channels, height, width].</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spatialBatchNormalization</span> <span class="o">=</span> <span class="n">SpatialBatchNormalization</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="go">creating: createSpatialBatchNormalization</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -3901,6 +3980,8 @@ The learning of gamma and beta is optional.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">init_bias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">init_grad_bias</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">spatialBatchNormalization</span> <span class="o">=</span> <span class="n">SpatialBatchNormalization</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">init_weight</span><span class="p">,</span> <span class="n">init_bias</span><span class="p">,</span> <span class="n">init_grad_weight</span><span class="p">,</span> <span class="n">init_grad_bias</span><span class="p">)</span>
+<span class="go">creating: createSpatialBatchNormalization</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spatialBatchNormalization</span> <span class="o">=</span> <span class="n">SpatialBatchNormalization</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">init_weight</span><span class="p">,</span> <span class="n">init_bias</span><span class="p">,</span> <span class="n">init_grad_weight</span><span class="p">,</span> <span class="n">init_grad_bias</span><span class="p">,</span> <span class="s2">&quot;NHWC&quot;</span><span class="p">)</span>
 <span class="go">creating: createSpatialBatchNormalization</span>
 </pre></div>
 </div>
@@ -4026,7 +4107,7 @@ padLeft = padAlongWidth / 2</p>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.SpatialCrossMapLRN">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialCrossMapLRN</code><span class="sig-paren">(</span><em>size=5</em>, <em>alpha=1.0</em>, <em>beta=0.75</em>, <em>k=1.0</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialCrossMapLRN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialCrossMapLRN" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialCrossMapLRN</code><span class="sig-paren">(</span><em>size=5</em>, <em>alpha=1.0</em>, <em>beta=0.75</em>, <em>k=1.0</em>, <em>data_format='NCHW'</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialCrossMapLRN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialCrossMapLRN" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <p>Applies Spatial Local Response Normalization between different feature maps.
 The operation implemented is:</p>
@@ -4052,7 +4133,12 @@ Here, F is the number of feature maps.</p>
 </tr>
 </tbody>
 </table>
+<p>:param data_format a string value (or DataFormat Object in Scala) of “NHWC” or “NCHW” to specify the input data format of this layer. In “NHWC” format
+data is stored in the order of [batch_size, height, width, channels], in “NCHW” format data is stored
+in the order of [batch_size, channels, height, width]</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spatialCrossMapLRN</span> <span class="o">=</span> <span class="n">SpatialCrossMapLRN</span><span class="p">()</span>
+<span class="go">creating: createSpatialCrossMapLRN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spatialCrossMapLRN</span> <span class="o">=</span> <span class="n">SpatialCrossMapLRN</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">&quot;NHWC&quot;</span><span class="p">)</span>
 <span class="go">creating: createSpatialCrossMapLRN</span>
 </pre></div>
 </div>

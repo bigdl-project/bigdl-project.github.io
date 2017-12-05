@@ -43,6 +43,9 @@
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div><div class="toggleContainer block">
+          <span class="toggle">Known Subclasses</span>
+          <div class="subClasses hiddenContent"><a href="PythonBigDLValidator.html" class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDLValidator">PythonBigDLValidator</a></div>
         </div></div>
         
 
@@ -248,6 +251,19 @@
       </span>
       <span class="symbol">
         <span class="name">createAbsCriterion</span><span class="params">(<span name="sizeAverage">sizeAverage: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <a href="../../nn/AbsCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.AbsCriterion">AbsCriterion</a>[<span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.python.api.PythonBigDL#createActivityRegularization" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="createActivityRegularization(l1:Double,l2:Double):com.intel.analytics.bigdl.nn.ActivityRegularization[T]"></a>
+      <a id="createActivityRegularization(Double,Double):ActivityRegularization[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createActivityRegularization</span><span class="params">(<span name="l1">l1: <span class="extype" name="scala.Double">Double</span></span>, <span name="l2">l2: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="../../nn/ActivityRegularization.html" class="extype" name="com.intel.analytics.bigdl.nn.ActivityRegularization">ActivityRegularization</a>[<span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>]</span>
       </span>
       </h4>
       
@@ -2526,6 +2542,19 @@
       </span>
       </h4>
       
+    </li><li name="com.intel.analytics.bigdl.python.api.PythonBigDL#createSReLU" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="createSReLU(shareAxes:java.util.ArrayList[Int]):com.intel.analytics.bigdl.nn.SReLU[T]"></a>
+      <a id="createSReLU(ArrayList[Int]):SReLU[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createSReLU</span><span class="params">(<span name="shareAxes">shareAxes: <span class="extype" name="java.util.ArrayList">ArrayList</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="../../nn/SReLU.html" class="extype" name="com.intel.analytics.bigdl.nn.SReLU">SReLU</a>[<span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>]</span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.python.api.PythonBigDL#createSaturation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="createSaturation(deltaLow:Double,deltaHigh:Double):com.intel.analytics.bigdl.transform.vision.image.augmentation.Saturation"></a>
       <a id="createSaturation(Double,Double):Saturation"></a>
@@ -2774,15 +2803,15 @@
       </h4>
       
     </li><li name="com.intel.analytics.bigdl.python.api.PythonBigDL#createSpatialBatchNormalization" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="createSpatialBatchNormalization(nOutput:Int,eps:Double,momentum:Double,affine:Boolean,initWeight:com.intel.analytics.bigdl.python.api.JTensor,initBias:com.intel.analytics.bigdl.python.api.JTensor,initGradWeight:com.intel.analytics.bigdl.python.api.JTensor,initGradBias:com.intel.analytics.bigdl.python.api.JTensor):com.intel.analytics.bigdl.nn.SpatialBatchNormalization[T]"></a>
-      <a id="createSpatialBatchNormalization(Int,Double,Double,Boolean,JTensor,JTensor,JTensor,JTensor):SpatialBatchNormalization[T]"></a>
+      <a id="createSpatialBatchNormalization(nOutput:Int,eps:Double,momentum:Double,affine:Boolean,initWeight:com.intel.analytics.bigdl.python.api.JTensor,initBias:com.intel.analytics.bigdl.python.api.JTensor,initGradWeight:com.intel.analytics.bigdl.python.api.JTensor,initGradBias:com.intel.analytics.bigdl.python.api.JTensor,dataFormat:String):com.intel.analytics.bigdl.nn.SpatialBatchNormalization[T]"></a>
+      <a id="createSpatialBatchNormalization(Int,Double,Double,Boolean,JTensor,JTensor,JTensor,JTensor,String):SpatialBatchNormalization[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">createSpatialBatchNormalization</span><span class="params">(<span name="nOutput">nOutput: <span class="extype" name="scala.Int">Int</span></span>, <span name="eps">eps: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1e-5</span></span>, <span name="momentum">momentum: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.1</span></span>, <span name="affine">affine: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="initWeight">initWeight: <a href="JTensor.html" class="extype" name="com.intel.analytics.bigdl.python.api.JTensor">JTensor</a> = <span class="symbol">null</span></span>, <span name="initBias">initBias: <a href="JTensor.html" class="extype" name="com.intel.analytics.bigdl.python.api.JTensor">JTensor</a> = <span class="symbol">null</span></span>, <span name="initGradWeight">initGradWeight: <a href="JTensor.html" class="extype" name="com.intel.analytics.bigdl.python.api.JTensor">JTensor</a> = <span class="symbol">null</span></span>, <span name="initGradBias">initGradBias: <a href="JTensor.html" class="extype" name="com.intel.analytics.bigdl.python.api.JTensor">JTensor</a> = <span class="symbol">null</span></span>)</span><span class="result">: <a href="../../nn/SpatialBatchNormalization.html" class="extype" name="com.intel.analytics.bigdl.nn.SpatialBatchNormalization">SpatialBatchNormalization</a>[<span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>]</span>
+        <span class="name">createSpatialBatchNormalization</span><span class="params">(<span name="nOutput">nOutput: <span class="extype" name="scala.Int">Int</span></span>, <span name="eps">eps: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1e-5</span></span>, <span name="momentum">momentum: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.1</span></span>, <span name="affine">affine: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="initWeight">initWeight: <a href="JTensor.html" class="extype" name="com.intel.analytics.bigdl.python.api.JTensor">JTensor</a> = <span class="symbol">null</span></span>, <span name="initBias">initBias: <a href="JTensor.html" class="extype" name="com.intel.analytics.bigdl.python.api.JTensor">JTensor</a> = <span class="symbol">null</span></span>, <span name="initGradWeight">initGradWeight: <a href="JTensor.html" class="extype" name="com.intel.analytics.bigdl.python.api.JTensor">JTensor</a> = <span class="symbol">null</span></span>, <span name="initGradBias">initGradBias: <a href="JTensor.html" class="extype" name="com.intel.analytics.bigdl.python.api.JTensor">JTensor</a> = <span class="symbol">null</span></span>, <span name="dataFormat">dataFormat: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;NCHW&quot;</span></span>)</span><span class="result">: <a href="../../nn/SpatialBatchNormalization.html" class="extype" name="com.intel.analytics.bigdl.nn.SpatialBatchNormalization">SpatialBatchNormalization</a>[<span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>]</span>
       </span>
       </h4>
       
@@ -2826,15 +2855,15 @@
       </h4>
       
     </li><li name="com.intel.analytics.bigdl.python.api.PythonBigDL#createSpatialCrossMapLRN" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="createSpatialCrossMapLRN(size:Int,alpha:Double,beta:Double,k:Double):com.intel.analytics.bigdl.nn.SpatialCrossMapLRN[T]"></a>
-      <a id="createSpatialCrossMapLRN(Int,Double,Double,Double):SpatialCrossMapLRN[T]"></a>
+      <a id="createSpatialCrossMapLRN(size:Int,alpha:Double,beta:Double,k:Double,dataFormat:String):com.intel.analytics.bigdl.nn.SpatialCrossMapLRN[T]"></a>
+      <a id="createSpatialCrossMapLRN(Int,Double,Double,Double,String):SpatialCrossMapLRN[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">createSpatialCrossMapLRN</span><span class="params">(<span name="size">size: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5</span></span>, <span name="alpha">alpha: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1.0</span></span>, <span name="beta">beta: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.75</span></span>, <span name="k">k: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1.0</span></span>)</span><span class="result">: <a href="../../nn/SpatialCrossMapLRN.html" class="extype" name="com.intel.analytics.bigdl.nn.SpatialCrossMapLRN">SpatialCrossMapLRN</a>[<span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>]</span>
+        <span class="name">createSpatialCrossMapLRN</span><span class="params">(<span name="size">size: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5</span></span>, <span name="alpha">alpha: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1.0</span></span>, <span name="beta">beta: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.75</span></span>, <span name="k">k: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1.0</span></span>, <span name="dataFormat">dataFormat: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;NCHW&quot;</span></span>)</span><span class="result">: <a href="../../nn/SpatialCrossMapLRN.html" class="extype" name="com.intel.analytics.bigdl.nn.SpatialCrossMapLRN">SpatialCrossMapLRN</a>[<span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>]</span>
       </span>
       </h4>
       
@@ -3742,15 +3771,15 @@
       </h4>
       
     </li><li name="com.intel.analytics.bigdl.python.api.PythonBigDL#loadBigDLModule" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="loadBigDLModule(path:String):com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]"></a>
-      <a id="loadBigDLModule(String):AbstractModule[Activity,Activity,T]"></a>
+      <a id="loadBigDLModule(modulePath:String,weightPath:String):com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]"></a>
+      <a id="loadBigDLModule(String,String):AbstractModule[Activity,Activity,T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">loadBigDLModule</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>]</span>
+        <span class="name">loadBigDLModule</span><span class="params">(<span name="modulePath">modulePath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="weightPath">weightPath: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>]</span>
       </span>
       </h4>
       
@@ -4067,15 +4096,15 @@
       </h4>
       
     </li><li name="com.intel.analytics.bigdl.python.api.PythonBigDL#saveBigDLModule" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="saveBigDLModule(module:com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T],path:String,overWrite:Boolean):Unit"></a>
-      <a id="saveBigDLModule(AbstractModule[Activity,Activity,T],String,Boolean):Unit"></a>
+      <a id="saveBigDLModule(module:com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T],modulePath:String,weightPath:String,overWrite:Boolean):Unit"></a>
+      <a id="saveBigDLModule(AbstractModule[Activity,Activity,T],String,String,Boolean):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">saveBigDLModule</span><span class="params">(<span name="module">module: <a href="../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>]</span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">saveBigDLModule</span><span class="params">(<span name="module">module: <a href="../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.python.api.PythonBigDL.T">T</span>]</span>, <span name="modulePath">modulePath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="weightPath">weightPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       

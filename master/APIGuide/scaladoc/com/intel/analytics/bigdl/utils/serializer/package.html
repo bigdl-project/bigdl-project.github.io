@@ -86,6 +86,20 @@
       <p class="comment cmt">Trait which defines get attribute value from saved protobuf data and convert BigDL object to
 protobuf format attribute data
 </p>
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.DataReaderWriter" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="DataReaderWriterextendsAnyRef"></a>
+      <a id="DataReaderWriter:DataReaderWriter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="DataReaderWriter.html"><span class="name">DataReaderWriter</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">DataReaderWriter defines how to read/write weight data from bin file
+</p>
     </li><li name="com.intel.analytics.bigdl.utils.serializer.DeserializeContext" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DeserializeContextextendsProductwithSerializable"></a>
       <a id="DeserializeContext:DeserializeContext"></a>
@@ -121,7 +135,7 @@ protobuf format attribute data
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="ModuleData.html"><span class="name">ModuleData</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="module">module: <a href="../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleData.T">T</span>]</span>, <span name="pre">pre: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="next">next: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$14">evidence$14: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleData.T">T</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="ModuleData.html"><span class="name">ModuleData</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="module">module: <a href="../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleData.T">T</span>]</span>, <span name="pre">pre: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="next">next: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$2">evidence$2: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleData.T">T</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -163,7 +177,7 @@ it provides default implementation from <a href="ModuleSerializer$.html" class="
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="SerializeContext.html"><span class="name">SerializeContext</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="moduleData">moduleData: <a href="ModuleData.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleData">ModuleData</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.SerializeContext.T">T</span>]</span>, <span name="storages">storages: <span class="extype" name="scala.collection.mutable.HashMap">HashMap</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Any">Any</span>]</span>, <span name="storageType">storageType: <a href="StorageType.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.StorageType">StorageType</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$13">evidence$13: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.SerializeContext.T">T</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="SerializeContext.html"><span class="name">SerializeContext</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="moduleData">moduleData: <a href="ModuleData.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleData">ModuleData</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.SerializeContext.T">T</span>]</span>, <span name="storages">storages: <span class="extype" name="scala.collection.mutable.HashMap">HashMap</span>[<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Any">Any</span>]</span>, <span name="storageType">storageType: <a href="StorageType.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.StorageType">StorageType</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$1">evidence$1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.SerializeContext.T">T</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -193,6 +207,19 @@ it provides default implementation from <a href="ModuleSerializer$.html" class="
       </span>
       </h4>
       
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.TensorStorageManager" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="TensorStorageManagerextendsAnyRef"></a>
+      <a id="TensorStorageManager:TensorStorageManager"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="TensorStorageManager.html"><span class="name">TensorStorageManager</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      
     </li></ol>
             </div>
 
@@ -200,7 +227,98 @@ it provides default implementation from <a href="ModuleSerializer$.html" class="
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="com.intel.analytics.bigdl.utils.serializer.ContainerSerializer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="com.intel.analytics.bigdl.utils.serializer.BigDLDataType" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BigDLDataType"></a>
+      <a id="BigDLDataType:BigDLDataType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="BigDLDataType$.html"><span class="name">BigDLDataType</span></a><span class="result"> extends <span class="extype" name="scala.Enumeration">Enumeration</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.BigDLStorage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BigDLStorage"></a>
+      <a id="BigDLStorage:BigDLStorage"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="BigDLStorage$.html"><span class="name">BigDLStorage</span></a><span class="result"> extends <a href="StorageType.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.StorageType">StorageType</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.BigDLTensorStorageManager" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BigDLTensorStorageManager"></a>
+      <a id="BigDLTensorStorageManager:BigDLTensorStorageManager"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="BigDLTensorStorageManager$.html"><span class="name">BigDLTensorStorageManager</span></a><span class="result"> extends <a href="TensorStorageManager.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.TensorStorageManager">TensorStorageManager</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.BoolReaderWriter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BoolReaderWriter"></a>
+      <a id="BoolReaderWriter:BoolReaderWriter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="BoolReaderWriter$.html"><span class="name">BoolReaderWriter</span></a><span class="result"> extends <a href="DataReaderWriter.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.DataReaderWriter">DataReaderWriter</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.ByteReaderWriter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ByteReaderWriter"></a>
+      <a id="ByteReaderWriter:ByteReaderWriter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ByteReaderWriter$.html"><span class="name">ByteReaderWriter</span></a><span class="result"> extends <a href="DataReaderWriter.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.DataReaderWriter">DataReaderWriter</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.ByteStringReaderWriter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ByteStringReaderWriter"></a>
+      <a id="ByteStringReaderWriter:ByteStringReaderWriter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ByteStringReaderWriter$.html"><span class="name">ByteStringReaderWriter</span></a><span class="result"> extends <a href="DataReaderWriter.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.DataReaderWriter">DataReaderWriter</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.CharReaderWriter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CharReaderWriter"></a>
+      <a id="CharReaderWriter:CharReaderWriter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CharReaderWriter$.html"><span class="name">CharReaderWriter</span></a><span class="result"> extends <a href="DataReaderWriter.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.DataReaderWriter">DataReaderWriter</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.ContainerSerializer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ContainerSerializer"></a>
       <a id="ContainerSerializer:ContainerSerializer"></a>
       <h4 class="signature">
@@ -227,6 +345,71 @@ it provides default implementation from <a href="ModuleSerializer$.html" class="
       </h4>
       <p class="comment cmt">General implementation of <a href="DataConverter.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.DataConverter">DataConverter</a>, it provides the conversion entry for all types
 </p>
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.DataReaderWriter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DataReaderWriter"></a>
+      <a id="DataReaderWriter:DataReaderWriter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="DataReaderWriter$.html"><span class="name">DataReaderWriter</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.DoubleReaderWriter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DoubleReaderWriter"></a>
+      <a id="DoubleReaderWriter:DoubleReaderWriter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="DoubleReaderWriter$.html"><span class="name">DoubleReaderWriter</span></a><span class="result"> extends <a href="DataReaderWriter.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.DataReaderWriter">DataReaderWriter</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.FloatReaderWriter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FloatReaderWriter"></a>
+      <a id="FloatReaderWriter:FloatReaderWriter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="FloatReaderWriter$.html"><span class="name">FloatReaderWriter</span></a><span class="result"> extends <a href="DataReaderWriter.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.DataReaderWriter">DataReaderWriter</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.IntReaderWriter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="IntReaderWriter"></a>
+      <a id="IntReaderWriter:IntReaderWriter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="IntReaderWriter$.html"><span class="name">IntReaderWriter</span></a><span class="result"> extends <a href="DataReaderWriter.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.DataReaderWriter">DataReaderWriter</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.LongReaderWriter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LongReaderWriter"></a>
+      <a id="LongReaderWriter:LongReaderWriter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LongReaderWriter$.html"><span class="name">LongReaderWriter</span></a><span class="result"> extends <a href="DataReaderWriter.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.DataReaderWriter">DataReaderWriter</a></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.utils.serializer.ModuleLoader" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ModuleLoader"></a>
       <a id="ModuleLoader:ModuleLoader"></a>
@@ -276,6 +459,58 @@ it provides default implementation from <a href="ModuleSerializer$.html" class="
       </span>
       <span class="symbol">
         <a href="ProtoStorageType$.html"><span class="name">ProtoStorageType</span></a><span class="result"> extends <a href="StorageType.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.StorageType">StorageType</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.ProtoTensorStorageManager" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ProtoTensorStorageManager"></a>
+      <a id="ProtoTensorStorageManager:ProtoTensorStorageManager"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ProtoTensorStorageManager$.html"><span class="name">ProtoTensorStorageManager</span></a><span class="result"> extends <a href="TensorStorageManager.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.TensorStorageManager">TensorStorageManager</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.SerConst" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SerConst"></a>
+      <a id="SerConst:SerConst"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SerConst$.html"><span class="name">SerConst</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.ShortReaderWriter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ShortReaderWriter"></a>
+      <a id="ShortReaderWriter:ShortReaderWriter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ShortReaderWriter$.html"><span class="name">ShortReaderWriter</span></a><span class="result"> extends <a href="DataReaderWriter.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.DataReaderWriter">DataReaderWriter</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.StringReaderWriter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="StringReaderWriter"></a>
+      <a id="StringReaderWriter:StringReaderWriter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="StringReaderWriter$.html"><span class="name">StringReaderWriter</span></a><span class="result"> extends <a href="DataReaderWriter.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.DataReaderWriter">DataReaderWriter</a></span>
       </span>
       </h4>
       

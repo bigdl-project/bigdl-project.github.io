@@ -474,9 +474,9 @@
 <div class="viewcode-block" id="Layer.save"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.save">[docs]</a>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">over_write</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;modelSave&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span>
                       <span class="n">over_write</span><span class="p">)</span></div>
-<div class="viewcode-block" id="Layer.saveModel"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.saveModel">[docs]</a>    <span class="k">def</span> <span class="nf">saveModel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">over_write</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
-        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;saveBigDLModule&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span>
-                      <span class="n">over_write</span><span class="p">)</span></div>
+<div class="viewcode-block" id="Layer.saveModel"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.saveModel">[docs]</a>    <span class="k">def</span> <span class="nf">saveModel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">modelPath</span><span class="p">,</span> <span class="n">weightPath</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">over_write</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;saveBigDLModule&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">modelPath</span><span class="p">,</span>
+                      <span class="n">weightPath</span><span class="p">,</span> <span class="n">over_write</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Layer.save_caffe"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.save_caffe">[docs]</a>    <span class="k">def</span> <span class="nf">save_caffe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prototxt_path</span><span class="p">,</span> <span class="n">model_path</span><span class="p">,</span> <span class="n">use_v2</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">overwrite</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;saveCaffe&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">prototxt_path</span><span class="p">,</span>
@@ -738,14 +738,14 @@
         <span class="k">return</span> <span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.loadModel"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.loadModel">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">loadModel</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">loadModel</span><span class="p">(</span><span class="n">modelPath</span><span class="p">,</span> <span class="n">weightPath</span> <span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Load a pre-trained Bigdl model.</span>
 
 <span class="sd">        :param path: The path containing the pre-trained model.</span>
 <span class="sd">        :return: A pre-trained model.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;loadBigDLModule&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+        <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;loadBigDLModule&quot;</span><span class="p">,</span> <span class="n">modelPath</span><span class="p">,</span> <span class="n">weightPath</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.load_torch"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.load_torch">[docs]</a>    <span class="nd">@staticmethod</span>
@@ -1716,6 +1716,14 @@
 
 <span class="sd">    where gamma and beta are learnable parameters.</span>
 <span class="sd">    The learning of gamma and beta is optional.</span>
+<span class="sd">    </span>
+<span class="sd">    :param n_output: output feature map number</span>
+<span class="sd">    :param eps: avoid divide zero</span>
+<span class="sd">    :param momentum: momentum for weight update</span>
+<span class="sd">    :param affine: affine operation on output or not</span>
+<span class="sd">    :param data_format a string value (or DataFormat Object in Scala) of &quot;NHWC&quot; or &quot;NCHW&quot; to specify the input data format of this layer. In &quot;NHWC&quot; format</span>
+<span class="sd">                        data is stored in the order of [batch_size, height, width, channels], in &quot;NCHW&quot; format data is stored</span>
+<span class="sd">                        in the order of [batch_size, channels, height, width].</span>
 
 
 <span class="sd">    &gt;&gt;&gt; spatialBatchNormalization = SpatialBatchNormalization(1)</span>
@@ -1726,6 +1734,8 @@
 <span class="sd">    &gt;&gt;&gt; init_bias = np.array([0.0])</span>
 <span class="sd">    &gt;&gt;&gt; init_grad_bias = np.array([0.0])</span>
 <span class="sd">    &gt;&gt;&gt; spatialBatchNormalization = SpatialBatchNormalization(1, 1e-5, 0.1, True, init_weight, init_bias, init_grad_weight, init_grad_bias)</span>
+<span class="sd">    creating: createSpatialBatchNormalization</span>
+<span class="sd">    &gt;&gt;&gt; spatialBatchNormalization = SpatialBatchNormalization(1, 1e-5, 0.1, True, init_weight, init_bias, init_grad_weight, init_grad_bias, &quot;NHWC&quot;)</span>
 <span class="sd">    creating: createSpatialBatchNormalization</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
@@ -1738,6 +1748,7 @@
                  <span class="n">init_bias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">init_grad_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">init_grad_bias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SpatialBatchNormalization</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                                         <span class="n">n_output</span><span class="p">,</span>
@@ -1747,7 +1758,8 @@
                                                         <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_weight</span><span class="p">),</span>
                                                         <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_bias</span><span class="p">),</span>
                                                         <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_grad_weight</span><span class="p">),</span>
-                                                        <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_grad_bias</span><span class="p">))</span>
+                                                        <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_grad_bias</span><span class="p">),</span>
+                                                        <span class="n">data_format</span><span class="p">)</span>
 
 <div class="viewcode-block" id="SpatialBatchNormalization.set_init_method"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SpatialBatchNormalization.set_init_method">[docs]</a>    <span class="k">def</span> <span class="nf">set_init_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bias_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setInitMethod&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
@@ -1774,9 +1786,14 @@
 <span class="sd">    :param alpha:  the scaling parameter</span>
 <span class="sd">    :param beta:   the exponent</span>
 <span class="sd">    :param k: a constant</span>
+<span class="sd">    :param data_format a string value (or DataFormat Object in Scala) of &quot;NHWC&quot; or &quot;NCHW&quot; to specify the input data format of this layer. In &quot;NHWC&quot; format</span>
+<span class="sd">                        data is stored in the order of [batch_size, height, width, channels], in &quot;NCHW&quot; format data is stored</span>
+<span class="sd">                        in the order of [batch_size, channels, height, width]</span>
 
 
 <span class="sd">    &gt;&gt;&gt; spatialCrossMapLRN = SpatialCrossMapLRN()</span>
+<span class="sd">    creating: createSpatialCrossMapLRN</span>
+<span class="sd">    &gt;&gt;&gt; spatialCrossMapLRN = SpatialCrossMapLRN(5, 1.0, 0.75, 1.0, &quot;NHWC&quot;)</span>
 <span class="sd">    creating: createSpatialCrossMapLRN</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
@@ -1785,12 +1802,13 @@
                  <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                  <span class="n">beta</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>
                  <span class="n">k</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                 <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SpatialCrossMapLRN</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                                  <span class="n">size</span><span class="p">,</span>
                                                  <span class="n">alpha</span><span class="p">,</span>
                                                  <span class="n">beta</span><span class="p">,</span>
-                                                 <span class="n">k</span><span class="p">)</span></div>
+                                                 <span class="n">k</span><span class="p">,</span> <span class="n">data_format</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Dropout"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Dropout">[docs]</a><span class="k">class</span> <span class="nc">Dropout</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
@@ -3295,6 +3313,65 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">ReLU6</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                     <span class="n">inplace</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="SReLU"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SReLU">[docs]</a><span class="k">class</span> <span class="nc">SReLU</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;S-shaped Rectified Linear Unit.</span>
+
+<span class="sd">    It follows:</span>
+<span class="sd">    `f(x) = t^r + a^r(x - t^r) for x &gt;= t^r`,</span>
+<span class="sd">    `f(x) = x for t^r &gt; x &gt; t^l`,</span>
+<span class="sd">    `f(x) = t^l + a^l(x - t^l) for x &lt;= t^l`.</span>
+
+<span class="sd">    # References</span>
+<span class="sd">        - [Deep Learning with S-shaped Rectified Linear Activation Units](http://arxiv.org/abs/1512.07030)</span>
+
+
+
+<span class="sd">    :param shared_axes: the axes along which to share learnable</span>
+<span class="sd">            parameters for the activation function.</span>
+<span class="sd">            For example, if the incoming feature maps</span>
+<span class="sd">            are from a 2D convolution</span>
+<span class="sd">            with output shape `(batch, height, width, channels)`,</span>
+<span class="sd">            and you wish to share parameters across space</span>
+<span class="sd">            so that each filter only has one set of parameters,</span>
+<span class="sd">            set `shared_axes=[1, 2]`.</span>
+
+<span class="sd">    &gt;&gt;&gt; srelu = SReLU()</span>
+<span class="sd">    creating: createSReLU</span>
+<span class="sd">    &gt;&gt;&gt; srelu = SReLU((1, 2))</span>
+<span class="sd">    creating: createSReLU</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">share_axes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SReLU</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                    <span class="n">share_axes</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SReLU.set_init_method"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SReLU.set_init_method">[docs]</a>    <span class="k">def</span> <span class="nf">set_init_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tLeftInit</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">aLeftInit</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                        <span class="n">tRightInit</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">aRightInit</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setInitMethod&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                      <span class="n">tLeftInit</span><span class="p">,</span> <span class="n">aLeftInit</span><span class="p">,</span> <span class="n">tRightInit</span><span class="p">,</span> <span class="n">aRightInit</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
+
+<div class="viewcode-block" id="ActivityRegularization"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.ActivityRegularization">[docs]</a><span class="k">class</span> <span class="nc">ActivityRegularization</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Layer that applies an update to the cost function based input activity.</span>
+
+<span class="sd">    :param l1: L1 regularization factor (positive float).</span>
+<span class="sd">    :param l2: L2 regularization factor (positive float).</span>
+
+
+<span class="sd">    &gt;&gt;&gt; ar = ActivityRegularization(0.1, 0.02)</span>
+<span class="sd">    creating: createActivityRegularization</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">l1</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">l2</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ActivityRegularization</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Replicate"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Replicate">[docs]</a><span class="k">class</span> <span class="nc">Replicate</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 

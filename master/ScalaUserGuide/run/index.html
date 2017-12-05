@@ -113,7 +113,7 @@ res9: com.intel.analytics.bigdl.tensor.Tensor[Double] =
   -f path_to_your_cifar_folder \
   -b batch_size
 
-  # Spark yarn mode
+  # Spark yarn client mode
   spark-submit --master yarn --deploy-mode client \
   --executor-cores cores_per_executor \
   --num-executors executors_number \
@@ -121,6 +121,15 @@ res9: com.intel.analytics.bigdl.tensor.Tensor[Double] =
   dist/lib/bigdl-VERSION-jar-with-dependencies.jar \
   -f path_to_your_cifar_folder \
   -b batch_size
+
+  # Spark yarn cluster mode
+    spark-submit --master yarn --deploy-mode cluster \
+    --executor-cores cores_per_executor \
+    --num-executors executors_number \
+    --class com.intel.analytics.bigdl.models.vgg.Train \
+    dist/lib/bigdl-VERSION-jar-with-dependencies.jar \
+    -f path_to_your_cifar_folder \
+    -b batch_size
 </code></pre>
 
 <p>The parameters used in the above command are:</p>
