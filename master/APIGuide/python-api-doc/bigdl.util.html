@@ -234,14 +234,14 @@ As SparseTensor may generate an very big ndarray, so we don’t support this fun
 
 <dl class="class">
 <dt id="bigdl.util.common.Sample">
-<em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">Sample</code><span class="sig-paren">(</span><em>features</em>, <em>label</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#Sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Sample" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">Sample</code><span class="sig-paren">(</span><em>features</em>, <em>labels</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#Sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Sample" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <dl class="classmethod">
 <dt id="bigdl.util.common.Sample.from_jtensor">
-<em class="property">classmethod </em><code class="descname">from_jtensor</code><span class="sig-paren">(</span><em>features</em>, <em>label</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#Sample.from_jtensor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Sample.from_jtensor" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_jtensor</code><span class="sig-paren">(</span><em>features</em>, <em>labels</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#Sample.from_jtensor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Sample.from_jtensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a sequence of JTensor to Sample, which would be used in Java side.
 :param features: an JTensor or a list of JTensor
-:param label: an JTensor or a scalar
+:param labels: an JTensor or a list of JTensor or a scalar
 :param bigdl_type: “double” or “float”</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
@@ -256,10 +256,10 @@ As SparseTensor may generate an very big ndarray, so we don’t support this fun
 
 <dl class="classmethod">
 <dt id="bigdl.util.common.Sample.from_ndarray">
-<em class="property">classmethod </em><code class="descname">from_ndarray</code><span class="sig-paren">(</span><em>features</em>, <em>label</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#Sample.from_ndarray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Sample.from_ndarray" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert a ndarray of features and label to Sample, which would be used in Java side.
+<em class="property">classmethod </em><code class="descname">from_ndarray</code><span class="sig-paren">(</span><em>features</em>, <em>labels</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#Sample.from_ndarray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Sample.from_ndarray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a ndarray of features and labels to Sample, which would be used in Java side.
 :param features: an ndarray or a list of ndarrays
-:param label: an ndarray or a scalar
+:param labels: an ndarray or a list of ndarrays or a scalar
 :param bigdl_type: “double” or “float”</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">callBigDlFunc</span>
@@ -271,8 +271,8 @@ As SparseTensor may generate an very big ndarray, so we don’t support this fun
 <span class="gp">&gt;&gt;&gt; </span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">(),</span> <span class="n">sample_back</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
 <span class="go">Sample: features: [JTensor: storage: [[ 0.69646919  0.28613934  0.22685145]</span>
-<span class="go">[ 0.55131477  0.71946895  0.42310646]], shape: [2 3], float], label: JTensor: storage: [[ 0.98076421  0.68482971  0.48093191]</span>
-<span class="go">[ 0.39211753  0.343178    0.72904968]], shape: [2 3], float,</span>
+<span class="go">[ 0.55131477  0.71946895  0.42310646]], shape: [2 3], float], labels: [JTensor: storage: [[ 0.98076421  0.68482971  0.48093191]</span>
+<span class="go">[ 0.39211753  0.343178    0.72904968]], shape: [2 3], float],</span>
 </pre></div>
 </div>
 </dd></dl>

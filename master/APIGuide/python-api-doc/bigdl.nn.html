@@ -1826,9 +1826,9 @@ by default</p>
 Highway layers are a natural extension of LSTMs to feedforward networks.</p>
 <p>:param size input size
 :param with_bias whether to include a bias
-:param activation name of activation function to use
+:param activation activation function. It can also be the name of an existing activation as a string.
 :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.
-:param bRegularizer: instance of [[Regularizer]]applied to the bias.</p>
+:param bRegularizer: instance of [[Regularizer]], applied to the bias.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">highway</span> <span class="o">=</span> <span class="n">Highway</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="go">creating: createHighway</span>
 </pre></div>
@@ -2767,6 +2767,19 @@ the input on the forward and backward passes.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.Masking">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Masking</code><span class="sig-paren">(</span><em>mask_value</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Masking"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Masking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Use a mask value to skip timesteps for a sequence</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">param</span> <span class="n">mask_value</span><span class="p">:</span> <span class="n">mask</span> <span class="n">value</span>
+
+ <span class="o">&gt;&gt;&gt;</span> <span class="n">masking</span> <span class="o">=</span> <span class="n">Masking</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+ <span class="n">creating</span><span class="p">:</span> <span class="n">createMasking</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.Max">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Max</code><span class="sig-paren">(</span><em>dim</em>, <em>num_input_dims=-2147483648</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Max"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Max" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
@@ -2785,6 +2798,29 @@ the input on the forward and backward passes.</p>
 </table>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">max</span> <span class="o">=</span> <span class="n">Max</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="go">creating: createMax</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.Maxout">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Maxout</code><span class="sig-paren">(</span><em>input_size</em>, <em>output_size</em>, <em>maxout_number</em>, <em>with_bias=True</em>, <em>w_regularizer=None</em>, <em>b_regularizer=None</em>, <em>init_weight=None</em>, <em>init_bias=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Maxout"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Maxout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>A linear maxout layer Maxout layer select the element-wise maximum value of
+maxoutNumber Linear(inputSize, outputSize) layers</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">param</span> <span class="n">input_size</span><span class="p">:</span> <span class="n">the</span> <span class="n">size</span> <span class="n">the</span> <span class="n">each</span> <span class="nb">input</span> <span class="n">sample</span>
+<span class="p">:</span><span class="n">param</span> <span class="n">output_size</span><span class="p">:</span> <span class="n">the</span> <span class="n">size</span> <span class="n">of</span> <span class="n">the</span> <span class="n">module</span> <span class="n">output</span> <span class="n">of</span> <span class="n">each</span> <span class="n">sample</span>
+<span class="p">:</span><span class="n">param</span> <span class="n">maxout_number</span><span class="p">:</span> <span class="n">number</span> <span class="n">of</span> <span class="n">Linear</span> <span class="n">layers</span> <span class="n">to</span> <span class="n">use</span>
+<span class="p">:</span><span class="n">param</span> <span class="n">with_bias</span><span class="p">:</span> <span class="n">whether</span> <span class="n">use</span> <span class="n">bias</span> <span class="ow">in</span> <span class="n">Linear</span>
+<span class="p">:</span><span class="n">param</span> <span class="n">w_regularizer</span><span class="p">:</span> <span class="n">instance</span> <span class="n">of</span> <span class="p">[[</span><span class="n">Regularizer</span><span class="p">]]</span>
+      <span class="p">(</span><span class="n">eg</span><span class="o">.</span> <span class="n">L1</span> <span class="ow">or</span> <span class="n">L2</span> <span class="n">regularization</span><span class="p">),</span> <span class="n">applied</span> <span class="n">to</span> <span class="n">the</span> <span class="nb">input</span> <span class="n">weights</span> <span class="n">matrices</span><span class="o">.</span>
+<span class="p">:</span><span class="n">param</span> <span class="n">b_regularizer</span><span class="p">:</span> <span class="n">instance</span> <span class="n">of</span> <span class="p">[[</span><span class="n">Regularizer</span><span class="p">]]</span>
+       <span class="n">applied</span> <span class="n">to</span> <span class="n">the</span> <span class="n">bias</span><span class="o">.</span>
+<span class="p">:</span><span class="n">param</span> <span class="n">init_weight</span><span class="p">:</span> <span class="n">initial</span> <span class="n">weight</span>
+<span class="p">:</span><span class="n">param</span> <span class="n">init_bias</span><span class="p">:</span> <span class="n">initial</span> <span class="n">bias</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">maxout</span> <span class="o">=</span> <span class="n">Maxout</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">creating</span><span class="p">:</span> <span class="n">createMaxout</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -3088,6 +3124,22 @@ This module is sometimes useful for debugging purposes.</p>
 </table>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mulConstant</span> <span class="o">=</span> <span class="n">MulConstant</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)</span>
 <span class="go">creating: createMulConstant</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.MultiRNNCell">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">MultiRNNCell</code><span class="sig-paren">(</span><em>cells</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#MultiRNNCell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.MultiRNNCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>A cell that enables stack multiple simple rnn cells</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cells</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ConvLSTMPeephole3D</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">creating: createConvLSTMPeephole3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ConvLSTMPeephole3D</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">creating: createConvLSTMPeephole3D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stacked_convlstm</span> <span class="o">=</span> <span class="n">MultiRNNCell</span><span class="p">(</span><span class="n">cells</span><span class="p">)</span>
+<span class="go">creating: createMultiRNNCell</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -3404,12 +3456,6 @@ Different types of rnn cells can be added using add() function</p>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="method">
-<dt id="bigdl.nn.layer.Recurrent.set_hidden_state">
-<code class="descname">set_hidden_state</code><span class="sig-paren">(</span><em>states</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Recurrent.set_hidden_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Recurrent.set_hidden_state" title="Permalink to this definition">¶</a></dt>
-<dd><p>set hidden state and cell at first time step.</p>
 </dd></dl>
 
 </dd></dl>
