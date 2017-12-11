@@ -80,7 +80,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.ops.TruncatedNormal#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(mean:DataType,stddev:DataType,seed:Int)(implicitevidence$1:scala.reflect.ClassTag[T],implicitevidence$2:scala.reflect.ClassTag[DataType],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T],implicitev2:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[DataType]):com.intel.analytics.bigdl.nn.ops.TruncatedNormal[T,DataType]"></a>
+      <a id="&lt;init&gt;(mean:Double,stddev:Double,seed:Int)(implicitevidence$1:scala.reflect.ClassTag[T],implicitevidence$2:scala.reflect.ClassTag[DataType],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T],implicitev2:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[DataType]):com.intel.analytics.bigdl.nn.ops.TruncatedNormal[T,DataType]"></a>
       <a id="&lt;init&gt;:TruncatedNormal[T,DataType]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -88,7 +88,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">TruncatedNormal</span><span class="params">(<span name="mean">mean: <span class="extype" name="com.intel.analytics.bigdl.nn.ops.TruncatedNormal.DataType">DataType</span> = <span class="symbol">0.0</span></span>, <span name="stddev">stddev: <span class="extype" name="com.intel.analytics.bigdl.nn.ops.TruncatedNormal.DataType">DataType</span> = <span class="symbol">1.0</span></span>, <span name="seed">seed: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.TruncatedNormal.T">T</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.TruncatedNormal.DataType">DataType</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.TruncatedNormal.T">T</span>]</span>, <span name="ev2">ev2: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.TruncatedNormal.DataType">DataType</span>]</span>)</span>
+        <span class="name">TruncatedNormal</span><span class="params">(<span name="mean">mean: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.0</span></span>, <span name="stddev">stddev: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1.0</span></span>, <span name="seed">seed: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.TruncatedNormal.T">T</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.TruncatedNormal.DataType">DataType</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.TruncatedNormal.T">T</span>]</span>, <span name="ev2">ev2: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.TruncatedNormal.DataType">DataType</span>]</span>)</span>
       </span>
       </h4>
       
@@ -780,6 +780,19 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       <p class="shortcomment cmt">load pretrained weights and bias to current module</p><div class="fullcomment"><div class="comment cmt"><p>load pretrained weights and bias to current module</p></div><dl class="paramcmts block"><dt class="param">weightPath</dt><dd class="cmt"><p>file to store weights and bias</p></dd><dt class="param">matchAll</dt><dd class="cmt"><p>whether to match all layers' weights and bias,
                 if not, only load existing pretrained weights and bias</p></dd><dt>returns</dt><dd class="cmt"><p>current module
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.ops.TruncatedNormal#mean" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="mean:Double"></a>
+      <a id="mean:Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">mean</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -1032,6 +1045,19 @@ Custom modules should override this function if they have parameters
 before gradParameters being accumulated.</p><div class="fullcomment"><div class="comment cmt"><p>The scale of gradient weight and gradient bias
 before gradParameters being accumulated.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.ops.TruncatedNormal#seed" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="seed:Int"></a>
+      <a id="seed:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">seed</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setLine" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setLine(line:String):AbstractModule.this.type"></a>
       <a id="setLine(String):TruncatedNormal.this.type"></a>
@@ -1120,6 +1146,19 @@ before gradParameters being accumulated.
       </h4>
       <p class="shortcomment cmt">Set weight and bias for the module</p><div class="fullcomment"><div class="comment cmt"><p>Set weight and bias for the module</p></div><dl class="paramcmts block"><dt class="param">newWeights</dt><dd class="cmt"><p>array of weights and bias</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.ops.TruncatedNormal#stddev" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="stddev:Double"></a>
+      <a id="stddev:Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">stddev</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

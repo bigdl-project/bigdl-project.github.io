@@ -545,6 +545,29 @@ the second input, and vice-versa for y == -1.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.criterion.MeanAbsolutePercentageCriterion">
+<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">MeanAbsolutePercentageCriterion</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#MeanAbsolutePercentageCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.MeanAbsolutePercentageCriterion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
+<p>This method is same as <cite>mean_absolute_percentage_error</cite> loss in keras.
+It caculates diff = K.abs((y - x) / K.clip(K.abs(y), K.epsilon(), Double.MaxValue))
+and return 100 * K.mean(diff) as outpout. Here, the x and y can have or not have a batch.
+&gt;&gt;&gt; error = MeanAbsolutePercentageCriterion()
+creating: createMeanAbsolutePercentageCriterion</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.criterion.MeanSquaredLogarithmicCriterion">
+<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">MeanSquaredLogarithmicCriterion</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#MeanSquaredLogarithmicCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.MeanSquaredLogarithmicCriterion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
+<p>This method is same as <cite>mean_squared_logarithmic_error</cite> loss in keras.
+It calculates: first_log = K.log(K.clip(y, K.epsilon(),  Double.MaxValue) + 1.)
+second_log = K.log(K.clip(x, K.epsilon(),  Double.MaxValue) + 1.)
+and output K.mean(K.square(first_log - second_log)). Here, the x and y can have or not have a batch.
+&gt;&gt;&gt; error = MeanSquaredLogarithmicCriterion()
+creating: createMeanSquaredLogarithmicCriterion</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.criterion.MultiCriterion">
 <em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">MultiCriterion</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#MultiCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.MultiCriterion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
@@ -2129,7 +2152,7 @@ A method to benchmark the model quality.</p>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of the metrics result</p>
 </td>
 </tr>
 </tbody>

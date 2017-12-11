@@ -2,17 +2,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>TensorCriterion - bigdl 0.4.0-SNAPSHOT API - com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion</title>
-          <meta name="description" content="TensorCriterion - bigdl 0.4.0 - SNAPSHOT API - com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion" />
-          <meta name="keywords" content="TensorCriterion bigdl 0.4.0 SNAPSHOT API com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion" />
+          <title>MeanSquaredLogarithmicCriterion - bigdl 0.4.0-SNAPSHOT API - com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion</title>
+          <meta name="description" content="MeanSquaredLogarithmicCriterion - bigdl 0.4.0 - SNAPSHOT API - com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion" />
+          <meta name="keywords" content="MeanSquaredLogarithmicCriterion bigdl 0.4.0 SNAPSHOT API com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
-      <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
       <script type="text/javascript">
          if(top === self) {
-            var url = '../../../../../../index.html';
-            var hash = 'com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion';
+            var url = '../../../../../index.html';
+            var hash = 'com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -24,30 +24,30 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../../../../lib/class_big.png" />
-        <p id="owner"><a href="../../../../../package.html" class="extype" name="com">com</a>.<a href="../../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl.nn">nn</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn">abstractnn</a></p>
-        <h1>TensorCriterion</h1>
+        <a href="MeanSquaredLogarithmicCriterion$.html" title="Go to companion"><img src="../../../../../lib/class_to_object_big.png" /></a>
+        <p id="owner"><a href="../../../../package.html" class="extype" name="com">com</a>.<a href="../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.nn">nn</a></p>
+        <h1><a href="MeanSquaredLogarithmicCriterion$.html" title="Go to companion">MeanSquaredLogarithmicCriterion</a></h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier">abstract </span>
+        <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">TensorCriterion</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>], <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</span>
+        <span class="name">MeanSquaredLogarithmicCriterion</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion">TensorCriterion</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p><a href="" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion">TensorCriterion</a> is an abstract sub-class of <a href="AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>, whose
-input and output type both are <span class="extype" name="Tensor">Tensor</span>.
-</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>The numeric type in the criterion, usually which are <span class="extype" name="Float">Float</span> or <span class="extype" name="Double">Double</span>
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This method is same as <code>mean_squared_logarithmic_error</code> loss in keras.
+It calculates:
+first_log = K.log(K.clip(y, K.epsilon(), Double.MaxValue) + 1.)
+second_log = K.log(K.clip(x, K.epsilon(), Double.MaxValue) + 1.)
+and output K.mean(K.square(first_log - second_log))
+Here, the x and y can have or not have a batch.</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>The numeric type in the criterion, usually which are <span class="extype" name="Float">Float</span> or <span class="extype" name="Double">Double</span>
 </p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>], <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="../AbsCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.AbsCriterion">AbsCriterion</a>, <a href="../BCECriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.BCECriterion">BCECriterion</a>, <a href="../ClassNLLCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion">ClassNLLCriterion</a>, <a href="../ClassSimplexCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.ClassSimplexCriterion">ClassSimplexCriterion</a>, <a href="../CosineDistanceCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.CosineDistanceCriterion">CosineDistanceCriterion</a>, <a href="../CosineProximityCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.CosineProximityCriterion">CosineProximityCriterion</a>, <a href="../CrossEntropyCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.CrossEntropyCriterion">CrossEntropyCriterion</a>, <a href="../DiceCoefficientCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.DiceCoefficientCriterion">DiceCoefficientCriterion</a>, <a href="../DistKLDivCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.DistKLDivCriterion">DistKLDivCriterion</a>, <a href="../HingeEmbeddingCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.HingeEmbeddingCriterion">HingeEmbeddingCriterion</a>, <a href="../L1Cost.html" class="extype" name="com.intel.analytics.bigdl.nn.L1Cost">L1Cost</a>, <a href="../MSECriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MSECriterion">MSECriterion</a>, <a href="../MarginCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MarginCriterion">MarginCriterion</a>, <a href="../MeanAbsolutePercentageCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MeanAbsolutePercentageCriterion">MeanAbsolutePercentageCriterion</a>, <a href="../MeanSquaredLogarithmicCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion">MeanSquaredLogarithmicCriterion</a>, <a href="../MultiLabelMarginCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MultiLabelMarginCriterion">MultiLabelMarginCriterion</a>, <a href="../MultiLabelSoftMarginCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MultiLabelSoftMarginCriterion">MultiLabelSoftMarginCriterion</a>, <a href="../MultiMarginCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MultiMarginCriterion">MultiMarginCriterion</a>, <a href="../SmoothL1Criterion.html" class="extype" name="com.intel.analytics.bigdl.nn.SmoothL1Criterion">SmoothL1Criterion</a>, <a href="../SoftMarginCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.SoftMarginCriterion">SoftMarginCriterion</a>, <a href="../SoftmaxWithCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.SoftmaxWithCriterion">SoftmaxWithCriterion</a>, <a href="../TimeDistributedCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.TimeDistributedCriterion">TimeDistributedCriterion</a></div>
+          <div class="superTypes hiddenContent"><a href="abstractnn/TensorCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion">TensorCriterion</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>], <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -65,7 +65,7 @@ input and output type both are <span class="extype" name="Tensor">Tensor</span>.
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion"><span>TensorCriterion</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion"><span>AbstractCriterion</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion"><span>MeanSquaredLogarithmicCriterion</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion"><span>TensorCriterion</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion"><span>AbstractCriterion</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -85,47 +85,28 @@ input and output type both are <span class="extype" name="Tensor">Tensor</span>.
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;()(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion[T]"></a>
-      <a id="&lt;init&gt;:TensorCriterion[T]"></a>
+              <ol><li name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;()(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion[T]"></a>
+      <a id="&lt;init&gt;:MeanSquaredLogarithmicCriterion[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">TensorCriterion</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</span>)</span>
+        <span class="name">MeanSquaredLogarithmicCriterion</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">ev</dt><dd class="cmt"></dd></dl></div>
     </li></ol>
             </div>
 
         
 
-        <div id="values" class="values members">
-              <h3>Abstract Value Members</h3>
-              <ol><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#updateGradInput" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="updateGradInput(input:A,target:B):A"></a>
-      <a id="updateGradInput(Tensor[T],Tensor[T]):Tensor[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">updateGradInput</span><span class="params">(<span name="input">input: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</span>, <span name="target">target: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</span>)</span><span class="result">: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Computing the gradient of the criterion with respect to its own input.</p><div class="fullcomment"><div class="comment cmt"><p>Computing the gradient of the criterion with respect to its own input. This is returned in
-gradInput. Also, the gradInput state variable is updated accordingly.
-</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">target</dt><dd class="cmt"><p>target data / labels</p></dd><dt>returns</dt><dd class="cmt"><p>gradient of input
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
-    </li></ol>
-            </div>
+        
 
         <div id="values" class="values members">
-              <h3>Concrete Value Members</h3>
+              <h3>Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
@@ -213,12 +194,12 @@ gradInput. Also, the gradInput state variable is updated accordingly.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">backward</span><span class="params">(<span name="input">input: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</span>, <span name="target">target: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</span>)</span><span class="result">: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</span>
+        <span class="name">backward</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</span>, <span name="target">target: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Performs a back-propagation step through the criterion, with respect to the given input.</p><div class="fullcomment"><div class="comment cmt"><p>Performs a back-propagation step through the criterion, with respect to the given input.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">target</dt><dd class="cmt"><p>target</p></dd><dt>returns</dt><dd class="cmt"><p>gradient corresponding to input data
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#canEqual" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="canEqual(other:Any):Boolean"></a>
       <a id="canEqual(Any):Boolean"></a>
@@ -231,7 +212,7 @@ gradInput. Also, the gradInput state variable is updated accordingly.
         <span class="name">canEqual</span><span class="params">(<span name="other">other: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -244,7 +225,7 @@ gradInput. Also, the gradInput state variable is updated accordingly.
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
@@ -260,11 +241,11 @@ gradInput. Also, the gradInput state variable is updated accordingly.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cloneCriterion</span><span class="params">()</span><span class="result">: <a href="AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>], <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</span>
+        <span class="name">cloneCriterion</span><span class="params">()</span><span class="result">: <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Deep copy this criterion</p><div class="fullcomment"><div class="comment cmt"><p>Deep copy this criterion</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a deep copied criterion
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -290,7 +271,7 @@ gradInput. Also, the gradInput state variable is updated accordingly.
         <span class="name">equals</span><span class="params">(<span name="other">other: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a> → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a> → AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -303,7 +284,7 @@ gradInput. Also, the gradInput state variable is updated accordingly.
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="symbol">classOf[java.lang.Throwable]</span>
@@ -319,14 +300,14 @@ gradInput. Also, the gradInput state variable is updated accordingly.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">forward</span><span class="params">(<span name="input">input: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</span>, <span name="target">target: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span></span>
+        <span class="name">forward</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</span>, <span name="target">target: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Takes an input object, and computes the corresponding loss of the criterion,
 compared with <code>target</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Takes an input object, and computes the corresponding loss of the criterion,
 compared with <code>target</code>.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">target</dt><dd class="cmt"><p>target</p></dd><dt>returns</dt><dd class="cmt"><p>the loss of criterion
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -349,10 +330,10 @@ compared with <code>target</code>.
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">gradInput</span><span class="result">: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</span>
+        <span class="name">gradInput</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -365,7 +346,7 @@ compared with <code>target</code>.
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a> → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a> → AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -427,10 +408,10 @@ compared with <code>target</code>.
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">output</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span></span>
+        <span class="name">output</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -457,8 +438,24 @@ compared with <code>target</code>.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#updateOutput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="updateOutput(input:A,target:B):T"></a>
+    </li><li name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion#updateGradInput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="updateGradInput(input:com.intel.analytics.bigdl.tensor.Tensor[T],target:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="updateGradInput(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updateGradInput</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</span>, <span name="target">target: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Computing the gradient of the criterion with respect to its own input.</p><div class="fullcomment"><div class="comment cmt"><p>Computing the gradient of the criterion with respect to its own input. This is returned in
+gradInput. Also, the gradInput state variable is updated accordingly.
+</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">target</dt><dd class="cmt"><p>target data / labels</p></dd><dt>returns</dt><dd class="cmt"><p>gradient of input
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion">MeanSquaredLogarithmicCriterion</a> → <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion#updateOutput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="updateOutput(input:com.intel.analytics.bigdl.tensor.Tensor[T],target:com.intel.analytics.bigdl.tensor.Tensor[T]):T"></a>
       <a id="updateOutput(Tensor[T],Tensor[T]):T"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -466,13 +463,13 @@ compared with <code>target</code>.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">updateOutput</span><span class="params">(<span name="input">input: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</span>, <span name="target">target: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span></span>
+        <span class="name">updateOutput</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</span>, <span name="target">target: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Computes the loss using input and objective function.</p><div class="fullcomment"><div class="comment cmt"><p>Computes the loss using input and objective function. This function
 returns the result which is stored in the output field.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input of the criterion</p></dd><dt class="param">target</dt><dd class="cmt"><p>target or labels</p></dd><dt>returns</dt><dd class="cmt"><p>the loss of the criterion
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion">MeanSquaredLogarithmicCriterion</a> → <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -539,8 +536,10 @@ returns the result which is stored in the output field.
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">
-              <h3>Inherited from <a href="AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>], <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion.T">T</span>]</h3>
+        <div class="parent" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion">
+              <h3>Inherited from <a href="abstractnn/TensorCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion">TensorCriterion</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</h3>
+            </div><div class="parent" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">
+              <h3>Inherited from <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion.T">T</span>]</h3>
             </div><div class="parent" name="scala.Serializable">
               <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
             </div><div class="parent" name="java.io.Serializable">
@@ -565,6 +564,6 @@ returns the result which is stored in the output field.
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../../lib/template.js"></script>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
     </body>
       </html>

@@ -497,6 +497,21 @@
     <span class="k">return</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span></div>
 
 
+<div class="viewcode-block" id="to_sample_rdd"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.to_sample_rdd">[docs]</a><span class="k">def</span> <span class="nf">to_sample_rdd</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">numSlices</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Conver x and y into RDD[Sample]</span>
+<span class="sd">    :param x: ndarray and the first dimension should be batch</span>
+<span class="sd">    :param y: ndarray and the first dimension should be batch</span>
+<span class="sd">    :param numSlices:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">get_spark_context</span><span class="p">()</span>
+    <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">Sample</span>
+    <span class="n">x_rdd</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numSlices</span><span class="p">)</span>
+    <span class="n">y_rdd</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">numSlices</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x_rdd</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">y_rdd</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">Sample</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span></div>
+
+
 <div class="viewcode-block" id="extend_spark_driver_cp"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.extend_spark_driver_cp">[docs]</a><span class="k">def</span> <span class="nf">extend_spark_driver_cp</span><span class="p">(</span><span class="n">sparkConf</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
     <span class="n">original_driver_classpath</span> <span class="o">=</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">sparkConf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spark.driver.extraClassPath&quot;</span><span class="p">)</span> \
         <span class="k">if</span> <span class="n">sparkConf</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;spark.driver.extraClassPath&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>

@@ -45,6 +45,11 @@
           ]},
           {title: "Module Freeze", url: "#module-freeze", children: [
           ]},
+          {title: "Caffe Model Support", url: "#caffe-model-support", children: [
+              {title: "Load Caffe model", url: "#load-caffe-model" },
+              {title: "Load weight from Caffe into pre-defined model", url: "#load-weight-from-caffe-into-pre-defined-model" },
+              {title: "Save BigDL model as Caffe model", url: "#save-bigdl-model-as-caffe-model" },
+          ]},
         ];
 
     </script>
@@ -496,6 +501,81 @@ print &quot;fc2 weight \n&quot;, fc2.element().parameters()['fc2']['weight']
 &gt; fc2 weight
 [[ 2.  2.  2.  2.]
  [ 2.  2.  2.  2.]]
+</code></pre>
+
+<h2 id="caffe-model-support">Caffe Model Support</h2>
+<h3 id="load-caffe-model">Load Caffe model</h3>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">Module.loadCaffeModel(defPath, modelPath)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">Model.load_caffe_model(defPath, modelPath)
+</code></pre>
+
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.Module
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val model = Module.loadCaffeModel(&quot;/tmp/deploy.prototxt&quot;, &quot;/tmp/caffe.caffemodel&quot;)
+</code></pre>
+
+<p>In above <code>defPath</code> specifies the path for the network deploy file while <code>modelPath</code> specifies the path for the weight file </p>
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+model = Model.load_caffe_model(&quot;/tmp/deploy.prototxt&quot;, &quot;/tmp/caffe.caffemodel&quot;)
+</code></pre>
+
+<h3 id="load-weight-from-caffe-into-pre-defined-model">Load weight from Caffe into pre-defined model</h3>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">Module.loadCaffe(model, defPath, modelPath, match_all = true)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">Model.load_caffe(model, defPath, modelPath, match_all = True)
+</code></pre>
+
+<p><code>model</code> is pre-defined BigDL model. Similar to <code>loadCaffeModel</code>, <code>defPath</code> and <code>modelPath</code> specify network deploy file and weight file,
+the 4th parameter <code>match_all</code> specifies if layer definition should be exactly matched between pre-defined <code>model</code> and the one from <code>defPath</code></p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.Module
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val model = Sequential().add(Linear(3, 4))
+val loadedModel = Module.loadCaffe(model, &quot;/tmp/deploy.prototxt&quot;, &quot;/tmp/caffe.caffemodel&quot;, true)
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+model = Sequential().add(Linear(3, 4))
+loadedModel = Model.load_caffe(model, &quot;/tmp/deploy.prototxt&quot;, &quot;/tmp/caffe.caffemodel&quot;, True)
+</code></pre>
+
+<h3 id="save-bigdl-model-as-caffe-model">Save BigDL model as Caffe model</h3>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">bigdlModel.saveCaffe(prototxtPath, modelPath, useV2 = true, overwrite = false)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">bigdl_model.save_caffe(prototxt_path, model_path, use_v2 = True, overwrite = False)
+</code></pre>
+
+<p><code>prototxtPath</code> defines where to store the network, <code>modelPath</code> defines where to store the weight, <code>useV2</code> 
+defines whether to store as V2Layer format, and <code>overwrite</code> defines whether to overwrite if the files already exist.</p>
+<p>Only Graph model is supported for now.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.Module
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+val linear = Linear(3, 4)
+val model = Graph(linear.inputs(), linear.inputs())
+model.saveCaffe(&quot;/tmp/linear.prototxt&quot;, &quot;/tmp/linear.caffemodel&quot;, true, true)
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+linear = Linear(3, 4)
+model = Graph(linear.inputs(), linear.inputs())
+model.save_caffe(model, &quot;/tmp/linear.prototxt&quot;, &quot;/tmp/linear.caffemodel&quot;, True, True)
 </code></pre>
 
   <br>

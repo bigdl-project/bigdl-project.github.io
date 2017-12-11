@@ -865,6 +865,35 @@
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CosineProximityCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="MeanAbsolutePercentageCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.MeanAbsolutePercentageCriterion">[docs]</a><span class="k">class</span> <span class="nc">MeanAbsolutePercentageCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This method is same as `mean_absolute_percentage_error` loss in keras.</span>
+<span class="sd">    It caculates diff = K.abs((y - x) / K.clip(K.abs(y), K.epsilon(), Double.MaxValue))</span>
+<span class="sd">    and return 100 * K.mean(diff) as outpout. Here, the x and y can have or not have a batch.</span>
+<span class="sd">    &gt;&gt;&gt; error = MeanAbsolutePercentageCriterion()</span>
+<span class="sd">    creating: createMeanAbsolutePercentageCriterion</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MeanAbsolutePercentageCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MeanSquaredLogarithmicCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.MeanSquaredLogarithmicCriterion">[docs]</a><span class="k">class</span> <span class="nc">MeanSquaredLogarithmicCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This method is same as `mean_squared_logarithmic_error` loss in keras.</span>
+<span class="sd">    It calculates: first_log = K.log(K.clip(y, K.epsilon(),  Double.MaxValue) + 1.)</span>
+<span class="sd">    second_log = K.log(K.clip(x, K.epsilon(),  Double.MaxValue) + 1.)</span>
+<span class="sd">    and output K.mean(K.square(first_log - second_log)). Here, the x and y can have or not have a batch.</span>
+<span class="sd">    &gt;&gt;&gt; error = MeanSquaredLogarithmicCriterion()</span>
+<span class="sd">    creating: createMeanSquaredLogarithmicCriterion</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MeanSquaredLogarithmicCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+
 <span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
     <span class="kn">import</span> <span class="nn">doctest</span>
     <span class="kn">from</span> <span class="nn">pyspark</span> <span class="k">import</span> <span class="n">SparkContext</span>
