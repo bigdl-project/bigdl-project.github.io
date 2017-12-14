@@ -709,6 +709,20 @@ and the type is Table[String, Table[String, Tensor[T]]].</p><p>For example, get 
       <p class="shortcomment cmt">Build graph: some other modules point to current module</p><div class="fullcomment"><div class="comment cmt"><p>Build graph: some other modules point to current module</p></div><dl class="paramcmts block"><dt class="param">first</dt><dd class="cmt"><p>distinguish from another inputs when input parameter list is empty</p></dd><dt class="param">nodesWithIndex</dt><dd class="cmt"><p>upstream module nodes and the output tensor index. The start index is 1.</p></dd><dt>returns</dt><dd class="cmt"><p>node containing current module
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#inputs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="inputs(nodes:Array[com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]]):com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]"></a>
+      <a id="inputs(Array[ModuleNode[T]]):ModuleNode[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">inputs</span><span class="params">(<span name="nodes">nodes: <span class="extype" name="scala.Array">Array</span>[<a href="../Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.Assign.T">T</span>]]</span>)</span><span class="result">: <a href="../Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.Assign.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Build graph: some other modules point to current module</p><div class="fullcomment"><div class="comment cmt"><p>Build graph: some other modules point to current module</p></div><dl class="paramcmts block"><dt class="param">nodes</dt><dd class="cmt"><p>upstream module nodes in an array</p></dd><dt>returns</dt><dd class="cmt"><p>node containing current module
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#inputs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="inputs(nodes:com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]*):com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]"></a>
       <a id="inputs(ModuleNode[T]*):ModuleNode[T]"></a>
       <h4 class="signature">
@@ -888,6 +902,21 @@ Custom modules should override this function if they have parameters
       </h4>
       <p class="shortcomment cmt">module predict, return the predict label</p><div class="fullcomment"><div class="comment cmt"><p>module predict, return the predict label</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for prediction</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchSize for all partitions.
                  if -1, default is 4 * partitionNumber of dataset
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#predictImage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="predictImage(imageFrame:com.intel.analytics.bigdl.transform.vision.image.ImageFrame,outputLayer:String,shareBuffer:Boolean,batchPerPartition:Int,predictKey:String):com.intel.analytics.bigdl.transform.vision.image.ImageFrame"></a>
+      <a id="predictImage(ImageFrame,String,Boolean,Int,String):ImageFrame"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">predictImage</span><span class="params">(<span name="imageFrame">imageFrame: <a href="../../transform/vision/image/ImageFrame.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame">ImageFrame</a></span>, <span name="outputLayer">outputLayer: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">null</span></span>, <span name="shareBuffer">shareBuffer: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="batchPerPartition">batchPerPartition: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">4</span></span>, <span name="predictKey">predictKey: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="../../../../../package.html">ImageFeature.predict</a></span></span></span>)</span><span class="result">: <a href="../../transform/vision/image/ImageFrame.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame">ImageFrame</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">model predict images, return imageFrame with predicted tensor</p><div class="fullcomment"><div class="comment cmt"><p>model predict images, return imageFrame with predicted tensor</p></div><dl class="paramcmts block"><dt class="param">imageFrame</dt><dd class="cmt"><p>imageFrame that contains images</p></dd><dt class="param">outputLayer</dt><dd class="cmt"><p>if outputLayer is not null, the output of layer that matches
+                     outputLayer will be used as predicted output</p></dd><dt class="param">shareBuffer</dt><dd class="cmt"><p>whether to share same memory for each batch predict results</p></dd><dt class="param">batchPerPartition</dt><dd class="cmt"><p>batch size per partition, default is 4</p></dd><dt class="param">predictKey</dt><dd class="cmt"><p>key to store predicted result</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#quantize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="quantize():com.intel.analytics.bigdl.Module[T]"></a>

@@ -127,6 +127,19 @@
       </h4>
       <p class="comment cmt"> adding a constant
 </p>
+    </li><li name="com.intel.analytics.bigdl.nn.Anchor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AnchorextendsSerializable"></a>
+      <a id="Anchor:Anchor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Anchor.html"><span class="name">Anchor</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Generates a regular grid of multi-scale, multi-aspect anchor boxes.</p>
     </li><li name="com.intel.analytics.bigdl.nn.BCECriterion" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="BCECriterion[T]extendsTensorCriterion[T]"></a>
       <a id="BCECriterion[T]:BCECriterion[T]"></a>
@@ -371,6 +384,19 @@ that accepts input of nInputDim dimensions, and generates output of nOutputDim d
       </span>
       </h4>
       <p class="comment cmt">Takes a table with two Tensor and returns the component-wise subtraction between them.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.CategoricalCrossEntropy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CategoricalCrossEntropy[T]extendsAbstractCriterion[com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
+      <a id="CategoricalCrossEntropy[T]:CategoricalCrossEntropy[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CategoricalCrossEntropy.html"><span class="name">CategoricalCrossEntropy</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.CategoricalCrossEntropy.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.CategoricalCrossEntropy.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.CategoricalCrossEntropy.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">This is same with cross entropy criterion, except the target tensor is a one-hot tensor</p>
     </li><li name="com.intel.analytics.bigdl.nn.Cell" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="Cell[T]extendsAbstractModule[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.utils.Table,T]"></a>
       <a id="Cell[T]:Cell[T]"></a>
@@ -612,6 +638,45 @@ a table of two Tensors, and a Tensor label y with values 1 or -1.</p>
       </span>
       </h4>
       <p class="comment cmt">Convert DenseTensor to SparseTensor.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.DetectionOutputFrcnn" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DetectionOutputFrcnnextendsAbstractModule[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.nn.abstractnn.Activity,Float]"></a>
+      <a id="DetectionOutputFrcnn:DetectionOutputFrcnn"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DetectionOutputFrcnn.html"><span class="name">DetectionOutputFrcnn</span></a><span class="result"> extends <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="scala.Float">Float</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Post process Faster-RCNN models</p>
+    </li><li name="com.intel.analytics.bigdl.nn.DetectionOutputParam" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DetectionOutputParamextendsProductwithSerializable"></a>
+      <a id="DetectionOutputParam:DetectionOutputParam"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DetectionOutputParam.html"><span class="name">DetectionOutputParam</span></a><span class="params">(<span name="nClasses">nClasses: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">21</span></span>, <span name="shareLocation">shareLocation: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="bgLabel">bgLabel: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="nmsThresh">nmsThresh: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">0.45</span></span>, <span name="nmsTopk">nmsTopk: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">400</span></span>, <span name="keepTopK">keepTopK: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">200</span></span>, <span name="confThresh">confThresh: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">0.01</span></span>, <span name="varianceEncodedInTarget">varianceEncodedInTarget: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.DetectionOutputSSD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DetectionOutputSSD[T]extendsAbstractModule[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]"></a>
+      <a id="DetectionOutputSSD[T]:DetectionOutputSSD[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DetectionOutputSSD.html"><span class="name">DetectionOutputSSD</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.DetectionOutputSSD.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Layer to Post-process SSD output</p>
     </li><li name="com.intel.analytics.bigdl.nn.DiceCoefficientCriterion" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DiceCoefficientCriterion[T]extendsTensorCriterion[T]"></a>
       <a id="DiceCoefficientCriterion[T]:DiceCoefficientCriterion[T]"></a>
@@ -667,6 +732,19 @@ and calculate the dot product between them as outputs
       </span>
       </h4>
       <p class="comment cmt">Dropout masks(set to zero) parts of input using a bernoulli distribution.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.DynamicGraph" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DynamicGraph[T]extendsGraph[T]"></a>
+      <a id="DynamicGraph[T]:DynamicGraph[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DynamicGraph.html"><span class="name">DynamicGraph</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Graph.html" class="extype" name="com.intel.analytics.bigdl.nn.Graph">Graph</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DynamicGraph.T">T</span>]</span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.nn.ELU" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ELU[T,D]extendsAbstractModule[com.intel.analytics.bigdl.tensor.Tensor[D],com.intel.analytics.bigdl.tensor.Tensor[D],T]"></a>
       <a id="ELU[T,D]:ELU[T,D]"></a>
@@ -819,12 +897,12 @@ table will be produced
       <p class="comment cmt">It is a simple module preserves the input, but takes the
 gradient from the subsequent layer, multiplies it by -lambda
 and passes it to the preceding layer.</p>
-    </li><li name="com.intel.analytics.bigdl.nn.Graph" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.Graph" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="Graph[T]extendsContainer[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]"></a>
       <a id="Graph[T]:Graph[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">abstract </span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
@@ -982,6 +1060,19 @@ outputs a Tensor by joining them together along the dimension <code>dimension</c
       </span>
       </h4>
       <p class="comment cmt">Computes the KL-divergence of the Gaussian distribution.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.KullbackLeiblerDivergenceCriterion" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KullbackLeiblerDivergenceCriterion[T]extendsTensorCriterion[T]"></a>
+      <a id="KullbackLeiblerDivergenceCriterion[T]:KullbackLeiblerDivergenceCriterion[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="KullbackLeiblerDivergenceCriterion.html"><span class="name">KullbackLeiblerDivergenceCriterion</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion">TensorCriterion</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.KullbackLeiblerDivergenceCriterion.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">This method is same as <code>kullback_leibler_divergence</code> loss in keras.</p>
     </li><li name="com.intel.analytics.bigdl.nn.L1Cost" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="L1Cost[T]extendsTensorCriterion[T]"></a>
       <a id="L1Cost[T]:L1Cost[T]"></a>
@@ -1525,6 +1616,19 @@ ideally obtaining only one detection per object
       </span>
       </h4>
       <p class="comment cmt">Normalizes the input Tensor to have unit L_p norm.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.NormalizeScale" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NormalizeScale[T]extendsTensorModule[T]"></a>
+      <a id="NormalizeScale[T]:NormalizeScale[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="NormalizeScale.html"><span class="name">NormalizeScale</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.NormalizeScale.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">NormalizeScale is conposed of normalize and scale, this is equal to caffe Normalize layer</p>
     </li><li name="com.intel.analytics.bigdl.nn.PReLU" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="PReLU[T]extendsTensorModule[T]withInitializable"></a>
       <a id="PReLU[T]:PReLU[T]"></a>
@@ -1607,6 +1711,19 @@ and target.</p>
       <p class="comment cmt">It is a container module that applies the i-th member module to the i-th
 input, and outputs an output in the form of Table
 </p>
+    </li><li name="com.intel.analytics.bigdl.nn.PoissonCriterion" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PoissonCriterion[T]extendsTensorCriterion[T]"></a>
+      <a id="PoissonCriterion[T]:PoissonCriterion[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="PoissonCriterion.html"><span class="name">PoissonCriterion</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion">TensorCriterion</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.PoissonCriterion.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">This class is same as <code>Poisson</code> loss in keras.</p>
     </li><li name="com.intel.analytics.bigdl.nn.Power" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Power[T,D]extendsAbstractModule[com.intel.analytics.bigdl.tensor.Tensor[D],com.intel.analytics.bigdl.tensor.Tensor[D],T]"></a>
       <a id="Power[T,D]:Power[T,D]"></a>
@@ -1620,6 +1737,36 @@ input, and outputs an output in the form of Table
       </span>
       </h4>
       <p class="comment cmt">Apply an element-wise power operation with scale and shift.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.PriorBox" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PriorBox[T]extendsAbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
+      <a id="PriorBox[T]:PriorBox[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="PriorBox.html"><span class="name">PriorBox</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.PriorBox.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.PriorBox.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Generate the prior boxes of designated sizes and aspect ratios across
+all dimensions (H * W)
+Intended for use with MultiBox detection method to generate prior
+</p>
+    </li><li name="com.intel.analytics.bigdl.nn.Proposal" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ProposalextendsAbstractModule[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.tensor.Tensor[Float],Float]"></a>
+      <a id="Proposal:Proposal"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Proposal.html"><span class="name">Proposal</span></a><span class="result"> extends <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>], <span class="extype" name="scala.Float">Float</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Outputs object detection proposals by applying estimated bounding-box
+transformations to a set of regular boxes (called &quot;anchors&quot;).</p>
     </li><li name="com.intel.analytics.bigdl.nn.RReLU" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="RReLU[T]extendsTensorModule[T]"></a>
       <a id="RReLU[T]:RReLU[T]"></a>
@@ -2176,6 +2323,21 @@ computing the weighted average in a neighborhood.</p>
       </span>
       </h4>
       <p class="comment cmt">Applies 2D max-pooling operation in kWxkH regions by step size dWxdH steps.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.SpatialSeperableConvolution" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SpatialSeperableConvolution[T]extendsAbstractModule[com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
+      <a id="SpatialSeperableConvolution[T]:SpatialSeperableConvolution[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SpatialSeperableConvolution.html"><span class="name">SpatialSeperableConvolution</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialSeperableConvolution.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialSeperableConvolution.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.SpatialSeperableConvolution.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Separable convolutions consist in first performing a depthwise spatial convolution (which acts
+on each input channel separately) followed by a pointwise convolution which mixes together the
+resulting output channels.</p>
     </li><li name="com.intel.analytics.bigdl.nn.SpatialShareConvolution" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="SpatialShareConvolution[T]extendsSpatialConvolution[T]"></a>
       <a id="SpatialShareConvolution[T]:SpatialShareConvolution[T]"></a>
@@ -2290,6 +2452,19 @@ the specified dimension <code>dimension</code>.</p>
       </span>
       </h4>
       <p class="comment cmt">Delete all singleton dimensions or a specific singleton dimension.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.StaticGraph" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="StaticGraph[T]extendsGraph[T]"></a>
+      <a id="StaticGraph[T]:StaticGraph[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="StaticGraph.html"><span class="name">StaticGraph</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Graph.html" class="extype" name="com.intel.analytics.bigdl.nn.Graph">Graph</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.StaticGraph.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A graph container.</p>
     </li><li name="com.intel.analytics.bigdl.nn.Sum" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Sum[T,D]extendsAbstractModule[com.intel.analytics.bigdl.tensor.Tensor[D],com.intel.analytics.bigdl.tensor.Tensor[D],T]"></a>
       <a id="Sum[T,D]:Sum[T,D]"></a>
@@ -2464,6 +2639,32 @@ of input tensor.</p>
       </span>
       </h4>
       <p class="comment cmt">Insert singleton dim (i.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.UpSampling1D" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UpSampling1D[T]extendsTensorModule[T]"></a>
+      <a id="UpSampling1D[T]:UpSampling1D[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="UpSampling1D.html"><span class="name">UpSampling1D</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.UpSampling1D.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Upsampling layer for 1D inputs.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.UpSampling2D" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UpSampling2D[T]extendsTensorModule[T]"></a>
+      <a id="UpSampling2D[T]:UpSampling2D[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="UpSampling2D.html"><span class="name">UpSampling2D</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.UpSampling2D.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Upsampling layer for 2D inputs.</p>
     </li><li name="com.intel.analytics.bigdl.nn.UpSampling3D" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="UpSampling3D[T]extendsTensorModule[T]"></a>
       <a id="UpSampling3D[T]:UpSampling3D[T]"></a>
@@ -2626,6 +2827,19 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       <span class="symbol">
         <a href="AddConstant$.html"><span class="name">AddConstant</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.Anchor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Anchor"></a>
+      <a id="Anchor:Anchor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Anchor$.html"><span class="name">Anchor</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -2863,6 +3077,19 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       </h4>
       
+    </li><li name="com.intel.analytics.bigdl.nn.CategoricalCrossEntropy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CategoricalCrossEntropy"></a>
+      <a id="CategoricalCrossEntropy:CategoricalCrossEntropy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CategoricalCrossEntropy$.html"><span class="name">CategoricalCrossEntropy</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.nn.CellSerializer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="CellSerializer"></a>
       <a id="CellSerializer:CellSerializer"></a>
@@ -3068,6 +3295,32 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       <span class="symbol">
         <a href="DenseToSparse$.html"><span class="name">DenseToSparse</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.DetectionOutputFrcnn" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DetectionOutputFrcnn"></a>
+      <a id="DetectionOutputFrcnn:DetectionOutputFrcnn"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="DetectionOutputFrcnn$.html"><span class="name">DetectionOutputFrcnn</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.DetectionOutputSSD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DetectionOutputSSD"></a>
+      <a id="DetectionOutputSSD:DetectionOutputSSD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="DetectionOutputSSD$.html"><span class="name">DetectionOutputSSD</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -3432,6 +3685,19 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       <span class="symbol">
         <a href="KLDCriterion$.html"><span class="name">KLDCriterion</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.KullbackLeiblerDivergenceCriterion" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KullbackLeiblerDivergenceCriterion"></a>
+      <a id="KullbackLeiblerDivergenceCriterion:KullbackLeiblerDivergenceCriterion"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="KullbackLeiblerDivergenceCriterion$.html"><span class="name">KullbackLeiblerDivergenceCriterion</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -3873,7 +4139,7 @@ return the fan in and fan out size of the variable when provided the variable sh
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="MultiRNNCell$.html"><span class="name">MultiRNNCell</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="MultiRNNCell$.html"><span class="name">MultiRNNCell</span></a><span class="result"> extends <a href="../utils/serializer/ModuleSerializable.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable">ModuleSerializable</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -3939,6 +4205,19 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       <span class="symbol">
         <a href="Normalize$.html"><span class="name">Normalize</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.NormalizeScale" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NormalizeScale"></a>
+      <a id="NormalizeScale:NormalizeScale"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="NormalizeScale$.html"><span class="name">NormalizeScale</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -4033,6 +4312,19 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       </h4>
       
+    </li><li name="com.intel.analytics.bigdl.nn.PoissonCriterion" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PoissonCriterion"></a>
+      <a id="PoissonCriterion:PoissonCriterion"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="PoissonCriterion$.html"><span class="name">PoissonCriterion</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.nn.Power" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Power"></a>
       <a id="Power:Power"></a>
@@ -4043,6 +4335,32 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       <span class="symbol">
         <a href="Power$.html"><span class="name">Power</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.PriorBox" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PriorBox"></a>
+      <a id="PriorBox:PriorBox"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="PriorBox$.html"><span class="name">PriorBox</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.Proposal" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Proposal"></a>
+      <a id="Proposal:Proposal"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Proposal$.html"><span class="name">Proposal</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -4553,6 +4871,19 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       </h4>
       
+    </li><li name="com.intel.analytics.bigdl.nn.SpatialSeperableConvolution" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SpatialSeperableConvolution"></a>
+      <a id="SpatialSeperableConvolution:SpatialSeperableConvolution"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SpatialSeperableConvolution$.html"><span class="name">SpatialSeperableConvolution</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.nn.SpatialShareConvolution" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="SpatialShareConvolution"></a>
       <a id="SpatialShareConvolution:SpatialShareConvolution"></a>
@@ -4797,6 +5128,32 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       <span class="symbol">
         <a href="Unsqueeze$.html"><span class="name">Unsqueeze</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.UpSampling1D" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UpSampling1D"></a>
+      <a id="UpSampling1D:UpSampling1D"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="UpSampling1D$.html"><span class="name">UpSampling1D</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.UpSampling2D" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UpSampling2D"></a>
+      <a id="UpSampling2D:UpSampling2D"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="UpSampling2D$.html"><span class="name">UpSampling2D</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       

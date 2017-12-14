@@ -81,7 +81,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.optim.DistriOptimizer#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(_model:com.intel.analytics.bigdl.Module[T],dataset:com.intel.analytics.bigdl.dataset.DistributedDataSet[com.intel.analytics.bigdl.dataset.MiniBatch[T]],criterion:com.intel.analytics.bigdl.Criterion[T])(implicitevidence$6:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.optim.DistriOptimizer[T]"></a>
+      <a id="&lt;init&gt;(_model:com.intel.analytics.bigdl.Module[T],_dataset:com.intel.analytics.bigdl.dataset.DistributedDataSet[com.intel.analytics.bigdl.dataset.MiniBatch[T]],_criterion:com.intel.analytics.bigdl.Criterion[T])(implicitevidence$6:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.optim.DistriOptimizer[T]"></a>
       <a id="&lt;init&gt;:DistriOptimizer[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -89,10 +89,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">DistriOptimizer</span><span class="params">(<span name="_model">_model: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]</span>, <span name="dataset">dataset: <a href="../dataset/DistributedDataSet.html" class="extype" name="com.intel.analytics.bigdl.dataset.DistributedDataSet">DistributedDataSet</a>[<a href="../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]]</span>, <span name="criterion">criterion: <a href="../package.html#Criterion[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Criterion">Criterion</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]</span>)</span>
+        <span class="name">DistriOptimizer</span><span class="params">(<span name="_model">_model: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]</span>, <span name="_dataset">_dataset: <a href="../dataset/DistributedDataSet.html" class="extype" name="com.intel.analytics.bigdl.dataset.DistributedDataSet">DistributedDataSet</a>[<a href="../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]]</span>, <span name="_criterion">_criterion: <a href="../package.html#Criterion[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Criterion">Criterion</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">_model</dt><dd class="cmt"><p>train model</p></dd><dt class="param">dataset</dt><dd class="cmt"><p>train dataset</p></dd><dt class="param">criterion</dt><dd class="cmt"><p>loss function
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">_model</dt><dd class="cmt"><p>train model</p></dd><dt class="param">_dataset</dt><dd class="cmt"><p>train dataset</p></dd><dt class="param">_criterion</dt><dd class="cmt"><p>loss function
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -264,6 +264,32 @@ If the optimize fails, you may call it before next optimize.
       </span>
       <span class="symbol">
         <span class="name">computeThresholdbatchSize</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Optimizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.Optimizer#criterion" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="criterion:com.intel.analytics.bigdl.Criterion[T]"></a>
+      <a id="criterion:Criterion[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">criterion</span><span class="result">: <a href="../package.html#Criterion[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Criterion">Criterion</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Optimizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.Optimizer#dataset" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dataset:com.intel.analytics.bigdl.DataSet[D]"></a>
+      <a id="dataset:DataSet[MiniBatch[T]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dataset</span><span class="result">: <a href="../package.html#DataSet[D]=com.intel.analytics.bigdl.dataset.AbstractDataSet[D,_]" class="extmbr" name="com.intel.analytics.bigdl.DataSet">DataSet</a>[<a href="../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="Optimizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a></dd></dl></div>
@@ -554,6 +580,22 @@ If the optimize fails, you may call it before next optimize.
 </p><div class="fullcomment"><div class="comment cmt"><p>Set a check point saved at <code>path</code> triggered by <code>trigger</code>
 </p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the directory to save</p></dd><dt class="param">trigger</dt><dd class="cmt"><p>how often to save the check point</p></dd><dt>returns</dt><dd class="cmt"><p>the optimizer
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Optimizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.Optimizer#setCriterion" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setCriterion(newCriterion:com.intel.analytics.bigdl.Criterion[T]):Optimizer.this.type"></a>
+      <a id="setCriterion(Criterion[T]):DistriOptimizer.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setCriterion</span><span class="params">(<span name="newCriterion">newCriterion: <a href="../package.html#Criterion[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Criterion">Criterion</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer">DistriOptimizer</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set a new criterion to the optimizer
+</p><div class="fullcomment"><div class="comment cmt"><p>Set a new criterion to the optimizer
+</p></div><dl class="paramcmts block"><dt class="param">newCriterion</dt><dd class="cmt"><p>new criterion
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Optimizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.Optimizer#setDropModuleProperty" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setDropModuleProperty(dropPercentage:Double,maxDropPercentage:Double,batchsize:Int,warmupIteration:Int):Optimizer.this.type"></a>
       <a id="setDropModuleProperty(Double,Double,Int,Int):DistriOptimizer.this.type"></a>
@@ -634,6 +676,40 @@ training to accelerate, because some cached model may take too long.
       <p class="shortcomment cmt">Set a state(learning rate, epochs.</p><div class="fullcomment"><div class="comment cmt"><p>Set a state(learning rate, epochs...) to the optimizer
 </p></div><dl class="paramcmts block"><dt class="param">state</dt><dd class="cmt"><p>the state to be saved
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Optimizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.DistriOptimizer#setTrainData" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setTrainData(sampleRDD:org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.dataset.Sample[T]],batchSize:Int,featurePaddingParam:com.intel.analytics.bigdl.dataset.PaddingParam[T],labelPaddingParam:com.intel.analytics.bigdl.dataset.PaddingParam[T]):DistriOptimizer.this.type"></a>
+      <a id="setTrainData(RDD[Sample[T]],Int,PaddingParam[T],PaddingParam[T]):DistriOptimizer.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setTrainData</span><span class="params">(<span name="sampleRDD">sampleRDD: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="featurePaddingParam">featurePaddingParam: <a href="../dataset/PaddingParam.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingParam">PaddingParam</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>] = <span class="symbol">null</span></span>, <span name="labelPaddingParam">labelPaddingParam: <a href="../dataset/PaddingParam.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingParam">PaddingParam</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer">DistriOptimizer</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set new train dataset.</p><div class="fullcomment"><div class="comment cmt"><p>Set new train dataset.
+</p></div><dl class="paramcmts block"><dt class="param">sampleRDD</dt><dd class="cmt"><p>training Samples</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>mini batch size</p></dd><dt class="param">featurePaddingParam</dt><dd class="cmt"><p>feature padding strategy, see
+                           <a href="../dataset/PaddingParam.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingParam">com.intel.analytics.bigdl.dataset.PaddingParam</a> for details.</p></dd><dt class="param">labelPaddingParam</dt><dd class="cmt"><p>label padding strategy, see
+                           <a href="../dataset/PaddingParam.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingParam">com.intel.analytics.bigdl.dataset.PaddingParam</a> for details.</p></dd><dt>returns</dt><dd class="cmt"><p>the optimizer
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer">DistriOptimizer</a> → <a href="Optimizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.DistriOptimizer#setTrainData" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setTrainData(sampleRDD:org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.dataset.Sample[T]],batchSize:Int,miniBatch:com.intel.analytics.bigdl.dataset.MiniBatch[T]):DistriOptimizer.this.type"></a>
+      <a id="setTrainData(RDD[Sample[T]],Int,MiniBatch[T]):DistriOptimizer.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setTrainData</span><span class="params">(<span name="sampleRDD">sampleRDD: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="miniBatch">miniBatch: <a href="../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer">DistriOptimizer</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set new train dataset.</p><div class="fullcomment"><div class="comment cmt"><p>Set new train dataset.
+User can supply a customized implementation of trait MiniBatch to define
+how data is organized and retrieved in a mini batch.
+</p></div><dl class="paramcmts block"><dt class="param">sampleRDD</dt><dd class="cmt"><p>training Samples</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>mini batch size</p></dd><dt>returns</dt><dd class="cmt"><p>the Optimizer
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.DistriOptimizer">DistriOptimizer</a> → <a href="Optimizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.Optimizer#setTrainSummary" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setTrainSummary(trainSummary:com.intel.analytics.bigdl.visualization.TrainSummary):Optimizer.this.type"></a>
       <a id="setTrainSummary(TrainSummary):DistriOptimizer.this.type"></a>

@@ -139,6 +139,16 @@ between the target and the output</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.criterion.CategoricalCrossEntropy">
+<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">CategoricalCrossEntropy</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#CategoricalCrossEntropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.CategoricalCrossEntropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
+<p>This criterion is same with cross entropy criterion, except it takes a one-hot format target
+tensor
+&gt;&gt;&gt; cce = CategoricalCrossEntropy()
+creating: createCategoricalCrossEntropy</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.criterion.ClassNLLCriterion">
 <em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">ClassNLLCriterion</code><span class="sig-paren">(</span><em>weights=None</em>, <em>size_average=True</em>, <em>logProbAsInput=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#ClassNLLCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.ClassNLLCriterion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
@@ -433,6 +443,21 @@ creating: createKLDCriterion</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.criterion.KullbackLeiblerDivergenceCriterion">
+<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">KullbackLeiblerDivergenceCriterion</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#KullbackLeiblerDivergenceCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.KullbackLeiblerDivergenceCriterion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
+<p>compute Kullback Leibler DivergenceCriterion error for intput and target
+This method is same as <cite>kullback_leibler_divergence</cite> loss in keras. Loss calculated as:
+y_true = K.clip(input, K.epsilon(), 1)
+y_pred = K.clip(target, K.epsilon(), 1)
+and output K.sum(y_true * K.log(y_true / y_pred), axis=-1)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">error</span> <span class="o">=</span> <span class="n">KullbackLeiblerDivergenceCriterion</span><span class="p">()</span>
+<span class="go">creating: createKullbackLeiblerDivergenceCriterion</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.criterion.L1Cost">
 <em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">L1Cost</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#L1Cost"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.L1Cost" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
@@ -689,6 +714,16 @@ and target. Set repeatTarget = true to share the target for criterions.</p>
 <code class="descname">add</code><span class="sig-paren">(</span><em>criterion</em>, <em>weight=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#ParallelCriterion.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.ParallelCriterion.add" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.criterion.PoissonCriterion">
+<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">PoissonCriterion</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#PoissonCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.PoissonCriterion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
+<p>compute Poisson error for input and target, loss calculated as:
+mean(input - target * K.log(input + K.epsilon()), axis=-1)
+&gt;&gt;&gt; error = PoissonCriterion()
+creating: createPoissonCriterion</p>
 </dd></dl>
 
 <dl class="class">
@@ -1531,6 +1566,41 @@ columns should be equal to the inputSize).</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.DetectionOutputFrcnn">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">DetectionOutputFrcnn</code><span class="sig-paren">(</span><em>n_classes</em>, <em>bbox_vote</em>, <em>nms_thresh=0.3</em>, <em>max_per_image=100</em>, <em>thresh=0.05</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#DetectionOutputFrcnn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.DetectionOutputFrcnn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Post process Faster-RCNN models
+:param nms_thresh nms threshold
+:param n_classes number of classes
+:param bbox_vote whether to vote for detections
+:param max_per_image limit max number of detections per image
+:param thresh score threshold
+&gt;&gt;&gt; layer = DetectionOutputFrcnn(21, True)
+creating: createDetectionOutputFrcnn</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.DetectionOutputSSD">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">DetectionOutputSSD</code><span class="sig-paren">(</span><em>n_classes=21</em>, <em>share_location=True</em>, <em>bg_label=0</em>, <em>nms_thresh=0.45</em>, <em>nms_topk=400</em>, <em>keep_top_k=200</em>, <em>conf_thresh=0.01</em>, <em>variance_encoded_in_target=False</em>, <em>conf_post_process=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#DetectionOutputSSD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.DetectionOutputSSD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Layer to Post-process SSD output
+:param n_classes number of classes
+:param share_location whether to share location, default is true
+:param bg_label background label
+:param nms_thresh nms threshold
+:param nms_topk nms topk
+:param keep_top_k result topk
+:param conf_thresh confidence threshold
+:param variance_encoded_in_target if variance is encoded in target,
+we simply need to retore the offset predictions,
+else if variance is encoded in bbox,
+we need to scale the offset accordingly.
+:param conf_post_process whether add some additional post process to confidence prediction
+&gt;&gt;&gt; layer = DetectionOutputSSD()
+creating: createDetectionOutputSSD</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.DotProduct">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">DotProduct</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#DotProduct"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.DotProduct" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
@@ -2296,6 +2366,18 @@ You need to invoke collect() to trigger those action         as the returning re
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.nn.layer.Layer.predict_image">
+<code class="descname">predict_image</code><span class="sig-paren">(</span><em>image_frame</em>, <em>output_layer=None</em>, <em>share_buffer=False</em>, <em>batch_per_partition=4</em>, <em>predict_key='predict'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.predict_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.predict_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>model predict images, return imageFrame with predicted tensor
+:param image_frame imageFrame that contains images
+:param output_layer if output_layer is not null, the output of layer that matches
+output_layer will be used as predicted output
+:param share_buffer whether to share same memory for each batch predict results
+:param batch_per_partition batch size per partition, default is 4
+:param predict_key key to store predicted results</p>
 </dd></dl>
 
 <dl class="method">
@@ -3255,6 +3337,20 @@ p can be the max value of double</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.NormalizeScale">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">NormalizeScale</code><span class="sig-paren">(</span><em>p</em>, <em>scale</em>, <em>size</em>, <em>w_regularizer=None</em>, <em>eps=1e-10</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#NormalizeScale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.NormalizeScale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>NormalizeScale is conposed of normalize and scale, this is equal to caffe Normalize layer
+:param p L_p norm
+:param eps smoothing parameter
+:param scale scale parameter
+:param size size of scale input
+:param w_regularizer weight regularizer
+&gt;&gt;&gt; layer = NormalizeScale(2.0, scale = 20.0, size = [1, 5, 1, 1])
+creating: createNormalizeScale</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.PReLU">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">PReLU</code><span class="sig-paren">(</span><em>n_output_plane=0</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#PReLU"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.PReLU" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
@@ -3383,6 +3479,35 @@ f(x) = (shift + scale * x)^power^</p>
 <span class="go">creating: createPower</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.PriorBox">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">PriorBox</code><span class="sig-paren">(</span><em>min_sizes</em>, <em>max_sizes=None</em>, <em>aspect_ratios=None</em>, <em>is_flip=True</em>, <em>is_clip=False</em>, <em>variances=None</em>, <em>offset=0.5</em>, <em>img_h=0</em>, <em>img_w=0</em>, <em>img_size=0</em>, <em>step_h=0.0</em>, <em>step_w=0.0</em>, <em>step=0.0</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#PriorBox"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.PriorBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Generate the prior boxes of designated sizes and aspect ratios across
+all dimensions (H * W)
+Intended for use with MultiBox detection method to generate prior
+:param min_sizes minimum box size in pixels. can be multiple. required!
+:param max_sizes maximum box size in pixels. can be ignored or same as the # of min_size.
+:param aspect_ratios optional aspect ratios of the boxes. can be multiple
+:param is_flip optional bool, default true. if set, flip the aspect ratio.
+:param is_clip whether to clip the prior’s coordidate such that it is within [0, 1]
+&gt;&gt;&gt; layer = PriorBox([0.1])
+creating: createPriorBox</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.Proposal">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Proposal</code><span class="sig-paren">(</span><em>pre_nms_topn</em>, <em>post_nms_topn</em>, <em>ratios</em>, <em>scales</em>, <em>rpn_pre_nms_topn_train=12000</em>, <em>rpn_post_nms_topn_train=2000</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Proposal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Proposal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Outputs object detection proposals by applying estimated bounding-box
+transformations to a set of regular boxes (called “anchors”).
+rois: holds R regions of interest, each is a 5-tuple
+(n, x1, y1, x2, y2) specifying an image batch index n and a rectangle (x1, y1, x2, y2)
+scores: holds scores for R regions of interest
+&gt;&gt;&gt; layer = Proposal(1000, 200, [0.1, 0.2], [2.0, 3.0])
+creating: createProposal</p>
 </dd></dl>
 
 <dl class="class">
@@ -4386,6 +4511,45 @@ padLeft = padAlongWidth / 2</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.SpatialSeperableConvolution">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialSeperableConvolution</code><span class="sig-paren">(</span><em>n_input_channel</em>, <em>n_output_channel</em>, <em>depth_multiplier</em>, <em>kernel_w</em>, <em>kernel_h</em>, <em>stride_w=1</em>, <em>stride_h=1</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>with_bias=True</em>, <em>data_format='NCHW'</em>, <em>w_regularizer=None</em>, <em>b_regularizer=None</em>, <em>p_regularizer=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialSeperableConvolution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialSeperableConvolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Separable convolutions consist in first performing a depthwise spatial convolution (which acts
+on each input channel separately) followed by a pointwise convolution which mixes together the
+resulting output channels. The  depth_multiplier argument controls how many output channels are
+generated per input channel in the depthwise step.</p>
+<p>:param n_input_channel The number of expected input planes in the image given into forward()
+:param n_output_channel The number of output planes the convolution layer will produce.
+:param depth_multiplier how many internal channels are generated per input channel
+:param kernel_w The kernel width of the convolution
+:param kernel_h The kernel height of the convolution
+:param stride_w The step of the convolution in the width dimension.
+:param stride_h The step of the convolution in the height dimension
+:param pad_w The additional zeros added per width to the input planes.
+:param pad_h The additional zeros added per height to the input planes.
+:param with_bias: the optional initial value for if need bias
+:param data_format: a string value of “NHWC” or “NCHW” to specify the input data format of this layer. In “NHWC” format
+data is stored in the order of [batch_size, height, width, channels], in “NCHW” format data is stored
+in the order of [batch_size, channels, height, width].
+:param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the depth weights matrices.
+:param bRegularizer: instance of [[Regularizer]]applied to the pointwise bias.
+:param pRegularizer: instance of [[Regularizer]]applied to the pointwise weights.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">conv</span> <span class="o">=</span> <span class="n">SpatialSeperableConvolution</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">creating: createSpatialSeperableConvolution</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conv</span><span class="o">.</span><span class="n">setWRegularizer</span><span class="p">(</span><span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="go">creating: createL1Regularizer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conv</span><span class="o">.</span><span class="n">setBRegularizer</span><span class="p">(</span><span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="go">creating: createL1Regularizer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">conv</span> <span class="o">=</span> <span class="n">SpatialSeperableConvolution</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;NCHW&quot;</span><span class="p">,</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="go">creating: createL1Regularizer</span>
+<span class="go">creating: createL1Regularizer</span>
+<span class="go">creating: createL1Regularizer</span>
+<span class="go">creating: createSpatialSeperableConvolution</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.SpatialShareConvolution">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialShareConvolution</code><span class="sig-paren">(</span><em>n_input_plane</em>, <em>n_output_plane</em>, <em>kernel_w</em>, <em>kernel_h</em>, <em>stride_w=1</em>, <em>stride_h=1</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>n_group=1</em>, <em>propagate_back=True</em>, <em>wRegularizer=None</em>, <em>bRegularizer=None</em>, <em>init_weight=None</em>, <em>init_bias=None</em>, <em>init_grad_weight=None</em>, <em>init_grad_bias=None</em>, <em>with_bias=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialShareConvolution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialShareConvolution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
@@ -4774,6 +4938,34 @@ there are dim + 1 possible positions to insert the singleton dimension.</p>
 </table>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">unsqueeze</span> <span class="o">=</span> <span class="n">Unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="go">creating: createUnsqueeze</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.UpSampling1D">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">UpSampling1D</code><span class="sig-paren">(</span><em>length</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#UpSampling1D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.UpSampling1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Upsampling layer for 1D inputs.
+Repeats each temporal step length times along the time axis.</p>
+<p>If input’s size is (batch, steps, features),
+then the output’s size is (batch, steps * length, features)</p>
+<p>:param length integer, upsampling factor.
+&gt;&gt;&gt; upsampled1d = UpSampling1D(2)
+creating: createUpSampling1D</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.UpSampling2D">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">UpSampling2D</code><span class="sig-paren">(</span><em>size</em>, <em>data_format='nchw'</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#UpSampling2D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.UpSampling2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Upsampling layer for 2D inputs.
+Repeats the heights and widths of the data by size[0] and size[1] respectively.</p>
+<p>If input’s dataformat is NCHW, then the size of output is (N, C, H * size[0], W * size[1])</p>
+<p>:param size tuple of 2 integers. The upsampling factors for heights and widths.
+:param format DataFormat, NCHW or NHWC</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">upsampled2d</span> <span class="o">=</span> <span class="n">UpSampling2D</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">creating: createUpSampling2D</span>
 </pre></div>
 </div>
 </dd></dl>

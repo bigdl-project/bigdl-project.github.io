@@ -60,18 +60,31 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>An optimizer is in general to minimize any function with respect to a set of parameters. In case of training a neural network, an optimizer tries to minimize the loss of the neural net with respect to its weights/biases, over the training set.</p>
 <h3 id="scala-api">Scala API</h3>
 <p><strong><em>Factory method</em></strong></p>
-<pre><code class="scala">val optimizer = Opimizer[T: ClassTag](
-  model: Module[T],
-  sampleRDD: RDD[Sample[T]],
-  criterion: Criterion[T],
-  batchSize: Int)
+<p>In summary, you need to supply 3 kinds of paramters to create an optimizer:
+1) train data: You could supply 
+   a) a sampleRDD and batchSize (with optional featurePadding and labelPadding), or 
+   b) a sampleRDD and batchSize and a customized implemenation of trait MiniBatch, or
+   c) a DataSet - the type of optimizer created will be dermined by the type of Dataset. 
+2) a model
+3) a criterion (i.e. loss)
+as shown in below interfaces:</p>
+<pre><code class="scala">val optimizer = Opimizer[T: ClassTag, D](
+      model: Module[T],
+      sampleRDD: RDD[Sample[T]],
+      criterion: Criterion[T],
+      batchSize: Int,
+      featurePaddingParam: PaddingParam[T]=null,
+      labelPaddingParam: PaddingParam[T]=null)
 </code></pre>
 
-<p><code>T</code>: the numeric type(Float/Double).<br />
-<code>model</code>: the model will be optimized.<br />
-<code>sampleRDD</code>: an RDD of training Sample.<br />
-<code>criterion</code>: the Loss function.<br />
-<code>batchSize</code>: size of minibatch. </p>
+<p>The meaning of parameters are as below:
+<code>model</code>: model will be optimized.
+<code>sampleRDD</code>: training Samples.
+<code>criterion</code>: loss function.
+<code>batchSize</code>: mini batch size.
+<code>featurePaddingParam</code>(optional): feature padding strategy.
+<code>labelPaddingParam</code>(optional): label padding strategy.
+ <br></p>
 <pre><code class="scala">val optimizer = Opimizer[T: ClassTag, D](
   model: Module[T],
   dataset: DataSet[D],
@@ -82,24 +95,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <code>D</code>: should be a kind of MiniBatch.<br />
 <code>model</code>: the model will be optimized.<br />
 <code>dataset</code>: the training DataSet.<br />
-<code>criterion</code>: the Loss function.</p>
-<pre><code class="scala">def apply[T: ClassTag](
-      model: Module[T],
-      sampleRDD: RDD[Sample[T]],
-      criterion: Criterion[T],
-      batchSize: Int,
-      featurePaddingParam: PaddingParam[T],
-      labelPaddingParam: PaddingParam[T])
-</code></pre>
-
-<p>Apply an Optimizer who could apply padding to the Samples with a padding strategy.<br />
-<code>model</code>: model will be optimized.<br />
-<code>sampleRDD</code>: training Samples.<br />
-<code>criterion</code>: loss function.<br />
-<code>batchSize</code>: mini batch size.<br />
-<code>featurePaddingParam</code>: feature padding strategy.<br />
-<code>labelPaddingParam</code>: label padding strategy.</p>
-<pre><code class="scala">def apply[T: ClassTag](
+<code>criterion</code>: the Loss function.
+ <br></p>
+<pre><code class="scala">val optimizer = Opimizer[T: ClassTag, D](
       model: Module[T],
       sampleRDD: RDD[Sample[T]],
       criterion: Criterion[T],
@@ -112,7 +110,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <code>sampleRDD</code>: training Samples.<br />
 <code>criterion</code>: loss function.<br />
 <code>batchSize</code>: mini batch size.<br />
-<code>miniBatch</code>: An User-Defined MiniBatch to construct a mini batch.</p>
+<code>miniBatch</code>: An User-Defined MiniBatch implementation.
+ <br></p>
 <p><strong><em>Validation</em></strong></p>
 <p>Function setValidation is to set a validate evaluation in the <code>optimizer</code>.</p>
 <pre><code class="scala">optimizer.setValidation(
@@ -135,8 +134,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><code>trigger</code>: how often to evaluation validation set.<br />
 <code>sampleRDD</code>: validate data set in type of RDD[Sample].<br />
 <code>vMethods</code>: a set of ValidationMethod.<br />
-<code>batchSize</code>: size of mini batch.</p>
-<p><strong><em>Checkpoint</em></strong></p>
+<code>batchSize</code>: size of mini batch.
+ <br>
+<strong><em>Checkpoint</em></strong></p>
 <pre><code class="scala">optimizer.setCheckpoint(path: String, trigger: Trigger)
 </code></pre>
 
@@ -176,6 +176,31 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
 <p>Function setModel will set a new model to the optimizer.<br />
 <code>newModel</code>: a model will replace the old model in optimizer.<br />
+ <br></p>
+<pre><code class="scala">
+optimizer.setTrainData(sampleRDD: RDD[Sample[T]],
+                 batchSize: Int,
+                 miniBatch: MiniBatch[T])
+
+optimizer.setTrainData(sampleRDD: RDD[Sample[T]],
+                 batchSize: Int,
+                 featurePaddingParam: PaddingParam[T]=null,
+                 labelPaddingParam: PaddingParam[T])=null
+
+</code></pre>
+
+<p>the overloaded set of methods <code>setTrainData</code> allows user to replace the training data. Each time setTrainData is called, the dataset is replaced and the following call to optimize() will use the new dataset. The meaning of arguments are the same as in the Factory methods:
+<code>sampleRDD</code>: training Samples.
+<code>batchSize</code>: mini batch size.
+<code>featurePaddingParam</code>: feature padding strategy.
+<code>labelPaddingParam</code>: label padding strategy.
+<code>miniBatch</code>: An User-Defined MiniBatch implemenation.
+ <br></p>
+<pre><code class="scala">optimizer.setCriterion(newCriterion: Criterion[T])
+</code></pre>
+
+<p><code>setCriterion</code> allows user to set a new criterion to replace the old one. 
+<code>newCriterion</code>: the new Criterion.
  <br></p>
 <pre><code class="scala">optimizer.setState(state: Table)
 </code></pre>
@@ -270,6 +295,16 @@ val trainedModel = optimizer.optimize()
 
 <p>Function setModel will set a new model to the optimizer.<br />
 <code>model</code>: a model will replace the old model in optimizer.</p>
+<p><strong><em>Set Train Data</em></strong></p>
+<pre><code class="python">optimizer.set_traindata(sample_rdd, batch_size)
+</code></pre>
+
+<p>set_traindata allows user to replace the train data (for optimizer reuse)</p>
+<p><strong><em>Set Criterion</em></strong></p>
+<pre><code class="python">optimizer.set_criterion(criterion)
+</code></pre>
+
+<p>set_criterion allows user to replace the criterion (for optimizer reuse)</p>
 <h3 id="python-example">Python example</h3>
 <p>Here is an example to new an Optimizer with SGD for optimizing LeNet5 model.</p>
 <pre><code class="python">train_data = ...

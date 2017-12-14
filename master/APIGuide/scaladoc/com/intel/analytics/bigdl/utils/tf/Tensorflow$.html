@@ -190,15 +190,15 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.utils.tf.Tensorflow#avgPool" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="avgPool(value:org.tensorflow.framework.NodeDef,kW:Int,kH:Int,pW:Int,pH:Int,sW:Int,sH:Int,dataFormat:com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat,name:String):org.tensorflow.framework.NodeDef"></a>
-      <a id="avgPool(NodeDef,Int,Int,Int,Int,Int,Int,TensorflowDataFormat,String):NodeDef"></a>
+      <a id="avgPool(value:org.tensorflow.framework.NodeDef,kW:Int,kH:Int,pW:Int,pH:Int,sW:Int,sH:Int,dataFormat:com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat,name:String,ceilMode:Boolean):org.tensorflow.framework.NodeDef"></a>
+      <a id="avgPool(NodeDef,Int,Int,Int,Int,Int,Int,TensorflowDataFormat,String,Boolean):NodeDef"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">avgPool</span><span class="params">(<span name="value">value: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>, <span name="kW">kW: <span class="extype" name="scala.Int">Int</span></span>, <span name="kH">kH: <span class="extype" name="scala.Int">Int</span></span>, <span name="pW">pW: <span class="extype" name="scala.Int">Int</span></span>, <span name="pH">pH: <span class="extype" name="scala.Int">Int</span></span>, <span name="sW">sW: <span class="extype" name="scala.Int">Int</span></span>, <span name="sH">sH: <span class="extype" name="scala.Int">Int</span></span>, <span name="dataFormat">dataFormat: <a href="TensorflowDataFormat.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat">TensorflowDataFormat</a></span>, <span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>
+        <span class="name">avgPool</span><span class="params">(<span name="value">value: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>, <span name="kW">kW: <span class="extype" name="scala.Int">Int</span></span>, <span name="kH">kH: <span class="extype" name="scala.Int">Int</span></span>, <span name="pW">pW: <span class="extype" name="scala.Int">Int</span></span>, <span name="pH">pH: <span class="extype" name="scala.Int">Int</span></span>, <span name="sW">sW: <span class="extype" name="scala.Int">Int</span></span>, <span name="sH">sH: <span class="extype" name="scala.Int">Int</span></span>, <span name="dataFormat">dataFormat: <a href="TensorflowDataFormat.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat">TensorflowDataFormat</a></span>, <span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="ceilMode">ceilMode: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>
       </span>
       </h4>
       
@@ -250,15 +250,15 @@
               
         </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.utils.tf.Tensorflow#concat" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="concat(inputs:Seq[org.tensorflow.framework.NodeDef],axis:Int,name:String):org.tensorflow.framework.NodeDef"></a>
-      <a id="concat(Seq[NodeDef],Int,String):NodeDef"></a>
+      <a id="concat(inputs:Seq[org.tensorflow.framework.NodeDef],name:String):org.tensorflow.framework.NodeDef"></a>
+      <a id="concat(Seq[NodeDef],String):NodeDef"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">concat</span><span class="params">(<span name="inputs">inputs: <span class="extype" name="scala.Seq">Seq</span>[<a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a>]</span>, <span name="axis">axis: <span class="extype" name="scala.Int">Int</span></span>, <span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>
+        <span class="name">concat</span><span class="params">(<span name="inputs">inputs: <span class="extype" name="scala.Seq">Seq</span>[<a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a>]</span>, <span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>
       </span>
       </h4>
       
@@ -427,6 +427,19 @@
       </span>
       </h4>
       
+    </li><li name="com.intel.analytics.bigdl.utils.tf.Tensorflow#lrn" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="lrn(input:org.tensorflow.framework.NodeDef,depthRadius:Int,bias:Float,alpha:Float,beta:Float,name:String):org.tensorflow.framework.NodeDef"></a>
+      <a id="lrn(NodeDef,Int,Float,Float,Float,String):NodeDef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">lrn</span><span class="params">(<span name="input">input: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>, <span name="depthRadius">depthRadius: <span class="extype" name="scala.Int">Int</span></span>, <span name="bias">bias: <span class="extype" name="scala.Float">Float</span></span>, <span name="alpha">alpha: <span class="extype" name="scala.Float">Float</span></span>, <span name="beta">beta: <span class="extype" name="scala.Float">Float</span></span>, <span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.utils.tf.Tensorflow#matmul" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="matmul(a:org.tensorflow.framework.NodeDef,b:org.tensorflow.framework.NodeDef,name:String,transposeA:Boolean,transposeB:Boolean):org.tensorflow.framework.NodeDef"></a>
       <a id="matmul(NodeDef,NodeDef,String,Boolean,Boolean):NodeDef"></a>
@@ -442,15 +455,15 @@
       <p class="shortcomment cmt">Generate a matmul tensorflow protobuf node</p><div class="fullcomment"><div class="comment cmt"><p>Generate a matmul tensorflow protobuf node</p></div><dl class="paramcmts block"><dt class="param">a</dt><dd class="cmt"></dd><dt class="param">b</dt><dd class="cmt"></dd><dt class="param">name</dt><dd class="cmt"></dd><dt class="param">transposeA</dt><dd class="cmt"></dd><dt class="param">transposeB</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.utils.tf.Tensorflow#maxPool" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="maxPool(value:org.tensorflow.framework.NodeDef,kW:Int,kH:Int,pW:Int,pH:Int,sW:Int,sH:Int,dataFormat:com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat,name:String):org.tensorflow.framework.NodeDef"></a>
-      <a id="maxPool(NodeDef,Int,Int,Int,Int,Int,Int,TensorflowDataFormat,String):NodeDef"></a>
+      <a id="maxPool(value:org.tensorflow.framework.NodeDef,kW:Int,kH:Int,pW:Int,pH:Int,sW:Int,sH:Int,dataFormat:com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat,name:String,ceilMode:Boolean):org.tensorflow.framework.NodeDef"></a>
+      <a id="maxPool(NodeDef,Int,Int,Int,Int,Int,Int,TensorflowDataFormat,String,Boolean):NodeDef"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">maxPool</span><span class="params">(<span name="value">value: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>, <span name="kW">kW: <span class="extype" name="scala.Int">Int</span></span>, <span name="kH">kH: <span class="extype" name="scala.Int">Int</span></span>, <span name="pW">pW: <span class="extype" name="scala.Int">Int</span></span>, <span name="pH">pH: <span class="extype" name="scala.Int">Int</span></span>, <span name="sW">sW: <span class="extype" name="scala.Int">Int</span></span>, <span name="sH">sH: <span class="extype" name="scala.Int">Int</span></span>, <span name="dataFormat">dataFormat: <a href="TensorflowDataFormat.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat">TensorflowDataFormat</a></span>, <span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>
+        <span class="name">maxPool</span><span class="params">(<span name="value">value: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>, <span name="kW">kW: <span class="extype" name="scala.Int">Int</span></span>, <span name="kH">kH: <span class="extype" name="scala.Int">Int</span></span>, <span name="pW">pW: <span class="extype" name="scala.Int">Int</span></span>, <span name="pH">pH: <span class="extype" name="scala.Int">Int</span></span>, <span name="sW">sW: <span class="extype" name="scala.Int">Int</span></span>, <span name="sH">sH: <span class="extype" name="scala.Int">Int</span></span>, <span name="dataFormat">dataFormat: <a href="TensorflowDataFormat.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat">TensorflowDataFormat</a></span>, <span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="ceilMode">ceilMode: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>
       </span>
       </h4>
       
@@ -651,6 +664,19 @@
       </span>
       </h4>
       
+    </li><li name="com.intel.analytics.bigdl.utils.tf.Tensorflow#split" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="split(splitDim:org.tensorflow.framework.NodeDef,value:org.tensorflow.framework.NodeDef,numSplit:Int,name:String):Seq[org.tensorflow.framework.NodeDef]"></a>
+      <a id="split(NodeDef,NodeDef,Int,String):Seq[NodeDef]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">split</span><span class="params">(<span name="splitDim">splitDim: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>, <span name="value">value: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>, <span name="numSplit">numSplit: <span class="extype" name="scala.Int">Int</span></span>, <span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a>]</span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.utils.tf.Tensorflow#squeeze" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="squeeze(input:org.tensorflow.framework.NodeDef,axis:Seq[Int],name:String):org.tensorflow.framework.NodeDef"></a>
       <a id="squeeze(NodeDef,Seq[Int],String):NodeDef"></a>
@@ -716,6 +742,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.utils.tf.Tensorflow#transpose" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="transpose(x:org.tensorflow.framework.NodeDef,perm:org.tensorflow.framework.NodeDef,name:String):org.tensorflow.framework.NodeDef"></a>
+      <a id="transpose(NodeDef,NodeDef,String):NodeDef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">transpose</span><span class="params">(<span name="x">x: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>, <span name="perm">perm: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>, <span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../../../../../org/tensorflow/framework/NodeDef.html" class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</a></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>

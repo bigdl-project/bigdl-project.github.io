@@ -91,6 +91,10 @@
           ]},
           {title: "MeanAbsolutePercentageCriterion", url: "#meanabsolutepercentagecriterion", children: [
           ]},
+          {title: "KullbackLeiblerDivergenceCriterion", url: "#kullbackleiblerdivergencecriterion", children: [
+          ]},
+          {title: "PoissonCriterion", url: "#poissoncriterion", children: [
+          ]},
         ];
 
     </script>
@@ -2034,6 +2038,94 @@ loss = criterion.forward(input, target)
 
 &gt; loss
 50.0
+</code></pre>
+
+<h2 id="kullbackleiblerdivergencecriterion">KullbackLeiblerDivergenceCriterion</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val criterion = KullbackLeiblerDivergenceCriterion()
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">criterion = KullbackLeiblerDivergenceCriterion()
+</code></pre>
+
+<p>compute Kullback Leibler Divergence Criterion error for intput and target</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn.KullbackLeiblerDivergenceCriterion
+import com.intel.analytics.bigdl.utils.T
+
+val criterion = KullbackLeiblerDivergenceCriterion[Float]()
+val input = Tensor[Float](Array(0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f), Array(2, 3))
+val target = Tensor[Float](Array(0.6f, 0.5f, 0.4f, 0.3f, 0.2f, 0.1f), Array(2, 3))
+val loss = criterion.forward(input, target)
+
+&gt; loss
+loss: Float = 0.59976757
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">import numpy as np
+from bigdl.nn.criterion import *
+from bigdl.optim.optimizer import *
+from bigdl.util.common import *
+
+criterion = KullbackLeiblerDivergenceCriterion()
+
+y_pred = np.matrix('0.1 0.2 0.3; 0.4 0.5 0.6')
+y_true = np.matrix('0.6 0.5 0.4; 0.3 0.2 0.1')
+
+loss = criterion.forward(y_pred, y_true)
+
+&gt; loss
+0.59976757
+</code></pre>
+
+<h2 id="poissoncriterion">PoissonCriterion</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val criterion = PoissonCriterion()
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">criterion = PoissonCriterion()
+</code></pre>
+
+<p>compute Poisson error for intput and target</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn.PoissonCriterion
+import com.intel.analytics.bigdl.utils.T
+
+val criterion = PoissonCriterion()
+val input = Tensor[Float](2, 3).range(1, 6, 1)
+val target = Tensor[Float](2, 3).range(2, 13, 2)
+val loss = criterion.forward(input, target)
+
+&gt; loss
+loss = -6.1750183
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">import numpy as np
+from bigdl.nn.criterion import *
+from bigdl.optim.optimizer import *
+from bigdl.util.common import *
+
+criterion = PoissonCriterion()
+input = np.arange(1, 7, 1).astype(&quot;float32&quot;)
+input = input.reshape(2, 3)
+target = np.arange(2, 13, 2).astype(&quot;float32&quot;)
+target = target.reshape(2, 3)
+
+loss = criterion.forward(input, target)
+
+&gt; loss
+-6.1750183
 </code></pre>
 
   <br>

@@ -513,6 +513,22 @@
 </p><div class="fullcomment"><div class="comment cmt"><p>Set a check point saved at <code>path</code> triggered by <code>trigger</code>
 </p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the directory to save</p></dd><dt class="param">trigger</dt><dd class="cmt"><p>how often to save the check point</p></dd><dt>returns</dt><dd class="cmt"><p>the optimizer
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Optimizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.Optimizer#setCriterion" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setCriterion(newCriterion:com.intel.analytics.bigdl.Criterion[T]):Optimizer.this.type"></a>
+      <a id="setCriterion(Criterion[T]):LocalOptimizer.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setCriterion</span><span class="params">(<span name="newCriterion">newCriterion: <a href="../package.html#Criterion[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Criterion">Criterion</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LocalOptimizer.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.LocalOptimizer">LocalOptimizer</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set a new criterion to the optimizer
+</p><div class="fullcomment"><div class="comment cmt"><p>Set a new criterion to the optimizer
+</p></div><dl class="paramcmts block"><dt class="param">newCriterion</dt><dd class="cmt"><p>new criterion
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Optimizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.Optimizer#setDropModuleProperty" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setDropModuleProperty(dropPercentage:Double,maxDropPercentage:Double,batchsize:Int,warmupIteration:Int):Optimizer.this.type"></a>
       <a id="setDropModuleProperty(Double,Double,Int,Int):LocalOptimizer.this.type"></a>
@@ -592,6 +608,40 @@ training to accelerate, because some cached model may take too long.
       </h4>
       <p class="shortcomment cmt">Set a state(learning rate, epochs.</p><div class="fullcomment"><div class="comment cmt"><p>Set a state(learning rate, epochs...) to the optimizer
 </p></div><dl class="paramcmts block"><dt class="param">state</dt><dd class="cmt"><p>the state to be saved
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Optimizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.Optimizer#setTrainData" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setTrainData(sampleRDD:org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.dataset.Sample[T]],batchSize:Int,featurePaddingParam:com.intel.analytics.bigdl.dataset.PaddingParam[T],labelPaddingParam:com.intel.analytics.bigdl.dataset.PaddingParam[T]):Optimizer.this.type"></a>
+      <a id="setTrainData(RDD[Sample[T]],Int,PaddingParam[T],PaddingParam[T]):LocalOptimizer.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setTrainData</span><span class="params">(<span name="sampleRDD">sampleRDD: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LocalOptimizer.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="featurePaddingParam">featurePaddingParam: <a href="../dataset/PaddingParam.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingParam">PaddingParam</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LocalOptimizer.T">T</span>] = <span class="symbol">null</span></span>, <span name="labelPaddingParam">labelPaddingParam: <a href="../dataset/PaddingParam.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingParam">PaddingParam</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LocalOptimizer.T">T</span>] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.LocalOptimizer">LocalOptimizer</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set new train dataset.</p><div class="fullcomment"><div class="comment cmt"><p>Set new train dataset.
+</p></div><dl class="paramcmts block"><dt class="param">sampleRDD</dt><dd class="cmt"><p>training Samples</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>mini batch size</p></dd><dt class="param">featurePaddingParam</dt><dd class="cmt"><p>feature padding strategy, see
+                           <a href="../dataset/PaddingParam.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingParam">com.intel.analytics.bigdl.dataset.PaddingParam</a> for details.</p></dd><dt class="param">labelPaddingParam</dt><dd class="cmt"><p>label padding strategy, see
+                           <a href="../dataset/PaddingParam.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingParam">com.intel.analytics.bigdl.dataset.PaddingParam</a> for details.</p></dd><dt>returns</dt><dd class="cmt"><p>the optimizer
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Optimizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.Optimizer#setTrainData" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setTrainData(sampleRDD:org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.dataset.Sample[T]],batchSize:Int,miniBatchImpl:com.intel.analytics.bigdl.dataset.MiniBatch[T]):Optimizer.this.type"></a>
+      <a id="setTrainData(RDD[Sample[T]],Int,MiniBatch[T]):LocalOptimizer.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setTrainData</span><span class="params">(<span name="sampleRDD">sampleRDD: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LocalOptimizer.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="miniBatchImpl">miniBatchImpl: <a href="../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LocalOptimizer.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.LocalOptimizer">LocalOptimizer</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set new train dataset.</p><div class="fullcomment"><div class="comment cmt"><p>Set new train dataset.
+User can supply a customized implementation of trait MiniBatch to define
+how data is organized and retrieved in a mini batch.
+</p></div><dl class="paramcmts block"><dt class="param">sampleRDD</dt><dd class="cmt"><p>training Samples</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>mini batch size</p></dd><dt class="param">miniBatchImpl</dt><dd class="cmt"><p>An User-Defined MiniBatch implementation.</p></dd><dt>returns</dt><dd class="cmt"><p>the Optimizer
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Optimizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.Optimizer#setTrainSummary" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setTrainSummary(trainSummary:com.intel.analytics.bigdl.visualization.TrainSummary):Optimizer.this.type"></a>

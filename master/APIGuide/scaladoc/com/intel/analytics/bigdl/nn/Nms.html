@@ -285,6 +285,19 @@ ideally obtaining only one detection per object
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Nms#isKeepCurIndex" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="isKeepCurIndex(boxArray:Array[Float],offset:Int,rowLength:Int,areas:Array[Float],curInd:Int,adaptiveThresh:Float,indices:Array[Int],indexLength:Int,normalized:Boolean):Boolean"></a>
+      <a id="isKeepCurIndex(Array[Float],Int,Int,Array[Float],Int,Float,Array[Int],Int,Boolean):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isKeepCurIndex</span><span class="params">(<span name="boxArray">boxArray: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="offset">offset: <span class="extype" name="scala.Int">Int</span></span>, <span name="rowLength">rowLength: <span class="extype" name="scala.Int">Int</span></span>, <span name="areas">areas: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="curInd">curInd: <span class="extype" name="scala.Int">Int</span></span>, <span name="adaptiveThresh">adaptiveThresh: <span class="extype" name="scala.Float">Float</span></span>, <span name="indices">indices: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="indexLength">indexLength: <span class="extype" name="scala.Int">Int</span></span>, <span name="normalized">normalized: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -299,15 +312,15 @@ ideally obtaining only one detection per object
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.Nms#nms" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="nms(scores:com.intel.analytics.bigdl.tensor.Tensor[Float],boxes:com.intel.analytics.bigdl.tensor.Tensor[Float],thresh:Float,indices:Array[Int]):Int"></a>
-      <a id="nms(Tensor[Float],Tensor[Float],Float,Array[Int]):Int"></a>
+      <a id="nms(scores:com.intel.analytics.bigdl.tensor.Tensor[Float],boxes:com.intel.analytics.bigdl.tensor.Tensor[Float],thresh:Float,indices:Array[Int],sorted:Boolean):Int"></a>
+      <a id="nms(Tensor[Float],Tensor[Float],Float,Array[Int],Boolean):Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">nms</span><span class="params">(<span name="scores">scores: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="boxes">boxes: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="thresh">thresh: <span class="extype" name="scala.Float">Float</span></span>, <span name="indices">indices: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+        <span class="name">nms</span><span class="params">(<span name="scores">scores: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="boxes">boxes: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="thresh">thresh: <span class="extype" name="scala.Float">Float</span></span>, <span name="indices">indices: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="sorted">sorted: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">1.</p><div class="fullcomment"><div class="comment cmt"><p>1. first sort the scores from highest to lowest and get indices
@@ -315,8 +328,21 @@ ideally obtaining only one detection per object
 get the overlap between this box and the remaining bboxes
 put the first index to result buffer
 3. update the indices by keeping those bboxes with overlap less than thresh
-4. repeat 2 and 3 until the indices are empty</p></div><dl class="paramcmts block"><dt class="param">scores</dt><dd class="cmt"><p>score tensor</p></dd><dt class="param">boxes</dt><dd class="cmt"><p>box tensor, with the size N*4</p></dd><dt class="param">thresh</dt><dd class="cmt"><p>overlap thresh</p></dd><dt class="param">indices</dt><dd class="cmt"><p>buffer to store indices after nms</p></dd><dt>returns</dt><dd class="cmt"><p>the length of indices after nms
+4. repeat 2 and 3 until the indices are empty</p></div><dl class="paramcmts block"><dt class="param">scores</dt><dd class="cmt"><p>score tensor</p></dd><dt class="param">boxes</dt><dd class="cmt"><p>box tensor, with the size N*4</p></dd><dt class="param">thresh</dt><dd class="cmt"><p>overlap thresh</p></dd><dt class="param">indices</dt><dd class="cmt"><p>buffer to store indices after nms</p></dd><dt class="param">sorted</dt><dd class="cmt"><p>whether the scores are sorted</p></dd><dt>returns</dt><dd class="cmt"><p>the length of indices after nms
 </p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Nms#nmsFast" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="nmsFast(scores:com.intel.analytics.bigdl.tensor.Tensor[Float],boxes:com.intel.analytics.bigdl.tensor.Tensor[Float],nmsThresh:Float,scoreThresh:Float,indices:Array[Int],topk:Int,eta:Float,normalized:Boolean):Int"></a>
+      <a id="nmsFast(Tensor[Float],Tensor[Float],Float,Float,Array[Int],Int,Float,Boolean):Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">nmsFast</span><span class="params">(<span name="scores">scores: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="boxes">boxes: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="nmsThresh">nmsThresh: <span class="extype" name="scala.Float">Float</span></span>, <span name="scoreThresh">scoreThresh: <span class="extype" name="scala.Float">Float</span></span>, <span name="indices">indices: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="topk">topk: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="eta">eta: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">1</span></span>, <span name="normalized">normalized: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <a id="notify():Unit"></a>

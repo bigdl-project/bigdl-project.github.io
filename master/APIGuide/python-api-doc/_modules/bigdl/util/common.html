@@ -524,6 +524,17 @@
     <span class="n">sparkConf</span><span class="o">.</span><span class="n">setAll</span><span class="p">(</span><span class="n">bigdl_conf</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">is_spark_below_2_2</span><span class="p">():</span>
         <span class="n">extend_spark_driver_cp</span><span class="p">(</span><span class="n">sparkConf</span><span class="p">,</span> <span class="n">get_bigdl_classpath</span><span class="p">())</span>
+
+    <span class="c1"># add content in PYSPARK_FILES in spark.submit.pyFiles</span>
+    <span class="c1"># This is a workaround for current Spark on k8s</span>
+    <span class="n">python_lib</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;PYSPARK_FILES&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">python_lib</span><span class="p">:</span>
+        <span class="n">existing_py_files</span> <span class="o">=</span> <span class="n">sparkConf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spark.submit.pyFiles&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">existing_py_files</span><span class="p">:</span>
+            <span class="n">sparkConf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;spark.submit.pyFiles&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">python_lib</span><span class="p">,</span> <span class="n">existing_py_files</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sparkConf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;spark.submit.pyFiles&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">python_lib</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">sparkConf</span></div>
 
 
@@ -649,6 +660,25 @@
     <span class="n">tmp_file</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;bigdl&quot;</span><span class="p">)</span>
     <span class="n">tmp_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">tmp_file</span><span class="o">.</span><span class="n">name</span></div>
+
+
+<div class="viewcode-block" id="text_from_path"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.text_from_path">[docs]</a><span class="k">def</span> <span class="nf">text_from_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">get_spark_context</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="get_local_file"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_local_file">[docs]</a><span class="k">def</span> <span class="nf">get_local_file</span><span class="p">(</span><span class="n">a_path</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_distributed</span><span class="p">(</span><span class="n">a_path</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">a_path</span>
+    <span class="n">path</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_spark_context</span><span class="p">()</span><span class="o">.</span><span class="n">binaryFiles</span><span class="p">(</span><span class="n">a_path</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">local_file_path</span> <span class="o">=</span> <span class="n">create_tmp_path</span><span class="p">()</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">local_file_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">local_file</span><span class="p">:</span>
+        <span class="n">local_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">local_file_path</span></div>
+
+
+<div class="viewcode-block" id="is_distributed"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.is_distributed">[docs]</a><span class="k">def</span> <span class="nf">is_distributed</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;://&quot;</span> <span class="ow">in</span> <span class="n">path</span></div>
 
 
 <div class="viewcode-block" id="get_activation_by_name"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_activation_by_name">[docs]</a><span class="k">def</span> <span class="nf">get_activation_by_name</span><span class="p">(</span><span class="n">activation_name</span><span class="p">,</span> <span class="n">activation_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>

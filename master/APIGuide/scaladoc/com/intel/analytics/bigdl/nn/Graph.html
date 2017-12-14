@@ -31,7 +31,7 @@
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">abstract </span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
@@ -39,18 +39,20 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A graph container. Each node can have multiple inputs. The output of the node should be a tensor.
-The output tensor can be connected to multiple nodes. So the module in each node can have a
-tensor or table input, and should have a tensor output.</p><p>The graph container can have multiple inputs and multiple outputs. If there's one input, the
-input data fed to the graph module should be a tensor. If there're multiple inputs, the input
-data fed to the graph module should be a table, which is actually an sequence of tensor. The
-order of the input tensors should be same with the order of the input nodes. This is also
-applied to the gradient from the module in the back propagation.</p><p>All of the input modules must accept a tensor input. If your input module accept multiple
-tensors as input, you should add some Input module before it as input nodes and connect the
-output of the Input modules to that module.</p><p>If there's one output, the module output is a tensor. If there're multiple outputs, the module
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A graph container. The modules in the container are connected as a directed Graph. Each module
+can output one tensor or multiple tensors(as table). The edges between modules in the graph
+define how these tensors are passed. For example, if a module outputs two tensors, you can
+pass these two tensors together to its following module, or pass only one of them
+to its following module. If a tensor in the module output is connected to multiple modules, in
+the back propagation, the gradients from multiple connection will be accumulated. If multiple
+edges point to one module, the tensors from these edges will be stack as a table, then pass to
+that module. In the back propagation, the gradients will be splited based on how the input
+tensors stack.</p><p>The graph container has multiple inputs and multiple outputs. The order of the input tensors
+should be same with the order of the input nodes when you construct the graph container. In the
+back propagation, the order of the gradients tensors should be the same with the order of the
+output nodes.</p><p>If there's one output, the module output is a tensor. If there're multiple outputs, the module
 output is a table, which is actually an sequence of tensor. The order of the output tensors is
-same with the order of the output modules. This is also applied to the gradient passed to the
-module in the back propagation.</p><p>All inputs should be able to connect to outputs through some paths in the graph. It is
+same with the order of the output modules.</p><p>All inputs should be able to connect to outputs through some paths in the graph. It is
 allowed that some successors of the inputs node are not connect to outputs. If so, these nodes
 will be excluded in the computation.
 </p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Numeric type. Only support float/double now
@@ -63,6 +65,9 @@ will be excluded in the computation.
         </dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>], <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div><div class="toggleContainer block">
+          <span class="toggle">Known Subclasses</span>
+          <div class="subClasses hiddenContent"><a href="DynamicGraph.html" class="extype" name="com.intel.analytics.bigdl.nn.DynamicGraph">DynamicGraph</a>, <a href="StaticGraph.html" class="extype" name="com.intel.analytics.bigdl.nn.StaticGraph">StaticGraph</a></div>
         </div></div>
         
 
@@ -101,7 +106,7 @@ will be excluded in the computation.
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.Graph#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(inputs:Seq[com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]],outputs:Seq[com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]],variables:Option[(Array[com.intel.analytics.bigdl.tensor.Tensor[T]],Array[com.intel.analytics.bigdl.tensor.Tensor[T]])],generateBackward:Boolean)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Graph[T]"></a>
+      <a id="&lt;init&gt;(inputs:Seq[com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]],outputs:Seq[com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]],variables:Option[(Array[com.intel.analytics.bigdl.tensor.Tensor[T]],Array[com.intel.analytics.bigdl.tensor.Tensor[T]])])(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Graph[T]"></a>
       <a id="&lt;init&gt;:Graph[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -109,7 +114,7 @@ will be excluded in the computation.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Graph</span><span class="params">(<span name="inputs">inputs: <span class="extype" name="scala.Seq">Seq</span>[<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]]</span>, <span name="outputs">outputs: <span class="extype" name="scala.Seq">Seq</span>[<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]]</span>, <span name="variables">variables: <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]], <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]])] = <span class="symbol">scala.None</span></span>, <span name="generateBackward">generateBackward: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]</span>)</span>
+        <span class="name">Graph</span><span class="params">(<span name="inputs">inputs: <span class="extype" name="scala.Seq">Seq</span>[<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]]</span>, <span name="outputs">outputs: <span class="extype" name="scala.Seq">Seq</span>[<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]]</span>, <span name="variables">variables: <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]], <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]])] = <span class="symbol">scala.None</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]</span>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">inputs</dt><dd class="cmt"><p>input nodes</p></dd><dt class="param">outputs</dt><dd class="cmt"><p>output nodes</p></dd><dt class="param">variables</dt><dd class="cmt"><p>an Array of tensor containing all the weights and biases of this graph,
@@ -117,28 +122,47 @@ will be excluded in the computation.
     </li></ol>
             </div>
 
-        <div id="types" class="types members">
-              <h3>Type Members</h3>
-              <ol><li name="com.intel.analytics.bigdl.nn.Graph.absModule" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="absModule=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,T]"></a>
-      <a id="absModule:absModule"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name">absModule</span><span class="result"> = <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[_ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, _ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]</span>
-      </span>
-      </h4>
-      
-    </li></ol>
-            </div>
-
         
 
         <div id="values" class="values members">
-              <h3>Value Members</h3>
+              <h3>Abstract Value Members</h3>
+              <ol><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#updateGradInput" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="updateGradInput(input:A,gradOutput:B):A"></a>
+      <a id="updateGradInput(Activity,Activity):Activity"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updateGradInput</span><span class="params">(<span name="input">input: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>, <span name="gradOutput">gradOutput: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Computing the gradient of the module with respect to its own input.</p><div class="fullcomment"><div class="comment cmt"><p>Computing the gradient of the module with respect to its own input. This is returned in
+gradInput. Also, the gradInput state variable is updated accordingly.
+</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"></dd><dt class="param">gradOutput</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#updateOutput" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="updateOutput(input:A):B"></a>
+      <a id="updateOutput(Activity):Activity"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updateOutput</span><span class="params">(<span name="input">input: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Computes the output using the current parameter set of the class and input.</p><div class="fullcomment"><div class="comment cmt"><p>Computes the output using the current parameter set of the class and input. This function
+returns the result which is stored in the output field.
+</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
@@ -204,8 +228,24 @@ will be excluded in the computation.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Graph#accGradParameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="accGradParameters(input:com.intel.analytics.bigdl.nn.abstractnn.Activity,gradOutput:com.intel.analytics.bigdl.nn.abstractnn.Activity):Unit"></a>
+    </li><li name="com.intel.analytics.bigdl.nn.Graph#accActivity" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="accActivity(activity:com.intel.analytics.bigdl.nn.abstractnn.Activity,other:com.intel.analytics.bigdl.nn.abstractnn.Activity):com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
+      <a id="accActivity(Activity,Activity):Activity"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">accActivity</span><span class="params">(<span name="activity">activity: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>, <span name="other">other: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#accGradParameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="accGradParameters(input:A,gradOutput:B):Unit"></a>
       <a id="accGradParameters(Activity,Activity):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -221,7 +261,7 @@ perform this step as they do not have any parameters. The state variable name fo
 parameters is module dependent. The module is expected to accumulate the gradients with
 respect to the parameters in some variable.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"></dd><dt class="param">gradOutput</dt><dd class="cmt"><p>
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Graph">Graph</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.Graph#add" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="add(module:com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,T]):Graph.this.type"></a>
       <a id="add(AbstractModule[_&lt;:Activity,_&lt;:Activity,T]):Graph.this.type"></a>
@@ -238,6 +278,24 @@ respect to the parameters in some variable.
 </p><div class="fullcomment"><div class="comment cmt"><p>Add a sub-module to the contained <code>modules</code>
 </p></div><dl class="paramcmts block"><dt class="param">module</dt><dd class="cmt"><p>module to be add</p></dd><dt>returns</dt><dd class="cmt"><p>this container
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Graph">Graph</a> → <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Graph#addZeroTensorToMissingGradOutput" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="addZeroTensorToMissingGradOutput(output:com.intel.analytics.bigdl.utils.Table,gradOutput:com.intel.analytics.bigdl.utils.Table):Unit"></a>
+      <a id="addZeroTensorToMissingGradOutput(Table,Table):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addZeroTensorToMissingGradOutput</span><span class="params">(<span name="output">output: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="gradOutput">gradOutput: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">For a multi-tensor output module, some output tensors may not contributed to the final forward
+result.</p><div class="fullcomment"><div class="comment cmt"><p>For a multi-tensor output module, some output tensors may not contributed to the final forward
+result. So in the back propagation, the gradient on these positions are missing. And we use
+zero tensor to populate.
+</p></div><dl class="paramcmts block"><dt class="param">output</dt><dd class="cmt"></dd><dt class="param">gradOutput</dt><dd class="cmt"><p>
+</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.Container#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="apply(name:String):Option[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]"></a>
       <a id="apply(String):Option[AbstractModule[Activity,Activity,T]]"></a>
@@ -266,8 +324,8 @@ there are multiple modules with the given name, an exception will be thrown.</p>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Graph#backward" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="backward(input:com.intel.analytics.bigdl.nn.abstractnn.Activity,gradOutput:com.intel.analytics.bigdl.nn.abstractnn.Activity):com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#backward" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="backward(input:A,gradOutput:B):A"></a>
       <a id="backward(Activity,Activity):Activity"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -283,7 +341,33 @@ general this method makes the assumption forward(input) has been called before, 
 input. This is necessary for optimization reasons. If you do not respect this rule, backward()
 will compute incorrect gradients.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">gradOutput</dt><dd class="cmt"><p>gradient of next layer</p></dd><dt>returns</dt><dd class="cmt"><p>gradient corresponding to input data
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Graph">Graph</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Graph#backwardGraph" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="backwardGraph:com.intel.analytics.bigdl.utils.DirectedGraph[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]"></a>
+      <a id="backwardGraph:DirectedGraph[AbstractModule[Activity,Activity,T]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">backwardGraph</span><span class="result">: <a href="../utils/DirectedGraph.html" class="extype" name="com.intel.analytics.bigdl.utils.DirectedGraph">DirectedGraph</a>[<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Graph#backwardNodes" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="backwardNodes:Array[com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]]"></a>
+      <a id="backwardNodes:Array[Node[AbstractModule[Activity,Activity,T]]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">backwardNodes</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="../utils/Node.html" class="extype" name="com.intel.analytics.bigdl.utils.Node">Node</a>[<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]]]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#backwardTime" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="backwardTime:Long"></a>
       <a id="backwardTime:Long"></a>
@@ -390,6 +474,32 @@ super.clearState in the override method
 Such as runningMean and runningVar of BatchNormalization.
 </p></div><dl class="paramcmts block"><dt class="param">src</dt><dd class="cmt"><p>source Module</p></dd><dt>returns</dt><dd class="cmt"><p>this
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Graph#dummyOutput" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dummyOutput:com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]"></a>
+      <a id="dummyOutput:Node[AbstractModule[Activity,Activity,T]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dummyOutput</span><span class="result">: <a href="../utils/Node.html" class="extype" name="com.intel.analytics.bigdl.utils.Node">Node</a>[<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Graph#dummyOutputGrad" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dummyOutputGrad:com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]"></a>
+      <a id="dummyOutputGrad:ModuleNode[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dummyOutputGrad</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -457,6 +567,19 @@ Such as runningMean and runningVar of BatchNormalization.
       <p class="shortcomment cmt">use ValidationMethod to evaluate module</p><div class="fullcomment"><div class="comment cmt"><p>use ValidationMethod to evaluate module</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for test</p></dd><dt class="param">vMethods</dt><dd class="cmt"><p>validation methods</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchsize of all partitions,
                  optional param and default 4 * partitionNum of dataset</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Graph#fetchModelGradInput" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fetchModelGradInput():com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
+      <a id="fetchModelGradInput():Activity"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fetchModelGradInput</span><span class="params">()</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -476,6 +599,32 @@ Such as runningMean and runningVar of BatchNormalization.
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Graph#findGradOutput" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="findGradOutput(curNode:com.intel.analytics.bigdl.nn.Graph.ModuleNode[T],gradOutput:com.intel.analytics.bigdl.nn.abstractnn.Activity):com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
+      <a id="findGradOutput(ModuleNode[T],Activity):Activity"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">findGradOutput</span><span class="params">(<span name="curNode">curNode: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]</span>, <span name="gradOutput">gradOutput: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Graph#findInput" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="findInput(node:com.intel.analytics.bigdl.nn.Graph.ModuleNode[T],input:com.intel.analytics.bigdl.nn.abstractnn.Activity):com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
+      <a id="findInput(ModuleNode[T],Activity):Activity"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">findInput</span><span class="params">(<span name="node">node: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]</span>, <span name="input">input: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.Container#findModules" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="findModules(moduleType:String):scala.collection.mutable.ArrayBuffer[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[_,_,T]]"></a>
       <a id="findModules(String):ArrayBuffer[AbstractModule[_,_,T]]"></a>
@@ -505,6 +654,32 @@ Such as runningMean and runningVar of BatchNormalization.
 the output state variable should have been updated to the new value.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt>returns</dt><dd class="cmt"><p>output data
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Graph#forwardGraph" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="forwardGraph:com.intel.analytics.bigdl.utils.DirectedGraph[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]"></a>
+      <a id="forwardGraph:DirectedGraph[AbstractModule[Activity,Activity,T]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">forwardGraph</span><span class="result">: <a href="../utils/DirectedGraph.html" class="extype" name="com.intel.analytics.bigdl.utils.DirectedGraph">DirectedGraph</a>[<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Graph#forwardNodes" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="forwardNodes:Array[com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]]"></a>
+      <a id="forwardNodes:Array[Node[AbstractModule[Activity,Activity,T]]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">forwardNodes</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="../utils/Node.html" class="extype" name="com.intel.analytics.bigdl.utils.Node">Node</a>[<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]]]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#forwardTime" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="forwardTime:Long"></a>
       <a id="forwardTime:Long"></a>
@@ -518,6 +693,22 @@ the output state variable should have been updated to the new value.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Graph#freeze" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="freeze(names:Array[String]):Graph.this.type"></a>
+      <a id="freeze(Array[String]):Graph.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">freeze</span><span class="params">(<span name="names">names: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Graph">Graph</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">set an array of layers that match the given <code><code><code>names</code></code></code> to be &quot;freezed&quot;,
+i.</p><div class="fullcomment"><div class="comment cmt"><p>set an array of layers that match the given <code><code><code>names</code></code></code> to be &quot;freezed&quot;,
+i.e. their parameters(weight/bias, if exists) are not changed in training process</p></div><dl class="paramcmts block"><dt class="param">names</dt><dd class="cmt"><p>an array of layer names</p></dd><dt>returns</dt><dd class="cmt"><p>current graph model
+</p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.Container#freeze" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="freeze(names:String*):Container.this.type"></a>
       <a id="freeze(String*):Graph.this.type"></a>
@@ -577,6 +768,19 @@ set an array of layers that match the given <code><code><code>names</code></code
       </h4>
       <p class="shortcomment cmt">get forward executions, the dummy node will be filtered</p><div class="fullcomment"><div class="comment cmt"><p>get forward executions, the dummy node will be filtered</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Graph#getInput" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getInput(node:com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]],input:com.intel.analytics.bigdl.nn.abstractnn.Activity):com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
+      <a id="getInput(Node[AbstractModule[Activity,Activity,T]],Activity):Activity"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getInput</span><span class="params">(<span name="node">node: <a href="../utils/Node.html" class="extype" name="com.intel.analytics.bigdl.utils.Node">Node</a>[<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]]</span>, <span name="input">input: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#getName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getName():String"></a>
       <a id="getName():String"></a>
@@ -795,6 +999,20 @@ exception</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><
       <p class="shortcomment cmt">Build graph: some other modules point to current module</p><div class="fullcomment"><div class="comment cmt"><p>Build graph: some other modules point to current module</p></div><dl class="paramcmts block"><dt class="param">first</dt><dd class="cmt"><p>distinguish from another inputs when input parameter list is empty</p></dd><dt class="param">nodesWithIndex</dt><dd class="cmt"><p>upstream module nodes and the output tensor index. The start index is 1.</p></dd><dt>returns</dt><dd class="cmt"><p>node containing current module
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#inputs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="inputs(nodes:Array[com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]]):com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]"></a>
+      <a id="inputs(Array[ModuleNode[T]]):ModuleNode[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">inputs</span><span class="params">(<span name="nodes">nodes: <span class="extype" name="scala.Array">Array</span>[<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]]</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Build graph: some other modules point to current module</p><div class="fullcomment"><div class="comment cmt"><p>Build graph: some other modules point to current module</p></div><dl class="paramcmts block"><dt class="param">nodes</dt><dd class="cmt"><p>upstream module nodes in an array</p></dd><dt>returns</dt><dd class="cmt"><p>node containing current module
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#inputs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="inputs(nodes:com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]*):com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]"></a>
       <a id="inputs(ModuleNode[T]*):ModuleNode[T]"></a>
       <h4 class="signature">
@@ -834,6 +1052,20 @@ exception</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Graph#isStopGradient" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isStopGradient(module:com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,_&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,T]):Boolean"></a>
+      <a id="isStopGradient(AbstractModule[_&lt;:Activity,_&lt;:Activity,T]):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isStopGradient</span><span class="params">(<span name="module">module: <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[_ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, _ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Graph.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">whether stop propagating gradInput back</p><div class="fullcomment"><div class="comment cmt"><p>whether stop propagating gradInput back</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#isTraining" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isTraining():Boolean"></a>
       <a id="isTraining():Boolean"></a>
@@ -1015,6 +1247,21 @@ Custom modules should override this function if they have parameters
       </h4>
       <p class="shortcomment cmt">module predict, return the predict label</p><div class="fullcomment"><div class="comment cmt"><p>module predict, return the predict label</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for prediction</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchSize for all partitions.
                  if -1, default is 4 * partitionNumber of dataset
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#predictImage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="predictImage(imageFrame:com.intel.analytics.bigdl.transform.vision.image.ImageFrame,outputLayer:String,shareBuffer:Boolean,batchPerPartition:Int,predictKey:String):com.intel.analytics.bigdl.transform.vision.image.ImageFrame"></a>
+      <a id="predictImage(ImageFrame,String,Boolean,Int,String):ImageFrame"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">predictImage</span><span class="params">(<span name="imageFrame">imageFrame: <a href="../transform/vision/image/ImageFrame.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame">ImageFrame</a></span>, <span name="outputLayer">outputLayer: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">null</span></span>, <span name="shareBuffer">shareBuffer: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="batchPerPartition">batchPerPartition: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">4</span></span>, <span name="predictKey">predictKey: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="../../../../package.html">ImageFeature.predict</a></span></span></span>)</span><span class="result">: <a href="../transform/vision/image/ImageFrame.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame">ImageFrame</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">model predict images, return imageFrame with predicted tensor</p><div class="fullcomment"><div class="comment cmt"><p>model predict images, return imageFrame with predicted tensor</p></div><dl class="paramcmts block"><dt class="param">imageFrame</dt><dd class="cmt"><p>imageFrame that contains images</p></dd><dt class="param">outputLayer</dt><dd class="cmt"><p>if outputLayer is not null, the output of layer that matches
+                     outputLayer will be used as predicted output</p></dd><dt class="param">shareBuffer</dt><dd class="cmt"><p>whether to share same memory for each batch predict results</p></dd><dt class="param">batchPerPartition</dt><dd class="cmt"><p>batch size per partition, default is 4</p></dd><dt class="param">predictKey</dt><dd class="cmt"><p>key to store predicted result</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#quantize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="quantize():com.intel.analytics.bigdl.Module[T]"></a>
@@ -1388,38 +1635,6 @@ to be trained(updated) in training process
 if names is not empty, unfreeze layers that match given names
 </p></div><dl class="paramcmts block"><dt class="param">names</dt><dd class="cmt"><p>array of module names to unFreeze
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Graph#updateGradInput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="updateGradInput(input:com.intel.analytics.bigdl.nn.abstractnn.Activity,gradOutput:com.intel.analytics.bigdl.nn.abstractnn.Activity):com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
-      <a id="updateGradInput(Activity,Activity):Activity"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">updateGradInput</span><span class="params">(<span name="input">input: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>, <span name="gradOutput">gradOutput: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Computing the gradient of the module with respect to its own input.</p><div class="fullcomment"><div class="comment cmt"><p>Computing the gradient of the module with respect to its own input. This is returned in
-gradInput. Also, the gradInput state variable is updated accordingly.
-</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"></dd><dt class="param">gradOutput</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Graph">Graph</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.Graph#updateOutput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="updateOutput(input:com.intel.analytics.bigdl.nn.abstractnn.Activity):com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
-      <a id="updateOutput(Activity):Activity"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">updateOutput</span><span class="params">(<span name="input">input: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Computes the output using the current parameter set of the class and input.</p><div class="fullcomment"><div class="comment cmt"><p>Computes the output using the current parameter set of the class and input. This function
-returns the result which is stored in the output field.
-</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Graph">Graph</a> → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.Container#updateParameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="updateParameters(learningRate:T):Unit"></a>
       <a id="updateParameters(T):Unit"></a>

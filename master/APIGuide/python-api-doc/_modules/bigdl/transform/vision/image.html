@@ -138,12 +138,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span>
             <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">JavaValue</span><span class="o">.</span><span class="n">jvm_class_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">image_tensor</span><span class="p">,</span> <span class="n">label_tensor</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ImageFeature.to_sample"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFeature.to_sample">[docs]</a>    <span class="k">def</span> <span class="nf">to_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">float_key</span><span class="o">=</span><span class="s2">&quot;floats&quot;</span><span class="p">,</span> <span class="n">to_chw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">with_im_info</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        ImageFeature to sample</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;imageFeatureToSample&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">float_key</span><span class="p">,</span> <span class="n">to_chw</span><span class="p">,</span> <span class="n">with_im_info</span><span class="p">)</span></div>
-
 <div class="viewcode-block" id="ImageFeature.get_image"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFeature.get_image">[docs]</a>    <span class="k">def</span> <span class="nf">get_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">float_key</span><span class="o">=</span><span class="s2">&quot;floats&quot;</span><span class="p">,</span> <span class="n">to_chw</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        get image as ndarray from ImageFeature</span>
@@ -180,7 +174,7 @@
 
 
 <div class="viewcode-block" id="ImageFrame.read"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.read">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_partitions</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Read images as Image Frame</span>
 <span class="sd">        if sc is defined, Read image as DistributedImageFrame from local file system or HDFS</span>
@@ -189,12 +183,13 @@
 <span class="sd">        if sc is defined, path can be local or HDFS. Wildcard character are supported.</span>
 <span class="sd">        if sc is null, path is local directory/image file/image file with wildcard character</span>
 <span class="sd">        :param sc SparkContext</span>
+<span class="sd">        :param min_partitions A suggestion value of the minimal splitting number for input data.</span>
 <span class="sd">        :return ImageFrame</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">ImageFrame</span><span class="p">(</span><span class="n">jvalue</span><span class="o">=</span><span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sc</span><span class="p">))</span></div>
+        <span class="k">return</span> <span class="n">ImageFrame</span><span class="p">(</span><span class="n">jvalue</span><span class="o">=</span><span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="n">min_partitions</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="ImageFrame.readParquet"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.readParquet">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">readParquet</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sql_context</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="ImageFrame.read_parquet"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.read_parquet">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">read_parquet</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sql_context</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Read parquet file as DistributedImageFrame</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -232,11 +227,11 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_frame</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="ImageFrame.to_sample"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.to_sample">[docs]</a>    <span class="k">def</span> <span class="nf">to_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">float_key</span><span class="o">=</span><span class="s2">&quot;floats&quot;</span><span class="p">,</span> <span class="n">to_chw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">with_im_info</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="ImageFrame.get_predict"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.get_predict">[docs]</a>    <span class="k">def</span> <span class="nf">get_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        ImageFrame toSample</span>
+<span class="sd">        get prediction from ImageFrame</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_frame</span><span class="o">.</span><span class="n">to_sample</span><span class="p">(</span><span class="n">float_key</span><span class="p">,</span> <span class="n">to_chw</span><span class="p">,</span> <span class="n">with_im_info</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_frame</span><span class="o">.</span><span class="n">get_predict</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div></div>
 
 
 <div class="viewcode-block" id="LocalImageFrame"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.LocalImageFrame">[docs]</a><span class="k">class</span> <span class="nc">LocalImageFrame</span><span class="p">(</span><span class="n">ImageFrame</span><span class="p">):</span>
@@ -271,12 +266,12 @@
         <span class="n">labels</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;localImageFrameToLabelTensor&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">tensor</span><span class="p">:</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">(),</span> <span class="n">labels</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="LocalImageFrame.to_sample"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.LocalImageFrame.to_sample">[docs]</a>    <span class="k">def</span> <span class="nf">to_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">float_key</span><span class="o">=</span><span class="s2">&quot;floats&quot;</span><span class="p">,</span> <span class="n">to_chw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">with_im_info</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="LocalImageFrame.get_predict"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.LocalImageFrame.get_predict">[docs]</a>    <span class="k">def</span> <span class="nf">get_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        to sample list</span>
+<span class="sd">        get prediction list from ImageFrame</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span>
-                             <span class="s2">&quot;localImageFrameToSample&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">float_key</span><span class="p">,</span> <span class="n">to_chw</span><span class="p">,</span> <span class="n">with_im_info</span><span class="p">)</span></div></div>
+        <span class="n">predicts</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;localImageFrameToPredict&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">predict</span><span class="p">:</span> <span class="p">(</span><span class="n">predict</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">predict</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()),</span> <span class="n">predicts</span><span class="p">)</span></div></div>
 
 
 
@@ -313,12 +308,13 @@
         <span class="n">tensor_rdd</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;distributedImageFrameToLabelTensorRdd&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">tensor_rdd</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">tensor</span><span class="p">:</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">())</span></div>
 
-<div class="viewcode-block" id="DistributedImageFrame.to_sample"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.DistributedImageFrame.to_sample">[docs]</a>    <span class="k">def</span> <span class="nf">to_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">float_key</span><span class="o">=</span><span class="s2">&quot;floats&quot;</span><span class="p">,</span> <span class="n">to_chw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">with_im_info</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="DistributedImageFrame.get_predict"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.DistributedImageFrame.get_predict">[docs]</a>    <span class="k">def</span> <span class="nf">get_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        to sample rdd</span>
+<span class="sd">        get prediction rdd from ImageFrame</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span>
-                             <span class="s2">&quot;distributedImageFrameToSampleRdd&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">float_key</span><span class="p">,</span> <span class="n">to_chw</span><span class="p">,</span> <span class="n">with_im_info</span><span class="p">)</span></div></div>
+        <span class="n">predicts</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;distributedImageFrameToPredict&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">predicts</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">predict</span><span class="p">:</span> <span class="p">(</span><span class="n">predict</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">predict</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()))</span></div></div>
+
 
 <div class="viewcode-block" id="HFlip"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.HFlip">[docs]</a><span class="k">class</span> <span class="nc">HFlip</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -593,11 +589,29 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">RoiNormalize</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MatToFloats"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.MatToFloats">[docs]</a><span class="k">class</span> <span class="nc">MatToFloats</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Transform OpenCVMat to float array, note that in this transformer, the mat is released</span>
+<span class="sd">    :param valid_height valid height in case the mat is invalid</span>
+<span class="sd">    :param valid_width valid width in case the mat is invalid</span>
+<span class="sd">    :param valid_channel valid channel in case the mat is invalid</span>
+<span class="sd">    :param out_key key to store float array</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valid_height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">valid_width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">valid_channel</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
-                 <span class="n">mean_r</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">mean_g</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">mean_b</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">out_key</span> <span class="o">=</span> <span class="s2">&quot;floats&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+                 <span class="n">out_key</span> <span class="o">=</span> <span class="s2">&quot;floats&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MatToFloats</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">valid_height</span><span class="p">,</span> <span class="n">valid_width</span><span class="p">,</span> <span class="n">valid_channel</span><span class="p">,</span>
-                                          <span class="n">mean_r</span><span class="p">,</span> <span class="n">mean_g</span><span class="p">,</span> <span class="n">mean_b</span><span class="p">,</span> <span class="n">out_key</span><span class="p">)</span></div>
+                                          <span class="n">out_key</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MatToTensor"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.MatToTensor">[docs]</a><span class="k">class</span> <span class="nc">MatToTensor</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    transform opencv mat to tensor</span>
+<span class="sd">    :param to_rgb BGR to RGB (default is BGR)</span>
+<span class="sd">    :param tensor_key key to store transformed tensor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_rgb</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tensor_key</span><span class="o">=</span><span class="s2">&quot;imageTensor&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MatToTensor</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">to_rgb</span><span class="p">,</span> <span class="n">tensor_key</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="AspectScale"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.AspectScale">[docs]</a><span class="k">class</span> <span class="nc">AspectScale</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Resize the image, keep the aspect ratio. scale according to the short edge</span>
@@ -625,6 +639,17 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">BytesToMat</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ImageFrameToSample"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrameToSample">[docs]</a><span class="k">class</span> <span class="nc">ImageFrameToSample</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    transform imageframe to samples</span>
+<span class="sd">    :param input_keys keys that maps inputs (each input should be a tensor)</span>
+<span class="sd">    :param target_keys keys that maps targets (each target should be a tensor)</span>
+<span class="sd">    :param sample_key key to store sample</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;imageTensor&quot;</span><span class="p">],</span> <span class="n">target_keys</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">sample_key</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ImageFrameToSample</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_keys</span><span class="p">,</span> <span class="n">target_keys</span><span class="p">,</span> <span class="n">sample_key</span><span class="p">)</span></div>
 
 </pre></div>
 

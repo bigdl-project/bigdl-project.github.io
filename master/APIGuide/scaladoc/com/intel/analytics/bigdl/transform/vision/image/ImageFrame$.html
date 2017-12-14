@@ -347,15 +347,15 @@
       <p class="shortcomment cmt">create DistributedImageFrame</p><div class="fullcomment"><div class="comment cmt"><p>create DistributedImageFrame</p></div><dl class="paramcmts block"><dt class="param">data</dt><dd class="cmt"><p>rdd of ImageFeature
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame#read" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="read(path:String,sc:org.apache.spark.SparkContext):com.intel.analytics.bigdl.transform.vision.image.ImageFrame"></a>
-      <a id="read(String,SparkContext):ImageFrame"></a>
+      <a id="read(path:String,sc:org.apache.spark.SparkContext,minPartitions:Int):com.intel.analytics.bigdl.transform.vision.image.ImageFrame"></a>
+      <a id="read(String,SparkContext,Int):ImageFrame"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">read</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="sc">sc: <span class="extype" name="org.apache.spark.SparkContext">SparkContext</span> = <span class="symbol">null</span></span>)</span><span class="result">: <a href="ImageFrame.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame">ImageFrame</a></span>
+        <span class="name">read</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="sc">sc: <span class="extype" name="org.apache.spark.SparkContext">SparkContext</span> = <span class="symbol">null</span></span>, <span name="minPartitions">minPartitions: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <a href="ImageFrame.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame">ImageFrame</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Read images as Image Frame
@@ -366,7 +366,7 @@ if sc is defined, Read image as DistributedImageFrame from local file system or 
 if sc is null, Read image as LocalImageFrame from local file system
 </p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to read images
 if sc is defined, path can be local or HDFS. Wildcard character are supported.
-if sc is null, path is local directory/image file/image file with wildcard character</p></dd><dt class="param">sc</dt><dd class="cmt"><p>SparkContext</p></dd><dt>returns</dt><dd class="cmt"><p>ImageFrame
+if sc is null, path is local directory/image file/image file with wildcard character</p></dd><dt class="param">sc</dt><dd class="cmt"><p>SparkContext</p></dd><dt class="param">minPartitions</dt><dd class="cmt"><p>A suggestion value of the minimal splitting number for input data.</p></dd><dt>returns</dt><dd class="cmt"><p>ImageFrame
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame#readParquet" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="readParquet(path:String,sqlContext:org.apache.spark.sql.SQLContext):com.intel.analytics.bigdl.transform.vision.image.DistributedImageFrame"></a>
@@ -468,20 +468,20 @@ if sc is null, path is local directory/image file/image file with wildcard chara
               
         </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame#writeParquet" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="writeParquet(path:String,output:String,sqlContext:org.apache.spark.sql.SQLContext):Unit"></a>
-      <a id="writeParquet(String,String,SQLContext):Unit"></a>
+      <a id="writeParquet(path:String,output:String,sqlContext:org.apache.spark.sql.SQLContext,partitionNum:Int):Unit"></a>
+      <a id="writeParquet(String,String,SQLContext,Int):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">writeParquet</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="output">output: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="sqlContext">sqlContext: <span class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">writeParquet</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="output">output: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="sqlContext">sqlContext: <span class="extype" name="org.apache.spark.sql.SQLContext">SQLContext</span></span>, <span name="partitionNum">partitionNum: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Write images as parquet file
 </p><div class="fullcomment"><div class="comment cmt"><p>Write images as parquet file
-</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to read images. Local or HDFS. Wildcard character are supported.</p></dd><dt class="param">output</dt><dd class="cmt"><p>Parquet file path
+</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to read images. Local or HDFS. Wildcard character are supported.</p></dd><dt class="param">output</dt><dd class="cmt"><p>Parquet file path</p></dd><dt class="param">partitionNum</dt><dd class="cmt"><p>partition number
 </p></dd></dl></div>
     </li></ol>
             </div>

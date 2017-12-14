@@ -92,6 +92,7 @@
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">get_activation_by_name</span>
 <span class="kn">from</span> <span class="nn">bigdl.optim.optimizer</span> <span class="k">import</span> <span class="n">L1Regularizer</span><span class="p">,</span> <span class="n">L2Regularizer</span><span class="p">,</span> <span class="n">L1L2Regularizer</span>
 <span class="kn">from</span> <span class="nn">py4j.java_gateway</span> <span class="k">import</span> <span class="n">JavaObject</span>
+<span class="kn">from</span> <span class="nn">bigdl.transform.vision.image</span> <span class="k">import</span> <span class="n">ImageFrame</span>
 
 <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span> <span class="o">&gt;=</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
     <span class="n">long</span> <span class="o">=</span> <span class="nb">int</span>
@@ -407,6 +408,26 @@
         <span class="n">result</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span>
                                <span class="s2">&quot;modelPredictClass&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span></div>
+
+<div class="viewcode-block" id="Layer.predict_image"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict_image">[docs]</a>    <span class="k">def</span> <span class="nf">predict_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_frame</span><span class="p">,</span> <span class="n">output_layer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">share_buffer</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                      <span class="n">batch_per_partition</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">predict_key</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        model predict images, return imageFrame with predicted tensor</span>
+<span class="sd">        :param image_frame imageFrame that contains images</span>
+<span class="sd">        :param output_layer if output_layer is not null, the output of layer that matches</span>
+<span class="sd">        output_layer will be used as predicted output</span>
+<span class="sd">        :param share_buffer whether to share same memory for each batch predict results</span>
+<span class="sd">        :param batch_per_partition batch size per partition, default is 4</span>
+<span class="sd">        :param predict_key key to store predicted results</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">image_frame</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;modelPredictImage&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                             <span class="n">image_frame</span><span class="p">,</span>
+                             <span class="n">output_layer</span><span class="p">,</span>
+                             <span class="n">share_buffer</span><span class="p">,</span>
+                             <span class="n">batch_per_partition</span><span class="p">,</span>
+                             <span class="n">predict_key</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ImageFrame</span><span class="p">(</span><span class="n">image_frame</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Layer.set_weights"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.set_weights">[docs]</a>    <span class="k">def</span> <span class="nf">set_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -2368,6 +2389,39 @@
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CosineDistance</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="UpSampling2D"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.UpSampling2D">[docs]</a><span class="k">class</span> <span class="nc">UpSampling2D</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Upsampling layer for 2D inputs.</span>
+<span class="sd">    Repeats the heights and widths of the data by size[0] and size[1] respectively.</span>
+
+<span class="sd">    If input&#39;s dataformat is NCHW, then the size of output is (N, C, H * size[0], W * size[1])</span>
+
+<span class="sd">    :param size tuple of 2 integers. The upsampling factors for heights and widths.</span>
+<span class="sd">    :param format DataFormat, NCHW or NHWC</span>
+
+<span class="sd">    &gt;&gt;&gt; upsampled2d = UpSampling2D([2, 3])</span>
+<span class="sd">    creating: createUpSampling2D</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;nchw&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">UpSampling2D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">data_format</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="UpSampling1D"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.UpSampling1D">[docs]</a><span class="k">class</span> <span class="nc">UpSampling1D</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Upsampling layer for 1D inputs.</span>
+<span class="sd">    Repeats each temporal step length times along the time axis.</span>
+
+<span class="sd">    If input&#39;s size is (batch, steps, features),</span>
+<span class="sd">    then the output&#39;s size is (batch, steps * length, features)</span>
+
+<span class="sd">    :param length integer, upsampling factor.</span>
+<span class="sd">    &gt;&gt;&gt; upsampled1d = UpSampling1D(2)</span>
+<span class="sd">    creating: createUpSampling1D</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">UpSampling1D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Input"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Input">[docs]</a><span class="k">class</span> <span class="nc">Input</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
@@ -3283,6 +3337,76 @@
                                     <span class="n">upper</span><span class="p">,</span>
                                     <span class="n">inplace</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="SpatialSeperableConvolution"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SpatialSeperableConvolution">[docs]</a><span class="k">class</span> <span class="nc">SpatialSeperableConvolution</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Separable convolutions consist in first performing a depthwise spatial convolution (which acts</span>
+<span class="sd">    on each input channel separately) followed by a pointwise convolution which mixes together the</span>
+<span class="sd">    resulting output channels. The  depth_multiplier argument controls how many output channels are</span>
+<span class="sd">    generated per input channel in the depthwise step.</span>
+
+<span class="sd">    :param n_input_channel The number of expected input planes in the image given into forward()</span>
+<span class="sd">    :param n_output_channel The number of output planes the convolution layer will produce.</span>
+<span class="sd">    :param depth_multiplier how many internal channels are generated per input channel</span>
+<span class="sd">    :param kernel_w The kernel width of the convolution</span>
+<span class="sd">    :param kernel_h The kernel height of the convolution</span>
+<span class="sd">    :param stride_w The step of the convolution in the width dimension.</span>
+<span class="sd">    :param stride_h The step of the convolution in the height dimension</span>
+<span class="sd">    :param pad_w The additional zeros added per width to the input planes.</span>
+<span class="sd">    :param pad_h The additional zeros added per height to the input planes.</span>
+<span class="sd">    :param with_bias: the optional initial value for if need bias</span>
+<span class="sd">    :param data_format: a string value of &quot;NHWC&quot; or &quot;NCHW&quot; to specify the input data format of this layer. In &quot;NHWC&quot; format</span>
+<span class="sd">                       data is stored in the order of [batch_size, height, width, channels], in &quot;NCHW&quot; format data is stored</span>
+<span class="sd">                       in the order of [batch_size, channels, height, width].</span>
+<span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the depth weights matrices.</span>
+<span class="sd">    :param bRegularizer: instance of [[Regularizer]]applied to the pointwise bias.</span>
+<span class="sd">    :param pRegularizer: instance of [[Regularizer]]applied to the pointwise weights.</span>
+
+<span class="sd">    &gt;&gt;&gt; conv = SpatialSeperableConvolution(6, 12, 1, 5, 5)</span>
+<span class="sd">    creating: createSpatialSeperableConvolution</span>
+<span class="sd">    &gt;&gt;&gt; conv.setWRegularizer(L1Regularizer(0.5))</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    &gt;&gt;&gt; conv.setBRegularizer(L1Regularizer(0.5))</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    &gt;&gt;&gt; conv = SpatialSeperableConvolution(6, 12, 1, 5, 5, 1, 1, 0, 0, True, &quot;NCHW&quot;, L1Regularizer(0.5), L1Regularizer(0.5), L1Regularizer(0.5))</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    creating: createSpatialSeperableConvolution</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">n_input_channel</span><span class="p">,</span>
+                 <span class="n">n_output_channel</span><span class="p">,</span>
+                 <span class="n">depth_multiplier</span><span class="p">,</span>
+                 <span class="n">kernel_w</span><span class="p">,</span>
+                 <span class="n">kernel_h</span><span class="p">,</span>
+                 <span class="n">stride_w</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">stride_h</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">pad_w</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">pad_h</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">with_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">,</span>
+                 <span class="n">w_regularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">b_regularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">p_regularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SpatialSeperableConvolution</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                                 <span class="n">n_input_channel</span><span class="p">,</span>
+                                                 <span class="n">n_output_channel</span><span class="p">,</span>
+                                                 <span class="n">depth_multiplier</span><span class="p">,</span>
+                                                 <span class="n">kernel_w</span><span class="p">,</span>
+                                                 <span class="n">kernel_h</span><span class="p">,</span>
+                                                 <span class="n">stride_w</span><span class="p">,</span>
+                                                 <span class="n">stride_h</span><span class="p">,</span>
+                                                 <span class="n">pad_w</span><span class="p">,</span>
+                                                 <span class="n">pad_h</span><span class="p">,</span>
+                                                 <span class="n">with_bias</span><span class="p">,</span>
+                                                 <span class="n">data_format</span><span class="p">,</span>
+                                                 <span class="n">w_regularizer</span><span class="p">,</span>
+                                                 <span class="n">b_regularizer</span><span class="p">,</span>
+                                                 <span class="n">p_regularizer</span><span class="p">,</span>
+                                                 <span class="p">)</span></div>
 
 <div class="viewcode-block" id="ReLU6"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.ReLU6">[docs]</a><span class="k">class</span> <span class="nc">ReLU6</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
@@ -4829,6 +4953,147 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">UpSampling3D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PriorBox"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.PriorBox">[docs]</a><span class="k">class</span> <span class="nc">PriorBox</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate the prior boxes of designated sizes and aspect ratios across</span>
+<span class="sd">    all dimensions (H * W)</span>
+<span class="sd">    Intended for use with MultiBox detection method to generate prior</span>
+<span class="sd">    :param min_sizes minimum box size in pixels. can be multiple. required!</span>
+<span class="sd">    :param max_sizes maximum box size in pixels. can be ignored or same as the # of min_size.</span>
+<span class="sd">    :param aspect_ratios optional aspect ratios of the boxes. can be multiple</span>
+<span class="sd">    :param is_flip optional bool, default true. if set, flip the aspect ratio.</span>
+<span class="sd">    :param is_clip whether to clip the prior&#39;s coordidate such that it is within [0, 1]</span>
+<span class="sd">    &gt;&gt;&gt; layer = PriorBox([0.1])</span>
+<span class="sd">    creating: createPriorBox</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_sizes</span><span class="p">,</span>
+                 <span class="n">max_sizes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">aspect_ratios</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">is_flip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">is_clip</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">variances</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">offset</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+                 <span class="n">img_h</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">img_w</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">img_size</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">step_h</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">step_w</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">step</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PriorBox</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                       <span class="n">min_sizes</span><span class="p">,</span>
+                                       <span class="n">max_sizes</span><span class="p">,</span>
+                                       <span class="n">aspect_ratios</span><span class="p">,</span>
+                                       <span class="n">is_flip</span><span class="p">,</span>
+                                       <span class="n">is_clip</span><span class="p">,</span>
+                                       <span class="n">variances</span><span class="p">,</span>
+                                       <span class="n">offset</span><span class="p">,</span>
+                                       <span class="n">img_h</span><span class="p">,</span>
+                                       <span class="n">img_w</span><span class="p">,</span>
+                                       <span class="n">img_size</span><span class="p">,</span>
+                                       <span class="n">step_h</span><span class="p">,</span>
+                                       <span class="n">step_w</span><span class="p">,</span>
+                                       <span class="n">step</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NormalizeScale"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.NormalizeScale">[docs]</a><span class="k">class</span> <span class="nc">NormalizeScale</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    NormalizeScale is conposed of normalize and scale, this is equal to caffe Normalize layer</span>
+<span class="sd">    :param p L_p norm</span>
+<span class="sd">    :param eps smoothing parameter</span>
+<span class="sd">    :param scale scale parameter</span>
+<span class="sd">    :param size size of scale input</span>
+<span class="sd">    :param w_regularizer weight regularizer</span>
+<span class="sd">    &gt;&gt;&gt; layer = NormalizeScale(2.0, scale = 20.0, size = [1, 5, 1, 1])</span>
+<span class="sd">    creating: createNormalizeScale</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">w_regularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-10</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NormalizeScale</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">w_regularizer</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Proposal"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Proposal">[docs]</a><span class="k">class</span> <span class="nc">Proposal</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Outputs object detection proposals by applying estimated bounding-box</span>
+<span class="sd">    transformations to a set of regular boxes (called &quot;anchors&quot;).</span>
+<span class="sd">    rois: holds R regions of interest, each is a 5-tuple</span>
+<span class="sd">    (n, x1, y1, x2, y2) specifying an image batch index n and a rectangle (x1, y1, x2, y2)</span>
+<span class="sd">    scores: holds scores for R regions of interest</span>
+<span class="sd">    &gt;&gt;&gt; layer = Proposal(1000, 200, [0.1, 0.2], [2.0, 3.0])</span>
+<span class="sd">    creating: createProposal</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pre_nms_topn</span><span class="p">,</span> <span class="n">post_nms_topn</span><span class="p">,</span> <span class="n">ratios</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span>
+                 <span class="n">rpn_pre_nms_topn_train</span><span class="o">=</span><span class="mi">12000</span><span class="p">,</span> <span class="n">rpn_post_nms_topn_train</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Proposal</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                       <span class="n">pre_nms_topn</span><span class="p">,</span>
+                                       <span class="n">post_nms_topn</span><span class="p">,</span>
+                                       <span class="n">ratios</span><span class="p">,</span>
+                                       <span class="n">scales</span><span class="p">,</span>
+                                       <span class="n">rpn_pre_nms_topn_train</span><span class="p">,</span>
+                                       <span class="n">rpn_post_nms_topn_train</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DetectionOutputSSD"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.DetectionOutputSSD">[docs]</a><span class="k">class</span> <span class="nc">DetectionOutputSSD</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Layer to Post-process SSD output</span>
+<span class="sd">    :param n_classes number of classes</span>
+<span class="sd">    :param share_location whether to share location, default is true</span>
+<span class="sd">    :param bg_label background label</span>
+<span class="sd">    :param nms_thresh nms threshold</span>
+<span class="sd">    :param nms_topk nms topk</span>
+<span class="sd">    :param keep_top_k result topk</span>
+<span class="sd">    :param conf_thresh confidence threshold</span>
+<span class="sd">    :param variance_encoded_in_target if variance is encoded in target,</span>
+<span class="sd">    we simply need to retore the offset predictions,</span>
+<span class="sd">    else if variance is encoded in bbox,</span>
+<span class="sd">    we need to scale the offset accordingly.</span>
+<span class="sd">    :param conf_post_process whether add some additional post process to confidence prediction</span>
+<span class="sd">    &gt;&gt;&gt; layer = DetectionOutputSSD()</span>
+<span class="sd">    creating: createDetectionOutputSSD</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>
+                 <span class="n">share_location</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">bg_label</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">nms_thresh</span><span class="o">=</span><span class="mf">0.45</span><span class="p">,</span>
+                 <span class="n">nms_topk</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+                 <span class="n">keep_top_k</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+                 <span class="n">conf_thresh</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+                 <span class="n">variance_encoded_in_target</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">conf_post_process</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DetectionOutputSSD</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
+                                                 <span class="n">bigdl_type</span><span class="p">,</span>
+                                                 <span class="n">n_classes</span><span class="p">,</span>
+                                                 <span class="n">share_location</span><span class="p">,</span>
+                                                 <span class="n">bg_label</span><span class="p">,</span>
+                                                 <span class="n">nms_thresh</span><span class="p">,</span>
+                                                 <span class="n">nms_topk</span><span class="p">,</span>
+                                                 <span class="n">keep_top_k</span><span class="p">,</span>
+                                                 <span class="n">conf_thresh</span><span class="p">,</span>
+                                                 <span class="n">variance_encoded_in_target</span><span class="p">,</span>
+                                                 <span class="n">conf_post_process</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DetectionOutputFrcnn"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.DetectionOutputFrcnn">[docs]</a><span class="k">class</span> <span class="nc">DetectionOutputFrcnn</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Post process Faster-RCNN models</span>
+<span class="sd">    :param nms_thresh nms threshold</span>
+<span class="sd">    :param n_classes number of classes</span>
+<span class="sd">    :param bbox_vote whether to vote for detections</span>
+<span class="sd">    :param max_per_image limit max number of detections per image</span>
+<span class="sd">    :param thresh score threshold</span>
+<span class="sd">    &gt;&gt;&gt; layer = DetectionOutputFrcnn(21, True)</span>
+<span class="sd">    creating: createDetectionOutputFrcnn</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">,</span> <span class="n">bbox_vote</span><span class="p">,</span> <span class="n">nms_thresh</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
+                 <span class="n">max_per_image</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DetectionOutputFrcnn</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">nms_thresh</span><span class="p">,</span>
+                                                   <span class="n">n_classes</span><span class="p">,</span>
+                                                   <span class="n">bbox_vote</span><span class="p">,</span>
+                                                   <span class="n">max_per_image</span><span class="p">,</span>
+                                                   <span class="n">thresh</span><span class="p">)</span></div>
+
 
 <span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
     <span class="kn">import</span> <span class="nn">doctest</span>

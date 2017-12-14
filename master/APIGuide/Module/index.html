@@ -67,7 +67,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h2 id="model-save">Model Save</h2>
-<p>BigDL supports saving models to local file system, HDFS and AWS S3. After a model is created, you can use <code>save</code> on created model to save it. Below example shows how to save a model.</p>
+<p>BigDL supports saving models to local file system, HDFS and AWS S3. After a model is created, you can use <code>saveModule</code> (Scala) or 'saveModel' (python) on created model to save it. Below example shows how to save a model.</p>
 <p><strong>Scala example</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn._
 import com.intel.analytics.bigdl.numeric.NumericFloat
@@ -75,9 +75,9 @@ import com.intel.analytics.bigdl.numeric.NumericFloat
 val model = Sequential().add(Linear(10, 5)).add(Sigmoid()).add(SoftMax())
 //...train
 
-model.save(&quot;/tmp/model.bigdl&quot;, true) //save to local fs
-model.save(&quot;hdfs://...&quot;) //save to hdfs
-model.save(&quot;s3://...&quot;) //save to s3
+model.saveModule(&quot;/tmp/model.bigdl&quot;, &quot;/tmp/model.bin&quot;, true) //save to local fs
+model.saveModule(&quot;hdfs://...&quot;) //save to hdfs
+model.saveModule(&quot;s3://...&quot;) //save to s3
 
 </code></pre>
 
@@ -88,25 +88,26 @@ from bigdl.optim.optimizer import *
 
 model = Sequential().add(Linear(10, 5)).add(Sigmoid()).add(SoftMax())
 //...train
-model.save(&quot;/tmp/model.bigdl&quot;, True) //save to local fs
-model.save(&quot;hdfs://...&quot;) //save to hdfs
-model.save(&quot;s3://...&quot;) //save to s3
+model.saveModel(&quot;/tmp/model.bigdl&quot;, &quot;/tmp/model.bin&quot;, True) //save to local fs
+model.saveModel(&quot;hdfs://...&quot;) //save to hdfs
+model.saveModel(&quot;s3://...&quot;) //save to s3
 </code></pre>
 
-<p>In <code>model.save</code>, the first parameter is the path where we want to save our model, the second parameter is to specify if we need to overwrite the file if it already exists, it's set to false by default</p>
+<p>In <code>model.saveModel</code>, the first parameter is the path where we want to save our model network, the second parameter is the path where we want to save the model weights, the third parameter is to specify if we need to overwrite the file if it already exists, it's set to false by default
+Please notice that if the second parameter is not specified, weights will be saved into the same file as model network. Save weights separately usually handles the situation that the model is big in size</p>
 <h2 id="model-load">Model Load</h2>
 <h3 id="load-bigdl-model">Load BigDL model</h3>
-<p>Use <code>Module.load</code>(in Scala) or <code>Model.load</code> (in Python) to load an existing model.  <code>Module</code> (Scala) or <code>Model</code>(Python) is a utility class provided in BigDL. We just need to specify the model path where we previously saved the model to load it to memory for resume training or prediction purpose.</p>
+<p>Use <code>Module.loadModule</code>(in Scala) or <code>Model.loadModel</code> (in Python) to load an existing model.  <code>Module</code> (Scala) or <code>Model</code>(Python) is a utility class provided in BigDL. We just need to specify the model path and optionally weight path if exists where we previously saved the model to load it to memory for resume training or prediction purpose.</p>
 <p><strong>Scala example</strong></p>
-<pre><code class="scala">val model = Module.load(&quot;/tmp/model.bigdl&quot;) //load from local fs
-val model = Module.load(&quot;hdfs://...&quot;) //load from hdfs
-val model = Module.load(&quot;s3://...&quot;) //load from s3
+<pre><code class="scala">val model = Module.loadModule(&quot;/tmp/model.bigdl&quot;, &quot;/tmp/model.bin&quot;) //load from local fs
+val model = Module.loadModule(&quot;hdfs://...&quot;) //load from hdfs
+val model = Module.loadModule(&quot;s3://...&quot;) //load from s3
 </code></pre>
 
 <p><strong>Python example</strong></p>
-<pre><code class="python">model = Model.load(&quot;/tmp/model.bigdl&quot;) //load from local fs
-model = Model.load(&quot;hdfs://...&quot;) //load from hdfs
-model = Model.load(&quot;s3://...&quot;) //load from s3
+<pre><code class="python">model = Model.loadModel(&quot;/tmp/model.bigdl&quot;, &quot;/tmp/model.bin&quot;) //load from local fs
+model = Model.loadModel(&quot;hdfs://...&quot;) //load from hdfs
+model = Model.loadModel(&quot;s3://...&quot;) //load from s3
 </code></pre>
 
 <h3 id="load-tensorflow-model">Load Tensorflow model</h3>

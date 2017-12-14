@@ -716,6 +716,27 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">setModel</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="Optimizer.set_traindata"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Optimizer.set_traindata">[docs]</a>    <span class="k">def</span> <span class="nf">set_traindata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">training_rdd</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set new training dataset, for optimizer reuse</span>
+
+<span class="sd">        :param training_rdd: the training dataset</span>
+<span class="sd">        :param batch_size: training batch size</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setTrainData&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                     <span class="n">training_rdd</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Optimizer.set_criterion"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Optimizer.set_criterion">[docs]</a>    <span class="k">def</span> <span class="nf">set_criterion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">criterion</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        set new criterion, for optimizer reuse</span>
+
+<span class="sd">        :param criterion: new criterion</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setCriterion&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                      <span class="n">criterion</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Optimizer.set_checkpoint"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Optimizer.set_checkpoint">[docs]</a>    <span class="k">def</span> <span class="nf">set_checkpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checkpoint_trigger</span><span class="p">,</span>
                       <span class="n">checkpoint_path</span><span class="p">,</span> <span class="n">isOverWrite</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

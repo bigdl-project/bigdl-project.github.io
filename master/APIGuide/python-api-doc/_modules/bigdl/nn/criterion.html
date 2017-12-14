@@ -345,6 +345,15 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">DistKLDivCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                                  <span class="n">size_average</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="CategoricalCrossEntropy"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.CategoricalCrossEntropy">[docs]</a><span class="k">class</span> <span class="nc">CategoricalCrossEntropy</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This criterion is same with cross entropy criterion, except it takes a one-hot format target</span>
+<span class="sd">    tensor</span>
+<span class="sd">    &gt;&gt;&gt; cce = CategoricalCrossEntropy()</span>
+<span class="sd">    creating: createCategoricalCrossEntropy</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CategoricalCrossEntropy</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="HingeEmbeddingCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.HingeEmbeddingCriterion">[docs]</a><span class="k">class</span> <span class="nc">HingeEmbeddingCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
 
@@ -893,6 +902,36 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MeanSquaredLogarithmicCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="KullbackLeiblerDivergenceCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.KullbackLeiblerDivergenceCriterion">[docs]</a><span class="k">class</span> <span class="nc">KullbackLeiblerDivergenceCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    compute Kullback Leibler DivergenceCriterion error for intput and target</span>
+<span class="sd">    This method is same as `kullback_leibler_divergence` loss in keras. Loss calculated as:</span>
+<span class="sd">    y_true = K.clip(input, K.epsilon(), 1)</span>
+<span class="sd">    y_pred = K.clip(target, K.epsilon(), 1)</span>
+<span class="sd">    and output K.sum(y_true * K.log(y_true / y_pred), axis=-1)</span>
+
+<span class="sd">    &gt;&gt;&gt; error = KullbackLeiblerDivergenceCriterion()</span>
+<span class="sd">    creating: createKullbackLeiblerDivergenceCriterion</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">KullbackLeiblerDivergenceCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PoissonCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.PoissonCriterion">[docs]</a><span class="k">class</span> <span class="nc">PoissonCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    compute Poisson error for input and target, loss calculated as:</span>
+<span class="sd">    mean(input - target * K.log(input + K.epsilon()), axis=-1)</span>
+<span class="sd">    &gt;&gt;&gt; error = PoissonCriterion()</span>
+<span class="sd">    creating: createPoissonCriterion</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PoissonCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
     <span class="kn">import</span> <span class="nn">doctest</span>
