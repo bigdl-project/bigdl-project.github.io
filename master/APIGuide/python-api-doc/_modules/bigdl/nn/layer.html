@@ -789,12 +789,17 @@
 <span class="sd">        :param weights_path: The HDF5 path containing the pre-trained keras model weights.</span>
 <span class="sd">        :return: A pre-trained model.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">os</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">tensorflow</span>
+        <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;KERAS_BACKEND&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;theano&quot;</span>
+            <span class="kn">from</span> <span class="nn">theano</span> <span class="k">import</span> <span class="n">ifelse</span>
         <span class="kn">from</span> <span class="nn">bigdl.keras.converter</span> <span class="k">import</span> <span class="n">DefinitionLoader</span><span class="p">,</span> <span class="n">WeightLoader</span>
         <span class="k">if</span> <span class="n">weights_path</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">WeightLoader</span><span class="o">.</span><span class="n">load_weights_from_json_hdf5</span><span class="p">(</span><span class="n">def_path</span><span class="p">,</span> <span class="n">weights_path</span><span class="p">,</span> <span class="n">by_name</span><span class="o">=</span><span class="n">by_name</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">DefinitionLoader</span><span class="o">.</span><span class="n">from_json_path</span><span class="p">(</span><span class="n">def_path</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">bmodel</span></div>
+            <span class="k">return</span> <span class="n">DefinitionLoader</span><span class="o">.</span><span class="n">from_json_path</span><span class="p">(</span><span class="n">def_path</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.load_caffe"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.load_caffe">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">load_caffe</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">defPath</span><span class="p">,</span> <span class="n">modelPath</span><span class="p">,</span> <span class="n">match_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
@@ -1303,7 +1308,7 @@
 <span class="sd">    nOutputFrame = (nInputFrame - k_w) / d_w + 1</span>
 
 <span class="sd">    :param k_w:              kernel width</span>
-<span class="sd">    :param d_w:              step size in width</span>
+<span class="sd">    :param d_w:              step size in width, default is -1, means the `d_w` equals `k_w`</span>
 
 <span class="sd">    &gt;&gt;&gt; temporalMaxPooling = TemporalMaxPooling(2, 2)</span>
 <span class="sd">    creating: createTemporalMaxPooling</span>
@@ -1311,7 +1316,7 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">k_w</span><span class="p">,</span>
-                 <span class="n">d_w</span><span class="p">,</span>
+                 <span class="n">d_w</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">TemporalMaxPooling</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">k_w</span><span class="p">,</span>
                                                 <span class="n">d_w</span><span class="p">)</span></div>
@@ -1820,7 +1825,67 @@
                                                  <span class="n">alpha</span><span class="p">,</span>
                                                  <span class="n">beta</span><span class="p">,</span>
                                                  <span class="n">k</span><span class="p">,</span> <span class="n">data_format</span><span class="p">)</span></div>
+<div class="viewcode-block" id="SpatialDropout3D"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SpatialDropout3D">[docs]</a><span class="k">class</span> <span class="nc">SpatialDropout3D</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This version performs the same function as Dropout, however it drops</span>
+<span class="sd">    entire 3D feature maps instead of individual elements. If adjacent voxels</span>
+<span class="sd">    within feature maps are strongly correlated (as is normally the case in</span>
+<span class="sd">    early convolution layers) then regular dropout will not regularize the</span>
+<span class="sd">    activations and will otherwise just result in an effective learning rate</span>
+<span class="sd">    decrease. In this case, SpatialDropout3D will help promote independence</span>
+<span class="sd">    between feature maps and should be used instead.</span>
 
+<span class="sd">    :param initP the probability p</span>
+<span class="sd">    :param format  &#39;NCHW&#39; or &#39;NHWC&#39;.</span>
+<span class="sd">        In &#39;NCHW&#39; mode, the channels dimension (the depth)</span>
+<span class="sd">        is at index 1, in &#39;NHWC&#39; mode is it at index 4.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">init_p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                 <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Dropout</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">data_format</span><span class="p">,</span>
+                                      <span class="n">init_p</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpatialDropout2D"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SpatialDropout2D">[docs]</a><span class="k">class</span> <span class="nc">SpatialDropout2D</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This version performs the same function as Dropout, however it drops</span>
+<span class="sd">    entire 2D feature maps instead of individual elements. If adjacent pixels</span>
+<span class="sd">    within feature maps are strongly correlated (as is normally the case in</span>
+<span class="sd">    early convolution layers) then regular dropout will not regularize the</span>
+<span class="sd">    activations and will otherwise just result in an effective learning rate</span>
+<span class="sd">    decrease. In this case, SpatialDropout2D will help promote independence</span>
+<span class="sd">    between feature maps and should be used instead.</span>
+
+<span class="sd">    :param initP the probability p</span>
+<span class="sd">    :param format  &#39;NCHW&#39; or &#39;NHWC&#39;.</span>
+<span class="sd">        In &#39;NCHW&#39; mode, the channels dimension (the depth)</span>
+<span class="sd">        is at index 1, in &#39;NHWC&#39; mode is it at index 4.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">init_p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                 <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Dropout</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">data_format</span><span class="p">,</span>
+                                      <span class="n">init_p</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SpatialDropout1D"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SpatialDropout1D">[docs]</a><span class="k">class</span> <span class="nc">SpatialDropout1D</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This version performs the same function as Dropout, however it drops</span>
+<span class="sd">    entire 1D feature maps instead of individual elements. If adjacent frames</span>
+<span class="sd">    within feature maps are strongly correlated (as is normally the case in</span>
+<span class="sd">    early convolution layers) then regular dropout will not regularize the</span>
+<span class="sd">    activations and will otherwise just result in an effective learning rate</span>
+<span class="sd">    decrease. In this case, SpatialDropout1D will help promote independence</span>
+<span class="sd">    between feature maps and should be used instead.</span>
+
+<span class="sd">    :param initP the probability p</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">init_p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Dropout</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                      <span class="n">init_p</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Dropout"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Dropout">[docs]</a><span class="k">class</span> <span class="nc">Dropout</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
@@ -3358,9 +3423,9 @@
 <span class="sd">    :param data_format: a string value of &quot;NHWC&quot; or &quot;NCHW&quot; to specify the input data format of this layer. In &quot;NHWC&quot; format</span>
 <span class="sd">                       data is stored in the order of [batch_size, height, width, channels], in &quot;NCHW&quot; format data is stored</span>
 <span class="sd">                       in the order of [batch_size, channels, height, width].</span>
-<span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the depth weights matrices.</span>
-<span class="sd">    :param bRegularizer: instance of [[Regularizer]]applied to the pointwise bias.</span>
-<span class="sd">    :param pRegularizer: instance of [[Regularizer]]applied to the pointwise weights.</span>
+<span class="sd">    :param w_regularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the depth weights matrices.</span>
+<span class="sd">    :param b_regularizer: instance of [[Regularizer]]applied to the pointwise bias.</span>
+<span class="sd">    :param p_regularizer: instance of [[Regularizer]]applied to the pointwise weights.</span>
 
 <span class="sd">    &gt;&gt;&gt; conv = SpatialSeperableConvolution(6, 12, 1, 5, 5)</span>
 <span class="sd">    creating: createSpatialSeperableConvolution</span>
@@ -5094,6 +5159,56 @@
                                                    <span class="n">max_per_image</span><span class="p">,</span>
                                                    <span class="n">thresh</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="Cropping2D"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Cropping2D">[docs]</a><span class="k">class</span> <span class="nc">Cropping2D</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cropping layer for 2D input (e.g. picture).</span>
+<span class="sd">    It crops along spatial dimensions, i.e. width and height.</span>
+
+<span class="sd">    # Input shape</span>
+<span class="sd">        4D tensor with shape:</span>
+<span class="sd">        `(batchSize, channels, first_axis_to_crop, second_axis_to_crop)`</span>
+
+<span class="sd">    # Output shape</span>
+<span class="sd">        4D tensor with shape:</span>
+<span class="sd">        `(batchSize, channels, first_cropped_axis, second_cropped_axis)`</span>
+
+<span class="sd">    :param heightCrop Array of length 2. How many units should be trimmed off at the beginning</span>
+<span class="sd">                      and end of the height dimension.</span>
+<span class="sd">    :param widthCrop Array of length 2. How many units should be trimmed off at the beginning</span>
+<span class="sd">                      and end of the width dimension.</span>
+<span class="sd">    :param data_format a string value (or DataFormat Object in Scala) of &quot;NHWC&quot; or &quot;NCHW&quot; to specify the input data format of this layer. In &quot;NHWC&quot; format</span>
+<span class="sd">                        data is stored in the order of [batch_size, height, width, channels], in &quot;NCHW&quot; format data is stored</span>
+<span class="sd">                        in the order of [batch_size, channels, height, width].</span>
+<span class="sd">    &gt;&gt;&gt; cropping2D = Cropping2D([1, 1], [2, 2])</span>
+<span class="sd">    creating: createCropping2D</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">heightCrop</span><span class="p">,</span> <span class="n">widthCrop</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Cropping2D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">heightCrop</span><span class="p">,</span> <span class="n">widthCrop</span><span class="p">,</span> <span class="n">data_format</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Cropping3D"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Cropping3D">[docs]</a><span class="k">class</span> <span class="nc">Cropping3D</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cropping layer for 3D data (e.g. spatial or spatio-temporal).</span>
+
+<span class="sd">    # Input shape</span>
+<span class="sd">        5D tensor with shape:</span>
+<span class="sd">        `(batchSize, channels, first_axis_to_crop, second_axis_to_crop, third_axis_to_crop)`</span>
+
+<span class="sd">    # Output shape</span>
+<span class="sd">        5D tensor with shape:</span>
+<span class="sd">        `(batchSize, channels, first_cropped_axis, second_cropped_axis, third_cropped_axis)`</span>
+
+<span class="sd">    :param dim1Crop Array of length 2. How many units should be trimmed off at the beginning</span>
+<span class="sd">                      and end of the first dimension.</span>
+<span class="sd">    :param dim2Crop Array of length 2. How many units should be trimmed off at the beginning</span>
+<span class="sd">                      and end of the second dimension.</span>
+<span class="sd">    :param dim3Crop Array of length 2. How many units should be trimmed off at the beginning</span>
+<span class="sd">                      and end of the third dimension.</span>
+<span class="sd">    :param data_format a string value. &quot;channel_first&quot; or &quot;channel_last&quot;</span>
+<span class="sd">    &gt;&gt;&gt; cropping3D = Cropping3D([1, 1], [2, 2], [1, 1])</span>
+<span class="sd">    creating: createCropping3D</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim1Crop</span><span class="p">,</span> <span class="n">dim2Crop</span><span class="p">,</span> <span class="n">dim3Crop</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;channel_first&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Cropping3D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">dim1Crop</span><span class="p">,</span> <span class="n">dim2Crop</span><span class="p">,</span> <span class="n">dim3Crop</span><span class="p">,</span> <span class="n">data_format</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
     <span class="kn">import</span> <span class="nn">doctest</span>

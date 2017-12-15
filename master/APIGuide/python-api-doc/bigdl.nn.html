@@ -1555,6 +1555,51 @@ columns should be equal to the inputSize).</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.Cropping2D">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Cropping2D</code><span class="sig-paren">(</span><em>heightCrop</em>, <em>widthCrop</em>, <em>data_format='NCHW'</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Cropping2D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Cropping2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Cropping layer for 2D input (e.g. picture).
+It crops along spatial dimensions, i.e. width and height.</p>
+<p># Input shape
+4D tensor with shape:
+<cite>(batchSize, channels, first_axis_to_crop, second_axis_to_crop)</cite></p>
+<p># Output shape
+4D tensor with shape:
+<cite>(batchSize, channels, first_cropped_axis, second_cropped_axis)</cite></p>
+<p>:param heightCrop Array of length 2. How many units should be trimmed off at the beginning
+and end of the height dimension.
+:param widthCrop Array of length 2. How many units should be trimmed off at the beginning
+and end of the width dimension.
+:param data_format a string value (or DataFormat Object in Scala) of “NHWC” or “NCHW” to specify the input data format of this layer. In “NHWC” format
+data is stored in the order of [batch_size, height, width, channels], in “NCHW” format data is stored
+in the order of [batch_size, channels, height, width].
+&gt;&gt;&gt; cropping2D = Cropping2D([1, 1], [2, 2])
+creating: createCropping2D</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.Cropping3D">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Cropping3D</code><span class="sig-paren">(</span><em>dim1Crop</em>, <em>dim2Crop</em>, <em>dim3Crop</em>, <em>data_format='channel_first'</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Cropping3D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Cropping3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Cropping layer for 3D data (e.g. spatial or spatio-temporal).</p>
+<p># Input shape
+5D tensor with shape:
+<cite>(batchSize, channels, first_axis_to_crop, second_axis_to_crop, third_axis_to_crop)</cite></p>
+<p># Output shape
+5D tensor with shape:
+<cite>(batchSize, channels, first_cropped_axis, second_cropped_axis, third_cropped_axis)</cite></p>
+<p>:param dim1Crop Array of length 2. How many units should be trimmed off at the beginning
+and end of the first dimension.
+:param dim2Crop Array of length 2. How many units should be trimmed off at the beginning
+and end of the second dimension.
+:param dim3Crop Array of length 2. How many units should be trimmed off at the beginning
+and end of the third dimension.
+:param data_format a string value. “channel_first” or “channel_last”
+&gt;&gt;&gt; cropping3D = Cropping3D([1, 1], [2, 2], [1, 1])
+creating: createCropping3D</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.DenseToSparse">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">DenseToSparse</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#DenseToSparse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.DenseToSparse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
@@ -4421,6 +4466,54 @@ a uniform average is used since the weighting across features is not known.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.SpatialDropout1D">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialDropout1D</code><span class="sig-paren">(</span><em>init_p=0.5</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialDropout1D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialDropout1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>This version performs the same function as Dropout, however it drops
+entire 1D feature maps instead of individual elements. If adjacent frames
+within feature maps are strongly correlated (as is normally the case in
+early convolution layers) then regular dropout will not regularize the
+activations and will otherwise just result in an effective learning rate
+decrease. In this case, SpatialDropout1D will help promote independence
+between feature maps and should be used instead.</p>
+<p>:param initP the probability p</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.SpatialDropout2D">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialDropout2D</code><span class="sig-paren">(</span><em>init_p=0.5</em>, <em>data_format='NCHW'</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialDropout2D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialDropout2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>This version performs the same function as Dropout, however it drops
+entire 2D feature maps instead of individual elements. If adjacent pixels
+within feature maps are strongly correlated (as is normally the case in
+early convolution layers) then regular dropout will not regularize the
+activations and will otherwise just result in an effective learning rate
+decrease. In this case, SpatialDropout2D will help promote independence
+between feature maps and should be used instead.</p>
+<p>:param initP the probability p
+:param format  ‘NCHW’ or ‘NHWC’.
+In ‘NCHW’ mode, the channels dimension (the depth)
+is at index 1, in ‘NHWC’ mode is it at index 4.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.SpatialDropout3D">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialDropout3D</code><span class="sig-paren">(</span><em>init_p=0.5</em>, <em>data_format='NCHW'</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialDropout3D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialDropout3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>This version performs the same function as Dropout, however it drops
+entire 3D feature maps instead of individual elements. If adjacent voxels
+within feature maps are strongly correlated (as is normally the case in
+early convolution layers) then regular dropout will not regularize the
+activations and will otherwise just result in an effective learning rate
+decrease. In this case, SpatialDropout3D will help promote independence
+between feature maps and should be used instead.</p>
+<p>:param initP the probability p
+:param format  ‘NCHW’ or ‘NHWC’.
+In ‘NCHW’ mode, the channels dimension (the depth)
+is at index 1, in ‘NHWC’ mode is it at index 4.</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.SpatialFullConvolution">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SpatialFullConvolution</code><span class="sig-paren">(</span><em>n_input_plane</em>, <em>n_output_plane</em>, <em>kw</em>, <em>kh</em>, <em>dw=1</em>, <em>dh=1</em>, <em>pad_w=0</em>, <em>pad_h=0</em>, <em>adj_w=0</em>, <em>adj_h=0</em>, <em>n_group=1</em>, <em>no_bias=False</em>, <em>wRegularizer=None</em>, <em>bRegularizer=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SpatialFullConvolution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SpatialFullConvolution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
@@ -4531,9 +4624,9 @@ generated per input channel in the depthwise step.</p>
 :param data_format: a string value of “NHWC” or “NCHW” to specify the input data format of this layer. In “NHWC” format
 data is stored in the order of [batch_size, height, width, channels], in “NCHW” format data is stored
 in the order of [batch_size, channels, height, width].
-:param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the depth weights matrices.
-:param bRegularizer: instance of [[Regularizer]]applied to the pointwise bias.
-:param pRegularizer: instance of [[Regularizer]]applied to the pointwise weights.</p>
+:param w_regularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the depth weights matrices.
+:param b_regularizer: instance of [[Regularizer]]applied to the pointwise bias.
+:param p_regularizer: instance of [[Regularizer]]applied to the pointwise weights.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">conv</span> <span class="o">=</span> <span class="n">SpatialSeperableConvolution</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="go">creating: createSpatialSeperableConvolution</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">conv</span><span class="o">.</span><span class="n">setWRegularizer</span><span class="p">(</span><span class="n">L1Regularizer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
@@ -4818,7 +4911,7 @@ applied to the bias.
 
 <dl class="class">
 <dt id="bigdl.nn.layer.TemporalMaxPooling">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">TemporalMaxPooling</code><span class="sig-paren">(</span><em>k_w</em>, <em>d_w</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#TemporalMaxPooling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.TemporalMaxPooling" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">TemporalMaxPooling</code><span class="sig-paren">(</span><em>k_w</em>, <em>d_w=-1</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#TemporalMaxPooling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.TemporalMaxPooling" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <p>Applies 1D max-pooling operation in kW regions by step size dW steps.
 Input sequence composed of nInputFrame frames.
@@ -4833,7 +4926,7 @@ the output sequence will be nOutputFrame x inputFrameSize where</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>k_w</strong> – kernel width</li>
-<li><strong>d_w</strong> – step size in width</li>
+<li><strong>d_w</strong> – step size in width, default is -1, means the <cite>d_w</cite> equals <cite>k_w</cite></li>
 </ul>
 </td>
 </tr>

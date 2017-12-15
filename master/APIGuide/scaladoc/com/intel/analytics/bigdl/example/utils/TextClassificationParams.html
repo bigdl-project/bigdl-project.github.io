@@ -35,12 +35,12 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">TextClassificationParams</span><span class="params">(<span name="baseDir">baseDir: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;./&quot;</span></span>, <span name="maxSequenceLength">maxSequenceLength: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1000</span></span>, <span name="maxWordsNum">maxWordsNum: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">20000</span></span>, <span name="trainingSplit">trainingSplit: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.8</span></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">128</span></span>, <span name="embeddingDim">embeddingDim: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">100</span></span>, <span name="partitionNum">partitionNum: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">4</span></span>)</span><span class="result"> extends <a href="AbstractTextClassificationParams.html" class="extype" name="com.intel.analytics.bigdl.example.utils.AbstractTextClassificationParams">AbstractTextClassificationParams</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">TextClassificationParams</span><span class="params">(<span name="baseDir">baseDir: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;./&quot;</span></span>, <span name="maxSequenceLength">maxSequenceLength: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">500</span></span>, <span name="maxWordsNum">maxWordsNum: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5000</span></span>, <span name="trainingSplit">trainingSplit: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.8</span></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">128</span></span>, <span name="embeddingDim">embeddingDim: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">200</span></span>, <span name="learningRate">learningRate: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.01</span></span>, <span name="partitionNum">partitionNum: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">4</span></span>)</span><span class="result"> extends <a href="AbstractTextClassificationParams.html" class="extype" name="com.intel.analytics.bigdl.example.utils.AbstractTextClassificationParams">AbstractTextClassificationParams</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">baseDir</dt><dd class="cmt"><p>The root directory which containing the training and embedding data</p></dd><dt class="param">maxSequenceLength</dt><dd class="cmt"><p>number of the tokens</p></dd><dt class="param">maxWordsNum</dt><dd class="cmt"><p>maximum word to be included</p></dd><dt class="param">trainingSplit</dt><dd class="cmt"><p>percentage of the training data</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>size of the mini-batch</p></dd><dt class="param">embeddingDim</dt><dd class="cmt"><p>size of the embedding vector
-</p></dd></dl><div class="toggleContainer block">
+</p></dd><dt class="param">learningRate</dt><dd class="cmt"><p>learning rate</p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="AbstractTextClassificationParams.html" class="extype" name="com.intel.analytics.bigdl.example.utils.AbstractTextClassificationParams">AbstractTextClassificationParams</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -81,7 +81,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.example.utils.TextClassificationParams#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(baseDir:String,maxSequenceLength:Int,maxWordsNum:Int,trainingSplit:Double,batchSize:Int,embeddingDim:Int,partitionNum:Int):com.intel.analytics.bigdl.example.utils.TextClassificationParams"></a>
+      <a id="&lt;init&gt;(baseDir:String,maxSequenceLength:Int,maxWordsNum:Int,trainingSplit:Double,batchSize:Int,embeddingDim:Int,learningRate:Double,partitionNum:Int):com.intel.analytics.bigdl.example.utils.TextClassificationParams"></a>
       <a id="&lt;init&gt;:TextClassificationParams"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -89,11 +89,11 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">TextClassificationParams</span><span class="params">(<span name="baseDir">baseDir: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;./&quot;</span></span>, <span name="maxSequenceLength">maxSequenceLength: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1000</span></span>, <span name="maxWordsNum">maxWordsNum: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">20000</span></span>, <span name="trainingSplit">trainingSplit: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.8</span></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">128</span></span>, <span name="embeddingDim">embeddingDim: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">100</span></span>, <span name="partitionNum">partitionNum: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">4</span></span>)</span>
+        <span class="name">TextClassificationParams</span><span class="params">(<span name="baseDir">baseDir: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;./&quot;</span></span>, <span name="maxSequenceLength">maxSequenceLength: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">500</span></span>, <span name="maxWordsNum">maxWordsNum: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">5000</span></span>, <span name="trainingSplit">trainingSplit: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.8</span></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">128</span></span>, <span name="embeddingDim">embeddingDim: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">200</span></span>, <span name="learningRate">learningRate: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.01</span></span>, <span name="partitionNum">partitionNum: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">4</span></span>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">baseDir</dt><dd class="cmt"><p>The root directory which containing the training and embedding data</p></dd><dt class="param">maxSequenceLength</dt><dd class="cmt"><p>number of the tokens</p></dd><dt class="param">maxWordsNum</dt><dd class="cmt"><p>maximum word to be included</p></dd><dt class="param">trainingSplit</dt><dd class="cmt"><p>percentage of the training data</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>size of the mini-batch</p></dd><dt class="param">embeddingDim</dt><dd class="cmt"><p>size of the embedding vector
-</p></dd></dl></div>
+</p></dd><dt class="param">learningRate</dt><dd class="cmt"><p>learning rate</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -299,6 +299,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.example.utils.TextClassificationParams#learningRate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="learningRate:Double"></a>
+      <a id="learningRate:Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">learningRate</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">learning rate</p><div class="fullcomment"><div class="comment cmt"><p>learning rate</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.example.utils.TextClassificationParams">TextClassificationParams</a> → <a href="AbstractTextClassificationParams.html" class="extype" name="com.intel.analytics.bigdl.example.utils.AbstractTextClassificationParams">AbstractTextClassificationParams</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.example.utils.TextClassificationParams#maxSequenceLength" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="maxSequenceLength:Int"></a>
       <a id="maxSequenceLength:Int"></a>

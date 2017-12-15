@@ -380,22 +380,6 @@ super.clearState in the override method
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#copyStatus" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="copyStatus(src:com.intel.analytics.bigdl.Module[T]):AbstractModule.this.type"></a>
-      <a id="copyStatus(Module[T]):SpatialMaxPooling.this.type"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">copyStatus</span><span class="params">(<span name="src">src: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialMaxPooling.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.SpatialMaxPooling">SpatialMaxPooling</a>.this.type</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Copy the useful running status from src to this.</p><div class="fullcomment"><div class="comment cmt"><p>Copy the useful running status from src to this.</p><p>The subclass should override this method if it has some parameters besides weight and bias.
-Such as runningMean and runningVar of BatchNormalization.
-</p></div><dl class="paramcmts block"><dt class="param">src</dt><dd class="cmt"><p>source Module</p></dd><dt>returns</dt><dd class="cmt"><p>this
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.SpatialMaxPooling#dH" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="dH:Int"></a>
       <a id="dH:Int"></a>
@@ -611,6 +595,23 @@ set an array of layers that match the given <code><code><code>names</code></code
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#getExtraParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getExtraParameter():Array[com.intel.analytics.bigdl.tensor.Tensor[T]]"></a>
+      <a id="getExtraParameter():Array[Tensor[T]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getExtraParameter</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialMaxPooling.T">T</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get extra parameter in this module.</p><div class="fullcomment"><div class="comment cmt"><p>Get extra parameter in this module.
+Extra parameter means the trainable parameters beside weight and bias. Such as runningMean
+and runningVar in BatchNormalization.</p><p>The subclass should override this method if it has some parameters besides weight and bias.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>an array of tensor
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#getName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getName():String"></a>
       <a id="getName():String"></a>
@@ -1241,6 +1242,23 @@ Custom modules should override this function if they have parameters
 before gradParameters being accumulated.</p><div class="fullcomment"><div class="comment cmt"><p>The scale of gradient weight and gradient bias
 before gradParameters being accumulated.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setExtraParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setExtraParameter(extraParam:Array[com.intel.analytics.bigdl.tensor.Tensor[T]]):AbstractModule.this.type"></a>
+      <a id="setExtraParameter(Array[Tensor[T]]):SpatialMaxPooling.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setExtraParameter</span><span class="params">(<span name="extraParam">extraParam: <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialMaxPooling.T">T</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.SpatialMaxPooling">SpatialMaxPooling</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set extra parameter to this module.</p><div class="fullcomment"><div class="comment cmt"><p>Set extra parameter to this module.
+Extra parameter means the trainable parameters beside weight and bias. Such as runningMean
+and runningVar in BatchNormalization.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>this
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setLine" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setLine(line:String):AbstractModule.this.type"></a>
       <a id="setLine(String):SpatialMaxPooling.this.type"></a>
