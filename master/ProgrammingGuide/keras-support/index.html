@@ -55,7 +55,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
     <h1 id="keras-support"><strong>Keras Support</strong></h1>
 <p>For <strong>Python</strong> users, BigDL supports loading pre-defined Keras models. After loading a model, you can train, evaluate or tune this model on BigDL in a distributed manner.</p>
-<p>The Keras version we support and test is <a href="https://faroit.github.io/keras-docs/1.2.2/"><strong>Keras 1.2.2</strong></a> with TensorFlow backend.</p>
+<p>The Keras version we support and test is <a href="https://faroit.github.io/keras-docs/1.2.2/"><strong>Keras 1.2.2</strong></a> with TensorFlow backend. Up to now, we have generally supported <strong>ALL</strong> its layers.</p>
 <p>You may refer to Python User Guide on how to <a href="../../PythonUserGuide/install-from-pip/">install</a> and <a href="../../PythonUserGuide/run-from-pip/">run</a> BigDL for Python users.</p>
 <h2 id="load-a-keras-model-into-bigdl"><strong>Load a Keras model into BigDL</strong></h2>
 <p>A Keras model definition in <strong>JSON</strong> file can be loaded as a BigDL model.
@@ -122,7 +122,7 @@ bigdl_model = Model.load_keras(json_path=path)
 <p>You can find several more examples <a href="../../../../pyspark/bigdl/examples/keras/">here</a> to get familiar with loading a Keras model into BigDL.</p>
 <h3 id="limitations"><strong>Limitations</strong></h3>
 <p>We have tested the model loading functionality with several standard <a href="https://faroit.github.io/keras-docs/1.2.2/applications/">Keras applications</a> and <a href="https://github.com/fchollet/keras/tree/1.2.2/examples">examples</a>.</p>
-<p>However, there still exist some arguments for Keras layers that are not supported in BigDL for now. Also, we haven't supported self-defined Keras layers, but one can still define your customized layer converter and weight converter method for new layers if you wish.</p>
+<p>However, there exist some arguments for Keras layers that are not supported in BigDL for now. Also, we haven't supported self-defined Keras layers, but one can still define your customized layer converter and weight converter method for new layers if you wish. See <a href="../../APIGuide/keras-issues/">here</a> for the full list of unsupported layer arguments and some known issues we have found so far.</p>
 <p>In our future work, we will continue to add functionality and better support running Keras on BigDL.</p>
 
   <br>

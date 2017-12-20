@@ -92,6 +92,7 @@
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">get_activation_by_name</span>
 <span class="kn">from</span> <span class="nn">bigdl.optim.optimizer</span> <span class="k">import</span> <span class="n">L1Regularizer</span><span class="p">,</span> <span class="n">L2Regularizer</span><span class="p">,</span> <span class="n">L1L2Regularizer</span>
 <span class="kn">from</span> <span class="nn">py4j.java_gateway</span> <span class="k">import</span> <span class="n">JavaObject</span>
+<span class="kn">from</span> <span class="nn">pyspark.rdd</span> <span class="k">import</span> <span class="n">RDD</span>
 <span class="kn">from</span> <span class="nn">bigdl.transform.vision.image</span> <span class="k">import</span> <span class="n">ImageFrame</span>
 
 <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span> <span class="o">&gt;=</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
@@ -372,7 +373,7 @@
 
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">j</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">jresults</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="Layer.predict_local_class"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict_local_class">[docs]</a>    <span class="k">def</span> <span class="nf">predict_local_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<div class="viewcode-block" id="Layer.predict_class_local"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict_class_local">[docs]</a>    <span class="k">def</span> <span class="nf">predict_class_local</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        :param X: X can be a ndarray or list of ndarray if the model has multiple inputs.</span>
@@ -385,7 +386,31 @@
                                <span class="bp">self</span><span class="o">.</span><span class="n">_to_jtensors</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Layer.predict"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">):</span>
+<div class="viewcode-block" id="Layer.predict"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Model inference base on the given data.</span>
+<span class="sd">        :param features: it can be a ndarray or list of ndarray for locally inference</span>
+<span class="sd">                         or RDD[Sample] for running in distributed fashion</span>
+<span class="sd">        :return: ndarray or RDD[Sample] depend on the the type of features.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">RDD</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_distributed</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_local</span><span class="p">(</span><span class="n">features</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Layer.predict_class"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict_class">[docs]</a>    <span class="k">def</span> <span class="nf">predict_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Model inference base on the given data which returning label</span>
+<span class="sd">        :param features: it can be a ndarray or list of ndarray for locally inference</span>
+<span class="sd">                         or RDD[Sample] for running in distributed fashion</span>
+<span class="sd">        :return: ndarray or RDD[Sample] depend on the the type of features.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">RDD</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_class_distributed</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_class_local</span><span class="p">(</span><span class="n">features</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Layer.predict_distributed"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict_distributed">[docs]</a>    <span class="k">def</span> <span class="nf">predict_distributed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Model inference base on the given data.</span>
 <span class="sd">        You need to invoke collect() to trigger those action \</span>
@@ -398,7 +423,7 @@
                              <span class="s2">&quot;modelPredictRDD&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">())</span></div>
 
-<div class="viewcode-block" id="Layer.predict_class"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict_class">[docs]</a>    <span class="k">def</span> <span class="nf">predict_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">):</span>
+<div class="viewcode-block" id="Layer.predict_class_distributed"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict_class_distributed">[docs]</a>    <span class="k">def</span> <span class="nf">predict_class_distributed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        module predict, return the predict label</span>
 
@@ -781,25 +806,33 @@
         <span class="k">return</span> <span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.load_keras"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.load_keras">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">load_keras</span><span class="p">(</span><span class="n">def_path</span><span class="p">,</span> <span class="n">weights_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">by_name</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">load_keras</span><span class="p">(</span><span class="n">json_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hdf5_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">by_name</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Load a pre-trained Keras model.</span>
 
-<span class="sd">        :param def_path: The json path containing the keras model definition.</span>
-<span class="sd">        :param weights_path: The HDF5 path containing the pre-trained keras model weights.</span>
-<span class="sd">        :return: A pre-trained model.</span>
+<span class="sd">        :param json_path: The json path containing the keras model definition.</span>
+<span class="sd">        :param hdf5_path: The HDF5 path containing the pre-trained keras model weights with or without the model architecture.</span>
+<span class="sd">        :return: A bigdl model.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">import</span> <span class="nn">os</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="kn">import</span> <span class="nn">tensorflow</span>
         <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
             <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;KERAS_BACKEND&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;theano&quot;</span>
-            <span class="kn">from</span> <span class="nn">theano</span> <span class="k">import</span> <span class="n">ifelse</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">from</span> <span class="nn">theano</span> <span class="k">import</span> <span class="n">ifelse</span>
+            <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;No backend is found for Keras. &quot;</span>
+                                <span class="s2">&quot;Please install either tensorflow or theano.&quot;</span><span class="p">)</span>
         <span class="kn">from</span> <span class="nn">bigdl.keras.converter</span> <span class="k">import</span> <span class="n">DefinitionLoader</span><span class="p">,</span> <span class="n">WeightLoader</span>
-        <span class="k">if</span> <span class="n">weights_path</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">WeightLoader</span><span class="o">.</span><span class="n">load_weights_from_json_hdf5</span><span class="p">(</span><span class="n">def_path</span><span class="p">,</span> <span class="n">weights_path</span><span class="p">,</span> <span class="n">by_name</span><span class="o">=</span><span class="n">by_name</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">DefinitionLoader</span><span class="o">.</span><span class="n">from_json_path</span><span class="p">(</span><span class="n">def_path</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="n">json_path</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">hdf5_path</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">DefinitionLoader</span><span class="o">.</span><span class="n">from_json_path</span><span class="p">(</span><span class="n">json_path</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">json_path</span> <span class="ow">and</span> <span class="n">hdf5_path</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">WeightLoader</span><span class="o">.</span><span class="n">load_weights_from_json_hdf5</span><span class="p">(</span><span class="n">json_path</span><span class="p">,</span> <span class="n">hdf5_path</span><span class="p">,</span> <span class="n">by_name</span><span class="o">=</span><span class="n">by_name</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">hdf5_path</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">json_path</span><span class="p">:</span>
+            <span class="n">kmodel</span><span class="p">,</span> <span class="n">bmodel</span> <span class="o">=</span> <span class="n">DefinitionLoader</span><span class="o">.</span><span class="n">from_hdf5_path</span><span class="p">(</span><span class="n">hdf5_path</span><span class="p">)</span>
+            <span class="n">WeightLoader</span><span class="o">.</span><span class="n">load_weights_from_kmodel</span><span class="p">(</span><span class="n">bmodel</span><span class="p">,</span> <span class="n">kmodel</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">bmodel</span></div>
 
 <div class="viewcode-block" id="Model.load_caffe"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.load_caffe">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">load_caffe</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">defPath</span><span class="p">,</span> <span class="n">modelPath</span><span class="p">,</span> <span class="n">match_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
@@ -1180,6 +1213,70 @@
                       <span class="n">weight_init_method</span><span class="p">,</span> <span class="n">bias_init_method</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div></div>
 
+<div class="viewcode-block" id="LocallyConnected1D"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.LocallyConnected1D">[docs]</a><span class="k">class</span> <span class="nc">LocallyConnected1D</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The `LocallyConnected1D` layer works similarly to</span>
+<span class="sd">    the `TemporalConvolution` layer, except that weights are unshared,</span>
+<span class="sd">    that is, a different set of filters is applied at each different patch</span>
+<span class="sd">    of the input.</span>
+<span class="sd">    The input tensor in `forward(input)` is expected to be a 2D tensor</span>
+<span class="sd">    (`nInputFrame` x `inputFrameSize`) or a 3D tensor</span>
+<span class="sd">    (`nBatchFrame` x `nInputFrame` x `inputFrameSize`).</span>
+<span class="sd">    :param nInputFrame the input frame channel</span>
+<span class="sd">    :param input_frame_size The input frame size expected in sequences given into `forward()`</span>
+<span class="sd">    :param output_frame_size The output frame size the convolution layer will produce.</span>
+<span class="sd">    :param kernel_w The kernel width of the convolution</span>
+<span class="sd">    :param stride_w The step of the convolution in the width dimension.</span>
+<span class="sd">    :param propagate_back Whether propagate gradient back, default is true.</span>
+<span class="sd">    :param weight_regularizer instance of [[Regularizer]]</span>
+<span class="sd">                        (eg. L1 or L2 regularization), applied to the input weights matrices.</span>
+<span class="sd">    :param bias_regularizer instance of [[Regularizer]]</span>
+<span class="sd">                         applied to the bias.</span>
+<span class="sd">    :param init_weight Initial weight</span>
+<span class="sd">    :param init_bias Initial bias</span>
+<span class="sd">    :param init_grad_weight Initial gradient weight</span>
+<span class="sd">    :param init_grad_bias Initial gradient bias</span>
+<span class="sd">    &gt;&gt;&gt; locallyConnected1D = LocallyConnected1D(10, 6, 12, 5, 5)</span>
+<span class="sd">    creating: createLocallyConnected1D</span>
+<span class="sd">    &gt;&gt;&gt; locallyConnected1D.setWRegularizer(L1Regularizer(0.5))</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    &gt;&gt;&gt; locallyConnected1D.setBRegularizer(L1Regularizer(0.5))</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">n_input_frame</span><span class="p">,</span>
+                 <span class="n">input_frame_size</span><span class="p">,</span>
+                 <span class="n">output_frame_size</span><span class="p">,</span>
+                 <span class="n">kernel_w</span><span class="p">,</span>
+                 <span class="n">stride_w</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">propagate_back</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">weight_regularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">bias_regularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">init_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">init_bias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">init_grad_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">init_grad_bias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LocallyConnected1D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                                 <span class="n">n_input_frame</span><span class="p">,</span>
+                                                 <span class="n">input_frame_size</span><span class="p">,</span>
+                                                 <span class="n">output_frame_size</span><span class="p">,</span>
+                                                 <span class="n">kernel_w</span><span class="p">,</span>
+                                                 <span class="n">stride_w</span><span class="p">,</span>
+                                                 <span class="n">propagate_back</span><span class="p">,</span>
+                                                 <span class="n">weight_regularizer</span><span class="p">,</span>
+                                                 <span class="n">bias_regularizer</span><span class="p">,</span>
+                                                 <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_weight</span><span class="p">),</span>
+                                                 <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_bias</span><span class="p">),</span>
+                                                 <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_grad_weight</span><span class="p">),</span>
+                                                 <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_grad_bias</span><span class="p">))</span>
+
+<div class="viewcode-block" id="LocallyConnected1D.set_init_method"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.LocallyConnected1D.set_init_method">[docs]</a>    <span class="k">def</span> <span class="nf">set_init_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight_init_method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bias_init_method</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setInitMethod&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                      <span class="n">weight_init_method</span><span class="p">,</span> <span class="n">bias_init_method</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
+
 <div class="viewcode-block" id="BinaryTreeLSTM"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.BinaryTreeLSTM">[docs]</a><span class="k">class</span> <span class="nc">BinaryTreeLSTM</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    This class is an implementation of Binary TreeLSTM (Constituency Tree LSTM).</span>
@@ -1203,6 +1300,89 @@
                                              <span class="n">hidden_size</span><span class="p">,</span>
                                              <span class="n">gate_output</span><span class="p">,</span>
                                              <span class="n">with_graph</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LocallyConnected2D"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.LocallyConnected2D">[docs]</a><span class="k">class</span> <span class="nc">LocallyConnected2D</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The LocallyConnected2D layer works similarly to the [[SpatialConvolution]] layer,</span>
+<span class="sd">    except that weights are unshared, that is, a different set of filters</span>
+<span class="sd">    is applied at each different patch of the input.</span>
+
+<span class="sd">    :param n_input_plane The number of expected input planes in the image given into forward()</span>
+<span class="sd">    :param input_width The expected width of input</span>
+<span class="sd">    :param input_height The expected height of input</span>
+<span class="sd">    :param n_output_plane The number of output planes the convolution layer will produce.</span>
+<span class="sd">    :param kernel_w The kernel width of the convolution</span>
+<span class="sd">    :param kernel_h The kernel height of the convolution</span>
+<span class="sd">    :param stride_w The step of the convolution in the width dimension.</span>
+<span class="sd">    :param stride_h The step of the convolution in the height dimension</span>
+<span class="sd">    :param pad_w The additional zeros added per width to the input planes.</span>
+<span class="sd">    :param pad_h The additional zeros added per height to the input planes.</span>
+<span class="sd">    :param propagate_back Propagate gradient back</span>
+<span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.</span>
+<span class="sd">    :param bRegularizer: instance of [[Regularizer]]applied to the bias.</span>
+<span class="sd">    :param init_weight: the optional initial value for the weight</span>
+<span class="sd">    :param init_bias: the optional initial value for the bias</span>
+<span class="sd">    :param init_grad_weight: the optional initial value for the grad_weight</span>
+<span class="sd">    :param init_grad_bias: the optional initial value for the grad_bias</span>
+<span class="sd">    :param with_bias: the optional initial value for if need bias</span>
+<span class="sd">    :param data_format: a string value of &quot;NHWC&quot; or &quot;NCHW&quot; to specify the input data format of this layer. In &quot;NHWC&quot; format</span>
+<span class="sd">                       data is stored in the order of [batch_size, height, width, channels], in &quot;NCHW&quot; format data is stored</span>
+<span class="sd">                       in the order of [batch_size, channels, height, width].</span>
+
+<span class="sd">    &gt;&gt;&gt; locallyConnected2D = LocallyConnected2D(6, 2, 4, 12, 5, 5)</span>
+<span class="sd">    creating: createLocallyConnected2D</span>
+<span class="sd">    &gt;&gt;&gt; locallyConnected2D.setWRegularizer(L1Regularizer(0.5))</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    &gt;&gt;&gt; locallyConnected2D.setBRegularizer(L1Regularizer(0.5))</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">n_input_plane</span><span class="p">,</span>
+                 <span class="n">input_width</span><span class="p">,</span>
+                 <span class="n">input_height</span><span class="p">,</span>
+                 <span class="n">n_output_plane</span><span class="p">,</span>
+                 <span class="n">kernel_w</span><span class="p">,</span>
+                 <span class="n">kernel_h</span><span class="p">,</span>
+                 <span class="n">stride_w</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">stride_h</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">pad_w</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">pad_h</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">propagate_back</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">bRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">init_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">init_bias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">init_grad_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">init_grad_bias</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">with_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LocallyConnected2D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                                 <span class="n">n_input_plane</span><span class="p">,</span>
+                                                 <span class="n">input_width</span><span class="p">,</span>
+                                                 <span class="n">input_height</span><span class="p">,</span>
+                                                 <span class="n">n_output_plane</span><span class="p">,</span>
+                                                 <span class="n">kernel_w</span><span class="p">,</span>
+                                                 <span class="n">kernel_h</span><span class="p">,</span>
+                                                 <span class="n">stride_w</span><span class="p">,</span>
+                                                 <span class="n">stride_h</span><span class="p">,</span>
+                                                 <span class="n">pad_w</span><span class="p">,</span>
+                                                 <span class="n">pad_h</span><span class="p">,</span>
+                                                 <span class="n">propagate_back</span><span class="p">,</span>
+                                                 <span class="n">wRegularizer</span><span class="p">,</span>
+                                                 <span class="n">bRegularizer</span><span class="p">,</span>
+                                                 <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_weight</span><span class="p">),</span>
+                                                 <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_bias</span><span class="p">),</span>
+                                                 <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_grad_weight</span><span class="p">),</span>
+                                                 <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">init_grad_bias</span><span class="p">),</span>
+                                                 <span class="n">with_bias</span><span class="p">,</span>
+                                                 <span class="n">data_format</span><span class="p">)</span>
+<div class="viewcode-block" id="LocallyConnected2D.set_init_method"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.LocallyConnected2D.set_init_method">[docs]</a>    <span class="k">def</span> <span class="nf">set_init_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bias_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setInitMethod&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                      <span class="n">weight_init_method</span><span class="p">,</span> <span class="n">bias_init_method</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
 
 <div class="viewcode-block" id="SpatialConvolution"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SpatialConvolution">[docs]</a><span class="k">class</span> <span class="nc">SpatialConvolution</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
@@ -1839,13 +2019,16 @@
 <span class="sd">    :param format  &#39;NCHW&#39; or &#39;NHWC&#39;.</span>
 <span class="sd">        In &#39;NCHW&#39; mode, the channels dimension (the depth)</span>
 <span class="sd">        is at index 1, in &#39;NHWC&#39; mode is it at index 4.</span>
+
+<span class="sd">    &gt;&gt;&gt; dropout = SpatialDropout3D(0.5, &quot;NHWC&quot;)</span>
+<span class="sd">    creating: createSpatialDropout3D</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">init_p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
                  <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Dropout</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">data_format</span><span class="p">,</span>
-                                      <span class="n">init_p</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SpatialDropout3D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                               <span class="n">init_p</span><span class="p">,</span> <span class="n">data_format</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SpatialDropout2D"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SpatialDropout2D">[docs]</a><span class="k">class</span> <span class="nc">SpatialDropout2D</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -1861,13 +2044,16 @@
 <span class="sd">    :param format  &#39;NCHW&#39; or &#39;NHWC&#39;.</span>
 <span class="sd">        In &#39;NCHW&#39; mode, the channels dimension (the depth)</span>
 <span class="sd">        is at index 1, in &#39;NHWC&#39; mode is it at index 4.</span>
+
+<span class="sd">    &gt;&gt;&gt; dropout = SpatialDropout2D(0.4, &quot;NHWC&quot;)</span>
+<span class="sd">    creating: createSpatialDropout2D</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">init_p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
                  <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Dropout</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">data_format</span><span class="p">,</span>
-                                      <span class="n">init_p</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SpatialDropout2D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                               <span class="n">init_p</span><span class="p">,</span> <span class="n">data_format</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SpatialDropout1D"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SpatialDropout1D">[docs]</a><span class="k">class</span> <span class="nc">SpatialDropout1D</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -1880,12 +2066,15 @@
 <span class="sd">    between feature maps and should be used instead.</span>
 
 <span class="sd">    :param initP the probability p</span>
+
+<span class="sd">    &gt;&gt;&gt; dropout = SpatialDropout1D(0.4)</span>
+<span class="sd">    creating: createSpatialDropout1D</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">init_p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Dropout</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                      <span class="n">init_p</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SpatialDropout1D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                               <span class="n">init_p</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Dropout"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Dropout">[docs]</a><span class="k">class</span> <span class="nc">Dropout</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
@@ -2923,6 +3112,56 @@
                       <span class="n">weight_init_method</span><span class="p">,</span> <span class="n">bias_init_method</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div></div>
 
+
+<div class="viewcode-block" id="LookupTableSparse"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.LookupTableSparse">[docs]</a><span class="k">class</span> <span class="nc">LookupTableSparse</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    LookupTable for multi-values.</span>
+<span class="sd">    Also called embedding_lookup_sparse in TensorFlow.</span>
+
+<span class="sd">    The input of LookupTableSparse should be a 2D SparseTensor or two 2D SparseTensors.</span>
+<span class="sd">    If the input is a SparseTensor, the values are positive integer ids,</span>
+<span class="sd">    values in each row of this SparseTensor will be turned into a dense vector.</span>
+<span class="sd">    If the input is two SparseTensors, the first tensor should be the integer ids, just</span>
+<span class="sd">    like the SparseTensor input. And the second tensor is the corresponding</span>
+<span class="sd">    weights of the integer ids.</span>
+
+<span class="sd">    :param wRegularizer: instance of [[Regularizer]](eg. L1 or L2 regularization), applied to the input weights matrices.</span>
+
+<span class="sd">    &gt;&gt;&gt; lookupTableSparse = LookupTableSparse(20, 5, &quot;mean&quot;, 2, L1Regularizer(0.5))</span>
+<span class="sd">    creating: createL1Regularizer</span>
+<span class="sd">    creating: createLookupTableSparse</span>
+<span class="sd">    &gt;&gt;&gt; indices = np.array([[0, 0, 1, 2], [0, 1, 0, 3]])</span>
+<span class="sd">    &gt;&gt;&gt; values = np.array([2, 4, 1, 2])</span>
+<span class="sd">    &gt;&gt;&gt; weightValues = np.array([2, 0.5, 1, 3])</span>
+<span class="sd">    &gt;&gt;&gt; input = JTensor.sparse(values, indices, np.array([3, 4]))</span>
+<span class="sd">    &gt;&gt;&gt; weight = JTensor.sparse(weightValues, indices, np.array([3, 4]))</span>
+<span class="sd">    &gt;&gt;&gt; layer1 = LookupTableSparse(10, 4, &quot;mean&quot;)</span>
+<span class="sd">    creating: createLookupTableSparse</span>
+<span class="sd">    &gt;&gt;&gt; layer1.set_weights(np.arange(1, 41, 1).reshape(10, 4)) # set weight to 1 to 40</span>
+<span class="sd">    &gt;&gt;&gt; layer1.forward([input, weight])</span>
+<span class="sd">    array([[ 6.5999999 ,  7.60000038,  8.60000038,  9.60000038],</span>
+<span class="sd">           [ 1.        ,  2.        ,  3.        ,  4.        ],</span>
+<span class="sd">           [ 5.        ,  6.        ,  7.        ,  8.        ]], dtype=float32)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">n_index</span><span class="p">,</span>
+                 <span class="n">n_output</span><span class="p">,</span>
+                 <span class="n">combiner</span><span class="o">=</span><span class="s2">&quot;sum&quot;</span><span class="p">,</span>
+                 <span class="n">max_norm</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span>
+                 <span class="n">wRegularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LookupTableSparse</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                          <span class="n">n_index</span><span class="p">,</span>
+                                          <span class="n">n_output</span><span class="p">,</span>
+                                          <span class="n">combiner</span><span class="p">,</span>
+                                          <span class="n">max_norm</span> <span class="o">+</span> <span class="mf">0.0</span><span class="p">,</span>
+                                          <span class="n">wRegularizer</span><span class="p">)</span>
+<div class="viewcode-block" id="LookupTableSparse.set_init_method"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.LookupTableSparse.set_init_method">[docs]</a>    <span class="k">def</span> <span class="nf">set_init_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weight_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bias_init_method</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setInitMethod&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                      <span class="n">weight_init_method</span><span class="p">,</span> <span class="n">bias_init_method</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
 
 <div class="viewcode-block" id="MM"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.MM">[docs]</a><span class="k">class</span> <span class="nc">MM</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
@@ -4962,7 +5201,7 @@
                  <span class="n">input_size</span><span class="p">,</span>
                  <span class="n">output_size</span><span class="p">,</span>
                  <span class="n">maxout_number</span><span class="p">,</span>
-                 <span class="n">with_bias</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                 <span class="n">with_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">w_regularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">b_regularizer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">init_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
