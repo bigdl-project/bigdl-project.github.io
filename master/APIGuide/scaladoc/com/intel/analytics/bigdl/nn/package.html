@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>nn - bigdl 0.4.0-SNAPSHOT API - com.intel.analytics.bigdl.nn</title>
-          <meta name="description" content="nn - bigdl 0.4.0 - SNAPSHOT API - com.intel.analytics.bigdl.nn" />
-          <meta name="keywords" content="nn bigdl 0.4.0 SNAPSHOT API com.intel.analytics.bigdl.nn" />
+          <title>nn - bigdl 0.5.0-SNAPSHOT API - com.intel.analytics.bigdl.nn</title>
+          <meta name="description" content="nn - bigdl 0.5.0 - SNAPSHOT API - com.intel.analytics.bigdl.nn" />
+          <meta name="keywords" content="nn bigdl 0.5.0 SNAPSHOT API com.intel.analytics.bigdl.nn" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -1198,6 +1198,34 @@ LeakyReLU is defined as:
       </h4>
       <p class="comment cmt">The <code>Linear</code> module applies a linear transformation to the input data,
 i.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.LocallyConnected1D" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LocallyConnected1D[T]extendsTensorModule[T]withInitializable"></a>
+      <a id="LocallyConnected1D[T]:LocallyConnected1D[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="LocallyConnected1D.html"><span class="name">LocallyConnected1D</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.LocallyConnected1D.T">T</span>] with <a href="abstractnn/Initializable.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">Initializable</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.LocallyConnected2D" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LocallyConnected2D[T]extendsTensorModule[T]withInitializable"></a>
+      <a id="LocallyConnected2D[T]:LocallyConnected2D[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="LocallyConnected2D.html"><span class="name">LocallyConnected2D</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.LocallyConnected2D.T">T</span>] with <a href="abstractnn/Initializable.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">Initializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">The LocallyConnected2D layer works similarly to the <a href="SpatialConvolution.html" class="extype" name="com.intel.analytics.bigdl.nn.SpatialConvolution">SpatialConvolution</a> layer,
+except that weights are unshared, that is, a different set of filters
+is applied at each different patch of the input.</p>
     </li><li name="com.intel.analytics.bigdl.nn.Log" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Log[T,D]extendsAbstractModule[com.intel.analytics.bigdl.tensor.Tensor[D],com.intel.analytics.bigdl.tensor.Tensor[D],T]"></a>
       <a id="Log[T,D]:Log[T,D]"></a>
@@ -1256,6 +1284,19 @@ where a = sum_j[exp(x_j)]</p>
       </span>
       </h4>
       <p class="comment cmt">This layer is a particular case of a convolution, where the width of the convolution would be 1.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.LookupTableSparse" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LookupTableSparse[T]extendsAbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.tensor.Tensor[T],T]withInitializable"></a>
+      <a id="LookupTableSparse[T]:LookupTableSparse[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="LookupTableSparse.html"><span class="name">LookupTableSparse</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.LookupTableSparse.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.LookupTableSparse.T">T</span>] with <a href="abstractnn/Initializable.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">Initializable</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">LookupTable for multi-values.</p>
     </li><li name="com.intel.analytics.bigdl.nn.MM" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MM[T]extendsAbstractModule[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
       <a id="MM[T]:MM[T]"></a>
@@ -3886,6 +3927,32 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       </h4>
       
+    </li><li name="com.intel.analytics.bigdl.nn.LocallyConnected1D" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LocallyConnected1D"></a>
+      <a id="LocallyConnected1D:LocallyConnected1D"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LocallyConnected1D$.html"><span class="name">LocallyConnected1D</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.LocallyConnected2D" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LocallyConnected2D"></a>
+      <a id="LocallyConnected2D:LocallyConnected2D"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LocallyConnected2D$.html"><span class="name">LocallyConnected2D</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.nn.Log" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Log"></a>
       <a id="Log:Log"></a>
@@ -3935,6 +4002,19 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       <span class="symbol">
         <a href="LookupTable$.html"><span class="name">LookupTable</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.LookupTableSparse" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LookupTableSparse"></a>
+      <a id="LookupTableSparse:LookupTableSparse"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LookupTableSparse$.html"><span class="name">LookupTableSparse</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
