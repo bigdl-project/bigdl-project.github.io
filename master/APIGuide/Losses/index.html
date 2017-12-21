@@ -1859,7 +1859,10 @@ loss = criterion.forward(input, target)
 <pre><code class="python">criterion = KLDCriterion()
 </code></pre>
 
-<p>Computes the KL-divergence of the Gaussian distribution.</p>
+<p>Computes the KL-divergence of the input normal distribution to a standard normal distribution.
+The input has to be a table. The first element of input is the mean of the distribution,
+the second element of input is the log_variance of the distribution. The input distribution is
+assumed to be diagonal.</p>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.tensor.Tensor
 import com.intel.analytics.bigdl.nn._
@@ -1878,7 +1881,7 @@ val target = Tensor[Float](2, 3).range(2, 13, 2)
 val loss = criterion.forward(input, target)
 
 &gt; loss
-loss: Float = 34562.04
+loss: Float = 34647.04
 </code></pre>
 
 <p><strong>Python example:</strong></p>
@@ -1901,7 +1904,7 @@ target = target.reshape(2, 3)
 loss = criterion.forward(input, target)
 
 &gt; loss
-34562.04
+34647.04
 </code></pre>
 
 <h2 id="cosineproximitycriterion">CosineProximityCriterion</h2>

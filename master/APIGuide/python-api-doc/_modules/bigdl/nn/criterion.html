@@ -549,7 +549,10 @@
 <div class="viewcode-block" id="KLDCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.KLDCriterion">[docs]</a><span class="k">class</span> <span class="nc">KLDCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Computes the KL-divergence of the Gaussian distribution.</span>
+<span class="sd">    Computes the KL-divergence of the input normal distribution to a standard normal distribution.</span>
+<span class="sd">    The input has to be a table. The first element of input is the mean of the distribution,</span>
+<span class="sd">    the second element of input is the log_variance of the distribution. The input distribution is</span>
+<span class="sd">    assumed to be diagonal.</span>
 <span class="sd">    &gt;&gt;&gt; KLDCriterion = KLDCriterion()</span>
 <span class="sd">    creating: createKLDCriterion</span>
 <span class="sd">    &#39;&#39;&#39;</span>
