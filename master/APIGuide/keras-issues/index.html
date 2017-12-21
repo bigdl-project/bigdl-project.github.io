@@ -34,10 +34,8 @@
         
         var pageToc = [
           {title: "Summary", url: "#summary", children: [
-          ]},
-          {title: "Unsupported Layer Arguments", url: "#unsupported-layer-arguments", children: [
-          ]},
-          {title: "Known Issues", url: "#known-issues", children: [
+              {title: "Unsupported Layer Arguments", url: "#unsupported-layer-arguments" },
+              {title: "Known Issues", url: "#known-issues" },
           ]},
         ];
 
@@ -55,33 +53,35 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <div class="container-fluid wm-page-content">
     
 
-    <h2 id="summary">Summary</h2>
+    <h1 id="summary"><strong>Summary</strong></h1>
 <p>Up to now, we have generally supported <strong>ALL</strong> the layers of <a href="https://faroit.github.io/keras-docs/1.2.2/"><strong>Keras 1.2.2</strong></a> to be loaded into BigDL.</p>
 <p>Self-defined Keras layers or <a href="https://faroit.github.io/keras-docs/1.2.2/layers/core/#lambda"><code>Lambda</code></a> layers are not supported for now. Weight sharing is not supported for now.</p>
-<p>This pages lists the so-far unsupported arguments for specific layers and some known issues.</p>
-<h2 id="unsupported-layer-arguments">Unsupported Layer Arguments</h2>
-<p>For the following arguments, currently only the default values are expected and supported.
-<em> Constraints (<code>W_constraint</code>, <code>b_constraint</code>, etc.) are not supported for all layers.
-</em> <code>activity_regularizer</code> is not supported for all layers.
-<em> For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/core/#dropout"><code>Dropout</code></a>, <code>noise_shape</code> is not supported.
-</em> For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/core/#merge"><code>Merge</code></a> layers, <code>node_indices</code>, <code>tensor_indices</code>, <code>output_mask</code> are not supported. <code>Lambda/function</code> as merge mode is not supported.
-<em> For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/core/#merge"><code>Merge</code></a> layers with mode <code>'dot'</code> or <code>'cosine'</code>, only <code>2D</code> input with <code>dot_axes=1</code> is supported.
-</em> For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#atrousconvolution1d"><code>AtrousConvolution1D</code></a>, only <code>bias=True</code> is supported.
-<em> For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#atrousconvolution2d"><code>AtrousConvolution2D</code></a>, only <code>dim_ordering='th'</code> and <code>bias=True</code> are supported.
-</em> For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#deconvolution2d"><code>DeConvolution2D</code></a>, only <code>dim_ordering='th'</code> is supported. For <code>border_mode='same'</code>, only symmetric padding on both sides is supported.
-<em> For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#convolution3d"><code>Convolution3D</code></a>, only <code>dim_ordering='th'</code> is supported.
-</em> For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#upsampling3d"><code>UpSampling3D</code></a>, only <code>dim_ordering='th'</code> is supported.
-<em> For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/pooling/#maxpooling3d"><code>MaxPooling3D</code></a>, only <code>dim_ordering='th'</code> and <code>border_mode='valid'</code> are supported.
-</em> For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/pooling/#averagepooling3d"><code>AveragePooling3D</code></a>, only <code>dim_ordering='th'</code> and <code>border_mode='valid'</code> are supported.
-<em> For <code>GlobalMaxPooling3D</code>, only <code>dim_ordering='th'</code> is supported.
-</em> For <code>GlobalAveragePooling3D</code>, only <code>dim_ordering='th'</code> is supported.
-<em> For all <a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#recurrent"><code>Recurrent</code></a> layers (<a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#simplernn"><code>SimpleRNN</code></a>, <a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#gru"><code>GRU</code></a> and <a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#lstm"><code>LSTM</code></a>), <code>stateful</code>, <code>consume_less</code>, <code>dropout_W</code> and <code>dropout_U</code> are not supported.
-If RNNs are wrapped with <a href="https://faroit.github.io/keras-docs/1.2.2/layers/wrappers/#bidirectional"><code>Bidirectional</code></a>, only <code>return_sequences=True</code> is supported.
-</em> For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/embeddings/#embedding"><code>Embedding</code></a>, <code>mask_zero</code> and <code>dropout</code> are not supported.
-<em> For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/advanced-activations/#prelu"><code>PReLU</code></a>, <code>init</code>, <code>weights</code> and <code>shared_axes</code> are not supported.
-</em> For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/advanced-activations/#parametricsoftplus"><code>ParametricSoftplus</code></a>, <code>weights</code> and <code>shared_axes</code> are not supported. Only <code>alpha_init = 1/beta_init</code> is supported.
-* For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/normalization/#batchnormalization"><code>BatchNormalization</code></a>, only <code>mode=0</code> is supported. Only <code>channel_first</code> (<code>dim_ordering='th'</code> with <code>axis=1</code>) and <code>channel_last</code> (<code>dim_ordering='tf'</code> with <code>axis=-1</code>) is supported. <code>gamma_regularizer</code> and <code>beta_regularizer</code> are not supported.</p>
-<h2 id="known-issues">Known Issues</h2>
+<p>This page lists the so-far unsupported arguments for specific layers and some known issues.</p>
+<h2 id="unsupported-layer-arguments"><strong>Unsupported Layer Arguments</strong></h2>
+<p>For the following arguments, currently only the default values are expected and supported.</p>
+<ul>
+<li>Constraints (<code>W_constraint</code>, <code>b_constraint</code>, etc.) are not supported for all layers.</li>
+<li><code>activity_regularizer</code> is not supported for all layers.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/core/#dropout"><code>Dropout</code></a>, <code>noise_shape</code> is not supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/core/#merge"><code>Merge</code></a> layers, <code>node_indices</code>, <code>tensor_indices</code>, <code>output_mask</code> are not supported. <code>Lambda/function</code> as merge mode is not supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/core/#merge"><code>Merge</code></a> layers with mode <code>'dot'</code> or <code>'cosine'</code>, only <code>2D</code> input with <code>dot_axes=1</code> is supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#atrousconvolution1d"><code>AtrousConvolution1D</code></a>, only <code>bias=True</code> is supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#atrousconvolution2d"><code>AtrousConvolution2D</code></a>, only <code>dim_ordering='th'</code> and <code>bias=True</code> are supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#deconvolution2d"><code>DeConvolution2D</code></a>, only <code>dim_ordering='th'</code> is supported. For <code>border_mode='same'</code>, only symmetric padding on both sides is supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#convolution3d"><code>Convolution3D</code></a>, only <code>dim_ordering='th'</code> is supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#upsampling3d"><code>UpSampling3D</code></a>, only <code>dim_ordering='th'</code> is supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/pooling/#maxpooling3d"><code>MaxPooling3D</code></a>, only <code>dim_ordering='th'</code> and <code>border_mode='valid'</code> are supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/pooling/#averagepooling3d"><code>AveragePooling3D</code></a>, only <code>dim_ordering='th'</code> and <code>border_mode='valid'</code> are supported.</li>
+<li>For <code>GlobalMaxPooling3D</code>, only <code>dim_ordering='th'</code> is supported.</li>
+<li>For <code>GlobalAveragePooling3D</code>, only <code>dim_ordering='th'</code> is supported.</li>
+<li>For all <a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#recurrent"><code>Recurrent</code></a> layers (<a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#simplernn"><code>SimpleRNN</code></a>, <a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#gru"><code>GRU</code></a> and <a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#lstm"><code>LSTM</code></a>), <code>stateful</code>, <code>consume_less</code>, <code>dropout_W</code> and <code>dropout_U</code> are not supported.
+If RNNs are wrapped with <a href="https://faroit.github.io/keras-docs/1.2.2/layers/wrappers/#bidirectional"><code>Bidirectional</code></a>, only <code>return_sequences=True</code> is supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/embeddings/#embedding"><code>Embedding</code></a>, <code>mask_zero</code> and <code>dropout</code> are not supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/advanced-activations/#prelu"><code>PReLU</code></a>, <code>init</code>, <code>weights</code> and <code>shared_axes</code> are not supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/advanced-activations/#parametricsoftplus"><code>ParametricSoftplus</code></a>, <code>weights</code> and <code>shared_axes</code> are not supported. Only <code>alpha_init = 1/beta_init</code> is supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/normalization/#batchnormalization"><code>BatchNormalization</code></a>, only <code>mode=0</code> is supported. Only <code>channel_first</code> (<code>dim_ordering='th'</code> with <code>axis=1</code>) and <code>channel_last</code> (<code>dim_ordering='tf'</code> with <code>axis=-1</code>) is supported. <code>gamma_regularizer</code> and <code>beta_regularizer</code> are not supported.</li>
+</ul>
+<h2 id="known-issues"><strong>Known Issues</strong></h2>
 <ul>
 <li>For some layers such as <code>ZeroPadding2D</code>, <code>ZeroPadding3D</code>, <code>Cropping2D</code>, <code>Cropping3D</code>, etc., Keras doesn't save <code>dim_ordering</code> into JSON. In this case, the default <code>dim_ordering</code> found in <code>~/.keras/keras.json</code> will be used instead.</li>
 </ul>
