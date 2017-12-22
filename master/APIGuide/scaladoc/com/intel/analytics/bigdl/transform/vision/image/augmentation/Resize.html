@@ -80,7 +80,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.transform.vision.image.augmentation.Resize#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(resizeH:Int,resizeW:Int,resizeMode:Int):com.intel.analytics.bigdl.transform.vision.image.augmentation.Resize"></a>
+      <a id="&lt;init&gt;(resizeH:Int,resizeW:Int,resizeMode:Int,useScaleFactor:Boolean):com.intel.analytics.bigdl.transform.vision.image.augmentation.Resize"></a>
       <a id="&lt;init&gt;:Resize"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -88,12 +88,15 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Resize</span><span class="params">(<span name="resizeH">resizeH: <span class="extype" name="scala.Int">Int</span></span>, <span name="resizeW">resizeW: <span class="extype" name="scala.Int">Int</span></span>, <span name="resizeMode">resizeMode: <span class="extype" name="scala.Int">Int</span> = <span class="defval" name="org.opencv.imgproc.Imgproc.INTER_LINEAR">...</span></span>)</span>
+        <span class="name">Resize</span><span class="params">(<span name="resizeH">resizeH: <span class="extype" name="scala.Int">Int</span></span>, <span name="resizeW">resizeW: <span class="extype" name="scala.Int">Int</span></span>, <span name="resizeMode">resizeMode: <span class="extype" name="scala.Int">Int</span> = <span class="defval" name="org.opencv.imgproc.Imgproc.INTER_LINEAR">...</span></span>, <span name="useScaleFactor">useScaleFactor: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">resizeH</dt><dd class="cmt"><p>height after resize</p></dd><dt class="param">resizeW</dt><dd class="cmt"><p>width after resize</p></dd><dt class="param">resizeMode</dt><dd class="cmt"><p>if resizeMode = -1, random select a mode from
 (Imgproc.INTER_LINEAR, Imgproc.INTER_CUBIC, Imgproc.INTER_AREA,
-                  Imgproc.INTER_NEAREST, Imgproc.INTER_LANCZOS4)
+                  Imgproc.INTER_NEAREST, Imgproc.INTER_LANCZOS4)</p></dd><dt class="param">useScaleFactor</dt><dd class="cmt"><p>if true, scale factor fx and fy is used, fx = fy = 0
+note that the result of the following are different
+Imgproc.resize(mat, mat, new Size(resizeWH, resizeWH), 0, 0, Imgproc.INTER_LINEAR)
+Imgproc.resize(mat, mat, new Size(resizeWH, resizeWH))
 </p></dd></dl></div>
     </li></ol>
             </div>

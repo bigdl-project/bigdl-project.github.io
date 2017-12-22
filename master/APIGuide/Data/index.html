@@ -45,6 +45,12 @@
           ]},
           {title: "DataSet", url: "#dataset", children: [
           ]},
+          {title: "OpenCVMat", url: "#opencvmat", children: [
+          ]},
+          {title: "ImageFeature", url: "#imagefeature", children: [
+          ]},
+          {title: "ImageFrame", url: "#imageframe", children: [
+          ]},
         ];
 
     </script>
@@ -421,6 +427,158 @@ while (iter.hasNext) {
 3.0 3.0 3.0 
 
 [com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x3x3]
+</code></pre>
+
+<hr />
+<h2 id="opencvmat"><strong>OpenCVMat</strong></h2>
+<p>OpenCVMat is a Serializable wrapper of org.opencv.core.Mat.</p>
+<p>It can be created by
+<em> <code>read</code>: read local image path as opencv mat
+</em> <code>fromImageBytes</code>: convert image file in bytes to opencv mat
+* <code>fromFloats</code>: convert float array(pixels) to OpenCV mat</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">// read local image path as OpenCVMat
+val mat = OpenCVMat.read(&quot;/tmp/test.jpg&quot;)
+
+// convert image file in bytes to OpenCVMat
+val bytes = FileUtils.readFileToByteArray(new File(path))
+val mat2 = OpenCVMat.fromImageBytes(bytes)
+
+// Convert float array(pixels) to OpenCVMat
+val mat3 = OpenCVMat.fromFloats(floatPixels, height=300, width=300)
+</code></pre>
+
+<hr />
+<h2 id="imagefeature"><strong>ImageFeature</strong></h2>
+<p><code>ImageFeature</code> is a representation of one image.
+It can include various status of an image, by using key-value store.
+The key is string that identifies the corresponding value.
+Some predefined keys are listed as follows:
+<em> uri: uri that identifies image
+</em> mat: image in OpenCVMat
+<em> bytes: image file in bytes
+</em> floats: image pixels in float array
+<em> size: current image size (height, width, channel)
+</em> originalSize: original image size (height, width, channel)
+<em> label: image label
+</em> predict: image prediction result
+<em> boundingBox: store boundingBox of current image,
+it may be used in crop/expand that may change the size of image
+</em> sample: image (and label if available) stored as Sample
+* imageTensor: image pixels in Tensor</p>
+<p>Besides the above keys, you can also define your key and store information needed
+in the prediction pipeline.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.transform.vision.image.ImageFeature
+import org.apache.commons.io.FileUtils
+import java.io.File
+
+val file = new File(&quot;/tmp/test.jpg&quot;)
+val imageFeature = ImageFeature(FileUtils.readFileToByteArray(file), uri = file.getAbsolutePath)
+println(imageFeature.keys())
+</code></pre>
+
+<p>output is</p>
+<pre><code>Set(uri, bytes)
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.transform.vision.image import *
+image = cv2.imread(&quot;/tmp/test.jpg&quot;)
+image_feature = ImageFeature(image)
+print image_feature.keys()
+</code></pre>
+
+<p>output is</p>
+<pre><code>creating: createImageFeature
+[u'originalSize', u'mat', u'bytes']
+</code></pre>
+
+<hr />
+<h2 id="imageframe"><strong>ImageFrame</strong></h2>
+<p><code>ImageFrame</code> is a collection of <code>ImageFeature</code>.
+It can be a <code>DistributedImageFrame</code> for distributed image RDD or
+ <code>LocalImageFrame</code> for local image array.
+You can read an <code>ImageFrame</code> from local/distributed folder/parquet file,
+or you can directly construct a ImageFrame from RDD[ImageFeature] or Array[ImageFeature].</p>
+<p><strong>Scala example:</strong></p>
+<p>Create LocalImageFrame, assume there is an image file "/tmp/test.jpg"
+and an image folder "/tmp/image/"</p>
+<pre><code class="scala">import com.intel.analytics.bigdl.transform.vision.image.ImageFrame
+import com.intel.analytics.bigdl.transform.vision.image.ImageFeature
+
+// create LocalImageFrame from an image
+val localImageFrame = ImageFrame.read(&quot;/tmp/test.jpg&quot;)
+
+// create LocalImageFrame from an image folder
+val localImageFrame2 = ImageFrame.read(&quot;/tmp/image/&quot;)
+
+// create LocalImageFrame from array of ImageFeature
+val array = Array[ImageFeature]()
+val localImageFrame3 = ImageFrame.array(array)
+</code></pre>
+
+<p>Create DistributedImageFrame, assume there is an image file "/tmp/test.jpg"
+and an image folder</p>
+<pre><code class="scala">import com.intel.analytics.bigdl.transform.vision.image.ImageFrame
+import com.intel.analytics.bigdl.transform.vision.image.ImageFeature
+import com.intel.analytics.bigdl.utils.Engine
+import org.apache.spark.SparkContext
+import org.apache.spark.sql.SQLContext
+
+val conf = Engine.createSparkConf().setAppName(&quot;ImageSpec&quot;).setMaster(&quot;local[2]&quot;)
+val sc = new SparkContext(conf)
+val sqlContext = new SQLContext(sc)
+
+// create DistributedImageFrame from an image
+val distributedImageFrame = ImageFrame.read(&quot;/tmp/test.jpg&quot;, sc, 2)
+
+// create DistributedImageFrame from an image folder
+val distributedImageFrame2 = ImageFrame.read(&quot;/tmp/image/&quot;, sc, 2)
+
+// create DistributedImageFrame from rdd of ImageFeature
+val array = Array[ImageFeature]()
+val rdd = sc.parallelize(array)
+val distributedImageFrame3 = ImageFrame.rdd(rdd)
+
+// create DistributedImageFrame from Parquet
+val distributedImageFrame4 = ImageFrame.readParquet(dir, sqlContext)
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<p>Create LocalImageFrame</p>
+<pre><code class="python">from bigdl.util.common import *
+from bigdl.transform.vision.image import *
+
+# create LocalImageFrame from an image
+local_image_frame = ImageFrame.read(&quot;/tmp/test.jpg&quot;)
+
+# create LocalImageFrame from an image folder
+local_image_frame2 = ImageFrame.read(&quot;/tmp/image/&quot;)
+
+# create LocalImageFrame from list of images
+image = cv2.imread(&quot;/tmp/test.jpg&quot;)
+local_image_frame3 = LocalImageFrame([image])
+</code></pre>
+
+<p>Create DistributedImageFrame</p>
+<pre><code class="python">from bigdl.util.common import *
+from bigdl.transform.vision.image import *
+
+sparkConf = create_spark_conf().setMaster(&quot;local[2]&quot;).setAppName(&quot;test image&quot;)
+sc = get_spark_context(sparkConf)
+init_engine()
+
+# create DistributedImageFrame from an image
+distributed_image_frame = ImageFrame.read(&quot;/tmp/test.jpg&quot;, sc, 2)
+
+# create DistributedImageFrame from an image folder
+distributed_image_frame = ImageFrame.read(&quot;/tmp/image/&quot;, sc, 2)
+
+# create LocalImageFrame from image rdd
+image = cv2.imread(&quot;/tmp/test.jpg&quot;)
+image_rdd = sc.parallelize([image], 2)
+distributed_image_frame = DistributedImageFrame(image_rdd)
 </code></pre>
 
   <br>

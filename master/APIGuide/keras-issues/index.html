@@ -74,8 +74,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/pooling/#averagepooling3d"><code>AveragePooling3D</code></a>, only <code>dim_ordering='th'</code> and <code>border_mode='valid'</code> are supported.</li>
 <li>For <code>GlobalMaxPooling3D</code>, only <code>dim_ordering='th'</code> is supported.</li>
 <li>For <code>GlobalAveragePooling3D</code>, only <code>dim_ordering='th'</code> is supported.</li>
-<li>For all <a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#recurrent"><code>Recurrent</code></a> layers (<a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#simplernn"><code>SimpleRNN</code></a>, <a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#gru"><code>GRU</code></a> and <a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#lstm"><code>LSTM</code></a>), <code>stateful</code>, <code>consume_less</code>, <code>dropout_W</code> and <code>dropout_U</code> are not supported.
+<li>For all <a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#recurrent"><code>Recurrent</code></a> layers (<a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#simplernn"><code>SimpleRNN</code></a>, <a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#gru"><code>GRU</code></a>, <a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#lstm"><code>LSTM</code></a> and <code>ConvLSTM2D</code>), <code>stateful</code>, <code>consume_less</code>, <code>dropout_W</code> and <code>dropout_U</code> are not supported.
 If RNNs are wrapped with <a href="https://faroit.github.io/keras-docs/1.2.2/layers/wrappers/#bidirectional"><code>Bidirectional</code></a>, only <code>return_sequences=True</code> is supported.</li>
+<li>For <code>ConvLSTM2D</code>, only <code>border_mode='valid'</code>, <code>nb_row==nb_col</code>(square kernel) and <code>subsample[0]==subsample[1]</code>(equal strides) are supported.</li>
 <li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/embeddings/#embedding"><code>Embedding</code></a>, <code>mask_zero</code> and <code>dropout</code> are not supported.</li>
 <li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/advanced-activations/#prelu"><code>PReLU</code></a>, <code>init</code>, <code>weights</code> and <code>shared_axes</code> are not supported.</li>
 <li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/advanced-activations/#parametricsoftplus"><code>ParametricSoftplus</code></a>, <code>weights</code> and <code>shared_axes</code> are not supported. Only <code>alpha_init = 1/beta_init</code> is supported.</li>
@@ -83,7 +84,8 @@ If RNNs are wrapped with <a href="https://faroit.github.io/keras-docs/1.2.2/laye
 </ul>
 <h2 id="known-issues"><strong>Known Issues</strong></h2>
 <ul>
-<li>For some layers such as <code>ZeroPadding2D</code>, <code>ZeroPadding3D</code>, <code>Cropping2D</code>, <code>Cropping3D</code>, etc., Keras doesn't save <code>dim_ordering</code> into JSON. In this case, the default <code>dim_ordering</code> found in <code>~/.keras/keras.json</code> will be used instead.</li>
+<li>For some layers such as <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#zeropadding2d"><code>ZeroPadding2D</code></a>, <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#zeropadding3d"><code>ZeroPadding3D</code></a>, <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#cropping2d"><code>Cropping2D</code></a>, <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#cropping3d"><code>Cropping3D</code></a>, etc., Keras doesn't save <code>dim_ordering</code> into config. In this case, the default <code>dim_ordering</code> found in <code>~/.keras/keras.json</code> will be used instead.</li>
+<li>For <code>ConvLSTM2D</code>, Keras doesn't save <code>W_regularizer</code>, <code>U_regularizer</code> and <code>b_regularizer</code> into config. In this case, the default <code>None</code> will be used instead.</li>
 </ul>
 
   <br>

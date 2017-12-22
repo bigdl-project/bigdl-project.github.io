@@ -81,6 +81,7 @@
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 
+
 <div class="viewcode-block" id="exist_pyspark"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.engine.exist_pyspark">[docs]</a><span class="k">def</span> <span class="nf">exist_pyspark</span><span class="p">():</span>
     <span class="c1"># check whether pyspark package exists</span>
     <span class="k">try</span><span class="p">:</span>
@@ -88,6 +89,7 @@
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span></div>
+
 
 <div class="viewcode-block" id="check_spark_source_conflict"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.engine.check_spark_source_conflict">[docs]</a><span class="k">def</span> <span class="nf">check_spark_source_conflict</span><span class="p">(</span><span class="n">spark_home</span><span class="p">,</span> <span class="n">pyspark_path</span><span class="p">):</span>
     <span class="c1"># check if both spark_home env var and pyspark package exist</span>
@@ -99,6 +101,7 @@
                       <span class="s2">&quot;please use one source only to avoid conflict. &quot;</span> <span class="o">+</span> \
                       <span class="s2">&quot;For example, you can unset SPARK_HOME and use pyspark only.&quot;</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">warning_msg</span><span class="p">)</span></div>
+
 
 <span class="k">def</span> <span class="nf">__prepare_spark_env</span><span class="p">():</span>
     <span class="n">spark_home</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SPARK_HOME&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
@@ -139,13 +142,16 @@
 
     <span class="k">if</span> <span class="n">bigdl_classpath</span> <span class="ow">and</span> <span class="n">is_spark_below_2_2</span><span class="p">():</span>
         <span class="n">append_path</span><span class="p">(</span><span class="s2">&quot;SPARK_CLASSPATH&quot;</span><span class="p">,</span> <span class="n">bigdl_classpath</span><span class="p">)</span>
+        <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">Configuration</span>
+        <span class="k">for</span> <span class="n">jar</span> <span class="ow">in</span> <span class="n">Configuration</span><span class="o">.</span><span class="n">get_bigdl_jars</span><span class="p">():</span>
+            <span class="n">append_path</span><span class="p">(</span><span class="s2">&quot;SPARK_CLASSPATH&quot;</span><span class="p">,</span> <span class="n">jar</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="get_bigdl_classpath"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.engine.get_bigdl_classpath">[docs]</a><span class="k">def</span> <span class="nf">get_bigdl_classpath</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Get and return the jar path for bigdl if exists.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BIGDL_CLASSPATH&quot;</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;BIGDL_CLASSPATH&quot;</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;BIGDL_CLASSPATH&quot;</span><span class="p">]</span>
     <span class="n">jar_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span> <span class="o">+</span> <span class="s2">&quot;/../../&quot;</span><span class="p">)</span>
     <span class="n">jar_paths</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jar_dir</span><span class="p">,</span> <span class="s2">&quot;share/lib/*.jar&quot;</span><span class="p">))</span>

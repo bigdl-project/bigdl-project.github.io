@@ -43,9 +43,7 @@
           ]},
           {title: "Example code to verify if BigDL can run successfully", url: "#example-code-to-verify-if-bigdl-can-run-successfully", children: [
           ]},
-          {title: "BigDL Configuration", url: "#bigdl-configuration", children: [
-          ]},
-          {title: "NOTES", url: "#notes", children: [
+          {title: "BigDL Configurations", url: "#bigdl-configurations", children: [
           ]},
         ];
 
@@ -78,12 +76,14 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>If the type of input data is ndarray instead of RDD or DataFrame, the model would be trained or validated in local mode.</li>
 <li>Check <a href="../../../pyspark/bigdl/models/local_lenet/README.md">LeNet</a> for more details</li>
 </ul>
-<p><code># X_train, Y_train, X_test are all ndarray and the first dimension is the sample number.
-    local_optimizer = Optimizer.create(
-        model=model_definition,
-        training_set=(X_train, Y_train))
-    local_optimizer.predict(X_test)
-    local_optimizer.predict_class(X_test)</code></p>
+<pre><code class="python"># X_train, Y_train, X_test are all ndarray and the first dimension is the sample number.
+local_optimizer = Optimizer.create(
+    model=model_definition,
+    training_set=(X_train, Y_train))
+local_optimizer.predict(X_test)
+local_optimizer.predict_class(X_test)
+</code></pre>
+
 <h2 id="use-jupyter-notebook"><strong>Use Jupyter Notebook</strong></h2>
 <ul>
 <li>Just start jupyter notebook as you normally do, e.g.</li>
@@ -105,17 +105,31 @@ bigdl.version.__version__ # Get the current BigDL version
 linear = Linear(2, 3) # Try to create a Linear layer
 </code></pre>
 
-<h2 id="bigdl-configuration"><strong>BigDL Configuration</strong></h2>
+<h2 id="bigdl-configurations"><strong>BigDL Configurations</strong></h2>
 <ul>
-<li>Increase memory<ul>
+<li>
+<p>Increase memory</p>
+<ul>
 <li>export SPARK_DRIVER_MEMORY=20g</li>
 </ul>
 </li>
+<li>
+<p>Add extra jars or python packages</p>
+</li>
 </ul>
-<h2 id="notes"><strong>NOTES</strong></h2>
+<p>Call the following API <strong>BEFORE</strong> creating <code>SparkContext</code>:</p>
+<pre><code class="python">from bigdl.util.common import Configuration
+
+Configuration.add_extra_jars(jars)
+Configuration.add_extra_python_modules(packages)
+</code></pre>
+
+<p><code>jars</code> can be a string or a list of strings as jar paths to be added.</p>
+<p><code>packages</code> can be a string or a list of strings as python package paths to be appended to <code>sys.path</code>.</p>
 <ul>
-<li>If you want to redirect spark logs to file and keep BigDL logs in console only, call the following API before you train your model:</li>
+<li>Redirect logs</li>
 </ul>
+<p>If you want to redirect spark logs to file and keep BigDL logs in console only, call the following API before you train your model:</p>
 <pre><code class="python">from bigdl.util.common import *
 
 redire_spark_logs(log_path=file path to redirect logs to)

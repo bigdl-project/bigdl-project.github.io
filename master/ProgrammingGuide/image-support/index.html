@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Build Image Application - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Overview", url: "#overview", children: [
+          ]},
+          {title: "Image Loading", url: "#image-loading", children: [
+          ]},
+          {title: "Image Transformer", url: "#image-transformer", children: [
+          ]},
+          {title: "Build Image Transformation Pipeline", url: "#build-image-transformation-pipeline", children: [
+          ]},
+          {title: "Image Prediction", url: "#image-prediction", children: [
+          ]},
+          {title: "Construct Image Prediction Pipeline", url: "#construct-image-prediction-pipeline", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+
+    <h2 id="overview"><strong>Overview</strong></h2>
+<p><code>BigDL</code> provides supports for end-to-end image processing pipeline,
+including image loading, pre-processing, inference/training and some utilities.</p>
+<p>The basic unit of an image is <code>ImageFeature</code>, which describes various status of the image
+by using key-value store.
+For example, <code>ImageFeature</code> can include original image file in bytes, image in OpenCVMat format,
+image uri, image meta data and so on.</p>
+<p><code>ImageFrame</code> is a collection of <code>ImageFeature</code>.
+It can be a <code>DistributedImageFrame</code> for distributed image RDD or
+ <code>LocalImageFrame</code> for local image array.</p>
+<h2 id="image-loading"><strong>Image Loading</strong></h2>
+<p>You can read an <code>ImageFrame</code> from local/distributed folder/parquet file,
+or you can directly construct a ImageFrame from RDD[ImageFeature] or Array[ImageFeature].</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">// create LocalImageFrame from an image folder
+val localImageFrame = ImageFrame.read(&quot;/tmp/image/&quot;)
+
+// create DistributedImageFrame from an image folder
+val distributedImageFrame2 = ImageFrame.read(&quot;/tmp/image/&quot;, sc, 2)
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python"># create LocalImageFrame from an image folder
+local_image_frame2 = ImageFrame.read(&quot;/tmp/image/&quot;)
+
+# create DistributedImageFrame from an image folder
+distributed_image_frame = ImageFrame.read(&quot;/tmp/image/&quot;, sc, 2)
+</code></pre>
+
+<p>More examples can be found <a href="../../APIGuide/Data/#imageframe">here</a></p>
+<h2 id="image-transformer"><strong>Image Transformer</strong></h2>
+<p>BigDL has many pre-defined image transformers built on top of OpenCV:
+<em> <code>Brightness</code>: Adjust the image brightness.
+</em> <code>Hue</code>: Adjust the image hue.
+<em> <code>Saturation</code>: Adjust the image Saturation.
+</em> <code>Contrast</code>: Adjust the image Contrast.
+<em> <code>ChannelOrder</code>: Random change the channel order of an image
+</em> <code>ColorJitter</code>: Random adjust brightness, contrast, hue, saturation
+<em> <code>Resize</code>: Resize image
+</em> <code>AspectScale</code>: Resize the image, keep the aspect ratio. scale according to the short edge
+<em> <code>RandomAspectScale</code>: Resize the image by randomly choosing a scale
+</em> <code>ChannelNormalize</code>: Image channel normalize
+<em> <code>PixelNormalizer</code>: Pixel level normalizer
+</em> <code>CenterCrop</code>: Crop a <code>cropWidth</code> x <code>cropHeight</code> patch from center of image.
+<em> <code>RandomCrop</code>: Random crop a <code>cropWidth</code> x <code>cropHeight</code> patch from an image.
+</em> <code>FixedCrop</code>: Crop a fixed area of image
+<em> <code>DetectionCrop</code>: Crop from object detections, each image should has a tensor detection,
+</em> <code>Expand</code>: Expand image, fill the blank part with the meanR, meanG, meanB
+<em> <code>Filler</code>: Fill part of image with certain pixel value
+</em> <code>HFlip</code>: Flip the image horizontally
+<em> <code>RandomTransformer</code>: It is a wrapper for transformers to control the transform probability
+</em> <code>BytesToMat</code>: Transform byte array(original image file in byte) to OpenCVMat
+<em> <code>MatToFloats</code>: Transform OpenCVMat to float array, note that in this transformer, the mat is released.
+</em> <code>MatToTensor</code>: Transform opencv mat to tensor, note that in this transformer, the mat is released.
+* <code>ImageFrameToSample</code>: Transforms tensors that map inputKeys and targetKeys to sample, note that in this transformer, the mat has been released.</p>
+<p>More examples can be found <a href="../../APIGuide/Transformer/">here</a></p>
+<p>You can also define your own Transformer by extending <code>FeatureTransformer</code>,
+and override the function <code>transformMat</code> to do the actual transformation to <code>ImageFeature</code>.</p>
+<h2 id="build-image-transformation-pipeline"><strong>Build Image Transformation Pipeline</strong></h2>
+<p>You can easily build the image transformation pipeline by chaining transformers.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.numeric.NumericFloat
+import com.intel.analytics.bigdl.transform.vision.image._
+import com.intel.analytics.bigdl.transform.vision.image.augmentation._
+
+val imgAug = BytesToMat() -&gt; ColorJitter() -&gt;
+      Expand() -&gt;
+      Resize(300, 300, -1) -&gt;
+      HFlip() -&gt;
+      ChannelNormalize(123, 117, 104) -&gt;
+      MatToTensor() -&gt; ImageFrameToSample()
+</code></pre>
+
+<p>In the above example, the transformations will perform sequentially.</p>
+<p>Assume you have an ImageFrame containing original bytes array,
+<code>BytesToMat</code> will transform the bytes array to <code>OpenCVMat</code>.</p>
+<p><code>ColorJitter</code>, <code>Expand</code>, <code>Resize</code>, <code>HFlip</code> and <code>ChannelNormalize</code> will transform over <code>OpenCVMat</code>,
+note that <code>OpenCVMat</code> is overwrite by default.</p>
+<p><code>MatToTensor</code> transform <code>OpenCVMat</code> to <code>Tensor</code>, and <code>OpenCVMat</code> is released in this step.</p>
+<p><code>ImageFrameToSample</code> transform the tensors that map inputKeys and targetKeys to sample,
+which can be used by the following prediction or training tasks.</p>
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.util.common import *
+from bigdl.transform.vision.image import *
+
+img_aug = Pipeline([BytesToMat(),
+      ColorJitter(),
+      Expand(),
+      Resize(300, 300, -1),
+      HFlip(),
+      ChannelNormalize(123.0, 117.0, 104.0),
+      MatToTensor(),
+      ImageFrameToSample()])
+</code></pre>
+
+<h2 id="image-prediction"><strong>Image Prediction</strong></h2>
+<p>BigDL provides easy-to-use prediction API <code>predictImage</code> for <code>ImageFrame</code>.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">model.predictImage(imageFrame: ImageFrame,
+                   outputLayer: String = null,
+                   shareBuffer: Boolean = false,
+                   batchPerPartition: Int = 4,
+                   predictKey: String = ImageFeature.predict)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">model.predict_image(image_frame, output_layer=None, share_buffer=False,
+                    batch_per_partition=4, predict_key=&quot;predict&quot;)
+</code></pre>
+
+<p>Model predict images, return imageFrame with predicted tensor
+   * <code>imageFrame</code> imageFrame that contains images
+   * <code>outputLayer</code> if outputLayer is not null, the output of layer that matches outputLayer will be used as predicted output
+   * <code>shareBuffer</code> whether to share same memory for each batch predict results
+   * <code>batchPerPartition</code> batch size per partition, default is 4
+   * <code>predictKey</code> key to store predicted result</p>
+<h2 id="construct-image-prediction-pipeline"><strong>Construct Image Prediction Pipeline</strong></h2>
+<p>With the above image-related supports, we can easily build a image prediction pipeline.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">val imageFrame = ImageFrame.read(imagePath, sc, nPartition)
+val transformer = Resize(256, 256) -&gt; CenterCrop(224, 224) -&gt;
+                 ChannelNormalize(0.485f, 0.456f, 0.406f, 0.229f, 0.224f, 0.225f) -&gt;
+                 MatToTensor() -&gt; ImageFrameToSample()
+val transformed = transformer(imageFrame)
+val model = Module.loadModule(modelPath)
+val output = model.predictImage(transformed)
+</code></pre>
+
+<p>The above example read a distributed ImageFrame, and performs data pre-processing.
+Then it loads a pre-trained BigDL model, and predicts over imageFrame.
+It returns imageFrame with prediction result, which can be accessed by the key <code>ImageFeature.predict</code>.</p>
+<p>If you want to run the local example, just replace <code>ImageFrame.read(imagePath, sc, nPartition)</code>
+with <code>ImageFrame.read(imagePath)</code>.</p>
+<p><strong>Python example:</strong></p>
+<pre><code class="python">image_frame = ImageFrame.read(image_path, self.sc)
+transformer = Pipeline([Resize(256, 256), CenterCrop(224, 224),
+                        ChannelNormalize(0.485, 0.456, 0.406, 0.229, 0.224, 0.225),
+                        MatToTensor(), ImageFrameToSample()])
+transformed = transformer(image_frame)
+model = Model.loadModel(model_path)
+output = model.predict_image(image_frame)
+</code></pre>
+
+<p>You can call <code>output.get_predict()</code> to get the prediction results.</p>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
