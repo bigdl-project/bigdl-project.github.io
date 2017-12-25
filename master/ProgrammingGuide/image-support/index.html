@@ -62,7 +62,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
 
     <h2 id="overview"><strong>Overview</strong></h2>
-<p><code>BigDL</code> provides supports for end-to-end image processing pipeline,
+<p>BigDL provides supports for end-to-end image processing pipeline,
 including image loading, pre-processing, inference/training and some utilities.</p>
 <p>The basic unit of an image is <code>ImageFeature</code>, which describes various status of the image
 by using key-value store.
@@ -92,30 +92,32 @@ distributed_image_frame = ImageFrame.read(&quot;/tmp/image/&quot;, sc, 2)
 
 <p>More examples can be found <a href="../../APIGuide/Data/#imageframe">here</a></p>
 <h2 id="image-transformer"><strong>Image Transformer</strong></h2>
-<p>BigDL has many pre-defined image transformers built on top of OpenCV:
-<em> <code>Brightness</code>: Adjust the image brightness.
-</em> <code>Hue</code>: Adjust the image hue.
-<em> <code>Saturation</code>: Adjust the image Saturation.
-</em> <code>Contrast</code>: Adjust the image Contrast.
-<em> <code>ChannelOrder</code>: Random change the channel order of an image
-</em> <code>ColorJitter</code>: Random adjust brightness, contrast, hue, saturation
-<em> <code>Resize</code>: Resize image
-</em> <code>AspectScale</code>: Resize the image, keep the aspect ratio. scale according to the short edge
-<em> <code>RandomAspectScale</code>: Resize the image by randomly choosing a scale
-</em> <code>ChannelNormalize</code>: Image channel normalize
-<em> <code>PixelNormalizer</code>: Pixel level normalizer
-</em> <code>CenterCrop</code>: Crop a <code>cropWidth</code> x <code>cropHeight</code> patch from center of image.
-<em> <code>RandomCrop</code>: Random crop a <code>cropWidth</code> x <code>cropHeight</code> patch from an image.
-</em> <code>FixedCrop</code>: Crop a fixed area of image
-<em> <code>DetectionCrop</code>: Crop from object detections, each image should has a tensor detection,
-</em> <code>Expand</code>: Expand image, fill the blank part with the meanR, meanG, meanB
-<em> <code>Filler</code>: Fill part of image with certain pixel value
-</em> <code>HFlip</code>: Flip the image horizontally
-<em> <code>RandomTransformer</code>: It is a wrapper for transformers to control the transform probability
-</em> <code>BytesToMat</code>: Transform byte array(original image file in byte) to OpenCVMat
-<em> <code>MatToFloats</code>: Transform OpenCVMat to float array, note that in this transformer, the mat is released.
-</em> <code>MatToTensor</code>: Transform opencv mat to tensor, note that in this transformer, the mat is released.
-* <code>ImageFrameToSample</code>: Transforms tensors that map inputKeys and targetKeys to sample, note that in this transformer, the mat has been released.</p>
+<p>BigDL has many pre-defined image transformers built on top of OpenCV:</p>
+<ul>
+<li><code>Brightness</code>: Adjust the image brightness.</li>
+<li><code>Hue</code>: Adjust the image hue.</li>
+<li><code>Saturation</code>: Adjust the image Saturation.</li>
+<li><code>Contrast</code>: Adjust the image Contrast.</li>
+<li><code>ChannelOrder</code>: Random change the channel order of an image</li>
+<li><code>ColorJitter</code>: Random adjust brightness, contrast, hue, saturation</li>
+<li><code>Resize</code>: Resize image</li>
+<li><code>AspectScale</code>: Resize the image, keep the aspect ratio. scale according to the short edge</li>
+<li><code>RandomAspectScale</code>: Resize the image by randomly choosing a scale</li>
+<li><code>ChannelNormalize</code>: Image channel normalize</li>
+<li><code>PixelNormalizer</code>: Pixel level normalizer</li>
+<li><code>CenterCrop</code>: Crop a <code>cropWidth</code> x <code>cropHeight</code> patch from center of image.</li>
+<li><code>RandomCrop</code>: Random crop a <code>cropWidth</code> x <code>cropHeight</code> patch from an image.</li>
+<li><code>FixedCrop</code>: Crop a fixed area of image</li>
+<li><code>DetectionCrop</code>: Crop from object detections, each image should has a tensor detection,</li>
+<li><code>Expand</code>: Expand image, fill the blank part with the meanR, meanG, meanB</li>
+<li><code>Filler</code>: Fill part of image with certain pixel value</li>
+<li><code>HFlip</code>: Flip the image horizontally</li>
+<li><code>RandomTransformer</code>: It is a wrapper for transformers to control the transform probability</li>
+<li><code>BytesToMat</code>: Transform byte array(original image file in byte) to OpenCVMat</li>
+<li><code>MatToFloats</code>: Transform OpenCVMat to float array, note that in this transformer, the mat is released.</li>
+<li><code>MatToTensor</code>: Transform opencv mat to tensor, note that in this transformer, the mat is released.</li>
+<li><code>ImageFrameToSample</code>: Transforms tensors that map inputKeys and targetKeys to sample, note that in this transformer, the mat has been released.</li>
+</ul>
 <p>More examples can be found <a href="../../APIGuide/Transformer/">here</a></p>
 <p>You can also define your own Transformer by extending <code>FeatureTransformer</code>,
 and override the function <code>transformMat</code> to do the actual transformation to <code>ImageFeature</code>.</p>
@@ -171,12 +173,14 @@ img_aug = Pipeline([BytesToMat(),
                     batch_per_partition=4, predict_key=&quot;predict&quot;)
 </code></pre>
 
-<p>Model predict images, return imageFrame with predicted tensor
-   * <code>imageFrame</code> imageFrame that contains images
-   * <code>outputLayer</code> if outputLayer is not null, the output of layer that matches outputLayer will be used as predicted output
-   * <code>shareBuffer</code> whether to share same memory for each batch predict results
-   * <code>batchPerPartition</code> batch size per partition, default is 4
-   * <code>predictKey</code> key to store predicted result</p>
+<p>Model predict images, return imageFrame with predicted tensor</p>
+<ul>
+<li><code>imageFrame</code> imageFrame that contains images</li>
+<li><code>outputLayer</code> if outputLayer is not null, the output of layer that matches outputLayer will be used as predicted output</li>
+<li><code>shareBuffer</code> whether to share same memory for each batch predict results</li>
+<li><code>batchPerPartition</code> batch size per partition, default is 4</li>
+<li><code>predictKey</code> key to store predicted result</li>
+</ul>
 <h2 id="construct-image-prediction-pipeline"><strong>Construct Image Prediction Pipeline</strong></h2>
 <p>With the above image-related supports, we can easily build a image prediction pipeline.</p>
 <p><strong>Scala example:</strong></p>
