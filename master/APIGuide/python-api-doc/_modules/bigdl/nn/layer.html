@@ -113,7 +113,14 @@
         <span class="k">return</span> <span class="n">Node</span><span class="p">(</span><span class="n">jvalue</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Node.element"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Node.element">[docs]</a>    <span class="k">def</span> <span class="nf">element</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">element</span><span class="p">())</span></div></div>
+        <span class="k">return</span> <span class="n">Layer</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">element</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="Node.remove_pre_edges"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Node.remove_pre_edges">[docs]</a>    <span class="k">def</span> <span class="nf">remove_pre_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">callJavaFunc</span><span class="p">(</span><span class="n">get_spark_context</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">removePreEdges</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Node.remove_next_edges"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Node.remove_next_edges">[docs]</a>    <span class="k">def</span> <span class="nf">remove_next_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">callJavaFunc</span><span class="p">(</span><span class="n">get_spark_context</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">removeNextEdges</span><span class="p">)</span></div></div>
+
 
 
 <div class="viewcode-block" id="Layer"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer">[docs]</a><span class="k">class</span> <span class="nc">Layer</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>

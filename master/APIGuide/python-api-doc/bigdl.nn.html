@@ -435,13 +435,13 @@ value of 1, or can be set in the constructor.</p>
 
 <dl class="class">
 <dt id="bigdl.nn.criterion.KLDCriterion">
-<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">KLDCriterion</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#KLDCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.KLDCriterion" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">KLDCriterion</code><span class="sig-paren">(</span><em>size_average=True</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#KLDCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.KLDCriterion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
 <p>Computes the KL-divergence of the input normal distribution to a standard normal distribution.
 The input has to be a table. The first element of input is the mean of the distribution,
 the second element of input is the log_variance of the distribution. The input distribution is
 assumed to be diagonal.
-&gt;&gt;&gt; KLDCriterion = KLDCriterion()
+&gt;&gt;&gt; KLDCriterion = KLDCriterion(True)
 creating: createKLDCriterion</p>
 </dd></dl>
 
@@ -3510,6 +3510,16 @@ offset to element which located at the abs(<cite>length</cite>) to the last elem
 <dl class="classmethod">
 <dt id="bigdl.nn.layer.Node.of">
 <em class="property">classmethod </em><code class="descname">of</code><span class="sig-paren">(</span><em>jvalue</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Node.of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Node.of" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bigdl.nn.layer.Node.remove_next_edges">
+<code class="descname">remove_next_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Node.remove_next_edges"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Node.remove_next_edges" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bigdl.nn.layer.Node.remove_pre_edges">
+<code class="descname">remove_pre_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Node.remove_pre_edges"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Node.remove_pre_edges" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

@@ -42,7 +42,8 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Computes the KL-divergence of the input normal distribution to a standard normal distribution.
 The input has to be a table. The first element of input is the mean of the distribution,
 the second element of input is the log_variance of the distribution. The input distribution is
-assumed to be diagonal.
+assumed to be diagonal.</p><p>The mean and log_variance are both assumed to be two dimensional tensors. The first dimension are
+interpreted as batch. The output is the average/sum of each observation.
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.KLDCriterion.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.KLDCriterion.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -84,7 +85,7 @@ assumed to be diagonal.
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.KLDCriterion#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;()(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.KLDCriterion[T]"></a>
+      <a id="&lt;init&gt;(sizeAverage:Boolean)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.KLDCriterion[T]"></a>
       <a id="&lt;init&gt;:KLDCriterion[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -92,7 +93,7 @@ assumed to be diagonal.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">KLDCriterion</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.KLDCriterion.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.KLDCriterion.T">T</span>]</span>)</span>
+        <span class="name">KLDCriterion</span><span class="params">(<span name="sizeAverage">sizeAverage: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.KLDCriterion.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.KLDCriterion.T">T</span>]</span>)</span>
       </span>
       </h4>
       
