@@ -116,20 +116,28 @@
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">OptionParser</span><span class="p">()</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s2">&quot;-b&quot;</span><span class="p">,</span> <span class="s2">&quot;--batchSize&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;batchSize&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;128&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s2">&quot;-m&quot;</span><span class="p">,</span> <span class="s2">&quot;--max_epoch&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;max_epoch&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;20&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="s2">&quot;--dataPath&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;dataPath&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;/tmp/mnist&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+
     <span class="n">redire_spark_logs</span><span class="p">()</span>
     <span class="n">show_bigdl_info_logs</span><span class="p">()</span>
     <span class="n">init_engine</span><span class="p">()</span>
-    <span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_mnist</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_mnist</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+
+    <span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_mnist</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">.</span><span class="n">dataPath</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_mnist</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">.</span><span class="n">dataPath</span><span class="p">)</span>
+
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">Optimizer</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
         <span class="n">model</span><span class="o">=</span><span class="n">build_model</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
         <span class="n">training_set</span><span class="o">=</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">),</span>
         <span class="n">criterion</span><span class="o">=</span><span class="n">ClassNLLCriterion</span><span class="p">(),</span>
         <span class="n">optim_method</span><span class="o">=</span><span class="n">SGD</span><span class="p">(</span><span class="n">learningrate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">learningrate_decay</span><span class="o">=</span><span class="mf">0.0002</span><span class="p">),</span>
-        <span class="n">end_trigger</span><span class="o">=</span><span class="n">MaxEpoch</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
-        <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+        <span class="n">end_trigger</span><span class="o">=</span><span class="n">MaxEpoch</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">max_epoch</span><span class="p">),</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="n">options</span><span class="o">.</span><span class="n">batchSize</span><span class="p">)</span>
     <span class="n">optimizer</span><span class="o">.</span><span class="n">set_validation</span><span class="p">(</span>
-        <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="n">options</span><span class="o">.</span><span class="n">batchSize</span><span class="p">,</span>
         <span class="n">X_val</span> <span class="o">=</span> <span class="n">X_test</span><span class="p">,</span>
         <span class="n">Y_val</span> <span class="o">=</span> <span class="n">Y_test</span><span class="p">,</span>
         <span class="n">trigger</span><span class="o">=</span><span class="n">EveryEpoch</span><span class="p">(),</span>
