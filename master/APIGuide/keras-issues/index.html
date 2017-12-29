@@ -60,6 +60,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h2 id="unsupported-layer-arguments"><strong>Unsupported Layer Arguments</strong></h2>
 <p>For the following arguments, currently only the default values are expected and supported.</p>
 <ul>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/initializations/"><code>initializations</code></a>, <code>lecun_uniform</code>, <code>orthogonal</code>, <code>glorot_normal</code>, <code>he_normal</code> and <code>he_uniform</code> are not supported for all layers. For those unsupported initialization methods, we will default values from BigDL instead. Thus in this case, you are <strong>strongly recommended</strong> to load the weights from Keras together with its model definition.</li>
 <li>Constraints (<code>W_constraint</code>, <code>b_constraint</code>, etc.) are not supported for all layers.</li>
 <li><code>activity_regularizer</code> is not supported for all layers.</li>
 <li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/core/#dropout"><code>Dropout</code></a>, <code>noise_shape</code> is not supported.</li>
