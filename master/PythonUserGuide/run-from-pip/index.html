@@ -44,9 +44,6 @@
           {title: "Example code to verify if BigDL can run successfully", url: "#example-code-to-verify-if-bigdl-can-run-successfully", children: [
           ]},
           {title: "BigDL Configurations", url: "#bigdl-configurations", children: [
-              {title: "Increase memory", url: "#increase-memory" },
-              {title: "Add extra jars or python packages", url: "#add-extra-jars-or-python-packages" },
-              {title: "Redirect logs", url: "#redirect-logs" },
           ]},
         ];
 
@@ -109,11 +106,16 @@ linear = Linear(2, 3) # Try to create a Linear layer
 </code></pre>
 
 <h2 id="bigdl-configurations"><strong>BigDL Configurations</strong></h2>
-<h3 id="increase-memory">Increase memory</h3>
-<pre><code>- export SPARK_DRIVER_MEMORY=20g
-</code></pre>
-<h3 id="add-extra-jars-or-python-packages">Add extra jars or python packages</h3>
-<p>Call the following API <strong>BEFORE</strong> creating <code>SparkContext</code>:</p>
+<ul>
+<li>Increase memory<ul>
+<li>export SPARK_DRIVER_MEMORY=20g</li>
+</ul>
+</li>
+<li>Add extra jars or python packages<ul>
+<li>Call the following API <strong>BEFORE</strong> creating <code>SparkContext</code>:</li>
+</ul>
+</li>
+</ul>
 <pre><code class="python">from bigdl.util.common import Configuration
 
 Configuration.add_extra_jars(jars)
@@ -122,8 +124,12 @@ Configuration.add_extra_python_modules(packages)
 
 <p><code>jars</code> can be a string or a list of strings as jar paths to be added.</p>
 <p><code>packages</code> can be a string or a list of strings as python package paths to be appended to <code>sys.path</code>.</p>
-<h3 id="redirect-logs">Redirect logs</h3>
-<p>If you want to redirect spark logs to file and keep BigDL logs in console only, call the following API before you train your model:</p>
+<ul>
+<li>Redirect logs<ul>
+<li>If you want to redirect spark logs to file and keep BigDL logs in console only, call the following API before you train your model:</li>
+</ul>
+</li>
+</ul>
 <pre><code class="python">from bigdl.util.common import *
 
 redire_spark_logs(log_path=file path to redirect logs to)
