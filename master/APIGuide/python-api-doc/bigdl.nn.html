@@ -859,6 +859,25 @@ Apply Any Provided Criterion to every temporal slice of an input.</p>
 </div>
 </dd></dl>
 
+<dl class="class">
+<dt id="bigdl.nn.criterion.TransformerCriterion">
+<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">TransformerCriterion</code><span class="sig-paren">(</span><em>criterion</em>, <em>input_transformer=None</em>, <em>target_transformer=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#TransformerCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.TransformerCriterion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
+<p>The criterion that takes two modules to transform input and target, and take
+one criterion to compute the loss with the transformed input and target.</p>
+<p>This criterion can be used to construct complex criterion. For example, the
+<cite>inputTransformer</cite> and <cite>targetTransformer</cite> can be pre-trained CNN networks,
+and we can use the networks’ output to compute the high-level feature
+reconstruction loss, which is commonly used in areas like neural style transfer
+(<a class="reference external" href="https://arxiv.org/abs/1508.06576">https://arxiv.org/abs/1508.06576</a>), texture synthesis (<a class="reference external" href="https://arxiv.org/abs/1505.07376">https://arxiv.org/abs/1505.07376</a>),
+.etc.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">trans</span> <span class="o">=</span> <span class="n">TransformerCriterion</span><span class="p">(</span><span class="n">MSECriterion</span><span class="p">())</span>
+<span class="go">creating: createMSECriterion</span>
+<span class="go">creating: createTransformerCriterion</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </div>
 <div class="section" id="module-bigdl.nn.initialization_method">
 <span id="bigdl-nn-initialization-method-module"></span><h2>bigdl.nn.initialization_method module<a class="headerlink" href="#module-bigdl.nn.initialization_method" title="Permalink to this headline">¶</a></h2>

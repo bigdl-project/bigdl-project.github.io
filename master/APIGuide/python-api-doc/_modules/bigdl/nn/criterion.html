@@ -936,6 +936,35 @@
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">PoissonCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="TransformerCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.TransformerCriterion">[docs]</a><span class="k">class</span> <span class="nc">TransformerCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The criterion that takes two modules to transform input and target, and take</span>
+<span class="sd">    one criterion to compute the loss with the transformed input and target.</span>
+<span class="sd">    </span>
+<span class="sd">    This criterion can be used to construct complex criterion. For example, the</span>
+<span class="sd">    `inputTransformer` and `targetTransformer` can be pre-trained CNN networks,</span>
+<span class="sd">    and we can use the networks&#39; output to compute the high-level feature</span>
+<span class="sd">    reconstruction loss, which is commonly used in areas like neural style transfer</span>
+<span class="sd">    (https://arxiv.org/abs/1508.06576), texture synthesis (https://arxiv.org/abs/1505.07376),</span>
+<span class="sd">    .etc.</span>
+<span class="sd">    </span>
+<span class="sd">    &gt;&gt;&gt; trans = TransformerCriterion(MSECriterion())</span>
+<span class="sd">    creating: createMSECriterion</span>
+<span class="sd">    creating: createTransformerCriterion</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">criterion</span><span class="p">,</span>
+                 <span class="n">input_transformer</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">target_transformer</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TransformerCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
+                                                   <span class="n">bigdl_type</span><span class="p">,</span>
+                                                   <span class="n">criterion</span><span class="p">,</span>
+                                                   <span class="n">input_transformer</span><span class="p">,</span>
+                                                   <span class="n">target_transformer</span><span class="p">)</span></div>
+
+
 <span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
     <span class="kn">import</span> <span class="nn">doctest</span>
     <span class="kn">from</span> <span class="nn">pyspark</span> <span class="k">import</span> <span class="n">SparkContext</span>

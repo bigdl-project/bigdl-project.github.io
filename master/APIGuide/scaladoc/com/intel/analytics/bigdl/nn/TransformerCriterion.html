@@ -2,17 +2,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>AbstractCriterion - bigdl 0.5.0-SNAPSHOT API - com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion</title>
-          <meta name="description" content="AbstractCriterion - bigdl 0.5.0 - SNAPSHOT API - com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion" />
-          <meta name="keywords" content="AbstractCriterion bigdl 0.5.0 SNAPSHOT API com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion" />
+          <title>TransformerCriterion - bigdl 0.5.0-SNAPSHOT API - com.intel.analytics.bigdl.nn.TransformerCriterion</title>
+          <meta name="description" content="TransformerCriterion - bigdl 0.5.0 - SNAPSHOT API - com.intel.analytics.bigdl.nn.TransformerCriterion" />
+          <meta name="keywords" content="TransformerCriterion bigdl 0.5.0 SNAPSHOT API com.intel.analytics.bigdl.nn.TransformerCriterion" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
-      <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
       <script type="text/javascript">
          if(top === self) {
-            var url = '../../../../../../index.html';
-            var hash = 'com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion';
+            var url = '../../../../../index.html';
+            var hash = 'com.intel.analytics.bigdl.nn.TransformerCriterion';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -24,34 +24,32 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../../../../lib/class_big.png" />
-        <p id="owner"><a href="../../../../../package.html" class="extype" name="com">com</a>.<a href="../../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl.nn">nn</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn">abstractnn</a></p>
-        <h1>AbstractCriterion</h1>
+        <a href="TransformerCriterion$.html" title="Go to companion"><img src="../../../../../lib/class_to_object_big.png" /></a>
+        <p id="owner"><a href="../../../../package.html" class="extype" name="com">com</a>.<a href="../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.nn">nn</a></p>
+        <h1><a href="TransformerCriterion$.html" title="Go to companion">TransformerCriterion</a></h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier">abstract </span>
+        <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">AbstractCriterion</span><span class="tparams">[<span name="A">A &lt;: <a href="Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>, <span name="B">B &lt;: <a href="Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>, <span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">TransformerCriterion</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.TransformerCriterion.T">T</span>]</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p><a href="" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a> is an abstract class the concrete criterion should extend.
-<code>Criterion</code>s are helpful to train a neural network. Given an input and a target,
-they compute the gradient according to a loss function.</p><p>It provides some important method such as <code>forward</code>, <code>backward</code>, <code>updateOutput</code>,
-<code>updateGradInput</code> frequently used as a criteria. Some of them need to be override
-in a concrete criterion class.
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>represents the input type of the criterion, which an be abstract type <a href="Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>,
-          or concrete type <span class="extype" name="Tensor">Tensor</span> or <span class="extype" name="Table">Table</span></p></dd><dt class="tparam">B</dt><dd class="cmt"><p>represents the output type of the criterion</p></dd><dt class="tparam">T</dt><dd class="cmt"><p>The numeric type in the criterion, usually which are <span class="extype" name="Float">Float</span> or <span class="extype" name="Double">Double</span>
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>The criterion that takes two modules to transform input and target, and take
+one criterion to compute the loss with the transformed input and target.</p><p>This criterion can be used to construct complex criterion. For example, the
+<code>inputTransformer</code> and <code>targetTransformer</code> can be pre-trained CNN networks,
+and we can use the networks' output to calculate the high-level feature
+reconstruction loss, which is commonly used in areas like neural style transfer
+    (https://arxiv.org/abs/1508.06576), texture synthesis (https://arxiv.org/abs/1505.07376),
+    .etc.
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>The numeric type in the criterion, usually which are <span class="extype" name="Float">Float</span> or <span class="extype" name="Double">Double</span>
 </p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="../AbsCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.AbsCriterion">AbsCriterion</a>, <a href="../BCECriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.BCECriterion">BCECriterion</a>, <a href="../CategoricalCrossEntropy.html" class="extype" name="com.intel.analytics.bigdl.nn.CategoricalCrossEntropy">CategoricalCrossEntropy</a>, <a href="../ClassNLLCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion">ClassNLLCriterion</a>, <a href="../ClassSimplexCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.ClassSimplexCriterion">ClassSimplexCriterion</a>, <a href="../CosineDistanceCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.CosineDistanceCriterion">CosineDistanceCriterion</a>, <a href="../CosineEmbeddingCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.CosineEmbeddingCriterion">CosineEmbeddingCriterion</a>, <a href="../CosineProximityCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.CosineProximityCriterion">CosineProximityCriterion</a>, <a href="../CrossEntropyCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.CrossEntropyCriterion">CrossEntropyCriterion</a>, <a href="../DiceCoefficientCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.DiceCoefficientCriterion">DiceCoefficientCriterion</a>, <a href="../DistKLDivCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.DistKLDivCriterion">DistKLDivCriterion</a>, <a href="../../utils/tf/BigDLSessionImpl$$FakeCriterion.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.BigDLSessionImpl.FakeCriterion">FakeCriterion</a>, <a href="../GaussianCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.GaussianCriterion">GaussianCriterion</a>, <a href="../HingeEmbeddingCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.HingeEmbeddingCriterion">HingeEmbeddingCriterion</a>, <a href="../KLDCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.KLDCriterion">KLDCriterion</a>, <a href="../KullbackLeiblerDivergenceCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.KullbackLeiblerDivergenceCriterion">KullbackLeiblerDivergenceCriterion</a>, <a href="../L1Cost.html" class="extype" name="com.intel.analytics.bigdl.nn.L1Cost">L1Cost</a>, <a href="../L1HingeEmbeddingCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.L1HingeEmbeddingCriterion">L1HingeEmbeddingCriterion</a>, <a href="../MSECriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MSECriterion">MSECriterion</a>, <a href="../MarginCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MarginCriterion">MarginCriterion</a>, <a href="../MarginRankingCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MarginRankingCriterion">MarginRankingCriterion</a>, <a href="../MeanAbsolutePercentageCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MeanAbsolutePercentageCriterion">MeanAbsolutePercentageCriterion</a>, <a href="../MeanSquaredLogarithmicCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MeanSquaredLogarithmicCriterion">MeanSquaredLogarithmicCriterion</a>, <a href="../MultiCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MultiCriterion">MultiCriterion</a>, <a href="../MultiLabelMarginCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MultiLabelMarginCriterion">MultiLabelMarginCriterion</a>, <a href="../MultiLabelSoftMarginCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MultiLabelSoftMarginCriterion">MultiLabelSoftMarginCriterion</a>, <a href="../MultiMarginCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.MultiMarginCriterion">MultiMarginCriterion</a>, <a href="../ParallelCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.ParallelCriterion">ParallelCriterion</a>, <a href="../PoissonCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.PoissonCriterion">PoissonCriterion</a>, <a href="../SmoothL1Criterion.html" class="extype" name="com.intel.analytics.bigdl.nn.SmoothL1Criterion">SmoothL1Criterion</a>, <a href="../SmoothL1CriterionWithWeights.html" class="extype" name="com.intel.analytics.bigdl.nn.SmoothL1CriterionWithWeights">SmoothL1CriterionWithWeights</a>, <a href="../SoftMarginCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.SoftMarginCriterion">SoftMarginCriterion</a>, <a href="../SoftmaxWithCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.SoftmaxWithCriterion">SoftmaxWithCriterion</a>, <a href="TensorCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorCriterion">TensorCriterion</a>, <a href="../TimeDistributedCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.TimeDistributedCriterion">TimeDistributedCriterion</a>, <a href="../TransformerCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.TransformerCriterion">TransformerCriterion</a></div>
+          <div class="superTypes hiddenContent"><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.TransformerCriterion.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -69,7 +67,7 @@ in a concrete criterion class.
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion"><span>AbstractCriterion</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.intel.analytics.bigdl.nn.TransformerCriterion"><span>TransformerCriterion</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion"><span>AbstractCriterion</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -89,47 +87,28 @@ in a concrete criterion class.
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;()(implicitevidence$2:scala.reflect.ClassTag[A],implicitevidence$3:scala.reflect.ClassTag[B],implicitevidence$4:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion[A,B,T]"></a>
-      <a id="&lt;init&gt;:AbstractCriterion[A,B,T]"></a>
+              <ol><li name="com.intel.analytics.bigdl.nn.TransformerCriterion#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(criterion:com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T],inputTransformer:Option[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]],targetTransformer:Option[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]])(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.TransformerCriterion[T]"></a>
+      <a id="&lt;init&gt;:TransformerCriterion[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">AbstractCriterion</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.A">A</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.B">B</span>]</span>, <span name="arg2">arg2: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.T">T</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.T">T</span>]</span>)</span>
+        <span class="name">TransformerCriterion</span><span class="params">(<span name="criterion">criterion: <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.TransformerCriterion.T">T</span>]</span>, <span name="inputTransformer">inputTransformer: <span class="extype" name="scala.Option">Option</span>[<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.TransformerCriterion.T">T</span>]] = <span class="symbol">scala.None</span></span>, <span name="targetTransformer">targetTransformer: <span class="extype" name="scala.Option">Option</span>[<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.TransformerCriterion.T">T</span>]] = <span class="symbol">scala.None</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.TransformerCriterion.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.TransformerCriterion.T">T</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">criterion</dt><dd class="cmt"></dd><dt class="param">inputTransformer</dt><dd class="cmt"></dd><dt class="param">targetTransformer</dt><dd class="cmt"></dd></dl></div>
     </li></ol>
             </div>
 
         
 
-        <div id="values" class="values members">
-              <h3>Abstract Value Members</h3>
-              <ol><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#updateGradInput" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="updateGradInput(input:A,target:B):A"></a>
-      <a id="updateGradInput(A,B):A"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">updateGradInput</span><span class="params">(<span name="input">input: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.A">A</span></span>, <span name="target">target: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.B">B</span></span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.A">A</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Computing the gradient of the criterion with respect to its own input.</p><div class="fullcomment"><div class="comment cmt"><p>Computing the gradient of the criterion with respect to its own input. This is returned in
-gradInput. Also, the gradInput state variable is updated accordingly.
-</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">target</dt><dd class="cmt"><p>target data / labels</p></dd><dt>returns</dt><dd class="cmt"><p>gradient of input
-</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
 
         <div id="values" class="values members">
-              <h3>Concrete Value Members</h3>
+              <h3>Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
@@ -210,20 +189,20 @@ gradInput. Also, the gradInput state variable is updated accordingly.
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#backward" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="backward(input:A,target:B):A"></a>
-      <a id="backward(A,B):A"></a>
+      <a id="backward(Activity,Activity):Activity"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">backward</span><span class="params">(<span name="input">input: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.A">A</span></span>, <span name="target">target: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.B">B</span></span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.A">A</span></span>
+        <span class="name">backward</span><span class="params">(<span name="input">input: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>, <span name="target">target: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Performs a back-propagation step through the criterion, with respect to the given input.</p><div class="fullcomment"><div class="comment cmt"><p>Performs a back-propagation step through the criterion, with respect to the given input.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">target</dt><dd class="cmt"><p>target</p></dd><dt>returns</dt><dd class="cmt"><p>gradient corresponding to input data
-</p></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#canEqual" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#canEqual" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="canEqual(other:Any):Boolean"></a>
       <a id="canEqual(Any):Boolean"></a>
       <h4 class="signature">
@@ -235,7 +214,7 @@ gradInput. Also, the gradInput state variable is updated accordingly.
         <span class="name">canEqual</span><span class="params">(<span name="other">other: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -248,7 +227,7 @@ gradInput. Also, the gradInput state variable is updated accordingly.
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
@@ -257,18 +236,18 @@ gradInput. Also, the gradInput state variable is updated accordingly.
         </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#cloneCriterion" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="cloneCriterion():com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion[A,B,T]"></a>
-      <a id="cloneCriterion():AbstractCriterion[A,B,T]"></a>
+      <a id="cloneCriterion():AbstractCriterion[Activity,Activity,T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cloneCriterion</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.A">A</span>, <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.B">B</span>, <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.T">T</span>]</span>
+        <span class="name">cloneCriterion</span><span class="params">()</span><span class="result">: <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.TransformerCriterion.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Deep copy this criterion</p><div class="fullcomment"><div class="comment cmt"><p>Deep copy this criterion</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a deep copied criterion
-</p></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -294,7 +273,7 @@ gradInput. Also, the gradInput state variable is updated accordingly.
         <span class="name">equals</span><span class="params">(<span name="other">other: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a> → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a> → AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -307,7 +286,7 @@ gradInput. Also, the gradInput state variable is updated accordingly.
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="symbol">classOf[java.lang.Throwable]</span>
@@ -316,21 +295,21 @@ gradInput. Also, the gradInput state variable is updated accordingly.
         </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#forward" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="forward(input:A,target:B):T"></a>
-      <a id="forward(A,B):T"></a>
+      <a id="forward(Activity,Activity):T"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">forward</span><span class="params">(<span name="input">input: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.A">A</span></span>, <span name="target">target: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.B">B</span></span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.T">T</span></span>
+        <span class="name">forward</span><span class="params">(<span name="input">input: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>, <span name="target">target: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.TransformerCriterion.T">T</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Takes an input object, and computes the corresponding loss of the criterion,
 compared with <code>target</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Takes an input object, and computes the corresponding loss of the criterion,
 compared with <code>target</code>.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">target</dt><dd class="cmt"><p>target</p></dd><dt>returns</dt><dd class="cmt"><p>the loss of criterion
-</p></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -344,19 +323,19 @@ compared with <code>target</code>.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#gradInput" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#gradInput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="gradInput:A"></a>
-      <a id="gradInput:A"></a>
+      <a id="gradInput:Activity"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">gradInput</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.A">A</span></span>
+        <span class="name">gradInput</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
       </span>
       </h4>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -369,7 +348,7 @@ compared with <code>target</code>.
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a> → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a> → AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -422,7 +401,7 @@ compared with <code>target</code>.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#output" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#output" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="output:T"></a>
       <a id="output:T"></a>
       <h4 class="signature">
@@ -431,10 +410,10 @@ compared with <code>target</code>.
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">output</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.T">T</span></span>
+        <span class="name">output</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.TransformerCriterion.T">T</span></span>
       </span>
       </h4>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -461,22 +440,38 @@ compared with <code>target</code>.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#updateOutput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="updateOutput(input:A,target:B):T"></a>
-      <a id="updateOutput(A,B):T"></a>
+    </li><li name="com.intel.analytics.bigdl.nn.TransformerCriterion#updateGradInput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="updateGradInput(input:com.intel.analytics.bigdl.nn.abstractnn.Activity,target:com.intel.analytics.bigdl.nn.abstractnn.Activity):com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
+      <a id="updateGradInput(Activity,Activity):Activity"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">updateOutput</span><span class="params">(<span name="input">input: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.A">A</span></span>, <span name="target">target: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.B">B</span></span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion.T">T</span></span>
+        <span class="name">updateGradInput</span><span class="params">(<span name="input">input: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>, <span name="target">target: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Computing the gradient of the criterion with respect to its own input.</p><div class="fullcomment"><div class="comment cmt"><p>Computing the gradient of the criterion with respect to its own input. This is returned in
+gradInput. Also, the gradInput state variable is updated accordingly.
+</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">target</dt><dd class="cmt"><p>target data / labels</p></dd><dt>returns</dt><dd class="cmt"><p>gradient of input
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.TransformerCriterion">TransformerCriterion</a> → <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.TransformerCriterion#updateOutput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="updateOutput(input:com.intel.analytics.bigdl.nn.abstractnn.Activity,target:com.intel.analytics.bigdl.nn.abstractnn.Activity):T"></a>
+      <a id="updateOutput(Activity,Activity):T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updateOutput</span><span class="params">(<span name="input">input: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>, <span name="target">target: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.TransformerCriterion.T">T</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Computes the loss using input and objective function.</p><div class="fullcomment"><div class="comment cmt"><p>Computes the loss using input and objective function. This function
 returns the result which is stored in the output field.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input of the criterion</p></dd><dt class="param">target</dt><dd class="cmt"><p>target or labels</p></dd><dt>returns</dt><dd class="cmt"><p>the loss of the criterion
-</p></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.TransformerCriterion">TransformerCriterion</a> → <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -543,7 +538,9 @@ returns the result which is stored in the output field.
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.Serializable">
+        <div class="parent" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">
+              <h3>Inherited from <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.TransformerCriterion.T">T</span>]</h3>
+            </div><div class="parent" name="scala.Serializable">
               <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
             </div><div class="parent" name="java.io.Serializable">
               <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
@@ -567,6 +564,6 @@ returns the result which is stored in the output field.
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../../lib/template.js"></script>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
     </body>
       </html>
