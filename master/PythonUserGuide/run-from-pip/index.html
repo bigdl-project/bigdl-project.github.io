@@ -44,6 +44,9 @@
           {title: "Example code to verify if BigDL can run successfully", url: "#example-code-to-verify-if-bigdl-can-run-successfully", children: [
           ]},
           {title: "BigDL Configurations", url: "#bigdl-configurations", children: [
+              {title: "Increase memory", url: "#increase-memory" },
+              {title: "Add extra jars or python packages", url: "#add-extra-jars-or-python-packages" },
+              {title: "Redirect logs", url: "#redirect-logs" },
           ]},
         ];
 
@@ -106,17 +109,10 @@ linear = Linear(2, 3) # Try to create a Linear layer
 </code></pre>
 
 <h2 id="bigdl-configurations"><strong>BigDL Configurations</strong></h2>
-<ul>
-<li>
-<p>Increase memory</p>
-<ul>
-<li>export SPARK_DRIVER_MEMORY=20g</li>
-</ul>
-</li>
-<li>
-<p>Add extra jars or python packages</p>
-</li>
-</ul>
+<h3 id="increase-memory">Increase memory</h3>
+<pre><code>- export SPARK_DRIVER_MEMORY=20g
+</code></pre>
+<h3 id="add-extra-jars-or-python-packages">Add extra jars or python packages</h3>
 <p>Call the following API <strong>BEFORE</strong> creating <code>SparkContext</code>:</p>
 <pre><code class="python">from bigdl.util.common import Configuration
 
@@ -126,9 +122,7 @@ Configuration.add_extra_python_modules(packages)
 
 <p><code>jars</code> can be a string or a list of strings as jar paths to be added.</p>
 <p><code>packages</code> can be a string or a list of strings as python package paths to be appended to <code>sys.path</code>.</p>
-<ul>
-<li>Redirect logs</li>
-</ul>
+<h3 id="redirect-logs">Redirect logs</h3>
 <p>If you want to redirect spark logs to file and keep BigDL logs in console only, call the following API before you train your model:</p>
 <pre><code class="python">from bigdl.util.common import *
 
