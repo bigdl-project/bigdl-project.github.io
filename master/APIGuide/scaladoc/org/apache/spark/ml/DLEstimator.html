@@ -301,6 +301,20 @@ com.intel.analytics.bigdl.example.MLPipeline
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="org.apache.spark.ml.DLParams#endWhen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="endWhen:org.apache.spark.ml.param.Param[com.intel.analytics.bigdl.optim.Trigger]"></a>
+      <a id="endWhen:Param[Trigger]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">endWhen</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<a href="../../../../com/intel/analytics/bigdl/optim/Trigger.html" class="extype" name="com.intel.analytics.bigdl.optim.Trigger">Trigger</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">When to stop the training, passed in a <span class="extype" name="Trigger">Trigger</span>.</p><div class="fullcomment"><div class="comment cmt"><p>When to stop the training, passed in a <span class="extype" name="Trigger">Trigger</span>. E.g. Trigger.maxIterations
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd>DLParams</dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -549,6 +563,19 @@ Default: 0
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="org.apache.spark.ml.DLParams#getEndWhen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getEndWhen:com.intel.analytics.bigdl.optim.Trigger"></a>
+      <a id="getEndWhen:Trigger"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getEndWhen</span><span class="result">: <a href="../../../../com/intel/analytics/bigdl/optim/Trigger.html" class="extype" name="com.intel.analytics.bigdl.optim.Trigger">Trigger</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>DLParams</dd></dl></div>
     </li><li name="org.apache.spark.ml.param.shared.HasFeaturesCol#getFeaturesCol" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getFeaturesCol:String"></a>
       <a id="getFeaturesCol:String"></a>
@@ -666,6 +693,38 @@ Default: 0
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasPredictionCol</dd></dl></div>
+    </li><li name="org.apache.spark.ml.DLEstimator#getTrainSummary" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getTrainSummary:Option[com.intel.analytics.bigdl.visualization.TrainSummary]"></a>
+      <a id="getTrainSummary:Option[TrainSummary]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getTrainSummary</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../../../../com/intel/analytics/bigdl/visualization/TrainSummary.html" class="extype" name="com.intel.analytics.bigdl.visualization.TrainSummary">TrainSummary</a>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="org.apache.spark.ml.DLEstimator#getValidationSummary" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getValidationSummary:Option[com.intel.analytics.bigdl.visualization.ValidationSummary]"></a>
+      <a id="getValidationSummary:Option[ValidationSummary]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getValidationSummary</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../../../../com/intel/analytics/bigdl/visualization/ValidationSummary.html" class="extype" name="com.intel.analytics.bigdl.visualization.ValidationSummary">ValidationSummary</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Statistics (LearningRate, Loss, Throughput, Parameters) collected during training for the
+validation data if validation data is set, which can be used for visualization via
+Tensorboard.</p><div class="fullcomment"><div class="comment cmt"><p>Statistics (LearningRate, Loss, Throughput, Parameters) collected during training for the
+validation data if validation data is set, which can be used for visualization via
+Tensorboard. Use setValidationSummary to enable validation logger. Then the log will be
+saved to logDir/appName/ as specified by the parameters of validationSummary.</p><p>Default: None
+</p></div></div>
     </li><li name="org.apache.spark.ml.VectorCompatibility#getVectorSeq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getVectorSeq(row:org.apache.spark.sql.Row,colType:org.apache.spark.sql.types.DataType,index:Int):Seq[AnyVal]"></a>
       <a id="getVectorSeq(Row,DataType,Int):Seq[AnyVal]"></a>
@@ -1007,10 +1066,10 @@ Default: 0
         <span class="name">maxEpoch</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.IntParam">IntParam</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">number of max Epoch for the training, an epoch refers to a traverse over the training data
-Default: 100
-</p><div class="fullcomment"><div class="comment cmt"><p>number of max Epoch for the training, an epoch refers to a traverse over the training data
-Default: 100
+      <p class="shortcomment cmt">Number of max Epoch for the training, an epoch refers to a traverse over the training data
+Default: 50
+</p><div class="fullcomment"><div class="comment cmt"><p>Number of max Epoch for the training, an epoch refers to a traverse over the training data
+Default: 50
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd>DLParams</dd></dl></div>
     </li><li name="org.apache.spark.ml.DLEstimator#model" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="model:com.intel.analytics.bigdl.Module[T]"></a>
@@ -1184,6 +1243,19 @@ Default: SGD
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="org.apache.spark.ml.DLEstimator#setEndWhen" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="setEndWhen(trigger:com.intel.analytics.bigdl.optim.Trigger):DLEstimator.this.type"></a>
+      <a id="setEndWhen(Trigger):DLEstimator.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setEndWhen</span><span class="params">(<span name="trigger">trigger: <a href="../../../../com/intel/analytics/bigdl/optim/Trigger.html" class="extype" name="com.intel.analytics.bigdl.optim.Trigger">Trigger</a></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.ml.DLEstimator">DLEstimator</a>.this.type</span>
+      </span>
+      </h4>
+      
     </li><li name="org.apache.spark.ml.DLEstimator#setFeaturesCol" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="setFeaturesCol(featuresColName:String):DLEstimator.this.type"></a>
       <a id="setFeaturesCol(String):DLEstimator.this.type"></a>
@@ -1275,6 +1347,54 @@ Default: SGD
       </span>
       </h4>
       
+    </li><li name="org.apache.spark.ml.DLEstimator#setTrainSummary" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setTrainSummary(value:com.intel.analytics.bigdl.visualization.TrainSummary):DLEstimator.this.type"></a>
+      <a id="setTrainSummary(TrainSummary):DLEstimator.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setTrainSummary</span><span class="params">(<span name="value">value: <a href="../../../../com/intel/analytics/bigdl/visualization/TrainSummary.html" class="extype" name="com.intel.analytics.bigdl.visualization.TrainSummary">TrainSummary</a></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.ml.DLEstimator">DLEstimator</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Statistics (LearningRate, Loss, Throughput, Parameters) collected during training for the
+training data, which can be used for visualization via Tensorboard.</p><div class="fullcomment"><div class="comment cmt"><p>Statistics (LearningRate, Loss, Throughput, Parameters) collected during training for the
+training data, which can be used for visualization via Tensorboard.
+Use setTrainSummary to enable train logger. Then the log will be saved to
+logDir/appName/train as specified by the parameters of TrainSummary.</p><p>Default: Not enabled
+</p></div></div>
+    </li><li name="org.apache.spark.ml.DLEstimator#setValidation" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setValidation(trigger:com.intel.analytics.bigdl.optim.Trigger,validationDF:org.apache.spark.sql.DataFrame,vMethods:Array[com.intel.analytics.bigdl.optim.ValidationMethod[T]],batchSize:Int):DLEstimator.this.type"></a>
+      <a id="setValidation(Trigger,DataFrame,Array[ValidationMethod[T]],Int):DLEstimator.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setValidation</span><span class="params">(<span name="trigger">trigger: <a href="../../../../com/intel/analytics/bigdl/optim/Trigger.html" class="extype" name="com.intel.analytics.bigdl.optim.Trigger">Trigger</a></span>, <span name="validationDF">validationDF: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="vMethods">vMethods: <span class="extype" name="scala.Array">Array</span>[<a href="../../../../com/intel/analytics/bigdl/optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="org.apache.spark.ml.DLEstimator.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.ml.DLEstimator">DLEstimator</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set a validate evaluation during training
+</p><div class="fullcomment"><div class="comment cmt"><p>Set a validate evaluation during training
+</p></div><dl class="paramcmts block"><dt class="param">trigger</dt><dd class="cmt"><p>how often to evaluation validation set</p></dd><dt class="param">validationDF</dt><dd class="cmt"><p>validate data set</p></dd><dt class="param">vMethods</dt><dd class="cmt"><p>a set of validation method <span class="extype" name="ValidationMethod">ValidationMethod</span></p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>batch size for validation</p></dd><dt>returns</dt><dd class="cmt"><p>this optimizer
+</p></dd></dl></div>
+    </li><li name="org.apache.spark.ml.DLEstimator#setValidationSummary" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="setValidationSummary(value:com.intel.analytics.bigdl.visualization.ValidationSummary):DLEstimator.this.type"></a>
+      <a id="setValidationSummary(ValidationSummary):DLEstimator.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setValidationSummary</span><span class="params">(<span name="value">value: <a href="../../../../com/intel/analytics/bigdl/visualization/ValidationSummary.html" class="extype" name="com.intel.analytics.bigdl.visualization.ValidationSummary">ValidationSummary</a></span>)</span><span class="result">: <a href="" class="extype" name="org.apache.spark.ml.DLEstimator">DLEstimator</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Enable validation Summary
+</p>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -1371,6 +1491,19 @@ Default: SGD
       <p class="shortcomment cmt">Validate if feature and label columns are of supported data types.</p><div class="fullcomment"><div class="comment cmt"><p>Validate if feature and label columns are of supported data types.
 Default: 0
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>DLParams</dd></dl></div>
+    </li><li name="org.apache.spark.ml.DLEstimator#validateParams" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="validateParams(schema:org.apache.spark.sql.types.StructType):Unit"></a>
+      <a id="validateParams(StructType):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">validateParams</span><span class="params">(<span name="schema">schema: <span class="extype" name="org.apache.spark.sql.types.StructType">StructType</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#validateParams" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="validateParams():Unit"></a>
       <a id="validateParams():Unit"></a>
