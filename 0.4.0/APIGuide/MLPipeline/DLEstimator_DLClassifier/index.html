@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>ML Pipeline - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "DLModel", url: "#dlmodel", children: [
+          ]},
+          {title: "DLEstimator", url: "#dlestimator", children: [
+          ]},
+          {title: "DLClassifierModel", url: "#dlclassifiermodel", children: [
+          ]},
+          {title: "DLClassifier", url: "#dlclassifier", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+
+    <h2 id="dlmodel">DLModel</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val dlModel = new DLModel[T](model: Module[T], featureSize: Array[Int])
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">dl_model = DLModel(model, feature_size)
+</code></pre>
+
+<p>DLModel is designed to wrap the BigDL Module as a Spark's ML <a href="https://spark.apache.org/docs/2.1.1/ml-pipeline.html#transformers">Transformer</a> which is compatible 
+with both spark 1.5-plus and 2.0. It greatly improves the 
+experience of Spark users because now you can <strong>wrap a pre-trained BigDL Model into a DlModel, 
+and use it 
+as a transformer in your Spark ML pipeline to predict the results</strong>.</p>
+<p>DLModel supports feature data in the format of 
+Array[Double], Array[Float], org.apache.spark.mllib.linalg.{Vector, VectorUDT} for Spark 1.5, 1.6 
+and org.apache.spark.ml.linalg.{Vector, VectorUDT} for Spark 2.0+. Internally [[DLModel]] use 
+features column as storage of the feature data, and create Tensors according to the constructor 
+parameter featureSize.</p>
+<ul>
+<li><code>model</code> fitted BigDL module to use in prediction</li>
+<li><code>featureSize</code> The size (Tensor dimensions) of the feature data. 
+(e.g. an image may be with featureSize = 28 * 28)</li>
+</ul>
+<p>&nbsp;</p>
+<hr />
+<h2 id="dlestimator">DLEstimator</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val estimator = new DLEstimator(model: Module[T], criterion: Criterion[T], val featureSize: Array[Int], val labelSize: Array[Int])
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">estimator = DLEstimator(model, criterion, feature_size, label_size)
+</code></pre>
+
+<p>DLEstimator is used to take the user-presumed model and criterion with specification on feature and 
+label dimension to prepare for the training. Within its class definition, it implements a method <code>fit()</code>, 
+which accepts dataset to start training and produce a optimized DLModel with more accurate prediction.</p>
+<p>DLEstimator extends Spark's ML <a href="https://spark.apache.org/docs/2.1.1/ml-pipeline.html#estimators">Esitmator</a> API (<code>org.apache.spark.ml.Estimator</code>) and supports model training from Apache Spark 
+DataFrame/Dataset. Different from many algorithms in Spark MLlib, DLEstimator supports more data 
+types for the label column. In many deep learning applications, the label data could be a sequence 
+or other data collection. DLEstimator supports feature and label data in the format of <code>Array[Double]</code>, 
+<code>Array[Float]</code>, <code>org.apache.spark.mllib.linalg.Vector</code> (for Apache Spark 1.5, 1.6) and 
+<code>org.apache.spark.ml.linalg.Vector</code> (for Apache Spark 2.0+). Also label data can be of <code>Double</code> type.
+User should specify the feature data dimensions and label data dimensions via the constructor parameters 
+featureSize and labelSize respectively. Internally the feature and label data are converted to BigDL 
+tensors, to further train a BigDL model efficiently.</p>
+<ul>
+<li><code>model</code> BigDL module to be optimized in the fit() method</li>
+<li><code>criterion</code> the criterion used to compute the loss and the gradient</li>
+<li><code>featureSize</code> The size (Tensor dimensions) of the feature data.</li>
+<li><code>labelSize</code> The size (Tensor dimensions) of the label data</li>
+</ul>
+<p><strong>Scala Example:</strong></p>
+<pre><code class="scala">/**
+ *  Multi-label regression with BigDL layers and DLEstimator
+ */
+object DLEstimatorMultiLabelLR {
+
+  def main(args: Array[String]): Unit = {
+    val conf = Engine.createSparkConf()
+      .setAppName(&quot;DLEstimatorMultiLabelLR&quot;)
+      .setMaster(&quot;local[1]&quot;)
+    val sc = new SparkContext(conf)
+    val sqlContext = SQLContext.getOrCreate(sc)
+    Engine.init
+
+    val model = Sequential().add(Linear(2, 2))
+    val criterion = MSECriterion()
+    val estimator = new DLEstimator(model, criterion, Array(2), Array(2))
+      .setBatchSize(4)
+      .setMaxEpoch(10)
+    val data = sc.parallelize(Seq(
+      (Array(2.0, 1.0), Array(1.0, 2.0)),
+      (Array(1.0, 2.0), Array(2.0, 1.0)),
+      (Array(2.0, 1.0), Array(1.0, 2.0)),
+      (Array(1.0, 2.0), Array(2.0, 1.0))))
+    val df = sqlContext.createDataFrame(data).toDF(&quot;features&quot;, &quot;label&quot;)
+    val dlModel = estimator.fit(df)
+    dlModel.transform(df).show(false)
+  }
+}
+
+</code></pre>
+
+<p><strong>Python Example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+from bigdl.nn.criterion import *
+from bigdl.util.common import *
+from bigdl.ml_pipeline.dl_classifier import *
+from pyspark.sql.types import *
+from pyspark.context import SparkContext
+
+#Multi-label regression with BigDL layers and DLEstimator
+sc = SparkContext(appName=&quot;DLEstimatorMultiLabelLR&quot;, conf=create_spark_conf().setMaster(&quot;local[1]&quot;))
+sqlContext = SQLContext(sc)
+init_engine()
+model = Sequential().add(Linear(2, 2))
+criterion = MSECriterion()
+estimator = DLEstimator(model, criterion, [2], [2]).setBatchSize(4).setMaxEpoch(10)
+data = sc.parallelize([
+    ((2.0, 1.0), (1.0, 2.0)),
+    ((1.0, 2.0), (2.0, 1.0)),
+    ((2.0, 1.0), (1.0, 2.0)),
+    ((1.0, 2.0), (2.0, 1.0))])
+
+schema = StructType([
+    StructField(&quot;features&quot;, ArrayType(DoubleType(), False), False),
+    StructField(&quot;label&quot;, ArrayType(DoubleType(), False), False)])
+df = sqlContext.createDataFrame(data, schema)
+dlModel = estimator.fit(df)
+dlModel.transform(df).show(False)
+sc.stop()
+</code></pre>
+
+<p>Output is</p>
+<table>
+<thead>
+<tr>
+<th>features</th>
+<th>label</th>
+<th>prediction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[2.0, 1.0]</td>
+<td>[1.0, 2.0]</td>
+<td>[1.0034767389297485, 2.006068706512451]</td>
+</tr>
+<tr>
+<td>[1.0, 2.0]</td>
+<td>[2.0, 1.0]</td>
+<td>[2.006953001022339, 1.0039551258087158]</td>
+</tr>
+<tr>
+<td>[2.0, 1.0]</td>
+<td>[1.0, 2.0]</td>
+<td>[1.0034767389297485, 2.006068706512451]</td>
+</tr>
+<tr>
+<td>[1.0, 2.0]</td>
+<td>[2.0, 1.0]</td>
+<td>[2.006953001022339, 1.0039551258087158]</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<hr />
+<h2 id="dlclassifiermodel">DLClassifierModel</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val dlClassifierModel = new DLClassifierModel[T](model: Module[T], featureSize: Array[Int])
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">dl_classifier_model = DLClassifierModel(model, feature_size)
+</code></pre>
+
+<p>DLClassifierModel extends DLModel, which is a specialized DLModel for classification tasks.
+The prediction column will have the datatype of Double.
+<em> <code>model</code> fitted BigDL module to use in prediction
+</em> <code>featureSize</code> The size (Tensor dimensions) of the feature data. (e.g. an image may be with
+featureSize = 28 * 28)</p>
+<p>&nbsp;</p>
+<hr />
+<h2 id="dlclassifier">DLClassifier</h2>
+<pre><code class="scala">val classifer = new DLClassifer(model: Module[T], criterion: Criterion[T], val featureSize: Array[Int])
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">classifier = DLClassifer(model, criterion, feature_size)
+</code></pre>
+
+<p><code>DLClassifier</code> is a specialized <code>DLEstimator</code> that simplifies the data format for
+classification tasks where the label space is discrete. It only supports label column of DoubleType,
+and the fitted
+<code>DLClassifierModel</code> will have the prediction column of DoubleType.</p>
+<ul>
+<li><code>model</code> BigDL module to be optimized in the fit() method</li>
+<li><code>criterion</code> the criterion used to compute the loss and the gradient</li>
+<li><code>featureSize</code> The size (Tensor dimensions) of the feature data.</li>
+</ul>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.{ClassNLLCriterion, Linear, LogSoftMax, Sequential}
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.utils.Engine
+import org.apache.spark.SparkContext
+import org.apache.spark.ml.DLClassifier
+import org.apache.spark.sql.SQLContext
+
+/**
+ * Logistic Regression with BigDL layers and DLClassifier
+ */
+object DLClassifierLogisticRegression {
+
+  def main(args: Array[String]): Unit = {
+    val conf = Engine.createSparkConf()
+      .setAppName(&quot;DLClassifierLogisticRegression&quot;)
+      .setMaster(&quot;local[1]&quot;)
+    val sc = new SparkContext(conf)
+    val sqlContext = SQLContext.getOrCreate(sc)
+    Engine.init
+
+    val model = Sequential().add(Linear(2, 2)).add(LogSoftMax())
+    val criterion = ClassNLLCriterion()
+    val estimator = new DLClassifier(model, criterion, Array(2))
+      .setBatchSize(4)
+      .setMaxEpoch(10)
+    val data = sc.parallelize(Seq(
+      (Array(0.0, 1.0), 1.0),
+      (Array(1.0, 0.0), 2.0),
+      (Array(0.0, 1.0), 1.0),
+      (Array(1.0, 0.0), 2.0)))
+    val df = sqlContext.createDataFrame(data).toDF(&quot;features&quot;, &quot;label&quot;)
+    val dlModel = estimator.fit(df)
+    dlModel.transform(df).show(false)
+  }
+}
+</code></pre>
+
+<p><strong>Python Example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+from bigdl.nn.criterion import *
+from bigdl.util.common import *
+from bigdl.ml_pipeline.dl_classifier import *
+from pyspark.sql.types import *
+from pyspark.context import SparkContext
+
+#Logistic Regression with BigDL layers and DLClassifier
+sc = SparkContext(appName=&quot;DLClassifierLogisticRegression&quot;, conf=create_spark_conf().setMaster(&quot;local[1]&quot;))
+sqlContext = SQLContext(sc)
+init_engine()
+model = Sequential().add(Linear(2, 2)).add(LogSoftMax())
+criterion = ClassNLLCriterion()
+estimator = DLClassifier(model, criterion, [2]).setBatchSize(4).setMaxEpoch(10)
+data = sc.parallelize([
+    ((0.0, 1.0), [1.0]),
+    ((1.0, 0.0), [2.0]),
+    ((0.0, 1.0), [1.0]),
+    ((1.0, 0.0), [2.0])])
+
+schema = StructType([
+    StructField(&quot;features&quot;, ArrayType(DoubleType(), False), False),
+    StructField(&quot;label&quot;, ArrayType(DoubleType(), False), False)])
+df = sqlContext.createDataFrame(data, schema)
+dlModel = estimator.fit(df)
+dlModel.transform(df).show(False)
+sc.stop()
+</code></pre>
+
+<p>Output is</p>
+<table>
+<thead>
+<tr>
+<th>features</th>
+<th>label</th>
+<th>prediction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[0.0, 1.0]</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>[1.0, 0.0]</td>
+<td>2.0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>[0.0, 1.0]</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>[1.0, 0.0]</td>
+<td>2.0</td>
+<td>2.0</td>
+</tr>
+</tbody>
+</table>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
