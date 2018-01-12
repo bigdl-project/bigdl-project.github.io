@@ -827,6 +827,7 @@
         <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
             <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;KERAS_BACKEND&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;theano&quot;</span>
             <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># Make theano backend compatible with Python3</span>
                 <span class="kn">from</span> <span class="nn">theano</span> <span class="k">import</span> <span class="n">ifelse</span>
             <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;No backend is found for Keras. &quot;</span>

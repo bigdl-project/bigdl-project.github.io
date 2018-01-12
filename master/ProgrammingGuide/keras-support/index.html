@@ -73,7 +73,7 @@ bigdl_model = Model.load_keras(json_path=None, hdf5_path=None, by_name=False)
 <p><strong>Parameters</strong>:</p>
 <ul>
 <li><code>json_path</code> The JSON file path containing the Keras model definition to be loaded. Default to be <code>None</code> if you choose to load a Keras model from a HDF5 file.</li>
-<li><code>hdf5_path</code> The HDF5 file path containing the pre-trained weights with or without the model architecture. Default to be <code>None</code> if you choose to only load the model definition from JSON but not to load weights. In this case, BigDL will use initialized weights for the model.</li>
+<li><code>hdf5_path</code> The HDF5 file path containing the pre-trained weights with or without the model architecture. Please use weights from Keras 1.2.2 with <strong><code>tensorflow backend</code></strong>. Default to be <code>None</code> if you choose to only load the model definition from JSON but not to load weights. In this case, BigDL will use initialized weights for the model.</li>
 <li><code>by_name</code>  Whether to load the weights of layers by name. Use this option only when you provide a HDF5 file. Default to be <code>False</code>, meaning that  weights are loaded based on the network's execution order topology. Otherwise, if it is set to be <code>True</code>, only those layers with the same name will be loaded with weights.</li>
 </ul>
 <p><strong>NOTES</strong>:</p>
