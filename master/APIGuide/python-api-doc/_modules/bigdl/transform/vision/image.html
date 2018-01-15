@@ -658,6 +658,40 @@
                  <span class="n">sample_key</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ImageFrameToSample</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_keys</span><span class="p">,</span> <span class="n">target_keys</span><span class="p">,</span> <span class="n">sample_key</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="PixelBytesToMat"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.PixelBytesToMat">[docs]</a><span class="k">class</span> <span class="nc">PixelBytesToMat</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Transform byte array(pixels in byte) to OpenCVMat</span>
+<span class="sd">    :param byte_key key that maps byte array</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">byte_key</span> <span class="o">=</span> <span class="s2">&quot;bytes&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PixelBytesToMat</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">byte_key</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SeqFileFolder"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.SeqFileFolder">[docs]</a><span class="k">class</span> <span class="nc">SeqFileFolder</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+
+<div class="viewcode-block" id="SeqFileFolder.files_to_image_frame"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.SeqFileFolder.files_to_image_frame">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">files_to_image_frame</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span>
+                             <span class="n">url</span><span class="p">,</span>
+                             <span class="n">sc</span><span class="p">,</span>
+                             <span class="n">class_num</span><span class="p">,</span>
+                             <span class="n">partition_num</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+                             <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extract hadoop sequence files from an HDFS path as ImageFrame</span>
+<span class="sd">        :param url: sequence files folder path</span>
+<span class="sd">        :param sc: spark context</span>
+<span class="sd">        :param class_num: class number of data</span>
+<span class="sd">        :param partition_num: partition number, default: Engine.nodeNumber() * Engine.coreNumber()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">jvalue</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span>
+                               <span class="s2">&quot;seqFilesToImageFrame&quot;</span><span class="p">,</span>
+                               <span class="n">url</span><span class="p">,</span>
+                               <span class="n">sc</span><span class="p">,</span>
+                               <span class="n">class_num</span><span class="p">,</span>
+                               <span class="n">partition_num</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ImageFrame</span><span class="p">(</span><span class="n">jvalue</span><span class="o">=</span><span class="n">jvalue</span><span class="p">)</span></div></div>
+
+
 </pre></div>
 
           </div>

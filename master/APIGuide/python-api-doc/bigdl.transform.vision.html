@@ -442,6 +442,14 @@ if sc is null, path is local directory/image file/image file with wildcard chara
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.transform.vision.image.PixelBytesToMat">
+<em class="property">class </em><code class="descclassname">bigdl.transform.vision.image.</code><code class="descname">PixelBytesToMat</code><span class="sig-paren">(</span><em>byte_key='bytes'</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/transform/vision/image.html#PixelBytesToMat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.transform.vision.image.PixelBytesToMat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.transform.vision.image.FeatureTransformer" title="bigdl.transform.vision.image.FeatureTransformer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.transform.vision.image.FeatureTransformer</span></code></a></p>
+<p>Transform byte array(pixels in byte) to OpenCVMat
+:param byte_key key that maps byte array</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.transform.vision.image.PixelNormalize">
 <em class="property">class </em><code class="descclassname">bigdl.transform.vision.image.</code><code class="descname">PixelNormalize</code><span class="sig-paren">(</span><em>means</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/transform/vision/image.html#PixelNormalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.transform.vision.image.PixelNormalize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.transform.vision.image.FeatureTransformer" title="bigdl.transform.vision.image.FeatureTransformer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.transform.vision.image.FeatureTransformer</span></code></a></p>
@@ -538,6 +546,22 @@ Imgproc.resize(mat, mat, new Size(resizeWH, resizeWH))</p>
 <em class="property">class </em><code class="descclassname">bigdl.transform.vision.image.</code><code class="descname">Saturation</code><span class="sig-paren">(</span><em>delta_low</em>, <em>delta_high</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/transform/vision/image.html#Saturation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.transform.vision.image.Saturation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.transform.vision.image.FeatureTransformer" title="bigdl.transform.vision.image.FeatureTransformer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.transform.vision.image.FeatureTransformer</span></code></a></p>
 <p>Adjust image saturation</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.transform.vision.image.SeqFileFolder">
+<em class="property">class </em><code class="descclassname">bigdl.transform.vision.image.</code><code class="descname">SeqFileFolder</code><span class="sig-paren">(</span><em>jvalue</em>, <em>bigdl_type</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/transform/vision/image.html#SeqFileFolder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.transform.vision.image.SeqFileFolder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<dl class="classmethod">
+<dt id="bigdl.transform.vision.image.SeqFileFolder.files_to_image_frame">
+<em class="property">classmethod </em><code class="descname">files_to_image_frame</code><span class="sig-paren">(</span><em>url</em>, <em>sc</em>, <em>class_num</em>, <em>partition_num=-1</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/transform/vision/image.html#SeqFileFolder.files_to_image_frame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.transform.vision.image.SeqFileFolder.files_to_image_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract hadoop sequence files from an HDFS path as ImageFrame
+:param url: sequence files folder path
+:param sc: spark context
+:param class_num: class number of data
+:param partition_num: partition number, default: Engine.nodeNumber() * Engine.coreNumber()</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>

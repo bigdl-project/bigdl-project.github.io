@@ -2,17 +2,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>Transformer - bigdl 0.5.0-SNAPSHOT API - com.intel.analytics.bigdl.dataset.Transformer</title>
-          <meta name="description" content="Transformer - bigdl 0.5.0 - SNAPSHOT API - com.intel.analytics.bigdl.dataset.Transformer" />
-          <meta name="keywords" content="Transformer bigdl 0.5.0 SNAPSHOT API com.intel.analytics.bigdl.dataset.Transformer" />
+          <title>PixelBytesToMat - bigdl 0.5.0-SNAPSHOT API - com.intel.analytics.bigdl.transform.vision.image.PixelBytesToMat</title>
+          <meta name="description" content="PixelBytesToMat - bigdl 0.5.0 - SNAPSHOT API - com.intel.analytics.bigdl.transform.vision.image.PixelBytesToMat" />
+          <meta name="keywords" content="PixelBytesToMat bigdl 0.5.0 SNAPSHOT API com.intel.analytics.bigdl.transform.vision.image.PixelBytesToMat" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
-      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <link href="../../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
       <script type="text/javascript">
          if(top === self) {
-            var url = '../../../../../index.html';
-            var hash = 'com.intel.analytics.bigdl.dataset.Transformer';
+            var url = '../../../../../../../index.html';
+            var hash = 'com.intel.analytics.bigdl.transform.vision.image.PixelBytesToMat';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -24,33 +24,24 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../../../lib/trait_big.png" />
-        <p id="owner"><a href="../../../../package.html" class="extype" name="com">com</a>.<a href="../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.dataset">dataset</a></p>
-        <h1>Transformer</h1>
+        <a href="PixelBytesToMat$.html" title="Go to companion"><img src="../../../../../../../lib/class_to_object_big.png" /></a>
+        <p id="owner"><a href="../../../../../../package.html" class="extype" name="com">com</a>.<a href="../../../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../../../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="../../package.html" class="extype" name="com.intel.analytics.bigdl.transform">transform</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl.transform.vision">vision</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image">image</a></p>
+        <h1><a href="PixelBytesToMat$.html" title="Go to companion">PixelBytesToMat</a></h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">trait</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">Transformer</span><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">PixelBytesToMat</span><span class="result"> extends <a href="FeatureTransformer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer">FeatureTransformer</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Transform a data stream of type A to type B. It is usually used in data pre-process stage.
-Different transformers can compose a pipeline. For example, if there're transformer1 from A to
-B, transformer2 from B to C, and transformer3 from C to D, you can compose them into a bigger
-transformer from A to D by transformer1 -&gt; transformer2 -&gt; transformer 3.</p><p>The purpose of transformer is for code reuse. Many deep learning share many common data
-pre-process steps. User needn't write them every time, but can reuse others work.</p><p>Transformer can be used with RDD(rdd.mapPartition), iterator and DataSet.
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"></dd><dt class="tparam">B</dt><dd class="cmt"><p>
-</p></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Transform byte array(pixels in byte) to OpenCVMat</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="../transform/vision/image/augmentation/AspectScale.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.AspectScale">AspectScale</a>, <a href="image/BGRImgCropper.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.BGRImgCropper">BGRImgCropper</a>, <a href="image/BGRImgNormalizer.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.BGRImgNormalizer">BGRImgNormalizer</a>, <a href="image/BGRImgPixelNormalizer.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.BGRImgPixelNormalizer">BGRImgPixelNormalizer</a>, <a href="image/BGRImgRdmCropper.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.BGRImgRdmCropper">BGRImgRdmCropper</a>, <a href="image/BGRImgToBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.BGRImgToBatch">BGRImgToBatch</a>, <a href="image/BGRImgToImageVector.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.BGRImgToImageVector">BGRImgToImageVector</a>, <a href="image/BGRImgToLocalSeqFile.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.BGRImgToLocalSeqFile">BGRImgToLocalSeqFile</a>, <a href="image/BGRImgToSample.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.BGRImgToSample">BGRImgToSample</a>, <a href="../transform/vision/image/augmentation/Brightness.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.Brightness">Brightness</a>, <a href="image/BytesToBGRImg.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.BytesToBGRImg">BytesToBGRImg</a>, <a href="image/BytesToGreyImg.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.BytesToGreyImg">BytesToGreyImg</a>, <a href="../transform/vision/image/BytesToMat.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.BytesToMat">BytesToMat</a>, <a href="../transform/vision/image/augmentation/CenterCrop.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.CenterCrop">CenterCrop</a>, <a href="../transform/vision/image/ChainedFeatureTransformer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ChainedFeatureTransformer">ChainedFeatureTransformer</a>, <a href="ChainedTransformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.ChainedTransformer">ChainedTransformer</a>, <a href="../transform/vision/image/augmentation/ChannelNormalize.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.ChannelNormalize">ChannelNormalize</a>, <a href="../transform/vision/image/augmentation/ChannelOrder.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.ChannelOrder">ChannelOrder</a>, <a href="../transform/vision/image/augmentation/ColorJitter.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.ColorJitter">ColorJitter</a>, <a href="image/ColorJitter.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.ColorJitter">ColorJitter</a>, <a href="../transform/vision/image/augmentation/Contrast.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.Contrast">Contrast</a>, <a href="../transform/vision/image/augmentation/Crop.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.Crop">Crop</a>, <a href="../transform/vision/image/augmentation/DetectionCrop.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.DetectionCrop">DetectionCrop</a>, <a href="../transform/vision/image/augmentation/Expand.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.Expand">Expand</a>, <a href="../transform/vision/image/FeatureTransformer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer">FeatureTransformer</a>, <a href="../transform/vision/image/augmentation/Filler.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.Filler">Filler</a>, <a href="../transform/vision/image/augmentation/FixedCrop.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.FixedCrop">FixedCrop</a>, <a href="image/GreyImgCropper.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.GreyImgCropper">GreyImgCropper</a>, <a href="image/GreyImgNormalizer.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.GreyImgNormalizer">GreyImgNormalizer</a>, <a href="image/GreyImgToBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.GreyImgToBatch">GreyImgToBatch</a>, <a href="image/GreyImgToSample.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.GreyImgToSample">GreyImgToSample</a>, <a href="../transform/vision/image/augmentation/HFlip.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.HFlip">HFlip</a>, <a href="image/HFlip.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.HFlip">HFlip</a>, <a href="../transform/vision/image/augmentation/Hue.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.Hue">Hue</a>, <a href="Identity.html" class="extype" name="com.intel.analytics.bigdl.dataset.Identity">Identity</a>, <a href="../transform/vision/image/ImageFrameToSample.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFrameToSample">ImageFrameToSample</a>, <a href="text/LabeledSentenceToSample.html" class="extype" name="com.intel.analytics.bigdl.dataset.text.LabeledSentenceToSample">LabeledSentenceToSample</a>, <a href="image/Lighting.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.Lighting">Lighting</a>, <a href="image/LocalResizeImgReader.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.LocalResizeImgReader">LocalResizeImgReader</a>, <a href="image/LocalResizeImgWithName.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.LocalResizeImgWithName">LocalResizeImgWithName</a>, <a href="image/LocalScaleImgReader.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.LocalScaleImgReader">LocalScaleImgReader</a>, <a href="image/LocalScaleImgWithName.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.LocalScaleImgWithName">LocalScaleImgWithName</a>, <a href="image/LocalSeqFileToBytes.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.LocalSeqFileToBytes">LocalSeqFileToBytes</a>, <a href="image/MTLabeledBGRImgToBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.image.MTLabeledBGRImgToBatch">MTLabeledBGRImgToBatch</a>, <a href="../transform/vision/image/MatToFloats.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.MatToFloats">MatToFloats</a>, <a href="../transform/vision/image/MatToTensor.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.MatToTensor">MatToTensor</a>, <a href="../transform/vision/image/PixelBytesToMat.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.PixelBytesToMat">PixelBytesToMat</a>, <a href="../transform/vision/image/augmentation/PixelNormalizer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.PixelNormalizer">PixelNormalizer</a>, <a href="../transform/vision/image/augmentation/RandomAspectScale.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.RandomAspectScale">RandomAspectScale</a>, <a href="../transform/vision/image/augmentation/RandomCrop.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.RandomCrop">RandomCrop</a>, <a href="../transform/vision/image/label/roi/RandomSampler.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RandomSampler">RandomSampler</a>, <a href="../transform/vision/image/augmentation/RandomTransformer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.RandomTransformer">RandomTransformer</a>, <a href="../transform/vision/image/augmentation/Resize.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.Resize">Resize</a>, <a href="../transform/vision/image/label/roi/RoiHFlip.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiHFlip">RoiHFlip</a>, <a href="../transform/vision/image/label/roi/RoiNormalize.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiNormalize">RoiNormalize</a>, <a href="../transform/vision/image/label/roi/RoiProject.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiProject">RoiProject</a>, <a href="../transform/vision/image/label/roi/RoiResize.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiResize">RoiResize</a>, <a href="../example/imageclassification/RowToByteRecords.html" class="extype" name="com.intel.analytics.bigdl.example.imageclassification.RowToByteRecords">RowToByteRecords</a>, <a href="SampleToBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch">SampleToBatch</a>, <a href="SampleToMiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.SampleToMiniBatch">SampleToMiniBatch</a>, <a href="../transform/vision/image/augmentation/Saturation.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.Saturation">Saturation</a>, <a href="text/SentenceBiPadding.html" class="extype" name="com.intel.analytics.bigdl.dataset.text.SentenceBiPadding">SentenceBiPadding</a>, <a href="text/SentenceSplitter.html" class="extype" name="com.intel.analytics.bigdl.dataset.text.SentenceSplitter">SentenceSplitter</a>, <a href="text/SentenceTokenizer.html" class="extype" name="com.intel.analytics.bigdl.dataset.text.SentenceTokenizer">SentenceTokenizer</a>, <a href="text/TextToLabeledSentence.html" class="extype" name="com.intel.analytics.bigdl.dataset.text.TextToLabeledSentence">TextToLabeledSentence</a>, <a href="../models/autoencoder/toAutoencoderBatch.html" class="extype" name="com.intel.analytics.bigdl.models.autoencoder.toAutoencoderBatch">toAutoencoderBatch</a></div>
+          <div class="superTypes hiddenContent"><a href="FeatureTransformer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer">FeatureTransformer</a>, <a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>, <a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -68,7 +59,7 @@ pre-process steps. User needn't write them every time, but can reuse others work
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.intel.analytics.bigdl.dataset.Transformer"><span>Transformer</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.intel.analytics.bigdl.transform.vision.image.PixelBytesToMat"><span>PixelBytesToMat</span></li><li class="in" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer"><span>FeatureTransformer</span></li><li class="in" name="com.intel.analytics.bigdl.dataset.Transformer"><span>Transformer</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -86,30 +77,31 @@ pre-process steps. User needn't write them every time, but can reuse others work
 
       <div id="template">
         <div id="allMembers">
-        
-
-        
-
-        <div id="values" class="values members">
-              <h3>Abstract Value Members</h3>
-              <ol><li name="com.intel.analytics.bigdl.dataset.Transformer#apply" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="apply(prev:Iterator[A]):Iterator[B]"></a>
-      <a id="apply(Iterator[A]):Iterator[B]"></a>
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="com.intel.analytics.bigdl.transform.vision.image.PixelBytesToMat#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(byteKey:String):com.intel.analytics.bigdl.transform.vision.image.PixelBytesToMat"></a>
+      <a id="&lt;init&gt;:PixelBytesToMat"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
+        <span class="modifier"></span>
+        <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="prev">prev: <span class="extype" name="scala.collection.Iterator">Iterator</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Transformer.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="scala.collection.Iterator">Iterator</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Transformer.B">B</span>]</span>
+        <span class="name">PixelBytesToMat</span><span class="params">(<span name="byteKey">byteKey: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">ImageFeature.bytes</span></span>)</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">byteKey</dt><dd class="cmt"><p>key that maps byte array
+</p></dd></dl></div>
     </li></ol>
             </div>
 
+        
+
+        
+
         <div id="values" class="values members">
-              <h3>Concrete Value Members</h3>
+              <h3>Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
@@ -149,19 +141,32 @@ pre-process steps. User needn't write them every time, but can reuse others work
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.dataset.Transformer#-&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="-&gt;[C](other:com.intel.analytics.bigdl.dataset.Transformer[B,C]):com.intel.analytics.bigdl.dataset.Transformer[A,C]"></a>
-      <a id="-&gt;[C](Transformer[B,C]):Transformer[A,C]"></a>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer#-&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="-&gt;[C](other:com.intel.analytics.bigdl.dataset.Transformer[com.intel.analytics.bigdl.transform.vision.image.ImageFeature,C]):com.intel.analytics.bigdl.dataset.Transformer[com.intel.analytics.bigdl.transform.vision.image.ImageFeature,C]"></a>
+      <a id="-&gt;[C](Transformer[ImageFeature,C]):Transformer[ImageFeature,C]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $minus$greater" class="name">-&gt;</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="other">other: <a href="" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Transformer.B">B</span>, <span class="extype" name="com.intel.analytics.bigdl.dataset.Transformer.-&gt;.C">C</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Transformer.A">A</span>, <span class="extype" name="com.intel.analytics.bigdl.dataset.Transformer.-&gt;.C">C</span>]</span>
+        <span title="gt4s: $minus$greater" class="name">-&gt;</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="other">other: <a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>, <span class="extype" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer.-&gt;.C">C</span>]</span>)</span><span class="result">: <a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>, <span class="extype" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer.-&gt;.C">C</span>]</span>
       </span>
       </h4>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="FeatureTransformer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer">FeatureTransformer</a> → <a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer#-&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="-&gt;(other:com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer):com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer"></a>
+      <a id="-&gt;(FeatureTransformer):FeatureTransformer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $minus$greater" class="name">-&gt;</span><span class="params">(<span name="other">other: <a href="FeatureTransformer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer">FeatureTransformer</a></span>)</span><span class="result">: <a href="FeatureTransformer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer">FeatureTransformer</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="FeatureTransformer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer">FeatureTransformer</a></dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:AnyRef):Boolean"></a>
       <a id="==(AnyRef):Boolean"></a>
@@ -188,22 +193,48 @@ pre-process steps. User needn't write them every time, but can reuse others work
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.dataset.Transformer#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply(dataset:org.apache.spark.rdd.RDD[A])(implicitevidence:scala.reflect.ClassTag[B]):org.apache.spark.rdd.RDD[B]"></a>
-      <a id="apply(RDD[A])(ClassTag[B]):RDD[B]"></a>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(imageFrame:com.intel.analytics.bigdl.transform.vision.image.ImageFrame):com.intel.analytics.bigdl.transform.vision.image.ImageFrame"></a>
+      <a id="apply(ImageFrame):ImageFrame"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Transformer.A">A</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence">evidence: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Transformer.B">B</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Transformer.B">B</span>]</span>
+        <span class="name">apply</span><span class="params">(<span name="imageFrame">imageFrame: <a href="ImageFrame.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame">ImageFrame</a></span>)</span><span class="result">: <a href="ImageFrame.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame">ImageFrame</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="FeatureTransformer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer">FeatureTransformer</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(prev:Iterator[com.intel.analytics.bigdl.transform.vision.image.ImageFeature]):Iterator[com.intel.analytics.bigdl.transform.vision.image.ImageFeature]"></a>
+      <a id="apply(Iterator[ImageFeature]):Iterator[ImageFeature]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="prev">prev: <span class="extype" name="scala.Iterator">Iterator</span>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Iterator">Iterator</span>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="FeatureTransformer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer">FeatureTransformer</a> → <a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.dataset.Transformer#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(dataset:org.apache.spark.rdd.RDD[A])(implicitevidence:scala.reflect.ClassTag[B]):org.apache.spark.rdd.RDD[B]"></a>
+      <a id="apply(RDD[ImageFeature])(ClassTag[ImageFeature]):RDD[ImageFeature]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence">evidence: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Apply this transformer to rdd
 </p><div class="fullcomment"><div class="comment cmt"><p>Apply this transformer to rdd
 </p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>
-</p></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -229,26 +260,26 @@ pre-process steps. User needn't write them every time, but can reuse others work
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.dataset.Transformer#cloneTransformer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.dataset.Transformer#cloneTransformer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="cloneTransformer():com.intel.analytics.bigdl.dataset.Transformer[A,B]"></a>
-      <a id="cloneTransformer():Transformer[A,B]"></a>
+      <a id="cloneTransformer():Transformer[ImageFeature,ImageFeature]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cloneTransformer</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Transformer.A">A</span>, <span class="extype" name="com.intel.analytics.bigdl.dataset.Transformer.B">B</span>]</span>
+        <span class="name">cloneTransformer</span><span class="params">()</span><span class="result">: <a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>, <a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>]</span>
       </span>
       </h4>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -287,7 +318,7 @@ pre-process steps. User needn't write them every time, but can reuse others work
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="symbol">classOf[java.lang.Throwable]</span>
@@ -372,6 +403,24 @@ pre-process steps. User needn't write them every time, but can reuse others work
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer#setOutKey" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setOutKey(key:String):FeatureTransformer.this.type"></a>
+      <a id="setOutKey(String):PixelBytesToMat.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setOutKey</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.PixelBytesToMat">PixelBytesToMat</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">set the output key to store current transformed result
+if the key is not set, or same as default, then the transformed result
+will be overwritted by the following transformer</p><div class="fullcomment"><div class="comment cmt"><p>set the output key to store current transformed result
+if the key is not set, or same as default, then the transformed result
+will be overwritted by the following transformer</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>output key
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="FeatureTransformer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer">FeatureTransformer</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -398,6 +447,35 @@ pre-process steps. User needn't write them every time, but can reuse others work
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer#transform" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transform(feature:com.intel.analytics.bigdl.transform.vision.image.ImageFeature):com.intel.analytics.bigdl.transform.vision.image.ImageFeature"></a>
+      <a id="transform(ImageFeature):ImageFeature"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">transform</span><span class="params">(<span name="feature">feature: <a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a></span>)</span><span class="result">: <a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">transform feature</p><div class="fullcomment"><div class="comment cmt"><p>transform feature</p></div><dl class="paramcmts block"><dt class="param">feature</dt><dd class="cmt"><p>ImageFeature</p></dd><dt>returns</dt><dd class="cmt"><p>ImageFeature
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="FeatureTransformer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer">FeatureTransformer</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.PixelBytesToMat#transformMat" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transformMat(feature:com.intel.analytics.bigdl.transform.vision.image.ImageFeature):Unit"></a>
+      <a id="transformMat(ImageFeature):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">transformMat</span><span class="params">(<span name="feature">feature: <a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">transform mat
+</p><div class="fullcomment"><div class="comment cmt"><p>transform mat
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.PixelBytesToMat">PixelBytesToMat</a> → <a href="FeatureTransformer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer">FeatureTransformer</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -464,7 +542,11 @@ pre-process steps. User needn't write them every time, but can reuse others work
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.Serializable">
+        <div class="parent" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer">
+              <h3>Inherited from <a href="FeatureTransformer.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.FeatureTransformer">FeatureTransformer</a></h3>
+            </div><div class="parent" name="com.intel.analytics.bigdl.dataset.Transformer">
+              <h3>Inherited from <a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>, <a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>]</h3>
+            </div><div class="parent" name="scala.Serializable">
               <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
             </div><div class="parent" name="java.io.Serializable">
               <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
@@ -488,6 +570,6 @@ pre-process steps. User needn't write them every time, but can reuse others work
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../../../lib/template.js"></script>
     </body>
       </html>
