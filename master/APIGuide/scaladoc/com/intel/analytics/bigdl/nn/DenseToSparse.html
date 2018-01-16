@@ -81,7 +81,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.DenseToSparse#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;()(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.DenseToSparse[T]"></a>
+      <a id="&lt;init&gt;(propagateBack:Boolean)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.DenseToSparse[T]"></a>
       <a id="&lt;init&gt;:DenseToSparse[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -89,10 +89,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">DenseToSparse</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>)</span>
+        <span class="name">DenseToSparse</span><span class="params">(<span name="propagateBack">propagateBack: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DenseToSparse.T">T</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">ev</dt><dd class="cmt"></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">propagateBack</dt><dd class="cmt"><p>whether propagate gradient back, default value is true</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -916,6 +916,19 @@ it is recommended to use Predictor for DistributedImageFrame
 or LocalPredictor for LocalImageFrame</p></div><dl class="paramcmts block"><dt class="param">imageFrame</dt><dd class="cmt"><p>imageFrame that contains images</p></dd><dt class="param">outputLayer</dt><dd class="cmt"><p>if outputLayer is not null, the output of layer that matches
                      outputLayer will be used as predicted output</p></dd><dt class="param">shareBuffer</dt><dd class="cmt"><p>whether to share same memory for each batch predict results</p></dd><dt class="param">batchPerPartition</dt><dd class="cmt"><p>batch size per partition, default is 4</p></dd><dt class="param">predictKey</dt><dd class="cmt"><p>key to store predicted result</p></dd><dt class="param">featurePaddingParam</dt><dd class="cmt"><p>featurePaddingParam if the inputs have variant size</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.DenseToSparse#propagateBack" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="propagateBack:Boolean"></a>
+      <a id="propagateBack:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">propagateBack</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">whether propagate gradient back, default value is true</p>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#quantize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="quantize():com.intel.analytics.bigdl.Module[T]"></a>
       <a id="quantize():Module[T]"></a>

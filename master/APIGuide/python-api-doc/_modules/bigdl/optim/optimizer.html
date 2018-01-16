@@ -690,7 +690,14 @@
 <span class="sd">        create optimizer time</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loading input ...&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">prepareInput</span><span class="p">()</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">prepareInput</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="BaseOptimizer.set_end_when"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.BaseOptimizer.set_end_when">[docs]</a>    <span class="k">def</span> <span class="nf">set_end_when</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">end_when</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        When to stop, passed in a [[Trigger]]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">setEndWhen</span><span class="p">(</span><span class="n">end_when</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
 
 
 <div class="viewcode-block" id="Optimizer"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Optimizer">[docs]</a><span class="k">class</span> <span class="nc">Optimizer</span><span class="p">(</span><span class="n">BaseOptimizer</span><span class="p">):</span>
