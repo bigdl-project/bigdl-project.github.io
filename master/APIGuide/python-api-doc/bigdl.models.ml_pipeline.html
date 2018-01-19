@@ -23,7 +23,9 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="bigdl.nn package" href="bigdl.nn.html" />
+    <link rel="prev" title="bigdl.models.local_lenet package" href="bigdl.models.local_lenet.html" /> 
   </head>
   <body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -35,7 +37,15 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li> 
+        <li class="right" >
+          <a href="bigdl.nn.html" title="bigdl.nn package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="bigdl.models.local_lenet.html" title="bigdl.models.local_lenet package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="bigdl.html" >bigdl package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="bigdl.models.html" accesskey="U">bigdl.models package</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -50,6 +60,12 @@
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="bigdl.models.local_lenet.html"
+                        title="previous chapter">bigdl.models.local_lenet package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="bigdl.nn.html"
+                        title="next chapter">bigdl.nn package</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -102,13 +118,13 @@
 <dl class="class">
 <dt id="bigdl.models.ml_pipeline.dl_classifier.DLEstimator">
 <em class="property">class </em><code class="descclassname">bigdl.models.ml_pipeline.dl_classifier.</code><code class="descname">DLEstimator</code><span class="sig-paren">(</span><em>model</em>, <em>criterion</em>, <em>feature_size</em>, <em>label_size</em>, <em>jvalue=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/models/ml_pipeline/dl_classifier.html#DLEstimator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.models.ml_pipeline.dl_classifier.DLEstimator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyspark.ml.base.Estimator</span></code>, <code class="xref py py-class docutils literal"><span class="pre">pyspark.ml.param.shared.HasFeaturesCol</span></code>, <code class="xref py py-class docutils literal"><span class="pre">pyspark.ml.param.shared.HasLabelCol</span></code>, <code class="xref py py-class docutils literal"><span class="pre">pyspark.ml.param.shared.HasPredictionCol</span></code>, <a class="reference internal" href="#bigdl.models.ml_pipeline.dl_classifier.HasBatchSize" title="bigdl.models.ml_pipeline.dl_classifier.HasBatchSize"><code class="xref py py-class docutils literal"><span class="pre">bigdl.models.ml_pipeline.dl_classifier.HasBatchSize</span></code></a>, <a class="reference internal" href="#bigdl.models.ml_pipeline.dl_classifier.HasMaxEpoch" title="bigdl.models.ml_pipeline.dl_classifier.HasMaxEpoch"><code class="xref py py-class docutils literal"><span class="pre">bigdl.models.ml_pipeline.dl_classifier.HasMaxEpoch</span></code></a>, <a class="reference internal" href="#bigdl.models.ml_pipeline.dl_classifier.HasLearningRate" title="bigdl.models.ml_pipeline.dl_classifier.HasLearningRate"><code class="xref py py-class docutils literal"><span class="pre">bigdl.models.ml_pipeline.dl_classifier.HasLearningRate</span></code></a>, <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyspark.ml.pipeline.Estimator</span></code>, <code class="xref py py-class docutils literal"><span class="pre">pyspark.ml.param.shared.HasFeaturesCol</span></code>, <code class="xref py py-class docutils literal"><span class="pre">pyspark.ml.param.shared.HasLabelCol</span></code>, <code class="xref py py-class docutils literal"><span class="pre">pyspark.ml.param.shared.HasPredictionCol</span></code>, <a class="reference internal" href="#bigdl.models.ml_pipeline.dl_classifier.HasBatchSize" title="bigdl.models.ml_pipeline.dl_classifier.HasBatchSize"><code class="xref py py-class docutils literal"><span class="pre">bigdl.models.ml_pipeline.dl_classifier.HasBatchSize</span></code></a>, <a class="reference internal" href="#bigdl.models.ml_pipeline.dl_classifier.HasMaxEpoch" title="bigdl.models.ml_pipeline.dl_classifier.HasMaxEpoch"><code class="xref py py-class docutils literal"><span class="pre">bigdl.models.ml_pipeline.dl_classifier.HasMaxEpoch</span></code></a>, <a class="reference internal" href="#bigdl.models.ml_pipeline.dl_classifier.HasLearningRate" title="bigdl.models.ml_pipeline.dl_classifier.HasLearningRate"><code class="xref py py-class docutils literal"><span class="pre">bigdl.models.ml_pipeline.dl_classifier.HasLearningRate</span></code></a>, <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
 </dd></dl>
 
 <dl class="class">
 <dt id="bigdl.models.ml_pipeline.dl_classifier.DLModel">
 <em class="property">class </em><code class="descclassname">bigdl.models.ml_pipeline.dl_classifier.</code><code class="descname">DLModel</code><span class="sig-paren">(</span><em>model</em>, <em>featureSize</em>, <em>jvalue=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/models/ml_pipeline/dl_classifier.html#DLModel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.models.ml_pipeline.dl_classifier.DLModel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyspark.ml.base.Model</span></code>, <code class="xref py py-class docutils literal"><span class="pre">pyspark.ml.param.shared.HasFeaturesCol</span></code>, <code class="xref py py-class docutils literal"><span class="pre">pyspark.ml.param.shared.HasPredictionCol</span></code>, <a class="reference internal" href="#bigdl.models.ml_pipeline.dl_classifier.HasBatchSize" title="bigdl.models.ml_pipeline.dl_classifier.HasBatchSize"><code class="xref py py-class docutils literal"><span class="pre">bigdl.models.ml_pipeline.dl_classifier.HasBatchSize</span></code></a>, <a class="reference internal" href="#bigdl.models.ml_pipeline.dl_classifier.HasFeatureSize" title="bigdl.models.ml_pipeline.dl_classifier.HasFeatureSize"><code class="xref py py-class docutils literal"><span class="pre">bigdl.models.ml_pipeline.dl_classifier.HasFeatureSize</span></code></a>, <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">pyspark.ml.pipeline.Model</span></code>, <code class="xref py py-class docutils literal"><span class="pre">pyspark.ml.param.shared.HasFeaturesCol</span></code>, <code class="xref py py-class docutils literal"><span class="pre">pyspark.ml.param.shared.HasPredictionCol</span></code>, <a class="reference internal" href="#bigdl.models.ml_pipeline.dl_classifier.HasBatchSize" title="bigdl.models.ml_pipeline.dl_classifier.HasBatchSize"><code class="xref py py-class docutils literal"><span class="pre">bigdl.models.ml_pipeline.dl_classifier.HasBatchSize</span></code></a>, <a class="reference internal" href="#bigdl.models.ml_pipeline.dl_classifier.HasFeatureSize" title="bigdl.models.ml_pipeline.dl_classifier.HasFeatureSize"><code class="xref py py-class docutils literal"><span class="pre">bigdl.models.ml_pipeline.dl_classifier.HasFeatureSize</span></code></a>, <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
 <dl class="classmethod">
 <dt id="bigdl.models.ml_pipeline.dl_classifier.DLModel.of">
 <em class="property">classmethod </em><code class="descname">of</code><span class="sig-paren">(</span><em>jvalue</em>, <em>feature_size=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/models/ml_pipeline/dl_classifier.html#DLModel.of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.models.ml_pipeline.dl_classifier.DLModel.of" title="Permalink to this definition">¶</a></dt>
@@ -227,12 +243,20 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li> 
+        <li class="right" >
+          <a href="bigdl.nn.html" title="bigdl.nn package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="bigdl.models.local_lenet.html" title="bigdl.models.local_lenet package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="bigdl.html" >bigdl package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="bigdl.models.html" >bigdl.models package</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
     </div>
   </body>
 </html>
