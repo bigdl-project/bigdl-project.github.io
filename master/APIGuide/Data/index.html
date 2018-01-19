@@ -54,7 +54,9 @@
         ];
 
     </script>
-    <script src="/js/base.js"></script> 
+    <script src="/js/base.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script> 
 </head>
 
 <body>
@@ -435,7 +437,8 @@ while (iter.hasNext) {
 <p>It can be created by
 <em> <code>read</code>: read local image path as opencv mat
 </em> <code>fromImageBytes</code>: convert image file in bytes to opencv mat
-* <code>fromFloats</code>: convert float array(pixels) to OpenCV mat</p>
+<em> <code>fromFloats</code>: convert float array(pixels) to OpenCV mat
+</em> <code>fromTensor</code>: convert float tensor to OpenCV mat</p>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">// read local image path as OpenCVMat
 val mat = OpenCVMat.read(&quot;/tmp/test.jpg&quot;)
@@ -446,6 +449,9 @@ val mat2 = OpenCVMat.fromImageBytes(bytes)
 
 // Convert float array(pixels) to OpenCVMat
 val mat3 = OpenCVMat.fromFloats(floatPixels, height=300, width=300)
+
+// Convert tensor to OpenCVMat
+val mat4 = OpenCVMat.fromTensor(tensor, format = &quot;HWC&quot;)
 </code></pre>
 
 <hr />
