@@ -61,6 +61,8 @@
           ]},
           {title: "Upsampling3D", url: "#upsampling3d", children: [
           ]},
+          {title: "ResizeBilinear", url: "#resizebilinear", children: [
+          ]},
         ];
 
     </script>
@@ -76,7 +78,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
 <div class="container-fluid wm-page-content">
     
-
+    <h1><strong>Convolution Layers</strong></h1>
+    <hr>
     <h2 id="spatialconvolution">SpatialConvolution</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val m = SpatialConvolution(nInputPlane,nOutputPlane,kernelW,kernelH,strideW=1,strideH=1,padW=0,padH=0,nGroup=1,propagateBack=true,wRegularizer=null,bRegularizer=null,initWeight=null, initBias=null, initGradWeight=null, initGradBias=null, withBias=true, dataFormat=DataFormat.NCHW)
@@ -2190,6 +2193,59 @@ val output = module.forward(input)
 
 [com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x4x4x4]
 
+</code></pre>
+
+<hr />
+<h2 id="resizebilinear">ResizeBilinear</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val module = ResizeBilinear(outputHeight, outputWidth,
+                      alignCorners=false, dataFormat = DataFormat.NCHW)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">m = ResizeBilinear(outputHeight, outputWidth,
+               alignCorners=False, dataFormat=&quot;NCHW&quot;)
+</code></pre>
+
+<p>Resize the input image with bilinear interpolation. The input image must be a float tensor with
+NHWC or NCHW layout.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">
+scala&gt;
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor._
+
+val module = ResizeBilinear(4, 4)
+val input = Tensor(1, 1, 2, 2).range(1, 4)
+val output = module.forward(input)
+
+&gt; output
+(1,1,.,.) =
+1.0 1.5 2.0 2.0 
+2.0 2.5 3.0 3.0 
+3.0 3.5 4.0 4.0 
+3.0 3.5 4.0 4.0 
+
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x1x4x4]
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
+
+module = ResizeBilinear(4, 4)
+input = np.arange(1, 5).reshape(1, 1, 2, 2)
+output = module.forward(input)
+print output
+</code></pre>
+
+<p>The output is </p>
+<pre><code class="python">[[[[ 1.   1.5  2.   2. ]
+   [ 2.   2.5  3.   3. ]
+   [ 3.   3.5  4.   4. ]
+   [ 3.   3.5  4.   4. ]]]]
 </code></pre>
 
   <br>

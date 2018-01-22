@@ -5147,17 +5147,19 @@
 <div class="viewcode-block" id="ResizeBilinear"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.ResizeBilinear">[docs]</a><span class="k">class</span> <span class="nc">ResizeBilinear</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Resize the input image with bilinear interpolation. The input image must be a float tensor with</span>
-<span class="sd">    NHWC layout</span>
+<span class="sd">    NHWC or NCHW layout</span>
 
 <span class="sd">    :param output_height: output height</span>
 <span class="sd">    :param output_width: output width</span>
 <span class="sd">    :param align_corner: align corner or not</span>
+<span class="sd">    :param data_format: the data format of the input image, NHWC or NCHW</span>
 
-<span class="sd">    &gt;&gt;&gt; resizeBilinear = ResizeBilinear(10, 20, False)</span>
+<span class="sd">    &gt;&gt;&gt; resizeBilinear = ResizeBilinear(10, 20, False, &quot;NCHW&quot;)</span>
 <span class="sd">    creating: createResizeBilinear</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_height</span><span class="p">,</span> <span class="n">output_width</span><span class="p">,</span> <span class="n">align_corner</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ResizeBilinear</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">output_height</span><span class="p">,</span> <span class="n">output_width</span><span class="p">,</span> <span class="n">align_corner</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_height</span><span class="p">,</span> <span class="n">output_width</span><span class="p">,</span> <span class="n">align_corner</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;NCHW&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ResizeBilinear</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">output_height</span><span class="p">,</span>
+                                             <span class="n">output_width</span><span class="p">,</span> <span class="n">align_corner</span><span class="p">,</span> <span class="n">data_format</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="GaussianSampler"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.GaussianSampler">[docs]</a><span class="k">class</span> <span class="nc">GaussianSampler</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>

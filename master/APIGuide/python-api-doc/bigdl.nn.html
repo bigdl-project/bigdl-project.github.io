@@ -3894,10 +3894,10 @@ elements row-wise.</p>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.ResizeBilinear">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ResizeBilinear</code><span class="sig-paren">(</span><em>output_height</em>, <em>output_width</em>, <em>align_corner</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ResizeBilinear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ResizeBilinear" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ResizeBilinear</code><span class="sig-paren">(</span><em>output_height</em>, <em>output_width</em>, <em>align_corner=False</em>, <em>data_format='NCHW'</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ResizeBilinear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ResizeBilinear" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <p>Resize the input image with bilinear interpolation. The input image must be a float tensor with
-NHWC layout</p>
+NHWC or NCHW layout</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -3906,12 +3906,13 @@ NHWC layout</p>
 <li><strong>output_height</strong> – output height</li>
 <li><strong>output_width</strong> – output width</li>
 <li><strong>align_corner</strong> – align corner or not</li>
+<li><strong>data_format</strong> – the data format of the input image, NHWC or NCHW</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resizeBilinear</span> <span class="o">=</span> <span class="n">ResizeBilinear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">resizeBilinear</span> <span class="o">=</span> <span class="n">ResizeBilinear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;NCHW&quot;</span><span class="p">)</span>
 <span class="go">creating: createResizeBilinear</span>
 </pre></div>
 </div>

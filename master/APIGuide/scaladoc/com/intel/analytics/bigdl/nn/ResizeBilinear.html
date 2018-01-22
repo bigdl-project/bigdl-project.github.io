@@ -40,11 +40,11 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Resize the input image with bilinear interpolation. The input image must be a float tensor with
-NHWC layout
+NHWC or NCHW layout.
 </p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Numeric type of parameter(e.g. weight, bias). Only support float/double now
 </p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.ResizeBilinear.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.ResizeBilinear.T">T</span>], <a href="abstractnn/InferShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.InferShape">InferShape</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -62,7 +62,7 @@ NHWC layout
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.intel.analytics.bigdl.nn.ResizeBilinear"><span>ResizeBilinear</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule"><span>AbstractModule</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.intel.analytics.bigdl.nn.ResizeBilinear"><span>ResizeBilinear</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule"><span>AbstractModule</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.InferShape"><span>InferShape</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -83,7 +83,7 @@ NHWC layout
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.ResizeBilinear#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(outputHeight:Int,outputWidth:Int,alignCorners:Boolean)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.ResizeBilinear[T]"></a>
+      <a id="&lt;init&gt;(outputHeight:Int,outputWidth:Int,alignCorners:Boolean,dataFormat:com.intel.analytics.bigdl.nn.abstractnn.DataFormat)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.ResizeBilinear[T]"></a>
       <a id="&lt;init&gt;:ResizeBilinear[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -91,10 +91,10 @@ NHWC layout
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">ResizeBilinear</span><span class="params">(<span name="outputHeight">outputHeight: <span class="extype" name="scala.Int">Int</span></span>, <span name="outputWidth">outputWidth: <span class="extype" name="scala.Int">Int</span></span>, <span name="alignCorners">alignCorners: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ResizeBilinear.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ResizeBilinear.T">T</span>]</span>)</span>
+        <span class="name">ResizeBilinear</span><span class="params">(<span name="outputHeight">outputHeight: <span class="extype" name="scala.Int">Int</span></span>, <span name="outputWidth">outputWidth: <span class="extype" name="scala.Int">Int</span></span>, <span name="alignCorners">alignCorners: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="dataFormat">dataFormat: <a href="abstractnn/DataFormat.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.DataFormat">DataFormat</a> = <span class="defval" name="com.intel.analytics.bigdl.nn.abstractnn.DataFormat.NCHW">...</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ResizeBilinear.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ResizeBilinear.T">T</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">outputHeight</dt><dd class="cmt"><p>output height</p></dd><dt class="param">outputWidth</dt><dd class="cmt"><p>output width</p></dd><dt class="param">alignCorners</dt><dd class="cmt"><p>align corner or not</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">outputHeight</dt><dd class="cmt"><p>output height</p></dd><dt class="param">outputWidth</dt><dd class="cmt"><p>output width</p></dd><dt class="param">alignCorners</dt><dd class="cmt"><p>align corner or not</p></dd><dt class="param">dataFormat</dt><dd class="cmt"><p>the data format of the input image, NHWC or NCHW</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -336,6 +336,19 @@ super.clearState in the override method
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.ResizeBilinear#dataFormat" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="dataFormat:com.intel.analytics.bigdl.nn.abstractnn.DataFormat"></a>
+      <a id="dataFormat:DataFormat"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dataFormat</span><span class="result">: <a href="abstractnn/DataFormat.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.DataFormat">DataFormat</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">the data format of the input image, NHWC or NCHW</p>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -1450,6 +1463,8 @@ to these parameters. Otherwise, it does nothing.
         <div id="inheritedMembers">
         <div class="parent" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">
               <h3>Inherited from <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.ResizeBilinear.T">T</span>]</h3>
+            </div><div class="parent" name="com.intel.analytics.bigdl.nn.abstractnn.InferShape">
+              <h3>Inherited from <a href="abstractnn/InferShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.InferShape">InferShape</a></h3>
             </div><div class="parent" name="scala.Serializable">
               <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
             </div><div class="parent" name="java.io.Serializable">
