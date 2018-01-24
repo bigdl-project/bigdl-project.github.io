@@ -33,10 +33,13 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Engine", url: "#engine", children: [
-              {title: "How to do it in the code?", url: "#how-to-do-it-in-the-code" },
-              {title: "What if the spark context has been created before my code get executed?", url: "#what-if-the-spark-context-has-been-created-before-my-code-get-executed" },
-              {title: "Run BigDL without Spark", url: "#run-bigdl-without-spark" },
+          {title: "How to do it in the code?", url: "#how-to-do-it-in-the-code", children: [
+          ]},
+          {title: "What if the spark context has been created before my code get executed?", url: "#what-if-the-spark-context-has-been-created-before-my-code-get-executed", children: [
+              {title: "What's the required configurations?", url: "#whats-the-required-configurations" },
+              {title: "How to do it?", url: "#how-to-do-it" },
+          ]},
+          {title: "Run BigDL without Spark", url: "#run-bigdl-without-spark", children: [
           ]},
         ];
 
@@ -53,9 +56,9 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
 <div class="container-fluid wm-page-content">
     
-
-    <h1 id="engine">Engine</h1>
-<p>BigDL need some environment variables be set correctly to get a good performance. Engine.init method
+    <h1><strong>Engine</strong></h1>
+    <hr>
+    <p>BigDL need some environment variables be set correctly to get a good performance. Engine.init method
 can help you set and verify them.</p>
 <h2 id="how-to-do-it-in-the-code">How to do it in the code?</h2>
 <p>Before any BigDL related code piece, please invoke <code>Engine.init</code> like this</p>
