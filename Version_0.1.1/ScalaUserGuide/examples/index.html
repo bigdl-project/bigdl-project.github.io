@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Examples - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Training LeNet on MNIST - The \"hello world\" for deep learning", url: "#training-lenet-on-mnist-the-hello-world-for-deep-learning", children: [
+          ]},
+          {title: "Text Classification - Working with Spark RDD", url: "#text-classification-working-with-spark-rdd", children: [
+          ]},
+          {title: "Image Classification - Working with Spark DataFrame and ML pipeline", url: "#image-classification-working-with-spark-dataframe-and-ml-pipeline", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Examples</strong></h1>
+    <hr>
+    <p>This section is a short introduction of some classic examples/tutorials. They can give you a clear idea of how to build simple deep learning programs using BigDL. Besides these examples, BigDL also provides plenty of models ready for re-use and examples in both Scala and Python - refer to <a href="../resources/">Resources</a> section for details. </p>
+<hr />
+<h2 id="training-lenet-on-mnist-the-hello-world-for-deep-learning"><strong>Training LeNet on MNIST - The "hello world" for deep learning</strong></h2>
+<p>This tutorial is an explanation of what is happening in the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/lenet/Train.scala">lenet</a> example, which trains <a href="http://yann.lecun.com/exdb/lenet/">LeNet-5</a> on the <a href="http://yann.lecun.com/exdb/mnist/">MNIST data</a> using BigDL.</p>
+<p>A BigDL program starts with <code>import com.intel.analytics.bigdl._</code>; it then <em><strong>creates the <code>SparkContext</code></strong></em> using the <code>SparkConf</code> returned by the <code>Engine</code>; after that, it <em><strong>initializes the <code>Engine</code></strong></em>.</p>
+<pre><code class="scala">  val conf = Engine.createSparkConf()
+      .setAppName(&quot;Train Lenet on MNIST&quot;)
+      .set(&quot;spark.task.maxFailures&quot;, &quot;1&quot;)
+  val sc = new SparkContext(conf)
+  Engine.init
+</code></pre>
+
+<p><code>Engine.createSparkConf</code> will return a <code>SparkConf</code> populated with some appropriate configuration. And <code>Engine.init</code> will verify and read some environment information(e.g. executor numbers and executor cores) from the <code>SparkContext</code>. </p>
+<p>After the initialization, we need to:</p>
+<p>1.<em><strong>Create the LeNet model</strong></em> by calling the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/models/lenet/LeNet5.scala"><code>LeNet5()</code></a>, which creates the LeNet-5 convolutional network model as follows:</p>
+<pre><code class="scala">    val model = Sequential()
+    model.add(Reshape(Array(1, 28, 28)))
+      .add(SpatialConvolution(1, 6, 5, 5))
+      .add(Tanh())
+      .add(SpatialMaxPooling(2, 2, 2, 2))
+      .add(Tanh())
+      .add(SpatialConvolution(6, 12, 5, 5))
+      .add(SpatialMaxPooling(2, 2, 2, 2))
+      .add(Reshape(Array(12 * 4 * 4)))
+      .add(Linear(12 * 4 * 4, 100))
+      .add(Tanh())
+      .add(Linear(100, classNum))
+      .add(LogSoftMax())
+</code></pre>
+
+<p>2.Load the data by <em><strong>creating the <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/dataset"><code>DataSet</code></a></strong></em> (either a distributed or local one depending on whether it runs on Spark or not), and then <em><strong>applying a series of <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/dataset"><code>Transformer</code></a></strong></em> (e.g., <code>SampleToGreyImg</code>, <code>GreyImgNormalizer</code> and <code>GreyImgToBatch</code>):</p>
+<pre><code class="scala">    val trainSet = (if (sc.isDefined) {
+        DataSet.array(load(trainData, trainLabel), sc.get, param.nodeNumber)
+      } else {
+        DataSet.array(load(trainData, trainLabel))
+      }) -&gt; SampleToGreyImg(28, 28) -&gt; GreyImgNormalizer(trainMean, trainStd) -&gt; GreyImgToBatch(
+        param.batchSize)
+</code></pre>
+
+<p>After that, we <em><strong>create the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/optim"><code>Optimizer</code></a></strong></em> (either a distributed or local one depending on whether it runs on Spark or not) by specifying the <code>DataSet</code>, the model and the <code>Criterion</code> (which, given input and target, computes gradient per given loss function):</p>
+<pre><code class="scala">  val optimizer = Optimizer(
+    model = model,
+    dataset = trainSet,
+    criterion = ClassNLLCriterion[Float]())
+</code></pre>
+
+<p>Finally (after optionally specifying the validation data and methods for the <code>Optimizer</code>), we <em><strong>train the model by calling <code>Optimizer.optimize()</code></strong></em>:</p>
+<pre><code class="scala">  optimizer
+    .setValidation(
+      trigger = Trigger.everyEpoch,
+      dataset = validationSet,
+      vMethods = Array(new Top1Accuracy))
+    .setOptimMethod(new Adagrad())
+    .setState(T(&quot;learningRate&quot; -&gt; 0.01, &quot;learningRateDecay&quot; -&gt; 0.0002))
+    .setEndWhen(Trigger.maxEpoch(param.maxEpoch))
+    .optimize()
+</code></pre>
+
+<hr />
+<h2 id="text-classification-working-with-spark-rdd"><strong>Text Classification - Working with Spark RDD</strong></h2>
+<p>This tutorial describes the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/textclassification">text_classification</a> example, which builds a text classifier using a simple convolutional neural network (CNN) model. (It was first described by <a href="https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html">this Keras tutorial</a>).</p>
+<p>After importing <code>com.intel.analytics.bigdl._</code> and some initialization, the <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/textclassification/TextClassifier.scala">example</a> broadcasts the pre-trained world embedding and loads the input data using RDD transformations:</p>
+<pre><code class="scala">  // For large dataset, you might want to get such RDD[(String, Float)] from HDFS
+  val dataRdd = sc.parallelize(loadRawData(), param.partitionNum)
+  val (word2Meta, word2Vec) = analyzeTexts(dataRdd)
+  val word2MetaBC = sc.broadcast(word2Meta)
+  val word2VecBC = sc.broadcast(word2Vec)
+  val vectorizedRdd = dataRdd
+      .map {case (text, label) =&gt; (toTokens(text, word2MetaBC.value), label)}
+      .map {case (tokens, label) =&gt; (shaping(tokens, sequenceLen), label)}
+      .map {case (tokens, label) =&gt; (vectorization(
+        tokens, embeddingDim, word2VecBC.value), label)}
+</code></pre>
+
+<p>The <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/textclassification/TextClassifier.scala">example</a> then converts the processed data (<code>vectorizedRdd</code>) to an RDD of Sample, and randomly splits the sample RDD (<code>sampleRDD</code>) into training data (<code>trainingRDD</code>) and validation data (<code>valRDD</code>):</p>
+<pre><code class="scala">  val sampleRDD = vectorizedRdd.map {case (input: Array[Array[Float]], label: Float) =&gt;
+        Sample(
+          featureTensor = Tensor(input.flatten, Array(sequenceLen, embeddingDim))
+            .transpose(1, 2).contiguous(),
+          labelTensor = Tensor(Array(label), Array(1)))
+      }
+
+  val Array(trainingRDD, valRDD) = sampleRDD.randomSplit(
+    Array(trainingSplit, 1 - trainingSplit))
+</code></pre>
+
+<p>After that, the <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/textclassification/TextClassifier.scala">example</a> builds the CNN model, creates the <code>Optimizer</code>, pass the RDD of training data (<code>trainingRDD</code>) to the <code>Optimizer</code> (with specific batch size), and finally trains the model (using <code>Adagrad</code> as the optimization method, and setting relevant hyper parameters in <code>state</code>):</p>
+<pre><code class="scala">  val optimizer = Optimizer(
+    model = buildModel(classNum),
+    sampleRDD = trainingRDD,
+    criterion = new ClassNLLCriterion[Float](),
+    batchSize = param.batchSize
+  )
+  optimizer
+    .setOptimMethod(new Adagrad())
+    .setState(T(&quot;learningRate&quot; -&gt; 0.01, &quot;learningRateDecay&quot; -&gt; 0.0002))
+    .setValidation(Trigger.everyEpoch, valRDD, Array(new Top1Accuracy[Float]), param.batchSize)
+    .setEndWhen(Trigger.maxEpoch(2))
+    .optimize()
+</code></pre>
+
+<hr />
+<h2 id="image-classification-working-with-spark-dataframe-and-ml-pipeline"><strong>Image Classification</strong> - Working with Spark DataFrame and ML pipeline</h2>
+<p>This tutorial describes the <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/imageclassification">image_classification</a> example, which loads a BigDL (<a href="http://arxiv.org/abs/1409.4842">Inception</a>) model or Torch (<a href="https://arxiv.org/abs/1512.03385">Resnet</a>) model that is trained on <a href="http://image-net.org/download-images">ImageNet</a> data, and then applies the loaded model to predict the contents of a set of images using BigDL and Spark <a href="https://spark.apache.org/docs/1.6.3/ml-guide.html">ML pipeline</a>.</p>
+<p>After importing <code>com.intel.analytics.bigdl._</code> and some initialization, the <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/imageclassification/ImagePredictor.scala">example</a> first <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/imageclassification/MlUtils.scala">loads</a> the specified model:</p>
+<pre><code class="scala">  def loadModel[@specialized(Float, Double) T : ClassTag](param : PredictParams)
+    (implicit ev: TensorNumeric[T]): Module[T] = {
+    val model = param.modelType match {
+      case TorchModel =&gt;
+        Module.loadTorch[T](param.modelPath)
+      case BigDlModel =&gt;
+        Module.load[T](param.modelPath)
+      case _ =&gt; throw new IllegalArgumentException(s&quot;${param.modelType}&quot;)
+    }
+    model
+  }
+</code></pre>
+
+<p>It then creates <code>DLClassifer</code> (a Spark ML pipelines <a href="https://spark.apache.org/docs/latest/ml-pipeline.html#transformers">Transformer</a>) that predicts the input value based on the specified deep learning model:</p>
+<pre><code class="scala">  val model = loadModel(param)
+  val valTrans = new DLClassifierModel(model, Array(3, imageSize, imageSize))
+    .setBatchSize(param.batchSize)
+    .setFeaturesCol(&quot;features&quot;)
+    .setPredictionCol(&quot;predict&quot;)
+</code></pre>
+
+<p>After that, the <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/imageclassification/ImagePredictor.scala">example</a>  loads the input images into a <a href="https://spark.apache.org/docs/1.6.3/ml-guide.html#dataframe">DataFrame</a>, and then predicts the class of each each image using the <code>DLClassifer</code>:</p>
+<pre><code class="scala">  val valRDD = sc.parallelize(imageSet).repartition(partitionNum)
+  val transf = RowToByteRecords() -&gt;
+      SampleToBGRImg() -&gt;
+      BGRImgCropper(imageSize, imageSize) -&gt;
+      BGRImgNormalizer(testMean, testStd) -&gt;
+      BGRImgToImageVector()
+
+  val valDF = transformDF(sqlContext.createDataFrame(valRDD), transf)
+
+  valTrans.transform(valDF, paramsTrans)
+      .select(&quot;imageName&quot;, &quot;predict&quot;)
+      .show(param.showNum)
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
