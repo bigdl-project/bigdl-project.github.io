@@ -185,7 +185,7 @@ or in the case of the weights argument being specified:
 &quot;Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift&quot;
 by Sergey Ioffe, Christian Szegedy https://arxiv.</p>
     </li><li name="com.intel.analytics.bigdl.nn.BiRecurrent" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="BiRecurrent[T]extendsContainer[com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
+      <a id="BiRecurrent[T]extendsDynamicContainer[com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
       <a id="BiRecurrent[T]:BiRecurrent[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -193,7 +193,7 @@ by Sergey Ioffe, Christian Szegedy https://arxiv.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="BiRecurrent.html"><span class="name">BiRecurrent</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>]</span>
+        <a href="BiRecurrent.html"><span class="name">BiRecurrent</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="DynamicContainer.html" class="extype" name="com.intel.analytics.bigdl.nn.DynamicContainer">DynamicContainer</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.BiRecurrent.T">T</span>]</span>
       </span>
       </h4>
       <p class="comment cmt">This layer implement a bidirectional recurrent neural network</p>
@@ -254,7 +254,7 @@ which are tensors of size N x inputDimension1 and N x inputDimension2, respectiv
       </h4>
       <p class="comment cmt">This class is an implementation of Binary TreeLSTM (Constituency Tree LSTM).</p>
     </li><li name="com.intel.analytics.bigdl.nn.Bottle" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Bottle[T]extendsContainer[com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
+      <a id="Bottle[T]extendsDynamicContainer[com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
       <a id="Bottle[T]:Bottle[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -262,7 +262,7 @@ which are tensors of size N x inputDimension1 and N x inputDimension2, respectiv
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Bottle.html"><span class="name">Bottle</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Bottle.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Bottle.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.Bottle.T">T</span>]</span>
+        <a href="Bottle.html"><span class="name">Bottle</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="DynamicContainer.html" class="extype" name="com.intel.analytics.bigdl.nn.DynamicContainer">DynamicContainer</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Bottle.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Bottle.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.Bottle.T">T</span>]</span>
       </span>
       </h4>
       <p class="comment cmt">Bottle allows varying dimensionality input to be forwarded through any module
@@ -281,15 +281,15 @@ that accepts input of nInputDim dimensions, and generates output of nOutputDim d
       </h4>
       <p class="comment cmt">This layer has a bias tensor with given size.</p>
     </li><li name="com.intel.analytics.bigdl.nn.CAddTable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="CAddTable[T]extendsAbstractModule[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
-      <a id="CAddTable[T]:CAddTable[T]"></a>
+      <a id="CAddTable[T,D]extendsAbstractModule[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.tensor.Tensor[D],T]"></a>
+      <a id="CAddTable[T,D]:CAddTable[T,D]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="CAddTable.html"><span class="name">CAddTable</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.CAddTable.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.CAddTable.T">T</span>]</span>
+        <a href="CAddTable.html"><span class="name">CAddTable</span></a><span class="tparams">[<span name="T">T</span>, <span name="D">D</span>]</span><span class="result"> extends <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.CAddTable.D">D</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.CAddTable.T">T</span>]</span>
       </span>
       </h4>
       <p class="comment cmt">Merge the input tensors in the input table by element wise adding them together.</p>
@@ -451,7 +451,7 @@ that accepts input of nInputDim dimensions, and generates output of nOutputDim d
       </h4>
       <p class="comment cmt">ClassSimplexCriterion implements a criterion for classification.</p>
     </li><li name="com.intel.analytics.bigdl.nn.Concat" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Concat[T]extendsContainer[com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
+      <a id="Concat[T]extendsDynamicContainer[com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
       <a id="Concat[T]:Concat[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -459,14 +459,14 @@ that accepts input of nInputDim dimensions, and generates output of nOutputDim d
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Concat.html"><span class="name">Concat</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Concat.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Concat.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.Concat.T">T</span>]</span>
+        <a href="Concat.html"><span class="name">Concat</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="DynamicContainer.html" class="extype" name="com.intel.analytics.bigdl.nn.DynamicContainer">DynamicContainer</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Concat.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Concat.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.Concat.T">T</span>]</span>
       </span>
       </h4>
       <p class="comment cmt">Concat concatenates the output of one layer of &quot;parallel&quot;
 modules along the provided <code> dimension</code>: they take the
 same inputs, and their output is concatenated.</p>
     </li><li name="com.intel.analytics.bigdl.nn.ConcatTable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ConcatTable[T]extendsContainer[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.utils.Table,T]"></a>
+      <a id="ConcatTable[T]extendsDynamicContainer[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.utils.Table,T]"></a>
       <a id="ConcatTable[T]:ConcatTable[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -474,7 +474,7 @@ same inputs, and their output is concatenated.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ConcatTable.html"><span class="name">ConcatTable</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.ConcatTable.T">T</span>]</span>
+        <a href="ConcatTable.html"><span class="name">ConcatTable</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="DynamicContainer.html" class="extype" name="com.intel.analytics.bigdl.nn.DynamicContainer">DynamicContainer</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.ConcatTable.T">T</span>]</span>
       </span>
       </h4>
       <p class="comment cmt">ConcateTable is a container module like Concate.</p>
@@ -758,6 +758,19 @@ and calculate the dot product between them as outputs
       </span>
       </h4>
       <p class="comment cmt">Dropout masks(set to zero) parts of input using a bernoulli distribution.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.DynamicContainer" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="DynamicContainer[A&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,B&lt;:com.intel.analytics.bigdl.nn.abstractnn.Activity,T]extendsContainer[A,B,T]"></a>
+      <a id="DynamicContainer[A&lt;:Activity,B&lt;:Activity,T]:DynamicContainer[A,B,T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DynamicContainer.html"><span class="name">DynamicContainer</span></a><span class="tparams">[<span name="A">A &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>, <span name="B">B &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>, <span name="T">T</span>]</span><span class="result"> extends <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.DynamicContainer.A">A</span>, <span class="extype" name="com.intel.analytics.bigdl.nn.DynamicContainer.B">B</span>, <span class="extype" name="com.intel.analytics.bigdl.nn.DynamicContainer.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">DynamicContainer allow user to change its submodules after create it.</p>
     </li><li name="com.intel.analytics.bigdl.nn.DynamicGraph" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DynamicGraph[T]extendsGraph[T]"></a>
       <a id="DynamicGraph[T]:DynamicGraph[T]"></a>
@@ -842,6 +855,19 @@ topology</p>
 (potentially nested) as input and a table of Tensors without any nested
 table will be produced
 </p>
+    </li><li name="com.intel.analytics.bigdl.nn.FrameManager" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FrameManager[T]extendsSerializable"></a>
+      <a id="FrameManager[T]:FrameManager[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="FrameManager.html"><span class="name">FrameManager</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Manage frame in scheduler.</p>
     </li><li name="com.intel.analytics.bigdl.nn.GRU" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="GRU[T]extendsCell[T]"></a>
       <a id="GRU[T]:GRU[T]"></a>
@@ -1340,7 +1366,7 @@ e.</p>
       <p class="comment cmt">It is a module to perform matrix vector multiplication on two mini-batch inputs,
 producing a mini-batch.</p>
     </li><li name="com.intel.analytics.bigdl.nn.MapTable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="MapTable[T]extendsContainer[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.utils.Table,T]"></a>
+      <a id="MapTable[T]extendsDynamicContainer[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.utils.Table,T]"></a>
       <a id="MapTable[T]:MapTable[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1348,7 +1374,7 @@ producing a mini-batch.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="MapTable.html"><span class="name">MapTable</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.MapTable.T">T</span>]</span>
+        <a href="MapTable.html"><span class="name">MapTable</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="DynamicContainer.html" class="extype" name="com.intel.analytics.bigdl.nn.DynamicContainer">DynamicContainer</a>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.MapTable.T">T</span>]</span>
       </span>
       </h4>
       <p class="comment cmt">This class is a container for a single module which will be applied
@@ -1764,7 +1790,7 @@ the distance between them using the p-norm.</p>
       <p class="comment cmt">ParallelCriterion is a weighted sum of other criterions each applied to a different input
 and target.</p>
     </li><li name="com.intel.analytics.bigdl.nn.ParallelTable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ParallelTable[T]extendsContainer[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.utils.Table,T]"></a>
+      <a id="ParallelTable[T]extendsDynamicContainer[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.utils.Table,T]"></a>
       <a id="ParallelTable[T]:ParallelTable[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1772,7 +1798,7 @@ and target.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ParallelTable.html"><span class="name">ParallelTable</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.ParallelTable.T">T</span>]</span>
+        <a href="ParallelTable.html"><span class="name">ParallelTable</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="DynamicContainer.html" class="extype" name="com.intel.analytics.bigdl.nn.DynamicContainer">DynamicContainer</a>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.ParallelTable.T">T</span>]</span>
       </span>
       </h4>
       <p class="comment cmt">It is a container module that applies the i-th member module to the i-th
@@ -1908,7 +1934,7 @@ ReLU6 is defined as:
 <code>f(x) = min(max(0, x), 6)</code>
 </p>
     </li><li name="com.intel.analytics.bigdl.nn.Recurrent" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Recurrent[T]extendsContainer[com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
+      <a id="Recurrent[T]extendsDynamicContainer[com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
       <a id="Recurrent[T]:Recurrent[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1916,7 +1942,7 @@ ReLU6 is defined as:
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Recurrent.html"><span class="name">Recurrent</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Recurrent.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Recurrent.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.Recurrent.T">T</span>]</span>
+        <a href="Recurrent.html"><span class="name">Recurrent</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="DynamicContainer.html" class="extype" name="com.intel.analytics.bigdl.nn.DynamicContainer">DynamicContainer</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Recurrent.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Recurrent.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.Recurrent.T">T</span>]</span>
       </span>
       </h4>
       <p class="comment cmt"><a href="Recurrent.html" class="extype" name="com.intel.analytics.bigdl.nn.Recurrent">Recurrent</a> module is a container of rnn cells
@@ -2080,7 +2106,7 @@ match the shape of the input.</p>
       <p class="comment cmt">Creates a module that takes a table as input and outputs the element at index <code>index</code>
 (positive or negative).</p>
     </li><li name="com.intel.analytics.bigdl.nn.Sequential" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Sequential[T]extendsContainer[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]"></a>
+      <a id="Sequential[T]extendsDynamicContainer[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]"></a>
       <a id="Sequential[T]:Sequential[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2088,7 +2114,7 @@ match the shape of the input.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Sequential.html"><span class="name">Sequential</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Container.html" class="extype" name="com.intel.analytics.bigdl.nn.Container">Container</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Sequential.T">T</span>]</span>
+        <a href="Sequential.html"><span class="name">Sequential</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="DynamicContainer.html" class="extype" name="com.intel.analytics.bigdl.nn.DynamicContainer">DynamicContainer</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Sequential.T">T</span>]</span>
       </span>
       </h4>
       <p class="comment cmt">Sequential provides a means to plug layers together
@@ -3600,6 +3626,19 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       <span class="symbol">
         <a href="FlattenTable$.html"><span class="name">FlattenTable</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.FrameManager" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FrameManager"></a>
+      <a id="FrameManager:FrameManager"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="FrameManager$.html"><span class="name">FrameManager</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
