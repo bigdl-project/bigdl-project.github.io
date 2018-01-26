@@ -474,10 +474,8 @@
 <span class="sd">        &gt;&gt;&gt; weights = linear.get_weights()</span>
 <span class="sd">        &gt;&gt;&gt; weights[0].shape == (2,3)</span>
 <span class="sd">        True</span>
-<span class="sd">        &gt;&gt;&gt; weights[0][0]</span>
-<span class="sd">        array([ 1.,  2.,  3.], dtype=float32)</span>
-<span class="sd">        &gt;&gt;&gt; weights[1]</span>
-<span class="sd">        array([ 7.,  8.], dtype=float32)</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(weights[0][0], np.array([1., 2., 3.]))</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(weights[1], np.array([7., 8.]))</span>
 <span class="sd">        &gt;&gt;&gt; relu = ReLU()</span>
 <span class="sd">        creating: createReLU</span>
 <span class="sd">        &gt;&gt;&gt; from py4j.protocol import Py4JJavaError</span>
@@ -621,46 +619,26 @@
 <span class="sd">        creating: createLinear</span>
 <span class="sd">        &gt;&gt;&gt; fc.set_weights([np.ones((2, 4)), np.ones((2,))])</span>
 <span class="sd">        &gt;&gt;&gt; input = np.ones((2, 4))</span>
-<span class="sd">        &gt;&gt;&gt; fc.forward(input)</span>
-<span class="sd">        array([[ 5.,  5.],</span>
-<span class="sd">               [ 5.,  5.]], dtype=float32)</span>
+<span class="sd">        &gt;&gt;&gt; output = fc.forward(input)</span>
+<span class="sd">        &gt;&gt;&gt; expected_output = np.array([[5., 5.], [5., 5.]])</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(output, expected_output)</span>
 <span class="sd">        &gt;&gt;&gt; quantized_fc = fc.quantize()</span>
-<span class="sd">        &gt;&gt;&gt; quantized_fc.forward(input)</span>
-<span class="sd">        array([[ 5.,  5.],</span>
-<span class="sd">               [ 5.,  5.]], dtype=float32)</span>
+<span class="sd">        &gt;&gt;&gt; quantized_output = quantized_fc.forward(input)</span>
+<span class="sd">        &gt;&gt;&gt; expected_quantized_output = np.array([[5., 5.], [5., 5.]])</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(quantized_output, expected_quantized_output)</span>
 
 <span class="sd">        &gt;&gt;&gt; assert(&quot;quantized.Linear&quot; in quantized_fc.__str__())</span>
 <span class="sd">        &gt;&gt;&gt; conv = SpatialConvolution(1, 2, 3, 3)</span>
 <span class="sd">        creating: createSpatialConvolution</span>
 <span class="sd">        &gt;&gt;&gt; conv.set_weights([np.ones((2, 1, 3, 3)), np.zeros((2,))])</span>
 <span class="sd">        &gt;&gt;&gt; input = np.ones((2, 1, 4, 4))</span>
-<span class="sd">        &gt;&gt;&gt; conv.forward(input)</span>
-<span class="sd">        array([[[[ 9.,  9.],</span>
-<span class="sd">                 [ 9.,  9.]],</span>
-<span class="sd">        &lt;BLANKLINE&gt;</span>
-<span class="sd">                [[ 9.,  9.],</span>
-<span class="sd">                 [ 9.,  9.]]],</span>
-<span class="sd">        &lt;BLANKLINE&gt;</span>
-<span class="sd">        &lt;BLANKLINE&gt;</span>
-<span class="sd">               [[[ 9.,  9.],</span>
-<span class="sd">                 [ 9.,  9.]],</span>
-<span class="sd">        &lt;BLANKLINE&gt;</span>
-<span class="sd">                [[ 9.,  9.],</span>
-<span class="sd">                 [ 9.,  9.]]]], dtype=float32)</span>
+<span class="sd">        &gt;&gt;&gt; output = conv.forward(input)</span>
+<span class="sd">        &gt;&gt;&gt; expected_output = np.array([[[[9., 9.], [9., 9.]], [[9., 9.], [9., 9.]]], [[[9., 9.], [9., 9.]], [[9., 9.], [9., 9.]]]])</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(output, expected_output)</span>
 <span class="sd">        &gt;&gt;&gt; quantized_conv = conv.quantize()</span>
-<span class="sd">        &gt;&gt;&gt; quantized_conv.forward(input)</span>
-<span class="sd">        array([[[[ 9.,  9.],</span>
-<span class="sd">                 [ 9.,  9.]],</span>
-<span class="sd">        &lt;BLANKLINE&gt;</span>
-<span class="sd">                [[ 9.,  9.],</span>
-<span class="sd">                 [ 9.,  9.]]],</span>
-<span class="sd">        &lt;BLANKLINE&gt;</span>
-<span class="sd">        &lt;BLANKLINE&gt;</span>
-<span class="sd">               [[[ 9.,  9.],</span>
-<span class="sd">                 [ 9.,  9.]],</span>
-<span class="sd">        &lt;BLANKLINE&gt;</span>
-<span class="sd">                [[ 9.,  9.],</span>
-<span class="sd">                 [ 9.,  9.]]]], dtype=float32)</span>
+<span class="sd">        &gt;&gt;&gt; quantized_output = quantized_conv.forward(input)</span>
+<span class="sd">        &gt;&gt;&gt; expected_quantized_output = np.array([[[[9., 9.], [9., 9.]], [[9., 9.], [9., 9.]]], [[[9., 9.], [9., 9.]], [[9., 9.], [9., 9.]]]])</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(quantized_output, expected_quantized_output)</span>
 <span class="sd">        &gt;&gt;&gt; assert(&quot;quantized.SpatialConvolution&quot; in quantized_conv.__str__())</span>
 <span class="sd">        &gt;&gt;&gt; seq = Sequential()</span>
 <span class="sd">        creating: createSequential</span>
@@ -669,25 +647,13 @@
 <span class="sd">        creating: createReshape</span>
 <span class="sd">        &gt;&gt;&gt; seq = seq.add(fc)</span>
 <span class="sd">        &gt;&gt;&gt; input = np.ones([1, 1, 6, 6])</span>
-<span class="sd">        &gt;&gt;&gt; seq.forward(input)</span>
-<span class="sd">        array([[ 37.,  37.],</span>
-<span class="sd">               [ 37.,  37.],</span>
-<span class="sd">               [ 37.,  37.],</span>
-<span class="sd">               [ 37.,  37.],</span>
-<span class="sd">               [ 37.,  37.],</span>
-<span class="sd">               [ 37.,  37.],</span>
-<span class="sd">               [ 37.,  37.],</span>
-<span class="sd">               [ 37.,  37.]], dtype=float32)</span>
+<span class="sd">        &gt;&gt;&gt; output = seq.forward(input)</span>
+<span class="sd">        &gt;&gt;&gt; expected_output = np.array([[37., 37.], [37., 37.], [37., 37.], [37., 37.], [37., 37.], [37., 37.], [37., 37.], [37., 37.]])</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(output, expected_output)</span>
 <span class="sd">        &gt;&gt;&gt; quantized_seq = seq.quantize()</span>
-<span class="sd">        &gt;&gt;&gt; quantized_seq.forward(input)</span>
-<span class="sd">        array([[ 37.,  37.],</span>
-<span class="sd">               [ 37.,  37.],</span>
-<span class="sd">               [ 37.,  37.],</span>
-<span class="sd">               [ 37.,  37.],</span>
-<span class="sd">               [ 37.,  37.],</span>
-<span class="sd">               [ 37.,  37.],</span>
-<span class="sd">               [ 37.,  37.],</span>
-<span class="sd">               [ 37.,  37.]], dtype=float32)</span>
+<span class="sd">        &gt;&gt;&gt; quantized_output = quantized_seq.forward(input)</span>
+<span class="sd">        &gt;&gt;&gt; expected_quantized_output = np.array([[37., 37.], [37., 37.], [37., 37.], [37., 37.], [37., 37.], [37., 37.], [37., 37.], [37., 37.]])</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(quantized_output, expected_quantized_output)</span>
 <span class="sd">        &gt;&gt;&gt; assert(&quot;quantized.Linear&quot; in quantized_seq.__str__())</span>
 <span class="sd">        &gt;&gt;&gt; assert(&quot;quantized.SpatialConvolution&quot; in quantized_seq.__str__())</span>
 <span class="sd">        &#39;&#39;&#39;</span>
@@ -1025,9 +991,9 @@
 <span class="sd">    &gt;&gt;&gt; sparselinear = SparseLinear(1000, 5, init_weight=init_weight, init_bias=init_bias)</span>
 <span class="sd">    creating: createSparseLinear</span>
 <span class="sd">    &gt;&gt;&gt; input = JTensor.sparse(np.array([1, 3, 5, 2, 4, 6]), np.array([0, 0, 0, 1, 1, 1, 1, 5, 300, 2, 100, 500]), np.array([2, 1000]))</span>
-<span class="sd">    &gt;&gt;&gt; print(sparselinear.forward(input))</span>
-<span class="sd">    [[ 10.09569263 -10.94844246  -4.1086688    1.02527523  11.80737209]</span>
-<span class="sd">     [  7.9651413    9.7131443  -10.22719955   0.02345783  -3.74368906]]</span>
+<span class="sd">    &gt;&gt;&gt; output = sparselinear.forward(input)</span>
+<span class="sd">    &gt;&gt;&gt; expected_output = np.array([[10.09569263, -10.94844246, -4.1086688, 1.02527523, 11.80737209], [7.9651413, 9.7131443, -10.22719955, 0.02345783, -3.74368906]])</span>
+<span class="sd">    &gt;&gt;&gt; np.testing.assert_allclose(output, expected_output, rtol=1e-6, atol=1e-6)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">with_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">backwardStart</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">backwardLength</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
@@ -3147,10 +3113,9 @@
 <span class="sd">    &gt;&gt;&gt; layer1 = LookupTableSparse(10, 4, &quot;mean&quot;)</span>
 <span class="sd">    creating: createLookupTableSparse</span>
 <span class="sd">    &gt;&gt;&gt; layer1.set_weights(np.arange(1, 41, 1).reshape(10, 4)) # set weight to 1 to 40</span>
-<span class="sd">    &gt;&gt;&gt; layer1.forward([input, weight])</span>
-<span class="sd">    array([[ 6.5999999 ,  7.60000038,  8.60000038,  9.60000038],</span>
-<span class="sd">           [ 1.        ,  2.        ,  3.        ,  4.        ],</span>
-<span class="sd">           [ 5.        ,  6.        ,  7.        ,  8.        ]], dtype=float32)</span>
+<span class="sd">    &gt;&gt;&gt; output = layer1.forward([input, weight])</span>
+<span class="sd">    &gt;&gt;&gt; expected_output = np.array([[6.5999999 , 7.60000038, 8.60000038, 9.60000038],[ 1., 2., 3., 4.], [5., 6., 7., 8.]])</span>
+<span class="sd">    &gt;&gt;&gt; np.testing.assert_allclose(output, expected_output, rtol=1e-6, atol=1e-6)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
@@ -5500,7 +5465,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

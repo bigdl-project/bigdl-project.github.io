@@ -51,7 +51,7 @@
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-bigdl.util.common">bigdl.util.common module</a></li>
 <li><a class="reference internal" href="#module-bigdl.util.engine">bigdl.util.engine module</a></li>
-<li><a class="reference internal" href="#bigdl-util-tf-utils-module">bigdl.util.tf_utils module</a></li>
+<li><a class="reference internal" href="#module-bigdl.util.tf_utils">bigdl.util.tf_utils module</a></li>
 <li><a class="reference internal" href="#module-bigdl.util">Module contents</a></li>
 </ul>
 </li>
@@ -150,12 +150,10 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-<span class="go">JTensor: storage: [[ 0.69646919  0.28613934  0.22685145]</span>
-<span class="go">[ 0.55131477  0.71946895  0.42310646]], shape: [2 3], float</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span>
-<span class="go">JTensor: storage: [[ 0.69646919  0.28613934  0.22685145]</span>
-<span class="go">[ 0.55131477  0.71946895  0.42310646]], shape: [2 3], float</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_storage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.69646919</span><span class="p">,</span> <span class="mf">0.28613934</span><span class="p">,</span> <span class="mf">0.22685145</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.55131477</span><span class="p">,</span> <span class="mf">0.71946895</span><span class="p">,</span> <span class="mf">0.42310646</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">storage</span><span class="p">,</span> <span class="n">expected_storage</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">expected_shape</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data_back</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">data</span> <span class="o">==</span> <span class="n">data_back</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="go">True</span>
@@ -193,8 +191,12 @@ And the i-th non-zero elements indices is i_ndarray[:, 1]
 <span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">sparse</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span>
-<span class="go">JTensor: storage: [ 1.  2.  3.  4.  5.  6.], shape: [10] ,indices [1 2 3 4 5 6], float</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_storage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">6.</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">storage</span><span class="p">,</span> <span class="n">expected_storage</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">expected_shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">expected_indices</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tensor1</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="s2">&quot;testTensor&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>  <span class="c1"># noqa</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">array_from_tensor</span> <span class="o">=</span> <span class="n">tensor1</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">expected_ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
@@ -294,10 +296,14 @@ As SparseTensor may generate an very big ndarray, so we don’t support this fun
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sample_back</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="s2">&quot;testSample&quot;</span><span class="p">,</span> <span class="n">sample</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">(),</span> <span class="n">sample_back</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">(),</span> <span class="n">sample_back</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">())</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
-<span class="go">Sample: features: [JTensor: storage: [[ 0.69646919  0.28613934  0.22685145]</span>
-<span class="go">[ 0.55131477  0.71946895  0.42310646]], shape: [2 3], float], labels: [JTensor: storage: [[ 0.98076421  0.68482971  0.48093191]</span>
-<span class="go">[ 0.39211753  0.343178    0.72904968]], shape: [2 3], float],</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_feature_storage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(([[</span><span class="mf">0.69646919</span><span class="p">,</span> <span class="mf">0.28613934</span><span class="p">,</span> <span class="mf">0.22685145</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.55131477</span><span class="p">,</span> <span class="mf">0.71946895</span><span class="p">,</span> <span class="mf">0.42310646</span><span class="p">]]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_feature_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_label_storage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(([[</span><span class="mf">0.98076421</span><span class="p">,</span> <span class="mf">0.68482971</span><span class="p">,</span> <span class="mf">0.48093191</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.39211753</span><span class="p">,</span> <span class="mf">0.343178</span><span class="p">,</span> <span class="mf">0.72904968</span><span class="p">]]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_label_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">storage</span><span class="p">,</span> <span class="n">expected_feature_storage</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">expected_feature_shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">storage</span><span class="p">,</span> <span class="n">expected_label_storage</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">expected_label_shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -389,7 +395,7 @@ given the name of the activation as a string</p>
 
 <dl class="function">
 <dt id="bigdl.util.common.redire_spark_logs">
-<code class="descclassname">bigdl.util.common.</code><code class="descname">redire_spark_logs</code><span class="sig-paren">(</span><em>bigdl_type='float'</em>, <em>log_path='/var/jenkins_home/workspace/BigDL-Nightly-Build-Doc-Generation/BigDL/pyspark/docs/bigdl.log'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#redire_spark_logs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.redire_spark_logs" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bigdl.util.common.</code><code class="descname">redire_spark_logs</code><span class="sig-paren">(</span><em>bigdl_type='float'</em>, <em>log_path='/opt/work/jenkins/workspace/BigDL-NB-Doc-Generation/BigDL/pyspark/docs/bigdl.log'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#redire_spark_logs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.redire_spark_logs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Redirect spark logs to the specified path.
 :param bigdl_type: “double” or “float”
 :param log_path: the file path to be redirected to; the default file is under the current workspace named <cite>bigdl.log</cite>.</p>
@@ -462,8 +468,95 @@ given the name of the activation as a string</p>
 <dd></dd></dl>
 
 </div>
-<div class="section" id="bigdl-util-tf-utils-module">
-<h2>bigdl.util.tf_utils module<a class="headerlink" href="#bigdl-util-tf-utils-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-bigdl.util.tf_utils">
+<span id="bigdl-util-tf-utils-module"></span><h2>bigdl.util.tf_utils module<a class="headerlink" href="#module-bigdl.util.tf_utils" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="bigdl.util.tf_utils.convert">
+<code class="descclassname">bigdl.util.tf_utils.</code><code class="descname">convert</code><span class="sig-paren">(</span><em>input_ops</em>, <em>output_ops</em>, <em>byte_order</em>, <em>bigdl_type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/tf_utils.html#convert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.tf_utils.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert tensorflow model to bigdl model
+:param input_ops: operation list used for input, should be placeholders
+:param output_ops: operations list used for output
+:return: bigdl model</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.tf_utils.dump_model">
+<code class="descclassname">bigdl.util.tf_utils.</code><code class="descname">dump_model</code><span class="sig-paren">(</span><em>path</em>, <em>graph=None</em>, <em>sess=None</em>, <em>ckpt_file=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/tf_utils.html#dump_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.tf_utils.dump_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump a tensorflow model to files. The graph will be dumped to path/model.pb, and the checkpoint will
+be dumped to path/model.bin</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> – dump folder path</li>
+<li><strong>sess</strong> – if user pass in session, we assume that the variable of the graph in the session</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>has been inited
+:param graph: tensorflow graph. Default use the default graph of the session
+:param bigdl_type: model variable numeric type
+:return: nothing</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.tf_utils.export_checkpoint">
+<code class="descclassname">bigdl.util.tf_utils.</code><code class="descname">export_checkpoint</code><span class="sig-paren">(</span><em>checkpoint_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/tf_utils.html#export_checkpoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.tf_utils.export_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export variable tensors from the checkpoint files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>checkpoint_path</strong> – tensorflow checkpoint path</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dictionary of tensor. The key is the variable name and the value is the numpy</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.tf_utils.get_path">
+<code class="descclassname">bigdl.util.tf_utils.</code><code class="descname">get_path</code><span class="sig-paren">(</span><em>output_name</em>, <em>sess=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/tf_utils.html#get_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.tf_utils.get_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.tf_utils.merge_checkpoint">
+<code class="descclassname">bigdl.util.tf_utils.</code><code class="descname">merge_checkpoint</code><span class="sig-paren">(</span><em>input_graph</em>, <em>checkpoint</em>, <em>output_node_names</em>, <em>output_graph</em>, <em>sess</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/tf_utils.html#merge_checkpoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.tf_utils.merge_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the variable values from the checkpoint file, and merge them to the GraphDef file
+Args:
+input_graph: the GraphDef file, doesn’t contain variable values
+checkpoint: the checkpoint file
+output_node_names: A list of string, the output names
+output_graph: String of the location and the name of the
+output graph</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.tf_utils.save_variable_bigdl">
+<code class="descclassname">bigdl.util.tf_utils.</code><code class="descname">save_variable_bigdl</code><span class="sig-paren">(</span><em>tensors</em>, <em>target_path</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/tf_utils.html#save_variable_bigdl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.tf_utils.save_variable_bigdl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a variable dictionary to a Java object file, so it can be read by BigDL</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tensors</strong> – tensor dictionary</li>
+<li><strong>target_path</strong> – where is the Java object file store</li>
+<li><strong>bigdl_type</strong> – model variable numeric type</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">nothing</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 <div class="section" id="module-bigdl.util">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bigdl.util" title="Permalink to this headline">¶</a></h2>
@@ -494,7 +587,7 @@ given the name of the activation as a string</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

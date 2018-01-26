@@ -1538,12 +1538,12 @@
         <span class="n">b_kh</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
         <span class="n">seq</span> <span class="o">=</span> <span class="n">BLayer</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
-        <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BLayer</span><span class="o">.</span><span class="n">View</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])],</span> <span class="n">num_input_dims</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BLayer</span><span class="o">.</span><span class="n">Reshape</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])],</span> <span class="kc">True</span><span class="p">))</span>
         <span class="n">blayer</span> <span class="o">=</span> <span class="n">BLayer</span><span class="o">.</span><span class="n">SpatialMaxPooling</span><span class="p">(</span>
             <span class="n">kw</span><span class="o">=</span><span class="n">b_kw</span><span class="p">,</span>
             <span class="n">kh</span><span class="o">=</span><span class="n">b_kh</span><span class="p">,</span>
-            <span class="n">dw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">dh</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">dw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">dh</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">pad_w</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
             <span class="n">pad_h</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
             <span class="n">to_ceil</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -1551,8 +1551,8 @@
             <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span>
         <span class="p">)</span>
         <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">blayer</span><span class="p">)</span>
-        <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BLayer</span><span class="o">.</span><span class="n">Squeeze</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">num_input_dims</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-        <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BLayer</span><span class="o">.</span><span class="n">Squeeze</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_input_dims</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BLayer</span><span class="o">.</span><span class="n">Squeeze</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+        <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BLayer</span><span class="o">.</span><span class="n">Squeeze</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">seq</span></div>
 
 <div class="viewcode-block" id="LayerConverter.create_globalaveragepooling1d"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.converter.LayerConverter.create_globalaveragepooling1d">[docs]</a>    <span class="k">def</span> <span class="nf">create_globalaveragepooling1d</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1560,12 +1560,12 @@
         <span class="n">b_kh</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
         <span class="n">seq</span> <span class="o">=</span> <span class="n">BLayer</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
-        <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BLayer</span><span class="o">.</span><span class="n">View</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])],</span> <span class="n">num_input_dims</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BLayer</span><span class="o">.</span><span class="n">Reshape</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])],</span> <span class="kc">True</span><span class="p">))</span>
         <span class="n">blayer</span> <span class="o">=</span> <span class="n">BLayer</span><span class="o">.</span><span class="n">SpatialAveragePooling</span><span class="p">(</span>
             <span class="n">kw</span><span class="o">=</span><span class="n">b_kw</span><span class="p">,</span>
             <span class="n">kh</span><span class="o">=</span><span class="n">b_kh</span><span class="p">,</span>
-            <span class="n">dw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">dh</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">dw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">dh</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">pad_w</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
             <span class="n">pad_h</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
             <span class="n">global_pooling</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -1576,9 +1576,8 @@
             <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span>
         <span class="p">)</span>
         <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">blayer</span><span class="p">)</span>
-        <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BLayer</span><span class="o">.</span><span class="n">Squeeze</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">num_input_dims</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># the index start from one but without batch</span>
-        <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BLayer</span><span class="o">.</span><span class="n">Squeeze</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_input_dims</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-
+        <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BLayer</span><span class="o">.</span><span class="n">Squeeze</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+        <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BLayer</span><span class="o">.</span><span class="n">Squeeze</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">seq</span></div>
 
 <div class="viewcode-block" id="LayerConverter.create_maxpooling1d"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.converter.LayerConverter.create_maxpooling1d">[docs]</a>    <span class="k">def</span> <span class="nf">create_maxpooling1d</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

@@ -25,7 +25,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="bigdl.optim package" href="bigdl.optim.html" />
-    <link rel="prev" title="bigdl.models.ml_pipeline package" href="bigdl.models.ml_pipeline.html" /> 
+    <link rel="prev" title="bigdl.models.lenet package" href="bigdl.models.lenet.html" /> 
   </head>
   <body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -41,7 +41,7 @@
           <a href="bigdl.optim.html" title="bigdl.optim package"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="bigdl.models.ml_pipeline.html" title="bigdl.models.ml_pipeline package"
+          <a href="bigdl.models.lenet.html" title="bigdl.models.lenet package"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="bigdl.html" accesskey="U">bigdl package</a> &#187;</li> 
@@ -62,8 +62,8 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="bigdl.models.ml_pipeline.html"
-                        title="previous chapter">bigdl.models.ml_pipeline package</a></p>
+  <p class="topless"><a href="bigdl.models.lenet.html"
+                        title="previous chapter">bigdl.models.lenet package</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="bigdl.optim.html"
                         title="next chapter">bigdl.optim package</a></p>
@@ -578,7 +578,7 @@ the second input, and vice-versa for y == -1.</p>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
 <p>This method is same as <cite>mean_absolute_percentage_error</cite> loss in keras.
 It caculates diff = K.abs((y - x) / K.clip(K.abs(y), K.epsilon(), Double.MaxValue))
-and return 100 * K.mean(diff) as outpout. Here, the x and y can have or not have a batch.
+and return 100 * K.mean(diff) as output. Here, the x and y can have or not have a batch.
 &gt;&gt;&gt; error = MeanAbsolutePercentageCriterion()
 creating: createMeanAbsolutePercentageCriterion</p>
 </dd></dl>
@@ -2504,13 +2504,13 @@ output_layer will be used as predicted output
 <span class="go">creating: createLinear</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fc</span><span class="o">.</span><span class="n">set_weights</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,))])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fc</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-<span class="go">array([[ 5.,  5.],</span>
-<span class="go">[ 5.,  5.]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">fc</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">],</span> <span class="p">[</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">expected_output</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_fc</span> <span class="o">=</span> <span class="n">fc</span><span class="o">.</span><span class="n">quantize</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_fc</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-<span class="go">array([[ 5.,  5.],</span>
-<span class="go">[ 5.,  5.]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_output</span> <span class="o">=</span> <span class="n">quantized_fc</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_quantized_output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">],</span> <span class="p">[</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">quantized_output</span><span class="p">,</span> <span class="n">expected_quantized_output</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">(</span><span class="s2">&quot;quantized.Linear&quot;</span> <span class="ow">in</span> <span class="n">quantized_fc</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span>
@@ -2518,33 +2518,13 @@ output_layer will be used as predicted output
 <span class="go">creating: createSpatialConvolution</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">conv</span><span class="o">.</span><span class="n">set_weights</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,))])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">conv</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-<span class="go">array([[[[ 9.,  9.],</span>
-<span class="go">[ 9.,  9.]],</span>
-
-<span class="go">[[ 9.,  9.],</span>
-<span class="go">[ 9.,  9.]]],</span>
-
-
-<span class="go">[[[ 9.,  9.],</span>
-<span class="go">[ 9.,  9.]],</span>
-
-<span class="go">[[ 9.,  9.],</span>
-<span class="go">[ 9.,  9.]]]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">conv</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">],</span> <span class="p">[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">]],</span> <span class="p">[[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">],</span> <span class="p">[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">]]],</span> <span class="p">[[[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">],</span> <span class="p">[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">]],</span> <span class="p">[[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">],</span> <span class="p">[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">]]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">expected_output</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_conv</span> <span class="o">=</span> <span class="n">conv</span><span class="o">.</span><span class="n">quantize</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_conv</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-<span class="go">array([[[[ 9.,  9.],</span>
-<span class="go">[ 9.,  9.]],</span>
-
-<span class="go">[[ 9.,  9.],</span>
-<span class="go">[ 9.,  9.]]],</span>
-
-
-<span class="go">[[[ 9.,  9.],</span>
-<span class="go">[ 9.,  9.]],</span>
-
-<span class="go">[[ 9.,  9.],</span>
-<span class="go">[ 9.,  9.]]]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_output</span> <span class="o">=</span> <span class="n">quantized_conv</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_quantized_output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">],</span> <span class="p">[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">]],</span> <span class="p">[[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">],</span> <span class="p">[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">]]],</span> <span class="p">[[[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">],</span> <span class="p">[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">]],</span> <span class="p">[[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">],</span> <span class="p">[</span><span class="mf">9.</span><span class="p">,</span> <span class="mf">9.</span><span class="p">]]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">quantized_output</span><span class="p">,</span> <span class="n">expected_quantized_output</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">(</span><span class="s2">&quot;quantized.SpatialConvolution&quot;</span> <span class="ow">in</span> <span class="n">quantized_conv</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
 <span class="go">creating: createSequential</span>
@@ -2553,25 +2533,13 @@ output_layer will be used as predicted output
 <span class="go">creating: createReshape</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seq</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-<span class="go">array([[ 37.,  37.],</span>
-<span class="go">[ 37.,  37.],</span>
-<span class="go">[ 37.,  37.],</span>
-<span class="go">[ 37.,  37.],</span>
-<span class="go">[ 37.,  37.],</span>
-<span class="go">[ 37.,  37.],</span>
-<span class="go">[ 37.,  37.],</span>
-<span class="go">[ 37.,  37.]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">],</span> <span class="p">[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">],</span> <span class="p">[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">],</span> <span class="p">[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">],</span> <span class="p">[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">],</span> <span class="p">[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">],</span> <span class="p">[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">],</span> <span class="p">[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">expected_output</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">quantize</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_seq</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-<span class="go">array([[ 37.,  37.],</span>
-<span class="go">[ 37.,  37.],</span>
-<span class="go">[ 37.,  37.],</span>
-<span class="go">[ 37.,  37.],</span>
-<span class="go">[ 37.,  37.],</span>
-<span class="go">[ 37.,  37.],</span>
-<span class="go">[ 37.,  37.],</span>
-<span class="go">[ 37.,  37.]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quantized_output</span> <span class="o">=</span> <span class="n">quantized_seq</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_quantized_output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">],</span> <span class="p">[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">],</span> <span class="p">[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">],</span> <span class="p">[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">],</span> <span class="p">[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">],</span> <span class="p">[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">],</span> <span class="p">[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">],</span> <span class="p">[</span><span class="mf">37.</span><span class="p">,</span> <span class="mf">37.</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">quantized_output</span><span class="p">,</span> <span class="n">expected_quantized_output</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">(</span><span class="s2">&quot;quantized.Linear&quot;</span> <span class="ow">in</span> <span class="n">quantized_seq</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span><span class="p">(</span><span class="s2">&quot;quantized.SpatialConvolution&quot;</span> <span class="ow">in</span> <span class="n">quantized_seq</span><span class="o">.</span><span class="fm">__str__</span><span class="p">())</span>
 </pre></div>
@@ -2699,10 +2667,8 @@ consist of class name and UUID if user doesn’t set it.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">weights</span> <span class="o">=</span> <span class="n">linear</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="go">array([ 1.,  2.,  3.], dtype=float32)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">weights</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="go">array([ 7.,  8.], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">7.</span><span class="p">,</span> <span class="mf">8.</span><span class="p">]))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">relu</span> <span class="o">=</span> <span class="n">ReLU</span><span class="p">()</span>
 <span class="go">creating: createReLU</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">py4j.protocol</span> <span class="k">import</span> <span class="n">Py4JJavaError</span>
@@ -2999,10 +2965,9 @@ weights of the integer ids.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">layer1</span> <span class="o">=</span> <span class="n">LookupTableSparse</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">)</span>
 <span class="go">creating: createLookupTableSparse</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">layer1</span><span class="o">.</span><span class="n">set_weights</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="c1"># set weight to 1 to 40</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">layer1</span><span class="o">.</span><span class="n">forward</span><span class="p">([</span><span class="nb">input</span><span class="p">,</span> <span class="n">weight</span><span class="p">])</span>
-<span class="go">array([[ 6.5999999 ,  7.60000038,  8.60000038,  9.60000038],</span>
-<span class="go">[ 1.        ,  2.        ,  3.        ,  4.        ],</span>
-<span class="go">[ 5.        ,  6.        ,  7.        ,  8.        ]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">layer1</span><span class="o">.</span><span class="n">forward</span><span class="p">([</span><span class="nb">input</span><span class="p">,</span> <span class="n">weight</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">6.5999999</span> <span class="p">,</span> <span class="mf">7.60000038</span><span class="p">,</span> <span class="mf">8.60000038</span><span class="p">,</span> <span class="mf">9.60000038</span><span class="p">],[</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">],</span> <span class="p">[</span><span class="mf">5.</span><span class="p">,</span> <span class="mf">6.</span><span class="p">,</span> <span class="mf">7.</span><span class="p">,</span> <span class="mf">8.</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">expected_output</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="method">
@@ -4292,9 +4257,9 @@ part of the gradient to next layer.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sparselinear</span> <span class="o">=</span> <span class="n">SparseLinear</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">init_weight</span><span class="o">=</span><span class="n">init_weight</span><span class="p">,</span> <span class="n">init_bias</span><span class="o">=</span><span class="n">init_bias</span><span class="p">)</span>
 <span class="go">creating: createSparseLinear</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">sparse</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sparselinear</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">))</span>
-<span class="go">[[ 10.09569263 -10.94844246  -4.1086688    1.02527523  11.80737209]</span>
-<span class="go">[  7.9651413    9.7131443  -10.22719955   0.02345783  -3.74368906]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">sparselinear</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">10.09569263</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.94844246</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.1086688</span><span class="p">,</span> <span class="mf">1.02527523</span><span class="p">,</span> <span class="mf">11.80737209</span><span class="p">],</span> <span class="p">[</span><span class="mf">7.9651413</span><span class="p">,</span> <span class="mf">9.7131443</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.22719955</span><span class="p">,</span> <span class="mf">0.02345783</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.74368906</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">expected_output</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="method">
@@ -5469,7 +5434,7 @@ half of kernel size. That is, padT &lt; kT/2, padW &lt; kW/2 and padH &lt; kH/2<
           <a href="bigdl.optim.html" title="bigdl.optim package"
              >next</a> |</li>
         <li class="right" >
-          <a href="bigdl.models.ml_pipeline.html" title="bigdl.models.ml_pipeline package"
+          <a href="bigdl.models.lenet.html" title="bigdl.models.lenet package"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="bigdl.html" >bigdl package</a> &#187;</li> 
@@ -5477,7 +5442,7 @@ half of kernel size. That is, padT &lt; kT/2, padW &lt; kW/2 and padH &lt; kH/2<
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

@@ -82,11 +82,14 @@
 <span class="kn">from</span> <span class="nn">bigdl.keras.optimization</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">get_spark_context</span>
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">to_sample_rdd</span>
+<span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">redire_spark_logs</span><span class="p">,</span> <span class="n">show_bigdl_info_logs</span>
 
 
-<div class="viewcode-block" id="KerasModelWrapper"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.backend.KerasModelWrapper">[docs]</a><span class="k">class</span> <span class="nc">KerasModelWrapper</span><span class="p">():</span>
+<div class="viewcode-block" id="KerasModelWrapper"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.backend.KerasModelWrapper">[docs]</a><span class="k">class</span> <span class="nc">KerasModelWrapper</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kmodel</span><span class="p">):</span>
+        <span class="n">redire_spark_logs</span><span class="p">()</span>
+        <span class="n">show_bigdl_info_logs</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bmodel</span> <span class="o">=</span> <span class="n">DefinitionLoader</span><span class="o">.</span><span class="n">from_kmodel</span><span class="p">(</span><span class="n">kmodel</span><span class="p">)</span>
         <span class="n">WeightLoader</span><span class="o">.</span><span class="n">load_weights_from_kmodel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bmodel</span><span class="p">,</span> <span class="n">kmodel</span><span class="p">)</span>  <span class="c1"># share the same weight.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">criterion</span> <span class="o">=</span> <span class="n">OptimConverter</span><span class="o">.</span><span class="n">to_bigdl_criterion</span><span class="p">(</span><span class="n">kmodel</span><span class="o">.</span><span class="n">loss</span><span class="p">)</span>
@@ -117,8 +120,8 @@
                         <span class="bp">self</span><span class="o">.</span><span class="n">bmodel</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">)]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;No Metrics found.&quot;</span><span class="p">)</span>
-
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;not supported operation: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">is_distributed</span><span class="p">)</span></div>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;We only support evaluation in distributed mode&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="KerasModelWrapper.predict"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.backend.KerasModelWrapper.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_distributed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Generates output predictions for the input samples,</span>
@@ -155,6 +158,7 @@
 <span class="sd">        :param y: ndarray or list of ndarray for local mode and would be None for cluster mode.</span>
 <span class="sd">            is_distributed: used to control run in local or cluster. the default value is False.</span>
 <span class="sd">            NB: if is_distributed=true, x should be RDD[Sample] and y should be None</span>
+<span class="sd">        :param is_distributed: Whether to train in local mode or distributed mode</span>
 <span class="sd">        :return:</span>
 <span class="sd">            A Numpy array or RDD[Sample] of predictions.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -171,15 +175,15 @@
         <span class="k">if</span> <span class="n">validation_split</span> <span class="o">!=</span> <span class="mf">0.</span><span class="p">:</span>
             <span class="n">unsupport_exp</span><span class="p">(</span><span class="s2">&quot;validation_split&quot;</span><span class="p">)</span>
         <span class="n">bopt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_optimizer</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
-                                <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
-                                <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
-                                <span class="n">nb_epoch</span><span class="o">=</span><span class="n">nb_epoch</span><span class="p">,</span>
-                                <span class="n">validation_data</span><span class="o">=</span><span class="n">validation_data</span><span class="p">,</span>
-                                <span class="n">is_distributed</span><span class="o">=</span><span class="n">is_distributed</span><span class="p">)</span>
+                                       <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
+                                       <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                                       <span class="n">nb_epoch</span><span class="o">=</span><span class="n">nb_epoch</span><span class="p">,</span>
+                                       <span class="n">validation_data</span><span class="o">=</span><span class="n">validation_data</span><span class="p">,</span>
+                                       <span class="n">is_distributed</span><span class="o">=</span><span class="n">is_distributed</span><span class="p">)</span>
         <span class="n">bopt</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span></div>
 
     <span class="k">def</span> <span class="nf">__create_optimizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">nb_epoch</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                         <span class="n">validation_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_distributed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                           <span class="n">validation_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_distributed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">is_distributed</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
                 <span class="nb">input</span> <span class="o">=</span> <span class="n">to_sample_rdd</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -188,15 +192,15 @@
                 <span class="nb">input</span> <span class="o">=</span> <span class="n">x</span>
                 <span class="n">validation_data_rdd</span> <span class="o">=</span> <span class="n">validation_data</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_distributed_optimizer</span><span class="p">(</span><span class="n">training_rdd</span><span class="o">=</span><span class="nb">input</span><span class="p">,</span>
-                                       <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
-                                       <span class="n">nb_epoch</span><span class="o">=</span><span class="n">nb_epoch</span><span class="p">,</span>
-                                       <span class="n">validation_data</span><span class="o">=</span><span class="n">validation_data_rdd</span><span class="p">)</span>
+                                                       <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                                                       <span class="n">nb_epoch</span><span class="o">=</span><span class="n">nb_epoch</span><span class="p">,</span>
+                                                       <span class="n">validation_data</span><span class="o">=</span><span class="n">validation_data_rdd</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__create_local_optimizer</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
-                                 <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
-                                 <span class="n">nb_epoch</span><span class="o">=</span><span class="n">nb_epoch</span><span class="p">,</span>
-                                 <span class="n">validation_data</span><span class="o">=</span><span class="n">validation_data</span><span class="p">)</span>
+                                                     <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                                                     <span class="n">nb_epoch</span><span class="o">=</span><span class="n">nb_epoch</span><span class="p">,</span>
+                                                     <span class="n">validation_data</span><span class="o">=</span><span class="n">validation_data</span><span class="p">)</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;not supported type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__create_local_optimizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">nb_epoch</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>

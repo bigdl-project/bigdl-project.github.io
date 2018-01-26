@@ -266,12 +266,10 @@
 <span class="sd">        &gt;&gt;&gt; np.random.seed(123)</span>
 <span class="sd">        &gt;&gt;&gt; data = np.random.uniform(0, 1, (2, 3)).astype(&quot;float32&quot;)</span>
 <span class="sd">        &gt;&gt;&gt; result = JTensor.from_ndarray(data)</span>
-<span class="sd">        &gt;&gt;&gt; print(result)</span>
-<span class="sd">        JTensor: storage: [[ 0.69646919  0.28613934  0.22685145]</span>
-<span class="sd">         [ 0.55131477  0.71946895  0.42310646]], shape: [2 3], float</span>
-<span class="sd">        &gt;&gt;&gt; result</span>
-<span class="sd">        JTensor: storage: [[ 0.69646919  0.28613934  0.22685145]</span>
-<span class="sd">         [ 0.55131477  0.71946895  0.42310646]], shape: [2 3], float</span>
+<span class="sd">        &gt;&gt;&gt; expected_storage = np.array([[0.69646919, 0.28613934, 0.22685145], [0.55131477, 0.71946895, 0.42310646]])</span>
+<span class="sd">        &gt;&gt;&gt; expected_shape = np.array([2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(result.storage, expected_storage, rtol=1e-6, atol=1e-6)</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(result.shape, expected_shape)</span>
 <span class="sd">        &gt;&gt;&gt; data_back = result.to_ndarray()</span>
 <span class="sd">        &gt;&gt;&gt; (data == data_back).all()</span>
 <span class="sd">        True</span>
@@ -316,8 +314,12 @@
 <span class="sd">        &gt;&gt;&gt; indices = np.arange(1, 7)</span>
 <span class="sd">        &gt;&gt;&gt; shape = np.array([10])</span>
 <span class="sd">        &gt;&gt;&gt; result = JTensor.sparse(data, indices, shape)</span>
-<span class="sd">        &gt;&gt;&gt; result</span>
-<span class="sd">        JTensor: storage: [ 1.  2.  3.  4.  5.  6.], shape: [10] ,indices [1 2 3 4 5 6], float</span>
+<span class="sd">        &gt;&gt;&gt; expected_storage = np.array([1., 2., 3., 4., 5., 6.])</span>
+<span class="sd">        &gt;&gt;&gt; expected_shape = np.array([10])</span>
+<span class="sd">        &gt;&gt;&gt; expected_indices = np.array([1, 2, 3, 4, 5, 6])</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(result.storage, expected_storage)</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(result.shape, expected_shape)</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(result.indices, expected_indices)</span>
 <span class="sd">        &gt;&gt;&gt; tensor1 = callBigDlFunc(&quot;float&quot;, &quot;testTensor&quot;, result)  # noqa</span>
 <span class="sd">        &gt;&gt;&gt; array_from_tensor = tensor1.to_ndarray()</span>
 <span class="sd">        &gt;&gt;&gt; expected_ndarray = np.array([0, 1, 2, 3, 4, 5, 6, 0, 0, 0])</span>
@@ -390,10 +392,14 @@
 <span class="sd">        &gt;&gt;&gt; sample_back = callBigDlFunc(&quot;float&quot;, &quot;testSample&quot;, sample)</span>
 <span class="sd">        &gt;&gt;&gt; assert_allclose(sample.features[0].to_ndarray(), sample_back.features[0].to_ndarray())</span>
 <span class="sd">        &gt;&gt;&gt; assert_allclose(sample.label.to_ndarray(), sample_back.label.to_ndarray())</span>
-<span class="sd">        &gt;&gt;&gt; print(sample)</span>
-<span class="sd">        Sample: features: [JTensor: storage: [[ 0.69646919  0.28613934  0.22685145]</span>
-<span class="sd">         [ 0.55131477  0.71946895  0.42310646]], shape: [2 3], float], labels: [JTensor: storage: [[ 0.98076421  0.68482971  0.48093191]</span>
-<span class="sd">         [ 0.39211753  0.343178    0.72904968]], shape: [2 3], float],</span>
+<span class="sd">        &gt;&gt;&gt; expected_feature_storage = np.array(([[0.69646919, 0.28613934, 0.22685145], [0.55131477, 0.71946895, 0.42310646]]))</span>
+<span class="sd">        &gt;&gt;&gt; expected_feature_shape = np.array([2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; expected_label_storage = np.array(([[0.98076421, 0.68482971, 0.48093191], [0.39211753, 0.343178, 0.72904968]]))</span>
+<span class="sd">        &gt;&gt;&gt; expected_label_shape = np.array([2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; assert_allclose(sample.features[0].storage, expected_feature_storage, rtol=1e-6, atol=1e-6)</span>
+<span class="sd">        &gt;&gt;&gt; assert_allclose(sample.features[0].shape, expected_feature_shape)</span>
+<span class="sd">        &gt;&gt;&gt; assert_allclose(sample.labels[0].storage, expected_label_storage, rtol=1e-6, atol=1e-6)</span>
+<span class="sd">        &gt;&gt;&gt; assert_allclose(sample.labels[0].shape, expected_label_shape)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
             <span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="n">features</span><span class="p">]</span>
@@ -785,7 +791,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>
