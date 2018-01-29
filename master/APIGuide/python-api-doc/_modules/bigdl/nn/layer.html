@@ -2995,6 +2995,31 @@
                                         <span class="n">size_average</span><span class="p">,</span>
                                         <span class="n">provide_output</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="NegativeEntropyPenalty"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.NegativeEntropyPenalty">[docs]</a><span class="k">class</span> <span class="nc">NegativeEntropyPenalty</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Penalize the input multinomial distribution if it has low entropy.</span>
+<span class="sd">    The input to this layer should be a batch of vector each representing a</span>
+<span class="sd">    multinomial distribution. The input is typically the output of a softmax layer.</span>
+<span class="sd">    </span>
+<span class="sd">    For forward, the output is the same as input and a NegativeEntropy loss of</span>
+<span class="sd">    the latent state will be calculated each time. For backward,</span>
+<span class="sd">    gradInput = gradOutput + gradLoss</span>
+
+<span class="sd">    This can be used in reinforcement learning to discourage the policy from</span>
+<span class="sd">    collapsing to a single action for a given state, which improves exploration.</span>
+<span class="sd">    See the A3C paper for more detail (https://arxiv.org/pdf/1602.01783.pdf).</span>
+<span class="sd">    </span>
+<span class="sd">    &gt;&gt;&gt; ne = NegativeEntropyPenalty(0.01)</span>
+<span class="sd">    creating: createNegativeEntropyPenalty</span>
+<span class="sd">    </span>
+<span class="sd">    :param beta penalty coefficient</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NegativeEntropyPenalty</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
+                                                     <span class="n">bigdl_type</span><span class="p">,</span>
+                                                     <span class="n">beta</span><span class="p">)</span></div>
+
 
 <div class="viewcode-block" id="LeakyReLU"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.LeakyReLU">[docs]</a><span class="k">class</span> <span class="nc">LeakyReLU</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
@@ -5465,7 +5490,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

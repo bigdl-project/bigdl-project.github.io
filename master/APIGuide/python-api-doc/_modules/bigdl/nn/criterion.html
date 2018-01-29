@@ -964,6 +964,55 @@
                                                    <span class="n">input_transformer</span><span class="p">,</span>
                                                    <span class="n">target_transformer</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="DotProductCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.DotProductCriterion">[docs]</a><span class="k">class</span> <span class="nc">DotProductCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Compute the dot product of input and target tensor.</span>
+<span class="sd">    Input and target are required to have the same size.</span>
+<span class="sd">    :param size_average: whether to average over each observations in the same batch</span>
+<span class="sd">    </span>
+<span class="sd">    &gt;&gt;&gt; dp =DotProductCriterion(False)</span>
+<span class="sd">    creating: createDotProductCriterion</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">size_average</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DotProductCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
+                                                  <span class="n">bigdl_type</span><span class="p">,</span>
+                                                  <span class="n">size_average</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PGCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.PGCriterion">[docs]</a><span class="k">class</span> <span class="nc">PGCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The Criterion to compute the negative policy gradient given a</span>
+<span class="sd">    multinomial distribution and the sampled action and reward.</span>
+
+<span class="sd">    The input to this criterion should be a 2-D tensor representing</span>
+<span class="sd">    a batch of multinomial distribution, the target should also be</span>
+<span class="sd">    a 2-D tensor with the same size of input, representing the sampled</span>
+<span class="sd">    action and reward/advantage with the index of non-zero element in the vector</span>
+<span class="sd">    represents the sampled action and the non-zero element itself represents</span>
+<span class="sd">    the reward. If the action is space is large, you should consider using</span>
+<span class="sd">    SparseTensor for target.</span>
+<span class="sd">    </span>
+<span class="sd">    The loss computed is simple the standard policy gradient,</span>
+
+<span class="sd">      loss = - 1/n * sum(R_{n} dot_product log(P_{n}))</span>
+
+<span class="sd">    where R_{n} is the reward vector, and P_{n} is the input distribution.</span>
+
+<span class="sd">    :param sizeAverage whether to average over each observations in the same batch</span>
+<span class="sd">                           </span>
+<span class="sd">    &gt;&gt;&gt; pg = PGCriterion()</span>
+<span class="sd">    creating: createPGCriterion</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">sizeAverage</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PGCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
+                                          <span class="n">bigdl_type</span><span class="p">,</span>
+                                          <span class="n">sizeAverage</span><span class="p">)</span></div>
+
 
 <span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
     <span class="kn">import</span> <span class="nn">doctest</span>
@@ -1007,7 +1056,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>

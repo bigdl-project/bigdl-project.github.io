@@ -151,6 +151,19 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.transform.vision.image.augmentation.ChannelNormalize#apply" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="apply(mean:Float,std:Float):com.intel.analytics.bigdl.transform.vision.image.augmentation.ChannelNormalize"></a>
+      <a id="apply(Float,Float):ChannelNormalize"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="mean">mean: <span class="extype" name="scala.Float">Float</span></span>, <span name="std">std: <span class="extype" name="scala.Float">Float</span></span>)</span><span class="result">: <a href="ChannelNormalize.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.ChannelNormalize">ChannelNormalize</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.augmentation.ChannelNormalize#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="apply(meanR:Float,meanG:Float,meanB:Float,stdR:Float,stdG:Float,stdB:Float):com.intel.analytics.bigdl.transform.vision.image.augmentation.ChannelNormalize"></a>
       <a id="apply(Float,Float,Float,Float,Float,Float):ChannelNormalize"></a>
       <h4 class="signature">
@@ -162,7 +175,10 @@
         <span class="name">apply</span><span class="params">(<span name="meanR">meanR: <span class="extype" name="scala.Float">Float</span></span>, <span name="meanG">meanG: <span class="extype" name="scala.Float">Float</span></span>, <span name="meanB">meanB: <span class="extype" name="scala.Float">Float</span></span>, <span name="stdR">stdR: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">1</span></span>, <span name="stdG">stdG: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">1</span></span>, <span name="stdB">stdB: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">1</span></span>)</span><span class="result">: <a href="ChannelNormalize.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.augmentation.ChannelNormalize">ChannelNormalize</a></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">image channel normalize
+</p><div class="fullcomment"><div class="comment cmt"><p>image channel normalize
+</p></div><dl class="paramcmts block"><dt class="param">meanR</dt><dd class="cmt"><p>mean value in R channel</p></dd><dt class="param">meanG</dt><dd class="cmt"><p>mean value in G channel</p></dd><dt class="param">meanB</dt><dd class="cmt"><p>mean value in B channel</p></dd><dt class="param">stdR</dt><dd class="cmt"><p>std value in R channel</p></dd><dt class="param">stdG</dt><dd class="cmt"><p>std value in G channel</p></dd><dt class="param">stdB</dt><dd class="cmt"><p>std value in B channel
+</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -345,15 +361,15 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.transform.vision.image.augmentation.ChannelNormalize#transform" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="transform(input:com.intel.analytics.bigdl.transform.vision.image.opencv.OpenCVMat,output:com.intel.analytics.bigdl.transform.vision.image.opencv.OpenCVMat,meanR:Float,meanG:Float,meanB:Float,stdR:Float,stdG:Float,stdB:Float):Unit"></a>
-      <a id="transform(OpenCVMat,OpenCVMat,Float,Float,Float,Float,Float,Float):Unit"></a>
+      <a id="transform(input:com.intel.analytics.bigdl.transform.vision.image.opencv.OpenCVMat,output:com.intel.analytics.bigdl.transform.vision.image.opencv.OpenCVMat,means:Array[Float],stds:Array[Float]):Unit"></a>
+      <a id="transform(OpenCVMat,OpenCVMat,Array[Float],Array[Float]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">transform</span><span class="params">(<span name="input">input: <a href="../opencv/OpenCVMat.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.opencv.OpenCVMat">OpenCVMat</a></span>, <span name="output">output: <a href="../opencv/OpenCVMat.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.opencv.OpenCVMat">OpenCVMat</a></span>, <span name="meanR">meanR: <span class="extype" name="scala.Float">Float</span></span>, <span name="meanG">meanG: <span class="extype" name="scala.Float">Float</span></span>, <span name="meanB">meanB: <span class="extype" name="scala.Float">Float</span></span>, <span name="stdR">stdR: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">1</span></span>, <span name="stdG">stdG: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">1</span></span>, <span name="stdB">stdB: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">transform</span><span class="params">(<span name="input">input: <a href="../opencv/OpenCVMat.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.opencv.OpenCVMat">OpenCVMat</a></span>, <span name="output">output: <a href="../opencv/OpenCVMat.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.opencv.OpenCVMat">OpenCVMat</a></span>, <span name="means">means: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="stds">stds: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Float">Float</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       

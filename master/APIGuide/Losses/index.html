@@ -97,10 +97,16 @@
           ]},
           {title: "TransformerCriterion", url: "#transformercriterion", children: [
           ]},
+          {title: "DotProductCriterion", url: "#dotproductcriterion", children: [
+          ]},
+          {title: "PGCriterion", url: "#pgcriterion", children: [
+          ]},
         ];
 
     </script>
-    <script src="/js/base.js"></script> 
+    <script src="/js/base.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script> 
 </head>
 
 <body>
@@ -2194,6 +2200,114 @@ loss = transCriterion.forward(input, target)
 
 &gt; loss
 15.166667
+</code></pre>
+
+<h2 id="dotproductcriterion">DotProductCriterion</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val criterion = DotProductCriterion(sizeAverage=false)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">criterion = DotProductCriterion(sizeAverage=False)
+</code></pre>
+
+<p>Compute the dot product of input and target tensor.
+Input and target are required to have the same size.</p>
+<ul>
+<li>sizeAverage:  whether to average over each observations in the same batch</li>
+</ul>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val criterion = DotProductCriterion()
+val input = Tensor[Float](2, 3).range(1, 6, 1)
+val target = Tensor[Float](2, 3).range(2, 13, 2)
+
+val loss = criterion.forward(input, target)
+
+&gt; loss
+182.0
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">import numpy as np
+from bigdl.nn.criterion import *
+from bigdl.optim.optimizer import *
+from bigdl.util.common import *
+
+criterion = DotProductCriterion()
+input = np.arange(1, 7, 1).astype(&quot;float32&quot;)
+input = input.reshape(2, 3)
+target = np.arange(2, 13, 2).astype(&quot;float32&quot;)
+target = target.reshape(2, 3)
+
+loss = criterion.forward(input, target)
+
+
+&gt; loss
+182.0
+</code></pre>
+
+<h2 id="pgcriterion">PGCriterion</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val criterion = PGCriterion(sizeAverage=false)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">criterion = PGCriterion(sizeAverage=False)
+</code></pre>
+
+<p>The Criterion to compute the negative policy gradient given a
+multinomial distribution and the sampled action and reward.</p>
+<p>The input to this criterion should be a 2-D tensor representing
+a batch of multinomial distribution, the target should also be
+a 2-D tensor with the same size of input, representing the sampled
+action and reward/advantage with the index of non-zero element in the vector
+represents the sampled action and the non-zero element itself represents
+the reward. If the action is space is large, you should consider using
+SparseTensor for target.</p>
+<p>The loss computed is simple the standard policy gradient,</p>
+<p>loss = - 1/n * sum(R_{n} dot_product log(P_{n}))</p>
+<p>where R_{n} is the reward vector, and P_{n} is the input distribution.</p>
+<ul>
+<li>sizeAverage:  whether to average over each observations in the same batch</li>
+</ul>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val criterion = PGCriterion()
+val input = Tensor[Float](2, 3).range(1, 6, 1)
+val target = Tensor[Float](2, 3).range(2, 13, 2)
+
+val loss = criterion.forward(input, target)
+
+&gt; loss
+-58.05011
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">import numpy as np
+from bigdl.nn.criterion import *
+from bigdl.optim.optimizer import *
+from bigdl.util.common import *
+
+criterion = PGCriterion()
+input = np.arange(1, 7, 1).astype(&quot;float32&quot;)
+input = input.reshape(2, 3)
+target = np.arange(2, 13, 2).astype(&quot;float32&quot;)
+target = target.reshape(2, 3)
+
+loss = criterion.forward(input, target)
+
+
+&gt; loss
+-58.05011
 </code></pre>
 
   <br>

@@ -59,6 +59,8 @@
           ]},
           {title: "L1Penalty", url: "#l1penalty", children: [
           ]},
+          {title: "NegativeEntropyPenalty", url: "#negativeentropypenalty", children: [
+          ]},
           {title: "HardShrink", url: "#hardshrink", children: [
           ]},
           {title: "RReLU", url: "#rrelu", children: [
@@ -80,7 +82,9 @@
         ];
 
     </script>
-    <script src="/js/base.js"></script> 
+    <script src="/js/base.js"></script>
+      <script src="../../../search/require.js"></script>
+      <script src="../../../search/search.js"></script> 
 </head>
 
 <body>
@@ -858,6 +862,57 @@ val input = Tensor(3, 3).rand()
 <p><strong>Python example:</strong></p>
 <pre><code class="python">from bigdl.nn.layer import *
 l1Penalty = L1Penalty(1, True, True)
+
+&gt;&gt;&gt; l1Penalty.forward(np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
+[array([[ 1.,  2.,  3.],
+       [ 4.,  5.,  6.],
+       [ 7.,  8.,  9.]], dtype=float32)]
+
+</code></pre>
+
+<hr />
+<h2 id="negativeentropypenalty">NegativeEntropyPenalty</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val penalty = NegativeEntropyPenalty(beta = 0.01)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">penalty = NegativeEntropyPenalty(beta = 0.01)
+</code></pre>
+
+<p>Penalize the input multinomial distribution if it has low entropy.
+The input to this layer should be a batch of vector each representing a
+multinomial distribution. The input is typically the output of a softmax layer.</p>
+<p>For forward, the output is the same as input and a NegativeEntropy loss of the latent state will be calculated each time
+For backward, gradInput = gradOutput + gradLoss</p>
+<p>This can be used in reinforcement learning to discourage the policy from
+collapsing to a single action for a given state, which improves exploration.
+See the A3C paper for more detail (https://arxiv.org/pdf/1602.01783.pdf).</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor._
+val penalty = NegativeEntropyPenalty(0.01)
+val input = Tensor(3, 3).rand()
+
+&gt; print(input)
+0.0370419   0.03080979  0.22083037  
+0.1547358   0.018475588 0.8102709   
+0.86393493  0.7081842   0.13717912  
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3x3]
+
+
+&gt; print(l1Penalty.forward(input))
+0.0370419   0.03080979  0.22083037  
+0.1547358   0.018475588 0.8102709   
+0.86393493  0.7081842   0.13717912  
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 3x3]   
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+penalty = NegativeEntropyPenalty(0.01)
 
 &gt;&gt;&gt; l1Penalty.forward(np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
 [array([[ 1.,  2.,  3.],

@@ -25,7 +25,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="bigdl.optim package" href="bigdl.optim.html" />
-    <link rel="prev" title="bigdl.models.ml_pipeline package" href="bigdl.models.ml_pipeline.html" /> 
+    <link rel="prev" title="bigdl.models.lenet package" href="bigdl.models.lenet.html" /> 
   </head>
   <body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -41,7 +41,7 @@
           <a href="bigdl.optim.html" title="bigdl.optim package"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="bigdl.models.ml_pipeline.html" title="bigdl.models.ml_pipeline package"
+          <a href="bigdl.models.lenet.html" title="bigdl.models.lenet package"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="bigdl.html" accesskey="U">bigdl package</a> &#187;</li> 
@@ -62,8 +62,8 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="bigdl.models.ml_pipeline.html"
-                        title="previous chapter">bigdl.models.ml_pipeline package</a></p>
+  <p class="topless"><a href="bigdl.models.lenet.html"
+                        title="previous chapter">bigdl.models.lenet package</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="bigdl.optim.html"
                         title="next chapter">bigdl.optim package</a></p>
@@ -405,6 +405,19 @@ input: Tensor,target: Tensor</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.criterion.DotProductCriterion">
+<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">DotProductCriterion</code><span class="sig-paren">(</span><em>size_average=False</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#DotProductCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.DotProductCriterion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
+<p>Compute the dot product of input and target tensor.
+Input and target are required to have the same size.
+:param size_average: whether to average over each observations in the same batch</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dp</span> <span class="o">=</span><span class="n">DotProductCriterion</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">creating: createDotProductCriterion</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.criterion.GaussianCriterion">
 <em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">GaussianCriterion</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#GaussianCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.GaussianCriterion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
@@ -685,6 +698,29 @@ between input x and output y (which is a target class index).</p>
 <span class="go">creating: createMultiMarginCriterion</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">multiMarginCriterion</span> <span class="o">=</span> <span class="n">MultiMarginCriterion</span><span class="p">()</span>
 <span class="go">creating: createMultiMarginCriterion</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.criterion.PGCriterion">
+<em class="property">class </em><code class="descclassname">bigdl.nn.criterion.</code><code class="descname">PGCriterion</code><span class="sig-paren">(</span><em>sizeAverage=False</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/criterion.html#PGCriterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.criterion.PGCriterion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.criterion.Criterion" title="bigdl.nn.criterion.Criterion"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.criterion.Criterion</span></code></a></p>
+<p>The Criterion to compute the negative policy gradient given a
+multinomial distribution and the sampled action and reward.</p>
+<p>The input to this criterion should be a 2-D tensor representing
+a batch of multinomial distribution, the target should also be
+a 2-D tensor with the same size of input, representing the sampled
+action and reward/advantage with the index of non-zero element in the vector
+represents the sampled action and the non-zero element itself represents
+the reward. If the action is space is large, you should consider using
+SparseTensor for target.</p>
+<p>The loss computed is simple the standard policy gradient,</p>
+<p>loss = - 1/n * sum(R_{n} dot_product log(P_{n}))</p>
+<p>where R_{n} is the reward vector, and P_{n} is the input distribution.</p>
+<p>:param sizeAverage whether to average over each observations in the same batch</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pg</span> <span class="o">=</span> <span class="n">PGCriterion</span><span class="p">()</span>
+<span class="go">creating: createPGCriterion</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -3482,6 +3518,26 @@ offset to element which located at the abs(<cite>length</cite>) to the last elem
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.NegativeEntropyPenalty">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">NegativeEntropyPenalty</code><span class="sig-paren">(</span><em>beta=0.01</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#NegativeEntropyPenalty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.NegativeEntropyPenalty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Penalize the input multinomial distribution if it has low entropy.
+The input to this layer should be a batch of vector each representing a
+multinomial distribution. The input is typically the output of a softmax layer.</p>
+<p>For forward, the output is the same as input and a NegativeEntropy loss of
+the latent state will be calculated each time. For backward,
+gradInput = gradOutput + gradLoss</p>
+<p>This can be used in reinforcement learning to discourage the policy from
+collapsing to a single action for a given state, which improves exploration.
+See the A3C paper for more detail (<a class="reference external" href="https://arxiv.org/pdf/1602.01783.pdf">https://arxiv.org/pdf/1602.01783.pdf</a>).</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ne</span> <span class="o">=</span> <span class="n">NegativeEntropyPenalty</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="go">creating: createNegativeEntropyPenalty</span>
+</pre></div>
+</div>
+<p>:param beta penalty coefficient</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.Node">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Node</code><span class="sig-paren">(</span><em>jvalue</em>, <em>bigdl_type</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Node" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
@@ -5434,7 +5490,7 @@ half of kernel size. That is, padT &lt; kT/2, padW &lt; kW/2 and padH &lt; kH/2<
           <a href="bigdl.optim.html" title="bigdl.optim package"
              >next</a> |</li>
         <li class="right" >
-          <a href="bigdl.models.ml_pipeline.html" title="bigdl.models.ml_pipeline package"
+          <a href="bigdl.models.lenet.html" title="bigdl.models.lenet package"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="bigdl.html" >bigdl package</a> &#187;</li> 
@@ -5442,7 +5498,7 @@ half of kernel size. That is, padT &lt; kT/2, padW &lt; kW/2 and padH &lt; kH/2<
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
     </div>
   </body>
 </html>
