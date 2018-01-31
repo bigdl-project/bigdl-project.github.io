@@ -53,6 +53,7 @@
   <ul>
 <li><a class="reference internal" href="#">bigdl.keras package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-bigdl.keras.ToBigDLHelper">bigdl.keras.ToBigDLHelper module</a></li>
 <li><a class="reference internal" href="#module-bigdl.keras.backend">bigdl.keras.backend module</a></li>
 <li><a class="reference internal" href="#module-bigdl.keras.converter">bigdl.keras.converter module</a></li>
 <li><a class="reference internal" href="#module-bigdl.keras.optimization">bigdl.keras.optimization module</a></li>
@@ -96,6 +97,39 @@
 <h1>bigdl.keras package<a class="headerlink" href="#bigdl-keras-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-bigdl.keras.ToBigDLHelper">
+<span id="bigdl-keras-tobigdlhelper-module"></span><h2>bigdl.keras.ToBigDLHelper module<a class="headerlink" href="#module-bigdl.keras.ToBigDLHelper" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="bigdl.keras.ToBigDLHelper.to_bigdl_2d_ordering">
+<code class="descclassname">bigdl.keras.ToBigDLHelper.</code><code class="descname">to_bigdl_2d_ordering</code><span class="sig-paren">(</span><em>order</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/ToBigDLHelper.html#to_bigdl_2d_ordering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.ToBigDLHelper.to_bigdl_2d_ordering" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.keras.ToBigDLHelper.to_bigdl_2d_padding">
+<code class="descclassname">bigdl.keras.ToBigDLHelper.</code><code class="descname">to_bigdl_2d_padding</code><span class="sig-paren">(</span><em>border_mode</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/ToBigDLHelper.html#to_bigdl_2d_padding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.ToBigDLHelper.to_bigdl_2d_padding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.keras.ToBigDLHelper.to_bigdl_3d_ordering">
+<code class="descclassname">bigdl.keras.ToBigDLHelper.</code><code class="descname">to_bigdl_3d_ordering</code><span class="sig-paren">(</span><em>order</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/ToBigDLHelper.html#to_bigdl_3d_ordering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.ToBigDLHelper.to_bigdl_3d_ordering" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.keras.ToBigDLHelper.to_bigdl_3d_padding">
+<code class="descclassname">bigdl.keras.ToBigDLHelper.</code><code class="descname">to_bigdl_3d_padding</code><span class="sig-paren">(</span><em>border_mode</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/ToBigDLHelper.html#to_bigdl_3d_padding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.ToBigDLHelper.to_bigdl_3d_padding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.keras.ToBigDLHelper.to_bigdl_init">
+<code class="descclassname">bigdl.keras.ToBigDLHelper.</code><code class="descname">to_bigdl_init</code><span class="sig-paren">(</span><em>kinit_method</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/ToBigDLHelper.html#to_bigdl_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.ToBigDLHelper.to_bigdl_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.keras.ToBigDLHelper.to_bigdl_reg">
+<code class="descclassname">bigdl.keras.ToBigDLHelper.</code><code class="descname">to_bigdl_reg</code><span class="sig-paren">(</span><em>reg</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/ToBigDLHelper.html#to_bigdl_reg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.ToBigDLHelper.to_bigdl_reg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="module-bigdl.keras.backend">
 <span id="bigdl-keras-backend-module"></span><h2>bigdl.keras.backend module<a class="headerlink" href="#module-bigdl.keras.backend" title="Permalink to this headline">¶</a></h2>
@@ -575,36 +609,6 @@ A Numpy array or RDD[Sample] of predictions.</p>
 <dl class="method">
 <dt id="bigdl.keras.converter.LayerConverter.get_value_from_init">
 <code class="descname">get_value_from_init</code><span class="sig-paren">(</span><em>kinit_method</em>, <em>shape</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#LayerConverter.get_value_from_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.LayerConverter.get_value_from_init" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="bigdl.keras.converter.LayerConverter.to_bigdl_2d_ordering">
-<code class="descname">to_bigdl_2d_ordering</code><span class="sig-paren">(</span><em>order</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#LayerConverter.to_bigdl_2d_ordering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.LayerConverter.to_bigdl_2d_ordering" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="bigdl.keras.converter.LayerConverter.to_bigdl_2d_padding">
-<code class="descname">to_bigdl_2d_padding</code><span class="sig-paren">(</span><em>border_mode</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#LayerConverter.to_bigdl_2d_padding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.LayerConverter.to_bigdl_2d_padding" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="bigdl.keras.converter.LayerConverter.to_bigdl_3d_ordering">
-<code class="descname">to_bigdl_3d_ordering</code><span class="sig-paren">(</span><em>order</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#LayerConverter.to_bigdl_3d_ordering"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.LayerConverter.to_bigdl_3d_ordering" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="bigdl.keras.converter.LayerConverter.to_bigdl_3d_padding">
-<code class="descname">to_bigdl_3d_padding</code><span class="sig-paren">(</span><em>border_mode</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#LayerConverter.to_bigdl_3d_padding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.LayerConverter.to_bigdl_3d_padding" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="bigdl.keras.converter.LayerConverter.to_bigdl_init">
-<code class="descname">to_bigdl_init</code><span class="sig-paren">(</span><em>kinit_method</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#LayerConverter.to_bigdl_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.LayerConverter.to_bigdl_init" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="bigdl.keras.converter.LayerConverter.to_bigdl_reg">
-<code class="descname">to_bigdl_reg</code><span class="sig-paren">(</span><em>reg</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#LayerConverter.to_bigdl_reg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.LayerConverter.to_bigdl_reg" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

@@ -58,7 +58,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="com.intel.analytics.bigdl.nn.keras.Dense" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+              <ol><li name="com.intel.analytics.bigdl.nn.keras.Dense" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Dense[T]extendsKerasLayer[com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
       <a id="Dense[T]:Dense[T]"></a>
       <h4 class="signature">
@@ -70,13 +70,7 @@
         <a href="Dense.html"><span class="name">Dense</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="KerasLayer.html" class="extype" name="com.intel.analytics.bigdl.nn.keras.KerasLayer">KerasLayer</a>[<a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.keras.Dense.T">T</span>], <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.keras.Dense.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.keras.Dense.T">T</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@SerialVersionUID</span><span class="args">(<span>
       
-      <span class="symbol">359656776803598944L</span>
-    </span>)</span>
-              
-        </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.keras.Input" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Input[T]extendsInput[T]"></a>
       <a id="Input[T]:Input[T]"></a>
@@ -119,6 +113,19 @@
       </span>
       <span class="symbol">
         <a href="Model.html"><span class="name">Model</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="../StaticGraph.html" class="extype" name="com.intel.analytics.bigdl.nn.StaticGraph">StaticGraph</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.keras.Model.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.keras.ModelSerializer" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ModelSerializerextendsGraphSerializablewithTKerasSerializerHelper"></a>
+      <a id="ModelSerializer:ModelSerializer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ModelSerializer.html"><span class="name">ModelSerializer</span></a><span class="result"> extends <a href="../GraphSerializable.html" class="extype" name="com.intel.analytics.bigdl.nn.GraphSerializable">GraphSerializable</a> with <span class="extype" name="com.intel.analytics.bigdl.nn.keras.TKerasSerializerHelper">TKerasSerializerHelper</span></span>
       </span>
       </h4>
       
@@ -190,7 +197,7 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="KerasLayerSerializer$.html"><span class="name">KerasLayerSerializer</span></a><span class="result"> extends <a href="../../utils/serializer/ModuleSerializable.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable">ModuleSerializable</a></span>
+        <a href="KerasLayerSerializer$.html"><span class="name">KerasLayerSerializer</span></a><span class="result"> extends <a href="../../utils/serializer/ContainerSerializable.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ContainerSerializable">ContainerSerializable</a> with <span class="extype" name="com.intel.analytics.bigdl.nn.keras.TKerasSerializerHelper">TKerasSerializerHelper</span></span>
       </span>
       </h4>
       
@@ -203,7 +210,7 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Model$.html"><span class="name">Model</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="Model$.html"><span class="name">Model</span></a><span class="result"> extends <a href="ModelSerializer.html" class="extype" name="com.intel.analytics.bigdl.nn.keras.ModelSerializer">ModelSerializer</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -216,7 +223,7 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Sequential$.html"><span class="name">Sequential</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="Sequential$.html"><span class="name">Sequential</span></a><span class="result"> extends <a href="../../utils/serializer/ContainerSerializable.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ContainerSerializable">ContainerSerializable</a> with <span class="extype" name="com.intel.analytics.bigdl.nn.keras.TKerasSerializerHelper">TKerasSerializerHelper</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
