@@ -233,6 +233,19 @@ follows a polynomial decay, to be zero by the max_iteration.</p>
       </span>
       </h4>
       <p class="comment cmt">A structure to specify hyper parameters by start epoch and end epoch.</p>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD.SequentialSchedule" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SequentialScheduleextendsSGD.LearningRateSchedulewithProductwithSerializable"></a>
+      <a id="SequentialSchedule:SequentialSchedule"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="SGD$$SequentialSchedule.html"><span class="name">SequentialSchedule</span></a><span class="params">(<span name="iterationPerEpoch">iterationPerEpoch: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Stack several learning rate schedulers.</p>
     </li><li name="com.intel.analytics.bigdl.optim.SGD.Step" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="StepextendsSGD.LearningRateSchedulewithProductwithSerializable"></a>
       <a id="Step:Step"></a>
@@ -248,6 +261,20 @@ follows a polynomial decay, to be zero by the max_iteration.</p>
       <p class="comment cmt">A learning rate decay policy, where the effective learning rate
 is calculated as base_lr * gamma <code>^<code> (floor(iter / stepSize))
 </code></code></p>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD.Warmup" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="WarmupextendsSGD.LearningRateSchedulewithProductwithSerializable"></a>
+      <a id="Warmup:Warmup"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="SGD$$Warmup.html"><span class="name">Warmup</span></a><span class="params">(<span name="delta">delta: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result"> extends <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A learning rate gradual increase policy, where the effective learning rate
+increase delta after each iteration.</p>
     </li></ol>
             </div>
 

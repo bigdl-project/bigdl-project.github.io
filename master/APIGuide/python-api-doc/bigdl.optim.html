@@ -683,8 +683,8 @@ Calculation: base_lr (1 - iter/max_iteration) ^ (power)</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>power</strong> – </li>
-<li><strong>max_iteration</strong> – </li>
+<li><strong>power</strong> – coeffient of decay, refer to calculation formula</li>
+<li><strong>max_iteration</strong> – max iteration when lr becomes zero</li>
 </ul>
 </td>
 </tr>
@@ -725,6 +725,46 @@ creating: createRMSprop</p>
 &gt;&gt;&gt; sgd = SGD()
 creating: createDefault
 creating: createSGD</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.SequentialSchedule">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">SequentialSchedule</code><span class="sig-paren">(</span><em>iteration_per_epoch</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#SequentialSchedule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.SequentialSchedule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Stack several learning rate schedulers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>iterationPerEpoch</strong> – iteration numbers per epoch</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sequentialSchedule</span> <span class="o">=</span> <span class="n">SequentialSchedule</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">creating: createSequentialSchedule</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span> <span class="o">=</span> <span class="n">Poly</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">creating: createPoly</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span> <span class="o">=</span> <span class="n">sequentialSchedule</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="bigdl.optim.optimizer.SequentialSchedule.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>scheduler</em>, <em>max_iteration</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#SequentialSchedule.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.SequentialSchedule.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a learning rate scheduler to the contained <cite>schedules</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>scheduler</strong> – learning rate scheduler to be add</li>
+<li><strong>max_iteration</strong> – iteration numbers this scheduler will run</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
@@ -880,6 +920,27 @@ by default.</p>
 </table>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Warmup">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Warmup</code><span class="sig-paren">(</span><em>delta</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Warmup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Warmup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>A learning rate gradual increase policy, where the effective learning rate
+increase delta after each iteration.
+Calculation: base_lr + delta * iteration</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>delta</strong> – increase amount after each iteration</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warmup</span> <span class="o">=</span> <span class="n">Warmup</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="go">creating: createWarmup</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>

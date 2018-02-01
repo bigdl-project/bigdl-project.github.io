@@ -287,9 +287,8 @@
 <span class="sd">    Calculation: base_lr (1 - iter/max_iteration) ^ (power)</span>
 
 
-<span class="sd">    :param power:</span>
-<span class="sd">    :param max_iteration:</span>
-
+<span class="sd">    :param power: coeffient of decay, refer to calculation formula</span>
+<span class="sd">    :param max_iteration: max iteration when lr becomes zero</span>
 
 <span class="sd">    &gt;&gt;&gt; poly = Poly(0.5, 2)</span>
 <span class="sd">    creating: createPoly</span>
@@ -377,6 +376,47 @@
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">monitor</span><span class="p">,</span> <span class="n">factor</span><span class="p">,</span> <span class="n">patience</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span>
                            <span class="n">cooldown</span><span class="p">,</span> <span class="n">min_lr</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Warmup"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Warmup">[docs]</a><span class="k">class</span> <span class="nc">Warmup</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A learning rate gradual increase policy, where the effective learning rate</span>
+<span class="sd">    increase delta after each iteration.</span>
+<span class="sd">    Calculation: base_lr + delta * iteration</span>
+
+<span class="sd">    :param delta: increase amount after each iteration</span>
+
+<span class="sd">    &gt;&gt;&gt; warmup = Warmup(0.05)</span>
+<span class="sd">    creating: createWarmup</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SequentialSchedule"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.SequentialSchedule">[docs]</a><span class="k">class</span> <span class="nc">SequentialSchedule</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Stack several learning rate schedulers.</span>
+
+<span class="sd">    :param iterationPerEpoch: iteration numbers per epoch</span>
+
+<span class="sd">    &gt;&gt;&gt; sequentialSchedule = SequentialSchedule(5)</span>
+<span class="sd">    creating: createSequentialSchedule</span>
+<span class="sd">    &gt;&gt;&gt; poly = Poly(0.5, 2)</span>
+<span class="sd">    creating: createPoly</span>
+<span class="sd">    &gt;&gt;&gt; test = sequentialSchedule.add(poly, 5)</span>
+<span class="sd">    </span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iteration_per_epoch</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">iteration_per_epoch</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SequentialSchedule.add"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.SequentialSchedule.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scheduler</span><span class="p">,</span> <span class="n">max_iteration</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a learning rate scheduler to the contained `schedules`</span>
+
+<span class="sd">        :param scheduler: learning rate scheduler to be add</span>
+<span class="sd">        :param max_iteration: iteration numbers this scheduler will run</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;addScheduler&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">scheduler</span><span class="p">,</span> <span class="n">max_iteration</span><span class="p">)</span></div></div>
 
 <div class="viewcode-block" id="OptimMethod"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.OptimMethod">[docs]</a><span class="k">class</span> <span class="nc">OptimMethod</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
 

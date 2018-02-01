@@ -3741,8 +3741,8 @@
 <span class="sd">    # References</span>
 <span class="sd">        - [Deep Learning with S-shaped Rectified Linear Activation Units](http://arxiv.org/abs/1512.07030)</span>
 
-
-
+<span class="sd">    :param input_shape: shape for tleft, aleft, tright, aright.</span>
+<span class="sd">            E.g. for a 4-D input, the shape is the last 3-D</span>
 <span class="sd">    :param shared_axes: the axes along which to share learnable</span>
 <span class="sd">            parameters for the activation function.</span>
 <span class="sd">            For example, if the incoming feature maps</span>
@@ -3752,22 +3752,27 @@
 <span class="sd">            so that each filter only has one set of parameters,</span>
 <span class="sd">            set `shared_axes=[1, 2]`.</span>
 
-<span class="sd">    &gt;&gt;&gt; srelu = SReLU()</span>
+<span class="sd">    &gt;&gt;&gt; srelu = SReLU((2, 3))</span>
 <span class="sd">    creating: createSReLU</span>
-<span class="sd">    &gt;&gt;&gt; srelu = SReLU((1, 2))</span>
+<span class="sd">    &gt;&gt;&gt; srelu = SReLU((2, 2), (1, 2))</span>
 <span class="sd">    creating: createSReLU</span>
+<span class="sd">    &gt;&gt;&gt; from bigdl.nn.initialization_method import Xavier</span>
+<span class="sd">    &gt;&gt;&gt; init = Xavier()</span>
+<span class="sd">    creating: createXavier</span>
+<span class="sd">    &gt;&gt;&gt; srelu = srelu.set_init_method(tLeftInit=init, aLeftInit=init, tRightInit=init, aRightInit=init)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">input_shape</span><span class="p">,</span>
                  <span class="n">share_axes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">SReLU</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SReLU</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">,</span>
                                     <span class="n">share_axes</span><span class="p">)</span>
 
 <div class="viewcode-block" id="SReLU.set_init_method"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SReLU.set_init_method">[docs]</a>    <span class="k">def</span> <span class="nf">set_init_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tLeftInit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aLeftInit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">tRightInit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aRightInit</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setInitMethod&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                      <span class="n">tLeftInit</span><span class="p">,</span> <span class="n">aLeftInit</span><span class="p">,</span> <span class="n">tRightInit</span><span class="p">,</span> <span class="n">aRightInit</span><span class="p">)</span>
+                      <span class="p">[</span><span class="n">tLeftInit</span><span class="p">,</span> <span class="n">aLeftInit</span><span class="p">,</span> <span class="n">tRightInit</span><span class="p">,</span> <span class="n">aRightInit</span><span class="p">])</span>
         <span class="k">return</span> <span class="bp">self</span></div></div>
 
 <div class="viewcode-block" id="ActivityRegularization"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.ActivityRegularization">[docs]</a><span class="k">class</span> <span class="nc">ActivityRegularization</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>

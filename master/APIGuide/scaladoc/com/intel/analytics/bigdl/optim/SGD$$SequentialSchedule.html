@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>LearningRateSchedule - bigdl 0.5.0-SNAPSHOT API - com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule</title>
-          <meta name="description" content="LearningRateSchedule - bigdl 0.5.0 - SNAPSHOT API - com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule" />
-          <meta name="keywords" content="LearningRateSchedule bigdl 0.5.0 SNAPSHOT API com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule" />
+          <title>SequentialSchedule - bigdl 0.5.0-SNAPSHOT API - com.intel.analytics.bigdl.optim.SGD.SequentialSchedule</title>
+          <meta name="description" content="SequentialSchedule - bigdl 0.5.0 - SNAPSHOT API - com.intel.analytics.bigdl.optim.SGD.SequentialSchedule" />
+          <meta name="keywords" content="SequentialSchedule bigdl 0.5.0 SNAPSHOT API com.intel.analytics.bigdl.optim.SGD.SequentialSchedule" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -12,7 +12,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
-            var hash = 'com.intel.analytics.bigdl.optim.SGD$$LearningRateSchedule';
+            var hash = 'com.intel.analytics.bigdl.optim.SGD$$SequentialSchedule';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -24,28 +24,26 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../../../lib/trait_big.png" />
+        <img src="../../../../../lib/class_big.png" />
         <p id="owner"><a href="../../../../package.html" class="extype" name="com">com</a>.<a href="../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.optim">optim</a>.<a href="SGD$.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a></p>
-        <h1>LearningRateSchedule</h1>
+        <h1>SequentialSchedule</h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">trait</span>
+        <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">LearningRateSchedule</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">SequentialSchedule</span><span class="params">(<span name="iterationPerEpoch">iterationPerEpoch: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Hyper parameter schedule for SGD
-</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Stack several learning rate schedulers.
+</p></div><dl class="paramcmts block"><dt class="param">iterationPerEpoch</dt><dd class="cmt"><p>iteration numbers per epoch
+</p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="SGD$$Default.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.Default">Default</a>, <a href="SGD$$EpochDecay.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.EpochDecay">EpochDecay</a>, <a href="SGD$$EpochSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.EpochSchedule">EpochSchedule</a>, <a href="SGD$$EpochStep.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.EpochStep">EpochStep</a>, <a href="SGD$$Exponential.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.Exponential">Exponential</a>, <a href="SGD$$MultiStep.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.MultiStep">MultiStep</a>, <a href="SGD$$NaturalExp.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.NaturalExp">NaturalExp</a>, <a href="SGD$$Plateau.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.Plateau">Plateau</a>, <a href="SGD$$Poly.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.Poly">Poly</a>, <a href="SGD$$SequentialSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.SequentialSchedule">SequentialSchedule</a>, <a href="SGD$$Step.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.Step">Step</a>, <a href="SGD$$Warmup.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.Warmup">Warmup</a></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -63,7 +61,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule"><span>LearningRateSchedule</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.intel.analytics.bigdl.optim.SGD.SequentialSchedule"><span>SequentialSchedule</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule"><span>LearningRateSchedule</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -81,31 +79,31 @@
 
       <div id="template">
         <div id="allMembers">
-        
-
-        
-
-        <div id="values" class="values members">
-              <h3>Abstract Value Members</h3>
-              <ol><li name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule#updateHyperParameter" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="updateHyperParameter[T](optimMethod:com.intel.analytics.bigdl.optim.SGD[T]):Unit"></a>
-      <a id="updateHyperParameter[T](SGD[T]):Unit"></a>
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="com.intel.analytics.bigdl.optim.SGD.SequentialSchedule#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(iterationPerEpoch:Int):com.intel.analytics.bigdl.optim.SGD.SequentialSchedule"></a>
+      <a id="&lt;init&gt;:SequentialSchedule"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
+        <span class="modifier"></span>
+        <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">updateHyperParameter</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="optimMethod">optimMethod: <a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule.updateHyperParameter.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">SequentialSchedule</span><span class="params">(<span name="iterationPerEpoch">iterationPerEpoch: <span class="extype" name="scala.Int">Int</span></span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">update learning rate by config table and state table</p><div class="fullcomment"><div class="comment cmt"><p>update learning rate by config table and state table</p></div><dl class="paramcmts block"><dt class="param">optimMethod</dt><dd class="cmt"><p>init optiMethod.
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">iterationPerEpoch</dt><dd class="cmt"><p>iteration numbers per epoch
 </p></dd></dl></div>
     </li></ol>
             </div>
 
+        
+
+        
+
         <div id="values" class="values members">
-              <h3>Concrete Value Members</h3>
+              <h3>Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
@@ -171,6 +169,22 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD.SequentialSchedule#add" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="add(schedule:com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule,maxIteration:Int):SequentialSchedule.this.type"></a>
+      <a id="add(LearningRateSchedule,Int):SequentialSchedule.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">add</span><span class="params">(<span name="schedule">schedule: <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a></span>, <span name="maxIteration">maxIteration: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD.SequentialSchedule">SequentialSchedule</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Add a learning rate scheduler to the contained <code>schedules</code>
+</p><div class="fullcomment"><div class="comment cmt"><p>Add a learning rate scheduler to the contained <code>schedules</code>
+</p></div><dl class="paramcmts block"><dt class="param">schedule</dt><dd class="cmt"><p>learning rate scheduler to be add</p></dd><dt class="param">maxIteration</dt><dd class="cmt"><p>iteration numbers this scheduler will run</p></dd><dt>returns</dt><dd class="cmt"><p>this container
+</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -203,7 +217,20 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule#currentRate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.optim.SGD.SequentialSchedule#cur" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="cur:Int"></a>
+      <a id="cur:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cur</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule#currentRate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="currentRate:Double"></a>
       <a id="currentRate:Double"></a>
       <h4 class="signature">
@@ -215,7 +242,7 @@
         <span class="name">currentRate</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
       </span>
       </h4>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -229,19 +256,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="equals(x$1:Any):Boolean"></a>
-      <a id="equals(Any):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -274,19 +288,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hashCode():Int"></a>
-      <a id="hashCode():Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -300,6 +301,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD.SequentialSchedule#iterationPerEpoch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="iterationPerEpoch:Int"></a>
+      <a id="iterationPerEpoch:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">iterationPerEpoch</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">iteration numbers per epoch
+</p>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -339,6 +354,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD.SequentialSchedule#schedules" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="schedules:scala.collection.mutable.ArrayBuffer[com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule]"></a>
+      <a id="schedules:ArrayBuffer[LearningRateSchedule]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">schedules</span><span class="result">: <span class="extype" name="scala.collection.mutable.ArrayBuffer">ArrayBuffer</span>[<a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a>]</span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -352,19 +380,33 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toString():String"></a>
-      <a id="toString():String"></a>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD.SequentialSchedule#updateHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="updateHyperParameter[T](optimMethod:com.intel.analytics.bigdl.optim.SGD[T]):Unit"></a>
+      <a id="updateHyperParameter[T](SGD[T]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+        <span class="name">updateHyperParameter</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="optimMethod">optimMethod: <a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.SequentialSchedule.updateHyperParameter.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+      <p class="shortcomment cmt">update learning rate by config table and state table</p><div class="fullcomment"><div class="comment cmt"><p>update learning rate by config table and state table</p></div><dl class="paramcmts block"><dt class="param">optimMethod</dt><dd class="cmt"><p>init optiMethod.
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD.SequentialSchedule">SequentialSchedule</a> → <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD.SequentialSchedule#updateHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="updateHyperParameter(config:com.intel.analytics.bigdl.utils.Table,state:com.intel.analytics.bigdl.utils.Table):Unit"></a>
+      <a id="updateHyperParameter(Table,Table):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updateHyperParameter</span><span class="params">(<span name="config">config: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="state">state: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD.SequentialSchedule">SequentialSchedule</a> → <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -427,30 +469,21 @@
 
         
 
-        <div id="values" class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule#updateHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="updateHyperParameter(config:com.intel.analytics.bigdl.utils.Table,state:com.intel.analytics.bigdl.utils.Table):Unit"></a>
-      <a id="updateHyperParameter(Table,Table):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Please input SGD instead of Table">updateHyperParameter</span><span class="params">(<span name="config">config: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="state">state: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.2.0)</i> Please input SGD instead of Table</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.Product">
+              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
+            </div><div class="parent" name="scala.Equals">
+              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
+            </div><div class="parent" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">
+              <h3>Inherited from <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
