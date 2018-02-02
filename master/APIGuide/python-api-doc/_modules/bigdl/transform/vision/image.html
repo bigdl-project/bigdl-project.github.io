@@ -621,13 +621,21 @@
 <div class="viewcode-block" id="AspectScale"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.AspectScale">[docs]</a><span class="k">class</span> <span class="nc">AspectScale</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Resize the image, keep the aspect ratio. scale according to the short edge</span>
-<span class="sd">    :param scale scale size, apply to short edge</span>
+<span class="sd">    :param min_size scale size, apply to short edge</span>
 <span class="sd">    :param scale_multiple_of make the scaled size multiple of some value</span>
 <span class="sd">    :param max_size max size after scale</span>
+<span class="sd">    :param resize_mode if resizeMode = -1, random select a mode from</span>
+<span class="sd">    (Imgproc.INTER_LINEAR, Imgproc.INTER_CUBIC, Imgproc.INTER_AREA,</span>
+<span class="sd">    Imgproc.INTER_NEAREST, Imgproc.INTER_LANCZOS4)</span>
+<span class="sd">    :param use_scale_factor if true, scale factor fx and fy is used, fx = fy = 0</span>
+<span class="sd">    :aram min_scale control the minimum scale up for image</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">scale_multiple_of</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">max_size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">AspectScale</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">scale_multiple_of</span><span class="p">,</span> <span class="n">max_size</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_size</span><span class="p">,</span> <span class="n">scale_multiple_of</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">max_size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+                 <span class="n">resize_mode</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">use_scale_factor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_scale</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">AspectScale</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">min_size</span><span class="p">,</span> <span class="n">scale_multiple_of</span><span class="p">,</span> <span class="n">max_size</span><span class="p">,</span>
+                                          <span class="n">resize_mode</span><span class="p">,</span> <span class="n">use_scale_factor</span><span class="p">,</span> <span class="n">min_scale</span><span class="p">)</span></div>
         
 <div class="viewcode-block" id="RandomAspectScale"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.RandomAspectScale">[docs]</a><span class="k">class</span> <span class="nc">RandomAspectScale</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -666,6 +674,15 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">byte_key</span> <span class="o">=</span> <span class="s2">&quot;bytes&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">PixelBytesToMat</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">byte_key</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="FixExpand"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.FixExpand">[docs]</a><span class="k">class</span> <span class="nc">FixExpand</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Expand image with given expandHeight and expandWidth,</span>
+<span class="sd">    put the original image to the center of expanded image</span>
+<span class="sd">    :param expand_height height expand to</span>
+<span class="sd">    :param expand_width width expand to</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expand_height</span><span class="p">,</span> <span class="n">expand_width</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FixExpand</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">expand_height</span><span class="p">,</span> <span class="n">expand_width</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="SeqFileFolder"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.SeqFileFolder">[docs]</a><span class="k">class</span> <span class="nc">SeqFileFolder</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
 

@@ -100,12 +100,17 @@
 <span id="bigdl-transform-vision-image-module"></span><h2>bigdl.transform.vision.image module<a class="headerlink" href="#module-bigdl.transform.vision.image" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="bigdl.transform.vision.image.AspectScale">
-<em class="property">class </em><code class="descclassname">bigdl.transform.vision.image.</code><code class="descname">AspectScale</code><span class="sig-paren">(</span><em>scale</em>, <em>scale_multiple_of=1</em>, <em>max_size=1000</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/transform/vision/image.html#AspectScale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.transform.vision.image.AspectScale" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.transform.vision.image.</code><code class="descname">AspectScale</code><span class="sig-paren">(</span><em>min_size</em>, <em>scale_multiple_of=1</em>, <em>max_size=1000</em>, <em>resize_mode=1</em>, <em>use_scale_factor=True</em>, <em>min_scale=-1.0</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/transform/vision/image.html#AspectScale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.transform.vision.image.AspectScale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.transform.vision.image.FeatureTransformer" title="bigdl.transform.vision.image.FeatureTransformer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.transform.vision.image.FeatureTransformer</span></code></a></p>
 <p>Resize the image, keep the aspect ratio. scale according to the short edge
-:param scale scale size, apply to short edge
+:param min_size scale size, apply to short edge
 :param scale_multiple_of make the scaled size multiple of some value
-:param max_size max size after scale</p>
+:param max_size max size after scale
+:param resize_mode if resizeMode = -1, random select a mode from
+(Imgproc.INTER_LINEAR, Imgproc.INTER_CUBIC, Imgproc.INTER_AREA,
+Imgproc.INTER_NEAREST, Imgproc.INTER_LANCZOS4)
+:param use_scale_factor if true, scale factor fx and fy is used, fx = fy = 0
+:aram min_scale control the minimum scale up for image</p>
 </dd></dl>
 
 <dl class="class">
@@ -254,6 +259,16 @@ which is stored in ImageFeature
 :param end_x end x ratio
 :param end_y end y ratio
 :param value filling value</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.transform.vision.image.FixExpand">
+<em class="property">class </em><code class="descclassname">bigdl.transform.vision.image.</code><code class="descname">FixExpand</code><span class="sig-paren">(</span><em>expand_height</em>, <em>expand_width</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/transform/vision/image.html#FixExpand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.transform.vision.image.FixExpand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.transform.vision.image.FeatureTransformer" title="bigdl.transform.vision.image.FeatureTransformer"><code class="xref py py-class docutils literal"><span class="pre">bigdl.transform.vision.image.FeatureTransformer</span></code></a></p>
+<p>Expand image with given expandHeight and expandWidth,
+put the original image to the center of expanded image
+:param expand_height height expand to
+:param expand_width width expand to</p>
 </dd></dl>
 
 <dl class="class">
