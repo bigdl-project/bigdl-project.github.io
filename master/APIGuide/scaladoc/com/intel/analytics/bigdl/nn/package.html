@@ -651,6 +651,20 @@ a table of two Tensors, and a Tensor label y with values 1 or -1.</p>
       </span>
       </h4>
       <p class="comment cmt">This criterion combines LogSoftMax and ClassNLLCriterion in one single class.</p>
+    </li><li name="com.intel.analytics.bigdl.nn.CrossProduct" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CrossProduct[T]extendsAbstractModule[com.intel.analytics.bigdl.utils.Table,com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
+      <a id="CrossProduct[T]:CrossProduct[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CrossProduct.html"><span class="name">CrossProduct</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.CrossProduct.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.CrossProduct.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A layer which takes a table of multiple tensors(n &gt;= 2) as input
+and calculate to dot product for <code>all combinations of pairs</code> among input tensors.</p>
     </li><li name="com.intel.analytics.bigdl.nn.DenseToSparse" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DenseToSparse[T]extendsTensorModule[T]"></a>
       <a id="DenseToSparse[T]:DenseToSparse[T]"></a>
@@ -785,7 +799,7 @@ and calculate the dot product between them as outputs
       </h4>
       <p class="comment cmt">DynamicContainer allow user to change its submodules after create it.</p>
     </li><li name="com.intel.analytics.bigdl.nn.ELU" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ELU[T]extendsTensorModule[T]"></a>
+      <a id="ELU[T]extendsTensorModule[T]withIdentityOutputShape"></a>
       <a id="ELU[T]:ELU[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -793,7 +807,7 @@ and calculate the dot product between them as outputs
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ELU.html"><span class="name">ELU</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ELU.T">T</span>]</span>
+        <a href="ELU.html"><span class="name">ELU</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ELU.T">T</span>] with <a href="abstractnn/IdentityOutputShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.IdentityOutputShape">IdentityOutputShape</a></span>
       </span>
       </h4>
       <p class="comment cmt">Djork-Arné Clevert, Thomas Unterthiner, Sepp Hochreiter
@@ -895,7 +909,7 @@ table will be produced
       </h4>
       <p class="comment cmt">Computes the log-likelihood of a sample x given a Gaussian distribution p.</p>
     </li><li name="com.intel.analytics.bigdl.nn.GaussianDropout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="GaussianDropout[T]extendsTensorModule[T]"></a>
+      <a id="GaussianDropout[T]extendsTensorModule[T]withIdentityOutputShape"></a>
       <a id="GaussianDropout[T]:GaussianDropout[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -903,12 +917,12 @@ table will be produced
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="GaussianDropout.html"><span class="name">GaussianDropout</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.GaussianDropout.T">T</span>]</span>
+        <a href="GaussianDropout.html"><span class="name">GaussianDropout</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.GaussianDropout.T">T</span>] with <a href="abstractnn/IdentityOutputShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.IdentityOutputShape">IdentityOutputShape</a></span>
       </span>
       </h4>
       <p class="comment cmt">Apply multiplicative 1-centered Gaussian noise.</p>
     </li><li name="com.intel.analytics.bigdl.nn.GaussianNoise" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="GaussianNoise[T]extendsTensorModule[T]"></a>
+      <a id="GaussianNoise[T]extendsTensorModule[T]withIdentityOutputShape"></a>
       <a id="GaussianNoise[T]:GaussianNoise[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -916,7 +930,7 @@ table will be produced
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="GaussianNoise.html"><span class="name">GaussianNoise</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.GaussianNoise.T">T</span>]</span>
+        <a href="GaussianNoise.html"><span class="name">GaussianNoise</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.GaussianNoise.T">T</span>] with <a href="abstractnn/IdentityOutputShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.IdentityOutputShape">IdentityOutputShape</a></span>
       </span>
       </h4>
       <p class="comment cmt">Apply additive zero-centered Gaussian noise.</p>
@@ -1207,7 +1221,7 @@ a table of two Tensors, and a label y (1 or -1):
       </h4>
       <p class="comment cmt">Long Short Term Memory architecture with peephole.</p>
     </li><li name="com.intel.analytics.bigdl.nn.LeakyReLU" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="LeakyReLU[T]extendsTensorModule[T]"></a>
+      <a id="LeakyReLU[T]extendsTensorModule[T]withIdentityOutputShape"></a>
       <a id="LeakyReLU[T]:LeakyReLU[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1215,7 +1229,7 @@ a table of two Tensors, and a label y (1 or -1):
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="LeakyReLU.html"><span class="name">LeakyReLU</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.LeakyReLU.T">T</span>]</span>
+        <a href="LeakyReLU.html"><span class="name">LeakyReLU</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.LeakyReLU.T">T</span>] with <a href="abstractnn/IdentityOutputShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.IdentityOutputShape">IdentityOutputShape</a></span>
       </span>
       </h4>
       <p class="comment cmt">It is a transfer module that applies LeakyReLU, which parameter
@@ -1434,7 +1448,7 @@ a table of two Tensors of size 1 (they contain only scalars), and a label y (1 o
       </h4>
       <p class="comment cmt">Performs a torch.</p>
     </li><li name="com.intel.analytics.bigdl.nn.Masking" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Masking[T]extendsTensorModule[T]"></a>
+      <a id="Masking[T]extendsTensorModule[T]withIdentityOutputShape"></a>
       <a id="Masking[T]:Masking[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1442,7 +1456,7 @@ a table of two Tensors of size 1 (they contain only scalars), and a label y (1 o
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Masking.html"><span class="name">Masking</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Masking.T">T</span>]</span>
+        <a href="Masking.html"><span class="name">Masking</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Masking.T">T</span>] with <a href="abstractnn/IdentityOutputShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.IdentityOutputShape">IdentityOutputShape</a></span>
       </span>
       </h4>
       <p class="comment cmt"><a href="Masking.html" class="extype" name="com.intel.analytics.bigdl.nn.Masking">Masking</a> Use a mask value to skip timesteps for a sequence
@@ -1763,7 +1777,7 @@ ideally obtaining only one detection per object
       <p class="comment cmt">The Criterion to compute the negative policy gradient given a
 multinomial distribution and the sampled action and reward.</p>
     </li><li name="com.intel.analytics.bigdl.nn.PReLU" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="PReLU[T]extendsTensorModule[T]withInitializable"></a>
+      <a id="PReLU[T]extendsTensorModule[T]withInitializablewithIdentityOutputShape"></a>
       <a id="PReLU[T]:PReLU[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1771,7 +1785,7 @@ multinomial distribution and the sampled action and reward.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="PReLU.html"><span class="name">PReLU</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.PReLU.T">T</span>] with <a href="abstractnn/Initializable.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">Initializable</a></span>
+        <a href="PReLU.html"><span class="name">PReLU</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.PReLU.T">T</span>] with <a href="abstractnn/Initializable.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">Initializable</a> with <a href="abstractnn/IdentityOutputShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.IdentityOutputShape">IdentityOutputShape</a></span>
       </span>
       </h4>
       <p class="comment cmt">Applies parametric ReLU, which parameter varies the slope of the negative part.</p>
@@ -2090,7 +2104,7 @@ h_t = f(i2h * x_t + h2h * h_{t-1})
 The RoIPooling uses max pooling to convert the features inside any valid region of interest
 into a small feature map with a fixed spatial extent of pooledH × pooledW (e.</p>
     </li><li name="com.intel.analytics.bigdl.nn.SReLU" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SReLU[T]extendsTensorModule[T]withInitializable"></a>
+      <a id="SReLU[T]extendsTensorModule[T]withInitializablewithIdentityOutputShape"></a>
       <a id="SReLU[T]:SReLU[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2098,7 +2112,7 @@ into a small feature map with a fixed spatial extent of pooledH × pooledW (e.</
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="SReLU.html"><span class="name">SReLU</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SReLU.T">T</span>] with <a href="abstractnn/Initializable.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">Initializable</a></span>
+        <a href="SReLU.html"><span class="name">SReLU</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SReLU.T">T</span>] with <a href="abstractnn/Initializable.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">Initializable</a> with <a href="abstractnn/IdentityOutputShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.IdentityOutputShape">IdentityOutputShape</a></span>
       </span>
       </h4>
       <p class="comment cmt">S-shaped Rectified Linear Unit.</p>
@@ -2431,7 +2445,7 @@ This implementation is useful for inputs coming from convolution layers.</p>
       <p class="comment cmt">Applies a spatial division operation on a series of 2D inputs using kernel for
 computing the weighted average in a neighborhood.</p>
     </li><li name="com.intel.analytics.bigdl.nn.SpatialDropout1D" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SpatialDropout1D[T]extendsTensorModule[T]"></a>
+      <a id="SpatialDropout1D[T]extendsTensorModule[T]withIdentityOutputShape"></a>
       <a id="SpatialDropout1D[T]:SpatialDropout1D[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2439,13 +2453,13 @@ computing the weighted average in a neighborhood.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="SpatialDropout1D.html"><span class="name">SpatialDropout1D</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialDropout1D.T">T</span>]</span>
+        <a href="SpatialDropout1D.html"><span class="name">SpatialDropout1D</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialDropout1D.T">T</span>] with <a href="abstractnn/IdentityOutputShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.IdentityOutputShape">IdentityOutputShape</a></span>
       </span>
       </h4>
       <p class="comment cmt"> This version performs the same function as Dropout, however it drops
  entire 1D feature maps instead of individual elements.</p>
     </li><li name="com.intel.analytics.bigdl.nn.SpatialDropout2D" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SpatialDropout2D[T]extendsTensorModule[T]"></a>
+      <a id="SpatialDropout2D[T]extendsTensorModule[T]withIdentityOutputShape"></a>
       <a id="SpatialDropout2D[T]:SpatialDropout2D[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2453,13 +2467,13 @@ computing the weighted average in a neighborhood.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="SpatialDropout2D.html"><span class="name">SpatialDropout2D</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialDropout2D.T">T</span>]</span>
+        <a href="SpatialDropout2D.html"><span class="name">SpatialDropout2D</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialDropout2D.T">T</span>] with <a href="abstractnn/IdentityOutputShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.IdentityOutputShape">IdentityOutputShape</a></span>
       </span>
       </h4>
       <p class="comment cmt"> This version performs the same function as Dropout, however it drops
  entire 2D feature maps instead of individual elements.</p>
     </li><li name="com.intel.analytics.bigdl.nn.SpatialDropout3D" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SpatialDropout3D[T]extendsTensorModule[T]"></a>
+      <a id="SpatialDropout3D[T]extendsTensorModule[T]withIdentityOutputShape"></a>
       <a id="SpatialDropout3D[T]:SpatialDropout3D[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2467,7 +2481,7 @@ computing the weighted average in a neighborhood.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="SpatialDropout3D.html"><span class="name">SpatialDropout3D</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialDropout3D.T">T</span>]</span>
+        <a href="SpatialDropout3D.html"><span class="name">SpatialDropout3D</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.SpatialDropout3D.T">T</span>] with <a href="abstractnn/IdentityOutputShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.IdentityOutputShape">IdentityOutputShape</a></span>
       </span>
       </h4>
       <p class="comment cmt"> This version performs the same function as Dropout, however it drops
@@ -2723,7 +2737,7 @@ during the forward process:
       </h4>
       <p class="comment cmt"><a href="TensorTree.html" class="extype" name="com.intel.analytics.bigdl.nn.TensorTree">TensorTree</a> class is used to decode a tensor to a tree structure.</p>
     </li><li name="com.intel.analytics.bigdl.nn.Threshold" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Threshold[T]extendsTensorModule[T]"></a>
+      <a id="Threshold[T]extendsTensorModule[T]withIdentityOutputShape"></a>
       <a id="Threshold[T]:Threshold[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2731,7 +2745,7 @@ during the forward process:
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Threshold.html"><span class="name">Threshold</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Threshold.T">T</span>]</span>
+        <a href="Threshold.html"><span class="name">Threshold</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="abstractnn/TensorModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.TensorModule">TensorModule</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Threshold.T">T</span>] with <a href="abstractnn/IdentityOutputShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.IdentityOutputShape">IdentityOutputShape</a></span>
       </span>
       </h4>
       <p class="comment cmt">Threshold input Tensor.</p>
@@ -3497,6 +3511,19 @@ return the fan in and fan out size of the variable when provided the variable sh
       </span>
       <span class="symbol">
         <a href="CrossEntropyCriterion$.html"><span class="name">CrossEntropyCriterion</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.CrossProduct" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CrossProduct"></a>
+      <a id="CrossProduct:CrossProduct"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CrossProduct$.html"><span class="name">CrossProduct</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -5225,7 +5252,7 @@ return the fan in and fan out size of the variable when provided the variable sh
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="SpatialSeperableConvolution$.html"><span class="name">SpatialSeperableConvolution</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="SpatialSeperableConvolution$.html"><span class="name">SpatialSeperableConvolution</span></a><span class="result"> extends <a href="../utils/serializer/ModuleSerializable.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable">ModuleSerializable</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       

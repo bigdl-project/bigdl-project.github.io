@@ -4,20 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>bigdl.util package &#8212; BigDL  documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -25,8 +17,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="bigdl.transform.vision package" href="bigdl.transform.vision.html" /> 
-  </head>
-  <body>
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -69,12 +60,14 @@
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -95,17 +88,17 @@
 <dl class="class">
 <dt id="bigdl.util.common.Configuration">
 <em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">Configuration</code><a class="reference internal" href="_modules/bigdl/util/common.html#Configuration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Configuration" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="staticmethod">
 <dt id="bigdl.util.common.Configuration.add_extra_jars">
-<em class="property">static </em><code class="descname">add_extra_jars</code><span class="sig-paren">(</span><em>jars</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#Configuration.add_extra_jars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Configuration.add_extra_jars" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">add_extra_jars</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#Configuration.add_extra_jars"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Configuration.add_extra_jars" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add extra jars to classpath
 :param jars: a string or a list of strings as jar paths</p>
 </dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.util.common.Configuration.add_extra_python_modules">
-<em class="property">static </em><code class="descname">add_extra_python_modules</code><span class="sig-paren">(</span><em>packages</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#Configuration.add_extra_python_modules"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Configuration.add_extra_python_modules" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">add_extra_python_modules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#Configuration.add_extra_python_modules"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Configuration.add_extra_python_modules" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add extra python modules to sys.path
 :param packages: a string or a list of strings as python package paths</p>
 </dd></dl>
@@ -124,17 +117,23 @@
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.util.common.GatewayWrapper">
+<em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">GatewayWrapper</code><span class="sig-paren">(</span><em>bigdl_type</em>, <em>port=25333</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#GatewayWrapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.GatewayWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.util.common.SingletonMixin" title="bigdl.util.common.SingletonMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.SingletonMixin</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.util.common.JActivity">
 <em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">JActivity</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JActivity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JActivity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 </dd></dl>
 
 <dl class="class">
 <dt id="bigdl.util.common.JTensor">
 <em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">JTensor</code><span class="sig-paren">(</span><em>storage</em>, <em>shape</em>, <em>bigdl_type='float'</em>, <em>indices=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JTensor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JTensor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A wrapper to easy our work when need to pass or return Tensor to/from Scala.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">JTensor</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -144,7 +143,7 @@
 <dt id="bigdl.util.common.JTensor.from_ndarray">
 <em class="property">classmethod </em><code class="descname">from_ndarray</code><span class="sig-paren">(</span><em>a_ndarray</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JTensor.from_ndarray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JTensor.from_ndarray" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a ndarray to a DenseTensor which would be used in Java side.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">JTensor</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">callBigDlFunc</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
@@ -183,7 +182,7 @@ Present a dense tensor
 i_ndarray’s shape should be (shape.size, a_ndarray.size)
 And the i-th non-zero elements indices is i_ndarray[:, 1]
 :param shape     shape as a DenseTensor.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">JTensor</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">callBigDlFunc</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
@@ -218,8 +217,8 @@ As SparseTensor may generate an very big ndarray, so we don’t support this fun
 
 <dl class="class">
 <dt id="bigdl.util.common.JavaCreator">
-<em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">JavaCreator</code><span class="sig-paren">(</span><em>bigdl_type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JavaCreator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JavaCreator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#bigdl.util.common.SingletonMixin" title="bigdl.util.common.SingletonMixin"><code class="xref py py-class docutils literal"><span class="pre">bigdl.util.common.SingletonMixin</span></code></a></p>
+<em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">JavaCreator</code><span class="sig-paren">(</span><em>bigdl_type</em>, <em>gateway</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JavaCreator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JavaCreator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.util.common.SingletonMixin" title="bigdl.util.common.SingletonMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.SingletonMixin</span></code></a></p>
 <dl class="classmethod">
 <dt id="bigdl.util.common.JavaCreator.add_creator_class">
 <em class="property">classmethod </em><code class="descname">add_creator_class</code><span class="sig-paren">(</span><em>jinvoker</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JavaCreator.add_creator_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JavaCreator.add_creator_class" title="Permalink to this definition">¶</a></dt>
@@ -240,7 +239,7 @@ As SparseTensor may generate an very big ndarray, so we don’t support this fun
 <dl class="class">
 <dt id="bigdl.util.common.JavaValue">
 <em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">JavaValue</code><span class="sig-paren">(</span><em>jvalue</em>, <em>bigdl_type</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JavaValue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JavaValue" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="method">
 <dt id="bigdl.util.common.JavaValue.jvm_class_constructor">
 <code class="descname">jvm_class_constructor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JavaValue.jvm_class_constructor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JavaValue.jvm_class_constructor" title="Permalink to this definition">¶</a></dt>
@@ -267,7 +266,7 @@ As SparseTensor may generate an very big ndarray, so we don’t support this fun
 <dl class="class">
 <dt id="bigdl.util.common.Sample">
 <em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">Sample</code><span class="sig-paren">(</span><em>features</em>, <em>labels</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#Sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Sample" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="classmethod">
 <dt id="bigdl.util.common.Sample.from_jtensor">
 <em class="property">classmethod </em><code class="descname">from_jtensor</code><span class="sig-paren">(</span><em>features</em>, <em>labels</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#Sample.from_jtensor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Sample.from_jtensor" title="Permalink to this definition">¶</a></dt>
@@ -275,7 +274,7 @@ As SparseTensor may generate an very big ndarray, so we don’t support this fun
 :param features: an JTensor or a list of JTensor
 :param labels: an JTensor or a list of JTensor or a scalar
 :param bigdl_type: “double” or “float”</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
@@ -293,7 +292,7 @@ As SparseTensor may generate an very big ndarray, so we don’t support this fun
 :param features: an ndarray or a list of ndarrays
 :param labels: an ndarray or a list of ndarrays or a scalar
 :param bigdl_type: “double” or “float”</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">callBigDlFunc</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.testing</span> <span class="k">import</span> <span class="n">assert_allclose</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
@@ -318,10 +317,10 @@ As SparseTensor may generate an very big ndarray, so we don’t support this fun
 <dl class="class">
 <dt id="bigdl.util.common.SingletonMixin">
 <em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">SingletonMixin</code><a class="reference internal" href="_modules/bigdl/util/common.html#SingletonMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.SingletonMixin" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="classmethod">
 <dt id="bigdl.util.common.SingletonMixin.instance">
-<em class="property">classmethod </em><code class="descname">instance</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#SingletonMixin.instance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.SingletonMixin.instance" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">instance</code><span class="sig-paren">(</span><em>bigdl_type</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#SingletonMixin.instance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.SingletonMixin.instance" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -334,7 +333,7 @@ As SparseTensor may generate an very big ndarray, so we don’t support this fun
 
 <dl class="function">
 <dt id="bigdl.util.common.callJavaFunc">
-<code class="descclassname">bigdl.util.common.</code><code class="descname">callJavaFunc</code><span class="sig-paren">(</span><em>sc</em>, <em>func</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#callJavaFunc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.callJavaFunc" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">bigdl.util.common.</code><code class="descname">callJavaFunc</code><span class="sig-paren">(</span><em>func</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#callJavaFunc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.callJavaFunc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Call Java Function</p>
 </dd></dl>
 
@@ -391,6 +390,11 @@ given the name of the activation as a string</p>
 <dl class="function">
 <dt id="bigdl.util.common.init_engine">
 <code class="descclassname">bigdl.util.common.</code><code class="descname">init_engine</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#init_engine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.init_engine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.init_executor_gateway">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">init_executor_gateway</code><span class="sig-paren">(</span><em>sc</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#init_executor_gateway"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.init_executor_gateway" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -592,7 +596,7 @@ output graph</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
     </div>
   </body>
 </html>
