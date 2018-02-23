@@ -582,7 +582,7 @@ distributed_image_frame = ImageFrame.read(&quot;/tmp/test.jpg&quot;, sc, 2)
 # create DistributedImageFrame from an image folder
 distributed_image_frame = ImageFrame.read(&quot;/tmp/image/&quot;, sc, 2)
 
-# create LocalImageFrame from image rdd
+# create DistributedImageFrame from image rdd
 image = cv2.imread(&quot;/tmp/test.jpg&quot;)
 image_rdd = sc.parallelize([image], 2)
 distributed_image_frame = DistributedImageFrame(image_rdd)
