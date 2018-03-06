@@ -90,7 +90,7 @@ This layer is often used in word embedding.</p></div><dl class="paramcmts block"
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.LookupTable#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(nIndex:Int,nOutput:Int,paddingValue:Double,maxNorm:Double,normType:Double,shouldScaleGradByFreq:Boolean,wRegularizer:com.intel.analytics.bigdl.optim.Regularizer[T])(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.LookupTable[T]"></a>
+      <a id="&lt;init&gt;(nIndex:Int,nOutput:Int,paddingValue:Double,maxNorm:Double,normType:Double,shouldScaleGradByFreq:Boolean,wRegularizer:com.intel.analytics.bigdl.optim.Regularizer[T],maskZero:Boolean)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.LookupTable[T]"></a>
       <a id="&lt;init&gt;:LookupTable[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -98,7 +98,7 @@ This layer is often used in word embedding.</p></div><dl class="paramcmts block"
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">LookupTable</span><span class="params">(<span name="nIndex">nIndex: <span class="extype" name="scala.Int">Int</span></span>, <span name="nOutput">nOutput: <span class="extype" name="scala.Int">Int</span></span>, <span name="paddingValue">paddingValue: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0</span></span>, <span name="maxNorm">maxNorm: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">scala.Double.MaxValue</span></span>, <span name="normType">normType: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">2.0</span></span>, <span name="shouldScaleGradByFreq">shouldScaleGradByFreq: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="wRegularizer">wRegularizer: <a href="../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.LookupTable.T">T</span>] = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.LookupTable.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.LookupTable.T">T</span>]</span>)</span>
+        <span class="name">LookupTable</span><span class="params">(<span name="nIndex">nIndex: <span class="extype" name="scala.Int">Int</span></span>, <span name="nOutput">nOutput: <span class="extype" name="scala.Int">Int</span></span>, <span name="paddingValue">paddingValue: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0</span></span>, <span name="maxNorm">maxNorm: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">scala.Double.MaxValue</span></span>, <span name="normType">normType: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">2.0</span></span>, <span name="shouldScaleGradByFreq">shouldScaleGradByFreq: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="wRegularizer">wRegularizer: <a href="../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.LookupTable.T">T</span>] = <span class="symbol">null</span></span>, <span name="maskZero">maskZero: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.LookupTable.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.LookupTable.T">T</span>]</span>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">nIndex</dt><dd class="cmt"><p>Indices of input row</p></dd><dt class="param">nOutput</dt><dd class="cmt"><p>the last dimension size of output</p></dd><dt class="param">paddingValue</dt><dd class="cmt"><p>padding value, default 0</p></dd><dt class="param">maxNorm</dt><dd class="cmt"><p>max norm, defalt Double.MaxValue</p></dd><dt class="param">normType</dt><dd class="cmt"><p>norm regularization number, default 2</p></dd><dt class="param">shouldScaleGradByFreq</dt><dd class="cmt"></dd></dl></div>
@@ -653,7 +653,7 @@ the requirement.
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">var</span>
       </span>
       <span class="symbol">
         <span class="name">gradWeight</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.LookupTable.T">T</span>]</span>
@@ -798,6 +798,19 @@ the requirement.
       <p class="shortcomment cmt">load pretrained weights and bias to current module</p><div class="fullcomment"><div class="comment cmt"><p>load pretrained weights and bias to current module</p></div><dl class="paramcmts block"><dt class="param">weightPath</dt><dd class="cmt"><p>file to store weights and bias</p></dd><dt class="param">matchAll</dt><dd class="cmt"><p>whether to match all layers' weights and bias,
                 if not, only load existing pretrained weights and bias</p></dd><dt>returns</dt><dd class="cmt"><p>current module
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.LookupTable#maskZero" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="maskZero:Boolean"></a>
+      <a id="maskZero:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">maskZero</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.nn.LookupTable#maxNorm" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="maxNorm:Double"></a>
       <a id="maxNorm:Double"></a>
@@ -1456,7 +1469,7 @@ returns the result which is stored in the output field.
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">var</span>
       </span>
       <span class="symbol">
         <span class="name">weight</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.LookupTable.T">T</span>]</span>

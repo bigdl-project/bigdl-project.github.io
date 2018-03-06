@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>bigdl.nn.criterion &#8212; BigDL  documentation</title>
     <link rel="stylesheet" href="../../../_static/sphinxdoc.css" type="text/css" />
@@ -651,6 +651,29 @@
                                                    <span class="n">ignore_label</span><span class="p">,</span></div>
                                                    <span class="n">normalize_mode</span><span class="p">)</span>
 
+<div class="viewcode-block" id="TimeDistributedMaskCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.TimeDistributedMaskCriterion">[docs]</a><span class="k">class</span> <span class="nc">TimeDistributedMaskCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This class is intended to support inputs with 3 or more dimensions.</span>
+<span class="sd">    Apply Any Provided Criterion to every temporal slice of an input.</span>
+<span class="sd">    In addition, it supports padding mask.</span>
+
+<span class="sd">    eg. if the target is [ [-1, 1, 2, 3, -1], [5, 4, 3, -1, -1] ],</span>
+<span class="sd">      and set the paddingValue property to -1, then the loss of -1 would not</span>
+<span class="sd">      be accumulated and the loss is only divided by 6 (ont including the amount of</span>
+<span class="sd">      -1, in this case, we are only interested in 1, 2, 3, 5, 4, 3)</span>
+
+<span class="sd">    :param criterion: embedded criterion</span>
+<span class="sd">    :param padding_value: padding value</span>
+
+
+<span class="sd">    &gt;&gt;&gt; td = TimeDistributedMaskCriterion(ClassNLLCriterion())</span>
+<span class="sd">    creating: createClassNLLCriterion</span>
+<span class="sd">    creating: createTimeDistributedMaskCriterion</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">padding_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TimeDistributedMaskCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span></div>
+            <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">padding_value</span><span class="p">)</span>
 
 <div class="viewcode-block" id="TimeDistributedCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.TimeDistributedCriterion">[docs]</a><span class="k">class</span> <span class="nc">TimeDistributedCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -1049,7 +1072,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
     </div>
   </body>
 </html>

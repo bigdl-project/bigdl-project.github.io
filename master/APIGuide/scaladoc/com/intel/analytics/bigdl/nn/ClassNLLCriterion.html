@@ -51,7 +51,7 @@ The loss can be described as:
     loss(x, class) = -x[class]
 or in the case of the weights argument it is specified as follows:
     loss(x, class) = -weights[class] * x[class]</p><p>Due to the behaviour of the backend code, it is necessary to set sizeAverage to false when
-calculating losses in non-batch mode.</p><p>Note that if the target is <code>-1</code>, the training process will skip this sample.
+calculating losses in non-batch mode.</p><p>Note that if the target is <code>paddingValue</code>, the training process will skip this sample.
 In other words, the forward process will return zero output and the backward process
 will also return zero <code>gradInput</code>.</p><p>By default, the losses are averaged over observations for each minibatch. However, if the field
 sizeAverage is set to false, the losses are instead summed for each minibatch.</p><p>In particular, when weights=None, size_average=True and logProbAsInput=False, this is same as
@@ -104,7 +104,7 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.ClassNLLCriterion#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(weights:com.intel.analytics.bigdl.tensor.Tensor[T],sizeAverage:Boolean,logProbAsInput:Boolean)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.ClassNLLCriterion[T]"></a>
+      <a id="&lt;init&gt;(weights:com.intel.analytics.bigdl.tensor.Tensor[T],sizeAverage:Boolean,logProbAsInput:Boolean,paddingValue:Int)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.ClassNLLCriterion[T]"></a>
       <a id="&lt;init&gt;:ClassNLLCriterion[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -112,7 +112,7 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">ClassNLLCriterion</span><span class="params">(<span name="weights">weights: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>] = <span class="symbol">null</span></span>, <span name="sizeAverage">sizeAverage: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="logProbAsInput">logProbAsInput: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>)</span>
+        <span class="name">ClassNLLCriterion</span><span class="params">(<span name="weights">weights: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>] = <span class="symbol">null</span></span>, <span name="sizeAverage">sizeAverage: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="logProbAsInput">logProbAsInput: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="paddingValue">paddingValue: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">-1</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">weights</dt><dd class="cmt"><p>weights of each element of the input</p></dd><dt class="param">sizeAverage</dt><dd class="cmt"><p>size average of batch</p></dd><dt class="param">logProbAsInput</dt><dd class="cmt"><p>indicating whether to accept log-probabilities or probabilities as input.
