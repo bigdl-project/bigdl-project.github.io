@@ -33,9 +33,7 @@
       var is_top_frame = false;
         
         var pageToc = [
-          {title: "Before You Start", url: "#before-you-start", children: [
-          ]},
-          {title: "Download BigDL", url: "#download-bigdl", children: [
+          {title: "Deploy BigDL on Dataproc", url: "#deploy-bigdl-on-dataproc", children: [
           ]},
           {title: "Run BigDL Scala Examples", url: "#run-bigdl-scala-examples", children: [
           ]},
@@ -60,23 +58,32 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     
     <h1><strong>Run on Google Cloud Dataproc</strong></h1>
     <hr>
-    <h2 id="before-you-start"><strong>Before You Start</strong></h2>
-<p>Before using BigDL on Google Dataproc, you need setup a project and create a cluster on Dataproc(you may refer to <a href="https://cloud.google.com/dataproc/docs/how-to">https://cloud.google.com/sdk/docs/how-to</a> for more instructions).  </p>
-<p>Please disable <code>spark.dynamicAllocation</code> when creating cluster. E.g.,  </p>
-<pre><code class="bash">gcloud dataproc clusters create bigdl --project $PROJECT_NAME --worker-machine-type $MACHINETYPE --master-machine-type $MACHINETYPE --num-workers $WORKERNUMBER --properties spark:spark.dynamicAllocation.enabled=false
+    <h2 id="deploy-bigdl-on-dataproc"><strong>Deploy BigDL on Dataproc</strong></h2>
+<p>Before using BigDL on Google Dataproc, you need setup a project and create a cluster on Dataproc(you may refer to <a href="https://cloud.google.com/dataproc/docs/how-to">https://cloud.google.com/sdk/docs/how-to</a> for more instructions). Now you can create a Cloud Dataproc cluster using the Google Cloud SDK's(https://cloud.google.com/sdk/docs/) gcloud command-line tool.</p>
+<p>To make it easy to try out BigDL on Spark on Dataproc, an initial action script is provided. You can use use this initialization action to create a new Dataproc cluster with BigDL pre-installed by https://github.com/GoogleCloudPlatform/dataproc-initialization-actions/blob/master/bigdl/bigdl.sh
+You can use below command to create a new cluster with BigDL preinstall</p>
+<pre><code class="bash">gcloud dataproc clusters create &lt;CLUSTER_NAME&gt; --initialization-actions=gs://dataproc-initialization-actions/bigdl/bigdl.sh
 </code></pre>
 
-<p>Or please set <code>--conf "spark.dynamicAllocation.enabled=false"</code> when submitting spark jobs</p>
-<hr />
-<h2 id="download-bigdl"><strong>Download BigDL</strong></h2>
-<p>BigDL can be downloaded from https://bigdl-project.github.io/master/#release-download. It provides prebuild binary for different Spark versions. Please ssh on the master VM Instance and download BigDL according to Spark version. </p>
-<pre><code class="bash">wget BIGDL_LINK
+<p>Note:</p>
+<p>By default, it will automatically download BigDL 0.4.0 for Dataproc 1.2 (Spark 2.2.0 and Scala 2.11.8). To download a different version of BigDL or one targeted to a different version of Spark/Scala, find the download URL from the BigDL releases page, and set the metadata key "bigdl-download-url".
+eg.</p>
+<pre><code class="bash">gcloud dataproc clusters create &lt;CLUSTER_NAME&gt; \
+    --image-version 1.0 \
+    --initialization-actions gs://dataproc-initialization-actions/bigdl/bigdl.sh \
+    --initialization-action-timeout 10m \
+    --metadata 'bigdl-download-url=https://s3-ap-southeast-1.amazonaws.com/bigdl-download/dist-spark-1.6.2-scala-2.10.5-all-0.4.0-dist.zip'
 </code></pre>
 
-<p>After downloading BigDL, you will be able to find a zip file,eg.dist-spark-2.2.0-scala-2.11.8-0.3.0-dist.zip. Unzip the file</p>
-<pre><code class="bash">unzip xxx.zip
+<p>More information please refer https://github.com/GoogleCloudPlatform/dataproc-initialization-actions/tree/master/bigdl</p>
+<p>Once the cluster is provisioned, you will be able to see the cluster running in the Google Cloud Platform Console. Now you can SSH to the master node.</p>
+<p>Cloud Dataproc support various way to SSH to the master, here we use SSH from Google Cloud SDK.
+E.g.,</p>
+<pre><code class="bash">gcloud compute --project &lt;PROJECT_ID&gt; ssh --zone &lt;ZONE&gt; &lt;CLUSTER_NAME&gt;
 </code></pre>
 
+<p>Google cloud SDK will perform the authentication for you and open an SSH client (Eg Putty).</p>
+<p>You should be able to find BigDL is located under /opt/intel-bigdl. And your VM is ready for running deep learning examples at scale!</p>
 <hr />
 <h2 id="run-bigdl-scala-examples"><strong>Run BigDL Scala Examples</strong></h2>
 <p>Now you can run BigDL examples on Google Dataproc. For instance, you may use the <code>run.example.sh</code> script which is located under ./bin directory with following parameters:</p>
