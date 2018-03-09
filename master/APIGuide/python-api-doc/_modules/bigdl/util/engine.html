@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>bigdl.util.engine &#8212; BigDL  documentation</title>
     <link rel="stylesheet" href="../../../_static/sphinxdoc.css" type="text/css" />
@@ -123,21 +123,25 @@
     <span class="k">def</span> <span class="nf">append_path</span><span class="p">(</span><span class="n">env_var_name</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Adding </span><span class="si">%s</span><span class="s2"> to </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">env_var_name</span><span class="p">))</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">env_var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span>
-                <span class="n">env_var_name</span><span class="p">]</span>  <span class="c1"># noqa</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">env_var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">env_var_name</span><span class="p">]</span>  <span class="c1"># noqa</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
             <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">env_var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span>
+
+    <span class="k">if</span> <span class="n">bigdl_classpath</span><span class="p">:</span>
+        <span class="n">append_path</span><span class="p">(</span><span class="s2">&quot;BIGDL_JARS&quot;</span><span class="p">,</span> <span class="n">bigdl_classpath</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">conf_paths</span><span class="p">:</span>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">conf_paths</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Expecting one conf: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">conf_paths</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prepending </span><span class="si">%s</span><span class="s2"> to sys.path&quot;</span> <span class="o">%</span> <span class="n">conf_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">conf_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-    <span class="k">if</span> <span class="n">bigdl_classpath</span> <span class="ow">and</span> <span class="n">is_spark_below_2_2</span><span class="p">():</span>
-        <span class="n">append_path</span><span class="p">(</span><span class="s2">&quot;SPARK_CLASSPATH&quot;</span><span class="p">,</span> <span class="n">bigdl_classpath</span><span class="p">)</span>
-        <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">Configuration</span>
-        <span class="k">for</span> <span class="n">jar</span> <span class="ow">in</span> <span class="n">Configuration</span><span class="o">.</span><span class="n">get_bigdl_jars</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;BIGDL_JARS&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="n">is_spark_below_2_2</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">jar</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;BIGDL_JARS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">):</span>
             <span class="n">append_path</span><span class="p">(</span><span class="s2">&quot;SPARK_CLASSPATH&quot;</span><span class="p">,</span> <span class="n">jar</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;BIGDL_PACKAGES&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">package</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;BIGDL_PACKAGES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">):</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">package</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="get_bigdl_classpath"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.engine.get_bigdl_classpath">[docs]</a><span class="k">def</span> <span class="nf">get_bigdl_classpath</span><span class="p">():</span>
@@ -220,7 +224,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.
     </div>
   </body>
 </html>

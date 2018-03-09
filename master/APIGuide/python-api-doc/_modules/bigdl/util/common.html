@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>bigdl.util.common &#8212; BigDL  documentation</title>
     <link rel="stylesheet" href="../../../_static/sphinxdoc.css" type="text/css" />
@@ -71,6 +71,7 @@
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">six</span>
 <span class="kn">from</span> <span class="nn">py4j.protocol</span> <span class="k">import</span> <span class="n">Py4JJavaError</span>
 <span class="kn">from</span> <span class="nn">py4j.java_gateway</span> <span class="k">import</span> <span class="n">JavaObject</span>
 <span class="kn">from</span> <span class="nn">py4j.java_collections</span> <span class="k">import</span> <span class="n">ListConverter</span><span class="p">,</span> <span class="n">JavaArray</span><span class="p">,</span> <span class="n">JavaList</span><span class="p">,</span> <span class="n">JavaMap</span><span class="p">,</span> <span class="n">MapConverter</span>
@@ -110,6 +111,7 @@
                     <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div></div>
         <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span>
 
+
 <div class="viewcode-block" id="GatewayWrapper"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.GatewayWrapper">[docs]</a><span class="k">class</span> <span class="nc">GatewayWrapper</span><span class="p">(</span><span class="n">SingletonMixin</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">25333</span><span class="p">):</span></div>
@@ -132,6 +134,8 @@
 
 <div class="viewcode-block" id="JavaCreator.set_creator_class"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JavaCreator.set_creator_class">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">set_creator_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cclass</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cclass</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+            <span class="n">cclass</span> <span class="o">=</span> <span class="p">[</span><span class="n">cclass</span><span class="p">]</span>
         <span class="k">with</span> <span class="n">JavaCreator</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
             <span class="n">JavaCreator</span><span class="o">.</span><span class="n">__creator_class</span> <span class="o">=</span> <span class="n">cclass</span></div>
             <span class="n">JavaCreator</span><span class="o">.</span><span class="n">_instance</span> <span class="o">=</span> <span class="kc">None</span>
@@ -189,37 +193,6 @@
 <div class="viewcode-block" id="get_dtype"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_dtype">[docs]</a><span class="k">def</span> <span class="nf">get_dtype</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">):</span>
     <span class="c1"># Always return float32 for now</span></div>
     <span class="k">return</span> <span class="s2">&quot;float32&quot;</span>
-
-
-<div class="viewcode-block" id="Configuration"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.Configuration">[docs]</a><span class="k">class</span> <span class="nc">Configuration</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="n">__bigdl_jars</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_bigdl_classpath</span><span class="p">()]</span>
-
-<div class="viewcode-block" id="Configuration.add_extra_jars"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.Configuration.add_extra_jars">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">add_extra_jars</span><span class="p">(</span><span class="n">jars</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Add extra jars to classpath</span>
-<span class="sd">        :param jars: a string or a list of strings as jar paths</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">import</span> <span class="nn">six</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">jars</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
-            <span class="n">jars</span> <span class="o">=</span> <span class="p">[</span><span class="n">jars</span><span class="p">]</span></div>
-        <span class="n">Configuration</span><span class="o">.</span><span class="n">__bigdl_jars</span> <span class="o">+=</span> <span class="n">jars</span>
-
-<div class="viewcode-block" id="Configuration.add_extra_python_modules"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.Configuration.add_extra_python_modules">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">add_extra_python_modules</span><span class="p">(</span><span class="n">packages</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Add extra python modules to sys.path</span>
-<span class="sd">        :param packages: a string or a list of strings as python package paths</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">import</span> <span class="nn">six</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">packages</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
-            <span class="n">packages</span> <span class="o">=</span> <span class="p">[</span><span class="n">packages</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">package</span> <span class="ow">in</span> <span class="n">packages</span><span class="p">:</span></div>
-            <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">package</span><span class="p">)</span>
-
-<div class="viewcode-block" id="Configuration.get_bigdl_jars"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.Configuration.get_bigdl_jars">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">get_bigdl_jars</span><span class="p">():</span></div></div>
-        <span class="k">return</span> <span class="n">Configuration</span><span class="o">.</span><span class="n">__bigdl_jars</span>
 
 
 <div class="viewcode-block" id="JActivity"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JActivity">[docs]</a><span class="k">class</span> <span class="nc">JActivity</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -498,12 +471,15 @@
 <div class="viewcode-block" id="init_engine"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.init_engine">[docs]</a><span class="k">def</span> <span class="nf">init_engine</span><span class="p">(</span><span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
     <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;initEngine&quot;</span><span class="p">)</span>
 
+
 <div class="viewcode-block" id="init_executor_gateway"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.init_executor_gateway">[docs]</a><span class="k">def</span> <span class="nf">init_executor_gateway</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
     <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;initExecutorGateway&quot;</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="n">sc</span><span class="o">.</span><span class="n">_gateway</span><span class="o">.</span><span class="n">_gateway_client</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+
 
 <div class="viewcode-block" id="get_node_and_core_number"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_node_and_core_number">[docs]</a><span class="k">def</span> <span class="nf">get_node_and_core_number</span><span class="p">(</span><span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getNodeAndCoreNumber&quot;</span><span class="p">)</span></div>
     <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
 
 <div class="viewcode-block" id="redire_spark_logs"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.redire_spark_logs">[docs]</a><span class="k">def</span> <span class="nf">redire_spark_logs</span><span class="p">(</span><span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="n">log_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;/bigdl.log&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -576,8 +552,8 @@
     <span class="n">bigdl_conf</span> <span class="o">=</span> <span class="n">get_bigdl_conf</span><span class="p">()</span>
     <span class="n">sparkConf</span> <span class="o">=</span> <span class="n">SparkConf</span><span class="p">()</span>
     <span class="n">sparkConf</span><span class="o">.</span><span class="n">setAll</span><span class="p">(</span><span class="n">bigdl_conf</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_spark_below_2_2</span><span class="p">():</span>
-        <span class="k">for</span> <span class="n">jar</span> <span class="ow">in</span> <span class="n">Configuration</span><span class="o">.</span><span class="n">get_bigdl_jars</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;BIGDL_JARS&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_spark_below_2_2</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">jar</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;BIGDL_JARS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">):</span>
             <span class="n">extend_spark_driver_cp</span><span class="p">(</span><span class="n">sparkConf</span><span class="p">,</span> <span class="n">jar</span><span class="p">)</span>
 
     <span class="c1"># add content in PYSPARK_FILES in spark.submit.pyFiles</span>
@@ -623,6 +599,7 @@
     <span class="k">else</span><span class="p">:</span></div>
         <span class="k">return</span> <span class="n">SQLContext</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>  <span class="c1"># Compatible with Spark1.5.1</span>
 
+
 <span class="k">def</span> <span class="nf">_get_port</span><span class="p">():</span>
     <span class="n">root_dir</span> <span class="o">=</span> <span class="n">SparkFiles</span><span class="o">.</span><span class="n">getRootDirectory</span><span class="p">()</span>
     <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;gateway_port&quot;</span><span class="p">)</span>
@@ -636,6 +613,7 @@
                            <span class="s2">&quot; function is called before any call of java function on the&quot;</span>
                            <span class="s2">&quot; executor side.&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">port</span>
+
 
 <span class="k">def</span> <span class="nf">_get_gateway</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">SparkFiles</span><span class="o">.</span><span class="n">_is_running_on_worker</span><span class="p">:</span>
@@ -838,7 +816,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.
     </div>
   </body>
 </html>

@@ -2,17 +2,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>ModelBroadcast - bigdl 0.5.0-SNAPSHOT API - com.intel.analytics.bigdl.models.utils.ModelBroadcast</title>
-          <meta name="description" content="ModelBroadcast - bigdl 0.5.0 - SNAPSHOT API - com.intel.analytics.bigdl.models.utils.ModelBroadcast" />
-          <meta name="keywords" content="ModelBroadcast bigdl 0.5.0 SNAPSHOT API com.intel.analytics.bigdl.models.utils.ModelBroadcast" />
+          <title>PredictionService - bigdl 0.5.0-SNAPSHOT API - com.intel.analytics.bigdl.optim.PredictionService</title>
+          <meta name="description" content="PredictionService - bigdl 0.5.0 - SNAPSHOT API - com.intel.analytics.bigdl.optim.PredictionService" />
+          <meta name="keywords" content="PredictionService bigdl 0.5.0 SNAPSHOT API com.intel.analytics.bigdl.optim.PredictionService" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
-      <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
       <script type="text/javascript">
          if(top === self) {
-            var url = '../../../../../../index.html';
-            var hash = 'com.intel.analytics.bigdl.models.utils.ModelBroadcast$';
+            var url = '../../../../../index.html';
+            var hash = 'com.intel.analytics.bigdl.optim.PredictionService';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -22,26 +22,38 @@
    	  </script>
     
         </head>
-        <body class="value">
+        <body class="type">
       <div id="definition">
-        <a href="ModelBroadcast.html" title="Go to companion"><img src="../../../../../../lib/object_to_class_big.png" /></a>
-        <p id="owner"><a href="../../../../../package.html" class="extype" name="com">com</a>.<a href="../../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl.models">models</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.models.utils">utils</a></p>
-        <h1><a href="ModelBroadcast.html" title="Go to companion">ModelBroadcast</a></h1>
+        <a href="PredictionService$.html" title="Go to companion"><img src="../../../../../lib/class_to_object_big.png" /></a>
+        <p id="owner"><a href="../../../../package.html" class="extype" name="com">com</a>.<a href="../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.optim">optim</a></p>
+        <h1><a href="PredictionService$.html" title="Go to companion">PredictionService</a></h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">object</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">ModelBroadcast</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">PredictionService</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><h6> Thread-safe Prediction Service for Concurrent Calls </h6><p>In this service, concurrency is kept not greater than <span class="extype" name="numThreads">numThreads</span> by a <code>BlockingQueue</code>,
+which contains available model instances.
+<br><br>
+<span class="extype" name="numThreads">numThreads</span> model instances sharing weights/bias
+will be put into the <code>BlockingQueue</code> during initialization.
+<br><br>
+When predict method called, service will try to take an instance from <code>BlockingQueue</code>,
+which means if all instances are on serving, the predicting request will be blocked until
+some instances are released.
+<br><br>
+If exceptions caught during predict,
+a scalar Tensor[String] will be returned with thrown message.
+</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -59,7 +71,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.intel.analytics.bigdl.models.utils.ModelBroadcast"><span>ModelBroadcast</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.intel.analytics.bigdl.optim.PredictionService"><span>PredictionService</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -150,19 +162,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.models.utils.ModelBroadcast#apply" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="apply[T](applyProtoBuffer:Boolean)(implicitevidence$2:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.models.utils.ModelBroadcast[T]"></a>
-      <a id="apply[T](Boolean)(ClassTag[T],TensorNumeric[T]):ModelBroadcast[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">apply</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="applyProtoBuffer">applyProtoBuffer: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.models.utils.ModelBroadcast.apply.T">T</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.models.utils.ModelBroadcast.apply.T">T</span>]</span>)</span><span class="result">: <a href="ModelBroadcast.html" class="extype" name="com.intel.analytics.bigdl.models.utils.ModelBroadcast">ModelBroadcast</a>[<span class="extype" name="com.intel.analytics.bigdl.models.utils.ModelBroadcast.apply.T">T</span>]</span>
-      </span>
-      </h4>
-      
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -188,7 +187,7 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
@@ -233,7 +232,7 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="symbol">classOf[java.lang.Throwable]</span>
@@ -266,6 +265,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.PredictionService#instQueue" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="instQueue:java.util.concurrent.LinkedBlockingQueue[com.intel.analytics.bigdl.Module[T]]"></a>
+      <a id="instQueue:LinkedBlockingQueue[Module[T]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">instQueue</span><span class="result">: <span class="extype" name="java.util.concurrent.LinkedBlockingQueue">LinkedBlockingQueue</span>[<a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.PredictionService.T">T</span>]]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -318,6 +330,47 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.PredictionService#predict" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="predict(request:Array[Byte]):Array[Byte]"></a>
+      <a id="predict(Array[Byte]):Array[Byte]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">predict</span><span class="params">(<span name="request">request: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Firstly, deserialization tasks will be run with inputs(Array[Byte]).</p><div class="fullcomment"><div class="comment cmt"><h6> Thread-safe single sample prediction </h6><p>Firstly, deserialization tasks will be run with inputs(Array[Byte]).
+<br><br>
+Then, run model prediction with deserialized inputs
+as soon as there exists vacant instances(total number is <span class="extype" name="numThreads">numThreads</span>).
+Otherwise, it will hold on till some instances are released.
+<br><br>
+Finally, prediction results will be serialized to Array[Byte] according to BigDL.proto.
+</p></div><dl class="paramcmts block"><dt class="param">request</dt><dd class="cmt"><p>input bytes, which will be deserialized by BigDL.proto</p></dd><dt>returns</dt><dd class="cmt"><p>output bytes, which is serialized by BigDl.proto
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.PredictionService#predict" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="predict(request:com.intel.analytics.bigdl.nn.abstractnn.Activity):com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
+      <a id="predict(Activity):Activity"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">predict</span><span class="params">(<span name="request">request: <a href="../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <a href="../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Running model prediction with input Activity as soon as
+there exists vacant instances(the size of pool is <span class="extype" name="numThreads">numThreads</span>).</p><div class="fullcomment"><div class="comment cmt"><h6> Thread-safe single sample prediction </h6><p>Running model prediction with input Activity as soon as
+there exists vacant instances(the size of pool is <span class="extype" name="numThreads">numThreads</span>).
+Otherwise, it will hold on till some instances are released.
+<br><br>
+Outputs will be deeply copied after model prediction, so they are invariant.
+</p></div><dl class="paramcmts block"><dt class="param">request</dt><dd class="cmt"><p>input Activity, could be Tensor or Table(key, Tensor)</p></dd><dt>returns</dt><dd class="cmt"><p>output Activity, could be Tensor or Table(key, Tensor)
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -410,11 +463,7 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.Serializable">
-              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
-            </div><div class="parent" name="java.io.Serializable">
-              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
-            </div><div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
@@ -434,6 +483,6 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../../lib/template.js"></script>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
     </body>
       </html>

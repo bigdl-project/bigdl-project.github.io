@@ -110,32 +110,27 @@ linear = Linear(2, 3) # Try to create a Linear layer
 
 <h2 id="bigdl-configurations"><strong>BigDL Configurations</strong></h2>
 <ul>
-<li>Increase memory<ul>
-<li>export SPARK_DRIVER_MEMORY=20g</li>
+<li>Increase memory</li>
 </ul>
-</li>
-<li>Add extra jars or python packages<ul>
-<li>Call the following API <strong>BEFORE</strong> creating <code>SparkContext</code>:</li>
-</ul>
-</li>
-</ul>
-<pre><code class="python">from bigdl.util.common import Configuration
-
-Configuration.add_extra_jars(jars)
-Configuration.add_extra_python_modules(packages)
+<pre><code class="bash">export SPARK_DRIVER_MEMORY=20g
 </code></pre>
 
-<p><code>jars</code> can be a string or a list of strings as jar paths to be added.</p>
-<p><code>packages</code> can be a string or a list of strings as python package paths to be appended to <code>sys.path</code>.</p>
 <ul>
-<li>Redirect logs<ul>
-<li>If you want to redirect spark logs to file and keep BigDL logs in console only, call the following API before you train your model:</li>
+<li>Add extra jars or python packages</li>
 </ul>
-</li>
+<p>&emsp; Set the environment variables <code>BIGDL_JARS</code> and <code>BIGDL_PACKAGES</code> <strong>BEFORE</strong> creating <code>SparkContext</code>:</p>
+<pre><code class="bash">export BIGDL_JARS=...
+export BIGDL_PACKAGES=...
+</code></pre>
+
+<ul>
+<li>Redirect logs</li>
 </ul>
+<p>&emsp; If you want to redirect spark logs to file and keep BigDL logs in console only, call the following API before you train your model:</p>
 <pre><code class="python">from bigdl.util.common import *
 
-redire_spark_logs(log_path=file path to redirect logs to)
+# by default redirected to `bigdl.log` under the current workspace
+redire_spark_logs(log_path=&quot;bigdl.log&quot;)
 show_bigdl_info_logs()
 </code></pre>
 
