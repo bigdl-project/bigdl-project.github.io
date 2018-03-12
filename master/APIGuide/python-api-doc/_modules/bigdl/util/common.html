@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>bigdl.util.common &#8212; BigDL  documentation</title>
     <link rel="stylesheet" href="../../../_static/sphinxdoc.css" type="text/css" />
@@ -468,8 +468,10 @@
 <span class="p">]</span>
 
 
-<div class="viewcode-block" id="init_engine"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.init_engine">[docs]</a><span class="k">def</span> <span class="nf">init_engine</span><span class="p">(</span><span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+<div class="viewcode-block" id="init_engine"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.init_engine">[docs]</a><span class="k">def</span> <span class="nf">init_engine</span><span class="p">(</span><span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
     <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;initEngine&quot;</span><span class="p">)</span>
+    <span class="c1"># Spark context is supposed to have been created when init_engine is called</span></div>
+    <span class="n">get_spark_context</span><span class="p">()</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">bigdl</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">BigDLSerDe</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
 
 
 <div class="viewcode-block" id="init_executor_gateway"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.init_executor_gateway">[docs]</a><span class="k">def</span> <span class="nf">init_executor_gateway</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
@@ -816,7 +818,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.
     </div>
   </body>
 </html>
