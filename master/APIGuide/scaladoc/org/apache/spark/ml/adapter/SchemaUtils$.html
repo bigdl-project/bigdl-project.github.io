@@ -162,7 +162,7 @@
         <span class="name">appendColumn</span><span class="params">(<span name="schema">schema: <span class="extype" name="org.apache.spark.sql.types.StructType">StructType</span></span>, <span name="colName">colName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="dataType">dataType: <span class="extype" name="org.apache.spark.sql.types.DataType">DataType</span></span>, <span name="nullable">nullable: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.types.StructType">StructType</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Appends a new column to the input schema.</p><div class="fullcomment"><div class="comment cmt"><p>Appends a new column to the input schema. This fails if the given output column already exists.</p></div><dl class="paramcmts block"><dt class="param">schema</dt><dd class="cmt"><p>input schema</p></dd><dt class="param">colName</dt><dd class="cmt"><p>new column name. If this column name is an empty string &quot;&quot;, this method returns
+      <p class="shortcomment cmt">Appends a new column to the input schema.</p><div class="fullcomment"><div class="comment cmt"><p>Appends a new column to the input schema. This fails if the given output column already exists</p></div><dl class="paramcmts block"><dt class="param">schema</dt><dd class="cmt"><p>input schema</p></dd><dt class="param">colName</dt><dd class="cmt"><p>new column name. If this column name is an empty string &quot;&quot;, this method returns
                the input schema unchanged. This allows users to disable output columns.</p></dd><dt class="param">dataType</dt><dd class="cmt"><p>new column data type</p></dd><dt>returns</dt><dd class="cmt"><p>new schema with the input column appended
 </p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -320,6 +320,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="org.apache.spark.ml.adapter.SchemaUtils#sameType" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="sameType(a:org.apache.spark.sql.types.DataType,b:org.apache.spark.sql.types.DataType):Boolean"></a>
+      <a id="sameType(DataType,DataType):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sameType</span><span class="params">(<span name="a">a: <span class="extype" name="org.apache.spark.sql.types.DataType">DataType</span></span>, <span name="b">b: <span class="extype" name="org.apache.spark.sql.types.DataType">DataType</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

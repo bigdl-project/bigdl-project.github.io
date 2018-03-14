@@ -101,8 +101,7 @@
     <span class="n">show_bigdl_info_logs</span><span class="p">()</span>
     <span class="n">init_engine</span><span class="p">()</span>
 
-    <span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_mnist</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">.</span><span class="n">dataPath</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_mnist</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">.</span><span class="n">dataPath</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">dataPath</span><span class="p">)</span>
 
     <span class="c1"># The model used here is exactly the same as the model in ../lenet/lenet5.py</span>
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">Optimizer</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>

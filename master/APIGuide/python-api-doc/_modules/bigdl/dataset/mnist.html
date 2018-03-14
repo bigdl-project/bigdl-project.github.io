@@ -76,6 +76,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span>
 
 <span class="kn">from</span> <span class="nn">bigdl.dataset</span> <span class="k">import</span> <span class="n">base</span>
+<span class="kn">from</span> <span class="nn">bigdl.dataset.transformer</span> <span class="k">import</span> <span class="o">*</span>
 
 <span class="n">SOURCE_URL</span> <span class="o">=</span> <span class="s1">&#39;http://yann.lecun.com/exdb/mnist/&#39;</span>
 
@@ -173,6 +174,16 @@
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">local_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">test_labels</span> <span class="o">=</span> <span class="n">extract_labels</span><span class="p">(</span><span class="n">f</span><span class="p">)</span></div>
         <span class="k">return</span> <span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span>
+
+
+<div class="viewcode-block" id="load_data"><a class="viewcode-back" href="../../../bigdl.dataset.html#bigdl.dataset.mnist.load_data">[docs]</a><span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="s2">&quot;/tmp/mnist&quot;</span><span class="p">):</span>
+    <span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">read_data_sets</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">read_data_sets</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span>
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">normalizer</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">TRAIN_MEAN</span><span class="p">,</span> <span class="n">TRAIN_STD</span><span class="p">)</span>
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">normalizer</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">TRAIN_MEAN</span><span class="p">,</span> <span class="n">TRAIN_STD</span><span class="p">)</span>
+    <span class="n">Y_train</span> <span class="o">=</span> <span class="n">train_labels</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">Y_test</span> <span class="o">=</span> <span class="n">test_labels</span> <span class="o">+</span> <span class="mi">1</span></div>
+    <span class="k">return</span> <span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">)</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>

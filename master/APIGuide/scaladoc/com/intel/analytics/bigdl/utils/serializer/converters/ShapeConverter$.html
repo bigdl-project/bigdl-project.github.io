@@ -254,6 +254,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.converters.DataConverter#getLock" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getLock:Object"></a>
+      <a id="getLock:AnyRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getLock</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="DataConverter.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.converters.DataConverter">DataConverter</a></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -320,7 +333,7 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.utils.serializer.converters.ShapeConverter#setAttributeValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setAttributeValue[T](context:com.intel.analytics.bigdl.utils.serializer.SerializeContext[T],attributeBuilder:com.intel.analytics.bigdl.serialization.Bigdl.AttrValue.Builder,value:Any,valueType:reflect.runtime.universe.Type)(implicitevidence$2:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):Unit"></a>
+      <a id="setAttributeValue[T](context:com.intel.analytics.bigdl.utils.serializer.SerializeContext[T],attributeBuilder:com.intel.analytics.bigdl.serialization.Bigdl.AttrValue.Builder,value:Any,valueType:reflect.runtime.universe.Type)(implicitevidence$4:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):Unit"></a>
       <a id="setAttributeValue[T](SerializeContext[T],Builder,Any,scala.reflect.api.JavaUniverse.Type)(ClassTag[T],TensorNumeric[T]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -333,6 +346,32 @@
       </h4>
       <p class="shortcomment cmt">Set attribute value to protobuf format</p><div class="fullcomment"><div class="comment cmt"><p>Set attribute value to protobuf format</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>data type</p></dd><dt class="param">context</dt><dd class="cmt"><p>serialization context</p></dd><dt class="param">attributeBuilder</dt><dd class="cmt"><p>the attribute value writable instance</p></dd><dt class="param">value</dt><dd class="cmt"><p>the value to be written to protobuf file</p></dd><dt class="param">valueType</dt><dd class="cmt"><p>the type of the value to help set the data type
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.utils.serializer.converters.ShapeConverter">ShapeConverter</a> → <a href="DataConverter.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.converters.DataConverter">DataConverter</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.converters.ShapeConverter#shapeToBigDL" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="shapeToBigDL[T](context:com.intel.analytics.bigdl.utils.serializer.DeserializeContext,model:com.intel.analytics.bigdl.serialization.Bigdl.BigDLModule,name:String)(implicitevidence$2:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.utils.Shape"></a>
+      <a id="shapeToBigDL[T](DeserializeContext,BigDLModule,String)(ClassTag[T],TensorNumeric[T]):Shape"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">shapeToBigDL</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="context">context: <a href="../DeserializeContext.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.DeserializeContext">DeserializeContext</a></span>, <span name="model">model: <span class="extype" name="com.intel.analytics.bigdl.serialization.Bigdl.BigDLModule">BigDLModule</span></span>, <span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.converters.ShapeConverter.shapeToBigDL.T">T</span>]</span>, <span name="ev">ev: <a href="../../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.converters.ShapeConverter.shapeToBigDL.T">T</span>]</span>)</span><span class="result">: <a href="../../Shape.html" class="extype" name="com.intel.analytics.bigdl.utils.Shape">Shape</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.converters.ShapeConverter#shapeToProto" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="shapeToProto[T](context:com.intel.analytics.bigdl.utils.serializer.SerializeContext[T],shape:com.intel.analytics.bigdl.utils.Shape)(implicitevidence$3:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.serialization.Bigdl.Shape"></a>
+      <a id="shapeToProto[T](SerializeContext[T],Shape)(ClassTag[T],TensorNumeric[T]):serialization.Bigdl.Shape"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">shapeToProto</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="context">context: <a href="../SerializeContext.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.SerializeContext">SerializeContext</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.converters.ShapeConverter.shapeToProto.T">T</span>]</span>, <span name="shape">shape: <a href="../../Shape.html" class="extype" name="com.intel.analytics.bigdl.utils.Shape">Shape</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.converters.ShapeConverter.shapeToProto.T">T</span>]</span>, <span name="ev">ev: <a href="../../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.converters.ShapeConverter.shapeToProto.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.serialization.Bigdl.Shape">serialization.Bigdl.Shape</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

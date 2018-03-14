@@ -16,7 +16,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="bigdl.optim package" href="bigdl.optim.html" />
+    <link rel="next" title="bigdl.nn.keras package" href="bigdl.nn.keras.html" />
     <link rel="prev" title="bigdl.models.lenet package" href="bigdl.models.lenet.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -29,7 +29,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="bigdl.optim.html" title="bigdl.optim package"
+          <a href="bigdl.nn.keras.html" title="bigdl.nn.keras package"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="bigdl.models.lenet.html" title="bigdl.models.lenet package"
@@ -43,6 +43,7 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">bigdl.nn package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-bigdl.nn.criterion">bigdl.nn.criterion module</a></li>
 <li><a class="reference internal" href="#module-bigdl.nn.initialization_method">bigdl.nn.initialization_method module</a></li>
@@ -56,8 +57,8 @@
   <p class="topless"><a href="bigdl.models.lenet.html"
                         title="previous chapter">bigdl.models.lenet package</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="bigdl.optim.html"
-                        title="next chapter">bigdl.optim package</a></p>
+  <p class="topless"><a href="bigdl.nn.keras.html"
+                        title="next chapter">bigdl.nn.keras package</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -87,6 +88,20 @@
             
   <div class="section" id="bigdl-nn-package">
 <h1>bigdl.nn package<a class="headerlink" href="#bigdl-nn-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bigdl.nn.keras.html">bigdl.nn.keras package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bigdl.nn.keras.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bigdl.nn.keras.html#bigdl-nn-keras-layer-module">bigdl.nn.keras.layer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bigdl.nn.keras.html#bigdl-nn-keras-topology-module">bigdl.nn.keras.topology module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bigdl.nn.keras.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
@@ -3255,7 +3270,7 @@ more, and for a 1D or 2D gater, i.e. for single examples or mini-batches.</p>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.Model">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Model</code><span class="sig-paren">(</span><em>inputs</em>, <em>outputs</em>, <em>is_keras=False</em>, <em>jvalue=None</em>, <em>bigdl_type='float'</em>, <em>byte_order='little_endian'</em>, <em>model_type='bigdl'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Model</code><span class="sig-paren">(</span><em>inputs</em>, <em>outputs</em>, <em>jvalue=None</em>, <em>bigdl_type='float'</em>, <em>byte_order='little_endian'</em>, <em>model_type='bigdl'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Container" title="bigdl.nn.layer.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Container</span></code></a></p>
 <p>A graph container. Each node can have multiple inputs. The output of the node should be a
 tensor. The output tensor can be connected to multiple nodes. So the module in each node can
@@ -4189,7 +4204,7 @@ internally to do so is recursive.</p>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.Sequential">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Sequential</code><span class="sig-paren">(</span><em>bigdl_type='float'</em>, <em>is_keras=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Sequential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Sequential" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Sequential</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Sequential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Sequential" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Container" title="bigdl.nn.layer.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Container</span></code></a></p>
 <p>Sequential provides a means to plug layers together
 in a feed-forward fully connected manner.</p>
@@ -5579,7 +5594,7 @@ half of kernel size. That is, padT &lt; kT/2, padW &lt; kW/2 and padH &lt; kH/2<
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="bigdl.optim.html" title="bigdl.optim package"
+          <a href="bigdl.nn.keras.html" title="bigdl.nn.keras package"
              >next</a> |</li>
         <li class="right" >
           <a href="bigdl.models.lenet.html" title="bigdl.models.lenet package"

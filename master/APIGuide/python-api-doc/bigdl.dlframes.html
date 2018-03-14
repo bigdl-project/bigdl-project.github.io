@@ -36,6 +36,8 @@
 <li><a class="reference internal" href="#">bigdl.dlframes package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-bigdl.dlframes.dl_classifier">bigdl.dlframes.dl_classifier module</a></li>
+<li><a class="reference internal" href="#module-bigdl.dlframes.dl_image_reader">bigdl.dlframes.dl_image_reader module</a></li>
+<li><a class="reference internal" href="#module-bigdl.dlframes.dl_image_transformer">bigdl.dlframes.dl_image_transformer module</a></li>
 <li><a class="reference internal" href="#module-bigdl.dlframes">Module contents</a></li>
 </ul>
 </li>
@@ -196,6 +198,49 @@
 <dt id="bigdl.dlframes.dl_classifier.HasMaxEpoch.setMaxEpoch">
 <code class="descname">setMaxEpoch</code><span class="sig-paren">(</span><em>val</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dlframes/dl_classifier.html#HasMaxEpoch.setMaxEpoch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dlframes.dl_classifier.HasMaxEpoch.setMaxEpoch" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-bigdl.dlframes.dl_image_reader">
+<span id="bigdl-dlframes-dl-image-reader-module"></span><h2>bigdl.dlframes.dl_image_reader module<a class="headerlink" href="#module-bigdl.dlframes.dl_image_reader" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="bigdl.dlframes.dl_image_reader.DLImageReader">
+<em class="property">class </em><code class="descclassname">bigdl.dlframes.dl_image_reader.</code><code class="descname">DLImageReader</code><a class="reference internal" href="_modules/bigdl/dlframes/dl_image_reader.html#DLImageReader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dlframes.dl_image_reader.DLImageReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Primary DataFrame-based image loading interface, defining API to read images from files
+to DataFrame.</p>
+<dl class="staticmethod">
+<dt id="bigdl.dlframes.dl_image_reader.DLImageReader.readImages">
+<em class="property">static </em><code class="descname">readImages</code><span class="sig-paren">(</span><em>sc=None</em>, <em>minParitions=1</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dlframes/dl_image_reader.html#DLImageReader.readImages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dlframes.dl_image_reader.DLImageReader.readImages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the directory of images into DataFrame from the local or remote source.
+:param path Directory to the input data files, the path can be comma separated paths as the
+list of inputs. Wildcards path are supported similarly to sc.binaryFiles(path).
+:param min_partitions A suggestion value of the minimal splitting number for input data.
+:return DataFrame with a single column “image”; Each record in the column represents one image
+record: Row (uri, height, width, channels, CvType, bytes)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-bigdl.dlframes.dl_image_transformer">
+<span id="bigdl-dlframes-dl-image-transformer-module"></span><h2>bigdl.dlframes.dl_image_transformer module<a class="headerlink" href="#module-bigdl.dlframes.dl_image_transformer" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="bigdl.dlframes.dl_image_transformer.DLImageTransformer">
+<em class="property">class </em><code class="descclassname">bigdl.dlframes.dl_image_transformer.</code><code class="descname">DLImageTransformer</code><span class="sig-paren">(</span><em>transformer</em>, <em>jvalue=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dlframes/dl_image_transformer.html#DLImageTransformer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dlframes.dl_image_transformer.DLImageTransformer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.wrapper.JavaTransformer</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.param.shared.HasInputCol</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.param.shared.HasOutputCol</span></code>, <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Provides DataFrame-based API for image pre-processing and feature transformation.
+DLImageTransformer follows the Spark Transformer API pattern and can be used as one stage
+in Spark ML pipeline.</p>
+<p>The input column can be either DLImageSchema.byteSchema or DLImageSchema.floatSchema. If
+using DLImageReader, the default format is DLImageSchema.byteSchema
+The output column is always DLImageSchema.floatSchema.</p>
+<dl class="method">
+<dt id="bigdl.dlframes.dl_image_transformer.DLImageTransformer.transform">
+<code class="descname">transform</code><span class="sig-paren">(</span><em>dataset</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/dlframes/dl_image_transformer.html#DLImageTransformer.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.dlframes.dl_image_transformer.DLImageTransformer.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply the transformer to the images in “inputCol” and store the transformed result
+into “outputCols”</p>
+</dd></dl>
 
 </dd></dl>
 

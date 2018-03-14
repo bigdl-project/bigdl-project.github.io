@@ -69,13 +69,8 @@
 <span class="c1"># limitations under the License.</span>
 <span class="c1">#</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">pyspark.rdd</span> <span class="k">import</span> <span class="n">RDD</span>
-
 <span class="kn">from</span> <span class="nn">bigdl.keras.optimization</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">get_spark_context</span>
-<span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">to_sample_rdd</span>
-<span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">redire_spark_logs</span><span class="p">,</span> <span class="n">show_bigdl_info_logs</span>
+<span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="o">*</span>
 
 
 <div class="viewcode-block" id="KerasModelWrapper"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.backend.KerasModelWrapper">[docs]</a><span class="k">class</span> <span class="nc">KerasModelWrapper</span><span class="p">:</span>
@@ -235,7 +230,7 @@
 
 
 <div class="viewcode-block" id="with_bigdl_backend"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.backend.with_bigdl_backend">[docs]</a><span class="k">def</span> <span class="nf">with_bigdl_backend</span><span class="p">(</span><span class="n">kmodel</span><span class="p">):</span>
-    <span class="n">bcommon</span><span class="o">.</span><span class="n">init_engine</span><span class="p">()</span></div>
+    <span class="n">init_engine</span><span class="p">()</span></div>
     <span class="k">return</span> <span class="n">KerasModelWrapper</span><span class="p">(</span><span class="n">kmodel</span><span class="p">)</span>
 
 </pre></div>

@@ -150,19 +150,36 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.ops.SelectTensor#apply" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="apply[T](key:com.intel.analytics.bigdl.tensor.Tensor[_],transformer:com.intel.analytics.bigdl.nn.ops.TensorOp[T])(implicitevidence$33:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.ops.SelectTensor[T]"></a>
-      <a id="apply[T](Tensor[_],TensorOp[T])(ClassTag[T],TensorNumeric[T]):SelectTensor[T]"></a>
+    </li><li name="com.intel.analytics.bigdl.nn.ops.SelectTensor#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply[T,D](key:D)(implicitevidence$34:scala.reflect.ClassTag[T],implicitevidence$35:scala.reflect.ClassTag[D],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T],implicitev2:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[D]):com.intel.analytics.bigdl.nn.ops.SelectTensor[T]"></a>
+      <a id="apply[T,D](D)(ClassTag[T],ClassTag[D],TensorNumeric[T],TensorNumeric[D]):SelectTensor[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="key">key: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[_]</span>, <span name="transformer">transformer: <a href="TensorOp.html" class="extype" name="com.intel.analytics.bigdl.nn.ops.TensorOp">TensorOp</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor.apply.T">T</span>] = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor.apply.T">T</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor.apply.T">T</span>]</span>)</span><span class="result">: <a href="SelectTensor.html" class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor">SelectTensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor.apply.T">T</span>]</span>
+        <span class="name">apply</span><span class="tparams">[<span name="T">T</span>, <span name="D">D</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor.apply.D">D</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor.apply.T">T</span>]</span>, <span name="arg1">arg1: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor.apply.D">D</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor.apply.T">T</span>]</span>, <span name="ev2">ev2: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor.apply.D">D</span>]</span>)</span><span class="result">: <a href="SelectTensor.html" class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor">SelectTensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor.apply.T">T</span>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Build a <code>SelectTensor</code> Instance with a non-Tensor key with Type <span class="extype" name="D">D</span>.</p><div class="fullcomment"><div class="comment cmt"><p>Build a <code>SelectTensor</code> Instance with a non-Tensor key with Type <span class="extype" name="D">D</span>.
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Numeric type</p></dd><dt class="tparam">D</dt><dd class="cmt"><p>type of key, must be supported by TensorDataType</p></dd><dt class="param">key</dt><dd class="cmt"><p>the key, must be able to be wrapped by Tensor</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>SelectTensor</code> Instance
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.ops.SelectTensor#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply[T](keyTensor:com.intel.analytics.bigdl.tensor.Tensor[_],isTensorKey:Boolean,transformer:com.intel.analytics.bigdl.nn.ops.TensorOp[T])(implicitevidence$33:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.ops.SelectTensor[T]"></a>
+      <a id="apply[T](Tensor[_],Boolean,TensorOp[T])(ClassTag[T],TensorNumeric[T]):SelectTensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="keyTensor">keyTensor: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[_]</span>, <span name="isTensorKey">isTensorKey: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="transformer">transformer: <a href="TensorOp.html" class="extype" name="com.intel.analytics.bigdl.nn.ops.TensorOp">TensorOp</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor.apply.T">T</span>] = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor.apply.T">T</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor.apply.T">T</span>]</span>)</span><span class="result">: <a href="SelectTensor.html" class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor">SelectTensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ops.SelectTensor.apply.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Build a <code>SelectTensor</code> Instance with a keyTensor.</p><div class="fullcomment"><div class="comment cmt"><p>Build a <code>SelectTensor</code> Instance with a keyTensor.
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Numeric type</p></dd><dt class="param">keyTensor</dt><dd class="cmt"><p>the key or tensor wrapper of key, must be a scalar tensor</p></dd><dt class="param">isTensorKey</dt><dd class="cmt"><p>whether the key is a scalar tensor or a primitive value, default true</p></dd><dt class="param">transformer</dt><dd class="cmt"><p>user-defined transformer, default(null) means do nothing</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>SelectTensor</code> Instance
+</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>

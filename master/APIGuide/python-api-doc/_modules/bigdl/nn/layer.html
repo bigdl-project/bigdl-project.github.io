@@ -115,7 +115,6 @@
         <span class="n">callJavaFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">removeNextEdges</span><span class="p">)</span>
 
 
-
 <div class="viewcode-block" id="Layer"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer">[docs]</a><span class="k">class</span> <span class="nc">Layer</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Layer is the basic component of a neural network</span>
@@ -420,7 +419,7 @@
 <span class="sd">        :return: An RDD represent the predict result.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span>
-                             <span class="s2">&quot;modelPredictRDD&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">)</span></div>
+                               <span class="s2">&quot;modelPredictRDD&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">)</span></div>
         <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">())</span>
 
 <div class="viewcode-block" id="Layer.predict_class_distributed"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict_class_distributed">[docs]</a>    <span class="k">def</span> <span class="nf">predict_class_distributed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">):</span>
@@ -709,7 +708,6 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">inputs</span><span class="p">,</span>
                  <span class="n">outputs</span><span class="p">,</span>
-                 <span class="n">is_keras</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">jvalue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="n">byte_order</span><span class="o">=</span><span class="s2">&quot;little_endian&quot;</span><span class="p">,</span> <span class="n">model_type</span><span class="o">=</span><span class="s2">&quot;bigdl&quot;</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">jvalue</span><span class="p">:</span>
@@ -718,8 +716,7 @@
         <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;bigdl&quot;</span><span class="p">:</span>
             <span class="nb">super</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                         <span class="n">to_list</span><span class="p">(</span><span class="n">inputs</span><span class="p">),</span>
-                                        <span class="n">to_list</span><span class="p">(</span><span class="n">outputs</span><span class="p">),</span>
-                                        <span class="n">is_keras</span><span class="p">)</span>
+                                        <span class="n">to_list</span><span class="p">(</span><span class="n">outputs</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="kn">from</span> <span class="nn">bigdl.util.tf_utils</span> <span class="k">import</span> <span class="n">convert</span>
             <span class="n">model</span> <span class="o">=</span> <span class="n">convert</span><span class="p">(</span><span class="n">to_list</span><span class="p">(</span><span class="n">inputs</span><span class="p">),</span> <span class="n">to_list</span><span class="p">(</span><span class="n">outputs</span><span class="p">),</span> <span class="n">byte_order</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
@@ -1117,8 +1114,8 @@
 
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="n">is_keras</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span></div>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Sequential</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">is_keras</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Sequential</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
 <div class="viewcode-block" id="TemporalConvolution"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.TemporalConvolution">[docs]</a><span class="k">class</span> <span class="nc">TemporalConvolution</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
