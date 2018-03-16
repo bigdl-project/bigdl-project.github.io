@@ -39,8 +39,8 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Used to merge a list of tensors into a single tensor, following some merge mode.
-Merge must have at least two input layers.</p><p>When using this layer as the first layer in a model, you need to provide the argument
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Used to merge a list of inputs into a single output, following some merge mode.
+To merge layers, it must take at least two input layers.</p><p>When using this layer as the first layer in a model, you need to provide the argument
 inputShape for input layers (each as a Single Shape, does not include the batch dimension).
 </p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>The numeric type of parameter(e.g. weight, bias). Only support float/double now.
 </p></dd></dl><div class="toggleContainer block">
@@ -96,8 +96,8 @@ inputShape for input layers (each as a Single Shape, does not include the batch 
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">layers</dt><dd class="cmt"><p>A list of layer instances. Must be more than one layer.</p></dd><dt class="param">mode</dt><dd class="cmt"><p>Merge mode. String, must be one of: 'sum', 'mul', 'concat', 'ave', 'cos',
-            'dot', 'max'. Default is 'sum'.</p></dd><dt class="param">concatAxis</dt><dd class="cmt"><p>Integer, axis to use in mode concat. Only specify this when mode is 'concat'.
-                  Default is -1, meaning the last axis of the input.</p></dd></dl></div>
+            'dot', 'max'. Default is 'sum'.</p></dd><dt class="param">concatAxis</dt><dd class="cmt"><p>Integer, axis to use when concatenating layers. Only specify this when merge
+                  mode is 'concat'. Default is -1, meaning the last axis of the input.</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -383,8 +383,8 @@ super.clearState in the override method
         <span class="name">concatAxis</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Integer, axis to use in mode concat.</p><div class="fullcomment"><div class="comment cmt"><p>Integer, axis to use in mode concat. Only specify this when mode is 'concat'.
-                  Default is -1, meaning the last axis of the input.</p></div></div>
+      <p class="shortcomment cmt">Integer, axis to use when concatenating layers.</p><div class="fullcomment"><div class="comment cmt"><p>Integer, axis to use when concatenating layers. Only specify this when merge
+                  mode is 'concat'. Default is -1, meaning the last axis of the input.</p></div></div>
     </li><li name="com.intel.analytics.bigdl.nn.keras.Merge#doBuild" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="doBuild(inputShape:com.intel.analytics.bigdl.utils.Shape):com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T],T]"></a>
       <a id="doBuild(Shape):AbstractModule[Tensor[T],Tensor[T],T]"></a>
