@@ -2315,7 +2315,7 @@ It can also be the name of an existing activation as a string.
 <dl class="class">
 <dt id="bigdl.nn.layer.Layer">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Layer</code><span class="sig-paren">(</span><em>jvalue</em>, <em>bigdl_type</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a>, <a class="reference internal" href="#bigdl.nn.layer.SharedStaticUtils" title="bigdl.nn.layer.SharedStaticUtils"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.SharedStaticUtils</span></code></a></p>
 <p>Layer is the basic component of a neural network
 and it’s also the base class of layers.
 Layer can connect to others to construct a complex neural network.</p>
@@ -2421,6 +2421,14 @@ to be freezed
 :return:</p>
 </dd></dl>
 
+<dl class="staticmethod">
+<dt id="bigdl.nn.layer.Layer.from_jvalue">
+<em class="property">static </em><code class="descname">from_jvalue</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.from_jvalue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.from_jvalue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Python Model base on the given java value
+:param jvalue: Java object create by Py4j
+:return: A Python Model</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="bigdl.nn.layer.Layer.get_dtype">
 <code class="descname">get_dtype</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.get_dtype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.get_dtype" title="Permalink to this definition">¶</a></dt>
@@ -2472,14 +2480,6 @@ to be freezed
 <dt id="bigdl.nn.layer.Layer.name">
 <code class="descname">name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Name of this layer</p>
-</dd></dl>
-
-<dl class="classmethod">
-<dt id="bigdl.nn.layer.Layer.of">
-<em class="property">classmethod </em><code class="descname">of</code><span class="sig-paren">(</span><em>jvalue</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.of" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a Python Layer base on the given java value
-:param jvalue: Java object create by Py4j
-:return: A Python Layer</p>
 </dd></dl>
 
 <dl class="method">
@@ -3287,22 +3287,6 @@ node_type parameter.</p>
 <dd><p>Create a Python Model base on the given java value
 :param jvalue: Java object create by Py4j
 :return: A Python Model</p>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="bigdl.nn.layer.Model.load">
-<em class="property">static </em><code class="descname">load</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.load" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load a pre-trained Bigdl model.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – The path containing the pre-trained model.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A pre-trained model.</td>
-</tr>
-</tbody>
-</table>
 </dd></dl>
 
 <dl class="staticmethod">
@@ -4194,7 +4178,7 @@ internally to do so is recursive.</p>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.Sequential">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Sequential</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Sequential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Sequential" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Sequential</code><span class="sig-paren">(</span><em>jvalue=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Sequential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Sequential" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Container" title="bigdl.nn.layer.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Container</span></code></a></p>
 <p>Sequential provides a means to plug layers together
 in a feed-forward fully connected manner.</p>
@@ -4205,6 +4189,43 @@ in a feed-forward fully connected manner.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">echo</span><span class="p">)</span>
 </pre></div>
 </div>
+<dl class="staticmethod">
+<dt id="bigdl.nn.layer.Sequential.from_jvalue">
+<em class="property">static </em><code class="descname">from_jvalue</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Sequential.from_jvalue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Sequential.from_jvalue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Python Model base on the given java value
+:param jvalue: Java object create by Py4j
+:return: A Python Model</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.SharedStaticUtils">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SharedStaticUtils</code><a class="reference internal" href="_modules/bigdl/nn/layer.html#SharedStaticUtils"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SharedStaticUtils" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="staticmethod">
+<dt id="bigdl.nn.layer.SharedStaticUtils.load">
+<em class="property">static </em><code class="descname">load</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SharedStaticUtils.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SharedStaticUtils.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a pre-trained Bigdl model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – The path containing the pre-trained model.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A pre-trained model.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="bigdl.nn.layer.SharedStaticUtils.of">
+<em class="property">static </em><code class="descname">of</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SharedStaticUtils.of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SharedStaticUtils.of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a Python Layer base on the given java value and the real type.
+:param jvalue: Java object create by Py4j
+:return: A Python Layer</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">

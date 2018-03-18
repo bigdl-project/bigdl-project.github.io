@@ -69,15 +69,17 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>
 <p>Install Python dependencies:</p>
 <ul>
-<li>BigDL only depends on <code>Numpy</code> for now.</li>
+<li>BigDL only depends on <code>Numpy</code> and <code>Six</code> for now.</li>
 <li>For Spark standalone cluster:<ul>
 <li><strong>If you're running in cluster mode, you need to install Python dependencies on both client and each worker node.</strong></li>
 <li>Install Numpy: 
    <code>sudo apt-get install python-numpy</code> (Ubuntu)</li>
+<li>Install Six: 
+   <code>sudo apt-get install python-six</code> (Ubuntu)</li>
 </ul>
 </li>
 <li>For Yarn cluster:<ul>
-<li>You can run BigDL Python programs on YARN clusters without changes to the cluster (e.g., no need to pre-install the Python dependencies). You  can first package all the required Python dependencies into a virtual environment on the localnode (where you will run the spark-submit command), and then directly use spark-submit to run the BigDL Python program on the YARN cluster (using that virtual environment). Please refer to this <a href="https://github.com/intel-analytics/BigDL/tree/master/pyspark/python_package">Packing-dependencies</a> for more details.</li>
+<li>You can run BigDL Python programs on YARN clusters without changes to the cluster (e.g., no need to pre-install the Python dependencies). You can first package all the required Python dependencies into a virtual environment on the local node (where you will run the spark-submit command), and then directly use spark-submit to run the BigDL Python program on the YARN cluster (using that virtual environment). Please refer to this <a href="https://github.com/intel-analytics/BigDL/tree/master/pyspark/python_package">Packing-dependencies</a> for more details.</li>
 </ul>
 </li>
 </ul>
