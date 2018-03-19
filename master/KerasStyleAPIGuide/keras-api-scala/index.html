@@ -76,7 +76,7 @@ import com.intel.analytics.bigdl.utils.Shape
 <p>One of the highlighted features with regard to the new API is <strong>shape inference</strong>. Users only need to specify the input shape (a <a href="#shape"><code>Shape</code></a> object <strong>excluding</strong> batch dimension, for example, <code>inputShape=Shape(3, 4)</code> for 3D input) for the first layer of a model and for the remaining layers, the input dimension will be automatically inferred.</p>
 <hr />
 <h2 id="shape"><strong>Shape</strong></h2>
-<p>Input and output shapes of a model in the Keras-Style API will be described by the <code>Shape</code> object in Scala, which can be classified into <code>SingleShape</code> and <code>MultiShape</code>.</p>
+<p>Input and output shapes of a model in the Keras-Style API are described by the <code>Shape</code> object in Scala, which can be classified into <code>SingleShape</code> and <code>MultiShape</code>.</p>
 <p><code>SingleShape</code> is just a list of Int indicating shape dimensions while <code>MultiShape</code> is essentially a list of <code>Shape</code>.</p>
 <p>Example code to create a shape:</p>
 <pre><code class="scala">// create a SingleShape
@@ -145,14 +145,14 @@ model.add(Activation(&quot;relu&quot;))
 <p>To merge a list of input <strong>nodes</strong> (<strong>NOT</strong> layers), following some merge mode in the Functional API:</p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn.keras.Merge.merge
 
-merge(inputs, mode = &quot;sum&quot;, concat_axis = -1) // This will return an output NODE.
+merge(inputs, mode = &quot;sum&quot;, concatAxis = -1) // This will return an output NODE.
 </code></pre>
 
 <p>Parameters:</p>
 <ul>
 <li><code>inputs</code>: A list of node instances. Must be more than one node.</li>
-<li><code>mode</code>: Merge mode. String, must be one of: 'sum', 'mul', 'concat', 'ave', 'cos','dot', 'max'. Default is 'sum'.</li>
-<li><code>concat_axis</code>: Int, axis to use when concatenating nodes. Only specify this when merge mode is 'concat'. Default is -1, meaning the last axis of the input.</li>
+<li><code>mode</code>: Merge mode. String, must be one of: 'sum', 'mul', 'concat', 'ave', 'cos', 'dot', 'max'. Default is 'sum'.</li>
+<li><code>concatAxis</code>: Int, axis to use when concatenating nodes. Only specify this when merge mode is 'concat'. Default is -1, meaning the last axis of the input.</li>
 </ul>
 <p>Example code to create a graph model:</p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn.keras.{Input, Dense, Model}
