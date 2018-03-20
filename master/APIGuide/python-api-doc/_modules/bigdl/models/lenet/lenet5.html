@@ -70,7 +70,7 @@
 <span class="c1">#</span>
 
 <span class="kn">from</span> <span class="nn">optparse</span> <span class="k">import</span> <span class="n">OptionParser</span>
-<span class="kn">from</span> <span class="nn">utils</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">bigdl.models.lenet.utils</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">bigdl.dataset.transformer</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">bigdl.nn.layer</span> <span class="k">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">bigdl.nn.criterion</span> <span class="k">import</span> <span class="o">*</span>
@@ -127,8 +127,10 @@
         <span class="n">parameters</span> <span class="o">=</span> <span class="n">trained_model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span>
     <span class="k">elif</span> <span class="n">options</span><span class="o">.</span><span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;test&quot;</span><span class="p">:</span>
         <span class="c1"># Load a pre-trained model and then validate it through top1 accuracy.</span>
-        <span class="n">test_data</span> <span class="o">=</span> <span class="n">get_mnist</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
-            <span class="n">normalizer</span><span class="p">(</span><span class="n">mnist</span><span class="o">.</span><span class="n">TEST_MEAN</span><span class="p">,</span> <span class="n">mnist</span><span class="o">.</span><span class="n">TEST_STD</span><span class="p">))</span>
+        <span class="n">test_data</span> <span class="o">=</span> <span class="n">get_mnist</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">.</span><span class="n">dataPath</span><span class="p">)</span> \
+            <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">rec_tuple</span><span class="p">:</span> <span class="p">(</span><span class="n">normalizer</span><span class="p">(</span><span class="n">rec_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mnist</span><span class="o">.</span><span class="n">TEST_MEAN</span><span class="p">,</span> <span class="n">mnist</span><span class="o">.</span><span class="n">TEST_STD</span><span class="p">),</span>
+                                    <span class="n">rec_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> \
+            <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">Sample</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">modelPath</span><span class="p">)</span>
         <span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">options</span><span class="o">.</span><span class="n">batchSize</span><span class="p">,</span> <span class="p">[</span><span class="n">Top1Accuracy</span><span class="p">()])</span>
         <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>

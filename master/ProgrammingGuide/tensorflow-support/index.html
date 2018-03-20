@@ -74,10 +74,9 @@ package, or the <code>dump_model</code> function defined in <a href="https://git
 generate the model definition file (<code>model.pb</code>) and variable binary file (<code>model.bin</code>). </p>
 <h3 id="generate-model-definition-file-and-variable-binary-file">Generate model definition file and variable binary file</h3>
 <p><strong>Use Script</strong></p>
-<pre><code class="shell">GRAPH_META_FILE=/tmp/tensorflow/model.ckpt.meta
-CKPT_FILE_PREFIX=/tmp/tensorflow/model.ckpt
+<pre><code class="shell">CKPT_FILE_PREFIX=/tmp/tensorflow/model.ckpt
 SAVE_PATH=/tmp/model/
-python export_tf_checkpoint.py $GRAPH_META_FILE $CKPT_FILE_PREFIX $SAVE_PATH
+python export_tf_checkpoint.py $CKPT_FILE_PREFIX $SAVE_PATH
 </code></pre>
 
 <p><strong>Use python function</strong></p>
