@@ -181,22 +181,21 @@ val model = Model[Float](Array(input1, input2), output)
 <pre><code class="scala">import com.intel.analytics.bigdl.nn.keras._
 import com.intel.analytics.bigdl.utils.Shape
 
-val model = Sequential[Float]()
+val model = Sequential()
 model.add(Reshape(Array(1, 28, 28), inputShape = Shape(28, 28, 1)))
-model.add(Convolution2D(32, 3, 3, activation = &quot;relu&quot;))
-model.add(Convolution2D(32, 3, 3, activation = &quot;relu&quot;))
-model.add(MaxPooling2D(poolSize = (2, 2)))
-model.add(Dropout(0.25))
+model.add(Convolution2D(6, 5, 5, activation = &quot;tanh&quot;).setName(&quot;conv1_5x5&quot;))
+model.add(MaxPooling2D())
+model.add(Convolution2D(12, 5, 5, activation = &quot;tanh&quot;).setName(&quot;conv2_5x5&quot;))
+model.add(MaxPooling2D())
 model.add(Flatten())
-model.add(Dense(128, activation = &quot;relu&quot;))
-model.add(Dropout(0.5))
-model.add(Dense(10, activation = &quot;softmax&quot;))
+model.add(Dense(100, activation = &quot;tanh&quot;).setName(&quot;fc1&quot;))
+model.add(Dense(10, activation = &quot;softmax&quot;).setName(&quot;fc2&quot;))
 
 model.getInputShape().toSingle().toArray // Array(-1, 28, 28, 1)
 model.getOutputShape().toSingle().toArray // Array(-1, 10)
 </code></pre>
 
-<p>See <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/keras">here</a> for the full example code and running instructions.</p>
+<p>See <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/example/keras">here</a> for detailed introduction of LeNet, the full example code and running instructions.</p>
 
   <br>
 </div>

@@ -168,20 +168,19 @@ from bigdl.nn.keras.layer import *
 
 model = Sequential()
 model.add(Reshape((1, 28, 28), input_shape=(28, 28, 1)))
-model.add(Convolution2D(32, 3, 3, activation=&quot;relu&quot;))
-model.add(Convolution2D(32, 3, 3, activation=&quot;relu&quot;))
-model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Dropout(0.25))
+model.add(Convolution2D(6, 5, 5, activation=&quot;tanh&quot;, name=&quot;conv1_5x5&quot;))
+model.add(MaxPooling2D())
+model.add(Convolution2D(12, 5, 5, activation=&quot;tanh&quot;, name=&quot;conv2_5x5&quot;))
+model.add(MaxPooling2D())
 model.add(Flatten())
-model.add(Dense(128, activation=&quot;relu&quot;))
-model.add(Dropout(0.5))
-model.add(Dense(10, activation=&quot;softmax&quot;))
+model.add(Dense(100, activation=&quot;tanh&quot;, name=&quot;fc1&quot;))
+model.add(Dense(10, activation=&quot;softmax&quot;, name=&quot;fc2&quot;))
 
 model.get_input_shape() # (None, 28, 28, 1)
 model.get_output_shape() # (None, 10)
 </code></pre>
 
-<p>See <a href="https://github.com/intel-analytics/BigDL/tree/master/pyspark/bigdl/examples/lenet">here</a> for the full example code and running instructions.</p>
+<p>See <a href="https://github.com/intel-analytics/BigDL/tree/master/pyspark/bigdl/examples/lenet">here</a> for detailed introduction of LeNet, the full example code and running instructions.</p>
 <hr />
 <h2 id="keras-code-support"><strong>Keras Code Support</strong></h2>
 <p>If you have an existing piece of Keras code for a model definition, without installing Keras, you can directly migrate the code to construct a BigDL model by just replacing Keras import lines with:</p>
