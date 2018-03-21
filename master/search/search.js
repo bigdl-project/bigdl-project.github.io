@@ -5,7 +5,6 @@ require.config({
 require([
     'mustache.min',
     'lunr.min',
-    'text!search-results-template.mustache',
     'text!search_index.json',
 ], function (Mustache, lunr, results_template, data) {
    "use strict";
