@@ -60,104 +60,52 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <hr>
     <p>BigDL uses Java properties to control its behavior. Here's the list of
 these properties.</p>
-<h2 id="how-to-set-the-properties">How to set the properties</h2>
-<h3 id="spark">Spark</h3>
+<h2 id="how-to-set-the-properties"><strong>How to set the properties</strong></h2>
+<h3 id="spark"><strong>Spark</strong></h3>
 <p>If you run BigDL on Apache Spark, you can set the properties by passing
 spark-submit options. Here's an example:</p>
 <pre><code class="bash"># Say you want to set property FOO to value BAR
-
 spark-submit ...
     --conf 'spark.executor.extraJavaOptions=-DFOO=BAR' # Set that property for executor process
     --conf 'spark.driver.extraJavaOptions=-DFOO=BAR'   # Set that property for driver process
     ...
 </code></pre>
 
-<h3 id="local-javascala-program">Local Java/Scala program</h3>
-<p>If you run BigDL in a local Java/Scala program, you can set the properties
+<h3 id="local-javascala-program"><strong>Local Java/Scala program</strong></h3>
+<p>If you run BigDL as a local Java/Scala program, you can set the properties
 by passing JVM parameters. Here's an example:</p>
 <pre><code class="bash"># Say you want to set property FOO to value BAR
 java -cp xxx.jar -DFOO=BAR your.main.class.name
 </code></pre>
 
-<h2 id="available-properties">Available Properties</h2>
-<table>
-<thead>
-<tr>
-<th>Category</th>
-<th>Property</th>
-<th>Default value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Logging</strong></td>
-<td>bigdl.utils.LoggerFilter.disable</td>
-<td><em>false</em></td>
-<td>Disable redirecting logs of Spark and BigDL to  a file.</td>
-</tr>
-<tr>
-<td></td>
-<td>bigdl.utils.LoggerFilter.logFile</td>
-<td><em>Current_Working_Directory/bigdl.log</em></td>
-<td>Where is the redirecting log.</td>
-</tr>
-<tr>
-<td></td>
-<td>bigdl.utils.LoggerFilter.enableSparkLog</td>
-<td><em>true</em></td>
-<td>Enable redirecting Spark logs to logFile. Set it to false when you don't want to see Spark logs in the redirecting log file.</td>
-</tr>
-<tr>
-<td><strong>Mode</strong></td>
-<td>bigdl.localMode</td>
-<td><em>false</em></td>
-<td>Whether BigDL is running as a local Java/Scala program.</td>
-</tr>
-<tr>
-<td><strong>Multi-threading</strong></td>
-<td>bigdl.coreNumber</td>
-<td><em>half of the virtual core number</em></td>
-<td>How many cores BigDL use on your machine. It is only used when bigdl.localMode is set to true. If hyper thread is enabled on your machine, DO NOT set it larger than half of the virtual core number.</td>
-</tr>
-<tr>
-<td></td>
-<td>bigdl.Parameter.syncPoolSize</td>
-<td><em>4</em></td>
-<td>Thread pool size for syncing parameter between executors.</td>
-</tr>
-<tr>
-<td><strong>Distributed Training</strong></td>
-<td>bigdl.network.nio</td>
-<td><em>true</em></td>
-<td>Whether use NIO as BlockManager backend in Spark 1.5. If it is set to false, user can specify spark.shuffle.blockTransferService to change the BlockManager backend. <strong>ONLY</strong> used when running on Spark 1.5.</td>
-</tr>
-<tr>
-<td></td>
-<td>bigdl.failure.retryTimes</td>
-<td><em>5</em></td>
-<td>How many times to retry when there's failure in distributed Training.</td>
-</tr>
-<tr>
-<td></td>
-<td>bigdl.failure.retryTimeInterval</td>
-<td><em>120</em></td>
-<td>Unit is second. How long recount the retry times.</td>
-</tr>
-<tr>
-<td></td>
-<td>bigdl.check.singleton</td>
-<td><em>false</em></td>
-<td>Whether to check if multiple partition run on a same executor, which is bad for performance.</td>
-</tr>
-<tr>
-<td><strong>Tensor</strong></td>
-<td>bigdl.tensor.fold</td>
-<td>1000</td>
-<td>How many elements in a tensor to determine it is a large tensor, and thus print only part of it.</td>
-</tr>
-</tbody>
-</table>
+<hr />
+<h2 id="available-properties"><strong>Available Properties</strong></h2>
+<p><strong>Logging</strong></p>
+<ul>
+<li><code>bigdl.utils.LoggerFilter.disable</code>: To disable redirecting logs of Spark and BigDL to a file. Default is false.</li>
+<li><code>bigdl.utils.LoggerFilter.logFile</code>: To set the path to redirect log. By default, it will be directed to <code>bigdl.log</code> in the current working directory.</li>
+<li><code>bigdl.utils.LoggerFilter.enableSparkLog</code>: To enable redirecting Spark logs to logFile. Set it to false when you don't want to see Spark logs in the redirected log file. Default is true.</li>
+</ul>
+<p><strong>Mode</strong></p>
+<ul>
+<li><code>bigdl.localMode</code>: Whether BigDL is running as a local Java/Scala program. Default is false.</li>
+</ul>
+<p><strong>Multi-threading</strong></p>
+<ul>
+<li><code>bigdl.coreNumber</code>: To set how many cores BigDL will use on your machine. It will only be used when bigdl.localMode is set to true. If hyper thread is enabled on your machine, <strong>DO NOT</strong> set it larger than half of the virtual core number. Default is half of the virtual core number.</li>
+<li><code>bigdl.Parameter.syncPoolSize</code>: To set the thread pool size for syncing parameter between executors. Default is 4.</li>
+</ul>
+<p><strong>Distributed Training</strong></p>
+<ul>
+<li><code>bigdl.network.nio</code>: Whether use NIO as BlockManager backend in Spark 1.5. Default is true. If it is set to be false, user can specify spark.shuffle.blockTransferService to change the BlockManager backend. <strong>ONLY</strong> use this when running on Spark 1.5.</li>
+<li><code>bigdl.failure.retryTimes</code>: To set how many times to retry when there's failure in distributed training. Default is 5.</li>
+<li><code>bigdl.failure.retryTimeInterval</code>: To set how long to recount the retry times. Time unit here is second. Default is 120.</li>
+<li><code>bigdl.check.singleton</code>: To check whether multiple partitions run on the same executor, which is bad for performance. Default is false.</li>
+</ul>
+<p><strong>Tensor</strong></p>
+<ul>
+<li><code>bigdl.tensor.fold</code>: To set how many elements in a tensor to determine it is a large tensor, and thus print only part of it. Default is 1000.</li>
+</ul>
 
   <br>
 </div>

@@ -47,6 +47,10 @@
           ]},
           {title: "Merge", url: "#merge", children: [
           ]},
+          {title: "Masking", url: "#masking", children: [
+          ]},
+          {title: "MaxoutDense", url: "#maxoutdense", children: [
+          ]},
         ];
 
     </script>
@@ -157,7 +161,7 @@ output = model.forward(input)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">Flatten(input_shape=None)
+<pre><code class="python">Flatten(input_shape=None, name=None)
 </code></pre>
 
 <p><strong>Parameters:</strong></p>
@@ -245,7 +249,7 @@ output = model.forward(input)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">Reshape(target_shape, input_shape=None)
+<pre><code class="python">Reshape(target_shape, input_shape=None, name=None)
 </code></pre>
 
 <p><strong>Parameters:</strong></p>
@@ -353,7 +357,7 @@ output = model.forward(input)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">Permute(dims, input_shape=None)
+<pre><code class="python">Permute(dims, input_shape=None, name=None)
 </code></pre>
 
 <p><strong>Parameters:</strong></p>
@@ -510,7 +514,7 @@ output = model.forward(input)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">RepeatVector(n, input_shape=None)
+<pre><code class="python">RepeatVector(n, input_shape=None, name=None)
 </code></pre>
 
 <p><strong>Parameters:</strong></p>
@@ -590,7 +594,7 @@ output = model.forward(input)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">Merge(layers=None, mode=&quot;sum&quot;, concat_axis=-1, input_shape=None)
+<pre><code class="python">Merge(layers=None, mode=&quot;sum&quot;, concat_axis=-1, input_shape=None, name=None)
 </code></pre>
 
 <p><strong>Parameters:</strong></p>
@@ -692,6 +696,136 @@ output = model.forward(input)
  [[0.5869755  1.1935881  1.4703878  1.0939355 ]
   [0.68505836 1.7576246  0.71985936 1.8025242 ]
   [1.5343305  1.3676738  0.50516313 1.1503248 ]]]
+</code></pre>
+
+<hr />
+<h2 id="masking"><strong>Masking</strong></h2>
+<p>Use a mask value to skip timesteps for a sequence.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">Masking(maskValue = 0.0, inputShape = null)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">Masking(mask_value=0.0, input_shape=None, name=None)
+</code></pre>
+
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>maskValue</code>: Double, mask value. For each timestep in the input (the second dimension), if all values in the input at that timestep are equal to <code>maskValue</code>, then the timestep will masked (skipped) in all downstream layers.</li>
+<li><code>inputShape</code>: Only need to specify this argument when you use this layer as the first layer of a model. For Scala API, it should be a <a href="../../keras-api-scala/#shape"><code>Shape</code></a> object. For Python API, it should be a shape tuple. Batch dimension should be excluded.</li>
+</ul>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.keras.{Sequential, Masking}
+import com.intel.analytics.bigdl.utils.Shape
+import com.intel.analytics.bigdl.tensor._
+
+val model = Sequential[Float]()
+model.add(Masking(inputShape = Shape(3)))
+val input = Tensor[Float](2, 3).randn()
+val output = model.forward(input)
+</code></pre>
+
+<p>Input is:</p>
+<pre><code class="scala">input: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+0.00938185  -1.1461893  -1.0204586
+0.24702129  -2.2756217  0.010394359
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+</code></pre>
+
+<p>Output is:</p>
+<pre><code class="scala">output: com.intel.analytics.bigdl.nn.abstractnn.Activity =
+0.00938185  -1.1461893  -1.0204586
+0.24702129  -2.2756217  0.010394359
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">import numpy as np
+from bigdl.nn.keras.topology import Sequential
+from bigdl.nn.keras.layer import Masking
+
+model = Sequential()
+model.add(Masking(input_shape=(3, )))
+input = np.random.random([2, 3])
+output = model.forward(input)
+</code></pre>
+
+<p>Input is:</p>
+<pre><code class="python">[[0.59540156 0.24933489 0.04434161]
+ [0.89243422 0.68499562 0.36788333]]
+</code></pre>
+
+<p>Output is</p>
+<pre><code class="python">[[0.5954016  0.24933489 0.04434161]
+ [0.89243424 0.68499565 0.36788332]]
+</code></pre>
+
+<hr />
+<h2 id="maxoutdense"><strong>MaxoutDense</strong></h2>
+<p>A dense maxout layer that takes the element-wise maximum of nbFeature, Dense(inputDim, outputDim) linear layers.</p>
+<p>This allows the layer to learn a convex, piecewise linear activation function over the inputs.</p>
+<p>The input of this layer should be 2D.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">MaxoutDense(outputDim, nbFeature = 4, wRegularizer = null, bRegularizer = null, bias = true, inputShape = null)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">MaxoutDense(output_dim, nb_feature=4, W_regularizer=None, b_regularizer=None, bias=True, input_dim=None, input_shape=None, name=None)
+</code></pre>
+
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>outputDim</code>: The size of output dimension.</li>
+<li><code>nbFeature</code>: Number of Dense layers to use internally. Integer. Default is 4.</li>
+<li><code>wRegularizer</code>: An instance of <a href="../../../../APIGuide/Regularizers/">Regularizer</a>, (eg. L1 or L2 regularization), applied to the input weights matrices. Default is null.</li>
+<li><code>bRegularizer</code>: An instance of <a href="../../../../APIGuide/Regularizers/">Regularizer</a>, applied to the bias. Default is null.</li>
+<li><code>bias</code>: Whether to include a bias (i.e. make the layer affine rather than linear). Default is true.</li>
+<li><code>inputShape</code>: Only need to specify this argument when you use this layer as the first layer of a model. For Scala API, it should be a <a href="../../keras-api-scala/#shape"><code>Shape</code></a> object. For Python API, it should be a shape tuple. Batch dimension should be excluded.</li>
+</ul>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.keras.{Sequential, MaxoutDense}
+import com.intel.analytics.bigdl.utils.Shape
+import com.intel.analytics.bigdl.tensor._
+
+val model = Sequential[Float]()
+model.add(MaxoutDense(2, inputShape = Shape(3)))
+val input = Tensor[Float](2, 3).randn()
+val output = model.forward(input)
+</code></pre>
+
+<p>Input is:</p>
+<pre><code class="scala">input: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+-1.3550005  -1.1668127  -1.2882779
+0.83600295  -1.94683    1.323666
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+</code></pre>
+
+<p>Output is:</p>
+<pre><code class="scala">output: com.intel.analytics.bigdl.nn.abstractnn.Activity =
+0.71675766  1.2987505
+0.9871184   0.6634239
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x2]
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">import numpy as np
+from bigdl.nn.keras.topology import Sequential
+from bigdl.nn.keras.layer import MaxoutDense
+
+model = Sequential()
+model.add(MaxoutDense(2, input_shape=(3, )))
+input = np.random.random([2, 3])
+output = model.forward(input)
+</code></pre>
+
+<p>Input is:</p>
+<pre><code class="python">[[0.15996114 0.8391686  0.81922903]
+ [0.52929427 0.35061754 0.88167693]]
+</code></pre>
+
+<p>Output is</p>
+<pre><code class="python">[[0.4479192  0.4842512 ]
+ [0.16833156 0.521764  ]]
 </code></pre>
 
   <br>

@@ -41,6 +41,8 @@
           ]},
           {title: "Highway", url: "#highway", children: [
           ]},
+          {title: "ConvLSTM2D", url: "#convlstm2d", children: [
+          ]},
         ];
 
     </script>
@@ -68,7 +70,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">SimpleRNN(output_dim, activation=&quot;tanh&quot;, return_sequences=False, go_backwards=False, W_regularizer=None, U_regularizer=None, b_regularizer=None, input_shape=None)
+<pre><code class="python">SimpleRNN(output_dim, activation=&quot;tanh&quot;, return_sequences=False, go_backwards=False, W_regularizer=None, U_regularizer=None, b_regularizer=None, input_shape=None, name=None)
 </code></pre>
 
 <p>Parameters:</p>
@@ -154,7 +156,7 @@ output = model.forward(input)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">LSTM(output_dim, activation=&quot;tanh&quot;, inner_activation=&quot;hard_sigmoid&quot;, return_sequences=False, go_backwards=False, W_regularizer=None, U_regularizer=None, b_regularizer=None, input_shape=None, input_shape=None)
+<pre><code class="python">LSTM(output_dim, activation=&quot;tanh&quot;, inner_activation=&quot;hard_sigmoid&quot;, return_sequences=False, go_backwards=False, W_regularizer=None, U_regularizer=None, b_regularizer=None, input_shape=None, input_shape=None, name=None)
 </code></pre>
 
 <p>Parameters:</p>
@@ -235,7 +237,7 @@ output = model.forward(input)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">GRU(output_dim, activation=&quot;tanh&quot;, inner_activation=&quot;hard_sigmoid&quot;, return_sequences=False, go_backwards=False, W_regularizer=None, U_regularizer=None, b_regularizer=None, input_shape=None)
+<pre><code class="python">GRU(output_dim, activation=&quot;tanh&quot;, inner_activation=&quot;hard_sigmoid&quot;, return_sequences=False, go_backwards=False, W_regularizer=None, U_regularizer=None, b_regularizer=None, input_shape=None, name=None)
 </code></pre>
 
 <p>Parameters:</p>
@@ -315,7 +317,7 @@ output = model.forward(input)
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">Highway(activation=None, W_regularizer=None, b_regularizer=None, bias=True, input_shape=None)
+<pre><code class="python">Highway(activation=None, W_regularizer=None, b_regularizer=None, bias=True, input_shape=None, name=None)
 </code></pre>
 
 <p>Parameters:</p>
@@ -370,6 +372,100 @@ output = model.forward(input)
 <p>Output is:</p>
 <pre><code class="python">[[0.5762107  0.4567929  0.00370956]
  [0.24133313 0.38104653 0.05249191]]
+</code></pre>
+
+<hr />
+<h2 id="convlstm2d"><strong>ConvLSTM2D</strong></h2>
+<p>Convolutional LSTM.</p>
+<p>Data format currently supported for this layer is 'CHANNEL_FIRST' (dimOrdering='th').</p>
+<p>Border mode currently supported for this layer is 'same'.</p>
+<p>The convolution kernel for this layer is a square kernel with equal strides 'subsample'.</p>
+<p>The input of this layer should be 5D.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">ConvLSTM2D(nbFilter, nbKernel, activation = &quot;tanh&quot;, innerActivation = &quot;hard_sigmoid&quot;, dimOrdering = &quot;th&quot;, subsample = 1, wRegularizer = null, uRegularizer = null, bRegularizer = null, returnSequences = false, goBackwards = false, inputShape = null)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">ConvLSTM2D(nb_filter, nb_row, nb_col, activation=&quot;tanh&quot;, inner_activation=&quot;hard_sigmoid&quot;, dim_ordering=&quot;th&quot;, border_mode=&quot;same&quot;, subsample=(1, 1), W_regularizer=None, U_regularizer=None, b_regularizer=None, return_sequences=False, go_backwards=False, input_shape=None, name=None)
+</code></pre>
+
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>nbFilter</code>: Number of convolution filters to use.</li>
+<li><code>nbKernel</code>: Number of rows/columns in the convolution kernel. Square kernel.</li>
+<li><code>activation</code>: String representation of the activation function to use. See <a href="../activation/#available-activations">here</a> for available activation strings. Default is 'tanh'.</li>
+<li><code>innerActivation</code>: String representation of the activation function to use for inner cells. See <a href="../activation/#available-activations">here</a> for available activation strings. Default is 'hard_sigmoid'.</li>
+<li><code>dimOrdering</code>: Format of input data. Only 'th' (Channel First) is supported for now.</li>
+<li><code>subsample</code>: Factor by which to subsample output. Also called strides elsewhere.</li>
+<li><code>wRegularizer</code>: An instance of <a href="../../../../APIGuide/Regularizers/">Regularizer</a>, (eg. L1 or L2 regularization), applied to the input weights matrices. Default is null.</li>
+<li><code>uRegularizer</code>: An instance of <a href="../../../../APIGuide/Regularizers/">Regularizer</a>, (eg. L1 or L2 regularization), applied to the recurrent weights matrices. Default is null.</li>
+<li><code>bRegularizer</code>: An instance of <a href="../../../../APIGuide/Regularizers/">Regularizer</a>, applied to the bias. Default is null.</li>
+<li><code>returnSequences</code>: Whether to return the full sequence or the last output in the output sequence. Default is false.</li>
+<li><code>goBackwards</code>: Whether the input sequence will be processed backwards. Default is false.</li>
+<li><code>inputShape</code>: Only need to specify this argument when you use this layer as the first layer of a model. For Scala API, it should be a <a href="../../keras-api-scala/#shape"><code>Shape</code></a> object. For Python API, it should be a shape tuple. Batch dimension should be excluded.</li>
+</ul>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.keras.{Sequential, ConvLSTM2D}
+import com.intel.analytics.bigdl.utils.Shape
+import com.intel.analytics.bigdl.tensor._
+
+val model = Sequential[Float]()
+model.add(ConvLSTM2D(2, 2, inputShape = Shape(1, 2, 2, 2)))
+val input = Tensor[Float](1, 1, 2, 2, 2).randn()
+val output = model.forward(input)
+</code></pre>
+
+<p>Input is:</p>
+<pre><code class="scala">input: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+(1,1,1,.,.) =
+-0.3935159  -2.0734277
+0.16473202  -1.0574125
+
+(1,1,2,.,.) =
+1.2325795   0.510846
+-0.4246685  -0.109434046
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x1x2x2x2]
+</code></pre>
+
+<p>Output is:</p>
+<pre><code class="scala">output: com.intel.analytics.bigdl.nn.abstractnn.Activity =
+(1,1,.,.) =
+-0.12613402     0.035963967
+0.046498444     0.03568305
+
+(1,2,.,.) =
+-0.1547083      -0.046905644
+-0.115438126    -0.08817647
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x2x2]
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">import numpy as np
+from bigdl.nn.keras.topology import Sequential
+from bigdl.nn.keras.layer import ConvLSTM2D
+
+model = Sequential()
+model.add(ConvLSTM2D(2, 2, 2, input_shape=(1, 2, 2, 2)))
+input = np.random.random([1, 1, 2, 2, 2])
+output = model.forward(input)
+</code></pre>
+
+<p>Input is:</p>
+<pre><code class="python">[[[[[0.53293431 0.02606896]
+    [0.50916001 0.6927234 ]]
+
+   [[0.44282168 0.05963464]
+    [0.22863441 0.45312165]]]]]
+</code></pre>
+
+<p>Output is</p>
+<pre><code class="python">[[[[ 0.09322705  0.09817358]
+   [ 0.12197719  0.11264911]]
+
+  [[ -0.03922357 -0.11715978]
+   [ -0.01915754 -0.03141996]]]]
 </code></pre>
 
   <br>
