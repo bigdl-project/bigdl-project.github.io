@@ -212,8 +212,8 @@ http://arxiv.org/abs/1212.5701.</p>
 <h2 id="rmsprop">RMSprop</h2>
 <p>An implementation of RMSprop (Reference: http://arxiv.org/pdf/1308.0850v5.pdf, Sec 4.2)
 <em> learningRate : learning rate
-</em> learningRateDecaye : learning rate decay
-<em> decayRatee : decayRate, also called rho
+</em> learningRateDecay : learning rate decay
+<em> decayRate : decayRate, also called rho
 </em> Epsilone : for numerical stability</p>
 <h2 id="adamax">Adamax</h2>
 <p>An implementation of Adamax http://arxiv.org/pdf/1412.6980.pdf</p>
@@ -301,14 +301,16 @@ searches, and can be useful for stochastic problems.</p>
 <p>The learning rate is used even when a line search is provided.This is also useful for
 large-scale stochastic problems, where opfunc is a noisy approximation of f(x). In that
 case, the learning rate allows a reduction of confidence in the step size.</p>
-<p><strong>Parameters:</strong>
-<em> <strong>maxIter</strong> - Maximum number of iterations allowed. Default: 20
-</em> <strong>maxEval</strong> - Maximum number of function evaluations. Default: Double.MaxValue
-<em> <strong>tolFun</strong> - Termination tolerance on the first-order optimality. Default: 1e-5
-</em> <strong>tolX</strong> - Termination tol on progress in terms of func/param changes. Default: 1e-9
-<em> <strong>learningRate</strong> - the learning rate. Default: 1.0
-</em> <strong>lineSearch</strong> - A line search function. Default: None
-* <strong>lineSearchOptions</strong> - If no line search provided, then a fixed step size is used. Default: None</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>maxIter - Maximum number of iterations allowed. Default: 20</li>
+<li>maxEval - Maximum number of function evaluations. Default: Double.MaxValue</li>
+<li>tolFun - Termination tolerance on the first-order optimality. Default: 1e-5</li>
+<li>tolX - Termination tol on progress in terms of func/param changes. Default: 1e-9</li>
+<li>learningRate - the learning rate. Default: 1.0</li>
+<li>lineSearch - A line search function. Default: None</li>
+<li>lineSearchOptions - If no line search provided, then a fixed step size is used. Default: None</li>
+</ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">val optimMethod = new LBFGS(maxIter=20, maxEval=Double.MaxValue,
                             tolFun=1e-5, tolX=1e-9, nCorrection=100,
