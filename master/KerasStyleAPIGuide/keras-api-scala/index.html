@@ -103,6 +103,7 @@ val shape2 = Shape(List(Shape(1, 2, 3), Shape(4, 5, 6)))
 <ul>
 <li>Set the name of the model.</li>
 </ul>
+<p>See <a href="../Optimization/training/">here</a> on how to train, predict or evaluate a defined model.</p>
 <hr />
 <h2 id="sequential-api"><strong>Sequential API</strong></h2>
 <p>The model is described as a linear stack of layers in the Sequential API. Layers can be added into the <code>Sequential</code> container one by one and the order of the layers in the model will be the same as the insertion order.</p>
@@ -176,7 +177,8 @@ val model = Model[Float](Array(input1, input2), output)
 <hr />
 <h2 id="lenet-example"><strong>LeNet Example</strong></h2>
 <p>Here we adopt our Keras-Style API to define a LeNet CNN model to be trained on the MNIST dataset:</p>
-<pre><code class="scala">import com.intel.analytics.bigdl.nn.keras._
+<pre><code class="scala">import com.intel.analytics.bigdl.numeric.NumericFloat
+import com.intel.analytics.bigdl.nn.keras._
 import com.intel.analytics.bigdl.utils.Shape
 
 val model = Sequential()

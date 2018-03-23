@@ -11,7 +11,7 @@
     
     <link rel="shortcut icon" href="/img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <title>Advanced Activations Layers - BigDL Project</title>
+    <title>Advanced Activations - BigDL Project</title>
     <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
     <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
     <link href="/css/base.css" rel="stylesheet">
@@ -56,7 +56,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
 <div class="container-fluid wm-page-content">
     
-    <h1><strong>Advanced Activations Layers</strong></h1>
+    <h1><strong>Advanced Activations</strong></h1>
     <hr>
     <h2 id="elu"><strong>ELU</strong></h2>
 <p>Exponential Linear Unit.</p>
@@ -71,13 +71,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>alpha</code>: Double, scale for the negative factor.</li>
+<li><code>alpha</code>: Scale for the negative factor. Default is 1.0.</li>
 <li><code>inputShape</code>: Only need to specify this argument when you use this layer as the first layer of a model. For Scala API, it should be a <a href="../../keras-api-scala/#shape"><code>Shape</code></a> object. For Python API, it should be a shape tuple. Batch dimension should be excluded.</li>
 </ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn.keras.{Sequential, ELU}
 import com.intel.analytics.bigdl.utils.Shape
-import com.intel.analytics.bigdl.tensor._
+import com.intel.analytics.bigdl.tensor.Tensor
 
 val model = Sequential[Float]()
 model.add(ELU(inputShape = Shape(3)))
@@ -134,13 +134,13 @@ output = model.forward(input)
 
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>alpha</code>: Double &gt;= 0. Negative slope coefficient.</li>
+<li><code>alpha</code>: Negative slope coefficient. Default is 0.3.</li>
 <li><code>inputShape</code>: Only need to specify this argument when you use this layer as the first layer of a model. For Scala API, it should be a <a href="../../keras-api-scala/#shape"><code>Shape</code></a> object. For Python API, it should be a shape tuple. Batch dimension should be excluded.</li>
 </ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn.keras.{Sequential, LeakyReLU}
 import com.intel.analytics.bigdl.utils.Shape
-import com.intel.analytics.bigdl.tensor._
+import com.intel.analytics.bigdl.tensor.Tensor
 
 val model = Sequential[Float]()
 model.add(LeakyReLU(inputShape = Shape(3)))
@@ -150,15 +150,15 @@ val output = model.forward(input)
 
 <p>Input is:</p>
 <pre><code class="scala">input: com.intel.analytics.bigdl.tensor.Tensor[Float] =
-0.8846715   -0.5720033  -0.8220917
--0.51755846 1.099684    2.6011446
+0.8846715    -0.5720033  -0.8220917
+-0.51755846  1.099684    2.6011446
 [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
 </code></pre>
 
 <p>Output is:</p>
 <pre><code class="scala">output: com.intel.analytics.bigdl.nn.abstractnn.Activity =
-0.8846715       -0.005720033    -0.008220917
--0.0051755845   1.099684        2.6011446
+0.8846715       -0.005720033   -0.008220917
+-0.0051755845   1.099684       2.6011446
 [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
 </code></pre>
 
@@ -197,18 +197,18 @@ output = model.forward(input)
 
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>tLeftInit</code>: String representation of the initialization method for the left part intercept. Default is 'zero'.</li>
-<li><code>aLeftInit</code>: String representation of the initialization method for the left part slope. Default is 'glorot_uniform'.</li>
-<li><code>tRightInit</code>: String representation of ithe nitialization method for the right part intercept. Default is 'glorot_uniform'.</li>
-<li><code>aRightInit</code>: String representation of the initialization method for the right part slope. Default is 'one'.</li>
+<li><code>tLeftInit</code>: String representation of the initialization method for the left part intercept. See <a href="../initialization/#available-initialization-methods">here</a> for available initialization strings. Default is 'zero'.</li>
+<li><code>aLeftInit</code>: String representation of the initialization method for the left part slope. See <a href="../initialization/#available-initialization-methods">here</a> for available initialization strings. Default is 'glorot_uniform'.</li>
+<li><code>tRightInit</code>: String representation of ithe nitialization method for the right part intercept. See <a href="../initialization/#available-initialization-methods">here</a> for available initialization strings. Default is 'glorot_uniform'.</li>
+<li><code>aRightInit</code>: String representation of the initialization method for the right part slope. See <a href="../initialization/#available-initialization-methods">here</a> for available initialization strings. Default is 'one'.</li>
 <li><code>sharedAxes</code>: The axes along which to share learnable parameters for the activation function. Default is null.
-For example, if the incoming feature maps are from a 2D convolution with output shape (batch, height, width, channels), and you wish to share parameters across space so that each filter only has one set of parameters, set 'SharedAxes = Array(1,2)'.</li>
+For example, if the incoming feature maps are from a 2D convolution with output shape (batch, height, width, channels), and you wish to share parameters across space so that each filter only has one set of parameters, set 'sharedAxes = Array(1,2)'.</li>
 <li><code>inputShape</code>: Only need to specify this argument when you use this layer as the first layer of a model. For Scala API, it should be a <a href="../../keras-api-scala/#shape"><code>Shape</code></a> object. For Python API, it should be a shape tuple. Batch dimension should be excluded.</li>
 </ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn.keras.{Sequential, SReLU}
 import com.intel.analytics.bigdl.utils.Shape
-import com.intel.analytics.bigdl.tensor._
+import com.intel.analytics.bigdl.tensor.Tensor
 
 val model = Sequential[Float]()
 model.add(SReLU(inputShape = Shape(2, 3)))
@@ -283,13 +283,13 @@ output = model.forward(input)
 
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>theta</code>: Double &gt;= 0. Threshold location of activation.</li>
+<li><code>theta</code>: Threshold location of activation. Default is 1.0.</li>
 <li><code>inputShape</code>: Only need to specify this argument when you use this layer as the first layer of a model. For Scala API, it should be a <a href="../../keras-api-scala/#shape"><code>Shape</code></a> object. For Python API, it should be a shape tuple. Batch dimension should be excluded.</li>
 </ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn.keras.{Sequential, ThresholdedReLU}
 import com.intel.analytics.bigdl.utils.Shape
-import com.intel.analytics.bigdl.tensor._
+import com.intel.analytics.bigdl.tensor.Tensor
 
 val model = Sequential[Float]()
 model.add(ThresholdedReLU(inputShape = Shape(3)))

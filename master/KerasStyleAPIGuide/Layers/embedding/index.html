@@ -68,13 +68,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li><code>inputDim</code>: Int &gt; 0. Size of the vocabulary.</li>
 <li><code>outputDim</code>: Int &gt;= 0. Dimension of the dense embedding.</li>
 <li><code>init</code>: String representation of the initialization method for the weights of the layer. See <a href="../initialization/#available-initialization-methods">here</a> for available initialization strings. Default is "uniform".</li>
-<li><code>wRegularizer</code>: An instance of <a href="../../../../APIGuide/Regularizers/">Regularizer</a>, (eg. L1 or L2 regularization), applied to the input weights matrices. Default is null.</li>
+<li><code>wRegularizer</code>: An instance of <a href="../../../APIGuide/Regularizers/">Regularizer</a>, (eg. L1 or L2 regularization), applied to the input weights matrices. Default is null.</li>
 <li><code>inputShape</code>: Only need to specify this argument when you use this layer as the first layer of a model. For Scala API, it should be a <a href="../../keras-api-scala/#shape"><code>Shape</code></a> object. For Python API, it should be a shape tuple. Batch dimension should be excluded.</li>
 </ul>
 <p><strong>Scala example:</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.nn.keras.{Sequential, Embedding}
 import com.intel.analytics.bigdl.utils.Shape
-import com.intel.analytics.bigdl.tensor._
+import com.intel.analytics.bigdl.tensor.Tensor
 
 val model = Sequential[Float]()
 model.add(Embedding(8, 2, inputShape = Shape(4)))
