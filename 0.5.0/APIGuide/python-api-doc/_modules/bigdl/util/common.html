@@ -1,0 +1,824 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>bigdl.util.common &#8212; BigDL  documentation</title>
+    <link rel="stylesheet" href="../../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for bigdl.util.common</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># Copyright 2016 The BigDL Authors.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">six</span>
+<span class="kn">from</span> <span class="nn">py4j.protocol</span> <span class="k">import</span> <span class="n">Py4JJavaError</span>
+<span class="kn">from</span> <span class="nn">py4j.java_gateway</span> <span class="k">import</span> <span class="n">JavaObject</span>
+<span class="kn">from</span> <span class="nn">py4j.java_collections</span> <span class="k">import</span> <span class="n">ListConverter</span><span class="p">,</span> <span class="n">JavaArray</span><span class="p">,</span> <span class="n">JavaList</span><span class="p">,</span> <span class="n">JavaMap</span><span class="p">,</span> <span class="n">MapConverter</span>
+<span class="kn">from</span> <span class="nn">py4j.java_gateway</span> <span class="k">import</span> <span class="n">JavaGateway</span><span class="p">,</span> <span class="n">GatewayClient</span>
+
+<span class="kn">from</span> <span class="nn">pyspark</span> <span class="k">import</span> <span class="n">RDD</span><span class="p">,</span> <span class="n">SparkContext</span>
+<span class="kn">from</span> <span class="nn">pyspark.serializers</span> <span class="k">import</span> <span class="n">PickleSerializer</span><span class="p">,</span> <span class="n">AutoBatchedSerializer</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="k">import</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">SQLContext</span>
+<span class="kn">from</span> <span class="nn">pyspark.mllib.common</span> <span class="k">import</span> <span class="n">callJavaFunc</span>
+<span class="kn">from</span> <span class="nn">pyspark</span> <span class="k">import</span> <span class="n">SparkConf</span>
+<span class="kn">from</span> <span class="nn">pyspark.files</span> <span class="k">import</span> <span class="n">SparkFiles</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">from</span> <span class="nn">bigdl.util.engine</span> <span class="k">import</span> <span class="n">get_bigdl_classpath</span><span class="p">,</span> <span class="n">is_spark_below_2_2</span>
+
+<span class="n">INTMAX</span> <span class="o">=</span> <span class="mi">2147483647</span>
+<span class="n">INTMIN</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2147483648</span>
+<span class="n">DOUBLEMAX</span> <span class="o">=</span> <span class="mf">1.7976931348623157E308</span>
+
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span> <span class="o">&gt;=</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
+    <span class="n">long</span> <span class="o">=</span> <span class="nb">int</span>
+    <span class="n">unicode</span> <span class="o">=</span> <span class="nb">str</span>
+
+
+<div class="viewcode-block" id="SingletonMixin"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.SingletonMixin">[docs]</a><span class="k">class</span> <span class="nc">SingletonMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">RLock</span><span class="p">()</span>
+    <span class="n">_instance</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="SingletonMixin.instance"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.SingletonMixin.instance">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">instance</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span><span class="p">:</span>
+            <span class="k">with</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span><span class="p">:</span>
+                    <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span>
+
+
+<div class="viewcode-block" id="GatewayWrapper"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.GatewayWrapper">[docs]</a><span class="k">class</span> <span class="nc">GatewayWrapper</span><span class="p">(</span><span class="n">SingletonMixin</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">25333</span><span class="p">):</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">JavaGateway</span><span class="p">(</span><span class="n">GatewayClient</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">),</span> <span class="n">auto_convert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="JavaCreator"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JavaCreator">[docs]</a><span class="k">class</span> <span class="nc">JavaCreator</span><span class="p">(</span><span class="n">SingletonMixin</span><span class="p">):</span>
+    <span class="n">__creator_class</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;com.intel.analytics.bigdl.python.api.PythonBigDLKeras&quot;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="JavaCreator.add_creator_class"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JavaCreator.add_creator_class">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">add_creator_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">jinvoker</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">JavaCreator</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="n">JavaCreator</span><span class="o">.</span><span class="n">__creator_class</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">jinvoker</span><span class="p">)</span></div>
+            <span class="n">JavaCreator</span><span class="o">.</span><span class="n">_instance</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="JavaCreator.get_creator_class"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JavaCreator.get_creator_class">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">get_creator_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">JavaCreator</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span></div>
+            <span class="k">return</span> <span class="n">JavaCreator</span><span class="o">.</span><span class="n">__creator_class</span>
+
+<div class="viewcode-block" id="JavaCreator.set_creator_class"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JavaCreator.set_creator_class">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">set_creator_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cclass</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cclass</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+            <span class="n">cclass</span> <span class="o">=</span> <span class="p">[</span><span class="n">cclass</span><span class="p">]</span>
+        <span class="k">with</span> <span class="n">JavaCreator</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="n">JavaCreator</span><span class="o">.</span><span class="n">__creator_class</span> <span class="o">=</span> <span class="n">cclass</span></div>
+            <span class="n">JavaCreator</span><span class="o">.</span><span class="n">_instance</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">gateway</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">creator_class</span> <span class="ow">in</span> <span class="n">JavaCreator</span><span class="o">.</span><span class="n">get_creator_class</span><span class="p">():</span>
+            <span class="n">jclass</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">gateway</span><span class="o">.</span><span class="n">jvm</span><span class="p">,</span> <span class="n">creator_class</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">bigdl_type</span> <span class="o">==</span> <span class="s2">&quot;float&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">jclass</span><span class="p">,</span> <span class="s2">&quot;ofFloat&quot;</span><span class="p">)())</span>
+            <span class="k">elif</span> <span class="n">bigdl_type</span> <span class="o">==</span> <span class="s2">&quot;double&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">jclass</span><span class="p">,</span> <span class="s2">&quot;ofDouble&quot;</span><span class="p">)())</span>
+            <span class="k">else</span><span class="p">:</span></div>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Not supported bigdl_type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">bigdl_type</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="JavaValue"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JavaValue">[docs]</a><span class="k">class</span> <span class="nc">JavaValue</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="JavaValue.jvm_class_constructor"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JavaValue.jvm_class_constructor">[docs]</a>    <span class="k">def</span> <span class="nf">jvm_class_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;create&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;creating: &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jvalue</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">jvalue</span> <span class="k">if</span> <span class="n">jvalue</span> <span class="k">else</span> <span class="n">callBigDlFunc</span><span class="p">(</span>
+            <span class="n">bigdl_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">jvm_class_constructor</span><span class="p">(),</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="EvaluatedResult"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.EvaluatedResult">[docs]</a><span class="k">class</span> <span class="nc">EvaluatedResult</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A testing result used to benchmark the model quality.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">total_num</span><span class="p">,</span> <span class="n">method</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param result: the validation result. i.e: top1 accuracy percentage.</span>
+<span class="sd">        :param total_num: the total processed records.</span>
+<span class="sd">        :param method: the validation method. i.e: Top1Accuracy</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_num</span> <span class="o">=</span> <span class="n">total_num</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
+
+    <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">EvaluatedResult</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_num</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Evaluated result: </span><span class="si">%s</span><span class="s2">, total_num: </span><span class="si">%s</span><span class="s2">, method: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_num</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_dtype"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_dtype">[docs]</a><span class="k">def</span> <span class="nf">get_dtype</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">):</span>
+    <span class="c1"># Always return float32 for now</span></div>
+    <span class="k">return</span> <span class="s2">&quot;float32&quot;</span>
+
+
+<div class="viewcode-block" id="JActivity"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JActivity">[docs]</a><span class="k">class</span> <span class="nc">JActivity</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+
+
+<div class="viewcode-block" id="JTensor"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JTensor">[docs]</a><span class="k">class</span> <span class="nc">JTensor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A wrapper to easy our work when need to pass or return Tensor to/from Scala.</span>
+
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; from bigdl.util.common import JTensor</span>
+<span class="sd">    &gt;&gt;&gt; np.random.seed(123)</span>
+<span class="sd">    &gt;&gt;&gt;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">storage</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        :param storage: values in this tensor</span>
+<span class="sd">        :param shape: shape of this tensor</span>
+<span class="sd">        :param bigdl_type: numeric type</span>
+<span class="sd">        :param indices: if indices is provided, means this is a SparseTensor;</span>
+<span class="sd">                        if not provided, means this is a DenseTensor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">storage</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">storage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">storage</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">get_dtype</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">storage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">storage</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">get_dtype</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">indices</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">),</span> \
+            <span class="s2">&quot;indices should be a np.ndarray, not </span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a_ndarray</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">indices</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
+
+<div class="viewcode-block" id="JTensor.from_ndarray"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JTensor.from_ndarray">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_ndarray</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">a_ndarray</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert a ndarray to a DenseTensor which would be used in Java side.</span>
+
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; from bigdl.util.common import JTensor</span>
+<span class="sd">        &gt;&gt;&gt; from bigdl.util.common import callBigDlFunc</span>
+<span class="sd">        &gt;&gt;&gt; np.random.seed(123)</span>
+<span class="sd">        &gt;&gt;&gt; data = np.random.uniform(0, 1, (2, 3)).astype(&quot;float32&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; result = JTensor.from_ndarray(data)</span>
+<span class="sd">        &gt;&gt;&gt; expected_storage = np.array([[0.69646919, 0.28613934, 0.22685145], [0.55131477, 0.71946895, 0.42310646]])</span>
+<span class="sd">        &gt;&gt;&gt; expected_shape = np.array([2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(result.storage, expected_storage, rtol=1e-6, atol=1e-6)</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(result.shape, expected_shape)</span>
+<span class="sd">        &gt;&gt;&gt; data_back = result.to_ndarray()</span>
+<span class="sd">        &gt;&gt;&gt; (data == data_back).all()</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; tensor1 = callBigDlFunc(&quot;float&quot;, &quot;testTensor&quot;, JTensor.from_ndarray(data))  # noqa</span>
+<span class="sd">        &gt;&gt;&gt; array_from_tensor = tensor1.to_ndarray()</span>
+<span class="sd">        &gt;&gt;&gt; (array_from_tensor == data).all()</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">a_ndarray</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a_ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">),</span> \
+            <span class="s2">&quot;input should be a np.ndarray, not </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">a_ndarray</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">a_ndarray</span><span class="p">,</span>
+                   <span class="n">a_ndarray</span><span class="o">.</span><span class="n">shape</span> <span class="k">if</span> <span class="n">a_ndarray</span><span class="o">.</span><span class="n">shape</span> <span class="k">else</span> <span class="p">(</span><span class="n">a_ndarray</span><span class="o">.</span><span class="n">size</span><span class="p">),</span></div>
+                   <span class="n">bigdl_type</span><span class="p">)</span>
+
+<div class="viewcode-block" id="JTensor.sparse"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JTensor.sparse">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">sparse</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">a_ndarray</span><span class="p">,</span> <span class="n">i_ndarray</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert a three ndarray to SparseTensor which would be used in Java side.</span>
+<span class="sd">        For example:</span>
+<span class="sd">        a_ndarray = [1, 3, 2, 4]</span>
+<span class="sd">        i_ndarray = [[0, 0, 1, 2],</span>
+<span class="sd">                     [0, 3, 2, 1]]</span>
+<span class="sd">        shape = [3, 4]</span>
+<span class="sd">        Present a dense tensor</span>
+<span class="sd">        [[ 1,  0,  0,  3],</span>
+<span class="sd">         [ 0,  0,  2,  0],</span>
+<span class="sd">         [ 0,  4,  0,  0]]</span>
+
+<span class="sd">        :param a_ndarray non-zero elements in this SparseTensor</span>
+<span class="sd">        :param i_ndarray zero-based indices for non-zero element</span>
+<span class="sd">                         i_ndarray&#39;s shape should be (shape.size, a_ndarray.size)</span>
+<span class="sd">                         And the i-th non-zero elements indices is i_ndarray[:, 1]</span>
+<span class="sd">        :param shape     shape as a DenseTensor.</span>
+
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; from bigdl.util.common import JTensor</span>
+<span class="sd">        &gt;&gt;&gt; from bigdl.util.common import callBigDlFunc</span>
+<span class="sd">        &gt;&gt;&gt; np.random.seed(123)</span>
+<span class="sd">        &gt;&gt;&gt; data = np.arange(1, 7).astype(&quot;float32&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; indices = np.arange(1, 7)</span>
+<span class="sd">        &gt;&gt;&gt; shape = np.array([10])</span>
+<span class="sd">        &gt;&gt;&gt; result = JTensor.sparse(data, indices, shape)</span>
+<span class="sd">        &gt;&gt;&gt; expected_storage = np.array([1., 2., 3., 4., 5., 6.])</span>
+<span class="sd">        &gt;&gt;&gt; expected_shape = np.array([10])</span>
+<span class="sd">        &gt;&gt;&gt; expected_indices = np.array([1, 2, 3, 4, 5, 6])</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(result.storage, expected_storage)</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(result.shape, expected_shape)</span>
+<span class="sd">        &gt;&gt;&gt; np.testing.assert_allclose(result.indices, expected_indices)</span>
+<span class="sd">        &gt;&gt;&gt; tensor1 = callBigDlFunc(&quot;float&quot;, &quot;testTensor&quot;, result)  # noqa</span>
+<span class="sd">        &gt;&gt;&gt; array_from_tensor = tensor1.to_ndarray()</span>
+<span class="sd">        &gt;&gt;&gt; expected_ndarray = np.array([0, 1, 2, 3, 4, 5, 6, 0, 0, 0])</span>
+<span class="sd">        &gt;&gt;&gt; (array_from_tensor == expected_ndarray).all()</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">a_ndarray</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a_ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">),</span> \
+            <span class="s2">&quot;values array should be a np.ndarray, not </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">a_ndarray</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i_ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">),</span> \
+            <span class="s2">&quot;indices array should be a np.ndarray, not </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">a_ndarray</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">i_ndarray</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="n">a_ndarray</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="n">shape</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> \
+            <span class="s2">&quot;size of values and indices should match.&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">a_ndarray</span><span class="p">,</span>
+                   <span class="n">shape</span><span class="p">,</span>
+                   <span class="n">bigdl_type</span><span class="p">,</span></div>
+                   <span class="n">i_ndarray</span><span class="p">)</span>
+
+<div class="viewcode-block" id="JTensor.to_ndarray"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JTensor.to_ndarray">[docs]</a>    <span class="k">def</span> <span class="nf">to_ndarray</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Transfer JTensor to ndarray.</span>
+<span class="sd">        As SparseTensor may generate an very big ndarray, so we don&#39;t support this function for SparseTensor.</span>
+<span class="sd">        :return: a ndarray</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;sparseTensor to ndarray is not supported&quot;</span></div>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">get_dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># noqa</span>
+
+    <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">JTensor</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">tostring</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">tostring</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">JTensor</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="o">.</span><span class="n">tostring</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">tostring</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">tostring</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot; ,indices </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="s2">&quot;JTensor: storage: </span><span class="si">%s</span><span class="s2">, shape: </span><span class="si">%s%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">indices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Sample"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.Sample">[docs]</a><span class="k">class</span> <span class="nc">Sample</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        User should always use Sample.from_ndarray to construct Sample.</span>
+<span class="sd">        :param features: a list of JTensors</span>
+<span class="sd">        :param labels: a list of JTensors</span>
+<span class="sd">        :param bigdl_type: &quot;double&quot; or &quot;float&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">feature</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="n">features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span>
+
+<div class="viewcode-block" id="Sample.from_ndarray"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.Sample.from_ndarray">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_ndarray</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert a ndarray of features and labels to Sample, which would be used in Java side.</span>
+<span class="sd">        :param features: an ndarray or a list of ndarrays</span>
+<span class="sd">        :param labels: an ndarray or a list of ndarrays or a scalar</span>
+<span class="sd">        :param bigdl_type: &quot;double&quot; or &quot;float&quot;</span>
+
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; from bigdl.util.common import callBigDlFunc</span>
+<span class="sd">        &gt;&gt;&gt; from numpy.testing import assert_allclose</span>
+<span class="sd">        &gt;&gt;&gt; np.random.seed(123)</span>
+<span class="sd">        &gt;&gt;&gt; sample = Sample.from_ndarray(np.random.random((2,3)), np.random.random((2,3)))</span>
+<span class="sd">        &gt;&gt;&gt; sample_back = callBigDlFunc(&quot;float&quot;, &quot;testSample&quot;, sample)</span>
+<span class="sd">        &gt;&gt;&gt; assert_allclose(sample.features[0].to_ndarray(), sample_back.features[0].to_ndarray())</span>
+<span class="sd">        &gt;&gt;&gt; assert_allclose(sample.label.to_ndarray(), sample_back.label.to_ndarray())</span>
+<span class="sd">        &gt;&gt;&gt; expected_feature_storage = np.array(([[0.69646919, 0.28613934, 0.22685145], [0.55131477, 0.71946895, 0.42310646]]))</span>
+<span class="sd">        &gt;&gt;&gt; expected_feature_shape = np.array([2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; expected_label_storage = np.array(([[0.98076421, 0.68482971, 0.48093191], [0.39211753, 0.343178, 0.72904968]]))</span>
+<span class="sd">        &gt;&gt;&gt; expected_label_shape = np.array([2, 3])</span>
+<span class="sd">        &gt;&gt;&gt; assert_allclose(sample.features[0].storage, expected_feature_storage, rtol=1e-6, atol=1e-6)</span>
+<span class="sd">        &gt;&gt;&gt; assert_allclose(sample.features[0].shape, expected_feature_shape)</span>
+<span class="sd">        &gt;&gt;&gt; assert_allclose(sample.labels[0].storage, expected_label_storage, rtol=1e-6, atol=1e-6)</span>
+<span class="sd">        &gt;&gt;&gt; assert_allclose(sample.labels[0].shape, expected_label_shape)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="n">features</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">),</span> \
+                <span class="s2">&quot;features should be a list of np.ndarray, not </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>  <span class="c1"># in case labels is a scalar.</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">labels</span><span class="p">)]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">labels</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">),</span> \
+                <span class="s2">&quot;labels should be a list of np.ndarray, not </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">],</span>
+            <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">],</span></div>
+            <span class="n">bigdl_type</span><span class="o">=</span><span class="n">bigdl_type</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Sample.from_jtensor"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.Sample.from_jtensor">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_jtensor</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert a sequence of JTensor to Sample, which would be used in Java side.</span>
+<span class="sd">        :param features: an JTensor or a list of JTensor</span>
+<span class="sd">        :param labels: an JTensor or a list of JTensor or a scalar</span>
+<span class="sd">        :param bigdl_type: &quot;double&quot; or &quot;float&quot;</span>
+
+<span class="sd">        &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">        &gt;&gt;&gt; data = np.random.uniform(0, 1, (6)).astype(&quot;float32&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; indices = np.arange(1, 7)</span>
+<span class="sd">        &gt;&gt;&gt; shape = np.array([10])</span>
+<span class="sd">        &gt;&gt;&gt; feature0 = JTensor.sparse(data, indices, shape)</span>
+<span class="sd">        &gt;&gt;&gt; feature1 = JTensor.from_ndarray(np.random.uniform(0, 1, (2, 3)).astype(&quot;float32&quot;))</span>
+<span class="sd">        &gt;&gt;&gt; sample = Sample.from_jtensor([feature0, feature1], 1)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">JTensor</span><span class="p">):</span>
+            <span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="n">features</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">JTensor</span><span class="p">)</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">),</span> \
+                <span class="s2">&quot;features should be a list of JTensor, not </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>  <span class="c1"># in case labels is a scalar.</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">labels</span><span class="p">))]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">JTensor</span><span class="p">):</span>
+            <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">labels</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">JTensor</span><span class="p">)</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">),</span> \
+                <span class="s2">&quot;labels should be a list of np.ndarray, not </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
+            <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span></div>
+            <span class="n">bigdl_type</span><span class="o">=</span><span class="n">bigdl_type</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Sample</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Sample: features: </span><span class="si">%s</span><span class="s2">, labels: </span><span class="si">%s</span><span class="s2">,&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></div>
+        <span class="k">return</span> <span class="s2">&quot;Sample: features: </span><span class="si">%s</span><span class="s2">, labels: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+
+<div class="viewcode-block" id="RNG"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.RNG">[docs]</a><span class="k">class</span> <span class="nc">RNG</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    generate tensor data with seed</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
+
+<div class="viewcode-block" id="RNG.set_seed"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.RNG.set_seed">[docs]</a>    <span class="k">def</span> <span class="nf">set_seed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="p">):</span></div>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setModelSeed&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+
+<div class="viewcode-block" id="RNG.uniform"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.RNG.uniform">[docs]</a>    <span class="k">def</span> <span class="nf">uniform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span></div></div>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span> <span class="c1"># noqa</span>
+
+
+<span class="n">_picklable_classes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;LinkedList&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SparseVector&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DenseVector&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DenseMatrix&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Rating&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;LabeledPoint&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Sample&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;EvaluatedResult&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;JTensor&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;JActivity&#39;</span>
+<span class="p">]</span>
+
+
+<div class="viewcode-block" id="init_engine"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.init_engine">[docs]</a><span class="k">def</span> <span class="nf">init_engine</span><span class="p">(</span><span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+    <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;initEngine&quot;</span><span class="p">)</span>
+    <span class="c1"># Spark context is supposed to have been created when init_engine is called</span></div>
+    <span class="n">get_spark_context</span><span class="p">()</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">bigdl</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">BigDLSerDe</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="init_executor_gateway"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.init_executor_gateway">[docs]</a><span class="k">def</span> <span class="nf">init_executor_gateway</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+    <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;initExecutorGateway&quot;</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="n">sc</span><span class="o">.</span><span class="n">_gateway</span><span class="o">.</span><span class="n">_gateway_client</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_node_and_core_number"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_node_and_core_number">[docs]</a><span class="k">def</span> <span class="nf">get_node_and_core_number</span><span class="p">(</span><span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getNodeAndCoreNumber&quot;</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="redire_spark_logs"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.redire_spark_logs">[docs]</a><span class="k">def</span> <span class="nf">redire_spark_logs</span><span class="p">(</span><span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="n">log_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;/bigdl.log&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Redirect spark logs to the specified path.</span>
+<span class="sd">    :param bigdl_type: &quot;double&quot; or &quot;float&quot;</span>
+<span class="sd">    :param log_path: the file path to be redirected to; the default file is under the current workspace named `bigdl.log`.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+    <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;redirectSparkLogs&quot;</span><span class="p">,</span> <span class="n">log_path</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="show_bigdl_info_logs"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.show_bigdl_info_logs">[docs]</a><span class="k">def</span> <span class="nf">show_bigdl_info_logs</span><span class="p">(</span><span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set BigDL log level to INFO.</span>
+<span class="sd">    :param bigdl_type: &quot;double&quot; or &quot;float&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+    <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;showBigDlInfoLogs&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_bigdl_conf"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_bigdl_conf">[docs]</a><span class="k">def</span> <span class="nf">get_bigdl_conf</span><span class="p">():</span>
+    <span class="n">bigdl_conf_file</span> <span class="o">=</span> <span class="s2">&quot;spark-bigdl.conf&quot;</span>
+    <span class="n">bigdl_python_wrapper</span> <span class="o">=</span> <span class="s2">&quot;python-api.zip&quot;</span>
+
+    <span class="k">def</span> <span class="nf">load_conf</span><span class="p">(</span><span class="n">conf_str</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">conf_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="k">if</span>
+                    <span class="s2">&quot;#&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">line</span> <span class="ow">and</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">bigdl_conf_file</span> <span class="ow">in</span> <span class="n">p</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mi">3</span><span class="p">,)</span> <span class="k">else</span> <span class="nb">open</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">conf_file</span><span class="p">:</span> <span class="c1"># noqa</span>
+                <span class="k">return</span> <span class="n">load_conf</span><span class="p">(</span><span class="n">conf_file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">bigdl_python_wrapper</span> <span class="ow">in</span> <span class="n">p</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+            <span class="kn">import</span> <span class="nn">zipfile</span>
+            <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_conf</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">bigdl_conf_file</span>  <span class="ow">in</span> <span class="n">zip_conf</span><span class="o">.</span><span class="n">namelist</span><span class="p">():</span>
+                    <span class="n">content</span> <span class="o">=</span> <span class="n">zip_conf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">bigdl_conf_file</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,):</span>
+                        <span class="n">content</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="n">load_conf</span><span class="p">(</span><span class="n">content</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="p">{}</span>
+
+
+<div class="viewcode-block" id="to_list"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.to_list">[docs]</a><span class="k">def</span> <span class="nf">to_list</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span></div>
+    <span class="k">return</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="to_sample_rdd"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.to_sample_rdd">[docs]</a><span class="k">def</span> <span class="nf">to_sample_rdd</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">numSlices</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Conver x and y into RDD[Sample]</span>
+<span class="sd">    :param x: ndarray and the first dimension should be batch</span>
+<span class="sd">    :param y: ndarray and the first dimension should be batch</span>
+<span class="sd">    :param numSlices:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">get_spark_context</span><span class="p">()</span>
+    <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">Sample</span>
+    <span class="n">x_rdd</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numSlices</span><span class="p">)</span>
+    <span class="n">y_rdd</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">numSlices</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">x_rdd</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">y_rdd</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">Sample</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+
+<div class="viewcode-block" id="extend_spark_driver_cp"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.extend_spark_driver_cp">[docs]</a><span class="k">def</span> <span class="nf">extend_spark_driver_cp</span><span class="p">(</span><span class="n">sparkConf</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="n">original_driver_classpath</span> <span class="o">=</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">sparkConf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spark.driver.extraClassPath&quot;</span><span class="p">)</span> \
+        <span class="k">if</span> <span class="n">sparkConf</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;spark.driver.extraClassPath&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span></div>
+    <span class="n">sparkConf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.driver.extraClassPath&quot;</span><span class="p">,</span> <span class="n">path</span> <span class="o">+</span> <span class="n">original_driver_classpath</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="create_spark_conf"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.create_spark_conf">[docs]</a><span class="k">def</span> <span class="nf">create_spark_conf</span><span class="p">():</span>
+    <span class="n">bigdl_conf</span> <span class="o">=</span> <span class="n">get_bigdl_conf</span><span class="p">()</span>
+    <span class="n">sparkConf</span> <span class="o">=</span> <span class="n">SparkConf</span><span class="p">()</span>
+    <span class="n">sparkConf</span><span class="o">.</span><span class="n">setAll</span><span class="p">(</span><span class="n">bigdl_conf</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;BIGDL_JARS&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">is_spark_below_2_2</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">jar</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;BIGDL_JARS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">):</span>
+            <span class="n">extend_spark_driver_cp</span><span class="p">(</span><span class="n">sparkConf</span><span class="p">,</span> <span class="n">jar</span><span class="p">)</span>
+
+    <span class="c1"># add content in PYSPARK_FILES in spark.submit.pyFiles</span>
+    <span class="c1"># This is a workaround for current Spark on k8s</span>
+    <span class="n">python_lib</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;PYSPARK_FILES&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">python_lib</span><span class="p">:</span>
+        <span class="n">existing_py_files</span> <span class="o">=</span> <span class="n">sparkConf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spark.submit.pyFiles&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">existing_py_files</span><span class="p">:</span>
+            <span class="n">sparkConf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;spark.submit.pyFiles&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">python_lib</span><span class="p">,</span> <span class="n">existing_py_files</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sparkConf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;spark.submit.pyFiles&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">python_lib</span><span class="p">)</span>
+</div>
+    <span class="k">return</span> <span class="n">sparkConf</span>
+
+
+<div class="viewcode-block" id="get_spark_context"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_spark_context">[docs]</a><span class="k">def</span> <span class="nf">get_spark_context</span><span class="p">(</span><span class="n">conf</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the current active spark context and create one if no active instance</span>
+<span class="sd">    :param conf: combining bigdl configs into spark conf</span>
+<span class="sd">    :return: SparkContext</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">SparkContext</span><span class="p">,</span> <span class="s2">&quot;getOrCreate&quot;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">spark_conf</span> <span class="o">=</span> <span class="n">create_spark_conf</span><span class="p">()</span> <span class="k">if</span> <span class="n">conf</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conf</span>
+                <span class="k">return</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">(</span><span class="n">spark_conf</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Might have threading issue but we cann&#39;t add _lock here</span>
+        <span class="c1"># as it&#39;s not RLock in spark1.5;</span>
+        <span class="k">if</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">spark_conf</span> <span class="o">=</span> <span class="n">create_spark_conf</span><span class="p">()</span> <span class="k">if</span> <span class="n">conf</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conf</span>
+            <span class="k">return</span> <span class="n">SparkContext</span><span class="p">(</span><span class="n">conf</span><span class="o">=</span><span class="n">spark_conf</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span></div>
+            <span class="k">return</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
+
+
+<div class="viewcode-block" id="get_spark_sql_context"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_spark_sql_context">[docs]</a><span class="k">def</span> <span class="nf">get_spark_sql_context</span><span class="p">(</span><span class="n">sc</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s2">&quot;getOrCreate&quot;</span> <span class="ow">in</span> <span class="n">SQLContext</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">SQLContext</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span></div>
+        <span class="k">return</span> <span class="n">SQLContext</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>  <span class="c1"># Compatible with Spark1.5.1</span>
+
+
+<span class="k">def</span> <span class="nf">_get_port</span><span class="p">():</span>
+    <span class="n">root_dir</span> <span class="o">=</span> <span class="n">SparkFiles</span><span class="o">.</span><span class="n">getRootDirectory</span><span class="p">()</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="s2">&quot;gateway_port&quot;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+    <span class="k">except</span> <span class="ne">IOError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">traceback</span><span class="o">.</span><span class="n">print_exc</span><span class="p">()</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Could not open the file </span><span class="si">%s</span><span class="s2">, which contains the listening port of&quot;</span>
+                           <span class="s2">&quot; local Java Gateway, please make sure the init_executor_gateway()&quot;</span>
+                           <span class="s2">&quot; function is called before any call of java function on the&quot;</span>
+                           <span class="s2">&quot; executor side.&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">port</span>
+
+
+<span class="k">def</span> <span class="nf">_get_gateway</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">SparkFiles</span><span class="o">.</span><span class="n">_is_running_on_worker</span><span class="p">:</span>
+        <span class="n">gateway_port</span> <span class="o">=</span> <span class="n">_get_port</span><span class="p">()</span>
+        <span class="n">gateway</span> <span class="o">=</span> <span class="n">GatewayWrapper</span><span class="o">.</span><span class="n">instance</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">gateway_port</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sc</span> <span class="o">=</span> <span class="n">get_spark_context</span><span class="p">()</span>
+        <span class="n">gateway</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_gateway</span>
+    <span class="k">return</span> <span class="n">gateway</span>
+
+
+<div class="viewcode-block" id="callBigDlFunc"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.callBigDlFunc">[docs]</a><span class="k">def</span> <span class="nf">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Call API in PythonBigDL &quot;&quot;&quot;</span>
+    <span class="n">gateway</span> <span class="o">=</span> <span class="n">_get_gateway</span><span class="p">()</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Cannot find function: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">jinvoker</span> <span class="ow">in</span> <span class="n">JavaCreator</span><span class="o">.</span><span class="n">instance</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">gateway</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+        <span class="c1"># hasattr(jinvoker, name) always return true here,</span>
+        <span class="c1"># so you need to invoke the method to check if it exist or not</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">api</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">jinvoker</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">callJavaFunc</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="n">e</span>
+            <span class="k">if</span> <span class="s2">&quot;does not exist&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">e</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">result</span></div>
+    <span class="k">raise</span> <span class="n">error</span>
+
+
+<span class="k">def</span> <span class="nf">_java2py</span><span class="p">(</span><span class="n">gateway</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;bytes&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">JavaObject</span><span class="p">):</span>
+        <span class="n">clsName</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">getClass</span><span class="p">()</span><span class="o">.</span><span class="n">getSimpleName</span><span class="p">()</span>
+        <span class="c1"># convert RDD into JavaRDD</span>
+        <span class="k">if</span> <span class="n">clsName</span> <span class="o">!=</span> <span class="s1">&#39;JavaRDD&#39;</span> <span class="ow">and</span> <span class="n">clsName</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;RDD&quot;</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">toJavaRDD</span><span class="p">()</span>
+            <span class="n">clsName</span> <span class="o">=</span> <span class="s1">&#39;JavaRDD&#39;</span>
+
+        <span class="k">if</span> <span class="n">clsName</span> <span class="o">==</span> <span class="s1">&#39;JavaRDD&#39;</span><span class="p">:</span>
+            <span class="n">jrdd</span> <span class="o">=</span> <span class="n">gateway</span><span class="o">.</span><span class="n">jvm</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">bigdl</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">BigDLSerDe</span><span class="o">.</span><span class="n">javaToPython</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">RDD</span><span class="p">(</span><span class="n">jrdd</span><span class="p">,</span> <span class="n">get_spark_context</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="n">clsName</span> <span class="o">==</span> <span class="s1">&#39;DataFrame&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">get_spark_sql_context</span><span class="p">(</span><span class="n">get_spark_context</span><span class="p">()))</span>
+
+        <span class="k">if</span> <span class="n">clsName</span> <span class="o">==</span> <span class="s1">&#39;Dataset&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">get_spark_sql_context</span><span class="p">(</span><span class="n">get_spark_context</span><span class="p">()))</span>
+
+        <span class="k">if</span> <span class="n">clsName</span> <span class="ow">in</span> <span class="n">_picklable_classes</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">gateway</span><span class="o">.</span><span class="n">jvm</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">bigdl</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">BigDLSerDe</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">(</span><span class="n">JavaArray</span><span class="p">,</span> <span class="n">JavaList</span><span class="p">,</span> <span class="n">JavaMap</span><span class="p">)):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="n">gateway</span><span class="o">.</span><span class="n">jvm</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">bigdl</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">BigDLSerDe</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span>
+                    <span class="n">r</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">Py4JJavaError</span><span class="p">:</span>
+                <span class="k">pass</span>  <span class="c1"># not pickable</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">(</span><span class="nb">bytearray</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">PickleSerializer</span><span class="p">()</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">bytes</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">r</span>
+
+
+<div class="viewcode-block" id="callJavaFunc"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.callJavaFunc">[docs]</a><span class="k">def</span> <span class="nf">callJavaFunc</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Call Java Function &quot;&quot;&quot;</span>
+    <span class="n">gateway</span> <span class="o">=</span> <span class="n">_get_gateway</span><span class="p">()</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">_py2java</span><span class="p">(</span><span class="n">gateway</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">_java2py</span><span class="p">(</span><span class="n">gateway</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_to_java_object_rdd</span><span class="p">(</span><span class="n">rdd</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Return a JavaRDD of Object by unpickling</span>
+
+
+<span class="sd">    It will convert each Python object into Java object by Pyrolite, whenever</span>
+<span class="sd">    the RDD is serialized in batch or not.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rdd</span> <span class="o">=</span> <span class="n">rdd</span><span class="o">.</span><span class="n">_reserialize</span><span class="p">(</span><span class="n">AutoBatchedSerializer</span><span class="p">(</span><span class="n">PickleSerializer</span><span class="p">()))</span>
+    <span class="k">return</span> \
+        <span class="n">rdd</span><span class="o">.</span><span class="n">ctx</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">bigdl</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">BigDLSerDe</span><span class="o">.</span><span class="n">pythonToJava</span><span class="p">(</span>
+            <span class="n">rdd</span><span class="o">.</span><span class="n">_jrdd</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_py2java</span><span class="p">(</span><span class="n">gateway</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Convert Python object into Java &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">RDD</span><span class="p">):</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">_to_java_object_rdd</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">):</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">_jdf</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">SparkContext</span><span class="p">):</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">_jsc</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">ListConverter</span><span class="p">()</span><span class="o">.</span><span class="n">convert</span><span class="p">([</span><span class="n">_py2java</span><span class="p">(</span><span class="n">gateway</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">],</span>
+                                      <span class="n">gateway</span><span class="o">.</span><span class="n">_gateway_client</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">_py2java</span><span class="p">(</span><span class="n">gateway</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">MapConverter</span><span class="p">()</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">gateway</span><span class="o">.</span><span class="n">_gateway_client</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">JavaValue</span><span class="p">):</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">JavaObject</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">,</span> <span class="n">unicode</span><span class="p">)):</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">PickleSerializer</span><span class="p">()</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">))</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">gateway</span><span class="o">.</span><span class="n">jvm</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">bigdl</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">BigDLSerDe</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">obj</span>
+
+
+<div class="viewcode-block" id="create_tmp_path"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.create_tmp_path">[docs]</a><span class="k">def</span> <span class="nf">create_tmp_path</span><span class="p">():</span>
+    <span class="n">tmp_file</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;bigdl&quot;</span><span class="p">)</span>
+    <span class="n">tmp_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">tmp_file</span><span class="o">.</span><span class="n">name</span>
+
+
+<div class="viewcode-block" id="text_from_path"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.text_from_path">[docs]</a><span class="k">def</span> <span class="nf">text_from_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">get_spark_context</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="get_local_file"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_local_file">[docs]</a><span class="k">def</span> <span class="nf">get_local_file</span><span class="p">(</span><span class="n">a_path</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_distributed</span><span class="p">(</span><span class="n">a_path</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">a_path</span>
+    <span class="n">path</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_spark_context</span><span class="p">()</span><span class="o">.</span><span class="n">binaryFiles</span><span class="p">(</span><span class="n">a_path</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">local_file_path</span> <span class="o">=</span> <span class="n">create_tmp_path</span><span class="p">()</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">local_file_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">local_file</span><span class="p">:</span>
+        <span class="n">local_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">local_file_path</span>
+
+
+<div class="viewcode-block" id="is_distributed"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.is_distributed">[docs]</a><span class="k">def</span> <span class="nf">is_distributed</span><span class="p">(</span><span class="n">path</span><span class="p">):</span></div>
+    <span class="k">return</span> <span class="s2">&quot;://&quot;</span> <span class="ow">in</span> <span class="n">path</span>
+
+
+<div class="viewcode-block" id="get_activation_by_name"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_activation_by_name">[docs]</a><span class="k">def</span> <span class="nf">get_activation_by_name</span><span class="p">(</span><span class="n">activation_name</span><span class="p">,</span> <span class="n">activation_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Convert to a bigdl activation layer</span>
+<span class="sd">        given the name of the activation as a string  &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">bigdl.nn.layer</span> <span class="k">as</span> <span class="nn">BLayer</span>
+    <span class="n">activation</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">activation_name</span> <span class="o">=</span> <span class="n">activation_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">activation_name</span> <span class="o">==</span> <span class="s2">&quot;tanh&quot;</span><span class="p">:</span>
+        <span class="n">activation</span> <span class="o">=</span> <span class="n">BLayer</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">activation_name</span> <span class="o">==</span> <span class="s2">&quot;sigmoid&quot;</span><span class="p">:</span>
+        <span class="n">activation</span> <span class="o">=</span> <span class="n">BLayer</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">activation_name</span> <span class="o">==</span> <span class="s2">&quot;hard_sigmoid&quot;</span><span class="p">:</span>
+        <span class="n">activation</span> <span class="o">=</span> <span class="n">BLayer</span><span class="o">.</span><span class="n">HardSigmoid</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">activation_name</span> <span class="o">==</span> <span class="s2">&quot;relu&quot;</span><span class="p">:</span>
+        <span class="n">activation</span> <span class="o">=</span> <span class="n">BLayer</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">activation_name</span> <span class="o">==</span> <span class="s2">&quot;softmax&quot;</span><span class="p">:</span>
+        <span class="n">activation</span> <span class="o">=</span> <span class="n">BLayer</span><span class="o">.</span><span class="n">SoftMax</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">activation_name</span> <span class="o">==</span> <span class="s2">&quot;softplus&quot;</span><span class="p">:</span>
+        <span class="n">activation</span> <span class="o">=</span> <span class="n">BLayer</span><span class="o">.</span><span class="n">SoftPlus</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">activation_name</span> <span class="o">==</span> <span class="s2">&quot;softsign&quot;</span><span class="p">:</span>
+        <span class="n">activation</span> <span class="o">=</span> <span class="n">BLayer</span><span class="o">.</span><span class="n">SoftSign</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">activation_name</span> <span class="o">==</span> <span class="s2">&quot;linear&quot;</span><span class="p">:</span>
+        <span class="n">activation</span> <span class="o">=</span> <span class="n">BLayer</span><span class="o">.</span><span class="n">Identity</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unsupported activation type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">activation_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">activation_id</span><span class="p">:</span>
+        <span class="n">activation</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="n">activation_id</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">activation</span>
+
+
+<span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
+    <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="kn">from</span> <span class="nn">pyspark</span> <span class="k">import</span> <span class="n">SparkContext</span>
+    <span class="kn">from</span> <span class="nn">bigdl.nn</span> <span class="k">import</span> <span class="n">layer</span>
+    <span class="n">globs</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="s2">&quot;local[2]&quot;</span><span class="p">,</span> <span class="n">appName</span><span class="o">=</span><span class="s2">&quot;test common utility&quot;</span><span class="p">)</span>
+    <span class="n">globs</span><span class="p">[</span><span class="s1">&#39;sc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sc</span>
+    <span class="p">(</span><span class="n">failure_count</span><span class="p">,</span> <span class="n">test_count</span><span class="p">)</span> <span class="o">=</span> <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">(</span><span class="n">globs</span><span class="o">=</span><span class="n">globs</span><span class="p">,</span>
+                                                  <span class="n">optionflags</span><span class="o">=</span><span class="n">doctest</span><span class="o">.</span><span class="n">ELLIPSIS</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">failure_count</span><span class="p">:</span>
+        <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">_test</span><span class="p">()</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Intel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
+    </div>
+  </body>
+</html>

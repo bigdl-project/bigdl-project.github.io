@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Data - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Tensor", url: "#tensor", children: [
+          ]},
+          {title: "SparseTensor", url: "#sparsetensor", children: [
+          ]},
+          {title: "Table", url: "#table", children: [
+          ]},
+          {title: "Sample", url: "#sample", children: [
+          ]},
+          {title: "MiniBatch", url: "#minibatch", children: [
+          ]},
+          {title: "DataSet", url: "#dataset", children: [
+          ]},
+          {title: "OpenCVMat", url: "#opencvmat", children: [
+          ]},
+          {title: "ImageFeature", url: "#imagefeature", children: [
+          ]},
+          {title: "ImageFrame", url: "#imageframe", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Data</strong></h1>
+    <hr>
+    <h2 id="tensor"><strong>Tensor</strong></h2>
+<p>Modeled after the <a href="https://github.com/torch/torch7/blob/master/doc/tensor.md">Tensor</a> class in <a href="http://torch.ch/">Torch</a>, the <code>Tensor</code> <a href="https://github.com/intel-analytics/BigDL/tree/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/tensor">package</a> (written in Scala and leveraging <a href="https://software.intel.com/en-us/intel-mkl">Intel MKL</a>) in BigDL provides numeric computing support for the deep learning applications (e.g., the input, output, weight, bias and   gradient of the neural networks).</p>
+<p>A <code>Tensor</code> is essentially a multi-dimensional array of numeric types (<code>Float</code> or <code>Double</code>), you can import the numeric implicit objects(<code>com.intel.analytics.bigdl.numeric.NumericFloat</code> or <code>com.intel.analytics.bigdl.numeric.NumericDouble</code>), to specify the numeric type you want.</p>
+<p><strong>Scala example:</strong></p>
+<p>You may check it out in the interactive Scala shell (by typing <code>scala -cp bigdl_SPARKVERSION-BIGDLVERSION-SNAPSHOT-jar-with-dependencies.jar</code>), for instance:</p>
+<pre><code class="scala"> scala&gt; import com.intel.analytics.bigdl.tensor.Tensor
+ import com.intel.analytics.bigdl.tensor.Tensor
+
+ scala&gt; import com.intel.analytics.bigdl.numeric.NumericFloat
+ import com.intel.analytics.bigdl.numeric.NumericFloat
+
+ scala&gt; import com.intel.analytics.bigdl.utils.T
+import com.intel.analytics.bigdl.utils.T
+
+ scala&gt; val tensor = Tensor(2, 3)
+ tensor: com.intel.analytics.bigdl.tensor.Tensor =
+ 0.0     0.0     0.0
+ 0.0     0.0     0.0
+ [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+</code></pre>
+
+<p>Tensor can be created with existing data.</p>
+<pre><code class="scala">scala&gt; val a = Tensor(T(
+     | T(1f, 2f, 3f),
+     | T(4f, 5f, 6f)))
+a: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+1.0 2.0 3.0
+4.0 5.0 6.0
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 2x3]
+
+scala&gt; val b = Tensor(T(
+     | T(6f, 5f, 4f),
+     | T(3f, 2f, 1f)))
+b: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+6.0 5.0 4.0
+3.0 2.0 1.0
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 2x3]
+</code></pre>
+
+<p><code>+</code> <code>-</code> <code>*</code> <code>/</code> can be applied to tensor. When the second parameter is a constant value, <code>+</code> <code>-</code> <code>*</code> <code>*</code> is element-wise operation. But when the second parameter is a tensor, <code>+</code> <code>-</code> <code>/</code> is element-wise operation to the tensor too, but <code>*</code> is a matrix multiply on two 2D tensors. </p>
+<pre><code class="scala">scala&gt; a + 1
+res: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+2.0 3.0 4.0
+5.0 6.0 7.0
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 2x3]
+
+scala&gt; a + b
+res: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+7.0 7.0 7.0
+7.0 7.0 7.0
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+
+scala&gt; a - b
+res: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+-5.0    -3.0    -1.0
+1.0 3.0 5.0
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+
+scala&gt; a * b.t
+res: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+28.0    10.0
+73.0    28.0
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x2]
+
+scala&gt; a / b
+res: com.intel.analytics.bigdl.tensor.Tensor[Float] =
+0.16666667  0.4 0.75
+1.3333334   2.5 6.0
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+</code></pre>
+
+<p>For more API, navigate to <em>API Guide/Full API docs</em> on side bar.</p>
+<hr />
+<h2 id="sparsetensor"><strong>SparseTensor</strong></h2>
+<p>To describe an SparseTensor, we need indices, values, and shape:<br />
+indices means the indices of non-zero elements; values means the values of the non-zero elements;
+shape means the dense shape of this SparseTensor.</p>
+<p>For example, an 2D 3x4 DenseTensor:</p>
+<pre><code>1, 0, 0, 4
+0, 2, 0, 0
+0, 0, 3, 0
+</code></pre>
+
+<p>It's sparse representation should be </p>
+<pre><code>indices(0) = Array(0, 0, 1, 2)
+indices(1) = Array(0, 3, 1, 2)
+values     = Array(1, 4, 2, 3)
+shape      = Array(3, 4)
+</code></pre>
+
+<p>This 2D SparseTensor representation is similar to <a href="https://software.intel.com/en-us/mkl-developer-reference-fortran-sparse-blas-coordinate-matrix-storage-format">zero-based coordinate matrix storage format</a>.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code>scala&gt; import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.Tensor
+
+scala&gt; import com.intel.analytics.bigdl.numeric.NumericFloat
+import com.intel.analytics.bigdl.numeric.NumericFloat
+
+scala&gt; val indices = Array(Array(0, 0, 1, 2), Array(0, 3, 1, 2))
+indices: Array[Array[Int]] = Array(Array(0, 0, 1, 2), Array(0, 3, 1, 2))
+
+scala&gt; val values = Array(1, 4, 2, 3)
+values: Array[Int] = Array(1, 4, 2, 3)
+
+scala&gt; val shape = Array(3, 4)
+shape: Array[Int] = Array(3, 4)
+
+scala&gt; val sparseTensor = Tensor.sparse(indices, values, shape)
+sparseTensor: com.intel.analytics.bigdl.tensor.Tensor[Int] =
+(0, 0) : 1
+(0, 3) : 4
+(1, 1) : 2
+(2, 2) : 3
+[com.intel.analytics.bigdl.tensor.SparseTensor of size 3x4]
+
+scala&gt; val denseTensor = Tensor.dense(sparseTensor)
+denseTensor: com.intel.analytics.bigdl.tensor.Tensor[Int] =
+1   0   0   4
+0   2   0   0
+0   0   3   0
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 3x4]
+</code></pre>
+
+<hr />
+<h2 id="table"><strong>Table</strong></h2>
+<p>Modeled after the <a href="https://github.com/torch/nn/blob/master/doc/table.md">Table</a> class in <a href="http://torch.ch/">Torch</a>, the <code>Table</code> class (defined in package <code>com.intel.analytics.bigdl.utils</code>) is widely used in BigDL (e.g., a <code>Table</code> of <code>Tensor</code> can be used as the input or output of neural networks). In essence, a <code>Table</code> can be considered as a key-value map, and there is also a syntax sugar to create a <code>Table</code> using <code>T()</code> in BigDL.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.utils.T
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.numeric.NumericFloat
+println(T(Tensor(2,2).fill(1), Tensor(2,2).fill(2)))
+</code></pre>
+
+<p>Output is</p>
+<pre><code class="scala"> {
+    2: 2.0  2.0 
+       2.0  2.0 
+       [com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 2x2]
+    1: 1.0  1.0 
+       1.0  1.0 
+       [com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 2x2]
+ }
+</code></pre>
+
+<hr />
+<h2 id="sample"><strong>Sample</strong></h2>
+<p>A <code>Sample</code> represents one record of your data set, which is comprised of <code>feature</code> and <code>label</code>.</p>
+<ul>
+<li><code>feature</code> is one tensor or a few tensors</li>
+<li><code>label</code> is also one tensor or a few tensors, and it may be empty in testing or unsupervised learning.</li>
+</ul>
+<p>For example, one image and its category in image classification, one word in word2vec and one sentence and its label in RNN language model are all <code>Sample</code>.</p>
+<p>Every <code>Sample</code> is actually a set of tensors, and them will be transformed to the input/output of the model. For example, in the case of image classification, a <code>Sample</code> has two tensors. One is a 3D tensor representing an image; another is a 1-element tensor representing its category. For the 1-element label, you also can use a <code>T</code> instead of tensor.</p>
+<p><strong>Scala example:</strong></p>
+<ul>
+<li>The case where feature is one tensor with a 1-element label.</li>
+</ul>
+<pre><code class="scala">import com.intel.analytics.bigdl.dataset.Sample
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.numeric.NumericFloat
+
+val image = Tensor(3, 32, 32).rand
+val label = 1f
+val sample = Sample(image, label)
+</code></pre>
+
+<ul>
+<li>The case where feature is a few tensors and label is also a few tensors.</li>
+</ul>
+<pre><code class="scala">import com.intel.analytics.bigdl.dataset.Sample
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.numeric.NumericFloat
+
+val features = Array(Tensor(2, 2).rand, Tensor(2, 2).rand)
+val labels = Array(Tensor(1).fill(1), Tensor(1).fill(-1))
+val sample = Sample(features, labels)
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<p><strong>Note</strong>: Please always use <code>Sample.from_ndarray</code> to construct a <code>Sample</code> in Python.</p>
+<ul>
+<li>The case where feature is one tensor with a 1-element label.</li>
+</ul>
+<p>After constructing a <code>Sample</code> in this case, you can use <code>Sample.feature</code> and <code>Sample.label</code> to retrieve its feature and label, each as a tensor, respectively.</p>
+<pre><code class="python">from bigdl.util.common import Sample
+import numpy as np
+
+image = np.random.rand(3, 32, 32)
+label = np.array(1)
+sample = Sample.from_ndarray(image, label)
+
+# Retrieve feature and label from a Sample
+sample.feature
+sample.label
+</code></pre>
+
+<ul>
+<li>The case where feature is a few tensors and label is also a few tensors.</li>
+</ul>
+<p>After constructing a <code>Sample</code> in this case, you can use <code>Sample.features</code> and <code>Sample.labels</code> to retrieve its features and labels, each as a list of tensors, respectively.</p>
+<pre><code class="python">from bigdl.util.common import Sample
+import numpy as np
+
+features = [np.random.rand(3, 8, 16), np.random.rand(3, 8, 16)]
+labels = [np.array(1), np.array(-1)]
+sample = Sample.from_ndarray(features, labels)
+
+# Retrieve features and labels from a Sample
+sample.features
+sample.labels
+</code></pre>
+
+<p>Note that essentially <code>Sample.label</code> is equivalent to <code>Sample.labels[0]</code>. You can choose to use the former if label is only one tensor and use the latter if label is a list of tensors. Similarly, <code>Sample.feature</code> is equivalent to <code>Sample.features[0]</code>.</p>
+<hr />
+<h2 id="minibatch"><strong>MiniBatch</strong></h2>
+<p><code>MiniBatch</code> is a data structure to feed input/target to model in <code>Optimizer</code>. It provide <code>getInput()</code> and <code>getTarget()</code> function to get the input and target in this <code>MiniBatch</code>.</p>
+<p>In almost all the cases, BigDL's default <code>MiniBatch</code> class can fit user's requirement. Just create your <code>RDD[Sample]</code> and pass it to <code>Optimizer</code>. If <code>MiniBatch</code> can't meet your requirement, you can implement your own <code>MiniBatch</code> class by extends <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/dataset/MiniBatch.scala">MiniBatch</a>.</p>
+<p><code>MiniBatch</code> can be created by <code>MiniBatch(nInputs: Int, nOutputs: Int)</code>, <code>nInputs</code> means number of inputs, <code>nOutputs</code> means number of outputs. And you can use <code>set(samples: Seq[Sample[T])</code> to fill the content in this MiniBatch. If you <code>Sample</code>s are not the same size, you can use <code>PaddingParam</code> to pad the <code>Sample</code>s to the same size.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.dataset.Sample
+import com.intel.analytics.bigdl.dataset.MiniBatch
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.numeric.NumericFloat
+
+val samples  = Array.tabulate(5)(i =&gt; Sample(Tensor(1, 3, 3).fill(i), i + 1f))
+val miniBatch = MiniBatch(1, 1).set(samples)
+println(miniBatch.getInput())
+println(miniBatch.getTarget())
+</code></pre>
+
+<p>Output is</p>
+<pre><code class="scala">(1,1,.,.) =
+0.0 0.0 0.0 
+0.0 0.0 0.0 
+0.0 0.0 0.0 
+
+(2,1,.,.) =
+1.0 1.0 1.0 
+1.0 1.0 1.0 
+1.0 1.0 1.0 
+
+(3,1,.,.) =
+2.0 2.0 2.0 
+2.0 2.0 2.0 
+2.0 2.0 2.0 
+
+(4,1,.,.) =
+3.0 3.0 3.0 
+3.0 3.0 3.0 
+3.0 3.0 3.0 
+
+(5,1,.,.) =
+4.0 4.0 4.0 
+4.0 4.0 4.0 
+4.0 4.0 4.0 
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 5x1x3x3]
+1.0 
+2.0 
+3.0 
+4.0 
+5.0 
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 5x1]
+</code></pre>
+
+<p>If you <code>Sample</code>s are not the same size, you can use <code>PaddingParam</code> to pad the <code>Sample</code>s to the same size.</p>
+<pre><code class="scala">import com.intel.analytics.bigdl.dataset._
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.numeric.NumericFloat
+
+val sample1 = Sample(Tensor.range(1, 6, 1).resize(2, 3), 1f)
+val sample2 = Sample(Tensor.range(7, 9, 1).resize(1, 3), 2f)
+val sample3 = Sample(Tensor.range(10, 18, 1).resize(3, 3), 3f)
+val samples = Array(sample1, sample2, sample3)
+val featurePadding = PaddingParam(Some(Array(Tensor(T(-1f, -2f, -3f)))), FixedLength(Array(4)))
+val labelPadding = PaddingParam[Float](None, FixedLength(Array(4)))
+
+val miniBatch = MiniBatch(1, 1, Some(featurePadding), Some(labelPadding)).set(samples)
+println(miniBatch.getInput())
+println(miniBatch.getTarget())
+</code></pre>
+
+<p>Output is </p>
+<pre><code>(1,.,.) =
+1.0 2.0 3.0 
+4.0 5.0 6.0 
+-1.0    -2.0    -3.0    
+-1.0    -2.0    -3.0    
+
+(2,.,.) =
+7.0 8.0 9.0 
+-1.0    -2.0    -3.0    
+-1.0    -2.0    -3.0    
+-1.0    -2.0    -3.0    
+
+(3,.,.) =
+10.0    11.0    12.0    
+13.0    14.0    15.0    
+16.0    17.0    18.0    
+-1.0    -2.0    -3.0    
+
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 3x4x3]
+
+
+1.0 0.0 0.0 0.0 
+2.0 0.0 0.0 0.0 
+3.0 0.0 0.0 0.0 
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 3x4]
+</code></pre>
+
+<h2 id="dataset"><strong>DataSet</strong></h2>
+<p><code>DataSet</code> is a set of data which is used in the model optimization process. You can use <code>DataSet.array()</code> and <code>DataSet.rdd()</code> function to create a <code>Dataset</code>. The <code>DataSet</code> can be accessed in a random data sample sequence. In the training process, the data sequence is a looped endless sequence. While in the validation process, the data sequence is a limited length sequence. User can use the <code>data()</code> method to get the data sequence. </p>
+<p>Notice: In most case, we recommend using a RDD[Sample] for <code>Optimizer</code>. Only when you want to write an application with some advanced optimization, using <code>DataSet</code> directly is recommended.  </p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.utils.T
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.numeric.NumericFloat
+import com.intel.analytics.bigdl.dataset.DataSet
+
+val tensors  = Array.tabulate(5)(i =&gt; Tensor(1, 3, 3).fill(i))
+val dataset = DataSet.array(tensors) // Local model, just for testing and example.
+dataset.shuffle()
+val iter = dataset.data(false)
+while (iter.hasNext) {
+  val d = iter.next()
+  println(d)
+}
+</code></pre>
+
+<p>Output may be</p>
+<pre><code class="scala">(1,.,.) =
+4.0 4.0 4.0 
+4.0 4.0 4.0 
+4.0 4.0 4.0 
+
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x3x3]
+(1,.,.) =
+0.0 0.0 0.0 
+0.0 0.0 0.0 
+0.0 0.0 0.0 
+
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x3x3]
+(1,.,.) =
+2.0 2.0 2.0 
+2.0 2.0 2.0 
+2.0 2.0 2.0 
+
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x3x3]
+(1,.,.) =
+1.0 1.0 1.0 
+1.0 1.0 1.0 
+1.0 1.0 1.0 
+
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x3x3]
+(1,.,.) =
+3.0 3.0 3.0 
+3.0 3.0 3.0 
+3.0 3.0 3.0 
+
+[com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 1x3x3]
+</code></pre>
+
+<hr />
+<h2 id="opencvmat"><strong>OpenCVMat</strong></h2>
+<p>OpenCVMat is a Serializable wrapper of org.opencv.core.Mat.</p>
+<p>It can be created by
+<em> <code>read</code>: read local image path as opencv mat
+</em> <code>fromImageBytes</code>: convert image file in bytes to opencv mat
+<em> <code>fromFloats</code>: convert float array(pixels) to OpenCV mat
+</em> <code>fromTensor</code>: convert float tensor to OpenCV mat</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">// read local image path as OpenCVMat
+val mat = OpenCVMat.read(&quot;/tmp/test.jpg&quot;)
+
+// convert image file in bytes to OpenCVMat
+val bytes = FileUtils.readFileToByteArray(new File(path))
+val mat2 = OpenCVMat.fromImageBytes(bytes)
+
+// Convert float array(pixels) to OpenCVMat
+val mat3 = OpenCVMat.fromFloats(floatPixels, height=300, width=300)
+
+// Convert tensor to OpenCVMat
+val mat4 = OpenCVMat.fromTensor(tensor, format = &quot;HWC&quot;)
+</code></pre>
+
+<hr />
+<h2 id="imagefeature"><strong>ImageFeature</strong></h2>
+<p><code>ImageFeature</code> is a representation of one image.
+It can include various status of an image, by using key-value store.
+The key is string that identifies the corresponding value.
+Some predefined keys are listed as follows:
+<em> uri: uri that identifies image
+</em> mat: image in OpenCVMat
+<em> bytes: image file in bytes
+</em> floats: image pixels in float array
+<em> size: current image size (height, width, channel)
+</em> originalSize: original image size (height, width, channel)
+<em> label: image label
+</em> predict: image prediction result
+<em> boundingBox: store boundingBox of current image,
+it may be used in crop/expand that may change the size of image
+</em> sample: image (and label if available) stored as Sample
+* imageTensor: image pixels in Tensor</p>
+<p>Besides the above keys, you can also define your key and store information needed
+in the prediction pipeline.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.transform.vision.image.ImageFeature
+import org.apache.commons.io.FileUtils
+import java.io.File
+
+val file = new File(&quot;/tmp/test.jpg&quot;)
+val imageFeature = ImageFeature(FileUtils.readFileToByteArray(file), uri = file.getAbsolutePath)
+println(imageFeature.keys())
+</code></pre>
+
+<p>output is</p>
+<pre><code>Set(uri, bytes)
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.transform.vision.image import *
+image = cv2.imread(&quot;/tmp/test.jpg&quot;)
+image_feature = ImageFeature(image)
+print image_feature.keys()
+</code></pre>
+
+<p>output is</p>
+<pre><code>creating: createImageFeature
+[u'originalSize', u'mat', u'bytes']
+</code></pre>
+
+<hr />
+<h2 id="imageframe"><strong>ImageFrame</strong></h2>
+<p><code>ImageFrame</code> is a collection of <code>ImageFeature</code>.
+It can be a <code>DistributedImageFrame</code> for distributed image RDD or
+ <code>LocalImageFrame</code> for local image array.
+You can read an <code>ImageFrame</code> from local/distributed folder/parquet file,
+or you can directly construct a ImageFrame from RDD[ImageFeature] or Array[ImageFeature].</p>
+<p><strong>Scala example:</strong></p>
+<p>Create LocalImageFrame, assume there is an image file "/tmp/test.jpg"
+and an image folder "/tmp/image/"</p>
+<pre><code class="scala">import com.intel.analytics.bigdl.transform.vision.image.ImageFrame
+import com.intel.analytics.bigdl.transform.vision.image.ImageFeature
+
+// create LocalImageFrame from an image
+val localImageFrame = ImageFrame.read(&quot;/tmp/test.jpg&quot;)
+
+// create LocalImageFrame from an image folder
+val localImageFrame2 = ImageFrame.read(&quot;/tmp/image/&quot;)
+
+// create LocalImageFrame from array of ImageFeature
+val array = Array[ImageFeature]()
+val localImageFrame3 = ImageFrame.array(array)
+</code></pre>
+
+<p>Create DistributedImageFrame, assume there is an image file "/tmp/test.jpg"
+and an image folder</p>
+<pre><code class="scala">import com.intel.analytics.bigdl.transform.vision.image.ImageFrame
+import com.intel.analytics.bigdl.transform.vision.image.ImageFeature
+import com.intel.analytics.bigdl.utils.Engine
+import org.apache.spark.SparkContext
+import org.apache.spark.sql.SQLContext
+
+val conf = Engine.createSparkConf().setAppName(&quot;ImageSpec&quot;).setMaster(&quot;local[2]&quot;)
+val sc = new SparkContext(conf)
+val sqlContext = new SQLContext(sc)
+
+// create DistributedImageFrame from an image
+val distributedImageFrame = ImageFrame.read(&quot;/tmp/test.jpg&quot;, sc, 2)
+
+// create DistributedImageFrame from an image folder
+val distributedImageFrame2 = ImageFrame.read(&quot;/tmp/image/&quot;, sc, 2)
+
+// create DistributedImageFrame from rdd of ImageFeature
+val array = Array[ImageFeature]()
+val rdd = sc.parallelize(array)
+val distributedImageFrame3 = ImageFrame.rdd(rdd)
+
+// create DistributedImageFrame from Parquet
+val distributedImageFrame4 = ImageFrame.readParquet(dir, sqlContext)
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<p>Create LocalImageFrame</p>
+<pre><code class="python">from bigdl.util.common import *
+from bigdl.transform.vision.image import *
+
+# create LocalImageFrame from an image
+local_image_frame = ImageFrame.read(&quot;/tmp/test.jpg&quot;)
+
+# create LocalImageFrame from an image folder
+local_image_frame2 = ImageFrame.read(&quot;/tmp/image/&quot;)
+
+# create LocalImageFrame from list of images
+image = cv2.imread(&quot;/tmp/test.jpg&quot;)
+local_image_frame3 = LocalImageFrame([image])
+</code></pre>
+
+<p>Create DistributedImageFrame</p>
+<pre><code class="python">from bigdl.util.common import *
+from bigdl.transform.vision.image import *
+
+sparkConf = create_spark_conf().setMaster(&quot;local[2]&quot;).setAppName(&quot;test image&quot;)
+sc = get_spark_context(sparkConf)
+init_engine()
+
+# create DistributedImageFrame from an image
+distributed_image_frame = ImageFrame.read(&quot;/tmp/test.jpg&quot;, sc, 2)
+
+# create DistributedImageFrame from an image folder
+distributed_image_frame = ImageFrame.read(&quot;/tmp/image/&quot;, sc, 2)
+
+# create DistributedImageFrame from image rdd
+image = cv2.imread(&quot;/tmp/test.jpg&quot;)
+image_rdd = sc.parallelize([image], 2)
+distributed_image_frame = DistributedImageFrame(image_rdd)
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
