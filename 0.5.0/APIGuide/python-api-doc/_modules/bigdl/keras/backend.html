@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>bigdl.keras.backend &#8212; BigDL  documentation</title>
     <link rel="stylesheet" href="../../../_static/sphinxdoc.css" type="text/css" />
@@ -109,8 +109,8 @@
                         <span class="bp">self</span><span class="o">.</span><span class="n">bmodel</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">)]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;No Metrics found.&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;We only support evaluation in distributed mode&quot;</span><span class="p">)</span></div>
+        <span class="k">else</span><span class="p">:</span></div>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;We only support evaluation in distributed mode&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="KerasModelWrapper.predict"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.backend.KerasModelWrapper.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_distributed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Generates output predictions for the input samples,</span>
@@ -134,8 +134,8 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bmodel</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bmodel</span><span class="o">.</span><span class="n">predict_local</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;not supported type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span></div>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">bmodel</span><span class="o">.</span><span class="n">predict_local</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;not supported type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">x</span><span class="p">)</span>
 
 <div class="viewcode-block" id="KerasModelWrapper.fit"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.backend.KerasModelWrapper.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">nb_epoch</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -168,8 +168,8 @@
                                        <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
                                        <span class="n">nb_epoch</span><span class="o">=</span><span class="n">nb_epoch</span><span class="p">,</span>
                                        <span class="n">validation_data</span><span class="o">=</span><span class="n">validation_data</span><span class="p">,</span>
-                                       <span class="n">is_distributed</span><span class="o">=</span><span class="n">is_distributed</span><span class="p">)</span>
-        <span class="n">bopt</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span></div>
+                                       <span class="n">is_distributed</span><span class="o">=</span><span class="n">is_distributed</span><span class="p">)</span></div>
+        <span class="n">bopt</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">__create_optimizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">nb_epoch</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
                            <span class="n">validation_data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">is_distributed</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -226,13 +226,13 @@
                                 <span class="n">val_rdd</span><span class="o">=</span><span class="n">validation_data</span><span class="p">,</span>
                                 <span class="c1"># TODO: check if keras use the same strategy</span>
                                 <span class="n">trigger</span><span class="o">=</span><span class="n">boptimizer</span><span class="o">.</span><span class="n">EveryEpoch</span><span class="p">(),</span>
-                                <span class="n">val_method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">bopt</span></div>
+                                <span class="n">val_method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">bopt</span>
 
 
 <div class="viewcode-block" id="with_bigdl_backend"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.backend.with_bigdl_backend">[docs]</a><span class="k">def</span> <span class="nf">with_bigdl_backend</span><span class="p">(</span><span class="n">kmodel</span><span class="p">):</span>
-    <span class="n">init_engine</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">KerasModelWrapper</span><span class="p">(</span><span class="n">kmodel</span><span class="p">)</span></div>
+    <span class="n">init_engine</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">KerasModelWrapper</span><span class="p">(</span><span class="n">kmodel</span><span class="p">)</span>
 
 </pre></div>
 
@@ -256,7 +256,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
     </div>
   </body>
 </html>
