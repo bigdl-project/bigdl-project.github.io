@@ -47,6 +47,8 @@
           ]},
           {title: "Run with Jupyter", url: "#run-with-jupyter", children: [
           ]},
+          {title: "Run with virtual environment in Yarn", url: "#run-with-virtual-environment-in-yarn", children: [
+          ]},
           {title: "BigDL Configuration", url: "#bigdl-configuration", children: [
           ]},
         ];
@@ -137,6 +139,63 @@ sudo pip install numpy scipy pandas scikit-learn matplotlib seaborn wordcloud
 your browser. You can find the exact URL in the console output when you started Jupyter; by default,
 the dashboard URL is http://your_node:8888/</p>
 <p><a href="../run-from-pip/#code.verification">Example code to verify if BigDL can run successfully</a></p>
+<p><a name="yarn.example"></a></p>
+<h2 id="run-with-virtual-environment-in-yarn"><strong>Run with virtual environment in Yarn</strong></h2>
+<p>If you already created BigDL dependency virtual environment according to <a href="../install-without-pip/#yarn.cluster">Yarn cluster guide in install without pip </a>, you can run python program using BigDL as following examples.</p>
+<ul>
+<li>Note: please set BigDL_HOME, SPARK_HOME environment. Set VENV_HOME to the parent directory of venv.zip and venv directory. Replace VERSION with your BigDL version, like 0.5.0. If you don't install BigDL from source, replace ${BigDL_HOME}/pyspark/bigdl/examples/lenet/lenet.py with your python program which is using BigDL.</li>
+<li>Yarn cluster mode</li>
+</ul>
+<pre><code>    BigDL_HOME=
+    SPARK_HOME=
+    PYTHON_API_PATH=${BigDL_HOME}/dist/lib/bigdl-VERSION-python-api.zip
+    BigDL_JAR_PATH=${BigDL_HOME}/dist/lib/bigdl-VERSION-jar-with-dependencies.jar
+    PYTHONPATH=${PYTHON_API_PATH}:$PYTHONPATH
+    VENV_HOME=
+
+    PYSPARK_PYTHON=./venv.zip/venv/bin/python ${SPARK_HOME}/bin/spark-submit \
+    --conf spark.yarn.appMasterEnv.PYSPARK_PYTHON=./venv.zip/venv/bin/python \
+    --master yarn-cluster \
+    --executor-memory 10g \
+    --driver-memory 10g \
+    --executor-cores 8 \
+    --num-executors 2 \
+    --properties-file ${BigDL_HOME}/dist/conf/spark-bigdl.conf \
+    --jars ${BigDL_JAR_PATH} \
+    --py-files ${PYTHON_API_PATH} \
+    --archives ${VENV_HOME}/venv.zip \
+    --conf spark.driver.extraClassPath=bigdl-VERSION-jar-with-dependencies.jar \
+    --conf spark.executor.extraClassPath=bigdl-VERSION-jar-with-dependencies.jar \
+    ${BigDL_HOME}/pyspark/bigdl/examples/lenet/lenet.py
+</code></pre>
+
+<ul>
+<li>
+<p>Yarn client mode
+```
+    BigDL_HOME=
+    SPARK_HOME=
+    PYTHON_API_PATH=${BigDL_HOME}/dist/lib/bigdl-VERSION-python-api.zip
+    BigDL_JAR_PATH=${BigDL_HOME}/dist/lib/bigdl-VERSION-jar-with-dependencies.jar
+    PYTHONPATH=${PYTHON_API_PATH}:$PYTHONPATH
+    VENV_HOME=</p>
+<p>PYSPARK_DRIVER_PYTHON=${VENV_HOME}/venv/bin/python PYSPARK_PYTHON=./venv.zip/venv/bin/python ${SPARK_HOME}/bin/spark-submit \
+--master yarn \
+--deploy-mode client \
+--executor-memory 10g \
+--driver-memory 10g \
+--executor-cores 16 \
+--num-executors 2 \
+--properties-file ${BigDL_HOME}/dist/conf/spark-bigdl.conf \
+--jars ${BigDL_JAR_PATH} \
+--py-files ${PYTHON_API_PATH} \
+--archives ${VENV_HOME}/venv.zip \
+--conf spark.driver.extraClassPath=${BigDL_JAR_PATH} \
+--conf spark.executor.extraClassPath=bigdl-VERSION-jar-with-dependencies.jar \
+${BigDL_HOME}/pyspark/bigdl/examples/lenet/lenet.py
+ ```</p>
+</li>
+</ul>
 <h2 id="bigdl-configuration"><strong>BigDL Configuration</strong></h2>
 <p>Please check <a href="../../ScalaUserGuide/configuration/">this page</a></p>
 
