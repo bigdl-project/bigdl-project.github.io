@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Build from Source Code - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Download BigDL Source", url: "#download-bigdl-source", children: [
+          ]},
+          {title: "Setup Build Environment", url: "#setup-build-environment", children: [
+          ]},
+          {title: "Build with script (Recommended)", url: "#build-with-script-recommended", children: [
+          ]},
+          {title: "Build for Spark 2.0 and above", url: "#build-for-spark-20-and-above", children: [
+          ]},
+          {title: "Build for Scala 2.10 or 2.11", url: "#build-for-scala-210-or-211", children: [
+          ]},
+          {title: "Build with Maven", url: "#build-with-maven", children: [
+          ]},
+          {title: "Setup IDE", url: "#setup-ide", children: [
+          ]},
+          {title: "Build BigDL-core on different platforms", url: "#build-bigdl-core-on-different-platforms", children: [
+              {title: "Environments Setup", url: "#environments-setup" },
+              {title: "Build &amp; Deploy", url: "#build-deploy" },
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Build from Source Code</strong></h1>
+    <hr>
+    <h2 id="download-bigdl-source"><strong>Download BigDL Source</strong></h2>
+<p>BigDL source code is available at <a href="https://github.com/intel-analytics/BigDL">GitHub</a></p>
+<pre><code class="bash">$ git clone https://github.com/intel-analytics/BigDL.git
+</code></pre>
+
+<p>By default, <code>git clone</code> will download the development version of BigDL, if you want a release version, you can use command <code>git checkout</code> to change the version. Available release versions is <a href="https://github.com/intel-analytics/BigDL/releases">BigDL releases</a>.</p>
+<h2 id="setup-build-environment"><strong>Setup Build Environment</strong></h2>
+<p>The following instructions are aligned with master code.</p>
+<p>Maven 3 is needed to build BigDL, you can download it from the <a href="https://maven.apache.org/download.cgi">maven website</a>.</p>
+<p>After installing Maven 3, please set the environment variable MAVEN_OPTS as follows:</p>
+<pre><code class="bash">$ export MAVEN_OPTS=&quot;-Xmx2g -XX:ReservedCodeCacheSize=512m&quot;
+</code></pre>
+
+<p>When compiling with Java 7, you need to add the option “-XX:MaxPermSize=1G”. </p>
+<h2 id="build-with-script-recommended"><strong>Build with script (Recommended)</strong></h2>
+<p>It is highly recommended that you build BigDL using the <a href="https://github.com/intel-analytics/BigDL/blob/master/make-dist.sh">make-dist.sh script</a>. And it will handle the MAVEN_OPTS variable.</p>
+<p>Once downloaded, you can build BigDL with the following commands:</p>
+<pre><code class="bash">$ bash make-dist.sh
+</code></pre>
+
+<p>After that, you can find a <code>dist</code> folder, which contains all the needed files to run a BigDL program. The files in <code>dist</code> include:</p>
+<ul>
+<li><strong>dist/bin/bigdl.sh</strong>: A script used to set up proper environment variables and launch the BigDL program.</li>
+<li><strong>dist/lib/bigdl-VERSION-jar-with-dependencies.jar</strong>: This jar package contains all dependencies except Spark classes.</li>
+<li><strong>dist/lib/bigdl-VERSION-python-api.zip</strong>: This zip package contains all Python files of BigDL.</li>
+<li><strong>dist/conf/spark-bigdl.conf</strong>: This file contains necessary property configurations. <code>Engine.createSparkConf</code> will populate these properties, so try to use that method in your code. Or you need to pass the file to Spark with the "--properties-file" option. </li>
+</ul>
+<h2 id="build-for-spark-20-and-above"><strong>Build for Spark 2.0 and above</strong></h2>
+<p>The instructions above will build BigDL with Spark 1.5.x or 1.6.x (using Scala 2.10); to build for Spark 2.0 and above (which uses Scala 2.11 by default), pass <code>-P spark_2.x</code> to the <code>make-dist.sh</code> script:</p>
+<pre><code class="bash">$ bash make-dist.sh -P spark_2.x
+</code></pre>
+
+<p>It is highly recommended to use <em><strong>Java 8</strong></em> when running with Spark 2.x; otherwise you may observe very poor performance.</p>
+<h2 id="build-for-scala-210-or-211"><strong>Build for Scala 2.10 or 2.11</strong></h2>
+<p>By default, <code>make-dist.sh</code> uses Scala 2.10 for Spark 1.5.x or 1.6.x, and Scala 2.11 for Spark 2.0.x or 2.1.x. To override the default behaviors, you can pass <code>-P scala_2.10</code> or <code>-P scala_2.11</code> to <code>make-dist.sh</code> as appropriate.</p>
+<hr />
+<h2 id="build-with-maven"><strong>Build with Maven</strong></h2>
+<p>To build BigDL directly using Maven, run the command below:</p>
+<pre><code class="bash">$ mvn clean package -DskipTests
+</code></pre>
+
+<p>After that, you can find that the three jar packages in <code>PATH_To_BigDL</code>/target/, where <code>PATH_To_BigDL</code> is the path to the directory of the BigDL. </p>
+<p>Note that the instructions above will build BigDL with Spark 1.5.x or 1.6.x (using Scala 2.10) for Linux, and skip the build of native library code. Similarly, you may customize the default behaviors by passing the following parameters to maven:</p>
+<ul>
+<li><code>-P spark_2.x</code>: build for Spark 2.0 and above (using Scala 2.11). (Again, it is highly recommended to use <em><strong>Java 8</strong></em> when running with Spark 2.0; otherwise you may observe very poor performance.)</li>
+<li><code>-P full-build</code>: full build</li>
+<li><code>-P scala_2.10</code> (or <code>-P scala_2.11</code>): build using Scala 2.10 (or Scala 2.11) </li>
+</ul>
+<hr />
+<h2 id="setup-ide"><strong>Setup IDE</strong></h2>
+<p>We set the scope of spark related library to <code>provided</code> in pom.xml. The reason is that we don't want package spark related jars which will make bigdl a huge jar, and generally as bigdl is invoked by spark-submit, these dependencies will be provided by spark at run-time.</p>
+<p>This will cause a problem in IDE. When you run applications, it will throw <code>NoClassDefFoundError</code> because the library scope is <code>provided</code>.</p>
+<p>You can easily change the scopes by the <code>all-in-one</code> profile.</p>
+<ul>
+<li>In Intellij, go to View -&gt; Tools Windows -&gt; Maven Projects. Then in the Maven Projects panel, Profiles -&gt; click "all-in-one". </li>
+</ul>
+<hr />
+<h2 id="build-bigdl-core-on-different-platforms"><strong>Build BigDL-core on different platforms</strong></h2>
+<h3 id="environments-setup">Environments Setup</h3>
+<p>For building BigDL-core, there should have</p>
+<ol>
+<li>JDK 1.7+</li>
+<li>maven</li>
+<li>make</li>
+<li>g++-7</li>
+<li>Intel Parallel Studio</li>
+<li>Git.</li>
+</ol>
+<p>BigDL-core is a JNI project, <code>mkl2017-xeon-blas</code> needs MKL libraries with icc and <code>bigquant</code> needs g++-7. We use <code>maven</code> + <code>make</code> to control the build process where maven for java and make for c/c++ code.</p>
+<h4 id="centos">CentOS</h4>
+<ol>
+<li>Build GCC-7.2</li>
+<li>Download GCC 7.2 source code<ol>
+<li><code>git clone https://github.com/gcc-mirror/gcc.git</code></li>
+<li><code>git checkout gcc-7_2_0-release</code></li>
+</ol>
+</li>
+<li>contrib/download_prerequisites<ol>
+<li>base_url='http://gcc.gnu.org/pub/gcc/infrastructure/' # should change ftp to http because of proxy</li>
+</ol>
+</li>
+<li><code>./configure --prefix=/opt/gcc-7.2.0 --enable-languages=c,c++ --disable-multilib --disable-nls</code></li>
+<li><code>make -j4 &amp;&amp; make install</code></li>
+<li><code>ln -s /opt/gcc-7.2.0 /opt/gcc</code></li>
+<li>binutils 2.29</li>
+<li><code>wget https://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.gz</code></li>
+<li><code>tar zxvf binutils-2.29.tar.gz -C /tmp/ &amp;&amp; cd /tmp/binutils-2.29</code></li>
+<li><code>./configure --prefix=/opt/binutils-2.29</code></li>
+<li><code>make &amp;&amp; make install</code></li>
+<li><code>ln -s /opt/binutils-2.29 /opt/binutils/</code></li>
+<li>Install Git</li>
+<li><code>./configure --prefix=/opt/git-2.9.5</code></li>
+<li><code>make -j4 &amp;&amp; make install</code></li>
+<li><code>ln -s /opt/git-2.9.5 /opt/git</code></li>
+<li>
+<p>set environment variables
+    ```
+    export MAVEN_HOME=/opt/maven
+    export PATH=$MAVEN_HOME/bin:$PATH
+    export MAVEN_OPTS="-Xmx28g -Xss10M -XX:ReservedCodeCacheSize=512m -XX:MaxPermSize=128m"</p>
+<p>GCC_7_HOME=/opt/gcc
+LIBDIR=${GCC_7_HOME}/lib/../lib64
+export LD_LIBRARY_PATH=${LIBDIR}:${LD_LIBRARY_PATH}
+export LIBRARY_PATH=${LIBDIR}:${LIBRARY_PATH}
+export LD_RUN_PATH=${LIBDIR}:${LD_RUN_PATH}
+export PATH=${GCC_7_HOME}/bin/:${PATH}
+export C_INCLUDE_PATH=/opt/gcc/include/:${C_INCLUDE_PATH}
+export CPLUS_INCLUDE_PATH=/opt/gcc/include/:${CPLUS_INCLUDE_PATH}</p>
+<p>GIT_HOME=/opt/git
+export PATH=${GIT_HOME}/bin:${PATH}</p>
+<p>BINUTILS_HOME=/opt/binutils
+export LD_LIBRARY_PATH=${BINUTILS_HOME}/lib:${LD_LIBRARY_PATH}
+export PATH=${BINUTILS_HOME}/bin:${PATH}
+```</p>
+</li>
+</ol>
+<h4 id="ubuntudebian">Ubuntu/Debian</h4>
+<ol>
+<li>Install g++-7</li>
+</ol>
+<p><code>sudo add-apt-repository ppa:jonathonf/gcc-7.1
+   sudo apt-get update
+   sudo apt-get install gcc-7 g++-7
+   sudo apt-get install build-essential</code></p>
+<ol>
+<li>Install Parallel Studio XE</li>
+</ol>
+<h4 id="windows">Windows</h4>
+<ol>
+<li>Install Visual Studio 2015</li>
+<li>Install Intel Parallel Studio XE 2018</li>
+<li>
+<p>Install MinGW: https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/7.2.0/threads-win32/sjlj/x86_64-7.2.0-release-win32-sjlj-rt_v5-rev0.7z</p>
+</li>
+<li>
+<p>Unzip it to C:\MinGW.</p>
+</li>
+<li>Set the environment</li>
+<li>Copy ming32-make.exe to make.exe</li>
+<li>Copy g++ to g++-7</li>
+<li>Open a cmd terminal and input <code>g++-7 -v</code> , should output like below,
+      <code>Using built-in specs.
+      COLLECT_GCC=g++-7
+      COLLECT_LTO_WRAPPER=C:/MinGW/bin/../libexec/gcc/x86_64-w64-mingw32/7.1.0/lto-wrapper.exe
+      Target: x86_64-w64-mingw32
+      Configured with: ../../../src/gcc-7.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-ingw32 --prefix=/mingw64 --with-sysroot=/c/mingw710/x86_64-710-win32-sjlj-rt_v5-rev2/mingw64 --enable-shared --enable-static --enable-targets=all --enable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=win32 --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --enable-sjlj-exceptions --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch-32=i686 --with-arch-64=nocona --with-tune-32=generic --with-tune-64=core2 --with-libiconv --with-system-zlib --with-gmp=/c/mingw710/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/mingw710/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/mingw710/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/mingw710/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-win32-sjlj-rev2, Built by MinGW-W64 project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/c/mingw710/x86_64-710-win32-sjlj-rt_v5-rev2/mingw64/opt/include -I/c/mingw710/prerequisites/x86_64-zlib-static/include -I/c/mingw710/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/mingw710/x86_64-710-win32-sjlj-rt_v5-rev2/mingw64/opt/include -I/c/mingw710/prerequisites/x86_64-zlib-static/include -I/c/mingw710/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/mingw710/x86_64-710-win32-sjlj-rt_v5-rev2/mingw64/opt/include -I/c/mingw710/prerequisites/x86_64-zlib-static/include -I/c/mingw710/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/mingw710/x86_64-710-win32-sjlj-rt_v5-rev2/mingw64/opt/lib -L/c/mingw710/prerequisites/x86_64-zlib-static/lib -L/c/mingw710/prerequisites/x86_64-w64-mingw32-static/lib '
+      Thread model: win32
+      gcc version 7.1.0 (x86_64-win32-sjlj-rev2, Built by MinGW-W64 project)</code></li>
+</ol>
+<h4 id="macos">macOS</h4>
+<ol>
+<li>Install Parallel Studio XE.</li>
+<li>Install g++-7: <code>brew install gcc@7</code></li>
+</ol>
+<h3 id="build-deploy">Build &amp; Deploy</h3>
+<p>We use maven profile to control the build process. For different platforms has different profiles.</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th align="center">Profile</th>
+<th align="center">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td align="center">linux</td>
+<td align="center"><code>mvn clean package -P linux</code></td>
+</tr>
+<tr>
+<td>RedHat5</td>
+<td align="center">rh5</td>
+<td align="center"><code>mvn clean package -P rh5</code></td>
+</tr>
+<tr>
+<td>macOS</td>
+<td align="center">mac</td>
+<td align="center"><code>mvn clean package -P mac</code></td>
+</tr>
+<tr>
+<td>Windows</td>
+<td align="center">win64</td>
+<td align="center"><code>mvn clean package -P win64</code></td>
+</tr>
+</tbody>
+</table>
+<p>There two ways to deploy. We should use <code>mvn deploy -P deploy</code> at the end.
+1. Build the jar on specific platform and deploy it. For example, we want to deploy bigquant of linux.
+    <code>mvn clean deploy -P 'linux' -pl 'bigquant/bigquant-java-x86_64-linux'</code>
+2. Copy the prebuilt libraries from every platform to a main machine, and deploy it.</p>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

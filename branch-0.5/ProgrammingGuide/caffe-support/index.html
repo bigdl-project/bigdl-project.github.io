@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Caffe Support - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Load Caffe Model", url: "#load-caffe-model", children: [
+          ]},
+          {title: "Load Caffe Model Weights to Predefined BigDL Model", url: "#load-caffe-model-weights-to-predefined-bigdl-model", children: [
+          ]},
+          {title: "Save BigDL Model to Caffe Model", url: "#save-bigdl-model-to-caffe-model", children: [
+              {title: "Limitation", url: "#limitation" },
+              {title: "Supported Layers", url: "#supported-layers" },
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Caffe Support</strong></h1>
+    <hr>
+    <p>If you have a pretrained caffe model(model definition prototxt and model binary file), you can load it as BigDL model.
+You can also convert a BigDL model to caffe model.</p>
+<h2 id="load-caffe-model"><strong>Load Caffe Model</strong></h2>
+<p>Assume you have a <code>caffe.prototxt</code> and <code>caffe.model</code>,
+you can load it into BigDL by calling <code>Module.loadCaffeModel</code> (scala) or <code>Model.load_caffe_model</code> (python).</p>
+<ul>
+<li>Scala Example</li>
+</ul>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+val model = Module.loadCaffeModel(caffe.prototxt, caffe.model)
+</code></pre>
+
+<ul>
+<li>Python Example</li>
+</ul>
+<pre><code class="python">model = Model.load_caffe_model(caffe.prototxt, caffe.model)
+</code></pre>
+
+<h2 id="load-caffe-model-weights-to-predefined-bigdl-model"><strong>Load Caffe Model Weights to Predefined BigDL Model</strong></h2>
+<p>If you have a predefined BigDL model, and want to load caffe model weights into BigDl model</p>
+<ul>
+<li>Scala Example</li>
+</ul>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+val model = Module.loadCaffe(bigdlModel, caffe.prototxt, caffe.model, matchAll = true)
+</code></pre>
+
+<ul>
+<li>Python Example</li>
+</ul>
+<pre><code class="python">model = Model.load_caffe(bigdlModel, caffe.prototxt, caffe.model, match_all=True)
+</code></pre>
+
+<p>Note that if <code>matchAll/match_all = false</code>, then only layers with same name will be loaded, the rest will use initialized parameters.</p>
+<h2 id="save-bigdl-model-to-caffe-model"><strong>Save BigDL Model to Caffe Model</strong></h2>
+<ul>
+<li>Scala Example</li>
+</ul>
+<pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+bigdlModel.saveCaffe(prototxtPath, modelPath, useV2 = true, overwrite = false)
+</code></pre>
+
+<ul>
+<li>Python Example</li>
+</ul>
+<pre><code class="python">bigdl_model.save_caffe(prototxt_path, model_path, use_v2 = True, overwrite = False)
+</code></pre>
+
+<p>In the above examples, if <code>useV2/use_v2 = true</code>, it will convert to caffe V2 layer,
+ otherwise, it will convert to caffe V1 layer.
+If <code>overwrite = true</code>, it will overwrite the existing files.</p>
+<p>Note: only graph model can be saved to caffe model.</p>
+<h3 id="limitation"><strong>Limitation</strong></h3>
+<p>This functionality has been tested with some common models like AlexNet, Inception, Resnet which were created with standard Caffe layers, for those models with customized layers such as SSD, it is going to be supported in future work, but you can define your customized conversion method for your own layers.</p>
+<h3 id="supported-layers"><strong>Supported Layers</strong></h3>
+<p>Please check this <a href="../../APIGuide/caffe_layer_list/">page</a></p>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

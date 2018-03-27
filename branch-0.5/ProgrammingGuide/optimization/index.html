@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Optimization - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Use Optimizer for Training", url: "#use-optimizer-for-training", children: [
+              {title: "Define when to end the training", url: "#define-when-to-end-the-training" },
+          ]},
+          {title: "Change the optimization algorithm", url: "#change-the-optimization-algorithm", children: [
+          ]},
+          {title: "Validate your model in training", url: "#validate-your-model-in-training", children: [
+          ]},
+          {title: "Checkpointing", url: "#checkpointing", children: [
+          ]},
+          {title: "Resume Training", url: "#resume-training", children: [
+          ]},
+          {title: "Monitor your training", url: "#monitor-your-training", children: [
+          ]},
+          {title: "Performance tuning", url: "#performance-tuning", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Optimization</strong></h1>
+    <hr>
+    <h2 id="use-optimizer-for-training">Use Optimizer for Training</h2>
+<p>You can use <code>Optimizer</code> in BigDL to train a model. </p>
+<p>You need to first create an <code>Optimizer</code>, and then call <code>Optimizer.optimize</code> to start the training. </p>
+<p>To create an optimizer, you need at least provide model, data, loss function and batch size.</p>
+<ul>
+<li><strong>model</strong></li>
+</ul>
+<p>A neural network model. May be a layer, a sequence of layers or a
+graph of layers.</p>
+<ul>
+<li><strong>data</strong></li>
+</ul>
+<p>Your training data. As we train models on Spark, one of
+the most common distributed data structures is RDD. Of course
+you can use DataFrame. Please check the BigDL pipeline example.</p>
+<p>The element in the RDD is <a href="../../APIGuide/Data/#sample">Sample</a>, which is actually a sequence of
+Tensors. You need to convert your data record(image, audio, text)
+to Tensors before you feed them into Optimizer. We also provide
+many utilities to do it.</p>
+<ul>
+<li><strong>loss function</strong></li>
+</ul>
+<p>In supervised machine learning, loss function compares the output of
+the model with the ground truth(the labels of the training data). It
+outputs a loss value to measure how good the model is(the lower the
+better). It also provides a gradient to indicate how to tune the model.</p>
+<p>In BigDL, all loss functions are subclass of Criterion. Refer to <a href="../../APIGuide/Losses/">Losses</a> for a list of defined losses.</p>
+<ul>
+<li><strong>batch size</strong></li>
+</ul>
+<p>Training is an iterative process. In each iteration, only a batch of data
+is used for training the model. You need to specify the batch size. Please note, 
+the batch size should be divisible by the total cores number.</p>
+<p>Here's an example of how to train a Linear classification model</p>
+<p><strong>scala</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.utils._
+import com.intel.analytics.bigdl.dataset._
+import com.intel.analytics.bigdl.optim._
+import com.intel.analytics.bigdl.utils.T
+import com.intel.analytics.bigdl.tensor.Tensor
+
+// Define the model
+val model = Linear[Float](2, 1)
+model.bias.zero()
+
+// Generate 2D dummy data, y = 0.1 * x[1] + 0.3 * x[2]
+val samples = Seq(
+  Sample[Float](Tensor[Float](T(5f, 5f)), Tensor[Float](T(2.0f))),
+  Sample[Float](Tensor[Float](T(-5f, -5f)), Tensor[Float](T(-2.0f))),
+  Sample[Float](Tensor[Float](T(-2f, 5f)), Tensor[Float](T(1.3f))),
+  Sample[Float](Tensor[Float](T(-5f, 2f)), Tensor[Float](T(0.1f))),
+  Sample[Float](Tensor[Float](T(5f, -2f)), Tensor[Float](T(-0.1f))),
+  Sample[Float](Tensor[Float](T(2f, -5f)), Tensor[Float](T(-1.3f)))
+)
+val trainData = sc.parallelize(samples, 1)
+
+// Define the model
+val optimizer = Optimizer[Float](model, trainData, MSECriterion[Float](), 4)
+Engine.init
+optimizer.optimize()
+println(model.weight)
+</code></pre>
+
+<p>The weight of linear is init randomly. But the output should be like</p>
+<pre><code>scala&gt; println(model.weight)
+0.09316949      0.2887804
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2]
+</code></pre>
+
+<p><strong>python</strong></p>
+<pre><code>from bigdl.nn.layer import Linear
+from bigdl.util.common import *
+from bigdl.nn.criterion import MSECriterion
+from bigdl.optim.optimizer import Optimizer, MaxIteration
+import numpy as np
+
+model = Linear(2, 1)
+samples = [
+  Sample.from_ndarray(np.array([5, 5]), np.array([2.0])),
+  Sample.from_ndarray(np.array([-5, -5]), np.array([-2.0])),
+  Sample.from_ndarray(np.array([-2, 5]), np.array([1.3])),
+  Sample.from_ndarray(np.array([-5, 2]), np.array([0.1])),
+  Sample.from_ndarray(np.array([5, -2]), np.array([-0.1])),
+  Sample.from_ndarray(np.array([2, -5]), np.array([-1.3]))
+]
+train_data = sc.parallelize(samples, 1)
+init_engine()
+optimizer = Optimizer(model, train_data, MSECriterion(), MaxIteration(100), 4)
+optimizer.optimize()
+model.get_weights()[0]
+</code></pre>
+
+<p>The output should be like</p>
+<pre><code>array([[ 0.11578175,  0.28315681]], dtype=float32)
+</code></pre>
+
+<p>You can see the model is trained.</p>
+<h3 id="define-when-to-end-the-training">Define when to end the training</h3>
+<p>You need define when to end the training. It can be several iterations, or how many round
+data you want to process, a.k.a epoch.</p>
+<p><strong>scala</strong></p>
+<pre><code class="scala">// The default endWhen in scala is 100 iterations
+optimizer.setEndWhen(Trigger.maxEpoch(10))  // Change to 10 epoch
+</code></pre>
+
+<p><strong>python</strong></p>
+<pre><code># Python need to define in the constructor
+optimizer = Optimizer(model, train_data, MSECriterion(), MaxIteration(100), 4)
+</code></pre>
+
+<h2 id="change-the-optimization-algorithm">Change the optimization algorithm</h2>
+<p>Gradient based optimization algorithms are the most popular algorithms to train the neural
+network model. The most famous one is SGD. SGD has many variants, adagrad, adam, etc.</p>
+<p><strong>scala</strong></p>
+<pre><code class="scala">// The default is SGD
+optimizer.setOptimMethod(new Adam())  // Change to adam
+</code></pre>
+
+<p><strong>python</strong></p>
+<pre><code># Python need to define the optimization algorithm in the constructor
+optimizer = Optimizer(model, train_data, MSECriterion(), MaxIteration(100), 4, optim_method = Adam())
+</code></pre>
+
+<h2 id="validate-your-model-in-training">Validate your model in training</h2>
+<p>Sometimes, people want to evaluate the model with a separated dataset. When model
+performs well on train dataset, but bad on validation dataset, we call the model is overfit or
+weak generalization. People may want to evaluate the model every several iterations or 
+epochs. BigDL can easily do this by</p>
+<p><strong>scala</strong></p>
+<pre><code class="scala">optimizer.setValidation(trigger, testData, validationMethod, batchSize)
+</code></pre>
+
+<p><strong>python</strong></p>
+<pre><code class="python">optimizer.set_validation(batch_size, val_rdd, trigger, validationMethod)
+</code></pre>
+
+<p>For validation, you need to provide</p>
+<ul>
+<li>trigger: how often to do validation, maybe each several iterations or epochs</li>
+<li>test data: the separate dataset for test</li>
+<li>validation method: how to evaluate the model, maybe top1 accuracy, etc.</li>
+<li>batch size: how many data evaluate in one time</li>
+</ul>
+<h2 id="checkpointing">Checkpointing</h2>
+<p>You can configure the optimizer to periodically take snapshots of the model (trained weights, biases, etc.) and optim-method (configurations and states of the optimization) and dump them into files. </p>
+<p>The model snapshot will be named as <code>model.#iteration_number</code>, and optim method snapshot will be named as <code>state.#iteration_number</code>.</p>
+<p>Usage as below.</p>
+<p><strong>scala</strong></p>
+<pre><code class="scala">optimizer.setCheckpoint(path, trigger)
+</code></pre>
+
+<p><strong>python</strong></p>
+<pre><code class="python">optimizer.set_checkpoint(path, trigger,isOverWrite=True)
+</code></pre>
+
+<p>Parameters you need to specify are:</p>
+<ul>
+<li>path - the directory to save the snapshots</li>
+<li>trigger - how often to save the check point </li>
+</ul>
+<p>In scala, you can also use <code>overWriteCheckpoint()</code> to enable overwriting any existing snapshot files with the same name (default is disabled). In Python, you can just set parameter isOverWrite (default is True).</p>
+<p><strong>scala</strong></p>
+<pre><code class="scala">optimizer.overWriteCheckpoint()`
+</code></pre>
+
+<p><strong>python</strong></p>
+<pre><code class="python">optimizer.set_checkpoint(path, trigger,isOverWrite=True)
+</code></pre>
+
+<h2 id="resume-training">Resume Training</h2>
+<p>After training stops, you can resume from any saved point. Choose one of   the model snapshots and the corresponding optim-method snapshot to resume (saved in checkpoint path, details see <a href="#checkpointing">Checkpointing</a>).     Use <code>Module.load</code> (Scala) or <code>Model.load</code>(Python) to load the model         snapshot into an model object, and <code>OptimMethod.load</code> (Scala and Python) to load optimization method into an OptimMethod  object. Then create a new <code>Optimizer</code> with the loaded model and optim       method. Call <code>Optimizer.optimize</code>, and you will resume from the point       where the snapshot is taken. Refer to <a href="../../APIGuide/Optimizers/OptimMethod/#load-method">OptimMethod Load</a> and <a href="../../APIGuide/Module/#model-load">Model Load</a> for details.</p>
+<p>You can also resume training without loading the optim method, if you       intend to change the learning rate schedule or even the optimization        algorithm. Just create an <code>Optimizer</code> with loaded model and a new instance  of OptimMethod (both Scala and Python).</p>
+<h2 id="monitor-your-training">Monitor your training</h2>
+<p><strong>scala</strong></p>
+<pre><code class="scala">optimizer.setTrainSummary(trainSummary)
+optimizer.setValidationSummary(validationSummary)
+</code></pre>
+
+<p><strong>python</strong></p>
+<pre><code class="python">set_train_summary(train_summary)
+optimizer.set_val_summary(val_summary)
+</code></pre>
+
+<p>See details in <a href="../visualization/">Visualization</a></p>
+<h2 id="performance-tuning">Performance tuning</h2>
+<p>For performance investigation, BigDL records the time-consuming distribution on each node for each step(e.g. sync weight, computing).The information can be displayed in the driver log. By default, it is suspended.To turn it on, please follow these steps:</p>
+<p>1.Prepare a log4j property file</p>
+<pre><code># Root logger option
+log4j.rootLogger=INFO, stdout
+# Direct log messages to stdout
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.out
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+log4j.logger.com.intel.analytics.bigdl.optim=DEBUG
+
+</code></pre>
+
+<p>2.Add an option to your spark-submit command</p>
+<p>--conf "spark.driver.extraJavaOptions=-Dlog4j.configuration=file:where_is_your_log4j_file"</p>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

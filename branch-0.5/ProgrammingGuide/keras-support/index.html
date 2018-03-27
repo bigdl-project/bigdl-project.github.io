@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Keras Support - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Load a Keras model into BigDL", url: "#load-a-keras-model-into-bigdl", children: [
+          ]},
+          {title: "LeNet Example", url: "#lenet-example", children: [
+          ]},
+          {title: "Limitations", url: "#limitations", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Keras Support</strong></h1>
+    <hr>
+    <p>For <strong>Python</strong> users, BigDL supports loading pre-defined Keras models.</p>
+<p>The Keras version we support and test is <a href="https://faroit.github.io/keras-docs/1.2.2/"><strong>Keras 1.2.2</strong></a> with TensorFlow backend. Up to now, we have generally supported <strong>ALL</strong> its layers.</p>
+<p>After loading a model into BigDL, you can train, evaluate or tune this model in a distributed manner. We have generally supported <strong>ALL</strong> the <a href="https://faroit.github.io/keras-docs/1.2.2/objectives/">losses</a> in Keras 1.2.2. See <a href="../../APIGuide/Losses/">here</a> to find the corresponding criterions in BigDL.</p>
+<p>If you haven't been familiar with BigDL yet, you may refer to Python User Guide on how to <a href="../../PythonUserGuide/install-from-pip/">install</a> and <a href="../../PythonUserGuide/run-from-pip/">run</a> BigDL for Python users before you start this page.</p>
+<h2 id="load-a-keras-model-into-bigdl"><strong>Load a Keras model into BigDL</strong></h2>
+<p>A Keras model definition in <strong>JSON</strong> file can be loaded as a BigDL model.
+Saved weights in <strong>HDF5</strong> file can also be loaded together with the architecture of a Keras model.
+See <a href="https://faroit.github.io/keras-docs/1.2.2/getting-started/faq/#how-can-i-save-a-keras-model">here</a> on how to save a model in Keras.</p>
+<p>You can directly call the API <code>Model.load_keras</code> to load a Keras model into BigDL.</p>
+<p><strong>Remark</strong>: <code>keras==1.2.2</code> is required beforehand. If you are to load a HDF5 file, you also need to install <code>h5py</code>. These packages can be installed via <code>pip</code> easily.</p>
+<pre><code class="python">from bigdl.nn.layer import *
+
+bigdl_model = Model.load_keras(json_path=None, hdf5_path=None, by_name=False)
+</code></pre>
+
+<p><strong>Parameters</strong>:</p>
+<ul>
+<li><code>json_path</code> The JSON file path containing the Keras model definition to be loaded. Default to be <code>None</code> if you choose to load a Keras model from a HDF5 file.</li>
+<li><code>hdf5_path</code> The HDF5 file path containing the pre-trained weights with or without the model architecture. Please use weights from Keras 1.2.2 with <strong><code>tensorflow backend</code></strong>. Default to be <code>None</code> if you choose to only load the model definition from JSON but not to load weights. In this case, BigDL will use initialized weights for the model.</li>
+<li><code>by_name</code>  Whether to load the weights of layers by name. Use this option only when you provide a HDF5 file. Default to be <code>False</code>, meaning that  weights are loaded based on the network's execution order topology. Otherwise, if it is set to be <code>True</code>, only those layers with the same name will be loaded with weights.</li>
+</ul>
+<p><strong>NOTES</strong>:</p>
+<ul>
+<li>
+<p>Please provide either <code>json_path</code> or <code>hdf5_path</code> when you call <code>Model.load_keras</code>. You can provide <code>json_path</code> only to just load the model definition. You can provide <code>json_path</code> and <code>hdf5_path</code> together if you have separate files for the model architecture and its pre-trained weights. Also, if you save the model architecture and its weights in a single HDF5 file, you can provide <code>hdf5_path</code> only.</p>
+</li>
+<li>
+<p>JSON and HDF5 files can be loaded from any Hadoop-supported file system URI. For example,</p>
+</li>
+</ul>
+<pre><code class="python"># load from local file system
+bigdl_model = Model.load_keras(json_path=&quot;/tmp/model.json&quot;, hdf5_path=&quot;/tmp/weights.h5&quot;)
+# load from HDFS
+bigdl_model = Model.load_keras(hdf5_path=&quot;hdfs://model.h5&quot;)
+# load from S3
+bigdl_model = Model.load_keras(hdf5_path=&quot;s3://model.h5&quot;)
+</code></pre>
+
+<h2 id="lenet-example"><strong>LeNet Example</strong></h2>
+<p>Here we show a simple example on how to load a Keras model into BigDL. The model used in this example is a <a href="https://github.com/fchollet/keras/blob/1.2.2/examples/mnist_cnn.py">CNN</a> from Keras 1.2.2.</p>
+<pre><code class="python"># Define a CNN model in Keras 1.2.2
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Activation, Flatten
+from keras.layers import Convolution2D, MaxPooling2D
+
+keras_model = Sequential()
+keras_model.add(Convolution2D(32, 3, 3, border_mode='valid',
+                              input_shape=(1, 28, 28)))
+keras_model.add(Activation('relu'))
+keras_model.add(Convolution2D(32, 3, 3))
+keras_model.add(Activation('relu'))
+keras_model.add(MaxPooling2D(pool_size=(2, 2)))
+keras_model.add(Dropout(0.25))
+keras_model.add(Flatten())
+keras_model.add(Dense(128))
+keras_model.add(Activation('relu'))
+keras_model.add(Dropout(0.5))
+keras_model.add(Dense(10))
+keras_model.add(Activation('softmax'))
+
+# Save the Keras model definition to JSON
+model_json = keras_model.to_json()
+path = &quot;/tmp/lenet.json&quot;
+with open(def_path, &quot;w&quot;) as json_file:
+    json_file.write(model_json)
+
+# Load the JSON file to a BigDL model
+from bigdl.nn.layer import *
+bigdl_model = Model.load_keras(json_path=path)
+</code></pre>
+
+<p>After loading the model into BigDL, you can train it with the MNIST dataset. See <a href="https://github.com/intel-analytics/BigDL/blob/master/pyspark/bigdl/examples/keras/mnist_cnn.py">here</a> for the full example code which includes the training and validation after model loading. After 12 epochs, accuracy &gt;97% can be achieved.</p>
+<p>You can find several more examples <a href="https://github.com/intel-analytics/BigDL/tree/master/pyspark/bigdl/examples/keras">here</a> to get familiar with loading a Keras model into BigDL. We will add more examples to this directory in the future.</p>
+<h2 id="limitations"><strong>Limitations</strong></h2>
+<p>We have tested the model loading functionality with several standard Keras <a href="https://faroit.github.io/keras-docs/1.2.2/applications/">applications</a> and <a href="https://github.com/fchollet/keras/tree/1.2.2/examples">examples</a>.</p>
+<p>However, there exist some arguments for Keras layers that are not supported in BigDL for now. Also, we haven't supported self-defined Keras layers, but one can still define your customized layer converter and weight converter methods for new layers if you wish. See <a href="../../APIGuide/keras-issues/">here</a> for the full list of unsupported layer arguments and some known issues we have found so far.</p>
+<p>In our future work, we will continue to add functionality and better support running Keras on BigDL.</p>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
