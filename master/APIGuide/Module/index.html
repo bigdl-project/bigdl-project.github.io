@@ -245,6 +245,7 @@ model.predict_class(data_rdd)
 </code></pre>
 
 <p>Use <code>predict</code> or <code>predictClass</code> or <code>predict_class</code> on model for Prediction. <code>predict</code> returns return the probability distribution of each class, and <code>predictClass</code>/<code>predict_class</code> returns the predict label. They both accepts the test dataset as parameter.</p>
+<p>Please note that the sequence and the partitions of the output rdd will keep the same with input. So you can zip the output rdd with input rdd to get a (data, result) pair rdd.</p>
 <p><strong>Scala example</strong></p>
 <pre><code class="scala">import com.intel.analytics.bigdl.dataset.Sample
 import com.intel.analytics.bigdl.nn._
