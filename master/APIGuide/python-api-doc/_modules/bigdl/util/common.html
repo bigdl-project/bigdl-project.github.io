@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>bigdl.util.common &#8212; BigDL  documentation</title>
     <link rel="stylesheet" href="../../../_static/sphinxdoc.css" type="text/css" />
@@ -108,14 +108,14 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span><span class="p">:</span>
             <span class="k">with</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span><span class="p">:</span>
-                    <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div></div>
-        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span>
+                    <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_instance</span></div></div>
 
 
 <div class="viewcode-block" id="GatewayWrapper"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.GatewayWrapper">[docs]</a><span class="k">class</span> <span class="nc">GatewayWrapper</span><span class="p">(</span><span class="n">SingletonMixin</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">25333</span><span class="p">):</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">JavaGateway</span><span class="p">(</span><span class="n">GatewayClient</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">),</span> <span class="n">auto_convert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">25333</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">JavaGateway</span><span class="p">(</span><span class="n">GatewayClient</span><span class="p">(</span><span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">),</span> <span class="n">auto_convert</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="JavaCreator"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JavaCreator">[docs]</a><span class="k">class</span> <span class="nc">JavaCreator</span><span class="p">(</span><span class="n">SingletonMixin</span><span class="p">):</span>
@@ -124,21 +124,21 @@
 <div class="viewcode-block" id="JavaCreator.add_creator_class"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JavaCreator.add_creator_class">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">add_creator_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">jinvoker</span><span class="p">):</span>
         <span class="k">with</span> <span class="n">JavaCreator</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
-            <span class="n">JavaCreator</span><span class="o">.</span><span class="n">__creator_class</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">jinvoker</span><span class="p">)</span></div>
-            <span class="n">JavaCreator</span><span class="o">.</span><span class="n">_instance</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">JavaCreator</span><span class="o">.</span><span class="n">__creator_class</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">jinvoker</span><span class="p">)</span>
+            <span class="n">JavaCreator</span><span class="o">.</span><span class="n">_instance</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="JavaCreator.get_creator_class"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JavaCreator.get_creator_class">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">get_creator_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-        <span class="k">with</span> <span class="n">JavaCreator</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span></div>
-            <span class="k">return</span> <span class="n">JavaCreator</span><span class="o">.</span><span class="n">__creator_class</span>
+        <span class="k">with</span> <span class="n">JavaCreator</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">JavaCreator</span><span class="o">.</span><span class="n">__creator_class</span></div>
 
 <div class="viewcode-block" id="JavaCreator.set_creator_class"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JavaCreator.set_creator_class">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">set_creator_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">cclass</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cclass</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
             <span class="n">cclass</span> <span class="o">=</span> <span class="p">[</span><span class="n">cclass</span><span class="p">]</span>
         <span class="k">with</span> <span class="n">JavaCreator</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
-            <span class="n">JavaCreator</span><span class="o">.</span><span class="n">__creator_class</span> <span class="o">=</span> <span class="n">cclass</span></div>
-            <span class="n">JavaCreator</span><span class="o">.</span><span class="n">_instance</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">JavaCreator</span><span class="o">.</span><span class="n">__creator_class</span> <span class="o">=</span> <span class="n">cclass</span>
+            <span class="n">JavaCreator</span><span class="o">.</span><span class="n">_instance</span> <span class="o">=</span> <span class="kc">None</span></div>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">gateway</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[]</span>
@@ -148,23 +148,23 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">jclass</span><span class="p">,</span> <span class="s2">&quot;ofFloat&quot;</span><span class="p">)())</span>
             <span class="k">elif</span> <span class="n">bigdl_type</span> <span class="o">==</span> <span class="s2">&quot;double&quot;</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">jclass</span><span class="p">,</span> <span class="s2">&quot;ofDouble&quot;</span><span class="p">)())</span>
-            <span class="k">else</span><span class="p">:</span></div>
-                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Not supported bigdl_type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">bigdl_type</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Not supported bigdl_type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="JavaValue"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JavaValue">[docs]</a><span class="k">class</span> <span class="nc">JavaValue</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <div class="viewcode-block" id="JavaValue.jvm_class_constructor"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JavaValue.jvm_class_constructor">[docs]</a>    <span class="k">def</span> <span class="nf">jvm_class_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;create&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;creating: &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">name</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;creating: &quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">name</span></div>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jvalue</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">jvalue</span> <span class="k">if</span> <span class="n">jvalue</span> <span class="k">else</span> <span class="n">callBigDlFunc</span><span class="p">(</span>
             <span class="n">bigdl_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">jvm_class_constructor</span><span class="p">(),</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="EvaluatedResult"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.EvaluatedResult">[docs]</a><span class="k">class</span> <span class="nc">EvaluatedResult</span><span class="p">():</span>
@@ -186,19 +186,19 @@
         <span class="k">return</span> <span class="p">(</span><span class="n">EvaluatedResult</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_num</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;Evaluated result: </span><span class="si">%s</span><span class="s2">, total_num: </span><span class="si">%s</span><span class="s2">, method: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span></div>
-            <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_num</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;Evaluated result: </span><span class="si">%s</span><span class="s2">, total_num: </span><span class="si">%s</span><span class="s2">, method: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_num</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="get_dtype"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_dtype">[docs]</a><span class="k">def</span> <span class="nf">get_dtype</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">):</span>
-    <span class="c1"># Always return float32 for now</span></div>
-    <span class="k">return</span> <span class="s2">&quot;float32&quot;</span>
+    <span class="c1"># Always return float32 for now</span>
+    <span class="k">return</span> <span class="s2">&quot;float32&quot;</span></div>
 
 
 <div class="viewcode-block" id="JActivity"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JActivity">[docs]</a><span class="k">class</span> <span class="nc">JActivity</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span></div>
-        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span></div>
 
 
 <div class="viewcode-block" id="JTensor"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JTensor">[docs]</a><span class="k">class</span> <span class="nc">JTensor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -263,8 +263,8 @@
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a_ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">),</span> \
             <span class="s2">&quot;input should be a np.ndarray, not </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">a_ndarray</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">a_ndarray</span><span class="p">,</span>
-                   <span class="n">a_ndarray</span><span class="o">.</span><span class="n">shape</span> <span class="k">if</span> <span class="n">a_ndarray</span><span class="o">.</span><span class="n">shape</span> <span class="k">else</span> <span class="p">(</span><span class="n">a_ndarray</span><span class="o">.</span><span class="n">size</span><span class="p">),</span></div>
-                   <span class="n">bigdl_type</span><span class="p">)</span>
+                   <span class="n">a_ndarray</span><span class="o">.</span><span class="n">shape</span> <span class="k">if</span> <span class="n">a_ndarray</span><span class="o">.</span><span class="n">shape</span> <span class="k">else</span> <span class="p">(</span><span class="n">a_ndarray</span><span class="o">.</span><span class="n">size</span><span class="p">),</span>
+                   <span class="n">bigdl_type</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="JTensor.sparse"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JTensor.sparse">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">sparse</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">a_ndarray</span><span class="p">,</span> <span class="n">i_ndarray</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
@@ -316,8 +316,8 @@
             <span class="s2">&quot;size of values and indices should match.&quot;</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">a_ndarray</span><span class="p">,</span>
                    <span class="n">shape</span><span class="p">,</span>
-                   <span class="n">bigdl_type</span><span class="p">,</span></div>
-                   <span class="n">i_ndarray</span><span class="p">)</span>
+                   <span class="n">bigdl_type</span><span class="p">,</span>
+                   <span class="n">i_ndarray</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="JTensor.to_ndarray"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.JTensor.to_ndarray">[docs]</a>    <span class="k">def</span> <span class="nf">to_ndarray</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -325,8 +325,8 @@
 <span class="sd">        As SparseTensor may generate an very big ndarray, so we don&#39;t support this function for SparseTensor.</span>
 <span class="sd">        :return: a ndarray</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;sparseTensor to ndarray is not supported&quot;</span></div>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">get_dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># noqa</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;sparseTensor to ndarray is not supported&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">get_dtype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># noqa</span></div>
 
     <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -338,8 +338,8 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">indices</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot; ,indices </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="s2">&quot;JTensor: storage: </span><span class="si">%s</span><span class="s2">, shape: </span><span class="si">%s%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">indices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">)</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot; ,indices </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;JTensor: storage: </span><span class="si">%s</span><span class="s2">, shape: </span><span class="si">%s%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">storage</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">indices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Sample"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.Sample">[docs]</a><span class="k">class</span> <span class="nc">Sample</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -395,8 +395,8 @@
                 <span class="s2">&quot;labels should be a list of np.ndarray, not </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
             <span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">],</span>
-            <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">],</span></div>
-            <span class="n">bigdl_type</span><span class="o">=</span><span class="n">bigdl_type</span><span class="p">)</span>
+            <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">],</span>
+            <span class="n">bigdl_type</span><span class="o">=</span><span class="n">bigdl_type</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Sample.from_jtensor"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.Sample.from_jtensor">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_jtensor</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
@@ -428,8 +428,8 @@
                 <span class="s2">&quot;labels should be a list of np.ndarray, not </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
             <span class="n">features</span><span class="o">=</span><span class="n">features</span><span class="p">,</span>
-            <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span></div>
-            <span class="n">bigdl_type</span><span class="o">=</span><span class="n">bigdl_type</span><span class="p">)</span>
+            <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+            <span class="n">bigdl_type</span><span class="o">=</span><span class="n">bigdl_type</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">Sample</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">)</span>
@@ -437,8 +437,8 @@
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;Sample: features: </span><span class="si">%s</span><span class="s2">, labels: </span><span class="si">%s</span><span class="s2">,&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></div>
-        <span class="k">return</span> <span class="s2">&quot;Sample: features: </span><span class="si">%s</span><span class="s2">, labels: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Sample: features: </span><span class="si">%s</span><span class="s2">, labels: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="RNG"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.RNG">[docs]</a><span class="k">class</span> <span class="nc">RNG</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -447,11 +447,11 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
 
-<div class="viewcode-block" id="RNG.set_seed"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.RNG.set_seed">[docs]</a>    <span class="k">def</span> <span class="nf">set_seed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="p">):</span></div>
-        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setModelSeed&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
+<div class="viewcode-block" id="RNG.set_seed"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.RNG.set_seed">[docs]</a>    <span class="k">def</span> <span class="nf">set_seed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="p">):</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setModelSeed&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RNG.uniform"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.RNG.uniform">[docs]</a>    <span class="k">def</span> <span class="nf">uniform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span></div></div>
-        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span> <span class="c1"># noqa</span>
+<div class="viewcode-block" id="RNG.uniform"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.RNG.uniform">[docs]</a>    <span class="k">def</span> <span class="nf">uniform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span> <span class="c1"># noqa</span></div></div>
 
 
 <span class="n">_picklable_classes</span> <span class="o">=</span> <span class="p">[</span>
@@ -470,17 +470,17 @@
 
 <div class="viewcode-block" id="init_engine"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.init_engine">[docs]</a><span class="k">def</span> <span class="nf">init_engine</span><span class="p">(</span><span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
     <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;initEngine&quot;</span><span class="p">)</span>
-    <span class="c1"># Spark context is supposed to have been created when init_engine is called</span></div>
-    <span class="n">get_spark_context</span><span class="p">()</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">bigdl</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">BigDLSerDe</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span>
+    <span class="c1"># Spark context is supposed to have been created when init_engine is called</span>
+    <span class="n">get_spark_context</span><span class="p">()</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">bigdl</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">BigDLSerDe</span><span class="o">.</span><span class="n">initialize</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="init_executor_gateway"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.init_executor_gateway">[docs]</a><span class="k">def</span> <span class="nf">init_executor_gateway</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
-    <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;initExecutorGateway&quot;</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="n">sc</span><span class="o">.</span><span class="n">_gateway</span><span class="o">.</span><span class="n">_gateway_client</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+<div class="viewcode-block" id="init_executor_gateway"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.init_executor_gateway">[docs]</a><span class="k">def</span> <span class="nf">init_executor_gateway</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+    <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;initExecutorGateway&quot;</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="n">sc</span><span class="o">.</span><span class="n">_gateway</span><span class="o">.</span><span class="n">_gateway_client</span><span class="o">.</span><span class="n">port</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="get_node_and_core_number"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_node_and_core_number">[docs]</a><span class="k">def</span> <span class="nf">get_node_and_core_number</span><span class="p">(</span><span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getNodeAndCoreNumber&quot;</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;getNodeAndCoreNumber&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="redire_spark_logs"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.redire_spark_logs">[docs]</a><span class="k">def</span> <span class="nf">redire_spark_logs</span><span class="p">(</span><span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="n">log_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;/bigdl.log&quot;</span><span class="p">):</span>
@@ -488,16 +488,16 @@
 <span class="sd">    Redirect spark logs to the specified path.</span>
 <span class="sd">    :param bigdl_type: &quot;double&quot; or &quot;float&quot;</span>
 <span class="sd">    :param log_path: the file path to be redirected to; the default file is under the current workspace named `bigdl.log`.</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;redirectSparkLogs&quot;</span><span class="p">,</span> <span class="n">log_path</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;redirectSparkLogs&quot;</span><span class="p">,</span> <span class="n">log_path</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="show_bigdl_info_logs"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.show_bigdl_info_logs">[docs]</a><span class="k">def</span> <span class="nf">show_bigdl_info_logs</span><span class="p">(</span><span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Set BigDL log level to INFO.</span>
 <span class="sd">    :param bigdl_type: &quot;double&quot; or &quot;float&quot;</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
-    <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;showBigDlInfoLogs&quot;</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;showBigDlInfoLogs&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="get_bigdl_conf"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_bigdl_conf">[docs]</a><span class="k">def</span> <span class="nf">get_bigdl_conf</span><span class="p">():</span>
@@ -519,14 +519,14 @@
                     <span class="n">content</span> <span class="o">=</span> <span class="n">zip_conf</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">bigdl_conf_file</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,):</span>
                         <span class="n">content</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
-                    <span class="k">return</span> <span class="n">load_conf</span><span class="p">(</span><span class="n">content</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="p">{}</span>
+                    <span class="k">return</span> <span class="n">load_conf</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{}</span></div>
 
 
 <div class="viewcode-block" id="to_list"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.to_list">[docs]</a><span class="k">def</span> <span class="nf">to_list</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">a</span></div>
-    <span class="k">return</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">a</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">a</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="to_sample_rdd"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.to_sample_rdd">[docs]</a><span class="k">def</span> <span class="nf">to_sample_rdd</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">numSlices</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -540,14 +540,14 @@
     <span class="n">sc</span> <span class="o">=</span> <span class="n">get_spark_context</span><span class="p">()</span>
     <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">Sample</span>
     <span class="n">x_rdd</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numSlices</span><span class="p">)</span>
-    <span class="n">y_rdd</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">numSlices</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">x_rdd</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">y_rdd</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">Sample</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">y_rdd</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">parallelize</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">numSlices</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x_rdd</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="n">y_rdd</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">Sample</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span></div>
 
 
 <div class="viewcode-block" id="extend_spark_driver_cp"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.extend_spark_driver_cp">[docs]</a><span class="k">def</span> <span class="nf">extend_spark_driver_cp</span><span class="p">(</span><span class="n">sparkConf</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
     <span class="n">original_driver_classpath</span> <span class="o">=</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">sparkConf</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spark.driver.extraClassPath&quot;</span><span class="p">)</span> \
-        <span class="k">if</span> <span class="n">sparkConf</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;spark.driver.extraClassPath&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span></div>
-    <span class="n">sparkConf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.driver.extraClassPath&quot;</span><span class="p">,</span> <span class="n">path</span> <span class="o">+</span> <span class="n">original_driver_classpath</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sparkConf</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;spark.driver.extraClassPath&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">sparkConf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.driver.extraClassPath&quot;</span><span class="p">,</span> <span class="n">path</span> <span class="o">+</span> <span class="n">original_driver_classpath</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="create_spark_conf"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.create_spark_conf">[docs]</a><span class="k">def</span> <span class="nf">create_spark_conf</span><span class="p">():</span>
@@ -567,8 +567,8 @@
             <span class="n">sparkConf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;spark.submit.pyFiles&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">,</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">python_lib</span><span class="p">,</span> <span class="n">existing_py_files</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">sparkConf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;spark.submit.pyFiles&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">python_lib</span><span class="p">)</span>
-</div>
-    <span class="k">return</span> <span class="n">sparkConf</span>
+
+    <span class="k">return</span> <span class="n">sparkConf</span></div>
 
 
 <div class="viewcode-block" id="get_spark_context"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_spark_context">[docs]</a><span class="k">def</span> <span class="nf">get_spark_context</span><span class="p">(</span><span class="n">conf</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -591,15 +591,15 @@
         <span class="k">if</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">spark_conf</span> <span class="o">=</span> <span class="n">create_spark_conf</span><span class="p">()</span> <span class="k">if</span> <span class="n">conf</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conf</span>
             <span class="k">return</span> <span class="n">SparkContext</span><span class="p">(</span><span class="n">conf</span><span class="o">=</span><span class="n">spark_conf</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span></div>
-            <span class="k">return</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span></div>
 
 
 <div class="viewcode-block" id="get_spark_sql_context"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_spark_sql_context">[docs]</a><span class="k">def</span> <span class="nf">get_spark_sql_context</span><span class="p">(</span><span class="n">sc</span><span class="p">):</span>
     <span class="k">if</span> <span class="s2">&quot;getOrCreate&quot;</span> <span class="ow">in</span> <span class="n">SQLContext</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">SQLContext</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span></div>
-        <span class="k">return</span> <span class="n">SQLContext</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>  <span class="c1"># Compatible with Spark1.5.1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">SQLContext</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>  <span class="c1"># Compatible with Spark1.5.1</span></div>
 
 
 <span class="k">def</span> <span class="nf">_get_port</span><span class="p">():</span>
@@ -642,8 +642,8 @@
             <span class="k">if</span> <span class="s2">&quot;does not exist&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="n">e</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">result</span></div>
-    <span class="k">raise</span> <span class="n">error</span>
+            <span class="k">return</span> <span class="n">result</span>
+    <span class="k">raise</span> <span class="n">error</span></div>
 
 
 <span class="k">def</span> <span class="nf">_java2py</span><span class="p">(</span><span class="n">gateway</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;bytes&quot;</span><span class="p">):</span>
@@ -682,8 +682,8 @@
     <span class="sd">&quot;&quot;&quot; Call Java Function &quot;&quot;&quot;</span>
     <span class="n">gateway</span> <span class="o">=</span> <span class="n">_get_gateway</span><span class="p">()</span>
     <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">_py2java</span><span class="p">(</span><span class="n">gateway</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">_java2py</span><span class="p">(</span><span class="n">gateway</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_java2py</span><span class="p">(</span><span class="n">gateway</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
 
 
 <span class="k">def</span> <span class="nf">_to_java_object_rdd</span><span class="p">(</span><span class="n">rdd</span><span class="p">):</span>
@@ -729,13 +729,13 @@
 
 <div class="viewcode-block" id="create_tmp_path"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.create_tmp_path">[docs]</a><span class="k">def</span> <span class="nf">create_tmp_path</span><span class="p">():</span>
     <span class="n">tmp_file</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;bigdl&quot;</span><span class="p">)</span>
-    <span class="n">tmp_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
-    <span class="k">return</span> <span class="n">tmp_file</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">tmp_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">tmp_file</span><span class="o">.</span><span class="n">name</span></div>
 
 
 <div class="viewcode-block" id="text_from_path"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.text_from_path">[docs]</a><span class="k">def</span> <span class="nf">text_from_path</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
-    <span class="n">sc</span> <span class="o">=</span> <span class="n">get_spark_context</span><span class="p">()</span></div>
-    <span class="k">return</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">get_spark_context</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">sc</span><span class="o">.</span><span class="n">textFile</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="get_local_file"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_local_file">[docs]</a><span class="k">def</span> <span class="nf">get_local_file</span><span class="p">(</span><span class="n">a_path</span><span class="p">):</span>
@@ -744,12 +744,12 @@
     <span class="n">path</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">get_spark_context</span><span class="p">()</span><span class="o">.</span><span class="n">binaryFiles</span><span class="p">(</span><span class="n">a_path</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">local_file_path</span> <span class="o">=</span> <span class="n">create_tmp_path</span><span class="p">()</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">local_file_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">local_file</span><span class="p">:</span>
-        <span class="n">local_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">local_file_path</span>
+        <span class="n">local_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">local_file_path</span></div>
 
 
-<div class="viewcode-block" id="is_distributed"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.is_distributed">[docs]</a><span class="k">def</span> <span class="nf">is_distributed</span><span class="p">(</span><span class="n">path</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="s2">&quot;://&quot;</span> <span class="ow">in</span> <span class="n">path</span>
+<div class="viewcode-block" id="is_distributed"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.is_distributed">[docs]</a><span class="k">def</span> <span class="nf">is_distributed</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;://&quot;</span> <span class="ow">in</span> <span class="n">path</span></div>
 
 
 <div class="viewcode-block" id="get_activation_by_name"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.get_activation_by_name">[docs]</a><span class="k">def</span> <span class="nf">get_activation_by_name</span><span class="p">(</span><span class="n">activation_name</span><span class="p">,</span> <span class="n">activation_id</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -777,8 +777,8 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unsupported activation type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">activation_name</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">activation_id</span><span class="p">:</span>
-        <span class="n">activation</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="n">activation_id</span><span class="p">)</span></div>
-    <span class="k">return</span> <span class="n">activation</span>
+        <span class="n">activation</span><span class="o">.</span><span class="n">set_name</span><span class="p">(</span><span class="n">activation_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">activation</span></div>
 
 
 <span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
@@ -818,7 +818,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.2.
     </div>
   </body>
 </html>
