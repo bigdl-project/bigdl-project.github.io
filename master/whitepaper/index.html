@@ -82,12 +82,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h1><strong>White Paper</strong></h1>
     <hr>
     <h2 id="bigdl-a-distributed-deep-learning-framework-for-big-data"><strong>BigDL: A Distributed Deep Learning Framework for Big Data</strong></h2>
-<p>Jason (Jinquan) Dai<sup>1</sup>, Yiheng Wang<sup>1</sup>, Xin Qiu<sup>1</sup>, Ding Ding<sup>1</sup>, Yao Zhang<sup>2ǂ</sup>, Yanzhang Wang<sup>1</sup>, Xianyan Jia<sup>2ǂ</sup>, Cherry (Li) Zhang<sup>1</sup>, Yan Wan<sup>3ǂ</sup>, Zhichao Li<sup>1</sup>, Jiao Wang<sup>1</sup>, Shengsheng Huang<sup>1</sup>, Zhuanyan Wu<sup>1</sup>, Yang Wang<sup>1</sup>, Yuhao Yang<sup>1</sup>, Bowen She<sup>1</sup>, Dongjie Shi<sup>1</sup>, Qi Lu<sup>1</sup>, Kai Huang<sup>1</sup>, Guoqiong Song<sup>1</sup></p>
-<p><sup>1</sup>Intel Corporation,    <sup>2</sup>Tencent Inc.,    <sup>3</sup>Alibaba Group
-<sup>ǂ</sup> Work was done when the author worked at Intel</p>
+<p>Jason (Jinquan) Dai<sup>1</sup>, Yiheng Wang<sup>1</sup>, Xin Qiu<sup>1</sup>, Ding Ding<sup>1</sup>, Yao Zhang<sup>2ǂ</sup>, Yanzhang Wang<sup>1</sup>, Xianyan Jia<sup>2ǂ</sup>, Cherry (Li) Zhang<sup>1</sup>, Yan Wan<sup>3ǂ</sup>, Zhichao Li<sup>1</sup>, Jiao Wang<sup>1</sup>, Shengsheng Huang<sup>1</sup>, Zhongyuan Wu<sup>1</sup>, Yang Wang<sup>1</sup>, Yuhao Yang<sup>1</sup>, Bowen She<sup>1</sup>, Dongjie Shi<sup>1</sup>, Qi Lu<sup>1</sup>, Kai Huang<sup>1</sup>, Guoqiong Song<sup>1</sup></p>
+<p><sup>1</sup>Intel Corporation,    <sup>2</sup>Tencent Inc.,    <sup>3</sup>Alibaba Group</p>
+<p><sup>ǂ</sup> Work was done when the author worked at Intel</p>
 <hr />
 <h2 id="abstract"><strong>Abstract</strong></h2>
-<p>In this paper, we present BigDL, a distributed deep learning framework for Big Data platforms and workflows. It is implemented on top of Apache Spark, and allows users to write their deep learning applications as standard Spark programs (running directly on large-scale big data clusters in a distributed fashion). It provides an expressive, “data-analytics integrated” deep learning programming model, so that users can easily build the end-to-end analytics + AI pipelines under a unified programing paradigm; by implementing an <em>AllReduce</em> like operation using existing primitives in Spark (e.g., shuffle, broadcast, and in-memory data persistence), it also provides a high efficient “parameter server” style architecture, so as to achieve highly scalable, data-parallel distributed training. Since its initial open source release, BigDL users have built many analytics and deep learning applications (e.g., object detection, sequence-to-sequence generation, neural recommendations, fraud detection, etc.) on Spark.</p>
+<p>In this paper, we present BigDL, a distributed deep learning framework for Big Data platforms and workflows. It is implemented on top of Apache Spark, and allows users to write their deep learning applications as standard Spark programs (running directly on large-scale big data clusters in a distributed fashion). It provides an expressive, “data-analytics integrated” deep learning programming model, so that users can easily build the end-to-end analytics + AI pipelines under a unified programing paradigm; by implementing an <em>AllReduce</em> like operation using existing primitives in Spark (e.g., shuffle, broadcast, and in-memory data persistence), it also provides a highly efficient “parameter server” style architecture, so as to achieve highly scalable, data-parallel distributed training. Since its initial open source release, BigDL users have built many analytics and deep learning applications (e.g., object detection, sequence-to-sequence generation, neural recommendations, fraud detection, etc.) on Spark.</p>
 <h2 id="1-introduction"><strong>1. Introduction</strong></h2>
 <p>Recent breakthroughs in artificial intelligence have brought deep learning to the forefront of new generations of data analytics; as the requirements and usage models expand, new systems and architecture beyond existing deep learning frameworks (e.g., Caffe [1], Torch [2], TensorFlow [3], MXNet [4], Chainer [5], etc.) have inevitably emerged. In particular, there is increasing demand from organizations to apply deep learning technologies (such as computer vision, natural language processing, generative adversary networks, etc.) to their big data platforms and pipelines. This emerging convergence of deep learning and big data analytics is driven by several important technology and industry trends:</p>
 <ul>
@@ -169,13 +169,13 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <h3 id="31-data-parallel-training"><strong>3.1. Data-parallel training</strong></h3>
 <p>To train a deep neural network model across the cluster, BigDL provides data-parallel training on Spark using synchronous mini-batch SGD, which is shown to achieve better scalability and efficiency (in terms of time-to-quality) compared to asynchronous training [29][30]. The distributed training in BigDL is implemented as an iterative process, as illustrated in Figure 3; each iteration runs a couple of Spark jobs to first compute the gradients using the current mini-batch, and then make a single update to the parameters of the neural network model.</p>
 <pre><code>for (i &lt;- 1 to N) {
-  //”model forward-backward” job
+  //&quot;model forward-backward&quot; job
   for each task in the Spark job:
      read the latest weights
      get a random batch of data from local sample partition
      compute errors (forward on local model replica)
      compute gradients (backward on local model replica)
-  //”parameter synchronization” job
+  //&quot;parameter synchronization&quot; job
   aggregate (sum) all the gradients
   update the weights per specified optimization method
 }
@@ -196,7 +196,7 @@ In BigDL, we have adapted the primitives available in the Spark (e.g., shuffle, 
 <ul>
 <li><strong>Next, another “parameter synchronization” job is launched;</strong> each task n in the “parameter synchronization” job is responsible for managing the nth partition of the parameters, just like a parameter server (as shown in Figure 6). Specifically, the nth partition of the gradients (from all the tasks of the previous “model forward-backward” job) are first shuffled to task n, which then aggregates (sums) these gradients, and applies the updates to the nth partition of the weights (using the specific optimization method), as illustrated in Figure 5.</li>
 </ul>
-<pre><code>For each task n in the ”parameter synchronization” job
+<pre><code>For each task n in the &quot;parameter synchronization&quot; job
    shuffle the nth partition of all gradients to this task
    aggregate (sum) the gradients
    updates the nth partition of the weights
