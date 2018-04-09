@@ -84,7 +84,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h2 id="bigdl-a-distributed-deep-learning-framework-for-big-data"><strong>BigDL: A Distributed Deep Learning Framework for Big Data</strong></h2>
 <p>Jason (Jinquan) Dai<sup>1</sup>, Yiheng Wang<sup>1</sup>, Xin Qiu<sup>1</sup>, Ding Ding<sup>1</sup>, Yao Zhang<sup>2 ǂ</sup>, Yanzhang Wang<sup>1</sup>, Xianyan Jia<sup>2 ǂ</sup>, Cherry (Li) Zhang<sup>1</sup>, Yan Wan<sup>3 ǂ</sup>, Zhichao Li<sup>1</sup>, Jiao Wang<sup>1</sup>, Shengsheng Huang<sup>1</sup>, Zhongyuan Wu<sup>1</sup>, Yang Wang<sup>1</sup>, Yuhao Yang<sup>1</sup>, Bowen She<sup>1</sup>, Dongjie Shi<sup>1</sup>, Qi Lu<sup>1</sup>, Kai Huang<sup>1</sup>, Guoqiong Song<sup>1</sup></p>
 <p><sup>1</sup>Intel Corporation,    <sup>2</sup>Tencent Inc.,    <sup>3</sup>Alibaba Group</p>
-<p><sup>ǂ</sup> Work was done when the author worked at Intel</p>
+<p><sup>ǂ</sup>Work was done when the author worked at Intel</p>
 <hr />
 <h2 id="abstract"><strong>Abstract</strong></h2>
 <p><em>In this paper, we present BigDL, a distributed deep learning framework for Big Data platforms and workflows. It is implemented on top of Apache Spark, and allows users to write their deep learning applications as standard Spark programs (running directly on large-scale big data clusters in a distributed fashion). It provides an expressive, “data-analytics integrated” deep learning programming model, so that users can easily build the end-to-end analytics + AI pipelines under a unified programing paradigm; by implementing an </em>AllReduce<em> like operation using existing primitives in Spark (e.g., shuffle, broadcast, and in-memory data persistence), it also provides a highly efficient “parameter server” style architecture, so as to achieve highly scalable, data-parallel distributed training. Since its initial open source release, BigDL users have built many analytics and deep learning applications (e.g., object detection, sequence-to-sequence generation, neural recommendations, fraud detection, etc.) on Spark.</em></p>
@@ -189,12 +189,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Parameter synchronization is a performance critical operation for data-parallel training (in terms of speed and scalability). To support efficient parameter synchronization, existing deep learning frameworks usually implement the parameter server [31][32][33] architecture or AllReduce [34] operation, which unfortunately cannot be directly supported by the functional compute model provided by the Big Data systems.
 In BigDL, we have adapted the primitives available in the Spark (e.g., shuffle, broadcast, in-memory cache, etc.) to implement an efficient AllReduce-like operation, so as to mimic the functionality of a parameter server architecture.</p>
 <ul>
-<li><strong>A Spark job has N tasks,</strong> each of which is assigned a unique Id ranging from 1 to N in BigDL. After each task in the “model forward-backward” job computes the local gradients (as described in section 3.1), it evenly divides the local gradients into N partitions, as illustrated in Figure 5.</li>
+<li>A Spark job has <em>N</em> tasks, each of which is assigned a unique Id ranging from <em>1</em> to <em>N</em> in BigDL. After each task in the “<em>model forward-backward</em>” job computes the local gradients (as described in section 3.1), it evenly divides the local gradients into <em>N</em> partitions, as illustrated in Figure 5.</li>
 </ul>
 <p><img alt="fig5" src="../Image/WP/fig5.jpg" /> </p>
 <p><em>Figure 5. Parameter synchronization in BigDL. Each local gradient (computed by a task in the “model forward-backward” job) is evenly divided into N partitions; then each task n in the “parameter synchronization” job aggregates these local gradients and update the weights for the nth partition.</em></p>
 <ul>
-<li><strong>Next, another “parameter synchronization” job is launched;</strong> each task n in the “parameter synchronization” job is responsible for managing the nth partition of the parameters, just like a parameter server (as shown in Figure 6). Specifically, the nth partition of the gradients (from all the tasks of the previous “model forward-backward” job) are first shuffled to task n, which then aggregates (sums) these gradients, and applies the updates to the nth partition of the weights (using the specific optimization method), as illustrated in Figure 5.</li>
+<li>Next, another “<em>parameter synchronization</em>” job is launched; each task <em>n</em> in the “<em>parameter synchronization</em>” job is responsible for managing the n<sup>th</sup> partition of the parameters, just like a parameter server (as shown in Figure 6). Specifically, the n<sup>th</sup> partition of the gradients (from all the tasks of the previous “<em>model forward-backward</em>” job) are first <strong>shuffled</strong> to task n, which then aggregates (sums) these gradients, and applies the updates to the n<sup>th</sup> partition of the weights (using the specific optimization method), as illustrated in Figure 5.</li>
 </ul>
 <pre><code>For each task n in the &quot;parameter synchronization&quot; job
    shuffle the nth partition of all gradients to this task
@@ -203,13 +203,13 @@ In BigDL, we have adapted the primitives available in the Spark (e.g., shuffle, 
    broadcast the nth partition of the updated weights
 </code></pre>
 
-<p><em>Figure 6. The “parameter synchronization” Spark job, manages the nth petition of the parameters (similar to a parameter server).</em></p>
+<p><em>Figure 6. The “parameter synchronization” Spark job, manages the n<sup>th</sup> partition of the parameters (similar to a parameter server).</em></p>
 <ul>
 <li>
-<p><strong>After that, each task n in the “parameter synchronization” job broadcasts the nth partition of the updated weights;</strong> consequently, tasks in the “model forward-backward” job in the next iteration can read the latest value of all the weights before the next training step begins.</p>
+<p>After that, each task <em>n</em> in the “<em>parameter synchronization</em>” job <strong>broadcasts</strong> the n<sup>th</sup> partition of the updated weights; consequently, tasks in the “<em>model forward-backward</em>” job in the next iteration can read the latest value of all the weights before the next training step begins.</p>
 </li>
 <li>
-<p><strong>The shuffle and task-side broadcast operations described above are implemented on top of the distributed in-memory storage in Spark:</strong> both the shuffled gradients and broadcasted weights are materialized in memory, which can be read remotely by the Spark tasks with extremely low latency.</p>
+<p>The <em>shuffle</em> and <em>task-side broadcast</em> operations described above are implemented on top of the distributed <strong>in-memory</strong> storage in Spark: both the shuffled gradients and broadcasted weights are materialized in memory, which can be read remotely by the Spark tasks with extremely low latency.</p>
 </li>
 </ul>
 <p>By implementing the AllReduce operation using primitives in Spark, BigDL provides a highly efficient “parameter server” style architecture directly on top of Big Data frameworks. As a result, it is demonstrated to support highly scalable distributed training on up to 256-node, as reported by Cray [35] and shown in Figure 7. </p>
@@ -243,16 +243,16 @@ In BigDL, we have adapted the primitives available in the Spark (e.g., shuffle, 
 <p><em>Figure 11. End-to-end object detection and image feature extraction pipeline (using SSD and DeepBit models) on top of Spark and BigDL [40].</em></p>
 <ul>
 <li>
-<p><strong>The pipeline first reads hundreds of millions of pictures from a distributed database into Spark (as an RDD of pictures),</strong> and then pre-processes the RDD of pictures (including <em>resizing, normalization, and batching</em>) in a distributed fashion using Spark.</p>
+<p>The pipeline first reads hundreds of millions of pictures from a distributed database into Spark (as an RDD of pictures), and then pre-processes the RDD of pictures (including <em>resizing</em>, <em>normalization</em>, and <em>batching</em>) in a distributed fashion using Spark.</p>
 </li>
 <li>
-<p><strong>After that, it uses BigDL to load a SSD [41] model (pre-trained in Caffe) for large scale,</strong> distributed object detection on Spark, which generates the coordinates and scores for the detected objects in each of the pictures.</p>
+<p>After that, it uses BigDL to load a <em>SSD</em> [41] model (pre-trained in Caffe) for large scale, distributed object detection on Spark, which generates the coordinates and scores for the detected objects in each of the pictures.</p>
 </li>
 <li>
-<p><strong>It then generates the target images</strong> (by keeping the object with highest score as the target, and cropping the original picture based on the coordinates of the target), and further pre-processes the RDD of target images (including <em>resizing and batching</em>).</p>
+<p>It then generates the target images (by keeping the object with highest score as the target, and cropping the original picture based on the coordinates of the target), and further pre-processes the RDD of target images (including <em>resizing</em> and <em>batching</em>).</p>
 </li>
 <li>
-<p><strong>Finally it uses BigDL to load a <em>DeepBit</em> [42] model (again pre-trained in Caffe) for distributed feature extraction of the target images to generate the corresponding features,</strong> and stores the results (RDD of extracted object features) in the Hadoop Distributed File System (HDFS).</p>
+<p>Finally it uses BigDL to load a <em>DeepBit</em> [42] model (again pre-trained in Caffe) for distributed feature extraction of the target images to generate the corresponding features, and stores the results (RDD of extracted object features) in the Hadoop Distributed File System (HDFS).</p>
 </li>
 </ul>
 <p>The entire data analytics and deep learning pipeline, including data loading, partitioning, preprocessing, model inference, and storing the results, can be easily implemented under a unified programming paradigm (using Spark and BigDL). In addition, the end-to-end pipeline also delivers ~3.83x speedup compared to running the same solution on a GPU cluster, as reported by JD [40] and shown in Figure 12.</p>
@@ -264,13 +264,13 @@ In BigDL, we have adapted the primitives available in the Spark (e.g., shuffle, 
 <p><em>Figure 13. End-to-end precipitation nowcasting workflow (using sequence-to-sequence model) [35] on Spark and BigDL.</em></p>
 <ul>
 <li>
-<p><strong>The application first reads over a terabyte of raw radar scan data into Spark (as an RDD of radar images),</strong> and then converts it into an RDD of <em>NumPy ndarrays</em>.</p>
+<p>The application first reads over a terabyte of raw radar scan data into Spark (as an RDD of radar images), and then converts it into an RDD of <em>NumPy ndarrays</em>.</p>
 </li>
 <li>
-<p><strong>It then trains a sequence-to-sequence model [43][44] (as illustrated in Figure 13),</strong> using sequence of images leading up to the current time as the input, and sequence of predicted images arbitrarily far in the future as the output.</p>
+<p>It then trains a <em>sequence-to-sequence</em> model [43][44] (as illustrated in Figure 13), using sequence of images leading up to the current time as the input, and sequence of predicted images arbitrarily far in the future as the output.</p>
 </li>
 <li>
-<p><strong>After the model is trained, it can be used to predict,</strong> say, precipitation patterns for the next hour, as illustrated in Figure 14.</p>
+<p>After the model is trained, it can be used to predict, say, precipitation patterns for the next hour, as illustrated in Figure 14.</p>
 </li>
 </ul>
 <p><img alt="fig14" src="../Image/WP/fig14.jpg" /> </p>
