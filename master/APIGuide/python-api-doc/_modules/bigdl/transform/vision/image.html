@@ -252,8 +252,14 @@
         <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span></div>
                              <span class="s2">&quot;setLabel&quot;</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ImageFrame.random_split"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.random_split">[docs]</a>    <span class="k">def</span> <span class="nf">random_split</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span></div></div>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_frame</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+<div class="viewcode-block" id="ImageFrame.random_split"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.random_split">[docs]</a>    <span class="k">def</span> <span class="nf">random_split</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Random split imageframes according to weights</span>
+<span class="sd">        :param weights: weights for each ImageFrame</span>
+<span class="sd">        :return: </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">jvalues</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">image_frame</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="p">[</span><span class="n">ImageFrame</span><span class="p">(</span><span class="n">jvalue</span><span class="p">)</span> <span class="k">for</span> <span class="n">jvalue</span> <span class="ow">in</span> <span class="n">jvalues</span><span class="p">]</span>
 
 <div class="viewcode-block" id="LocalImageFrame"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.LocalImageFrame">[docs]</a><span class="k">class</span> <span class="nc">LocalImageFrame</span><span class="p">(</span><span class="n">ImageFrame</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>

@@ -664,6 +664,9 @@
         <span class="k">if</span> <span class="n">clsName</span> <span class="o">==</span> <span class="s1">&#39;Dataset&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">get_spark_sql_context</span><span class="p">(</span><span class="n">get_spark_context</span><span class="p">()))</span>
 
+        <span class="k">if</span> <span class="n">clsName</span> <span class="o">==</span> <span class="s2">&quot;ImageFrame[]&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">r</span>
+
         <span class="k">if</span> <span class="n">clsName</span> <span class="ow">in</span> <span class="n">_picklable_classes</span><span class="p">:</span>
             <span class="n">r</span> <span class="o">=</span> <span class="n">gateway</span><span class="o">.</span><span class="n">jvm</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">bigdl</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">BigDLSerDe</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="p">(</span><span class="n">JavaArray</span><span class="p">,</span> <span class="n">JavaList</span><span class="p">,</span> <span class="n">JavaMap</span><span class="p">)):</span>
