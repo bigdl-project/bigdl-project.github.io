@@ -182,7 +182,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </code></pre>
 
 <p><em>Figure 3. BigDL provides efficient, data-parallel, synchronous mini-batch SGD, where each iteration runs two Spark jobs for “model forward-backward” and “parameter synchronization”.</em></p>
-<p>As described in Section 2, BigDL models the training data as an RDD of Samples, which are automatically partitioned and potentially cached in memory across the Spark cluster. In addition, to implement the data-parallel training, BigDL also constructs an RDD of models, each of which is a replica of the original neural network model. The model and sample RDDs are co-partitioned and co-located [14] across the cluster; consequently, in each iteration of the model training, a single “model forward-backward” Spark job can apply the functional zip operator to the partitions of model and sample RDDs, and compute in parallel the gradients for each model replica (using a small batch of data in the co-located sample partition), as illustrated in Figure 4.</p>
+<p>As described in Section 2, BigDL models the training data as an RDD of Samples, which are automatically partitioned and potentially cached in memory across the Spark cluster. In addition, to implement the data-parallel training, BigDL also constructs an RDD of models, each of which is a replica of the original neural network model. The model and sample RDDs are co-partitioned and co-located [14] across the cluster, as shown in Figure 4; consequently, in each iteration of the model training, a single “model forward-backward” Spark job can apply the functional zip operator to the partitions of model and sample RDDs, and compute the gradients in parallel for each model replica (using a small batch of data in the co-located sample partition), as illustrated in Figure 4.</p>
 <p><img alt="fig4" src="../Image/WP/fig4.jpg" /> </p>
 <p><em>Figure 4. The “model forward-backward” spark job, which computes the local gradients for each model replica in parallel.</em></p>
 <h3 id="32-parameter-synchronization"><strong>3.2. Parameter synchronization</strong></h3>
@@ -267,14 +267,14 @@ In BigDL, we have adapted the primitives available in the Spark (e.g., shuffle, 
 <p>The application first reads over a terabyte of raw radar scan data into Spark (as an RDD of radar images), and then converts it into an RDD of <em>NumPy ndarrays</em>.</p>
 </li>
 <li>
-<p>It then trains a <em>sequence-to-sequence</em> model [43][44] (as illustrated in Figure 13), using sequence of images leading up to the current time as the input, and sequence of predicted images arbitrarily far in the future as the output.</p>
+<p>It then trains a <em>sequence-to-sequence</em> model [43][44] (as illustrated in Figure 13), using a sequence of images leading up to the current time as the input, and a sequence of predicted images arbitrarily far in the future as the output.</p>
 </li>
 <li>
 <p>After the model is trained, it can be used to predict, say, precipitation patterns for the next hour, as illustrated in Figure 14.</p>
 </li>
 </ul>
 <p><img alt="fig14" src="../Image/WP/fig14.jpg" /> </p>
-<p><em>Figure 14. Predicting precipitation patterns for the next hour [35] on Spark and BigDL.</em></p>
+<p><em>Figure 14. Predicting precipitation patterns for the next hour [35] on Spark and BigDL (i.e., a sequence of images for the future time steps of the next hour).</em></p>
 <h2 id="5-summary"><strong>5. Summary</strong></h2>
 <p>We have described BigDL, including its programming model, execution model and typical use cases. It combines the benefits of big data and HPC (high performance computing) architecture, so as to provide both an expressive, “data-analytics integrated” deep learning programing model for users to build their analytics + AI pipelines, and a highly efficient “parameter server” style architecture directly on top of Big Data platforms for scalable data-parallel training. </p>
 <p>BigDL is a work in progress, but our initial experience is encouraging. Since its initial open source release (on Dec 30, 2016), it has received over 2300 stars on Github; and it have enabled many users to build new analytics and deep learning applications, which can directly run on top of existing Hadoop and/or Spark clusters.</p>
