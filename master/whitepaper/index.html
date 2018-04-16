@@ -187,14 +187,16 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p><em>Figure 4. The “model forward-backward” spark job, which computes the local gradients for each model replica in parallel.</em></p>
 <h3 id="32-parameter-synchronization"><strong>3.2. Parameter synchronization</strong></h3>
 <p>Parameter synchronization is a performance critical operation for data-parallel training (in terms of speed and scalability). To support efficient parameter synchronization, existing deep learning frameworks usually implement the parameter server [31][32][33] architecture or AllReduce [34] operation, which unfortunately cannot be directly supported by the functional compute model provided by the Big Data systems.
-In BigDL, we have adapted the primitives available in the Spark (e.g., shuffle, broadcast, in-memory cache, etc.) to implement an efficient AllReduce-like operation, so as to mimic the functionality of a parameter server architecture.</p>
-<ul>
-<li>A Spark job has <em>N</em> tasks, each of which is assigned a unique Id ranging from <em>1</em> to <em>N</em> in BigDL. After each task in the “<em>model forward-backward</em>” job computes the local gradients (as described in section 3.1), it evenly divides the local gradients into <em>N</em> partitions, as illustrated in Figure 5.</li>
-</ul>
+In BigDL, we have adapted the primitives available in the Spark (e.g., shuffle, broadcast, in-memory cache, etc.) to implement an efficient AllReduce-like operation, so as to mimic the functionality of a parameter server architecture (as illustrated in Figure 5).</p>
 <p><img alt="fig5" src="../Image/WP/fig5.jpg" /> </p>
 <p><em>Figure 5. Parameter synchronization in BigDL. Each local gradient (computed by a task in the “model forward-backward” job) is evenly divided into N partitions; then each task n in the “parameter synchronization” job aggregates these local gradients and update the weights for the nth partition.</em></p>
 <ul>
-<li>Next, another “<em>parameter synchronization</em>” job is launched; each task <em>n</em> in the “<em>parameter synchronization</em>” job is responsible for managing the n<sup>th</sup> partition of the parameters, just like a parameter server (as shown in Figure 6). Specifically, the n<sup>th</sup> partition of the gradients (from all the tasks of the previous “<em>model forward-backward</em>” job) are first <strong>shuffled</strong> to task n, which then aggregates (sums) these gradients, and applies the updates to the n<sup>th</sup> partition of the weights (using the specific optimization method), as illustrated in Figure 5.</li>
+<li>
+<p>A Spark job has <em>N</em> tasks, each of which is assigned a unique Id ranging from <em>1</em> to <em>N</em> in BigDL. After each task in the “<em>model forward-backward</em>” job computes the local gradients (as described in section 3.1), it evenly divides the local gradients into <em>N</em> partitions, as shown in Figure 5.</p>
+</li>
+<li>
+<p>Next, another “<em>parameter synchronization</em>” job is launched; each task <em>n</em> in the “<em>parameter synchronization</em>” job is responsible for managing the n<sup>th</sup> partition of the parameters, just like a parameter server (as shown in Figure 6). Specifically, the n<sup>th</sup> partition of the gradients (from all the tasks of the previous “<em>model forward-backward</em>” job) are first <strong>shuffled</strong> to task n, which then aggregates (sums) these gradients, and applies the updates to the n<sup>th</sup> partition of the weights (using the specific optimization method), as illustrated in Figure 5.</p>
+</li>
 </ul>
 <pre><code>For each task n in the &quot;parameter synchronization&quot; job
    shuffle the nth partition of all gradients to this task
@@ -279,7 +281,7 @@ In BigDL, we have adapted the primitives available in the Spark (e.g., shuffle, 
 <p>We have described BigDL, including its programming model, execution model and typical use cases. It combines the benefits of big data and HPC (high performance computing) architecture, so as to provide both an expressive, “data-analytics integrated” deep learning programing model for users to build their analytics + AI pipelines, and a highly efficient “parameter server” style architecture directly on top of Big Data platforms for scalable data-parallel training. </p>
 <p>BigDL is a work in progress, but our initial experience is encouraging. Since its initial open source release (on Dec 30, 2016), it has received over 2300 stars on Github; and it have enabled many users to build new analytics and deep learning applications, which can directly run on top of existing Hadoop and/or Spark clusters.</p>
 <h2 id="6-acknowledgement"><strong>6. Acknowledgement</strong></h2>
-<p>We gratefully acknowledge contributions from our (current and former) colleagues at Intel (including Jun Wang, Liangying Lv, Andy Chen, Sergey Ermolin, Zewei Chen, Ning Wang, Yulia Tell, Pengfei Yue, Wesley Du, Erjin Ren, Xiao Dong Wang, Radhika Rangarajan, Jack Chen, Milind Damle and Dave Nielsen), and numerous users and collaborators from the open source community (including Shivaram Venkataraman, Zhenhua Wang, Alex Heye, Omid Khanmohamadi, Mike Ringenburg, Xiao Xu, Suqiang Song, etc.) to the BigDL project.</p>
+<p>We gratefully acknowledge contributions from our (current and former) colleagues at Intel (including Jun Wang, Liangying Lv, Andy Chen, Sergey Ermolin, Zewei Chen, Ning Wang, Yulia Tell, Pengfei Yue, Wesley Du, Erjin Ren, Xiao Dong Wang, Radhika Rangarajan, Jack Chen, Milind Damle and Dave Nielsen), and numerous users and collaborators from the open source community (including Shivaram Venkataraman, Zhenhua Wang, Alex Heye, Omid Khanmohamadi, Mike Ringenburg, Gopi Kumar, Xiao Xu, Suqiang Song, etc.) to the BigDL project.</p>
 <h2 id="7-reference"><strong>7. Reference</strong></h2>
 <p>[1] Caffe. <a href="http://caffe.berkeleyvision.org">http://caffe.berkeleyvision.org</a></p>
 <p>[2] Torch. <a href="http://torch.ch">http://torch.ch</a></p>
