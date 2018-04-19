@@ -181,11 +181,11 @@
                     <span class="k">else</span><span class="p">:</span>
                         <span class="n">info</span> <span class="o">+=</span> <span class="s1">&#39; </span><span class="si">%.4e</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">avg</span>
                 <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">info</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_update</span> <span class="o">=</span> <span class="n">now</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">last_update</span> <span class="o">=</span> <span class="n">now</span></div>
-
-<div class="viewcode-block" id="Progbar.add"><a class="viewcode-back" href="../../../bigdl.dataset.html#bigdl.dataset.base.Progbar.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[]):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seen_so_far</span> <span class="o">+</span> <span class="n">n</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span></div></div>
+<div class="viewcode-block" id="Progbar.add"><a class="viewcode-back" href="../../../bigdl.dataset.html#bigdl.dataset.base.Progbar.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[]):</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seen_so_far</span> <span class="o">+</span> <span class="n">n</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="display_table"><a class="viewcode-back" href="../../../bigdl.dataset.html#bigdl.dataset.base.display_table">[docs]</a><span class="k">def</span> <span class="nf">display_table</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">positions</span><span class="p">):</span>
@@ -198,8 +198,8 @@
             <span class="n">line</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="p">(</span><span class="n">positions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">objects</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
-        <span class="n">display_row</span><span class="p">(</span><span class="n">objects</span><span class="p">,</span> <span class="n">positions</span><span class="p">)</span></div>
+    <span class="k">for</span> <span class="n">objects</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span></div>
+        <span class="n">display_row</span><span class="p">(</span><span class="n">objects</span><span class="p">,</span> <span class="n">positions</span><span class="p">)</span>
 
 <span class="c1"># Adopt from keras</span>
 <span class="c1"># Under Python 2, &#39;urlretrieve&#39; relies on FancyURLopener from legacy</span>
@@ -222,8 +222,8 @@
 
         <span class="n">response</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">chunk_read</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">reporthook</span><span class="o">=</span><span class="n">reporthook</span><span class="p">):</span>
-                <span class="n">fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span></div>
+            <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">chunk_read</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">reporthook</span><span class="o">=</span><span class="n">reporthook</span><span class="p">):</span></div>
+                <span class="n">fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">six.moves.urllib.request</span> <span class="k">import</span> <span class="n">urlretrieve</span>
 
@@ -249,8 +249,8 @@
             <span class="n">urlretrieve</span><span class="p">(</span><span class="n">source_url</span><span class="p">,</span> <span class="n">temp_file_name</span><span class="p">,</span> <span class="n">dl_progress</span><span class="p">)</span>
             <span class="n">shutil</span><span class="o">.</span><span class="n">copy2</span><span class="p">(</span><span class="n">temp_file_name</span><span class="p">,</span> <span class="n">filepath</span><span class="p">)</span>
             <span class="n">size</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getsize</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Successfully downloaded&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="s1">&#39;bytes.&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">filepath</span></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Successfully downloaded&#39;</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="s1">&#39;bytes.&#39;</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">filepath</span>
 </pre></div>
 
           </div>
@@ -273,7 +273,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.
     </div>
   </body>
 </html>

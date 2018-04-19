@@ -77,8 +77,8 @@
 <span class="sd">    Save a Keras model definition to JSON with given path</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">model_json</span> <span class="o">=</span> <span class="n">keras_model</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
-        <span class="n">json_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">model_json</span><span class="p">)</span></div>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span></div>
+        <span class="n">json_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">model_json</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="dump_keras"><a class="viewcode-back" href="../../../../bigdl.examples.keras.html#bigdl.examples.keras.keras_utils.dump_keras">[docs]</a><span class="k">def</span> <span class="nf">dump_keras</span><span class="p">(</span><span class="n">keras_model</span><span class="p">,</span> <span class="n">json_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hdf5_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dump_weights</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -91,8 +91,8 @@
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;json path: &quot;</span> <span class="o">+</span> <span class="n">json_path</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">dump_weights</span><span class="p">:</span>
         <span class="n">keras_model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">hdf5_path</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hdf5 path: &quot;</span> <span class="o">+</span> <span class="n">hdf5_path</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">json_path</span><span class="p">,</span> <span class="n">hdf5_path</span></div>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hdf5 path: &quot;</span> <span class="o">+</span> <span class="n">hdf5_path</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">json_path</span><span class="p">,</span> <span class="n">hdf5_path</span>
 </pre></div>
 
           </div>
@@ -115,7 +115,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.
     </div>
   </body>
 </html>
