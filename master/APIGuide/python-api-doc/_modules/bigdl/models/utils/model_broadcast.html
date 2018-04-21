@@ -83,8 +83,8 @@
     <span class="n">result</span> <span class="o">=</span> <span class="n">_from_id</span><span class="p">(</span><span class="n">bid</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ModelBroadcast</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">_path</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="n">bigdl_type</span><span class="p">)</span>
 
-<div class="viewcode-block" id="broadcast_model"><a class="viewcode-back" href="../../../../bigdl.models.utils.html#bigdl.models.utils.model_broadcast.broadcast_model">[docs]</a><span class="k">def</span> <span class="nf">broadcast_model</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span></div>
-    <span class="k">return</span> <span class="n">ModelBroadcast</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">sc</span><span class="o">.</span><span class="n">_pickled_broadcast_vars</span><span class="p">)</span>
+<div class="viewcode-block" id="broadcast_model"><a class="viewcode-back" href="../../../../bigdl.models.utils.html#bigdl.models.utils.model_broadcast.broadcast_model">[docs]</a><span class="k">def</span> <span class="nf">broadcast_model</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">ModelBroadcast</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">sc</span><span class="o">.</span><span class="n">_pickled_broadcast_vars</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="ModelBroadcast"><a class="viewcode-back" href="../../../../bigdl.models.utils.html#bigdl.models.utils.model_broadcast.ModelBroadcast">[docs]</a><span class="k">class</span> <span class="nc">ModelBroadcast</span><span class="p">(</span><span class="n">Broadcast</span><span class="p">):</span>
 
@@ -106,8 +106,8 @@
             <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Could not serialize broadcast: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
             <span class="n">print_exec</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
-        <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span></div>
 
     <span class="k">def</span> <span class="nf">_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">Model</span><span class="o">.</span><span class="n">loadModel</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">)</span>
@@ -123,8 +123,8 @@
     <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jbroadcast</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Broadcast can only be serialized in driver&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_pickle_registry</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
-        <span class="k">return</span> <span class="n">_from_id_and_type</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_jbroadcast</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pickle_registry</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_from_id_and_type</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_jbroadcast</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">)</span></div>
 </pre></div>
 
           </div>
@@ -147,7 +147,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.2.
     </div>
   </body>
 </html>
