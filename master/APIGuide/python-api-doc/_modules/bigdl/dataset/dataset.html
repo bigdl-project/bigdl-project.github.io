@@ -90,15 +90,15 @@
 
 <div class="viewcode-block" id="DataSet.image_frame"><a class="viewcode-back" href="../../../bigdl.dataset.html#bigdl.dataset.dataset.DataSet.image_frame">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">image_frame</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">image_frame</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="n">jvalue</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;createDatasetFromImageFrame&quot;</span><span class="p">,</span> <span class="n">image_frame</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">DataSet</span><span class="p">(</span><span class="n">jvalue</span><span class="o">=</span><span class="n">jvalue</span><span class="p">,</span> <span class="n">image_frame</span> <span class="o">=</span> <span class="n">image_frame</span><span class="p">)</span></div>
+        <span class="n">jvalue</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;createDatasetFromImageFrame&quot;</span><span class="p">,</span> <span class="n">image_frame</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">DataSet</span><span class="p">(</span><span class="n">jvalue</span><span class="o">=</span><span class="n">jvalue</span><span class="p">,</span> <span class="n">image_frame</span> <span class="o">=</span> <span class="n">image_frame</span><span class="p">)</span>
 
 <div class="viewcode-block" id="DataSet.transform"><a class="viewcode-back" href="../../../bigdl.dataset.html#bigdl.dataset.dataset.DataSet.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transformer</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">transformer</span><span class="p">,</span> <span class="n">FeatureTransformer</span><span class="p">):</span>
-            <span class="n">jvalue</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;featureTransformDataset&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">transformer</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">DataSet</span><span class="p">(</span><span class="n">jvalue</span><span class="o">=</span><span class="n">jvalue</span><span class="p">)</span></div>
-<div class="viewcode-block" id="DataSet.get_image_frame"><a class="viewcode-back" href="../../../bigdl.dataset.html#bigdl.dataset.dataset.DataSet.get_image_frame">[docs]</a>    <span class="k">def</span> <span class="nf">get_image_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_frame</span></div></div>
+            <span class="n">jvalue</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;featureTransformDataset&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">transformer</span><span class="p">)</span></div>
+            <span class="k">return</span> <span class="n">DataSet</span><span class="p">(</span><span class="n">jvalue</span><span class="o">=</span><span class="n">jvalue</span><span class="p">)</span>
+<div class="viewcode-block" id="DataSet.get_image_frame"><a class="viewcode-back" href="../../../bigdl.dataset.html#bigdl.dataset.dataset.DataSet.get_image_frame">[docs]</a>    <span class="k">def</span> <span class="nf">get_image_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_frame</span>
 </pre></div>
 
           </div>
@@ -121,7 +121,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.
     </div>
   </body>
 </html>
