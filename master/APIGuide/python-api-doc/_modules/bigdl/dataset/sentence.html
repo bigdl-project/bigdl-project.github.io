@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>bigdl.dataset.sentence &#8212; BigDL  documentation</title>
     <link rel="stylesheet" href="../../../_static/sphinxdoc.css" type="text/css" />
@@ -80,21 +80,21 @@
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fileName</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
             <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">lines</span></div>
+    <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+    <span class="k">return</span> <span class="n">lines</span>
 
 <div class="viewcode-block" id="sentences_split"><a class="viewcode-back" href="../../../bigdl.dataset.html#bigdl.dataset.sentence.sentences_split">[docs]</a><span class="k">def</span> <span class="nf">sentences_split</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
     <span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;PWD&#39;</span><span class="p">))</span>
     <span class="n">sent_tokenizer</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">tokenize</span><span class="o">.</span><span class="n">PunktSentenceTokenizer</span><span class="p">()</span>
-    <span class="n">sentenized</span> <span class="o">=</span> <span class="n">sent_tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">sentenized</span></div>
+    <span class="n">sentenized</span> <span class="o">=</span> <span class="n">sent_tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">line</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">sentenized</span>
 
-<div class="viewcode-block" id="sentences_bipadding"><a class="viewcode-back" href="../../../bigdl.dataset.html#bigdl.dataset.sentence.sentences_bipadding">[docs]</a><span class="k">def</span> <span class="nf">sentences_bipadding</span><span class="p">(</span><span class="n">sent</span><span class="p">):</span>
-    <span class="k">return</span> <span class="s2">&quot;SENTENCESTART &quot;</span> <span class="o">+</span> <span class="n">sent</span> <span class="o">+</span> <span class="s2">&quot; SENTENCEEND&quot;</span></div>
+<div class="viewcode-block" id="sentences_bipadding"><a class="viewcode-back" href="../../../bigdl.dataset.html#bigdl.dataset.sentence.sentences_bipadding">[docs]</a><span class="k">def</span> <span class="nf">sentences_bipadding</span><span class="p">(</span><span class="n">sent</span><span class="p">):</span></div>
+    <span class="k">return</span> <span class="s2">&quot;SENTENCESTART &quot;</span> <span class="o">+</span> <span class="n">sent</span> <span class="o">+</span> <span class="s2">&quot; SENTENCEEND&quot;</span>
 
 <div class="viewcode-block" id="sentence_tokenizer"><a class="viewcode-back" href="../../../bigdl.dataset.html#bigdl.dataset.sentence.sentence_tokenizer">[docs]</a><span class="k">def</span> <span class="nf">sentence_tokenizer</span><span class="p">(</span><span class="n">sentences</span><span class="p">):</span>
-    <span class="n">tokenized_sents</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">tokenized_sents</span></div>
+    <span class="n">tokenized_sents</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">tokenized_sents</span>
 </pre></div>
 
           </div>
@@ -117,7 +117,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
     </div>
   </body>
 </html>

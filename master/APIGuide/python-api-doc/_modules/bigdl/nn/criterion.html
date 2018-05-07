@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>bigdl.nn.criterion &#8212; BigDL  documentation</title>
     <link rel="stylesheet" href="../../../_static/sphinxdoc.css" type="text/css" />
@@ -114,8 +114,8 @@
                                <span class="n">jinput</span><span class="p">,</span>
                                <span class="n">input_is_table</span><span class="p">,</span>
                                <span class="n">jtarget</span><span class="p">,</span>
-                               <span class="n">target_is_table</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">output</span></div>
+                               <span class="n">target_is_table</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">output</span>
 
 <div class="viewcode-block" id="Criterion.backward"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.Criterion.backward">[docs]</a>    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -134,8 +134,8 @@
                                <span class="n">jinput</span><span class="p">,</span>
                                <span class="n">input_is_table</span><span class="p">,</span>
                                <span class="n">jtarget</span><span class="p">,</span>
-                               <span class="n">target_is_table</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Layer</span><span class="o">.</span><span class="n">convert_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span></div>
+                               <span class="n">target_is_table</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">Layer</span><span class="o">.</span><span class="n">convert_output</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Criterion.of"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.Criterion.of">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">of</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">jcriterion</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
@@ -147,8 +147,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">criterion</span> <span class="o">=</span> <span class="n">Criterion</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">jcriterion</span><span class="p">)</span>
         <span class="n">criterion</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">jcriterion</span>
-        <span class="n">criterion</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
-        <span class="k">return</span> <span class="n">criterion</span></div></div>
+        <span class="n">criterion</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span></div></div>
+        <span class="k">return</span> <span class="n">criterion</span>
 
 
 <div class="viewcode-block" id="ClassNLLCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.ClassNLLCriterion">[docs]</a><span class="k">class</span> <span class="nc">ClassNLLCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -203,8 +203,8 @@
                  <span class="n">logProbAsInput</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ClassNLLCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                                <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">weights</span><span class="p">),</span>
-                                                <span class="n">size_average</span><span class="p">,</span> <span class="n">logProbAsInput</span><span class="p">)</span></div>
+                                                <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">weights</span><span class="p">),</span></div>
+                                                <span class="n">size_average</span><span class="p">,</span> <span class="n">logProbAsInput</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="MSECriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.MSECriterion">[docs]</a><span class="k">class</span> <span class="nc">MSECriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -229,8 +229,8 @@
 <span class="sd">    creating: createMSECriterion</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MSECriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MSECriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="AbsCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.AbsCriterion">[docs]</a><span class="k">class</span> <span class="nc">AbsCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -246,8 +246,8 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">AbsCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                           <span class="n">size_average</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">AbsCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span></div>
+                                           <span class="n">size_average</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="ClassSimplexCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.ClassSimplexCriterion">[docs]</a><span class="k">class</span> <span class="nc">ClassSimplexCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -267,8 +267,8 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">n_classes</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ClassSimplexCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                                    <span class="n">n_classes</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ClassSimplexCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span></div>
+                                                    <span class="n">n_classes</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="CosineDistanceCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.CosineDistanceCriterion">[docs]</a><span class="k">class</span> <span class="nc">CosineDistanceCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -288,8 +288,8 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">CosineDistanceCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                                      <span class="n">size_average</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CosineDistanceCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span></div>
+                                                      <span class="n">size_average</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="CosineEmbeddingCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.CosineEmbeddingCriterion">[docs]</a><span class="k">class</span> <span class="nc">CosineEmbeddingCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -315,8 +315,8 @@
                  <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CosineEmbeddingCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                                       <span class="n">margin</span><span class="p">,</span>
-                                                       <span class="n">size_average</span><span class="p">)</span></div>
+                                                       <span class="n">margin</span><span class="p">,</span></div>
+                                                       <span class="n">size_average</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="DistKLDivCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.DistKLDivCriterion">[docs]</a><span class="k">class</span> <span class="nc">DistKLDivCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -335,8 +335,8 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">DistKLDivCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                                 <span class="n">size_average</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DistKLDivCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span></div>
+                                                 <span class="n">size_average</span><span class="p">)</span>
 
 <div class="viewcode-block" id="CategoricalCrossEntropy"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.CategoricalCrossEntropy">[docs]</a><span class="k">class</span> <span class="nc">CategoricalCrossEntropy</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -345,8 +345,8 @@
 <span class="sd">    &gt;&gt;&gt; cce = CategoricalCrossEntropy()</span>
 <span class="sd">    creating: createCategoricalCrossEntropy</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">CategoricalCrossEntropy</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CategoricalCrossEntropy</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
 <div class="viewcode-block" id="HingeEmbeddingCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.HingeEmbeddingCriterion">[docs]</a><span class="k">class</span> <span class="nc">HingeEmbeddingCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
 
@@ -374,8 +374,8 @@
                  <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">HingeEmbeddingCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                                      <span class="n">margin</span><span class="p">,</span>
-                                                      <span class="n">size_average</span><span class="p">)</span></div>
+                                                      <span class="n">margin</span><span class="p">,</span></div>
+                                                      <span class="n">size_average</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="L1HingeEmbeddingCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.L1HingeEmbeddingCriterion">[docs]</a><span class="k">class</span> <span class="nc">L1HingeEmbeddingCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -404,8 +404,8 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">margin</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">L1HingeEmbeddingCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                                        <span class="n">margin</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">L1HingeEmbeddingCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span></div>
+                                                        <span class="n">margin</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="MarginCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.MarginCriterion">[docs]</a><span class="k">class</span> <span class="nc">MarginCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -433,8 +433,8 @@
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MarginCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                               <span class="n">margin</span><span class="p">,</span>
-                                              <span class="n">size_average</span><span class="p">,</span>
-                                              <span class="n">squared</span><span class="p">)</span></div>
+                                              <span class="n">size_average</span><span class="p">,</span></div>
+                                              <span class="n">squared</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="MarginRankingCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.MarginRankingCriterion">[docs]</a><span class="k">class</span> <span class="nc">MarginRankingCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -460,8 +460,8 @@
                  <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MarginRankingCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                                     <span class="n">margin</span><span class="p">,</span>
-                                                     <span class="n">size_average</span><span class="p">)</span></div>
+                                                     <span class="n">margin</span><span class="p">,</span></div>
+                                                     <span class="n">size_average</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="MultiCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.MultiCriterion">[docs]</a><span class="k">class</span> <span class="nc">MultiCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -483,8 +483,8 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">MultiCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
 <div class="viewcode-block" id="MultiCriterion.add"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.MultiCriterion.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">criterion</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">criterion</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span>
 
 
 <div class="viewcode-block" id="MultiLabelMarginCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.MultiLabelMarginCriterion">[docs]</a><span class="k">class</span> <span class="nc">MultiLabelMarginCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -504,8 +504,8 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MultiLabelMarginCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                                        <span class="n">size_average</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MultiLabelMarginCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span></div>
+                                                        <span class="n">size_average</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="ParallelCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.ParallelCriterion">[docs]</a><span class="k">class</span> <span class="nc">ParallelCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -536,8 +536,8 @@
                                                 <span class="n">repeat_target</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ParallelCriterion.add"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.ParallelCriterion.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">criterion</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span></div></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">criterion</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span>
 
 <div class="viewcode-block" id="KLDCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.KLDCriterion">[docs]</a><span class="k">class</span> <span class="nc">KLDCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
 
@@ -550,8 +550,8 @@
 <span class="sd">    creating: createKLDCriterion</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">KLDCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">size_average</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">KLDCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">size_average</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="GaussianCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.GaussianCriterion">[docs]</a><span class="k">class</span> <span class="nc">GaussianCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -562,8 +562,8 @@
 <span class="sd">    creating: createGaussianCriterion</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">GaussianCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GaussianCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
 <div class="viewcode-block" id="SmoothL1Criterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.SmoothL1Criterion">[docs]</a><span class="k">class</span> <span class="nc">SmoothL1Criterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
 
@@ -592,8 +592,8 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">SmoothL1Criterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                                <span class="n">size_average</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SmoothL1Criterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span></div>
+                                                <span class="n">size_average</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="SmoothL1CriterionWithWeights"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.SmoothL1CriterionWithWeights">[docs]</a><span class="k">class</span> <span class="nc">SmoothL1CriterionWithWeights</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -621,8 +621,8 @@
                  <span class="n">num</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SmoothL1CriterionWithWeights</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                                           <span class="n">sigma</span><span class="p">,</span>
-                                                           <span class="n">num</span><span class="p">)</span></div>
+                                                           <span class="n">sigma</span><span class="p">,</span></div>
+                                                           <span class="n">num</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="SoftmaxWithCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.SoftmaxWithCriterion">[docs]</a><span class="k">class</span> <span class="nc">SoftmaxWithCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -648,8 +648,8 @@
                  <span class="n">normalize_mode</span><span class="o">=</span><span class="s2">&quot;VALID&quot;</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SoftmaxWithCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                                   <span class="n">ignore_label</span><span class="p">,</span>
-                                                   <span class="n">normalize_mode</span><span class="p">)</span></div>
+                                                   <span class="n">ignore_label</span><span class="p">,</span></div>
+                                                   <span class="n">normalize_mode</span><span class="p">)</span>
 
 <div class="viewcode-block" id="TimeDistributedMaskCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.TimeDistributedMaskCriterion">[docs]</a><span class="k">class</span> <span class="nc">TimeDistributedMaskCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -672,8 +672,8 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">padding_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">TimeDistributedMaskCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">padding_value</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TimeDistributedMaskCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span></div>
+            <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">padding_value</span><span class="p">)</span>
 
 <div class="viewcode-block" id="TimeDistributedCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.TimeDistributedCriterion">[docs]</a><span class="k">class</span> <span class="nc">TimeDistributedCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -691,8 +691,8 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">size_average</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">TimeDistributedCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">size_average</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TimeDistributedCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span></div>
+            <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">size_average</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="CrossEntropyCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.CrossEntropyCriterion">[docs]</a><span class="k">class</span> <span class="nc">CrossEntropyCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -717,8 +717,8 @@
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CrossEntropyCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                                     <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span>
-                                                        <span class="n">weights</span><span class="p">),</span>
-                                                    <span class="n">size_average</span><span class="p">)</span></div>
+                                                        <span class="n">weights</span><span class="p">),</span></div>
+                                                    <span class="n">size_average</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="BCECriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.BCECriterion">[docs]</a><span class="k">class</span> <span class="nc">BCECriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -744,8 +744,8 @@
                  <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">BCECriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                           <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">weights</span><span class="p">),</span>
-                                           <span class="n">size_average</span><span class="p">)</span></div>
+                                           <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">weights</span><span class="p">),</span></div>
+                                           <span class="n">size_average</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="MultiLabelSoftMarginCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.MultiLabelSoftMarginCriterion">[docs]</a><span class="k">class</span> <span class="nc">MultiLabelSoftMarginCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -774,8 +774,8 @@
                  <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MultiLabelSoftMarginCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                                            <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">weights</span><span class="p">),</span>
-                                                            <span class="n">size_average</span><span class="p">)</span></div>
+                                                            <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">weights</span><span class="p">),</span></div>
+                                                            <span class="n">size_average</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="MultiMarginCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.MultiMarginCriterion">[docs]</a><span class="k">class</span> <span class="nc">MultiMarginCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -807,8 +807,8 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">MultiMarginCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                                    <span class="n">p</span><span class="p">,</span>
                                                    <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">weights</span><span class="p">),</span>
-                                                   <span class="n">margin</span><span class="p">,</span>
-                                                   <span class="n">size_average</span><span class="p">)</span></div>
+                                                   <span class="n">margin</span><span class="p">,</span></div>
+                                                   <span class="n">size_average</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="SoftMarginCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.SoftMarginCriterion">[docs]</a><span class="k">class</span> <span class="nc">SoftMarginCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -832,8 +832,8 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
                  <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">SoftMarginCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">size_average</span><span class="p">)</span></div>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SoftMarginCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">size_average</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="DiceCoefficientCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.DiceCoefficientCriterion">[docs]</a><span class="k">class</span> <span class="nc">DiceCoefficientCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
@@ -859,8 +859,8 @@
                  <span class="n">epsilon</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">DiceCoefficientCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
-                                                       <span class="n">size_average</span><span class="p">,</span>
-                                                       <span class="n">epsilon</span><span class="p">)</span></div>
+                                                       <span class="n">size_average</span><span class="p">,</span></div>
+                                                       <span class="n">epsilon</span><span class="p">)</span>
 
 <div class="viewcode-block" id="L1Cost"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.L1Cost">[docs]</a><span class="k">class</span> <span class="nc">L1Cost</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
 
@@ -872,8 +872,8 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">L1Cost</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">L1Cost</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
 <div class="viewcode-block" id="CosineProximityCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.CosineProximityCriterion">[docs]</a><span class="k">class</span> <span class="nc">CosineProximityCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
 
@@ -890,8 +890,8 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">CosineProximityCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CosineProximityCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
 <div class="viewcode-block" id="MeanAbsolutePercentageCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.MeanAbsolutePercentageCriterion">[docs]</a><span class="k">class</span> <span class="nc">MeanAbsolutePercentageCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
 
@@ -904,8 +904,8 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MeanAbsolutePercentageCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MeanAbsolutePercentageCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
 <div class="viewcode-block" id="MeanSquaredLogarithmicCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.MeanSquaredLogarithmicCriterion">[docs]</a><span class="k">class</span> <span class="nc">MeanSquaredLogarithmicCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
 
@@ -919,8 +919,8 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">MeanSquaredLogarithmicCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MeanSquaredLogarithmicCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
 <div class="viewcode-block" id="KullbackLeiblerDivergenceCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.KullbackLeiblerDivergenceCriterion">[docs]</a><span class="k">class</span> <span class="nc">KullbackLeiblerDivergenceCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
 
@@ -936,8 +936,8 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">KullbackLeiblerDivergenceCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">KullbackLeiblerDivergenceCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
 <div class="viewcode-block" id="PoissonCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.PoissonCriterion">[docs]</a><span class="k">class</span> <span class="nc">PoissonCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
 
@@ -949,8 +949,8 @@
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">PoissonCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PoissonCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
 <div class="viewcode-block" id="TransformerCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.TransformerCriterion">[docs]</a><span class="k">class</span> <span class="nc">TransformerCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -977,8 +977,8 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">TransformerCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
                                                    <span class="n">bigdl_type</span><span class="p">,</span>
                                                    <span class="n">criterion</span><span class="p">,</span>
-                                                   <span class="n">input_transformer</span><span class="p">,</span>
-                                                   <span class="n">target_transformer</span><span class="p">)</span></div>
+                                                   <span class="n">input_transformer</span><span class="p">,</span></div>
+                                                   <span class="n">target_transformer</span><span class="p">)</span>
 
 <div class="viewcode-block" id="DotProductCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.DotProductCriterion">[docs]</a><span class="k">class</span> <span class="nc">DotProductCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -994,8 +994,8 @@
                  <span class="n">size_average</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">DotProductCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
-                                                  <span class="n">bigdl_type</span><span class="p">,</span>
-                                                  <span class="n">size_average</span><span class="p">)</span></div>
+                                                  <span class="n">bigdl_type</span><span class="p">,</span></div>
+                                                  <span class="n">size_average</span><span class="p">)</span>
 
 <div class="viewcode-block" id="PGCriterion"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.criterion.PGCriterion">[docs]</a><span class="k">class</span> <span class="nc">PGCriterion</span><span class="p">(</span><span class="n">Criterion</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -1026,8 +1026,8 @@
                  <span class="n">sizeAverage</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">PGCriterion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
-                                          <span class="n">bigdl_type</span><span class="p">,</span>
-                                          <span class="n">sizeAverage</span><span class="p">)</span></div>
+                                          <span class="n">bigdl_type</span><span class="p">,</span></div>
+                                          <span class="n">sizeAverage</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
@@ -1072,7 +1072,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
     </div>
   </body>
 </html>

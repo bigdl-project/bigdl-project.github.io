@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>bigdl.nn.initialization_method &#8212; BigDL  documentation</title>
     <link rel="stylesheet" href="../../../_static/sphinxdoc.css" type="text/css" />
@@ -80,22 +80,22 @@
 <div class="viewcode-block" id="InitializationMethod"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.initialization_method.InitializationMethod">[docs]</a><span class="k">class</span> <span class="nc">InitializationMethod</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialization method to initialize bias and weight.</span>
-<span class="sd">    The init method will be called in Module.reset()</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
+<span class="sd">    The init method will be called in Module.reset()</span></div>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="Zeros"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.initialization_method.Zeros">[docs]</a><span class="k">class</span> <span class="nc">Zeros</span><span class="p">(</span><span class="n">InitializationMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initializer that generates tensors with zeros.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Ones"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.initialization_method.Ones">[docs]</a><span class="k">class</span> <span class="nc">Ones</span><span class="p">(</span><span class="n">InitializationMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initializer that generates tensors with ones.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
 <div class="viewcode-block" id="RandomUniform"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.initialization_method.RandomUniform">[docs]</a><span class="k">class</span> <span class="nc">RandomUniform</span><span class="p">(</span><span class="n">InitializationMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -109,8 +109,8 @@
             <span class="n">upper</span> <span class="o">=</span> <span class="n">upper</span> <span class="o">+</span> <span class="mf">0.0</span>
             <span class="n">lower</span> <span class="o">=</span> <span class="n">lower</span> <span class="o">+</span> <span class="mf">0.0</span>
             <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">lower</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+        <span class="k">else</span><span class="p">:</span></div>
+            <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
 <div class="viewcode-block" id="RandomNormal"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.initialization_method.RandomNormal">[docs]</a><span class="k">class</span> <span class="nc">RandomNormal</span><span class="p">(</span><span class="n">InitializationMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -118,31 +118,31 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">stdv</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="n">mean</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">+</span> <span class="mf">0.0</span>
-        <span class="n">stdv</span> <span class="o">=</span> <span class="n">stdv</span> <span class="o">+</span> <span class="mf">0.0</span>
-        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">stdv</span><span class="p">)</span></div>
+        <span class="n">stdv</span> <span class="o">=</span> <span class="n">stdv</span> <span class="o">+</span> <span class="mf">0.0</span></div>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">stdv</span><span class="p">)</span>
 
 <div class="viewcode-block" id="ConstInitMethod"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.initialization_method.ConstInitMethod">[docs]</a><span class="k">class</span> <span class="nc">ConstInitMethod</span><span class="p">(</span><span class="n">InitializationMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initializer that generates tensors with certain constant double.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="mf">0.0</span>
-        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span></div>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span> <span class="o">+</span> <span class="mf">0.0</span></div>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Xavier"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.initialization_method.Xavier">[docs]</a><span class="k">class</span> <span class="nc">Xavier</span><span class="p">(</span><span class="n">InitializationMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Xavier Initializer. See http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 
 <div class="viewcode-block" id="MsraFiller"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.initialization_method.MsraFiller">[docs]</a><span class="k">class</span> <span class="nc">MsraFiller</span><span class="p">(</span><span class="n">InitializationMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    MsraFiller Initializer.</span>
 <span class="sd">    See https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/He_Delving_Deep_into_ICCV_2015_paper.pdf</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">varianceNormAverage</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">varianceNormAverage</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">varianceNormAverage</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">varianceNormAverage</span><span class="p">)</span>
 
 <div class="viewcode-block" id="BilinearFiller"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.initialization_method.BilinearFiller">[docs]</a><span class="k">class</span> <span class="nc">BilinearFiller</span><span class="p">(</span><span class="n">InitializationMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -152,8 +152,8 @@
 <span class="sd">    The variable tensor passed in the init function should have 5 dimensions</span>
 <span class="sd">    of format [nGroup, nInput, nOutput, kH, kW], and kH should be equal to kW</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
-        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span></div>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
 </pre></div>
 
           </div>
@@ -176,7 +176,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
     </div>
   </body>
 </html>

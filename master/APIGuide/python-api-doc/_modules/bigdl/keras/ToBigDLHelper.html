@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>bigdl.keras.ToBigDLHelper &#8212; BigDL  documentation</title>
     <link rel="stylesheet" href="../../../_static/sphinxdoc.css" type="text/css" />
@@ -80,8 +80,8 @@
         <span class="k">return</span> <span class="s2">&quot;NHWC&quot;</span>
     <span class="k">elif</span> <span class="n">order</span> <span class="o">==</span> <span class="s2">&quot;th&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;NCHW&quot;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unsupported dim_ordering: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">order</span><span class="p">)</span></div>
+    <span class="k">else</span><span class="p">:</span></div>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unsupported dim_ordering: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">order</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="to_bigdl_3d_ordering"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.ToBigDLHelper.to_bigdl_3d_ordering">[docs]</a><span class="k">def</span> <span class="nf">to_bigdl_3d_ordering</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
@@ -89,8 +89,8 @@
         <span class="k">return</span> <span class="s2">&quot;channel_last&quot;</span>
     <span class="k">elif</span> <span class="n">order</span> <span class="o">==</span> <span class="s2">&quot;th&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;channel_first&quot;</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unsupported dim_ordering: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">order</span><span class="p">)</span></div>
+    <span class="k">else</span><span class="p">:</span></div>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unsupported dim_ordering: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">order</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="to_bigdl_3d_padding"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.ToBigDLHelper.to_bigdl_3d_padding">[docs]</a><span class="k">def</span> <span class="nf">to_bigdl_3d_padding</span><span class="p">(</span><span class="n">border_mode</span><span class="p">):</span>
@@ -98,8 +98,8 @@
         <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
     <span class="k">elif</span> <span class="n">border_mode</span> <span class="o">==</span> <span class="s2">&quot;same&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unsupported border mode: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">border_mode</span><span class="p">)</span></div>
+    <span class="k">else</span><span class="p">:</span></div>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unsupported border mode: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">border_mode</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">__calculate_2d_same_padding</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">kx</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dilation_x</span><span class="p">):</span>
@@ -122,8 +122,8 @@
             <span class="k">return</span> <span class="n">pad_h</span><span class="p">,</span> <span class="n">pad_w</span>
     <span class="k">elif</span> <span class="n">border_mode</span> <span class="o">==</span> <span class="s2">&quot;valid&quot;</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unsupported border mode: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">border_mode</span><span class="p">)</span></div>
+    <span class="k">else</span><span class="p">:</span></div>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unsupported border mode: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">border_mode</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="to_bigdl_init"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.ToBigDLHelper.to_bigdl_init">[docs]</a><span class="k">def</span> <span class="nf">to_bigdl_init</span><span class="p">(</span><span class="n">kinit_method</span><span class="p">):</span>  <span class="c1"># kinit_method is a string</span>
@@ -139,15 +139,15 @@
     <span class="k">elif</span> <span class="n">kinit_method</span> <span class="o">==</span> <span class="s2">&quot;normal&quot;</span><span class="p">:</span>
         <span class="n">init</span> <span class="o">=</span> <span class="n">BInit</span><span class="o">.</span><span class="n">RandomNormal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">stdv</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unsupported init type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">kinit_method</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">init</span></div>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unsupported init type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">kinit_method</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">init</span>
 
 
 <div class="viewcode-block" id="to_bigdl_reg"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.ToBigDLHelper.to_bigdl_reg">[docs]</a><span class="k">def</span> <span class="nf">to_bigdl_reg</span><span class="p">(</span><span class="n">reg</span><span class="p">):</span>  <span class="c1"># reg is a dict</span>
     <span class="k">if</span> <span class="n">reg</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">BRegularizer</span><span class="p">(</span><span class="n">reg</span><span class="p">[</span><span class="s1">&#39;l1&#39;</span><span class="p">],</span> <span class="n">reg</span><span class="p">[</span><span class="s1">&#39;l2&#39;</span><span class="p">])</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">None</span></div>
+    <span class="k">else</span><span class="p">:</span></div>
+        <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
 
           </div>
@@ -170,7 +170,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
     </div>
   </body>
 </html>
