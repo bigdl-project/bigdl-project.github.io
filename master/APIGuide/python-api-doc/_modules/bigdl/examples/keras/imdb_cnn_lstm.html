@@ -88,8 +88,8 @@
     <span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="k">import</span> <span class="n">imdb</span>
     <span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">imdb</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">nb_words</span><span class="o">=</span><span class="mi">20000</span><span class="p">)</span>
     <span class="n">X_train</span> <span class="o">=</span> <span class="n">sequence</span><span class="o">.</span><span class="n">pad_sequences</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">maxlen</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-    <span class="n">X_test</span> <span class="o">=</span> <span class="n">sequence</span><span class="o">.</span><span class="n">pad_sequences</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">maxlen</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span></div>
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">sequence</span><span class="o">.</span><span class="n">pad_sequences</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">maxlen</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span>
 
 
 <div class="viewcode-block" id="build_keras_model"><a class="viewcode-back" href="../../../../bigdl.examples.keras.html#bigdl.examples.keras.imdb_cnn_lstm.build_keras_model">[docs]</a><span class="k">def</span> <span class="nf">build_keras_model</span><span class="p">():</span>
@@ -112,8 +112,8 @@
     <span class="n">keras_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling1D</span><span class="p">(</span><span class="n">pool_length</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
     <span class="n">keras_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">70</span><span class="p">))</span>
     <span class="n">keras_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">keras_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">keras_model</span></div>
+    <span class="n">keras_model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span></div>
+    <span class="k">return</span> <span class="n">keras_model</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
@@ -179,7 +179,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.
     </div>
   </body>
 </html>
