@@ -167,6 +167,9 @@ val model = Module.loadTF(modelPath, inputs, outputs, ByteOrder.LITTLE_ENDIAN)
 
 // For tensorflow graph with Variables
 val model = Module.loadTF(modelPath, inputs, outputs, ByteOrder.LITTLE_ENDIAN, Some(binPath))
+
+// For tensorflow model inference only
+val model = Module.loadTF(modelPath, inputs, outputs, ByteOrder.LITTLE_ENDIAN, generateBackward=false)
 </code></pre>
 
 <p><strong>Python example</strong></p>
@@ -179,6 +182,9 @@ model = Model.load_tensorflow(model_def, inputs, outputs, byte_order = &quot;lit
 
 # For tensorflow graph with Variables
 model = Model.load_tensorflow(model_def, inputs, outputs, byte_order = &quot;little_endian&quot;, bigdl_type=&quot;float&quot;, bin_file=model_variable)
+
+# For tensorflow model inference only
+model = Model.load_tensorflow(model_def, inputs, outputs, byte_order = &quot;little_endian&quot;, generated_backward=False, bigdl_type=&quot;float&quot;)
 </code></pre>
 
 <h3 id="load-keras-model">Load Keras model</h3>

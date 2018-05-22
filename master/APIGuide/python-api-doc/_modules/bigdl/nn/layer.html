@@ -885,7 +885,7 @@
 
 <div class="viewcode-block" id="Model.load_tensorflow"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.load_tensorflow">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">load_tensorflow</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">byte_order</span> <span class="o">=</span> <span class="s2">&quot;little_endian&quot;</span><span class="p">,</span>
-                        <span class="n">bin_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+                        <span class="n">bin_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">generated_backward</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span> <span class="o">=</span> <span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Load a pre-trained Tensorflow model.</span>
 <span class="sd">        :param path: The path containing the pre-trained model.</span>
@@ -893,9 +893,11 @@
 <span class="sd">        :param outputs: The output node of this graph</span>
 <span class="sd">        :param byte_order: byte_order of the file, `little_endian` or `big_endian`</span>
 <span class="sd">        :param bin_file: the optional bin file produced by bigdl dump_model util function to store the weights</span>
+<span class="sd">        :param generated_backward: if generate backward graph</span>
 <span class="sd">        :return: A pre-trained model.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;loadTF&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">byte_order</span><span class="p">,</span> <span class="n">bin_file</span><span class="p">)</span>
+        <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;loadTF&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span>
+                               <span class="n">byte_order</span><span class="p">,</span> <span class="n">bin_file</span><span class="p">,</span> <span class="n">generated_backward</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Model</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.train"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.train">[docs]</a>    <span class="nd">@staticmethod</span>
