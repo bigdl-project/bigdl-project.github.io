@@ -424,17 +424,19 @@
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Not supported type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 
 
-<div class="viewcode-block" id="Layer.predict_local"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict_local">[docs]</a>    <span class="k">def</span> <span class="nf">predict_local</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<div class="viewcode-block" id="Layer.predict_local"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict_local">[docs]</a>    <span class="k">def</span> <span class="nf">predict_local</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :param X: X can be a ndarray or list of ndarray if the model has multiple inputs.</span>
 <span class="sd">                  The first dimension of X should be batch.</span>
+<span class="sd">        :param batch_size: total batch size of prediction.</span>
 <span class="sd">        :return: a ndarray as the prediction result.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">jresults</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span>
                              <span class="s2">&quot;predictLocal&quot;</span><span class="p">,</span>
                                <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
-                               <span class="bp">self</span><span class="o">.</span><span class="n">_to_jtensors</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+                               <span class="bp">self</span><span class="o">.</span><span class="n">_to_jtensors</span><span class="p">(</span><span class="n">X</span><span class="p">),</span>
+                               <span class="n">batch_size</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">j</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">jresults</span><span class="p">])</span></div>
 
@@ -451,17 +453,18 @@
                                <span class="bp">self</span><span class="o">.</span><span class="n">_to_jtensors</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">result</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Layer.predict"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<div class="viewcode-block" id="Layer.predict"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Model inference base on the given data.</span>
 <span class="sd">        :param features: it can be a ndarray or list of ndarray for locally inference</span>
 <span class="sd">                         or RDD[Sample] for running in distributed fashion</span>
+<span class="sd">        :param batch_size: total batch size of prediction.</span>
 <span class="sd">        :return: ndarray or RDD[Sample] depend on the the type of features.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">RDD</span><span class="p">):</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_distributed</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_distributed</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_local</span><span class="p">(</span><span class="n">features</span><span class="p">)</span></div>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_local</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Layer.predict_class"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict_class">[docs]</a>    <span class="k">def</span> <span class="nf">predict_class</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -475,17 +478,18 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_class_local</span><span class="p">(</span><span class="n">features</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Layer.predict_distributed"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict_distributed">[docs]</a>    <span class="k">def</span> <span class="nf">predict_distributed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">):</span>
+<div class="viewcode-block" id="Layer.predict_distributed"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict_distributed">[docs]</a>    <span class="k">def</span> <span class="nf">predict_distributed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">,</span> <span class="n">batch_size</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Model inference base on the given data.</span>
 <span class="sd">        You need to invoke collect() to trigger those action \</span>
 <span class="sd">        as the returning result is an RDD.</span>
 
 <span class="sd">        :param data_rdd: the data to be predict.</span>
+<span class="sd">        :param batch_size: total batch size of prediction.</span>
 <span class="sd">        :return: An RDD represent the predict result.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span>
-                               <span class="s2">&quot;modelPredictRDD&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">)</span>
+                               <span class="s2">&quot;modelPredictRDD&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">data</span><span class="p">:</span> <span class="n">data</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">())</span></div>
 
 <div class="viewcode-block" id="Layer.predict_class_distributed"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Layer.predict_class_distributed">[docs]</a>    <span class="k">def</span> <span class="nf">predict_class_distributed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_rdd</span><span class="p">):</span>

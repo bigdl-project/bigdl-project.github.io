@@ -2498,10 +2498,11 @@ to be freezed
 
 <dl class="method">
 <dt id="bigdl.nn.layer.Layer.predict">
-<code class="descname">predict</code><span class="sig-paren">(</span><em>features</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.predict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict</code><span class="sig-paren">(</span><em>features</em>, <em>batch_size=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Model inference base on the given data.
 :param features: it can be a ndarray or list of ndarray for locally inference
 or RDD[Sample] for running in distributed fashion
+:param batch_size: total batch size of prediction.
 :return: ndarray or RDD[Sample] depend on the the type of features.</p>
 </dd></dl>
 
@@ -2547,16 +2548,21 @@ or RDD[Sample] for running in distributed fashion
 
 <dl class="method">
 <dt id="bigdl.nn.layer.Layer.predict_distributed">
-<code class="descname">predict_distributed</code><span class="sig-paren">(</span><em>data_rdd</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.predict_distributed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.predict_distributed" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict_distributed</code><span class="sig-paren">(</span><em>data_rdd</em>, <em>batch_size=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.predict_distributed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.predict_distributed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Model inference base on the given data.
 You need to invoke collect() to trigger those action         as the returning result is an RDD.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data_rdd</strong> – the data to be predict.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_rdd</strong> – the data to be predict.</li>
+<li><strong>batch_size</strong> – total batch size of prediction.</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An RDD represent the predict result.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An RDD represent the predict result.</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -2576,7 +2582,7 @@ output_layer will be used as predicted output
 
 <dl class="method">
 <dt id="bigdl.nn.layer.Layer.predict_local">
-<code class="descname">predict_local</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.predict_local"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.predict_local" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict_local</code><span class="sig-paren">(</span><em>X</em>, <em>batch_size=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Layer.predict_local"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Layer.predict_local" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2586,6 +2592,7 @@ output_layer will be used as predicted output
 </tbody>
 </table>
 <p>The first dimension of X should be batch.
+:param batch_size: total batch size of prediction.
 :return: a ndarray as the prediction result.</p>
 </dd></dl>
 
