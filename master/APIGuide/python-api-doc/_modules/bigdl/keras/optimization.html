@@ -90,8 +90,8 @@
                 <span class="n">bmetrics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">boptimizer</span><span class="o">.</span><span class="n">Top1Accuracy</span><span class="p">())</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">unsupport_exp</span><span class="p">(</span><span class="n">metric</span><span class="p">)</span>
-        <span class="c1"># TODO: add more metrics</span>
-        <span class="k">return</span> <span class="n">bmetrics</span></div>
+        <span class="c1"># TODO: add more metrics</span></div>
+        <span class="k">return</span> <span class="n">bmetrics</span>
 
 <div class="viewcode-block" id="OptimConverter.to_bigdl_criterion"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.optimization.OptimConverter.to_bigdl_criterion">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">to_bigdl_criterion</span><span class="p">(</span><span class="n">kloss</span><span class="p">):</span>
@@ -125,8 +125,8 @@
             <span class="k">return</span> <span class="n">bcriterion</span><span class="o">.</span><span class="n">PoissonCriterion</span><span class="p">()</span>
         <span class="k">elif</span> <span class="n">kloss</span> <span class="o">==</span> <span class="s2">&quot;cosine_proximity&quot;</span> <span class="ow">or</span> <span class="n">kloss</span> <span class="o">==</span> <span class="s2">&quot;cosine&quot;</span> <span class="ow">or</span> <span class="n">kloss</span> <span class="o">==</span> <span class="n">cosine_proximity</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">bcriterion</span><span class="o">.</span><span class="n">CosineProximityCriterion</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Not supported loss: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">kloss</span><span class="p">)</span></div>
+        <span class="k">else</span><span class="p">:</span></div>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Not supported loss: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">kloss</span><span class="p">)</span>
 
 <div class="viewcode-block" id="OptimConverter.to_bigdl_optim_method"><a class="viewcode-back" href="../../../bigdl.keras.html#bigdl.keras.optimization.OptimConverter.to_bigdl_optim_method">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">to_bigdl_optim_method</span><span class="p">(</span><span class="n">koptim_method</span><span class="p">):</span>
@@ -169,8 +169,8 @@
                                      <span class="n">beta1</span><span class="o">=</span><span class="n">beta1</span><span class="p">,</span>
                                      <span class="n">beta2</span><span class="o">=</span><span class="n">beta2</span><span class="p">,</span>
                                      <span class="n">epsilon</span><span class="o">=</span><span class="n">koptim_method</span><span class="o">.</span><span class="n">epsilon</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">unsupport_exp</span><span class="p">(</span><span class="n">koptim_method</span><span class="p">)</span></div></div>
+        <span class="k">else</span><span class="p">:</span></div></div>
+            <span class="n">unsupport_exp</span><span class="p">(</span><span class="n">koptim_method</span><span class="p">)</span>
 </pre></div>
 
           </div>
@@ -193,7 +193,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.1.
     </div>
   </body>
 </html>
