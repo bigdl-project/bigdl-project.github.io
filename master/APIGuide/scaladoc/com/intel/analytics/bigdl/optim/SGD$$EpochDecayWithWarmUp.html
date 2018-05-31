@@ -2,17 +2,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>ResNetDataSet - bigdl 0.6.0-SNAPSHOT API - com.intel.analytics.bigdl.models.resnet.ResNetDataSet</title>
-          <meta name="description" content="ResNetDataSet - bigdl 0.6.0 - SNAPSHOT API - com.intel.analytics.bigdl.models.resnet.ResNetDataSet" />
-          <meta name="keywords" content="ResNetDataSet bigdl 0.6.0 SNAPSHOT API com.intel.analytics.bigdl.models.resnet.ResNetDataSet" />
+          <title>EpochDecayWithWarmUp - bigdl 0.6.0-SNAPSHOT API - com.intel.analytics.bigdl.optim.SGD.EpochDecayWithWarmUp</title>
+          <meta name="description" content="EpochDecayWithWarmUp - bigdl 0.6.0 - SNAPSHOT API - com.intel.analytics.bigdl.optim.SGD.EpochDecayWithWarmUp" />
+          <meta name="keywords" content="EpochDecayWithWarmUp bigdl 0.6.0 SNAPSHOT API com.intel.analytics.bigdl.optim.SGD.EpochDecayWithWarmUp" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
-      <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
       <script type="text/javascript">
          if(top === self) {
-            var url = '../../../../../../index.html';
-            var hash = 'com.intel.analytics.bigdl.models.resnet.ResNetDataSet';
+            var url = '../../../../../index.html';
+            var hash = 'com.intel.analytics.bigdl.optim.SGD$$EpochDecayWithWarmUp';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -24,28 +24,25 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../../../../lib/trait_big.png" />
-        <p id="owner"><a href="../../../../../package.html" class="extype" name="com">com</a>.<a href="../../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl.models">models</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.models.resnet">resnet</a></p>
-        <h1>ResNetDataSet</h1>
+        <img src="../../../../../lib/class_big.png" />
+        <p id="owner"><a href="../../../../package.html" class="extype" name="com">com</a>.<a href="../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.optim">optim</a>.<a href="SGD$.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a></p>
+        <h1>EpochDecayWithWarmUp</h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">trait</span>
+        <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">ResNetDataSet</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">EpochDecayWithWarmUp</span><span class="params">(<span name="warmUpIteration">warmUpIteration: <span class="extype" name="scala.Int">Int</span></span>, <span name="warmUpDelta">warmUpDelta: <span class="extype" name="scala.Double">Double</span></span>, <span name="decayType">decayType: (<span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result"> extends <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>define some resnet datasets: trainDataSet and valDataSet.
-</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Learning rate schedule based on warm up Iterations</p></div><dl class="paramcmts block"><dt class="param">warmUpIteration</dt><dd class="cmt"><p>Warm up iteration number</p></dd><dt class="param">warmUpDelta</dt><dd class="cmt"><p>Warm up dealta value applied to warm up iteration</p></dd><dt class="param">decayType</dt><dd class="cmt"><p>A function to calculate decay on epochs
+</p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="Cifar10DataSet$.html" class="extype" name="com.intel.analytics.bigdl.models.resnet.Cifar10DataSet">Cifar10DataSet</a>, <a href="ImageNetDataSet$.html" class="extype" name="com.intel.analytics.bigdl.models.resnet.ImageNetDataSet">ImageNetDataSet</a></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -63,7 +60,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.intel.analytics.bigdl.models.resnet.ResNetDataSet"><span>ResNetDataSet</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.intel.analytics.bigdl.optim.SGD.EpochDecayWithWarmUp"><span>EpochDecayWithWarmUp</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule"><span>LearningRateSchedule</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -81,69 +78,31 @@
 
       <div id="template">
         <div id="allMembers">
-        
-
-        
-
-        <div id="values" class="values members">
-              <h3>Abstract Value Members</h3>
-              <ol><li name="com.intel.analytics.bigdl.models.resnet.ResNetDataSet#trainDataSet" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="trainDataSet(path:String,sc:org.apache.spark.SparkContext,imageSize:Int,batchSize:Int):com.intel.analytics.bigdl.DataSet[com.intel.analytics.bigdl.dataset.MiniBatch[Float]]"></a>
-      <a id="trainDataSet(String,SparkContext,Int,Int):DataSet[MiniBatch[Float]]"></a>
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="com.intel.analytics.bigdl.optim.SGD.EpochDecayWithWarmUp#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(warmUpIteration:Int,warmUpDelta:Double,decayType:Int=&gt;Double):com.intel.analytics.bigdl.optim.SGD.EpochDecayWithWarmUp"></a>
+      <a id="&lt;init&gt;:EpochDecayWithWarmUp"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
+        <span class="modifier"></span>
+        <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">trainDataSet</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="sc">sc: <span class="extype" name="org.apache.spark.SparkContext">SparkContext</span></span>, <span name="imageSize">imageSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../package.html#DataSet[D]=com.intel.analytics.bigdl.dataset.AbstractDataSet[D,_]" class="extmbr" name="com.intel.analytics.bigdl.DataSet">DataSet</a>[<a href="../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="scala.Float">Float</span>]]</span>
+        <span class="name">EpochDecayWithWarmUp</span><span class="params">(<span name="warmUpIteration">warmUpIteration: <span class="extype" name="scala.Int">Int</span></span>, <span name="warmUpDelta">warmUpDelta: <span class="extype" name="scala.Double">Double</span></span>, <span name="decayType">decayType: (<span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="scala.Double">Double</span></span>)</span>
       </span>
       </h4>
-      
-    </li><li name="com.intel.analytics.bigdl.models.resnet.ResNetDataSet#trainDataSet" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="trainDataSet(path:String,batchSize:Int,size:Int):com.intel.analytics.bigdl.DataSet[com.intel.analytics.bigdl.dataset.MiniBatch[Float]]"></a>
-      <a id="trainDataSet(String,Int,Int):DataSet[MiniBatch[Float]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">trainDataSet</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="size">size: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../package.html#DataSet[D]=com.intel.analytics.bigdl.dataset.AbstractDataSet[D,_]" class="extmbr" name="com.intel.analytics.bigdl.DataSet">DataSet</a>[<a href="../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="scala.Float">Float</span>]]</span>
-      </span>
-      </h4>
-      
-    </li><li name="com.intel.analytics.bigdl.models.resnet.ResNetDataSet#valDataSet" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="valDataSet(path:String,sc:org.apache.spark.SparkContext,imageSize:Int,batchSize:Int):com.intel.analytics.bigdl.DataSet[com.intel.analytics.bigdl.dataset.MiniBatch[Float]]"></a>
-      <a id="valDataSet(String,SparkContext,Int,Int):DataSet[MiniBatch[Float]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">valDataSet</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="sc">sc: <span class="extype" name="org.apache.spark.SparkContext">SparkContext</span></span>, <span name="imageSize">imageSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../package.html#DataSet[D]=com.intel.analytics.bigdl.dataset.AbstractDataSet[D,_]" class="extmbr" name="com.intel.analytics.bigdl.DataSet">DataSet</a>[<a href="../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="scala.Float">Float</span>]]</span>
-      </span>
-      </h4>
-      
-    </li><li name="com.intel.analytics.bigdl.models.resnet.ResNetDataSet#valDataSet" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="valDataSet(path:String,batchSize:Int,size:Int):com.intel.analytics.bigdl.DataSet[com.intel.analytics.bigdl.dataset.MiniBatch[Float]]"></a>
-      <a id="valDataSet(String,Int,Int):DataSet[MiniBatch[Float]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">valDataSet</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="size">size: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../package.html#DataSet[D]=com.intel.analytics.bigdl.dataset.AbstractDataSet[D,_]" class="extmbr" name="com.intel.analytics.bigdl.DataSet">DataSet</a>[<a href="../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="scala.Float">Float</span>]]</span>
-      </span>
-      </h4>
-      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">warmUpIteration</dt><dd class="cmt"><p>Warm up iteration number</p></dd><dt class="param">warmUpDelta</dt><dd class="cmt"><p>Warm up dealta value applied to warm up iteration</p></dd><dt class="param">decayType</dt><dd class="cmt"><p>A function to calculate decay on epochs
+</p></dd></dl></div>
     </li></ol>
             </div>
 
+        
+
+        
+
         <div id="values" class="values members">
-              <h3>Concrete Value Members</h3>
+              <h3>Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
@@ -234,13 +193,40 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule#currentRate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="currentRate:Double"></a>
+      <a id="currentRate:Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">currentRate</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD.EpochDecayWithWarmUp#decayType" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="decayType:Int=&gt;Double"></a>
+      <a id="decayType:(Int)⇒Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">decayType</span><span class="result">: (<span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">A function to calculate decay on epochs
+</p>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -254,19 +240,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="equals(x$1:Any):Boolean"></a>
-      <a id="equals(Any):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -279,7 +252,7 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="symbol">classOf[java.lang.Throwable]</span>
@@ -296,19 +269,6 @@
       </span>
       <span class="symbol">
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hashCode():Int"></a>
-      <a id="hashCode():Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -377,19 +337,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toString():String"></a>
-      <a id="toString():String"></a>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD.EpochDecayWithWarmUp#updateHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="updateHyperParameter[T](optimMethod:com.intel.analytics.bigdl.optim.SGD[T]):Unit"></a>
+      <a id="updateHyperParameter[T](SGD[T]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+        <span class="name">updateHyperParameter</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="optimMethod">optimMethod: <a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.EpochDecayWithWarmUp.updateHyperParameter.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+      <p class="shortcomment cmt">update learning rate by config table and state table</p><div class="fullcomment"><div class="comment cmt"><p>update learning rate by config table and state table</p></div><dl class="paramcmts block"><dt class="param">optimMethod</dt><dd class="cmt"><p>init optiMethod.
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD.EpochDecayWithWarmUp">EpochDecayWithWarmUp</a> → <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -447,16 +408,71 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD.EpochDecayWithWarmUp#warmUpDelta" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warmUpDelta:Double"></a>
+      <a id="warmUpDelta:Double"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warmUpDelta</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Warm up dealta value applied to warm up iteration</p>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD.EpochDecayWithWarmUp#warmUpIteration" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="warmUpIteration:Int"></a>
+      <a id="warmUpIteration:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warmUpIteration</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Warm up iteration number</p>
     </li></ol>
             </div>
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule#updateHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="updateHyperParameter(config:com.intel.analytics.bigdl.utils.Table,state:com.intel.analytics.bigdl.utils.Table):Unit"></a>
+      <a id="updateHyperParameter(Table,Table):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Please input SGD instead of Table">updateHyperParameter</span><span class="params">(<span name="config">config: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="state">state: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 0.2.0)</i> Please input SGD instead of Table</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.Product">
+              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
+            </div><div class="parent" name="scala.Equals">
+              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
+            </div><div class="parent" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">
+              <h3>Inherited from <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
@@ -476,6 +492,6 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../../lib/template.js"></script>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
     </body>
       </html>
