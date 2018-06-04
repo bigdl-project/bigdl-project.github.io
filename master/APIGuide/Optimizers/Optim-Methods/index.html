@@ -45,6 +45,10 @@
           ]},
           {title: "Adagrad", url: "#adagrad", children: [
           ]},
+          {title: "LBFGS", url: "#lbfgs", children: [
+          ]},
+          {title: "Ftrl", url: "#ftrl", children: [
+          ]},
         ];
 
     </script>
@@ -293,6 +297,7 @@ x after optimize: 0.27779138
 [com.intel.analytics.bigdl.tensor.DenseTensor$mcF$sp of size 2]
 </code></pre>
 
+<h2 id="lbfgs">LBFGS</h2>
 <p><strong>Scala:</strong></p>
 <pre><code class="scala">val optimMethod = new LBFGS(maxIter=20, maxEval=Double.MaxValue,
                             tolFun=1e-5, tolX=1e-9, nCorrection=100,
@@ -333,6 +338,51 @@ optimizer.setOptimMethod(optimMethod)
 <pre><code class="python">optim_method = LBFGS(max_iter=20, max_eval=DOUBLEMAX, \
                  tol_fun=1e-5, tol_x=1e-9, n_correction=100, \
                  learning_rate=1.0, line_search=None, line_search_options=None)
+
+optimizer = Optimizer(
+    model=mlp_model,
+    training_rdd=train_data,
+    criterion=ClassNLLCriterion(),
+    optim_method=optim_method,
+    end_trigger=MaxEpoch(20),
+    batch_size=32)
+</code></pre>
+
+<h2 id="ftrl">Ftrl</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val optimMethod = new Ftrl(
+  learningRate = 1e-3, learningRatePower = -0.5,
+  initialAccumulatorValue = 0.1, l1RegularizationStrength = 0.0,
+  l2RegularizationStrength = 0.0, l2ShrinkageRegularizationStrength = 0.0)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">optim_method = Ftrl(learningrate = 1e-3, learningrate_power = -0.5, \
+                 initial_accumulator_value = 0.1, l1_regularization_strength = 0.0, \
+                 l2_regularization_strength = 0.0, l2_shrinkage_regularization_strength = 0.0)
+</code></pre>
+
+<p>An implementation of (Ftrl)[https://www.eecs.tufts.edu/~dsculley/papers/ad-click-prediction.pdf.]
+Support L1 penalty, L2 penalty and shrinkage-type L2 penalty.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li>learningRate: learning rate</li>
+<li>learningRatePower: double, must be less or equal to zero. Default is -0.5.</li>
+<li>initialAccumulatorValue: double, the starting value for accumulators, require zero or positive values. Default is 0.1.</li>
+<li>l1RegularizationStrength: double, must be greater or equal to zero. Default is zero.</li>
+<li>l2RegularizationStrength: double, must be greater or equal to zero. Default is zero.</li>
+<li>l2ShrinkageRegularizationStrength: double, must be greater or equal to zero. Default is zero. This differs from l2RegularizationStrength above. L2 above is a stabilization penalty, whereas this one is a magnitude penalty.</li>
+</ul>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">val optimMethod = new Ftrl(learningRate = 5e-3, learningRatePower = -0.5,
+  initialAccumulatorValue = 0.01)
+optimizer.setOptimMethod(optimMethod)
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">optim_method = Ftrl(learningrate = 5e-3, \
+    learningrate_power = -0.5, \
+    initial_accumulator_value = 0.01)
 
 optimizer = Optimizer(
     model=mlp_model,

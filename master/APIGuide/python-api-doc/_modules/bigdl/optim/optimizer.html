@@ -566,6 +566,39 @@
         <span class="nb">super</span><span class="p">(</span><span class="n">Adam</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">learningrate_decay</span><span class="p">,</span>
                            <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="Ftrl"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Ftrl">[docs]</a><span class="k">class</span> <span class="nc">Ftrl</span><span class="p">(</span><span class="n">OptimMethod</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An implementation of Ftrl https://www.eecs.tufts.edu/~dsculley/papers/ad-click-prediction.pdf.</span>
+<span class="sd">    Support L1 penalty, L2 penalty and shrinkage-type L2 penalty.</span>
+
+<span class="sd">    :param learningrate learning rate</span>
+<span class="sd">    :param learningrate_power double, must be less or equal to zero. Default is -0.5.</span>
+<span class="sd">    :param initial_accumulator_value double, the starting value for accumulators,</span>
+<span class="sd">        require zero or positive values.</span>
+<span class="sd">    :param l1_regularization_strength double, must be greater or equal to zero. Default is zero.</span>
+<span class="sd">    :param l2_regularization_strength double, must be greater or equal to zero. Default is zero.</span>
+<span class="sd">    :param l2_shrinkage_regularization_strength double, must be greater or equal to zero.</span>
+<span class="sd">        Default is zero. This differs from l2RegularizationStrength above. L2 above is a</span>
+<span class="sd">        stabilization penalty, whereas this one is a magnitude penalty.</span>
+<span class="sd">    &gt;&gt;&gt; ftrl = Ftrl()</span>
+<span class="sd">    creating: createFtrl</span>
+<span class="sd">    &gt;&gt;&gt; ftrl2 = Ftrl(1e-2, -0.1, 0.2, 0.3, 0.4, 0.5)</span>
+<span class="sd">    creating: createFtrl</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">learningrate</span> <span class="o">=</span> <span class="mf">1e-3</span><span class="p">,</span>
+                 <span class="n">learningrate_power</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span>
+                 <span class="n">initial_accumulator_value</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+                 <span class="n">l1_regularization_strength</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">l2_regularization_strength</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">l2_shrinkage_regularization_strength</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Ftrl</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">learningrate_power</span><span class="p">,</span>
+                                   <span class="n">initial_accumulator_value</span><span class="p">,</span>
+                                   <span class="n">l1_regularization_strength</span><span class="p">,</span>
+                                   <span class="n">l2_regularization_strength</span><span class="p">,</span>
+                                   <span class="n">l2_shrinkage_regularization_strength</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Adamax"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Adamax">[docs]</a><span class="k">class</span> <span class="nc">Adamax</span><span class="p">(</span><span class="n">OptimMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An implementation of Adamax http://arxiv.org/pdf/1412.6980.pdf</span>
