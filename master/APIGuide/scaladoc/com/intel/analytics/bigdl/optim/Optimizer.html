@@ -411,19 +411,6 @@ with some certain optimization algorithms.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.optim.Optimizer#gradientClippingParams" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="gradientClippingParams:com.intel.analytics.bigdl.optim.GradientClippingParams"></a>
-      <a id="gradientClippingParams:GradientClippingParams"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">gradientClippingParams</span><span class="result">: <a href="GradientClippingParams.html" class="extype" name="com.intel.analytics.bigdl.optim.GradientClippingParams">GradientClippingParams</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -555,6 +542,21 @@ with some certain optimization algorithms.
       </h4>
       <p class="shortcomment cmt">Enable overwrite saving checkpoint
 </p>
+    </li><li name="com.intel.analytics.bigdl.optim.Optimizer#parameterProcessors" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="parameterProcessors:scala.collection.mutable.ArrayBuffer[com.intel.analytics.bigdl.parameters.ParameterProcessor]"></a>
+      <a id="parameterProcessors:ArrayBuffer[ParameterProcessor]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">parameterProcessors</span><span class="result">: <span class="extype" name="scala.collection.mutable.ArrayBuffer">ArrayBuffer</span>[<span class="extype" name="com.intel.analytics.bigdl.parameters.ParameterProcessor">ParameterProcessor</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">a list of ParameterProcessor, orders matter
+</p><div class="fullcomment"><div class="comment cmt"><p>a list of ParameterProcessor, orders matter
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.Optimizer#prepareInput" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="prepareInput():Unit"></a>
       <a id="prepareInput():Unit"></a>
@@ -585,15 +587,15 @@ with some certain optimization algorithms.
 </p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the directory to save</p></dd><dt class="param">trigger</dt><dd class="cmt"><p>how often to save the check point</p></dd><dt>returns</dt><dd class="cmt"><p>the optimizer
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.Optimizer#setConstantGradientClipping" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setConstantGradientClipping(min:Float,max:Float):Optimizer.this.type"></a>
-      <a id="setConstantGradientClipping(Float,Float):Optimizer.this.type"></a>
+      <a id="setConstantGradientClipping(min:Double,max:Double):Optimizer.this.type"></a>
+      <a id="setConstantGradientClipping(Double,Double):Optimizer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setConstantGradientClipping</span><span class="params">(<span name="min">min: <span class="extype" name="scala.Float">Float</span></span>, <span name="max">max: <span class="extype" name="scala.Float">Float</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a>.this.type</span>
+        <span class="name">setConstantGradientClipping</span><span class="params">(<span name="min">min: <span class="extype" name="scala.Double">Double</span></span>, <span name="max">max: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set constant gradient clipping</p><div class="fullcomment"><div class="comment cmt"><p>Set constant gradient clipping</p></div><dl class="paramcmts block"><dt class="param">min</dt><dd class="cmt"><p>the minimum value to clip by</p></dd><dt class="param">max</dt><dd class="cmt"><p>the maximum value to clip by</p></dd><dt>returns</dt><dd class="cmt"><p>
@@ -648,18 +650,18 @@ training to accelerate, because some cached model may take too long.
 </p></div><dl class="paramcmts block"><dt class="param">endWhen</dt><dd class="cmt"><p>when to end</p></dd><dt>returns</dt><dd class="cmt"><p>the optimizer
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.Optimizer#setGradientClippingByl2Norm" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setGradientClippingByl2Norm(clipNorm:Float):Optimizer.this.type"></a>
-      <a id="setGradientClippingByl2Norm(Float):Optimizer.this.type"></a>
+      <a id="setGradientClippingByl2Norm(l2NormThreshold:Double):Optimizer.this.type"></a>
+      <a id="setGradientClippingByl2Norm(Double):Optimizer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setGradientClippingByl2Norm</span><span class="params">(<span name="clipNorm">clipNorm: <span class="extype" name="scala.Float">Float</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a>.this.type</span>
+        <span class="name">setGradientClippingByl2Norm</span><span class="params">(<span name="l2NormThreshold">l2NormThreshold: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a>.this.type</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Clip gradient to a maximum L2-norm</p><div class="fullcomment"><div class="comment cmt"><p>Clip gradient to a maximum L2-norm</p></div><dl class="paramcmts block"><dt class="param">clipNorm</dt><dd class="cmt"><p>gradient L2-Norm threshold</p></dd><dt>returns</dt><dd class="cmt"><p>
+      <p class="shortcomment cmt">Clip gradient to a maximum L2-norm</p><div class="fullcomment"><div class="comment cmt"><p>Clip gradient to a maximum L2-norm</p></div><dl class="paramcmts block"><dt class="param">l2NormThreshold</dt><dd class="cmt"><p>gradient L2-Norm threshold</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.Optimizer#setModel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setModel(newModel:com.intel.analytics.bigdl.Module[T]):Optimizer.this.type"></a>
