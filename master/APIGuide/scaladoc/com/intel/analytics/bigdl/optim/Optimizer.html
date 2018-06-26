@@ -515,16 +515,16 @@ with some certain optimization algorithms.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.optim.Optimizer#optimMethod" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="optimMethod:com.intel.analytics.bigdl.optim.OptimMethod[T]"></a>
-      <a id="optimMethod:OptimMethod[T]"></a>
+    </li><li name="com.intel.analytics.bigdl.optim.Optimizer#optimMethods" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="optimMethods:Map[String,com.intel.analytics.bigdl.optim.OptimMethod[T]]"></a>
+      <a id="optimMethods:Map[String,OptimMethod[T]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">optimMethod</span><span class="result">: <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.Optimizer.T">T</span>]</span>
+        <span class="name">optimMethods</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.Optimizer.T">T</span>]]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
@@ -675,9 +675,25 @@ training to accelerate, because some cached model may take too long.
         <span class="name">setModel</span><span class="params">(<span name="newModel">newModel: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.Optimizer.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a>.this.type</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Set a model to the optimizer
-</p><div class="fullcomment"><div class="comment cmt"><p>Set a model to the optimizer
+      <p class="shortcomment cmt">Set a model to the optimizer.</p><div class="fullcomment"><div class="comment cmt"><p>Set a model to the optimizer.
+Notice: if current optimMethod in this optimizer is not a global optimMethod,
+this setModel will throw an exception. You should use setModelAndOptimMethods instead.
 </p></div><dl class="paramcmts block"><dt class="param">newModel</dt><dd class="cmt"><p>new model
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.Optimizer#setModelAndOptimMethods" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setModelAndOptimMethods(newModel:com.intel.analytics.bigdl.Module[T],newOptimMethods:Map[String,com.intel.analytics.bigdl.optim.OptimMethod[T]]):Optimizer.this.type"></a>
+      <a id="setModelAndOptimMethods(Module[T],Map[String,OptimMethod[T]]):Optimizer.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setModelAndOptimMethods</span><span class="params">(<span name="newModel">newModel: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.Optimizer.T">T</span>]</span>, <span name="newOptimMethods">newOptimMethods: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.Optimizer.T">T</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set new model and new optimMethods to the optimizer.</p><div class="fullcomment"><div class="comment cmt"><p>Set new model and new optimMethods to the optimizer.
+</p></div><dl class="paramcmts block"><dt class="param">newModel</dt><dd class="cmt"><p>new model</p></dd><dt class="param">newOptimMethods</dt><dd class="cmt"><p>new optimMethods
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.Optimizer#setOptimMethod" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setOptimMethod(method:com.intel.analytics.bigdl.optim.OptimMethod[T]):Optimizer.this.type"></a>
@@ -694,6 +710,21 @@ training to accelerate, because some cached model may take too long.
       <p class="shortcomment cmt">Set an optimization method
 </p><div class="fullcomment"><div class="comment cmt"><p>Set an optimization method
 </p></div><dl class="paramcmts block"><dt class="param">method</dt><dd class="cmt"><p>optimization method
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.Optimizer#setOptimMethods" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setOptimMethods(method:Map[String,com.intel.analytics.bigdl.optim.OptimMethod[T]]):Optimizer.this.type"></a>
+      <a id="setOptimMethods(Map[String,OptimMethod[T]]):Optimizer.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setOptimMethods</span><span class="params">(<span name="method">method: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.Optimizer.T">T</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set optimization methods for each submodule.</p><div class="fullcomment"><div class="comment cmt"><p>Set optimization methods for each submodule.
+</p></div><dl class="paramcmts block"><dt class="param">method</dt><dd class="cmt"><p>A mapping of submodule -&gt; OptimMethod
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.Optimizer#setState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setState(state:com.intel.analytics.bigdl.utils.Table):Optimizer.this.type"></a>

@@ -87,7 +87,7 @@ each chunk on separate nodes.
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.parameters.AllReduceParameter#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(id:Long,partitionNum:Int,size:Int)(implicitevidence$2:scala.reflect.ClassTag[T]):com.intel.analytics.bigdl.parameters.AllReduceParameter[T]"></a>
+      <a id="&lt;init&gt;(id:Long,partitionNum:Int,size:Int,paramOffset:Int)(implicitevidence$2:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.parameters.AllReduceParameter[T]"></a>
       <a id="&lt;init&gt;:AllReduceParameter[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -95,10 +95,10 @@ each chunk on separate nodes.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">AllReduceParameter</span><span class="params">(<span name="id">id: <span class="extype" name="scala.Long">Long</span></span>, <span name="partitionNum">partitionNum: <span class="extype" name="scala.Int">Int</span></span>, <span name="size">size: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.parameters.AllReduceParameter.T">T</span>]</span>)</span>
+        <span class="name">AllReduceParameter</span><span class="params">(<span name="id">id: <span class="extype" name="scala.Long">Long</span></span>, <span name="partitionNum">partitionNum: <span class="extype" name="scala.Int">Int</span></span>, <span name="size">size: <span class="extype" name="scala.Int">Int</span></span>, <span name="paramOffset">paramOffset: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.parameters.AllReduceParameter.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.parameters.AllReduceParameter.T">T</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">id</dt><dd class="cmt"><p>distinguish from other parameters</p></dd><dt class="param">partitionNum</dt><dd class="cmt"><p>how many partitions will use this parameter</p></dd><dt class="param">size</dt><dd class="cmt"><p>size of the parameter (1D vector)</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">id</dt><dd class="cmt"><p>distinguish from other parameters</p></dd><dt class="param">partitionNum</dt><dd class="cmt"><p>how many partitions will use this parameter</p></dd><dt class="param">size</dt><dd class="cmt"><p>size of the parameter (1D vector)</p></dd><dt class="param">paramOffset</dt><dd class="cmt"><p>start index in the origin parameter.</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -174,22 +174,22 @@ each chunk on separate nodes.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.parameters.AllReduceParameter#aggregateGradientPartition" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="aggregateGradientPartition():Unit"></a>
-      <a id="aggregateGradientPartition():Unit"></a>
+      <a id="aggregateGradientPartition(avgNumbers:Int):Unit"></a>
+      <a id="aggregateGradientPartition(Int):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">aggregateGradientPartition</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">aggregateGradientPartition</span><span class="params">(<span name="avgNumbers">avgNumbers: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Retrieve gradients for the slice of the model that this node is responsible for from all the
 other nodes.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve gradients for the slice of the model that this node is responsible for from all the
 other nodes. A new thread is created for each separate node. The gradients are then summed
-and then stored in decompressed form in <code>gradientPartition</code>.
-</p></div></div>
+and then stored in decompressed form in <code>gradientPartition</code>.</p></div><dl class="paramcmts block"><dt class="param">avgNumbers</dt><dd class="cmt"><p>average numbers.
+</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -324,15 +324,15 @@ requests a partition of the weights from the Spark block manager and copies it i
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.parameters.AllReduceParameter#init" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="init(parameter:com.intel.analytics.bigdl.tensor.Tensor[T])(implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):Unit"></a>
-      <a id="init(Tensor[T])(TensorNumeric[T]):Unit"></a>
+      <a id="init(parameter:com.intel.analytics.bigdl.tensor.Tensor[T])(implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):(Int,Int,Int)"></a>
+      <a id="init(Tensor[T])(TensorNumeric[T]):(Int,Int,Int)"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">init</span><span class="params">(<span name="parameter">parameter: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.parameters.AllReduceParameter.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.parameters.AllReduceParameter.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">init</span><span class="params">(<span name="parameter">parameter: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.parameters.AllReduceParameter.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.parameters.AllReduceParameter.T">T</span>]</span>)</span><span class="result">: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt">This method should be called on each RDD partition before parameter synchronization begins.</p><div class="fullcomment"><div class="comment cmt"><p>This method should be called on each RDD partition before parameter synchronization begins.
@@ -394,6 +394,19 @@ compressed tensor.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.parameters.AllReduceParameter#paramOffset" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="paramOffset:Int"></a>
+      <a id="paramOffset:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">paramOffset</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">start index in the origin parameter.</p>
     </li><li name="com.intel.analytics.bigdl.parameters.AllReduceParameter#putGradients" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="putGradients(parameter:com.intel.analytics.bigdl.tensor.Tensor[T]):Unit"></a>
       <a id="putGradients(Tensor[T]):Unit"></a>
@@ -427,6 +440,19 @@ to the appropriate parameter node, and put it in the block manager.
       <p class="shortcomment cmt">Put the portion of the weights that this partition is responsible for to the block manager.</p><div class="fullcomment"><div class="comment cmt"><p>Put the portion of the weights that this partition is responsible for to the block manager.
 Weights are placed locally, then pulled when needed by other partitions.
 </p></div></div>
+    </li><li name="com.intel.analytics.bigdl.parameters.AllReduceParameter#size" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="size:Int"></a>
+      <a id="size:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">size</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">size of the parameter (1D vector)</p>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
