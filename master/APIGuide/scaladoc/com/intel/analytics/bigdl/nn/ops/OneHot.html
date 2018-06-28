@@ -992,6 +992,21 @@ or LocalPredictor for LocalImageFrame</p></div><dl class="paramcmts block"><dt c
       <p class="shortcomment cmt">Quantize this module, which reduces the precision of the parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Quantize this module, which reduces the precision of the parameter. Get a higher speed with a
 little accuracy cost.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#release" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="release():Unit"></a>
+      <a id="release():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">release</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">if the model contains native resources such as aligned memory, we should release it by manual.</p><div class="fullcomment"><div class="comment cmt"><p>if the model contains native resources such as aligned memory, we should release it by manual.
+JVM GC can't release them reliably.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#reset" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="reset():Unit"></a>
       <a id="reset():Unit"></a>
@@ -1410,7 +1425,7 @@ returns the result which is stored in the output field.
       <a id="zeroGradParameters():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier">final </span>
+        <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">

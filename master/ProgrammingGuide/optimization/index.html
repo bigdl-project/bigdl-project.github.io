@@ -198,6 +198,18 @@ optimizer.setOptimMethod(new Adam())  // Change to adam
 optimizer = Optimizer(model, train_data, MSECriterion(), MaxIteration(100), 4, optim_method = Adam())
 </code></pre>
 
+<p>Sometimes, people want to apply different optimization algorithms for the submodules of the neural network model. 
+BigDL provide a method to set optimMethod for submoduels by submodules' name.</p>
+<p><strong>scala</strong></p>
+<pre><code class="scala">val optimMethods = Map(&quot;wide&quot; -&gt; new Ftrl[Float](), &quot;deep&quot; -&gt; new Adagrad[Float]())
+optimizer.setOptimMethods(optimMethods)
+</code></pre>
+
+<p><strong>python</strong></p>
+<pre><code class="python">optimMethods = {&quot;wide&quot;: Ftrl(), &quot;deep&quot;: Adagrad()}
+optimizer.setOptimMethods(optimMethods)
+</code></pre>
+
 <h2 id="validate-your-model-in-training">Validate your model in training</h2>
 <p>Sometimes, people want to evaluate the model with a separated dataset. When model
 performs well on train dataset, but bad on validation dataset, we call the model is overfit or

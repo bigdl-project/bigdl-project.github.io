@@ -69,8 +69,8 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h2 id="optimmethod">OptimMethod</h2>
 <p>OptimMethod is used to update model gradient parameters.We have defined SGD method, Adagrad method, etc.
 Details about those optim methods, you can refer to <a href="../Optim-Methods/">Optim-Methods</a>.
-Now, method construct parameters(e.g."learningRate") and internal training parameters(e.g."epoch") store in optim method instead of state(since version 0.2.0)
-Here is mainly to describe how to use those methods when training</p>
+Now, method construct parameters(e.g."learningRate") and internal training parameters(e.g."epoch") store in optim method instead of state(since version 0.2.0).
+Here is mainly to describe how to use those methods when training.</p>
 <h3 id="set-method">Set method</h3>
 <p><strong>scala</strong></p>
 <pre><code class="scala">optimizer.setOptimMethod(method : OptimMethod[T])
@@ -86,7 +86,19 @@ Here is mainly to describe how to use those methods when training</p>
     batch_size)
 </code></pre>
 
-<p>in python, you can set optim method when creating an optimizer</p>
+<p>in python, you can set optim method when creating an optimizer.</p>
+<p>Sometimes, people want to apply different optimization algorithms for the submodules of the neural network model. 
+BigDL provide a method to set optimMethod for submoduels by submodules' name.</p>
+<p><strong>scala</strong></p>
+<pre><code class="scala">val optimMethods = Map(&quot;wide&quot; -&gt; new Ftrl[Float](), &quot;deep&quot; -&gt; new Adagrad[Float]())
+optimizer.setOptimMethods(optimMethods)
+</code></pre>
+
+<p><strong>python</strong></p>
+<pre><code class="python">optimMethods = {&quot;wide&quot;: Ftrl(), &quot;deep&quot;: Adagrad()}
+optimizer.setOptimMethods(optimMethods)
+</code></pre>
+
 <h3 id="save-method">Save method</h3>
 <pre><code class="scala">method.save(path: String, overWrite: Boolean = false)
 </code></pre>
