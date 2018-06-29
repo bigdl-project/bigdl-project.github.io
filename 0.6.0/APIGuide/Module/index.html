@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Model - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Model Save", url: "#model-save", children: [
+          ]},
+          {title: "Model Load", url: "#model-load", children: [
+              {title: "Load BigDL model", url: "#load-bigdl-model" },
+              {title: "Load Tensorflow model", url: "#load-tensorflow-model" },
+              {title: "Load Keras model", url: "#load-keras-model" },
+          ]},
+          {title: "Model Evaluation", url: "#model-evaluation", children: [
+          ]},
+          {title: "Model Prediction", url: "#model-prediction", children: [
+          ]},
+          {title: "Module Freeze", url: "#module-freeze", children: [
+          ]},
+          {title: "Caffe Model Support", url: "#caffe-model-support", children: [
+              {title: "Load Caffe model", url: "#load-caffe-model" },
+              {title: "Load weight from Caffe into pre-defined model", url: "#load-weight-from-caffe-into-pre-defined-model" },
+              {title: "Save BigDL model as Caffe model", url: "#save-bigdl-model-as-caffe-model" },
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60548202-2', 'bigdl-project.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Model</strong></h1>
+    <hr>
+    <h2 id="model-save">Model Save</h2>
+<p>BigDL supports saving models to local file system, HDFS and AWS S3. After a model is created, you can use <code>saveModule</code> (Scala) or 'saveModel' (python) on created model to save it. Below example shows how to save a model.</p>
+<p><strong>Scala example</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.numeric.NumericFloat
+
+val model = Sequential().add(Linear(10, 5)).add(Sigmoid()).add(SoftMax())
+//...train
+
+model.saveModule(&quot;/tmp/model.bigdl&quot;, &quot;/tmp/model.bin&quot;, true) //save to local fs
+model.saveModule(&quot;hdfs://...&quot;) //save to hdfs
+model.saveModule(&quot;s3://...&quot;) //save to s3
+
+</code></pre>
+
+<p><strong>Python example</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+from bigdl.util.common import *
+from bigdl.optim.optimizer import *
+
+model = Sequential().add(Linear(10, 5)).add(Sigmoid()).add(SoftMax())
+//...train
+model.saveModel(&quot;/tmp/model.bigdl&quot;, &quot;/tmp/model.bin&quot;, True) //save to local fs
+model.saveModel(&quot;hdfs://...&quot;) //save to hdfs
+model.saveModel(&quot;s3://...&quot;) //save to s3
+</code></pre>
+
+<p>In <code>model.saveModel</code>, the first parameter is the path where we want to save our model network, the second parameter is the path where we want to save the model weights, the third parameter is to specify if we need to overwrite the file if it already exists, it's set to false by default
+Please notice that if the second parameter is not specified, weights will be saved into the same file as model network. Save weights separately usually handles the situation that the model is big in size</p>
+<h2 id="model-load">Model Load</h2>
+<h3 id="load-bigdl-model">Load BigDL model</h3>
+<p>Use <code>Module.loadModule</code>(in Scala) or <code>Model.loadModel</code> (in Python) to load an existing model.  <code>Module</code> (Scala) or <code>Model</code>(Python) is a utility class provided in BigDL. We just need to specify the model path and optionally weight path if exists where we previously saved the model to load it to memory for resume training or prediction purpose.</p>
+<p><strong>Scala example</strong></p>
+<pre><code class="scala">val model = Module.loadModule(&quot;/tmp/model.bigdl&quot;, &quot;/tmp/model.bin&quot;) //load from local fs
+val model = Module.loadModule(&quot;hdfs://...&quot;) //load from hdfs
+val model = Module.loadModule(&quot;s3://...&quot;) //load from s3
+</code></pre>
+
+<p><strong>Python example</strong></p>
+<pre><code class="python">model = Model.loadModel(&quot;/tmp/model.bigdl&quot;, &quot;/tmp/model.bin&quot;) //load from local fs
+model = Model.loadModel(&quot;hdfs://...&quot;) //load from hdfs
+model = Model.loadModel(&quot;s3://...&quot;) //load from s3
+</code></pre>
+
+<h3 id="load-tensorflow-model">Load Tensorflow model</h3>
+<p>BigDL also provides utilities to load tensorflow model. See <a href="https://bigdl-project.github.io/master/#ProgrammingGuide/tensorflow-support/">tensorflow support</a>
+for more information.</p>
+<p>If we already have a freezed graph protobuf file, we can use the <code>loadTF</code> api directly to
+load the tensorflow model. </p>
+<p>Otherwise, we should first use the <code>export_tf_checkpoint.py</code> script provided by BigDL's distribution
+package, or the <code>dump_model</code> function defined in <a href="https://github.com/intel-analytics/BigDL/blob/master/pyspark/bigdl/util/tf_utils.py">here</a> to
+generate the model definition file (<code>model.pb</code>) and variable binary file (<code>model.bin</code>). </p>
+<p><strong>Use Script</strong></p>
+<pre><code class="shell">GRAPH_META_FILE=/tmp/tensorflow/model.ckpt.meta
+CKPT_FILE_PREFIX=/tmp/tensorflow/model.ckpt
+SAVE_PATH=/tmp/model/
+python export_tf_checkpoint.py $GRAPH_META_FILE $CKPT_FILE_PREFIX $SAVE_PATH
+</code></pre>
+
+<p><strong>Use python function</strong></p>
+<pre><code class="python">import tensorflow as tf
+
+# This is your model definition.
+xs = tf.placeholder(tf.float32, [None, 1])
+
+W1 = tf.Variable(tf.zeros([1,10])+0.2)
+b1 = tf.Variable(tf.zeros([10])+0.1)
+Wx_plus_b1 = tf.nn.bias_add(tf.matmul(xs,W1), b1)
+output = tf.nn.tanh(Wx_plus_b1, name=&quot;output&quot;)
+
+# Adding the following lines right after your model definition 
+from bigdl.util.tf_utils import dump_model
+dump_model_path = &quot;/tmp/model&quot;
+# This line of code will create a Session and initialized all the Variable and
+# save the model definition and variable to dump_model_path as BigDL readable format.
+dump_model(path=dump_model_path)
+</code></pre>
+
+<p>Then we can use the <code>loadTF</code> api to load the tensorflow model into BigDL.</p>
+<p><strong>Scala example</strong></p>
+<pre><code class="scala">val modelPath = &quot;/tmp/model/model.pb&quot;
+val binPath = &quot;/tmp/model/model.bin&quot;
+val inputs = Seq(&quot;Placeholder&quot;)
+val outputs = Seq(&quot;output&quot;)
+
+// For tensorflow freezed graph or graph without Variables
+val model = Module.loadTF(modelPath, inputs, outputs, ByteOrder.LITTLE_ENDIAN)
+
+// For tensorflow graph with Variables
+val model = Module.loadTF(modelPath, inputs, outputs, ByteOrder.LITTLE_ENDIAN, Some(binPath))
+
+// For tensorflow model inference only
+val model = Module.loadTF(modelPath, inputs, outputs, ByteOrder.LITTLE_ENDIAN, generateBackward=false)
+</code></pre>
+
+<p><strong>Python example</strong></p>
+<pre><code class="python">model_def = &quot;/tmp/model/model.pb&quot;
+model_variable = &quot;/tmp/model/model.bin&quot;
+inputs = [&quot;Placeholder&quot;]
+outputs = [&quot;output&quot;]
+# For tensorflow freezed graph or graph without Variables
+model = Model.load_tensorflow(model_def, inputs, outputs, byte_order = &quot;little_endian&quot;, bigdl_type=&quot;float&quot;)
+
+# For tensorflow graph with Variables
+model = Model.load_tensorflow(model_def, inputs, outputs, byte_order = &quot;little_endian&quot;, bigdl_type=&quot;float&quot;, bin_file=model_variable)
+
+# For tensorflow model inference only
+model = Model.load_tensorflow(model_def, inputs, outputs, byte_order = &quot;little_endian&quot;, generated_backward=False, bigdl_type=&quot;float&quot;)
+</code></pre>
+
+<h3 id="load-keras-model">Load Keras model</h3>
+<p>For <strong>Python</strong> users, BigDL also supports loading pre-defined Keras models. See <a href="../../ProgrammingGuide/keras-support/">keras support</a> for more details.</p>
+<p>Note that the Keras version we support and test is <a href="https://faroit.github.io/keras-docs/1.2.2/"><strong>Keras 1.2.2</strong></a> with TensorFlow backend.</p>
+<p>A Keras model definition in <strong>JSON</strong> file can be loaded as a BigDL model.
+Saved weights in <strong>HDF5</strong> file can also be loaded together with the architecture of a Keras model.</p>
+<p>You can directly call the API <code>Model.load_keras</code> to load a Keras model into BigDL.</p>
+<p><strong>Remark</strong>: <code>keras==1.2.2</code> is required. If you need to load a HDF5 file, you also need to install <code>h5py</code>. These packages can be installed via <code>pip</code> easily.</p>
+<pre><code class="python">from bigdl.nn.layer import *
+
+bigdl_model = Model.load_keras(json_path=None, hdf5_path=None, by_name=False)
+</code></pre>
+
+<h2 id="model-evaluation">Model Evaluation</h2>
+<p><strong>Scala</strong></p>
+<pre><code class="scala">model.evaluate(dataset, vMethods, batchSize = None)
+</code></pre>
+
+<p><strong>Python</strong></p>
+<pre><code class="python">model.evaluate(val_rdd, batch_size, val_methods)
+</code></pre>
+
+<p>Use <code>evaluate</code> on the model for evaluation. The parameter <code>dataset</code> (Scala) or <code>val_rdd</code> (Python) is the validation dataset, and <code>vMethods</code> (Scala) or <code>val_methods</code>(Python) is an array of ValidationMethods. Refer to <a href="../Metrics/">Metrics</a> for the list of defined ValidationMethods.</p>
+<p><strong>Scala example</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.dataset.Sample
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.numeric.NumericFloat
+import com.intel.analytics.bigdl.optim.Top1Accuracy
+import com.intel.analytics.bigdl.tensor.Tensor
+
+//create some dummy dataset for evaluation
+val feature = Tensor(10).rand()
+val label = Tensor(1).randn()
+
+val testSample = Sample(feature, label)
+//sc is is the SparkContxt instance
+val testSet = sc.parallelize(Seq(testSample))
+
+//train a new model or load an existing model
+//val model=...
+val evaluateResult = model.evaluate(testSet, Array(new Top1Accuracy))
+</code></pre>
+
+<p><strong>Python example</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+from bigdl.util.common import *
+from bigdl.optim.optimizer import *
+import numpy as np
+
+sc = SparkContext.getOrCreate(conf=create_spark_conf())
+init_engine()
+
+samples=[Sample.from_ndarray(np.array([1.0, 2.0]), np.array([2.0]))]
+testSet = sc.parallelize(samples,1)
+
+//You can train a model or load an existing model before evaluation.
+model = Linear(2, 1)
+
+evaluateResult = model.evaluate(testSet, 1, [Top1Accuracy()])
+print(evaluateResult[0])
+</code></pre>
+
+<h2 id="model-prediction">Model Prediction</h2>
+<p><strong>Scala</strong></p>
+<pre><code class="scala">model.predict(dataset)
+model.predictClass(dataset)
+</code></pre>
+
+<p><strong>Python</strong></p>
+<pre><code class="python">model.predict(data_rdd)
+model.predict_class(data_rdd)
+</code></pre>
+
+<p>Use <code>predict</code> or <code>predictClass</code> or <code>predict_class</code> on model for Prediction. <code>predict</code> returns return the probability distribution of each class, and <code>predictClass</code>/<code>predict_class</code> returns the predict label. They both accepts the test dataset as parameter.</p>
+<p>Please note that the sequence and the partitions of the output rdd will keep the same with input. So you can zip the output rdd with input rdd to get a (data, result) pair rdd.</p>
+<p><strong>Scala example</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.dataset.Sample
+import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.numeric.NumericFloat
+import com.intel.analytics.bigdl.optim.Top1Accuracy
+import com.intel.analytics.bigdl.tensor.Tensor
+
+//create some dummy dataset for prediction as example
+val feature = Tensor(10).rand()
+val predictSample = Sample(feature)
+val predictSet = sc.parallelize(Seq(predictSample))
+
+//train a new model or load an existing model
+//val model=...
+val predictResult = model.predict(predictSet)
+</code></pre>
+
+<p><strong>Python example</strong></p>
+<pre><code class="python"> from bigdl.nn.layer import *
+ from bigdl.util.common import *
+ from bigdl.optim.optimizer import *
+ import numpy as np
+
+ samples=[Sample.from_ndarray(np.array([1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0]), np.  array([2.0]))]
+
+ predictSet = sc.parallelize(samples)
+
+ //train a model or load an existing model...
+ //model = ...
+ predictResult = model.predict(predictSet)
+</code></pre>
+
+<h2 id="module-freeze">Module Freeze</h2>
+<p>To "freeze" a module means to exclude some layers of model from training.</p>
+<pre><code class="scala">module.freeze(&quot;layer1&quot;, &quot;layer2&quot;)
+module.unFreeze(&quot;layer1&quot;, &quot;layer2&quot;)
+module.stopGradient(Array(&quot;layer1&quot;))
+</code></pre>
+
+<ul>
+<li>The whole module can be "freezed" by calling <code>freeze()</code>. If a module is freezed,
+its parameters(weight/bias, if exists) are not changed in training process.
+If module names are passed, then layers that match the given names will be freezed.</li>
+<li>The whole module can be "unFreezed" by calling <code>unFreeze()</code>.
+If module names are provided, then layers that match the given names will be unFreezed.</li>
+<li>stop the input gradient of layers that match the given names. Their input gradient are not computed.
+And they will not contributed to the input gradient computation of layers that depend on them.</li>
+</ul>
+<p>Note that stopGradient is only supported in Graph model.</p>
+<p><strong>Python</strong></p>
+<pre><code class="python">module.freeze([&quot;layer1&quot;, &quot;layer2&quot;])
+module.unfreeze([&quot;layer1&quot;, &quot;layer2&quot;])
+module.stop_gradient([&quot;layer1&quot;])
+</code></pre>
+
+<p><strong>Scala</strong>
+Original model without "freeze" or "stop gradient"</p>
+<pre><code class="scala">val reshape = Reshape(Array(4)).inputs()
+val fc1 = Linear(4, 2).setName(&quot;fc1&quot;).inputs()
+val fc2 = Linear(4, 2).setName(&quot;fc2&quot;).inputs(reshape)
+val cadd_1 = CAddTable().setName(&quot;cadd&quot;).inputs(fc1, fc2)
+val output1_1 = ReLU().inputs(cadd_1)
+val output2_1 = Threshold(10.0).inputs(cadd_1)
+
+val model = Graph(Array(reshape, fc1), Array(output1_1, output2_1))
+
+val input = T(Tensor(T(0.1f, 0.2f, -0.3f, -0.4f)),
+  Tensor(T(0.5f, 0.4f, -0.2f, -0.1f)))
+val gradOutput = T(Tensor(T(1.0f, 2.0f)), Tensor(T(3.0f, 4.0f)))
+
+fc1.element.getParameters()._1.apply1(_ =&gt; 1.0f)
+fc2.element.getParameters()._1.apply1(_ =&gt; 2.0f)
+model.zeroGradParameters()
+println(&quot;output1: \n&quot;, model.forward(input))
+model.backward(input, gradOutput)
+model.updateParameters(1)
+println(&quot;fc2 weight \n&quot;, fc2.element.parameters()._1(0))
+</code></pre>
+
+<pre><code>(output1:
+, {
+    2: 0.0
+       0.0
+       [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    1: 2.8
+       2.8
+       [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+ })
+(fc2 weight
+,1.9    1.8 2.3 2.4
+1.8 1.6 2.6 2.8
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x4])
+</code></pre>
+
+<p>"Freeze" <code>fc2</code>, the parameters of <code>fc2</code> is not changed.</p>
+<pre><code class="scala">fc1.element.getParameters()._1.apply1(_ =&gt; 1.0f)
+fc2.element.getParameters()._1.apply1(_ =&gt; 2.0f)
+model.zeroGradParameters()
+model.freeze(&quot;fc2&quot;)
+println(&quot;output2: \n&quot;, model.forward(input))
+model.backward(input, gradOutput)
+model.updateParameters(1)
+println(&quot;fc2 weight \n&quot;, fc2.element.parameters()._1(0))
+</code></pre>
+
+<pre><code>(output2:
+, {
+    2: 0.0
+       0.0
+       [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    1: 2.8
+       2.8
+       [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+ })
+(fc2 weight
+,2.0    2.0 2.0 2.0
+2.0 2.0 2.0 2.0
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x4])
+</code></pre>
+
+<p>"unFreeze" <code>fc2</code>, the parameters of <code>fc2</code> will be updated.</p>
+<pre><code class="scala">fc1.element.getParameters()._1.apply1(_ =&gt; 1.0f)
+fc2.element.getParameters()._1.apply1(_ =&gt; 2.0f)
+model.zeroGradParameters()
+model.unFreeze()
+println(&quot;output3: \n&quot;, model.forward(input))
+model.backward(input, gradOutput)
+model.updateParameters(1)
+println(&quot;fc2 weight \n&quot;, fc2.element.parameters()._1(0))
+</code></pre>
+
+<pre><code>(output3:
+, {
+    2: 0.0
+       0.0
+       [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    1: 2.8
+       2.8
+       [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+ })
+(fc2 weight
+,1.9    1.8 2.3 2.4
+1.8 1.6 2.6 2.8
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x4])
+</code></pre>
+
+<p>"stop gradient" at <code>cadd</code>, the parameters of <code>fc1</code> and <code>fc2</code> are not changed.</p>
+<pre><code class="scala">fc1.element.getParameters()._1.apply1(_ =&gt; 1.0f)
+fc2.element.getParameters()._1.apply1(_ =&gt; 2.0f)
+model.stopGradient(Array(&quot;cadd&quot;))
+model.zeroGradParameters()
+println(&quot;output4: \n&quot;, model.forward(input))
+model.backward(input, gradOutput)
+model.updateParameters(1)
+println(&quot;fc1 weight \n&quot;, fc1.element.parameters()._1(0))
+println(&quot;fc2 weight \n&quot;, fc2.element.parameters()._1(0))
+</code></pre>
+
+<pre><code>(output4:
+, {
+    2: 0.0
+       0.0
+       [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    1: 2.8
+       2.8
+       [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+ })
+(fc1 weight
+,1.0    1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x4])
+(fc2 weight
+,2.0    2.0 2.0 2.0
+2.0 2.0 2.0 2.0
+[com.intel.analytics.bigdl.tensor.DenseTensor of size 2x4])
+</code></pre>
+
+<p><strong>Python</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+import numpy as np
+
+reshape = Reshape([4])()
+fc1 = Linear(4, 2).set_name(&quot;fc1&quot;)()
+fc2 = Linear(4, 2).set_name(&quot;fc2&quot;)(reshape)
+cadd = CAddTable().set_name(&quot;cadd&quot;)([fc1, fc2])
+output1 = ReLU()(cadd)
+output2 = Threshold(10.0)(cadd)
+model = Model([reshape, fc1], [output1, output2])
+
+input = [
+    np.array([0.1, 0.2, -0.3, -0.4]),
+    np.array([0.5, 0.4, -0.2, -0.1])]
+gradOutput = [
+    np.array([1.0, 2.0]), np.array([3.0, 4.0])]
+
+fc1.element().set_weights([np.array([[1,1,1,1],[1,1,1,1]]), np.array([1,1])])
+fc2.element().set_weights([np.array([[2,2,2,2],[2,2,2,2]]), np.array([2,2])])
+model.zero_grad_parameters()
+output = model.forward(input)
+print &quot;output1: &quot;, output
+gradInput = model.backward(input, gradOutput)
+model.update_parameters(1.0)
+print &quot;fc2 weight \n&quot;, fc2.element().parameters()['fc2']['weight']
+</code></pre>
+
+<pre><code>&gt; output1
+[array([ 2.79999995,  2.79999995], dtype=float32), array([ 0.,  0.], dtype=float32)]
+
+&gt; fc2 weight
+[[ 1.89999998  1.79999995  2.29999995  2.4000001 ]
+ [ 1.79999995  1.60000002  2.5999999   2.79999995]]
+</code></pre>
+
+<pre><code>fc1.element().set_weights([np.array([[1,1,1,1],[1,1,1,1]]), np.array([1,1])])
+fc2.element().set_weights([np.array([[2,2,2,2],[2,2,2,2]]), np.array([2,2])])
+m3 = model.freeze([&quot;fc2&quot;])
+model.zero_grad_parameters()
+output = model.forward(input)
+print &quot;output2 &quot;, output
+gradInput = model.backward(input, gradOutput)
+model.update_parameters(1.0)
+print &quot;fc2 weight \n&quot;, fc2.element().parameters()['fc2']['weight']
+</code></pre>
+
+<pre><code>&gt; output2
+[array([ 2.79999995,  2.79999995], dtype=float32), array([ 0.,  0.], dtype=float32)]
+
+&gt; fc2 weight
+[[ 2.  2.  2.  2.]
+ [ 2.  2.  2.  2.]]
+</code></pre>
+
+<pre><code>fc1.element().set_weights([np.array([[1,1,1,1],[1,1,1,1]]), np.array([1,1])])
+fc2.element().set_weights([np.array([[2,2,2,2],[2,2,2,2]]), np.array([2,2])])
+m3 = model.unfreeze()
+model.zero_grad_parameters()
+output = model.forward(input)
+print &quot;output3 &quot;, output
+gradInput = model.backward(input, gradOutput)
+model.update_parameters(1.0)
+print &quot;fc2 weight \n&quot;, fc2.element().parameters()['fc2']['weight']
+</code></pre>
+
+<pre><code>&gt; output3
+[array([ 2.79999995,  2.79999995], dtype=float32), array([ 0.,  0.], dtype=float32)]
+
+&gt; fc2 weight
+[[ 1.89999998  1.79999995  2.29999995  2.4000001 ]
+ [ 1.79999995  1.60000002  2.5999999   2.79999995]]
+</code></pre>
+
+<pre><code>m3 = model.stop_gradient([&quot;cadd&quot;])
+model.zero_grad_parameters()
+output = model.forward(input)
+print &quot;output4 &quot;, output
+gradInput = model.backward(input, gradOutput)
+model.update_parameters(1.0)
+print &quot;fc1 weight \n&quot;, fc1.element().parameters()['fc1']['weight']
+print &quot;fc2 weight \n&quot;, fc2.element().parameters()['fc2']['weight']
+</code></pre>
+
+<pre><code>&gt; output4
+[array([ 2.79999995,  2.79999995], dtype=float32), array([ 0.,  0.], dtype=float32)]
+
+&gt; fc1 weight
+[[ 1.  1.  1.  1.]
+ [ 1.  1.  1.  1.]]
+
+&gt; fc2 weight
+[[ 2.  2.  2.  2.]
+ [ 2.  2.  2.  2.]]
+</code></pre>
+
+<h2 id="caffe-model-support">Caffe Model Support</h2>
+<h3 id="load-caffe-model">Load Caffe model</h3>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">Module.loadCaffeModel(defPath, modelPath)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">Model.load_caffe_model(defPath, modelPath)
+</code></pre>
+
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.Module
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val model = Module.loadCaffeModel(&quot;/tmp/deploy.prototxt&quot;, &quot;/tmp/caffe.caffemodel&quot;)
+</code></pre>
+
+<p>In above <code>defPath</code> specifies the path for the network deploy file while <code>modelPath</code> specifies the path for the weight file </p>
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+model = Model.load_caffe_model(&quot;/tmp/deploy.prototxt&quot;, &quot;/tmp/caffe.caffemodel&quot;)
+</code></pre>
+
+<h3 id="load-weight-from-caffe-into-pre-defined-model">Load weight from Caffe into pre-defined model</h3>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">Module.loadCaffe(model, defPath, modelPath, match_all = true)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">Model.load_caffe(model, defPath, modelPath, match_all = True)
+</code></pre>
+
+<p><code>model</code> is pre-defined BigDL model. Similar to <code>loadCaffeModel</code>, <code>defPath</code> and <code>modelPath</code> specify network deploy file and weight file,
+the 4th parameter <code>match_all</code> specifies if layer definition should be exactly matched between pre-defined <code>model</code> and the one from <code>defPath</code></p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.Module
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val model = Sequential().add(Linear(3, 4))
+val loadedModel = Module.loadCaffe(model, &quot;/tmp/deploy.prototxt&quot;, &quot;/tmp/caffe.caffemodel&quot;, true)
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+model = Sequential().add(Linear(3, 4))
+loadedModel = Model.load_caffe(model, &quot;/tmp/deploy.prototxt&quot;, &quot;/tmp/caffe.caffemodel&quot;, True)
+</code></pre>
+
+<h3 id="save-bigdl-model-as-caffe-model">Save BigDL model as Caffe model</h3>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">bigdlModel.saveCaffe(prototxtPath, modelPath, useV2 = true, overwrite = false)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">bigdl_model.save_caffe(prototxt_path, model_path, use_v2 = True, overwrite = False)
+</code></pre>
+
+<p><code>prototxtPath</code> defines where to store the network, <code>modelPath</code> defines where to store the weight, <code>useV2</code> 
+defines whether to store as V2Layer format, and <code>overwrite</code> defines whether to overwrite if the files already exist.</p>
+<p>Only Graph model is supported for now.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.Module
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+val linear = Linear(3, 4)
+val model = Graph(linear.inputs(), linear.inputs())
+model.saveCaffe(&quot;/tmp/linear.prototxt&quot;, &quot;/tmp/linear.caffemodel&quot;, true, true)
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.layer import *
+linear = Linear(3, 4)
+model = Graph(linear.inputs(), linear.inputs())
+model.save_caffe(model, &quot;/tmp/linear.prototxt&quot;, &quot;/tmp/linear.caffemodel&quot;, True, True)
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

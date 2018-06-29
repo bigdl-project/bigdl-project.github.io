@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Keras Issues - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Unsupported Layer Arguments", url: "#unsupported-layer-arguments", children: [
+          ]},
+          {title: "Known Issues", url: "#known-issues", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60548202-2', 'bigdl-project.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Keras Issues</strong></h1>
+    <hr>
+    <p>Up to now, we have generally supported <strong>ALL</strong> the layers of <a href="https://faroit.github.io/keras-docs/1.2.2/"><strong>Keras 1.2.2</strong></a> to be loaded into BigDL.</p>
+<p>Self-defined Keras layers or <a href="https://faroit.github.io/keras-docs/1.2.2/layers/core/#lambda"><code>Lambda</code></a> layers are not supported for now. Weight sharing is not supported for now.</p>
+<p>This page lists the so-far unsupported arguments for specific layers and some known issues.</p>
+<h2 id="unsupported-layer-arguments"><strong>Unsupported Layer Arguments</strong></h2>
+<p>For the following arguments, currently only the default values are expected and supported.</p>
+<ul>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/initializations/"><code>initializations</code></a>, <code>lecun_uniform</code>, <code>orthogonal</code>, <code>glorot_normal</code>, <code>he_normal</code> and <code>he_uniform</code> are not supported for all layers. For those unsupported initialization methods, we will default values from BigDL instead. Thus in this case, you are <strong>strongly recommended</strong> to load the weights from Keras together with its model definition.</li>
+<li>Constraints (<code>W_constraint</code>, <code>b_constraint</code>, etc.) are not supported for all layers.</li>
+<li><code>activity_regularizer</code> is not supported for all layers.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/core/#dropout"><code>Dropout</code></a>, <code>noise_shape</code> is not supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/core/#merge"><code>Merge</code></a> layers, <code>node_indices</code>, <code>tensor_indices</code>, <code>output_mask</code> are not supported. <code>Lambda/function</code> as merge mode is not supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/core/#merge"><code>Merge</code></a> layers with mode <code>'dot'</code> or <code>'cosine'</code>, only <code>2D</code> input with <code>dot_axes=1</code> is supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#atrousconvolution1d"><code>AtrousConvolution1D</code></a>, only <code>bias=True</code> is supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#atrousconvolution2d"><code>AtrousConvolution2D</code></a>, only <code>dim_ordering='th'</code> and <code>bias=True</code> are supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#deconvolution2d"><code>DeConvolution2D</code></a>, only <code>dim_ordering='th'</code> is supported. For <code>border_mode='same'</code>, only symmetric padding on both sides is supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#convolution3d"><code>Convolution3D</code></a>, only <code>dim_ordering='th'</code> is supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#upsampling3d"><code>UpSampling3D</code></a>, only <code>dim_ordering='th'</code> is supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/pooling/#maxpooling3d"><code>MaxPooling3D</code></a>, only <code>dim_ordering='th'</code> and <code>border_mode='valid'</code> are supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/pooling/#averagepooling3d"><code>AveragePooling3D</code></a>, only <code>dim_ordering='th'</code> and <code>border_mode='valid'</code> are supported.</li>
+<li>For <code>GlobalMaxPooling3D</code>, only <code>dim_ordering='th'</code> is supported.</li>
+<li>For <code>GlobalAveragePooling3D</code>, only <code>dim_ordering='th'</code> is supported.</li>
+<li>For all <a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#recurrent"><code>Recurrent</code></a> layers (<a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#simplernn"><code>SimpleRNN</code></a>, <a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#gru"><code>GRU</code></a>, <a href="https://faroit.github.io/keras-docs/1.2.2/layers/recurrent/#lstm"><code>LSTM</code></a> and <code>ConvLSTM2D</code>), <code>stateful</code>, <code>consume_less</code>, <code>dropout_W</code> and <code>dropout_U</code> are not supported.
+If RNNs are wrapped with <a href="https://faroit.github.io/keras-docs/1.2.2/layers/wrappers/#bidirectional"><code>Bidirectional</code></a>, only <code>return_sequences=True</code> is supported.</li>
+<li>For <code>ConvLSTM2D</code>, only <code>border_mode='valid'</code>, <code>nb_row==nb_col</code>(square kernel) and <code>subsample[0]==subsample[1]</code>(equal strides) are supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/embeddings/#embedding"><code>Embedding</code></a>, <code>mask_zero</code> and <code>dropout</code> are not supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/advanced-activations/#prelu"><code>PReLU</code></a>, <code>init</code>, <code>weights</code> and <code>shared_axes</code> are not supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/advanced-activations/#parametricsoftplus"><code>ParametricSoftplus</code></a>, <code>weights</code> and <code>shared_axes</code> are not supported. Only <code>alpha_init = 1/beta_init</code> is supported.</li>
+<li>For <a href="https://faroit.github.io/keras-docs/1.2.2/layers/normalization/#batchnormalization"><code>BatchNormalization</code></a>, only 4D input with <code>mode=0</code> is supported. Only <code>channel_first</code> (<code>dim_ordering='th'</code> with <code>axis=1</code>) and <code>channel_last</code> (<code>dim_ordering='tf'</code> with <code>axis=-1</code>) is supported. <code>gamma_regularizer</code> and <code>beta_regularizer</code> are not supported.</li>
+</ul>
+<h2 id="known-issues"><strong>Known Issues</strong></h2>
+<ul>
+<li>For some layers such as <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#zeropadding2d"><code>ZeroPadding2D</code></a>, <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#zeropadding3d"><code>ZeroPadding3D</code></a>, <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#cropping2d"><code>Cropping2D</code></a>, <a href="https://faroit.github.io/keras-docs/1.2.2/layers/convolutional/#cropping3d"><code>Cropping3D</code></a>, etc., Keras doesn't save <code>dim_ordering</code> into config. In this case, the default <code>dim_ordering</code> found in <code>~/.keras/keras.json</code> will be used instead.</li>
+<li>For <code>ConvLSTM2D</code>, Keras doesn't save <code>W_regularizer</code>, <code>U_regularizer</code> and <code>b_regularizer</code> into config. In this case, the default <code>None</code> will be used instead.</li>
+</ul>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

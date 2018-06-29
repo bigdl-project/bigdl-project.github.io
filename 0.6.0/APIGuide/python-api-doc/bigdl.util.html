@@ -1,0 +1,582 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>bigdl.util package &#8212; BigDL  documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="bigdl.transform.vision package" href="bigdl.transform.vision.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="bigdl.transform.vision.html" title="bigdl.transform.vision package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="bigdl.html" accesskey="U">bigdl package</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">bigdl.util package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-bigdl.util.common">bigdl.util.common module</a></li>
+<li><a class="reference internal" href="#module-bigdl.util.engine">bigdl.util.engine module</a></li>
+<li><a class="reference internal" href="#module-bigdl.util.tf_utils">bigdl.util.tf_utils module</a></li>
+<li><a class="reference internal" href="#module-bigdl.util">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="bigdl.transform.vision.html"
+                        title="previous chapter">bigdl.transform.vision package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/bigdl.util.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="bigdl-util-package">
+<h1>bigdl.util package<a class="headerlink" href="#bigdl-util-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-bigdl.util.common">
+<span id="bigdl-util-common-module"></span><h2>bigdl.util.common module<a class="headerlink" href="#module-bigdl.util.common" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="bigdl.util.common.EvaluatedResult">
+<em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">EvaluatedResult</code><span class="sig-paren">(</span><em>result</em>, <em>total_num</em>, <em>method</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#EvaluatedResult"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.EvaluatedResult" title="Permalink to this definition">¶</a></dt>
+<dd><p>A testing result used to benchmark the model quality.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.util.common.GatewayWrapper">
+<em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">GatewayWrapper</code><span class="sig-paren">(</span><em>bigdl_type</em>, <em>port=25333</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#GatewayWrapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.GatewayWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.util.common.SingletonMixin" title="bigdl.util.common.SingletonMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.SingletonMixin</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.util.common.JActivity">
+<em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">JActivity</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JActivity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JActivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.util.common.JTensor">
+<em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">JTensor</code><span class="sig-paren">(</span><em>storage</em>, <em>shape</em>, <em>bigdl_type='float'</em>, <em>indices=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JTensor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JTensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A wrapper to easy our work when need to pass or return Tensor to/from Scala.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">JTensor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<dl class="classmethod">
+<dt id="bigdl.util.common.JTensor.from_ndarray">
+<em class="property">classmethod </em><code class="descname">from_ndarray</code><span class="sig-paren">(</span><em>a_ndarray</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JTensor.from_ndarray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JTensor.from_ndarray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a ndarray to a DenseTensor which would be used in Java side.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">JTensor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">callBigDlFunc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_storage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.69646919</span><span class="p">,</span> <span class="mf">0.28613934</span><span class="p">,</span> <span class="mf">0.22685145</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.55131477</span><span class="p">,</span> <span class="mf">0.71946895</span><span class="p">,</span> <span class="mf">0.42310646</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">storage</span><span class="p">,</span> <span class="n">expected_storage</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">expected_shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_back</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">data</span> <span class="o">==</span> <span class="n">data_back</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor1</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="s2">&quot;testTensor&quot;</span><span class="p">,</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>  <span class="c1"># noqa</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array_from_tensor</span> <span class="o">=</span> <span class="n">tensor1</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">array_from_tensor</span> <span class="o">==</span> <span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="bigdl.util.common.JTensor.sparse">
+<em class="property">classmethod </em><code class="descname">sparse</code><span class="sig-paren">(</span><em>a_ndarray</em>, <em>i_ndarray</em>, <em>shape</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JTensor.sparse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JTensor.sparse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a three ndarray to SparseTensor which would be used in Java side.
+For example:
+a_ndarray = [1, 3, 2, 4]
+i_ndarray = [[0, 0, 1, 2],
+[0, 3, 2, 1]]
+shape = [3, 4]
+Present a dense tensor
+[[ 1,  0,  0,  3],
+[ 0,  0,  2,  0],
+[ 0,  4,  0,  0]]</p>
+<p>:param a_ndarray non-zero elements in this SparseTensor
+:param i_ndarray zero-based indices for non-zero element
+i_ndarray’s shape should be (shape.size, a_ndarray.size)
+And the i-th non-zero elements indices is i_ndarray[:, 1]
+:param shape     shape as a DenseTensor.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">JTensor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">callBigDlFunc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">sparse</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_storage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">6.</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">storage</span><span class="p">,</span> <span class="n">expected_storage</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">expected_shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">expected_indices</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tensor1</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="s2">&quot;testTensor&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>  <span class="c1"># noqa</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array_from_tensor</span> <span class="o">=</span> <span class="n">tensor1</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">array_from_tensor</span> <span class="o">==</span> <span class="n">expected_ndarray</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.util.common.JTensor.to_ndarray">
+<code class="descname">to_ndarray</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JTensor.to_ndarray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JTensor.to_ndarray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transfer JTensor to ndarray.
+As SparseTensor may generate an very big ndarray, so we don’t support this function for SparseTensor.
+:return: a ndarray</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.util.common.JavaCreator">
+<em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">JavaCreator</code><span class="sig-paren">(</span><em>bigdl_type</em>, <em>gateway</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JavaCreator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JavaCreator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.util.common.SingletonMixin" title="bigdl.util.common.SingletonMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.SingletonMixin</span></code></a></p>
+<dl class="classmethod">
+<dt id="bigdl.util.common.JavaCreator.add_creator_class">
+<em class="property">classmethod </em><code class="descname">add_creator_class</code><span class="sig-paren">(</span><em>jinvoker</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JavaCreator.add_creator_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JavaCreator.add_creator_class" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="bigdl.util.common.JavaCreator.get_creator_class">
+<em class="property">classmethod </em><code class="descname">get_creator_class</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JavaCreator.get_creator_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JavaCreator.get_creator_class" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="bigdl.util.common.JavaCreator.set_creator_class">
+<em class="property">classmethod </em><code class="descname">set_creator_class</code><span class="sig-paren">(</span><em>cclass</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JavaCreator.set_creator_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JavaCreator.set_creator_class" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.util.common.JavaValue">
+<em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">JavaValue</code><span class="sig-paren">(</span><em>jvalue</em>, <em>bigdl_type</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JavaValue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JavaValue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="bigdl.util.common.JavaValue.jvm_class_constructor">
+<code class="descname">jvm_class_constructor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#JavaValue.jvm_class_constructor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.JavaValue.jvm_class_constructor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.util.common.RNG">
+<em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">RNG</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#RNG"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.RNG" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate tensor data with seed</p>
+<dl class="method">
+<dt id="bigdl.util.common.RNG.set_seed">
+<code class="descname">set_seed</code><span class="sig-paren">(</span><em>seed</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#RNG.set_seed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.RNG.set_seed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bigdl.util.common.RNG.uniform">
+<code class="descname">uniform</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>size</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#RNG.uniform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.RNG.uniform" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.util.common.Sample">
+<em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">Sample</code><span class="sig-paren">(</span><em>features</em>, <em>labels</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#Sample"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="classmethod">
+<dt id="bigdl.util.common.Sample.from_jtensor">
+<em class="property">classmethod </em><code class="descname">from_jtensor</code><span class="sig-paren">(</span><em>features</em>, <em>labels</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#Sample.from_jtensor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Sample.from_jtensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a sequence of JTensor to Sample, which would be used in Java side.
+:param features: an JTensor or a list of JTensor
+:param labels: an JTensor or a list of JTensor or a scalar
+:param bigdl_type: “double” or “float”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">feature0</span> <span class="o">=</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">sparse</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">feature1</span> <span class="o">=</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sample</span> <span class="o">=</span> <span class="n">Sample</span><span class="o">.</span><span class="n">from_jtensor</span><span class="p">([</span><span class="n">feature0</span><span class="p">,</span> <span class="n">feature1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="bigdl.util.common.Sample.from_ndarray">
+<em class="property">classmethod </em><code class="descname">from_ndarray</code><span class="sig-paren">(</span><em>features</em>, <em>labels</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#Sample.from_ndarray"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.Sample.from_ndarray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a ndarray of features and labels to Sample, which would be used in Java side.
+:param features: an ndarray or a list of ndarrays
+:param labels: an ndarray or a list of ndarrays or a scalar
+:param bigdl_type: “double” or “float”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">callBigDlFunc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy.testing</span> <span class="k">import</span> <span class="n">assert_allclose</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sample</span> <span class="o">=</span> <span class="n">Sample</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sample_back</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="s2">&quot;testSample&quot;</span><span class="p">,</span> <span class="n">sample</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">(),</span> <span class="n">sample_back</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">(),</span> <span class="n">sample_back</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_feature_storage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(([[</span><span class="mf">0.69646919</span><span class="p">,</span> <span class="mf">0.28613934</span><span class="p">,</span> <span class="mf">0.22685145</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.55131477</span><span class="p">,</span> <span class="mf">0.71946895</span><span class="p">,</span> <span class="mf">0.42310646</span><span class="p">]]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_feature_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_label_storage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(([[</span><span class="mf">0.98076421</span><span class="p">,</span> <span class="mf">0.68482971</span><span class="p">,</span> <span class="mf">0.48093191</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.39211753</span><span class="p">,</span> <span class="mf">0.343178</span><span class="p">,</span> <span class="mf">0.72904968</span><span class="p">]]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expected_label_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">storage</span><span class="p">,</span> <span class="n">expected_feature_storage</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">expected_feature_shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">storage</span><span class="p">,</span> <span class="n">expected_label_storage</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">expected_label_shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.util.common.SingletonMixin">
+<em class="property">class </em><code class="descclassname">bigdl.util.common.</code><code class="descname">SingletonMixin</code><a class="reference internal" href="_modules/bigdl/util/common.html#SingletonMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.SingletonMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="classmethod">
+<dt id="bigdl.util.common.SingletonMixin.instance">
+<em class="property">classmethod </em><code class="descname">instance</code><span class="sig-paren">(</span><em>bigdl_type</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#SingletonMixin.instance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.SingletonMixin.instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.callBigDlFunc">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">callBigDlFunc</code><span class="sig-paren">(</span><em>bigdl_type</em>, <em>name</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#callBigDlFunc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.callBigDlFunc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call API in PythonBigDL</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.callJavaFunc">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">callJavaFunc</code><span class="sig-paren">(</span><em>func</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#callJavaFunc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.callJavaFunc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call Java Function</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.create_spark_conf">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">create_spark_conf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#create_spark_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.create_spark_conf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.create_tmp_path">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">create_tmp_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#create_tmp_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.create_tmp_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.extend_spark_driver_cp">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">extend_spark_driver_cp</code><span class="sig-paren">(</span><em>sparkConf</em>, <em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#extend_spark_driver_cp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.extend_spark_driver_cp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.get_activation_by_name">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">get_activation_by_name</code><span class="sig-paren">(</span><em>activation_name</em>, <em>activation_id=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#get_activation_by_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.get_activation_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert to a bigdl activation layer
+given the name of the activation as a string</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.get_bigdl_conf">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">get_bigdl_conf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#get_bigdl_conf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.get_bigdl_conf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.get_dtype">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">get_dtype</code><span class="sig-paren">(</span><em>bigdl_type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#get_dtype"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.get_dtype" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.get_local_file">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">get_local_file</code><span class="sig-paren">(</span><em>a_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#get_local_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.get_local_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.get_node_and_core_number">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">get_node_and_core_number</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#get_node_and_core_number"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.get_node_and_core_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.get_spark_context">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">get_spark_context</code><span class="sig-paren">(</span><em>conf=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#get_spark_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.get_spark_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current active spark context and create one if no active instance
+:param conf: combining bigdl configs into spark conf
+:return: SparkContext</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.get_spark_sql_context">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">get_spark_sql_context</code><span class="sig-paren">(</span><em>sc</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#get_spark_sql_context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.get_spark_sql_context" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.init_engine">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">init_engine</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#init_engine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.init_engine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.init_executor_gateway">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">init_executor_gateway</code><span class="sig-paren">(</span><em>sc</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#init_executor_gateway"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.init_executor_gateway" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.is_distributed">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">is_distributed</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#is_distributed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.is_distributed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.redire_spark_logs">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">redire_spark_logs</code><span class="sig-paren">(</span><em>bigdl_type='float'</em>, <em>log_path='/opt/work/jenkins/workspace/BigDL-Release-Doc/BigDL/pyspark/docs/bigdl.log'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#redire_spark_logs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.redire_spark_logs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Redirect spark logs to the specified path.
+:param bigdl_type: “double” or “float”
+:param log_path: the file path to be redirected to; the default file is under the current workspace named <cite>bigdl.log</cite>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.show_bigdl_info_logs">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">show_bigdl_info_logs</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#show_bigdl_info_logs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.show_bigdl_info_logs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set BigDL log level to INFO.
+:param bigdl_type: “double” or “float”</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.text_from_path">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">text_from_path</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#text_from_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.text_from_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.to_list">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">to_list</code><span class="sig-paren">(</span><em>a</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#to_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.to_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.common.to_sample_rdd">
+<code class="descclassname">bigdl.util.common.</code><code class="descname">to_sample_rdd</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>numSlices=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/common.html#to_sample_rdd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.common.to_sample_rdd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Conver x and y into RDD[Sample]
+:param x: ndarray and the first dimension should be batch
+:param y: ndarray and the first dimension should be batch
+:param numSlices:
+:return:</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-bigdl.util.engine">
+<span id="bigdl-util-engine-module"></span><h2>bigdl.util.engine module<a class="headerlink" href="#module-bigdl.util.engine" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="bigdl.util.engine.check_spark_source_conflict">
+<code class="descclassname">bigdl.util.engine.</code><code class="descname">check_spark_source_conflict</code><span class="sig-paren">(</span><em>spark_home</em>, <em>pyspark_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/engine.html#check_spark_source_conflict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.engine.check_spark_source_conflict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.engine.compare_version">
+<code class="descclassname">bigdl.util.engine.</code><code class="descname">compare_version</code><span class="sig-paren">(</span><em>version1</em>, <em>version2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/engine.html#compare_version"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.engine.compare_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare version strings.
+:param version1;
+:param version2;
+:return: 1 if version1 is after version2; -1 if version1 is before version2; 0 if two versions are the same.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.engine.exist_pyspark">
+<code class="descclassname">bigdl.util.engine.</code><code class="descname">exist_pyspark</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/engine.html#exist_pyspark"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.engine.exist_pyspark" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.engine.get_bigdl_classpath">
+<code class="descclassname">bigdl.util.engine.</code><code class="descname">get_bigdl_classpath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/engine.html#get_bigdl_classpath"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.engine.get_bigdl_classpath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get and return the jar path for bigdl if exists.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.engine.is_spark_below_2_2">
+<code class="descclassname">bigdl.util.engine.</code><code class="descname">is_spark_below_2_2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/engine.html#is_spark_below_2_2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.engine.is_spark_below_2_2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if spark version is below 2.2</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.engine.prepare_env">
+<code class="descclassname">bigdl.util.engine.</code><code class="descname">prepare_env</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/engine.html#prepare_env"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.engine.prepare_env" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-bigdl.util.tf_utils">
+<span id="bigdl-util-tf-utils-module"></span><h2>bigdl.util.tf_utils module<a class="headerlink" href="#module-bigdl.util.tf_utils" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="bigdl.util.tf_utils.convert">
+<code class="descclassname">bigdl.util.tf_utils.</code><code class="descname">convert</code><span class="sig-paren">(</span><em>input_ops</em>, <em>output_ops</em>, <em>byte_order</em>, <em>bigdl_type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/tf_utils.html#convert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.tf_utils.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert tensorflow model to bigdl model
+:param input_ops: operation list used for input, should be placeholders
+:param output_ops: operations list used for output
+:return: bigdl model</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.tf_utils.dump_model">
+<code class="descclassname">bigdl.util.tf_utils.</code><code class="descname">dump_model</code><span class="sig-paren">(</span><em>path</em>, <em>graph=None</em>, <em>sess=None</em>, <em>ckpt_file=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/tf_utils.html#dump_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.tf_utils.dump_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump a tensorflow model to files. The graph will be dumped to path/model.pb, and the checkpoint will
+be dumped to path/model.bin</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> – dump folder path</li>
+<li><strong>sess</strong> – if user pass in session, we assume that the variable of the graph in the session</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>has been inited
+:param graph: tensorflow graph. Default use the default graph of the session
+:param bigdl_type: model variable numeric type
+:return: nothing</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.tf_utils.export_checkpoint">
+<code class="descclassname">bigdl.util.tf_utils.</code><code class="descname">export_checkpoint</code><span class="sig-paren">(</span><em>checkpoint_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/tf_utils.html#export_checkpoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.tf_utils.export_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export variable tensors from the checkpoint files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>checkpoint_path</strong> – tensorflow checkpoint path</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dictionary of tensor. The key is the variable name and the value is the numpy</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.tf_utils.get_path">
+<code class="descclassname">bigdl.util.tf_utils.</code><code class="descname">get_path</code><span class="sig-paren">(</span><em>output_name</em>, <em>sess=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/tf_utils.html#get_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.tf_utils.get_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.tf_utils.merge_checkpoint">
+<code class="descclassname">bigdl.util.tf_utils.</code><code class="descname">merge_checkpoint</code><span class="sig-paren">(</span><em>input_graph</em>, <em>checkpoint</em>, <em>output_node_names</em>, <em>output_graph</em>, <em>sess</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/tf_utils.html#merge_checkpoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.tf_utils.merge_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the variable values from the checkpoint file, and merge them to the GraphDef file
+Args:
+input_graph: the GraphDef file, doesn’t contain variable values
+checkpoint: the checkpoint file
+output_node_names: A list of string, the output names
+output_graph: String of the location and the name of the
+output graph</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.util.tf_utils.save_variable_bigdl">
+<code class="descclassname">bigdl.util.tf_utils.</code><code class="descname">save_variable_bigdl</code><span class="sig-paren">(</span><em>tensors</em>, <em>target_path</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/util/tf_utils.html#save_variable_bigdl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.util.tf_utils.save_variable_bigdl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a variable dictionary to a Java object file, so it can be read by BigDL</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tensors</strong> – tensor dictionary</li>
+<li><strong>target_path</strong> – where is the Java object file store</li>
+<li><strong>bigdl_type</strong> – model variable numeric type</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">nothing</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-bigdl.util">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bigdl.util" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="bigdl.transform.vision.html" title="bigdl.transform.vision package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="bigdl.html" >bigdl package</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Intel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>

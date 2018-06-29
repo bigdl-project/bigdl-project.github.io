@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Use Spark ML - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Overview", url: "#overview", children: [
+          ]},
+          {title: "Define a DLEstimator", url: "#define-a-dlestimator", children: [
+          ]},
+          {title: "Define a DLClassifier", url: "#define-a-dlclassifier", children: [
+          ]},
+          {title: "Hyperparameter setting", url: "#hyperparameter-setting", children: [
+          ]},
+          {title: "Prepare the data and start the training process", url: "#prepare-the-data-and-start-the-training-process", children: [
+          ]},
+          {title: "Make prediction on chosen data by using DLModel/DLClassifierModel", url: "#make-prediction-on-chosen-data-by-using-dlmodeldlclassifiermodel", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60548202-2', 'bigdl-project.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Use Spark ML</strong></h1>
+    <hr>
+    <h2 id="overview"><strong>Overview</strong></h2>
+<p>BigDL provides <code>DLEstimator</code> and <code>DLClassifier</code> for users with Apache Spark MLlib experience, which
+provides high level API for training a BigDL Model with the Apache Spark
+<a href="https://spark.apache.org/docs/2.1.1/ml-pipeline.html#estimators">Estimator</a>/
+<a href="https://spark.apache.org/docs/2.1.1/ml-pipeline.html#transformers">Transfomer</a>
+pattern, thus users can conveniently fit BigDL into a ML pipeline. The fitted model <code>DLModel</code> and
+<code>DLClassiferModel</code> contains the trained BigDL model and extends the Spark ML <code>Model</code> class.
+Alternatively users may also construct a <code>DLModel</code> with a pre-trained BigDL model to use it in
+Spark ML Pipeline for prediction. We are going to show you how to define a DLEstimator and
+DLClassifier and how to use it. For advanced users, please check our
+<a href="../../APIGuide/DLFrames/DLEstimator_DLClassifier/">ML Pipeline API</a> for detailed usage.</p>
+<hr />
+<h2 id="define-a-dlestimator"><strong>Define a DLEstimator</strong></h2>
+<p>Before we are trying to use DLEstimator to automate the training process, we need to make clear
+which model used to be updated parameters and gradients, which criterion used to measure the loss,
+the dimension of the features and the label. These are the key elements the DLEstimator required to
+prepare for the training. If you are unfamiliar with creating a model and criterion, check out
+<a href="../Model/Sequential/">Model</a> and <a href="../../APIGuide/Losses/">Losses</a> sections with provided links.</p>
+<p>So, suppose we create a model with single linear layer and use  MSECriterion as loss function here.
+You can choose any other model or criterion for your own good when you start your own training.</p>
+<p>Then basically one can write code like this:</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val model = Sequential().add(Linear(2, 2))
+val estimator = new DLEstimator(model, criterion, Array(2), Array(2))
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">linear_model = Sequential().add(Linear(2, 2))
+mse_criterion = MSECriterion()
+estimator = DLEstimator(model=linear_model, criterion=mse_criterion,
+feature_size=[2], label_size=[2])
+</code></pre>
+
+<p>Now, you have a DLEstimator based on your own choice of model, criterion. Also, make sure your specified
+feature size and label size consistent with the actual ones otherwise exception will be encountered.</p>
+<h2 id="define-a-dlclassifier"><strong>Define a DLClassifier</strong></h2>
+<p>Since DLlassifier is the subclass of DLEstimator, the way of defining a DLClassifier is almost the same
+like creating a DLEstimator except that you don't need to specify the label size because it's set to
+default binary value and pay attention to choosing the criterion suitable for classification problem wisely.</p>
+<p>Suppose we still create a model with single linear layer and use  ClassNLL criterion as loss
+function here.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val model = Sequential().add(Linear(2, 2)).add(LogSoftMax())
+val criterion = ClassNLLCriterion()
+val estimator = new DLClassifier(model, criterion, Array(2))
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">linear_model = Sequential().add(Linear(2, 2))
+classNLL_criterion = ClassNLLCriterion()
+classifier = DLClassifier(model=linear_model, criterion=classNLL_criterion,
+feature_size=[2])
+</code></pre>
+
+<h2 id="hyperparameter-setting">Hyperparameter setting</h2>
+<p>Prior to the commencement of the training process, you can modify the batch size, the epoch number of your
+training, and learning rate to meet your goal or DLEstimator/DLClassifier will use the default value.</p>
+<p>Continue the codes above, DLEstimator and DLClassifier can be setted in the same way.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">//for esitmator
+estimator.setBatchSize(4).setMaxEpoch(10).setLearningRate(0.01)
+//for classifier
+classifier.setBatchSize(4).setMaxEpoch(10).setLearningRate(0.01)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python"># for esitmator
+estimator.setBatchSize(4).setMaxEpoch(10).setLearningRate(0.01)
+# for classifier
+classifier.setBatchSize(4).setMaxEpoch(10).setLearningRate(0.01)
+
+</code></pre>
+
+<h2 id="prepare-the-data-and-start-the-training-process">Prepare the data and start the training process</h2>
+<p>Users need to convert the data into Spark's
+<a href="https://spark.apache.org/docs/latest/sql-programming-guide.html#datasets-and-dataframes">DataFrame/DataSet</a>
+to feed to the DLEstimator/DLCLassifer.
+Then after these steps, we can start training now.</p>
+<p>Suppose <code>df</code> is the training data, simple call <code>fit</code> method and let BigDL train the model for you. You will
+get a DLModel or DLClassifierModel based on which one you choose from DLEstimator and DLClassifier.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">//get a DLModel
+val dlModel = estimator.fit(df)
+//get a DLClassifierModel
+val dlClassifierModel = classifier.fit(df)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python"># get a DLModel
+dlModel = estimator.fit(df)
+# get a DLClassifierModel
+dlClassifierModel = classifier.fit(df)
+</code></pre>
+
+<h2 id="make-prediction-on-chosen-data-by-using-dlmodeldlclassifiermodel">Make prediction on chosen data by using DLModel/DLClassifierModel</h2>
+<p>Since DLModel/DLClassifierModel inherits from Spark's Transformer abstract class, simply call <code>transform</code>
+ method on DLModel/DLClassifierModel to make prediction.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">dlModel.transform(df).show(false)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">dlModel.transform(df).show(false)
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
