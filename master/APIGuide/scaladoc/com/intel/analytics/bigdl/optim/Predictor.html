@@ -39,7 +39,13 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Predictor for distributed data</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Predictor for distributed data</p><p>NOTE: The <code>predictClass</code>, <code>predict</code> and <code>predictImage</code> will call the relevant methods of
+object <code>Predictor</code>. Why we do this? Because every these methods uses the ClassTag <code>T</code>. If we do
+these jobs in the methods of class<code>Predictor</code>, when we do <code>mapPartition</code>, Spark will find all
+used values and do serialization. The <code>T</code> is the argument of constructor, the serialization will
+package the whole <code>Predictor</code> class, which contains the<code>model</code>. It will send a duplicate model
+to the workers. So we should move these methods to object <code>Predictor</code>.
+</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
