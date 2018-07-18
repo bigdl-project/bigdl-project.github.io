@@ -41,6 +41,8 @@
           ]},
           {title: "Define a model with multiple inputs", url: "#define-a-model-with-multiple-inputs", children: [
           ]},
+          {title: "Define a model with data pre-processing", url: "#define-a-model-with-data-pre-processing", children: [
+          ]},
         ];
 
     </script>
@@ -195,6 +197,20 @@ model = Model([linear1, linear2], [add])
 
 <p>In the above code, we define two input nodes linear1 and linear2 and put them
 into the first parameter when create the graph model.</p>
+<h2 id="define-a-model-with-data-pre-processing"><strong>Define a model with data pre-processing</strong></h2>
+<p>You can use a model as the data preprocessor for another model. In the training, the parameter of
+the preprocessor won't be updated. Here's how you can use it:</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val preprocessor = Module.Load(...)
+val trainable = Module.Load(...)
+val model = Graph(preprocessor, trainable)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">preprocessor = Model.loadModel(...)
+trainable = Model.loadModel(...)
+model = Model(preprocessor, trainable)
+</code></pre>
 
   <br>
 </div>
