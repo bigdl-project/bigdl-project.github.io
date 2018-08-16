@@ -96,6 +96,13 @@
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">warning_msg</span><span class="p">)</span></div>
 
 
+<span class="k">def</span> <span class="nf">__sys_path_insert</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">file_path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prepending </span><span class="si">%s</span><span class="s2"> to sys.path&quot;</span> <span class="o">%</span> <span class="n">file_path</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span>
+
+
+
 <span class="k">def</span> <span class="nf">__prepare_spark_env</span><span class="p">():</span>
     <span class="n">spark_home</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SPARK_HOME&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">exist_pyspark</span><span class="p">():</span>
@@ -111,8 +118,8 @@
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Using </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">spark_home</span><span class="p">)</span>
         <span class="n">py4j</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">spark_home</span><span class="p">,</span> <span class="s1">&#39;python/lib&#39;</span><span class="p">,</span> <span class="s1">&#39;py4j-*.zip&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">pyspark</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">spark_home</span><span class="p">,</span> <span class="s1">&#39;python/lib&#39;</span><span class="p">,</span> <span class="s1">&#39;pyspark*.zip&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">py4j</span><span class="p">)</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">pyspark</span><span class="p">)</span>
+        <span class="n">__sys_path_insert</span><span class="p">(</span><span class="n">py4j</span><span class="p">)</span>
+        <span class="n">__sys_path_insert</span><span class="p">(</span><span class="n">pyspark</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">__prepare_bigdl_env</span><span class="p">():</span>
@@ -120,20 +127,20 @@
     <span class="n">conf_paths</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jar_dir</span><span class="p">,</span> <span class="s2">&quot;share/conf/*.conf&quot;</span><span class="p">))</span>
     <span class="n">bigdl_classpath</span> <span class="o">=</span> <span class="n">get_bigdl_classpath</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">append_path</span><span class="p">(</span><span class="n">env_var_name</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">append_path</span><span class="p">(</span><span class="n">env_var_name</span><span class="p">,</span> <span class="n">jar_path</span><span class="p">):</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Adding </span><span class="si">%s</span><span class="s2"> to </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">env_var_name</span><span class="p">))</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">env_var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">env_var_name</span><span class="p">]</span>  <span class="c1"># noqa</span>
+            <span class="k">if</span> <span class="n">jar_path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">env_var_name</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">):</span>
+	            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Adding </span><span class="si">%s</span><span class="s2"> to </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">jar_path</span><span class="p">,</span> <span class="n">env_var_name</span><span class="p">))</span>
+	            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">env_var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">jar_path</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">env_var_name</span><span class="p">]</span>  <span class="c1"># noqa</span>
         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">env_var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="n">env_var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">jar_path</span>
 
     <span class="k">if</span> <span class="n">bigdl_classpath</span><span class="p">:</span>
         <span class="n">append_path</span><span class="p">(</span><span class="s2">&quot;BIGDL_JARS&quot;</span><span class="p">,</span> <span class="n">bigdl_classpath</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">conf_paths</span><span class="p">:</span>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">conf_paths</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Expecting one conf: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">conf_paths</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prepending </span><span class="si">%s</span><span class="s2"> to sys.path&quot;</span> <span class="o">%</span> <span class="n">conf_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">conf_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">__sys_path_insert</span><span class="p">(</span><span class="n">conf_paths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;BIGDL_JARS&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="n">is_spark_below_2_2</span><span class="p">():</span>
         <span class="k">for</span> <span class="n">jar</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;BIGDL_JARS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">):</span>
@@ -141,7 +148,7 @@
 
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;BIGDL_PACKAGES&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">package</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;BIGDL_PACKAGES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">):</span>
-            <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">package</span><span class="p">)</span>
+            <span class="n">__sys_path_insert</span><span class="p">(</span><span class="n">package</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="get_bigdl_classpath"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.engine.get_bigdl_classpath">[docs]</a><span class="k">def</span> <span class="nf">get_bigdl_classpath</span><span class="p">():</span>
