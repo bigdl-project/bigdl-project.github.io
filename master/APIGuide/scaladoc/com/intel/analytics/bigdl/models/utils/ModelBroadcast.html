@@ -24,7 +24,7 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="ModelBroadcast$.html" title="Go to companion"><img src="../../../../../../lib/class_to_object_big.png" /></a>
+        <a href="ModelBroadcast$.html" title="Go to companion"><img src="../../../../../../lib/trait_to_object_big.png" /></a>
         <p id="owner"><a href="../../../../../package.html" class="extype" name="com">com</a>.<a href="../../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl.models">models</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.models.utils">utils</a></p>
         <h1><a href="ModelBroadcast$.html" title="Go to companion">ModelBroadcast</a></h1>
       </div>
@@ -32,16 +32,15 @@
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
         <span class="name">ModelBroadcast</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>ModelBroadcast is used to broadcast model.</p><p>Note: If you want to use this to broadcast training model, please use value(true) to get
-the model. And before broadcasting please make sure the model's parameter is compacted.
-</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>data type</p></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>ModelBroadcast is used to broadcast model
+</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -79,31 +78,48 @@ the model. And before broadcasting please make sure the model's parameter is com
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="com.intel.analytics.bigdl.models.utils.ModelBroadcast#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(applyProtoBuffer:Boolean)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.models.utils.ModelBroadcast[T]"></a>
-      <a id="&lt;init&gt;:ModelBroadcast[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">ModelBroadcast</span><span class="params">(<span name="applyProtoBuffer">applyProtoBuffer: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.models.utils.ModelBroadcast.T">T</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.models.utils.ModelBroadcast.T">T</span>]</span>)</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">applyProtoBuffer</dt><dd class="cmt"><p>it will use proto buffer serialization for broadcasting if set true
-</p></dd></dl></div>
-    </li></ol>
-            </div>
-
         
 
         
 
         <div id="values" class="values members">
-              <h3>Value Members</h3>
+              <h3>Abstract Value Members</h3>
+              <ol><li name="com.intel.analytics.bigdl.models.utils.ModelBroadcast#broadcast" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="broadcast(sc:org.apache.spark.SparkContext,model:com.intel.analytics.bigdl.Module[T]):ModelBroadcast.this.type"></a>
+      <a id="broadcast(SparkContext,Module[T]):ModelBroadcast.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">broadcast</span><span class="params">(<span name="sc">sc: <span class="extype" name="org.apache.spark.SparkContext">SparkContext</span></span>, <span name="model">model: <a href="../../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.models.utils.ModelBroadcast.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.models.utils.ModelBroadcast">ModelBroadcast</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Broadcast the model</p><div class="fullcomment"><div class="comment cmt"><p>Broadcast the model</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext</p></dd><dt class="param">model</dt><dd class="cmt"><p>model to broadcast</p></dd><dt>returns</dt><dd class="cmt"><p>this
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.models.utils.ModelBroadcast#value" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="value(initGradient:Boolean):com.intel.analytics.bigdl.Module[T]"></a>
+      <a id="value(Boolean):Module[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">value</span><span class="params">(<span name="initGradient">initGradient: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="../../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.models.utils.ModelBroadcast.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get the broadcast model on worker
+</p><div class="fullcomment"><div class="comment cmt"><p>Get the broadcast model on worker
+</p></div><dl class="paramcmts block"><dt class="param">initGradient</dt><dd class="cmt"><p>If create a tensor for gradient when fetch the model. Please note that
+                    the gradient is not needed in model inference</p></dd><dt>returns</dt><dd class="cmt"><p>model
+</p></dd></dl></div>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
@@ -182,26 +198,6 @@ the model. And before broadcasting please make sure the model's parameter is com
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.models.utils.ModelBroadcast#broadcast" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="broadcast(sc:org.apache.spark.SparkContext,model:com.intel.analytics.bigdl.Module[T]):ModelBroadcast.this.type"></a>
-      <a id="broadcast(SparkContext,Module[T]):ModelBroadcast.this.type"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">broadcast</span><span class="params">(<span name="sc">sc: <span class="extype" name="org.apache.spark.SparkContext">SparkContext</span></span>, <span name="model">model: <a href="../../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.models.utils.ModelBroadcast.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.models.utils.ModelBroadcast">ModelBroadcast</a>.this.type</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">broadcast the model
-first get and clear Const values from the model
-then get and clear the weight and bias parameters from the model
-finally broadcast Const values, the parameters and model(without parameters) separately</p><div class="fullcomment"><div class="comment cmt"><p>broadcast the model
-first get and clear Const values from the model
-then get and clear the weight and bias parameters from the model
-finally broadcast Const values, the parameters and model(without parameters) separately</p></div><dl class="paramcmts block"><dt class="param">sc</dt><dd class="cmt"><p>SparkContext</p></dd><dt class="param">model</dt><dd class="cmt"><p>model to broadcast</p></dd><dt>returns</dt><dd class="cmt"><p>this
-</p></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -370,24 +366,19 @@ finally broadcast Const values, the parameters and model(without parameters) sep
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.models.utils.ModelBroadcast#value" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="value(initGradient:Boolean):com.intel.analytics.bigdl.Module[T]"></a>
-      <a id="value(Boolean):Module[T]"></a>
+    </li><li name="com.intel.analytics.bigdl.models.utils.ModelBroadcast#uuid" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="uuid():String"></a>
+      <a id="uuid():String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">value</span><span class="params">(<span name="initGradient">initGradient: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="../../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.models.utils.ModelBroadcast.T">T</span>]</span>
+        <span class="name">uuid</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">get the broadcast model
-put the weight and bias back to the model
-</p><div class="fullcomment"><div class="comment cmt"><p>get the broadcast model
-put the weight and bias back to the model
-</p></div><dl class="paramcmts block"><dt class="param">initGradient</dt><dd class="cmt"><p>if init gradParameter.</p></dd><dt>returns</dt><dd class="cmt"><p>model
-</p></dd></dl></div>
+      
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>

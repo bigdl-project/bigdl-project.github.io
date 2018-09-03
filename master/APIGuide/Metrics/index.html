@@ -39,6 +39,10 @@
           ]},
           {title: "Top5Accuracy", url: "#top5accuracy", children: [
           ]},
+          {title: "HitRatio", url: "#hitratio", children: [
+          ]},
+          {title: "NDCG", url: "#ndcg", children: [
+          ]},
         ];
 
     </script>
@@ -184,6 +188,31 @@ res18: Array[(com.intel.analytics.bigdl.optim.ValidationResult, com.intel.analyt
 
 &gt;&gt;&gt; print test_results[0]
 Test result: 0.0, total_num: 10, method: Top5Accuracy
+</code></pre>
+
+<hr />
+<h2 id="hitratio">HitRatio</h2>
+<p>Hit Ratio(HR) used in recommandation application. HR intuitively measures whether the test item is present on the top-k list.  </p>
+<p>Notice: Output and target should belong to the same user. And have (negNum + 1) elements. Target should have only one positive label, means one element is 1, others are all 0. A couple of output and target will be count as one record.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val hr10 = new HitRatio(k = 10, negNum = 100)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">hr10 = HitRatio(k = 10)
+</code></pre>
+
+<hr />
+<h2 id="ndcg">NDCG</h2>
+<p>NDCG is Normalized Discounted Cumulative Gain(NDCG).<br />
+NDCG accounts for the position of the hit by assigning higher scores to hits at top ranks.  </p>
+<p>Notice: Like HitRatio, output and target should belong to the same user. And have (negNum + 1) elements. Target should have only one positive label, means one element is 1, others are all 0. A couple of output and target will be count as one record.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val ndcg = new NDCG(k = 10, negNum = 100)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">ndcg = NDCG(k = 10)
 </code></pre>
 
   <br>

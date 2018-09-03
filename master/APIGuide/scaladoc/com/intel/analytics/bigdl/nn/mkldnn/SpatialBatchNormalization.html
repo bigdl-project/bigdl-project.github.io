@@ -463,6 +463,20 @@ super.clearState in the override method
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a> → AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.mkldnn.SpatialBatchNormalization#evaluate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="evaluate():SpatialBatchNormalization.this.type"></a>
+      <a id="evaluate():SpatialBatchNormalization.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">evaluate</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.SpatialBatchNormalization">SpatialBatchNormalization</a>.this.type</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Set the module to evaluate mode</p><div class="fullcomment"><div class="comment cmt"><p>Set the module to evaluate mode</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.SpatialBatchNormalization">SpatialBatchNormalization</a> → <a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#evaluate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="evaluate(dataSet:com.intel.analytics.bigdl.dataset.LocalDataSet[com.intel.analytics.bigdl.dataset.MiniBatch[T]],vMethods:Array[_&lt;:com.intel.analytics.bigdl.optim.ValidationMethod[T]]):Array[(com.intel.analytics.bigdl.optim.ValidationResult,com.intel.analytics.bigdl.optim.ValidationMethod[T])]"></a>
       <a id="evaluate(LocalDataSet[MiniBatch[Float]],Array[_&lt;:ValidationMethod[Float]]):Array[(ValidationResult,ValidationMethod[Float])]"></a>
@@ -491,20 +505,6 @@ super.clearState in the override method
       </h4>
       <p class="shortcomment cmt">use ValidationMethod to evaluate module on the given rdd dataset</p><div class="fullcomment"><div class="comment cmt"><p>use ValidationMethod to evaluate module on the given rdd dataset</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for test</p></dd><dt class="param">vMethods</dt><dd class="cmt"><p>validation methods</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchsize of all partitions,
                  optional param and default 4 * partitionNum of dataset</p></dd><dt>returns</dt><dd class="cmt"><p>
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#evaluate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="evaluate():AbstractModule.this.type"></a>
-      <a id="evaluate():SpatialBatchNormalization.this.type"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">evaluate</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.SpatialBatchNormalization">SpatialBatchNormalization</a>.this.type</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Set the module to evaluate mode</p><div class="fullcomment"><div class="comment cmt"><p>Set the module to evaluate mode</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#evaluateImage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="evaluateImage(imageFrame:com.intel.analytics.bigdl.transform.vision.image.ImageFrame,vMethods:Array[_&lt;:com.intel.analytics.bigdl.optim.ValidationMethod[T]],batchSize:Option[Int]):Array[(com.intel.analytics.bigdl.optim.ValidationResult,com.intel.analytics.bigdl.optim.ValidationMethod[T])]"></a>
@@ -600,8 +600,8 @@ set an array of layers that match the given <code><code><code>names</code></code
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#getExtraParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getExtraParameter():Array[com.intel.analytics.bigdl.tensor.Tensor[T]]"></a>
+    </li><li name="com.intel.analytics.bigdl.nn.mkldnn.SpatialBatchNormalization#getExtraParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getExtraParameter():Array[com.intel.analytics.bigdl.tensor.Tensor[Float]]"></a>
       <a id="getExtraParameter():Array[Tensor[Float]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -616,7 +616,7 @@ set an array of layers that match the given <code><code><code>names</code></code
 Extra parameter means the trainable parameters beside weight and bias. Such as runningMean
 and runningVar in BatchNormalization.</p><p>The subclass should override this method if it has some parameters besides weight and bias.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>an array of tensor
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.SpatialBatchNormalization">SpatialBatchNormalization</a> → <a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.InferShape#getInputShape" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getInputShape():com.intel.analytics.bigdl.utils.Shape"></a>
       <a id="getInputShape():Shape"></a>
@@ -1604,8 +1604,8 @@ and runningVar in BatchNormalization.
       </h4>
       <p class="shortcomment cmt">Module status.</p><div class="fullcomment"><div class="comment cmt"><p>Module status. It is useful for modules like dropout/batch normalization
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#training" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="training():AbstractModule.this.type"></a>
+    </li><li name="com.intel.analytics.bigdl.nn.mkldnn.SpatialBatchNormalization#training" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="training():SpatialBatchNormalization.this.type"></a>
       <a id="training():SpatialBatchNormalization.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1617,7 +1617,7 @@ and runningVar in BatchNormalization.
       </span>
       </h4>
       <p class="shortcomment cmt">Set the module to training mode</p><div class="fullcomment"><div class="comment cmt"><p>Set the module to training mode</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.SpatialBatchNormalization">SpatialBatchNormalization</a> → <a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#unFreeze" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="unFreeze(names:String*):AbstractModule.this.type"></a>
       <a id="unFreeze(String*):SpatialBatchNormalization.this.type"></a>

@@ -123,6 +123,19 @@
       </span>
       </h4>
       <p class="comment cmt">An implementation of Adamax http://arxiv.</p>
+    </li><li name="com.intel.analytics.bigdl.optim.ContiguousResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ContiguousResultextendsValidationResult"></a>
+      <a id="ContiguousResult:ContiguousResult"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ContiguousResult.html"><span class="name">ContiguousResult</span></a><span class="result"> extends <a href="ValidationResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationResult">ValidationResult</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A generic result type who's data is contiguous float.</p>
     </li><li name="com.intel.analytics.bigdl.optim.DistriOptimizer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DistriOptimizer[T]extendsOptimizer[T,com.intel.analytics.bigdl.dataset.MiniBatch[T]]"></a>
       <a id="DistriOptimizer[T]:DistriOptimizer[T]"></a>
@@ -175,6 +188,19 @@
       </span>
       </h4>
       <p class="comment cmt">An implementation of Ftrl https://www.</p>
+    </li><li name="com.intel.analytics.bigdl.optim.HitRatio" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="HitRatio[T]extendsValidationMethod[T]"></a>
+      <a id="HitRatio[T]:HitRatio[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="HitRatio.html"><span class="name">HitRatio</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.HitRatio.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Hit Ratio(HR).</p>
     </li><li name="com.intel.analytics.bigdl.optim.L1L2Regularizer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="L1L2Regularizer[T]extendsRegularizer[T]"></a>
       <a id="L1L2Regularizer[T]:L1L2Regularizer[T]"></a>
@@ -300,7 +326,7 @@ as an argument of its <code>test</code> method
       <p class="comment cmt">This evaluation method is calculate loss of output with respect to target
 </p>
     </li><li name="com.intel.analytics.bigdl.optim.LossResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="LossResultextendsValidationResult"></a>
+      <a id="LossResultextendsContiguousResult"></a>
       <a id="LossResult:LossResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -308,7 +334,7 @@ as an argument of its <code>test</code> method
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="LossResult.html"><span class="name">LossResult</span></a><span class="result"> extends <a href="ValidationResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationResult">ValidationResult</a></span>
+        <a href="LossResult.html"><span class="name">LossResult</span></a><span class="result"> extends <a href="ContiguousResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ContiguousResult">ContiguousResult</a></span>
       </span>
       </h4>
       <p class="comment cmt">Use loss as a validation result
@@ -339,6 +365,19 @@ as an argument of its <code>test</code> method
       </span>
       </h4>
       <p class="comment cmt">Performance metrics for the training process.</p>
+    </li><li name="com.intel.analytics.bigdl.optim.NDCG" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NDCG[T]extendsValidationMethod[T]"></a>
+      <a id="NDCG[T]:NDCG[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="NDCG.html"><span class="name">NDCG</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.NDCG.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Normalized Discounted Cumulative Gain(NDCG).</p>
     </li><li name="com.intel.analytics.bigdl.optim.OptimMethod" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="OptimMethod[T]extendsSerializable"></a>
       <a id="OptimMethod[T]:OptimMethod[T]"></a>
@@ -367,6 +406,19 @@ as an argument of its <code>test</code> method
       </h4>
       <p class="comment cmt"><a href="Optimizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Optimizer">Optimizer</a> is an abstract class which is used to train a model automatically
 with some certain optimization algorithms.</p>
+    </li><li name="com.intel.analytics.bigdl.optim.ParallelAdam" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ParallelAdam[T]extendsOptimMethod[T]"></a>
+      <a id="ParallelAdam[T]:ParallelAdam[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ParallelAdam.html"><span class="name">ParallelAdam</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.ParallelAdam.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">An multi-thread implementation of Adam http://arxiv.</p>
     </li><li name="com.intel.analytics.bigdl.optim.PredictionService" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="PredictionService[T]extendsAnyRef"></a>
       <a id="PredictionService[T]:PredictionService[T]"></a>
@@ -664,6 +716,19 @@ its <code>test</code> method.</p>
       </span>
       <span class="symbol">
         <a href="Optimizer$.html"><span class="name">Optimizer</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.optim.ParallelAdam" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ParallelAdam"></a>
+      <a id="ParallelAdam:ParallelAdam"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ParallelAdam$.html"><span class="name">ParallelAdam</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       

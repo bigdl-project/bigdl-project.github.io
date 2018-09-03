@@ -49,6 +49,8 @@
           ]},
           {title: "Ftrl", url: "#ftrl", children: [
           ]},
+          {title: "ParallelAdam", url: "#paralleladam", children: [
+          ]},
         ];
 
     </script>
@@ -81,7 +83,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 </code></pre>
 
 <p><strong>Python:</strong></p>
-<pre><code class="python">optim = Adam(learningRate=1e-3, learningRateDecay-0.0, beta1=0.9, beta2=0.999, Epsilon=1e-8, bigdl_type=&quot;float&quot;)
+<pre><code class="python">optim = Adam(learningrate=1e-3, learningrate_decay=0.0, beta1=0.9, beta2=0.999, epsilon=1e-8, bigdl_type=&quot;float&quot;)
 </code></pre>
 
 <p>An implementation of Adam optimization, first-order gradient-based optimization of stochastic  objective  functions. http://arxiv.org/pdf/1412.6980.pdf</p>
@@ -391,6 +393,16 @@ optimizer = Optimizer(
     optim_method=optim_method,
     end_trigger=MaxEpoch(20),
     batch_size=32)
+</code></pre>
+
+<h2 id="paralleladam">ParallelAdam</h2>
+<p>Multi-Thread version of <a href="#adam">Adam</a>.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val optim = new ParallelAdam(learningRate=1e-3, learningRateDecay=0.0, beta1=0.9, beta2=0.999, Epsilon=1e-8, parallelNum=Engine.coreNumber())
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">optim = ParallelAdam(learningrate=1e-3, learningrate_decay=0.0, beta1=0.9, beta2=0.999, epsilon=1e-8, parallel_num=get_node_and_core_number()[1], bigdl_type=&quot;float&quot;)
 </code></pre>
 
   <br>

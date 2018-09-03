@@ -83,7 +83,8 @@
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">JavaValue</span>
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">callBigDlFunc</span>
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">callJavaFunc</span>
-<span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">get_spark_context</span>
+<span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">get_node_and_core_number</span>
+<span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">init_engine</span>
 <span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">to_list</span>
 <span class="kn">from</span> <span class="nn">bigdl.dataset.dataset</span> <span class="k">import</span> <span class="o">*</span>
 
@@ -141,6 +142,40 @@
         <span class="k">if</span> <span class="n">cri</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">cri</span> <span class="o">=</span> <span class="n">ClassNLLCriterion</span><span class="p">()</span>
         <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">cri</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HitRatio"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.HitRatio">[docs]</a><span class="k">class</span> <span class="nc">HitRatio</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Hit Ratio(HR) used in recommandation application.</span>
+<span class="sd">    HR intuitively measures whether the test item is present on the top-k list.</span>
+
+<span class="sd">    &gt;&gt;&gt; hr10 = HitRatio(k = 10)</span>
+<span class="sd">    creating: createHitRatio</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">neg_num</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create hit ratio validation method.</span>
+
+<span class="sd">        :param k: top k</span>
+<span class="sd">        :param neg_num: number of negative items.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">neg_num</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NDCG"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.NDCG">[docs]</a><span class="k">class</span> <span class="nc">NDCG</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Normalized Discounted Cumulative Gain(NDCG).</span>
+<span class="sd">    NDCG accounts for the position of the hit by assigning higher scores to hits at top ranks.</span>
+
+<span class="sd">    &gt;&gt;&gt; ndcg = NDCG(k = 10)</span>
+<span class="sd">    creating: createNDCG</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">neg_num</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create NDCG validation method.</span>
+
+<span class="sd">        :param k: top k</span>
+<span class="sd">        :param neg_num: number of negative items.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">neg_num</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MAE"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.MAE">[docs]</a><span class="k">class</span> <span class="nc">MAE</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -553,7 +588,7 @@
 <span class="sd">    :param beta1 first moment coefficient</span>
 <span class="sd">    :param beta2 second moment coefficient</span>
 <span class="sd">    :param epsilon for numerical stability</span>
-<span class="sd">    &gt;&gt;&gt; adagrad = Adam()</span>
+<span class="sd">    &gt;&gt;&gt; adam = Adam()</span>
 <span class="sd">    creating: createAdam</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
@@ -565,6 +600,31 @@
                  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Adam</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">learningrate_decay</span><span class="p">,</span>
                            <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ParallelAdam"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.ParallelAdam">[docs]</a><span class="k">class</span> <span class="nc">ParallelAdam</span><span class="p">(</span><span class="n">OptimMethod</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An implementation of Adam http://arxiv.org/pdf/1412.6980.pdf</span>
+<span class="sd">    :param learningrate learning rate</span>
+<span class="sd">    :param learningrate_decay learning rate decay</span>
+<span class="sd">    :param beta1 first moment coefficient</span>
+<span class="sd">    :param beta2 second moment coefficient</span>
+<span class="sd">    :param epsilon for numerical stability</span>
+<span class="sd">    &gt;&gt;&gt; init_engine()</span>
+<span class="sd">    &gt;&gt;&gt; pAdam = ParallelAdam()</span>
+<span class="sd">    creating: createParallelAdam</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">learningrate</span> <span class="o">=</span> <span class="mf">1e-3</span><span class="p">,</span>
+                 <span class="n">learningrate_decay</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">beta1</span> <span class="o">=</span> <span class="mf">0.9</span><span class="p">,</span>
+                 <span class="n">beta2</span> <span class="o">=</span> <span class="mf">0.999</span><span class="p">,</span>
+                 <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-8</span><span class="p">,</span>
+                 <span class="n">parallel_num</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">parallel_num</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">parallel_num</span> <span class="o">=</span> <span class="n">get_node_and_core_number</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ParallelAdam</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">learningrate</span><span class="p">,</span> <span class="n">learningrate_decay</span><span class="p">,</span>
+                                   <span class="n">beta1</span><span class="p">,</span> <span class="n">beta2</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">parallel_num</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Ftrl"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Ftrl">[docs]</a><span class="k">class</span> <span class="nc">Ftrl</span><span class="p">(</span><span class="n">OptimMethod</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>

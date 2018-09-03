@@ -96,6 +96,7 @@ java -cp xxx.jar -DFOO=BAR your.main.class.name
 <p><strong>Mode</strong></p>
 <ul>
 <li><code>bigdl.localMode</code>: Whether BigDL is running as a local Java/Scala program. Default is false.</li>
+<li><code>bigdl.engineType</code>: Default is <strong>mklblas</strong>. When you run model contains mkl dnn layers, you should set it to <strong>mkldnn</strong> to get better performance.</li>
 </ul>
 <p><strong>Multi-threading</strong></p>
 <ul>
@@ -108,6 +109,7 @@ java -cp xxx.jar -DFOO=BAR your.main.class.name
 <li><code>bigdl.failure.retryTimes</code>: To set how many times to retry when there's failure in distributed training. Default is 5.</li>
 <li><code>bigdl.failure.retryTimeInterval</code>: To set how long to recount the retry times. Time unit here is second. Default is 120.</li>
 <li><code>bigdl.check.singleton</code>: To check whether multiple partitions run on the same executor, which is bad for performance. Default is false.</li>
+<li><code>bigdl.ModelBroadcastFactory</code>: Specify a ModelBroadcastFactory which creates a ModelBroadcast to control how to broadcast the model in the distributed training.</li>
 </ul>
 <p><strong>Tensor</strong></p>
 <ul>

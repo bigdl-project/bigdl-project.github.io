@@ -133,7 +133,7 @@ creating: createAdagrad</p>
 :param beta1 first moment coefficient
 :param beta2 second moment coefficient
 :param epsilon for numerical stability
-&gt;&gt;&gt; adagrad = Adam()
+&gt;&gt;&gt; adam = Adam()
 creating: createAdam</p>
 </dd></dl>
 
@@ -369,6 +369,18 @@ creating: createFtrl</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.optim.optimizer.HitRatio">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">HitRatio</code><span class="sig-paren">(</span><em>k=10</em>, <em>neg_num=100</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#HitRatio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.HitRatio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Hit Ratio(HR) used in recommandation application.
+HR intuitively measures whether the test item is present on the top-k list.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hr10</span> <span class="o">=</span> <span class="n">HitRatio</span><span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">creating: createHitRatio</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.optim.optimizer.L1L2Regularizer">
 <em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">L1L2Regularizer</code><span class="sig-paren">(</span><em>l1</em>, <em>l2</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#L1L2Regularizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.L1L2Regularizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
@@ -569,6 +581,18 @@ Usually used as end_trigger when creating an Optimizer.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.optim.optimizer.NDCG">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">NDCG</code><span class="sig-paren">(</span><em>k=10</em>, <em>neg_num=100</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#NDCG"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.NDCG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Normalized Discounted Cumulative Gain(NDCG).
+NDCG accounts for the position of the hit by assigning higher scores to hits at top ranks.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ndcg</span> <span class="o">=</span> <span class="n">NDCG</span><span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">creating: createNDCG</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.optim.optimizer.OptimMethod">
 <em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">OptimMethod</code><span class="sig-paren">(</span><em>jvalue</em>, <em>bigdl_type</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#OptimMethod"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.OptimMethod" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
@@ -659,6 +683,21 @@ Depend on the input type, the returning optimizer can be a local optimizer      
 </table>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.ParallelAdam">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">ParallelAdam</code><span class="sig-paren">(</span><em>learningrate=0.001</em>, <em>learningrate_decay=0.0</em>, <em>beta1=0.9</em>, <em>beta2=0.999</em>, <em>epsilon=1e-08</em>, <em>parallel_num=-1</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#ParallelAdam"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.ParallelAdam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.optim.optimizer.OptimMethod" title="bigdl.optim.optimizer.OptimMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.optim.optimizer.OptimMethod</span></code></a></p>
+<p>An implementation of Adam <a class="reference external" href="http://arxiv.org/pdf/1412.6980.pdf">http://arxiv.org/pdf/1412.6980.pdf</a>
+:param learningrate learning rate
+:param learningrate_decay learning rate decay
+:param beta1 first moment coefficient
+:param beta2 second moment coefficient
+:param epsilon for numerical stability
+&gt;&gt;&gt; init_engine()
+&gt;&gt;&gt; pAdam = ParallelAdam()
+creating: createParallelAdam</p>
 </dd></dl>
 
 <dl class="class">
