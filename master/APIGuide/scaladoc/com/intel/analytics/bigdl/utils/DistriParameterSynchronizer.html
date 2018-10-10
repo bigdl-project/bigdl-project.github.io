@@ -101,46 +101,46 @@
       <p class="shortcomment cmt">clear the synchronizer
 </p>
     </li><li name="com.intel.analytics.bigdl.utils.DistriParameterSynchronizer#get" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="get(name:String):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="get(String):Tensor[T]"></a>
+      <a id="get(name:String):(com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T])"></a>
+      <a id="get(String):(Tensor[T],Tensor[T])"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">get</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.DistriParameterSynchronizer.T">T</span>]</span>
+        <span class="name">get</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.DistriParameterSynchronizer.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.DistriParameterSynchronizer.T">T</span>])</span>
       </span>
       </h4>
       <p class="shortcomment cmt">get parameter for specific identifier</p><div class="fullcomment"><div class="comment cmt"><p>get parameter for specific identifier</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>identifier for parameter</p></dd><dt>returns</dt><dd class="cmt"><p>parameter
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.utils.DistriParameterSynchronizer#init" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="init(name:String,globalSize:Int,priority:Int):Unit"></a>
-      <a id="init(String,Int,Int):Unit"></a>
+      <a id="init(name:String,globalSize:Int,priority:Int,weights:com.intel.analytics.bigdl.tensor.Tensor[T],grads:com.intel.analytics.bigdl.tensor.Tensor[T]):Unit"></a>
+      <a id="init(String,Int,Int,Tensor[T],Tensor[T]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">init</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="globalSize">globalSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="priority">priority: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">init</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="globalSize">globalSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="priority">priority: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="weights">weights: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.DistriParameterSynchronizer.T">T</span>]</span>, <span name="grads">grads: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.DistriParameterSynchronizer.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Init synchronization context for new parameter</p><div class="fullcomment"><div class="comment cmt"><p>Init synchronization context for new parameter</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>identifier for parameter</p></dd><dt class="param">globalSize</dt><dd class="cmt"><p>total size of parameter</p></dd><dt class="param">priority</dt><dd class="cmt"><p>priority for this parameter
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.utils.DistriParameterSynchronizer#put" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="put(name:String,parameter:com.intel.analytics.bigdl.tensor.Tensor[T]):Unit"></a>
-      <a id="put(String,Tensor[T]):Unit"></a>
+      <a id="put(name:String):Unit"></a>
+      <a id="put(String):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">put</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="parameter">parameter: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.DistriParameterSynchronizer.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">put</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">put parameter to global</p><div class="fullcomment"><div class="comment cmt"><p>put parameter to global</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>identifier for parameter</p></dd><dt class="param">parameter</dt><dd class="cmt"><p>parameter to put
+      <p class="shortcomment cmt">put parameter to global</p><div class="fullcomment"><div class="comment cmt"><p>put parameter to global</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>identifier for parameter
 </p></dd></dl></div>
     </li></ol>
             </div>

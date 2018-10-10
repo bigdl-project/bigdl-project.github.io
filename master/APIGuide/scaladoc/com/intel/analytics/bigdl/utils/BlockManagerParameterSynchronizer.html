@@ -95,7 +95,23 @@
     </li></ol>
             </div>
 
-        
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="com.intel.analytics.bigdl.utils.BlockManagerParameterSynchronizer.AsyncTask" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AsyncTaskextendsCallable[com.intel.analytics.bigdl.tensor.Tensor[T]]"></a>
+      <a id="AsyncTask:AsyncTask"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="BlockManagerParameterSynchronizer$AsyncTask.html"><span class="name">AsyncTask</span></a><span class="result"> extends <span class="extype" name="java.util.concurrent.Callable">Callable</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.BlockManagerParameterSynchronizer.T">T</span>]]</span>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
 
         
 
@@ -259,15 +275,15 @@
               
         </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.utils.BlockManagerParameterSynchronizer#get" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="get(name:String):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="get(String):Tensor[T]"></a>
+      <a id="get(name:String):(com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T])"></a>
+      <a id="get(String):(Tensor[T],Tensor[T])"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">get</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.BlockManagerParameterSynchronizer.T">T</span>]</span>
+        <span class="name">get</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.BlockManagerParameterSynchronizer.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.BlockManagerParameterSynchronizer.T">T</span>])</span>
       </span>
       </h4>
       <p class="shortcomment cmt">get parameter for specific identifier</p><div class="fullcomment"><div class="comment cmt"><p>get parameter for specific identifier</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>identifier for parameter</p></dd><dt>returns</dt><dd class="cmt"><p>parameter
@@ -299,15 +315,15 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.utils.BlockManagerParameterSynchronizer#init" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="init(name:String,globalSize:Int,priority:Int):Unit"></a>
-      <a id="init(String,Int,Int):Unit"></a>
+      <a id="init(name:String,globalSize:Int,priority:Int,weights:com.intel.analytics.bigdl.tensor.Tensor[T],grads:com.intel.analytics.bigdl.tensor.Tensor[T]):Unit"></a>
+      <a id="init(String,Int,Int,Tensor[T],Tensor[T]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">init</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="globalSize">globalSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="priority">priority: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">init</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="globalSize">globalSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="priority">priority: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="weights">weights: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.BlockManagerParameterSynchronizer.T">T</span>]</span>, <span name="grads">grads: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.BlockManagerParameterSynchronizer.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Init synchronization context for new parameter</p><div class="fullcomment"><div class="comment cmt"><p>Init synchronization context for new parameter</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>identifier for parameter</p></dd><dt class="param">globalSize</dt><dd class="cmt"><p>total size of parameter</p></dd><dt class="param">priority</dt><dd class="cmt"><p>priority for this parameter
@@ -364,19 +380,32 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.utils.BlockManagerParameterSynchronizer#partitionID" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="partitionID:Int"></a>
+      <a id="partitionID:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">partitionID</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.utils.BlockManagerParameterSynchronizer#put" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="put(name:String,parameter:com.intel.analytics.bigdl.tensor.Tensor[T]):Unit"></a>
-      <a id="put(String,Tensor[T]):Unit"></a>
+      <a id="put(name:String):Unit"></a>
+      <a id="put(String):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">put</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="parameter">parameter: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.BlockManagerParameterSynchronizer.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">put</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">put parameter to global</p><div class="fullcomment"><div class="comment cmt"><p>put parameter to global</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>identifier for parameter</p></dd><dt class="param">parameter</dt><dd class="cmt"><p>parameter to put
+      <p class="shortcomment cmt">put parameter to global</p><div class="fullcomment"><div class="comment cmt"><p>put parameter to global</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>identifier for parameter
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.utils.BlockManagerParameterSynchronizer">BlockManagerParameterSynchronizer</a> → <a href="DistriParameterSynchronizer.html" class="extype" name="com.intel.analytics.bigdl.utils.DistriParameterSynchronizer">DistriParameterSynchronizer</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
@@ -391,6 +420,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.utils.BlockManagerParameterSynchronizer#threadCount" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="threadCount:java.util.concurrent.atomic.AtomicInteger"></a>
+      <a id="threadCount:AtomicInteger"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">threadCount</span><span class="result">: <span class="extype" name="java.util.concurrent.atomic.AtomicInteger">AtomicInteger</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
@@ -404,6 +446,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.utils.BlockManagerParameterSynchronizer#totalPartition" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="totalPartition:Int"></a>
+      <a id="totalPartition:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">totalPartition</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>

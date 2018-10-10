@@ -103,7 +103,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="Utils$$TrainParams.html"><span class="name">TrainParams</span></a><span class="params">(<span name="folder">folder: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;./&quot;</span></span>, <span name="checkpoint">checkpoint: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="modelSnapshot">modelSnapshot: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="stateSnapshot">stateSnapshot: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="summaryPath">summaryPath: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">112</span></span>, <span name="maxEpoch">maxEpoch: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">90</span></span>, <span name="overWriteCheckpoint">overWriteCheckpoint: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="learningRate">learningRate: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.01</span></span>, <span name="weightDecay">weightDecay: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">5.0E-4</span></span>, <span name="graphModel">graphModel: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="Utils$$TrainParams.html"><span class="name">TrainParams</span></a><span class="params">(<span name="folder">folder: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;./&quot;</span></span>, <span name="checkpoint">checkpoint: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="modelSnapshot">modelSnapshot: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="stateSnapshot">stateSnapshot: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="summaryPath">summaryPath: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">112</span></span>, <span name="maxEpoch">maxEpoch: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">90</span></span>, <span name="overWriteCheckpoint">overWriteCheckpoint: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="learningRate">learningRate: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.01</span></span>, <span name="weightDecay">weightDecay: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">5.0E-4</span></span>, <span name="graphModel">graphModel: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="maxIteration">maxIteration: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">40000</span></span>, <span name="momentum">momentum: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.9</span></span>, <span name="dampening">dampening: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.0</span></span>, <span name="nesterov">nesterov: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="classNumber">classNumber: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1000</span></span>, <span name="env">env: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;local&quot;</span></span>, <span name="checkpointIteration">checkpointIteration: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1000</span></span>, <span name="maxLr">maxLr: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.06</span></span>, <span name="warmupEpoch">warmupEpoch: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">scala.None</span></span>, <span name="gradientL2NormThreshold">gradientL2NormThreshold: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Double">Double</span>] = <span class="symbol">scala.None</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -399,6 +399,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.models.vgg.Utils#trainDataSet" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="trainDataSet(path:String,sc:org.apache.spark.SparkContext,imageSize:Int,batchSize:Int):com.intel.analytics.bigdl.models.vgg.Utils.BatchDataSet"></a>
+      <a id="trainDataSet(String,SparkContext,Int,Int):BatchDataSet"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trainDataSet</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="sc">sc: <span class="extype" name="org.apache.spark.SparkContext">SparkContext</span></span>, <span name="imageSize">imageSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.models.vgg.Utils.BatchDataSet">BatchDataSet</span></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.models.vgg.Utils#trainMean" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="trainMean:(Double,Double,Double)"></a>
       <a id="trainMean:(Double,Double,Double)"></a>
@@ -435,6 +448,19 @@
       </span>
       <span class="symbol">
         <span class="name">trainStd</span><span class="result">: (<span class="extype" name="scala.Double">Double</span>, <span class="extype" name="scala.Double">Double</span>, <span class="extype" name="scala.Double">Double</span>)</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.models.vgg.Utils#valDataSet" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="valDataSet(path:String,sc:org.apache.spark.SparkContext,imageSize:Int,batchSize:Int):com.intel.analytics.bigdl.models.vgg.Utils.BatchDataSet"></a>
+      <a id="valDataSet(String,SparkContext,Int,Int):BatchDataSet"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">valDataSet</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="sc">sc: <span class="extype" name="org.apache.spark.SparkContext">SparkContext</span></span>, <span name="imageSize">imageSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.models.vgg.Utils.BatchDataSet">BatchDataSet</span></span>
       </span>
       </h4>
       
