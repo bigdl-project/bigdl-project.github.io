@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Initalizers - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Zeros", url: "#zeros", children: [
+          ]},
+          {title: "Ones", url: "#ones", children: [
+          ]},
+          {title: "ConstInitMethod", url: "#constinitmethod", children: [
+          ]},
+          {title: "Xavier", url: "#xavier", children: [
+          ]},
+          {title: "BilinearFiller", url: "#bilinearfiller", children: [
+          ]},
+          {title: "RandomNormal", url: "#randomnormal", children: [
+          ]},
+          {title: "RandomUniform", url: "#randomuniform", children: [
+          ]},
+          {title: "Define your own Initializer", url: "#define-your-own-initializer", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60548202-2', 'bigdl-project.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Initalizers</strong></h1>
+    <hr>
+    <h2 id="zeros">Zeros</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = Zeros
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = Zeros()
+</code></pre>
+
+<p>Initialization method that set tensor to zeros.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val weightInitMethod = Zeros
+val biasInitMethod = Zeros
+val model = Linear(3, 2).setName(&quot;linear1&quot;)
+model.setInitMethod(weightInitMethod, biasInitMethod)
+println(model.getParametersTable().get(&quot;linear1&quot;).get)
+</code></pre>
+
+<pre><code>
+ {
+    weight: 0.0 0.0 0.0 
+            0.0 0.0 0.0 
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+    bias: 0.0
+          0.0
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradBias: 0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradWeight: 0.0 0.0 0.0 
+                0.0 0.0 0.0 
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+ }
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+weight_init = Zeros()
+bias_init = Zeros()
+model = Linear(3, 2)
+model.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(model.get_weights()[0])
+print(&quot;bias: &quot;)
+print(model.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createZeros
+creating: createZeros
+creating: createLinear
+weight:
+[[ 0.  0.  0.]
+ [ 0.  0.  0.]]
+bias: 
+[ 0.  0.]
+</code></pre>
+
+<hr />
+<h2 id="ones">Ones</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = Ones
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = Ones()
+</code></pre>
+
+<p>Initialization method that set tensor to be ones.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val weightInitMethod = Ones
+val biasInitMethod = Ones
+val model = Linear(3, 2).setName(&quot;linear1&quot;)
+model.setInitMethod(weightInitMethod, biasInitMethod)
+println(model.getParametersTable().get(&quot;linear1&quot;).get)
+</code></pre>
+
+<pre><code> {
+    weight: 1.0 1.0 1.0 
+            1.0 1.0 1.0 
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+    bias: 1.0
+          1.0
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradBias: 0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradWeight: 0.0 0.0 0.0 
+                0.0 0.0 0.0 
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+ }
+
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+weight_init = Ones()
+bias_init = Ones()
+model = Linear(3, 2)
+model.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(model.get_weights()[0])
+print(&quot;bias: &quot;)
+print(model.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createOnes
+creating: createOnes
+creating: createLinear
+weight:
+[[ 1.  1.  1.]
+ [ 1.  1.  1.]]
+bias: 
+[ 1.  1.]
+
+</code></pre>
+
+<h2 id="constinitmethod">ConstInitMethod</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = ConstInitMethod(value: Double)
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = ConstInitMethod(value)
+</code></pre>
+
+<p>Initialization method that set tensor to the specified constant value.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+
+val weightInitMethod = ConstInitMethod(0.2)
+val biasInitMethod = ConstInitMethod(0.2)
+val linear = Linear(3, 2).setName(&quot;linear1&quot;)
+linear.setInitMethod(weightInitMethod, biasInitMethod)
+println(linear.getParametersTable().get(&quot;linear1&quot;).get)
+</code></pre>
+
+<pre><code> {
+    weight: 0.2 0.2 0.2
+            0.2 0.2 0.2
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+    bias: 0.2
+          0.2
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradBias: 0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradWeight: 0.0 0.0 0.0
+                0.0 0.0 0.0
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+ }
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+weight_init = ConstInitMethod(0.2)
+bias_init = ConstInitMethod(0.2)
+linear = Linear(3, 2)
+linear.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(linear.get_weights()[0])
+print(&quot;bias: &quot;)
+print(linear.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createConstInitMethod
+creating: createConstInitMethod
+creating: createLinear
+weight:
+[[ 0.2  0.2  0.2]
+ [ 0.2  0.2  0.2]]
+bias:
+[ 0.2  0.2]
+
+</code></pre>
+
+<h2 id="xavier">Xavier</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = Xavier
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = Xavier()
+</code></pre>
+
+<p>The Xavier initialization method draws samples from a uniform distribution
+bounded by [-limit, limit) where limit = sqrt(6.0/(fanIn+fanOut)). The rationale
+behind this formula can be found in the paper
+<a href="http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf">Understanding the difficulty of training deep feedforward neural networks</a>.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val weightInitMethod = Xavier
+val biasInitMethod = Xavier
+val model = Linear(3, 2).setName(&quot;linear1&quot;)
+model.setInitMethod(weightInitMethod, biasInitMethod)
+println(model.getParametersTable().get(&quot;linear1&quot;).get)
+</code></pre>
+
+<pre><code> {
+    weight: -0.78095555 -0.09939616 0.12034761  
+            -0.3019594  0.11734331  0.80369484  
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+    bias: 1.0727772
+          -0.6703765
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradBias: 0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradWeight: 0.0 0.0 0.0 
+                0.0 0.0 0.0 
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+ }
+
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+weight_init = Xavier()
+bias_init = Xavier()
+model = Linear(3, 2)
+model.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(model.get_weights()[0])
+print(&quot;bias: &quot;)
+print(model.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createXavier
+creating: createXavier
+creating: createLinear
+weight:
+[[ 0.00580597 -0.73662472  0.13767919]
+ [ 0.16802482 -0.49394709 -0.74967551]]
+bias: 
+[-1.12355328  0.0779365 ]
+</code></pre>
+
+<h2 id="bilinearfiller">BilinearFiller</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = BilinearFiller
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = BilinearFiller()
+</code></pre>
+
+<p>Initialize the weight with coefficients for bilinear interpolation. A common use case is with the DeconvolutionLayer acting as upsampling. This initialization method can only be used in the weight initialization of SpatialFullConvolution.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val weightInitMethod = BilinearFiller
+val biasInitMethod - Zeros
+val model = SpatialFullConvolution(2, 3, 2, 2).setName(&quot;sfconv&quot;)
+model.setInitMethod(weightInitMethod, biasInitMethod)
+println(model.getParametersTable().get(&quot;sfconv&quot;).get)
+</code></pre>
+
+<pre><code>{
+    weight: (1,1,1,.,.) =
+            1.0 0.0 
+            0.0 0.0 
+
+            (1,1,2,.,.) =
+            1.0 0.0 
+            0.0 0.0 
+
+            (1,1,3,.,.) =
+            1.0 0.0 
+            0.0 0.0 
+
+            (1,2,1,.,.) =
+            1.0 0.0 
+            0.0 0.0 
+
+            (1,2,2,.,.) =
+            1.0 0.0 
+            0.0 0.0 
+
+            (1,2,3,.,.) =
+            1.0 0.0 
+            0.0 0.0 
+
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x3x2x2]
+    bias: 0.0
+          0.0
+          0.0
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 3]
+    gradBias: 0.0
+              0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 3]
+    gradWeight: (1,1,1,.,.) =
+                0.0 0.0 
+                0.0 0.0 
+
+                (1,1,2,.,.) =
+                0.0 0.0 
+                0.0 0.0 
+
+                (1,1,3,.,.) =
+                0.0 0.0 
+                0.0 0.0 
+
+                (1,2,1,.,.) =
+                0.0 0.0 
+                0.0 0.0 
+
+                (1,2,2,.,.) =
+                0.0 0.0 
+                0.0 0.0 
+
+                (1,2,3,.,.) =
+                0.0 0.0 
+                0.0 0.0 
+
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 1x2x3x2x2]
+ }
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+weight_init = BilinearFiller()
+bias_init = Zeros()
+model =  SpatialFullConvolution(2, 3, 2, 2)
+model.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(model.get_weights()[0])
+print(&quot;bias: &quot;)
+print(model.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createBilinearFiller
+creating: createZeros
+creating: createSpatialFullConvolution
+weight:
+[[[[[ 1.  0.]
+    [ 0.  0.]]
+
+   [[ 1.  0.]
+    [ 0.  0.]]
+
+   [[ 1.  0.]
+    [ 0.  0.]]]
+
+
+  [[[ 1.  0.]
+    [ 0.  0.]]
+
+   [[ 1.  0.]
+    [ 0.  0.]]
+
+   [[ 1.  0.]
+    [ 0.  0.]]]]]
+bias: 
+[ 0.  0.  0.]
+
+
+</code></pre>
+
+<h2 id="randomnormal">RandomNormal</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = RandomNormal(mean, stdv)
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = RandomNormal(mean, stdv)
+</code></pre>
+
+<p>This initialization method draws samples from a normal distribution.</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val weightInitMethod = RandomNormal(0, 1)
+val biasInitMethod = RandomNormal(0, 1)
+val linear = Linear(3, 2).setName(&quot;linear1&quot;)
+linear.setInitMethod(weightInitMethod, biasInitMethod)
+println(linear.getParametersTable().get(&quot;linear1&quot;).get)
+</code></pre>
+
+<pre><code> {
+    weight: -0.5908564  0.32844943  -0.845019   
+            0.21550806  1.2037253   0.6807024   
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+    bias: 0.5345903
+          -0.76420456
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradBias: 0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradWeight: 0.0 0.0 0.0 
+                0.0 0.0 0.0 
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+  }
+
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+from bigdl.nn.layer import *
+
+weight_init = RandomNormal(0, 1)
+bias_init = RandomNormal(0, 1)
+linear= Linear(3, 2)
+linear.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(linear.get_weights()[0])
+print(&quot;bias: &quot;)
+print(linear.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createRandomNormal
+creating: createRandomNormal
+creating: createLinear
+weight:
+[[-0.00784962  0.77845585 -1.16250944]
+ [ 0.03195094 -0.15211993  0.6254822 ]]
+bias: 
+[-0.37883148 -0.81106091]
+
+</code></pre>
+
+<h2 id="randomuniform">RandomUniform</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val initMethod = RandomUniform(lower, upper)
+
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">init_method = RandomUniform(upper=None, lower=None)
+</code></pre>
+
+<p>This initialization method draws samples from a uniform distribution. If the lower bound and upper bound of this uniform distribution is not specified, it will be set to [-limit, limit) where limit = 1/sqrt(fanIn).</p>
+<p><strong>Scala example:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val weightInitMethod = RandomUniform
+val biasInitMethod = RandomUniform(0, 1)
+val model = Linear(3, 2).setName(&quot;linear1&quot;)
+model.setInitMethod(weightInitMethod, biasInitMethod)
+println(model.getParametersTable().get(&quot;linear1&quot;).get)
+</code></pre>
+
+<pre><code> {
+    weight: -0.572536   0.13046022  -0.040449623    
+            -0.547542   0.19093458  0.5632484   
+            [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+    bias: 0.785292
+          0.63280666
+          [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradBias: 0.0
+              0.0
+              [com.intel.analytics.bigdl.tensor.DenseTensor of size 2]
+    gradWeight: 0.0 0.0 0.0 
+                0.0 0.0 0.0 
+                [com.intel.analytics.bigdl.tensor.DenseTensor of size 2x3]
+ }
+
+
+</code></pre>
+
+<p><strong>Python example:</strong></p>
+<pre><code class="python">from bigdl.nn.initialization_method import *
+weight_init = RandomUniform()
+bias_init = RandomUniform()
+model = Linear(3, 2)
+model.set_init_method(weight_init, bias_init)
+print(&quot;weight:&quot;)
+print(model.get_weights()[0])
+print(&quot;bias: &quot;)
+print(model.get_weights()[1])
+</code></pre>
+
+<pre><code>creating: createRandomUniform
+creating: createRandomUniform
+creating: createLinear
+weight:
+[[ 0.53153235  0.53016287  0.32831791]
+ [-0.45736417 -0.16206641  0.21758588]]
+bias: 
+[ 0.32058391  0.26307678]
+
+</code></pre>
+
+<h2 id="define-your-own-initializer">Define your own Initializer</h2>
+<p>All customizedInitializer should implement the <code>InitializationMethod</code> trait</p>
+<pre><code class="scala">/**
+ * Initialization method to initialize bias and weight.
+ * The init method will be called in Module.reset()
+ */
+
+trait InitializationMethod {
+
+  type Shape = Array[Int]
+
+  /**
+   * Initialize the given variable
+   *
+   * @param variable    the variable to initialize
+   * @param dataFormat  describe the meaning of each dimension of the variable
+   */
+  def init[T](variable: Tensor[T], dataFormat: VariableFormat)
+             (implicit ev: TensorNumeric[T]): Unit
+}
+</code></pre>
+
+<p>The <a href="https://github.com/intel-analytics/BigDL/blob/master/spark/dl/src/main/scala/com/intel/analytics/bigdl/nn/InitializationMethod.scala#L163">RandomUniform</a>
+code should give you a good sense of how to implement this trait.</p>
+<p>_<strong>Python</strong>
+Custom initialization method in python is not supported right now.</p>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

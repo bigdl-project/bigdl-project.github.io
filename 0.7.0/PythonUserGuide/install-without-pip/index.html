@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Without pip - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Install without pip", url: "#install-without-pip", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60548202-2', 'bigdl-project.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Without pip</strong></h1>
+    <hr>
+    <h2 id="install-without-pip"><strong>Install without pip</strong></h2>
+<p><strong>Remark:</strong></p>
+<ul>
+<li>Only <strong>Python 2.7</strong>, <strong>Python 3.5</strong> and <strong>Python 3.6</strong> are supported for now.</li>
+<li>Note that <strong>Python 3.6</strong> is only compatible with Spark 1.6.4, 2.0.3, 2.1.1 and 2.2.0. See <a href="https://issues.apache.org/jira/browse/SPARK-19019">this issue</a> for more discussion.</li>
+</ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>
+<p><a href="https://spark.apache.org/downloads.html">Download Spark</a></p>
+</li>
+<li>
+<p>You can download the BigDL release and nightly build from the <a href="../../release-download/">Release Page</a>
+  or build the BigDL package from <a href="../../ScalaUserGuide/install-build-src/">source</a>.</p>
+</li>
+<li>
+<p>Install Python dependencies:</p>
+<ul>
+<li>BigDL only depends on <code>Numpy</code> and <code>Six</code> for now.</li>
+<li>For Spark standalone cluster:<ul>
+<li><strong>If you're running in cluster mode, you need to install Python dependencies on both client and each worker node.</strong></li>
+<li>Install Numpy: 
+   <code>sudo apt-get install python-numpy</code> (Ubuntu)</li>
+<li>Install Six: 
+   <code>sudo apt-get install python-six</code> (Ubuntu)</li>
+</ul>
+</li>
+</ul>
+<p><a name="yarn.cluster"></a>
+* For Yarn cluster:
+    - You can run BigDL Python programs on YARN clusters without changes to the cluster (e.g., no need to pre-install the Python dependencies). You can first package all the required Python dependencies into a virtual environment on the local node (where you will run the spark-submit command), and then directly use spark-submit to run the BigDL Python program on the YARN cluster (using that virtual environment). Please follow the steps below: 
+    * Make sure you already install such libraries(python-setuptools, python-dev, gcc, make, zip, pip) for creating virtual environment. If not, please install them first. For example, on Ubuntu, run these commands to install:
+      <code>apt-get update
+        apt-get install -y python-setuptools python-dev
+        apt-get install -y gcc make
+        apt-get install -y zip
+        easy_install pip</code> <br />
+     * Create dependency virtualenv package
+        * Under BigDL home directory, you can find <code>bin/python_package.sh</code>. Run this script to create dependency virtual environment according to dependency descriptions in requirements.txt. You can add your own dependencies in requirements.txt. The current requirements.txt only contains dependencies for BigDL python examples and models.
+        * After running this script, there will be venv.zip and venv directory generated in current directory. Use them to submit your python jobs. Please refer to <a href="../run-without-pip/#yarn.example">example</a> script of submitting bigdl python job with virtual environment in Yarn cluster.</p>
+<pre><code>__FAQ__
+
+In case you encounter the following errors when you create the environment package using the above command:
+
+1. virtualenv ImportError: No module named urllib3
+    - Using python in anaconda to create virtualenv may cause this problem. Try using python default in your system instead of installing virtualenv in anaconda.
+2. AttributeError: 'module' object has no attribute 'sslwrap'
+    - Try upgrading `gevent` with `pip install --upgrade gevent`.
+</code></pre>
+</li>
+</ol>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
