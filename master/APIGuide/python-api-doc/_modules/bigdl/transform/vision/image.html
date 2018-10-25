@@ -726,6 +726,58 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expand_height</span><span class="p">,</span> <span class="n">expand_width</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">FixExpand</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">expand_height</span><span class="p">,</span> <span class="n">expand_width</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="ChannelScaledNormalizer"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ChannelScaledNormalizer">[docs]</a><span class="k">class</span> <span class="nc">ChannelScaledNormalizer</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Scaled image at channel level with offset and scale</span>
+<span class="sd">    :param mean_r : offset for R channel</span>
+<span class="sd">    :param mean_g : offset for G channel</span>
+<span class="sd">    :param mean_b: offset for B channel</span>
+<span class="sd">    :param scale: scaling factor for all channels</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mean_r</span><span class="p">,</span> <span class="n">mean_g</span><span class="p">,</span> <span class="n">mean_b</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ChannelScaledNormalizer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">mean_r</span><span class="p">,</span> <span class="n">mean_g</span><span class="p">,</span> <span class="n">mean_b</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RandomAlterAspect"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.RandomAlterAspect">[docs]</a><span class="k">class</span> <span class="nc">RandomAlterAspect</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply random crop based on area ratio and resize to cropLenth size</span>
+<span class="sd">    :param min_area_ratio  min area ratio</span>
+<span class="sd">    :param max_area_ratio  max area ratio</span>
+<span class="sd">    :param min_aspect_ratio_change factor applied to ratio area</span>
+<span class="sd">    :param interp_mode   interp mode applied in resize</span>
+<span class="sd">    :param crop_length final size resized to</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_area_ratio</span><span class="p">,</span>
+                 <span class="n">max_area_ratio</span><span class="p">,</span>
+                 <span class="n">min_aspect_ratio_change</span><span class="p">,</span>
+                 <span class="n">interp_mode</span><span class="p">,</span>
+                 <span class="n">crop_length</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RandomAlterAspect</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">min_area_ratio</span><span class="p">,</span>
+                                                <span class="n">max_area_ratio</span><span class="p">,</span>
+                                                <span class="n">min_aspect_ratio_change</span><span class="p">,</span>
+                                                <span class="n">interp_mode</span><span class="p">,</span>
+                                                <span class="n">crop_length</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RandomCropper"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.RandomCropper">[docs]</a><span class="k">class</span> <span class="nc">RandomCropper</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Random cropper on uniform distribution with fixed height &amp; width</span>
+<span class="sd">    :param crop_w  width cropped to</span>
+<span class="sd">    :param crop_h height cropped to</span>
+<span class="sd">    :param mirror   whether mirror</span>
+<span class="sd">    :param cropper_method crop method</span>
+<span class="sd">    :param channels total channels</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">crop_w</span><span class="p">,</span> <span class="n">crop_h</span><span class="p">,</span> <span class="n">mirror</span><span class="p">,</span> <span class="n">cropper_method</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RandomCropper</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">crop_w</span><span class="p">,</span> <span class="n">crop_h</span><span class="p">,</span> <span class="n">mirror</span><span class="p">,</span> <span class="n">cropper_method</span><span class="p">,</span> <span class="n">channels</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RandomResize"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.RandomResize">[docs]</a><span class="k">class</span> <span class="nc">RandomResize</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Random resize between minSize and maxSize and scale height and width to each other</span>
+<span class="sd">    :param min_size min size to resize to</span>
+<span class="sd">    :param max_size max size to resize to</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_size</span><span class="p">,</span> <span class="n">max_size</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RandomResize</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">min_size</span><span class="p">,</span> <span class="n">max_size</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="SeqFileFolder"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.SeqFileFolder">[docs]</a><span class="k">class</span> <span class="nc">SeqFileFolder</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
 
 <div class="viewcode-block" id="SeqFileFolder.files_to_image_frame"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.SeqFileFolder.files_to_image_frame">[docs]</a>    <span class="nd">@classmethod</span>

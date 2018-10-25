@@ -155,6 +155,17 @@ The patch size should be less than the image size.
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.transform.vision.image.ChannelScaledNormalizer">
+<em class="property">class </em><code class="descclassname">bigdl.transform.vision.image.</code><code class="descname">ChannelScaledNormalizer</code><span class="sig-paren">(</span><em>mean_r</em>, <em>mean_g</em>, <em>mean_b</em>, <em>scale</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/transform/vision/image.html#ChannelScaledNormalizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.transform.vision.image.ChannelScaledNormalizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.transform.vision.image.FeatureTransformer" title="bigdl.transform.vision.image.FeatureTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.transform.vision.image.FeatureTransformer</span></code></a></p>
+<p>Scaled image at channel level with offset and scale
+:param mean_r : offset for R channel
+:param mean_g : offset for G channel
+:param mean_b: offset for B channel
+:param scale: scaling factor for all channels</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.transform.vision.image.ColorJitter">
 <em class="property">class </em><code class="descclassname">bigdl.transform.vision.image.</code><code class="descname">ColorJitter</code><span class="sig-paren">(</span><em>brightness_prob=0.5</em>, <em>brightness_delta=32.0</em>, <em>contrast_prob=0.5</em>, <em>contrast_lower=0.5</em>, <em>contrast_upper=1.5</em>, <em>hue_prob=0.5</em>, <em>hue_delta=18.0</em>, <em>saturation_prob=0.5</em>, <em>saturation_lower=0.5</em>, <em>saturation_upper=1.5</em>, <em>random_order_prob=0.0</em>, <em>shuffle=False</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/transform/vision/image.html#ColorJitter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.transform.vision.image.ColorJitter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.transform.vision.image.FeatureTransformer" title="bigdl.transform.vision.image.FeatureTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.transform.vision.image.FeatureTransformer</span></code></a></p>
@@ -538,6 +549,18 @@ if sc is null, path is local directory/image file/image file with wildcard chara
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.transform.vision.image.RandomAlterAspect">
+<em class="property">class </em><code class="descclassname">bigdl.transform.vision.image.</code><code class="descname">RandomAlterAspect</code><span class="sig-paren">(</span><em>min_area_ratio</em>, <em>max_area_ratio</em>, <em>min_aspect_ratio_change</em>, <em>interp_mode</em>, <em>crop_length</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/transform/vision/image.html#RandomAlterAspect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.transform.vision.image.RandomAlterAspect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.transform.vision.image.FeatureTransformer" title="bigdl.transform.vision.image.FeatureTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.transform.vision.image.FeatureTransformer</span></code></a></p>
+<p>Apply random crop based on area ratio and resize to cropLenth size
+:param min_area_ratio  min area ratio
+:param max_area_ratio  max area ratio
+:param min_aspect_ratio_change factor applied to ratio area
+:param interp_mode   interp mode applied in resize
+:param crop_length final size resized to</p>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.transform.vision.image.RandomAspectScale">
 <em class="property">class </em><code class="descclassname">bigdl.transform.vision.image.</code><code class="descname">RandomAspectScale</code><span class="sig-paren">(</span><em>scales</em>, <em>scale_multiple_of=1</em>, <em>max_size=1000</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/transform/vision/image.html#RandomAspectScale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.transform.vision.image.RandomAspectScale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.transform.vision.image.FeatureTransformer" title="bigdl.transform.vision.image.FeatureTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.transform.vision.image.FeatureTransformer</span></code></a></p>
@@ -556,6 +579,27 @@ The patch size should be less than the image size.</p>
 <p>:param crop_width width after crop
 :param crop_height height after crop
 :param is_clip whether to clip the roi to image boundaries</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.transform.vision.image.RandomCropper">
+<em class="property">class </em><code class="descclassname">bigdl.transform.vision.image.</code><code class="descname">RandomCropper</code><span class="sig-paren">(</span><em>crop_w</em>, <em>crop_h</em>, <em>mirror</em>, <em>cropper_method</em>, <em>channels</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/transform/vision/image.html#RandomCropper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.transform.vision.image.RandomCropper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.transform.vision.image.FeatureTransformer" title="bigdl.transform.vision.image.FeatureTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.transform.vision.image.FeatureTransformer</span></code></a></p>
+<p>Random cropper on uniform distribution with fixed height &amp; width
+:param crop_w  width cropped to
+:param crop_h height cropped to
+:param mirror   whether mirror
+:param cropper_method crop method
+:param channels total channels</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.transform.vision.image.RandomResize">
+<em class="property">class </em><code class="descclassname">bigdl.transform.vision.image.</code><code class="descname">RandomResize</code><span class="sig-paren">(</span><em>min_size</em>, <em>max_size</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/transform/vision/image.html#RandomResize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.transform.vision.image.RandomResize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.transform.vision.image.FeatureTransformer" title="bigdl.transform.vision.image.FeatureTransformer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.transform.vision.image.FeatureTransformer</span></code></a></p>
+<p>Random resize between minSize and maxSize and scale height and width to each other
+:param min_size min size to resize to
+:param max_size max size to resize to</p>
 </dd></dl>
 
 <dl class="class">
