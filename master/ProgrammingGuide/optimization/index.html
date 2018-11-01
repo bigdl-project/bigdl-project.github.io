@@ -180,6 +180,28 @@ data you want to process, a.k.a epoch.</p>
 optimizer.setEndWhen(Trigger.maxEpoch(10))  // Change to 10 epoch
 </code></pre>
 
+<p>You also can use multiple triggers to decide when to end the training:</p>
+<pre><code class="scala">// If all of the inner triggers are triggered (logical AND)
+optimizer.setEndWhen(
+   Trigger.and(Trigger.maxScore(0.99f),Trigger.maxEpoch(10))
+)
+
+// If any of the inner triggers are triggered (logical OR)
+optimizer.setEndWhen(
+   Trigger.or(Trigger.maxScore(0.99f),Trigger.maxEpoch(10))
+)
+
+// Inner and/or 
+optimizer.setEndWhen(
+   Trigger.or(
+        Trigger.and( 
+            Trigger.maxScore(0.99f), Trigger.maxEpoch(10) 
+        ),
+        Trigger.maxEpoch(50)
+   )
+)
+</code></pre>
+
 <p><strong>python</strong></p>
 <pre><code># Python need to define in the constructor
 optimizer = Optimizer(model, train_data, MSECriterion(), MaxIteration(100), 4)
