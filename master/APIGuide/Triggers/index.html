@@ -45,6 +45,10 @@
           ]},
           {title: "Min Loss", url: "#min-loss", children: [
           ]},
+          {title: "And", url: "#and", children: [
+          ]},
+          {title: "Or", url: "#or", children: [
+          ]},
         ];
 
     </script>
@@ -150,6 +154,30 @@ s reached.</p>
 
 <p>A trigger that triggers an action when training loss
  less than "min" loss</p>
+<hr />
+<h2 id="and">And</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">  val trigger = Trigger.and(Trigger.minLoss(0.01), Trigger.maxEpoch(2))
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">  trigger = TriggerAnd(MinLoss(0.01), MaxEpoch(2))
+</code></pre>
+
+<p>A trigger contains other triggers and triggers when all of them trigger (logical AND). </p>
+<p>For example, TriggerAnd(MinLoss(0.01), MaxEpoch(2)), means training should stop when loss &lt; 0.01 and epoch &gt; 2.</p>
+<hr />
+<h2 id="or">Or</h2>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">  val trigger = Trigger.and(Trigger.minLoss(0.01), Trigger.maxEpoch(2))
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">  trigger = TriggerOr(MinLoss(0.01), MaxEpoch(2))
+</code></pre>
+
+<p>A trigger contains other triggers and triggers when all of them trigger (logical OR). </p>
+<p>For example, TriggerOr(MinLoss(0.01), MaxEpoch(2)), means training should stop when loss &lt; 0.01 or epoch &gt; 2.</p>
 
   <br>
 </div>

@@ -9,7 +9,7 @@
     <title>bigdl.optim.optimizer &#8212; BigDL  documentation</title>
     <link rel="stylesheet" href="../../../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
@@ -308,6 +308,45 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="nb">min</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="TriggerAnd"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.TriggerAnd">[docs]</a><span class="k">class</span> <span class="nc">TriggerAnd</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A trigger contains other triggers and triggers when all of them trigger (logical AND)</span>
+
+
+<span class="sd">    &gt;&gt;&gt; a = TriggerAnd(MinLoss(0.1), MaxEpoch(2))</span>
+<span class="sd">    creating: createMinLoss</span>
+<span class="sd">    creating: createMaxEpoch</span>
+<span class="sd">    creating: createTriggerAnd</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a And trigger.</span>
+
+
+<span class="sd">        :param first: first Trigger</span>
+<span class="sd">        :param other: other Trigger</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">other</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="TriggerOr"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.TriggerOr">[docs]</a><span class="k">class</span> <span class="nc">TriggerOr</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A trigger contains other triggers and triggers when any of them trigger (logical OR)</span>
+
+
+<span class="sd">    &gt;&gt;&gt; o = TriggerOr(MinLoss(0.1), MaxEpoch(2))</span>
+<span class="sd">    creating: createMinLoss</span>
+<span class="sd">    creating: createMaxEpoch</span>
+<span class="sd">    creating: createTriggerOr</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="o">*</span><span class="n">other</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a Or trigger.</span>
+
+
+<span class="sd">        :param first: first Trigger</span>
+<span class="sd">        :param other: other Trigger</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">other</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Poly"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Poly">[docs]</a><span class="k">class</span> <span class="nc">Poly</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1213,7 +1252,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.
     </div>
   </body>
 </html>
