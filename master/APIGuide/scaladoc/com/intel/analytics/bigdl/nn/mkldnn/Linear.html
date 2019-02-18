@@ -80,7 +80,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.mkldnn.Linear#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(inputSize:Int,outputSize:Int,initWeight:com.intel.analytics.bigdl.tensor.Tensor[Float],initBias:com.intel.analytics.bigdl.tensor.Tensor[Float],initGradWeight:com.intel.analytics.bigdl.tensor.Tensor[Float],initGradBias:com.intel.analytics.bigdl.tensor.Tensor[Float]):com.intel.analytics.bigdl.nn.mkldnn.Linear"></a>
+      <a id="&lt;init&gt;(inputSize:Int,outputSize:Int,wRegularizer:com.intel.analytics.bigdl.optim.Regularizer[Float],bRegularizer:com.intel.analytics.bigdl.optim.Regularizer[Float],initWeight:com.intel.analytics.bigdl.tensor.Tensor[Float],initBias:com.intel.analytics.bigdl.tensor.Tensor[Float],initGradWeight:com.intel.analytics.bigdl.tensor.Tensor[Float],initGradBias:com.intel.analytics.bigdl.tensor.Tensor[Float]):com.intel.analytics.bigdl.nn.mkldnn.Linear"></a>
       <a id="&lt;init&gt;:Linear"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -88,7 +88,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Linear</span><span class="params">(<span name="inputSize">inputSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="outputSize">outputSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="initWeight">initWeight: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="initBias">initBias: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="initGradWeight">initGradWeight: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="initGradBias">initGradBias: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>)</span>
+        <span class="name">Linear</span><span class="params">(<span name="inputSize">inputSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="outputSize">outputSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="wRegularizer">wRegularizer: <a href="../../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="bRegularizer">bRegularizer: <a href="../../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="initWeight">initWeight: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="initBias">initBias: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="initGradWeight">initGradWeight: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="initGradBias">initGradBias: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>)</span>
       </span>
       </h4>
       
@@ -290,6 +290,19 @@ there are multiple modules with the given name, an exception will be thrown.</p>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.mkldnn.Linear#bRegularizer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="bRegularizer:com.intel.analytics.bigdl.optim.Regularizer[Float]"></a>
+      <a id="bRegularizer:Regularizer[Float]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">bRegularizer</span><span class="result">: <a href="../../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="scala.Float">Float</span>]</span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#backward" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="backward(input:A,gradOutput:B):A"></a>
       <a id="backward(Activity,Activity):Activity"></a>
@@ -1644,6 +1657,19 @@ need to reinitialize it after sending the model.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="MklDnnLayer.html" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.MklDnnLayer">MklDnnLayer</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.mkldnn.Linear#wRegularizer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="wRegularizer:com.intel.analytics.bigdl.optim.Regularizer[Float]"></a>
+      <a id="wRegularizer:Regularizer[Float]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wRegularizer</span><span class="result">: <a href="../../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="scala.Float">Float</span>]</span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
