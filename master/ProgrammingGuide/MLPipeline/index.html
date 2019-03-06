@@ -75,7 +75,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>BigDL provides <code>DLEstimator</code> and <code>DLClassifier</code> for users with Apache Spark MLlib experience, which
 provides high level API for training a BigDL Model with the Apache Spark
 <a href="https://spark.apache.org/docs/2.1.1/ml-pipeline.html#estimators">Estimator</a>/
-<a href="https://spark.apache.org/docs/2.1.1/ml-pipeline.html#transformers">Transfomer</a>
+<a href="https://spark.apache.org/docs/2.1.1/ml-pipeline.html#transformers">Transformer</a>
 pattern, thus users can conveniently fit BigDL into a ML pipeline. The fitted model <code>DLModel</code> and
 <code>DLClassiferModel</code> contains the trained BigDL model and extends the Spark ML <code>Model</code> class.
 Alternatively users may also construct a <code>DLModel</code> with a pre-trained BigDL model to use it in
@@ -85,7 +85,7 @@ DLClassifier and how to use it. For advanced users, please check our
 <hr />
 <h2 id="define-a-dlestimator"><strong>Define a DLEstimator</strong></h2>
 <p>Before we are trying to use DLEstimator to automate the training process, we need to make clear
-which model used to be updated parameters and gradients, which criterion used to measure the loss,
+which model is used to update parameters and gradients, which criterion is used to measure the loss and 
 the dimension of the features and the label. These are the key elements the DLEstimator required to
 prepare for the training. If you are unfamiliar with creating a model and criterion, check out
 <a href="../Model/Sequential/">Model</a> and <a href="../../APIGuide/Losses/">Losses</a> sections with provided links.</p>
@@ -93,8 +93,12 @@ prepare for the training. If you are unfamiliar with creating a model and criter
 You can choose any other model or criterion for your own good when you start your own training.</p>
 <p>Then basically one can write code like this:</p>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val model = Sequential().add(Linear(2, 2))
-val estimator = new DLEstimator(model, criterion, Array(2), Array(2))
+<pre><code class="scala">import com.intel.analytics.bigdl.dlframes.DLEstimator
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+import com.intel.analytics.bigdl.nn._
+
+val model = Sequential().add(Linear(2, 2))
+val estimator = new DLEstimator(model, MSECriterion(), Array(2), Array(2))
 </code></pre>
 
 <p><strong>Python:</strong></p>

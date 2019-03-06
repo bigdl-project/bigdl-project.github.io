@@ -39,10 +39,6 @@
           ]},
           {title: "Build with script (Recommended)", url: "#build-with-script-recommended", children: [
           ]},
-          {title: "Build for Spark 2.0 and above", url: "#build-for-spark-20-and-above", children: [
-          ]},
-          {title: "Build for Scala 2.10 or 2.11", url: "#build-for-scala-210-or-211", children: [
-          ]},
           {title: "Build with Maven", url: "#build-with-maven", children: [
           ]},
           {title: "Setup IDE", url: "#setup-ide", children: [
@@ -89,10 +85,18 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>When compiling with Java 7, you need to add the option “-XX:MaxPermSize=1G”. </p>
 <h2 id="build-with-script-recommended"><strong>Build with script (Recommended)</strong></h2>
 <p>It is highly recommended that you build BigDL using the <a href="https://github.com/intel-analytics/BigDL/blob/master/make-dist.sh">make-dist.sh script</a>. And it will handle the MAVEN_OPTS variable.</p>
-<p>Once downloaded, you can build BigDL with the following commands:</p>
+<p>Once downloaded, you can build BigDL with one of the following commands:</p>
+<p><strong>For Spark 2.0 and above (using Scala 2.11)</strong></p>
+<pre><code class="bash">$ bash make-dist.sh -P spark_2.x
+</code></pre>
+
+<p>It is highly recommended to use <em><strong>Java 8</strong></em> when running with Spark 2.x; otherwise you may observe very poor performance.</p>
+<p><strong>For Spark 1.5.x or 1.6.x (using Scala 2.10)</strong></p>
 <pre><code class="bash">$ bash make-dist.sh
 </code></pre>
 
+<p><strong>Specify a Scala version</strong>
+By default, <code>make-dist.sh</code> uses Scala 2.10 for Spark 1.5.x or 1.6.x, and Scala 2.11 for Spark 2.0.x or 2.1.x. To override the default behaviors, you can pass <code>-P scala_2.10</code> or <code>-P scala_2.11</code> to <code>make-dist.sh</code> as appropriate.</p>
 <p>After that, you can find a <code>dist</code> folder, which contains all the needed files to run a BigDL program. The files in <code>dist</code> include:</p>
 <ul>
 <li><strong>dist/bin/bigdl.sh</strong>: A script used to set up proper environment variables and launch the BigDL program.</li>
@@ -100,14 +104,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li><strong>dist/lib/bigdl-VERSION-python-api.zip</strong>: This zip package contains all Python files of BigDL.</li>
 <li><strong>dist/conf/spark-bigdl.conf</strong>: This file contains necessary property configurations. <code>Engine.createSparkConf</code> will populate these properties, so try to use that method in your code. Or you need to pass the file to Spark with the "--properties-file" option. </li>
 </ul>
-<h2 id="build-for-spark-20-and-above"><strong>Build for Spark 2.0 and above</strong></h2>
-<p>The instructions above will build BigDL with Spark 1.5.x or 1.6.x (using Scala 2.10); to build for Spark 2.0 and above (which uses Scala 2.11 by default), pass <code>-P spark_2.x</code> to the <code>make-dist.sh</code> script:</p>
-<pre><code class="bash">$ bash make-dist.sh -P spark_2.x
-</code></pre>
-
-<p>It is highly recommended to use <em><strong>Java 8</strong></em> when running with Spark 2.x; otherwise you may observe very poor performance.</p>
-<h2 id="build-for-scala-210-or-211"><strong>Build for Scala 2.10 or 2.11</strong></h2>
-<p>By default, <code>make-dist.sh</code> uses Scala 2.10 for Spark 1.5.x or 1.6.x, and Scala 2.11 for Spark 2.0.x or 2.1.x. To override the default behaviors, you can pass <code>-P scala_2.10</code> or <code>-P scala_2.11</code> to <code>make-dist.sh</code> as appropriate.</p>
 <hr />
 <h2 id="build-with-maven"><strong>Build with Maven</strong></h2>
 <p>To build BigDL directly using Maven, run the command below:</p>

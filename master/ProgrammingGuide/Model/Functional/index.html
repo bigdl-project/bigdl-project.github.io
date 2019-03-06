@@ -80,10 +80,13 @@ when define some complex model.</p>
 
 <p>You can write code like this</p>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val linear = Linear(...).inputs()
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val linear = Linear(3, 5).inputs()
 val sigmoid = Sigmoid().inputs(linear)
-val softmax = Softmax().inputs(sigmoid)
-val model = Graph(Seq[linear], Seq[softmax])
+val softmax = SoftMax().inputs(sigmoid)
+val model = Graph(Array(linear, sigmoid), Array(softmax))
 </code></pre>
 
 <p><strong>Python:</strong></p>
