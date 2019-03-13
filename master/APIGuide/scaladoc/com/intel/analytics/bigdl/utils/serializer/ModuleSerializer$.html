@@ -189,6 +189,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable#attrValueToFloatArray" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="attrValueToFloatArray(attr:com.intel.analytics.bigdl.serialization.Bigdl.AttrValue):Array[Float]"></a>
+      <a id="attrValueToFloatArray(AttrValue):Array[Float]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">attrValueToFloatArray</span><span class="params">(<span name="attr">attr: <span class="extype" name="com.intel.analytics.bigdl.serialization.Bigdl.AttrValue">AttrValue</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Float">Float</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Convert Attr Value object to Array of Float</p><div class="fullcomment"><div class="comment cmt"><p>Convert Attr Value object to Array of Float</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>Array[Float]
+</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="ModuleSerializable.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable">ModuleSerializable</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializer#boundedModuleType" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="boundedModuleType:reflect.runtime.universe.Type"></a>
       <a id="boundedModuleType:scala.reflect.api.JavaUniverse.Type"></a>
@@ -249,7 +263,7 @@
       <p class="shortcomment cmt">copy serialized data (weight and bias if exist) to BigDL module</p><div class="fullcomment"><div class="comment cmt"><p>copy serialized data (weight and bias if exist) to BigDL module</p></div><dl class="paramcmts block"><dt class="param">context</dt><dd class="cmt"><p>deserialized context</p></dd><dt class="param">module</dt><dd class="cmt"><p>bigDL Module with relationships
 </p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="ModuleSerializable.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable">ModuleSerializable</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable#copyFromBigDL" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="copyFromBigDL[T](context:com.intel.analytics.bigdl.utils.serializer.SerializeContext[T],modelBuilder:com.intel.analytics.bigdl.serialization.Bigdl.BigDLModule.Builder)(implicitevidence$13:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):Unit"></a>
+      <a id="copyFromBigDL[T](context:com.intel.analytics.bigdl.utils.serializer.SerializeContext[T],modelBuilder:com.intel.analytics.bigdl.serialization.Bigdl.BigDLModule.Builder)(implicitevidence$15:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):Unit"></a>
       <a id="copyFromBigDL[T](SerializeContext[T],Builder)(ClassTag[T],TensorNumeric[T]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -287,7 +301,8 @@
         <span class="name">createBigDLModule</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="context">context: <a href="DeserializeContext.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.DeserializeContext">DeserializeContext</a></span>, <span name="module">module: <a href="../../nn/abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable.createBigDLModule.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable.createBigDLModule.T">T</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable.createBigDLModule.T">T</span>]</span>)</span><span class="result">: <a href="ModuleData.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleData">ModuleData</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable.createBigDLModule.T">T</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="ModuleSerializable.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable">ModuleSerializable</a></dd></dl></div>
+      <p class="shortcomment cmt">Re-create BigDL module by deserializing protobuf context.</p><div class="fullcomment"><div class="comment cmt"><p>Re-create BigDL module by deserializing protobuf context.</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"></dd><dt class="param">context</dt><dd class="cmt"><p>Deserialization context</p></dd><dt class="param">module</dt><dd class="cmt"><p>The BigDL module to be re-created</p></dd><dt class="param">ev</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>Tuple3 contains information of current module and modules adjacent to it
+</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="ModuleSerializable.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable">ModuleSerializable</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable#createSerializeBigDLModule" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="createSerializeBigDLModule[T](modelBuilder:com.intel.analytics.bigdl.serialization.Bigdl.BigDLModule.Builder,context:com.intel.analytics.bigdl.utils.serializer.SerializeContext[T])(implicitevidence$9:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.utils.serializer.SerializeResult"></a>
       <a id="createSerializeBigDLModule[T](Builder,SerializeContext[T])(ClassTag[T],TensorNumeric[T]):SerializeResult"></a>
@@ -574,6 +589,19 @@ standard BigDL module and user defined module</p></div><dl class="paramcmts bloc
       </span>
       </h4>
       
+    </li><li name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable#saveMklInt8Attr" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="saveMklInt8Attr[T](module:com.intel.analytics.bigdl.nn.MklInt8Convertible,modelBuilder:com.intel.analytics.bigdl.serialization.Bigdl.BigDLModule.Builder)(implicitevidence$14:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):Unit"></a>
+      <a id="saveMklInt8Attr[T](MklInt8Convertible,Builder)(ClassTag[T],TensorNumeric[T]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">saveMklInt8Attr</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="module">module: <a href="../../nn/MklInt8Convertible.html" class="extype" name="com.intel.analytics.bigdl.nn.MklInt8Convertible">MklInt8Convertible</a></span>, <span name="modelBuilder">modelBuilder: <span class="extype" name="com.intel.analytics.bigdl.serialization.Bigdl.BigDLModule.Builder">Builder</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable.saveMklInt8Attr.T">T</span>]</span>, <span name="ev">ev: <a href="../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable.saveMklInt8Attr.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Serialize and save MKL DNN INT8 attributes into BigDL Model of protobuf definition</p><div class="fullcomment"><div class="comment cmt"><p>Serialize and save MKL DNN INT8 attributes into BigDL Model of protobuf definition</p></div><dl class="paramcmts block"><dt class="param">modelBuilder</dt><dd class="cmt"><p>serialized module builder</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="ModuleSerializable.html" class="extype" name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializable">ModuleSerializable</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.utils.serializer.ModuleSerializer#serialize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="serialize[T](serializerContext:com.intel.analytics.bigdl.utils.serializer.SerializeContext[T])(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.utils.serializer.SerializeResult"></a>
       <a id="serialize[T](SerializeContext[T])(ClassTag[T],TensorNumeric[T]):SerializeResult"></a>

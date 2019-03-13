@@ -158,7 +158,7 @@ optimizer = Optimizer(
 
 <h2 id="sgd">SGD</h2>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val optimMethod = SGD(learningRate= 1e-3,learningRateDecay=0.0,
+<pre><code class="scala">val optimMethod = new SGD(learningRate= 1e-3,learningRateDecay=0.0,
                       weightDecay=0.0,momentum=0.0,dampening=Double.MaxValue,
                       nesterov=false,learningRateSchedule=Default(),
                       learningRates=null,weightDecays=null)
@@ -202,7 +202,7 @@ optimizer = Optimizer(
 It has been proposed in <code>ADADELTA: An Adaptive Learning Rate Method</code>.
 http://arxiv.org/abs/1212.5701.</p>
 <p><strong>Scala:</strong></p>
-<pre><code class="scala">val optimMethod = Adadelta(decayRate = 0.9, Epsilon = 1e-10)
+<pre><code class="scala">val optimMethod = new Adadelta(decayRate = 0.9, Epsilon = 1e-10)
 </code></pre>
 
 <p><strong>Python:</strong></p>
@@ -230,7 +230,7 @@ http://arxiv.org/abs/1212.5701.</p>
 <li>learningRate : learning rate</li>
 <li>learningRateDecay : learning rate decay</li>
 <li>decayRate : decayRate, also called rho</li>
-<li>Epsilone : for numerical stability</li>
+<li>Epsilon : for numerical stability</li>
 </ul>
 <h2 id="adamax">Adamax</h2>
 <p>An implementation of Adamax http://arxiv.org/pdf/1412.6980.pdf</p>
@@ -257,7 +257,9 @@ http://arxiv.org/abs/1212.5701.</p>
 <pre><code class="scala">import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
 import com.intel.analytics.bigdl.optim._
 import com.intel.analytics.bigdl.tensor._
-val adagrad = Adagrad(0.01, 0.0, 0.0)
+import com.intel.analytics.bigdl.utils.T
+
+val adagrad = new Adagrad(0.01, 0.0, 0.0)
     def feval(x: Tensor[Float]): (Float, Tensor[Float]) = {
       // (1) compute f(x)
       val d = x.size(1)

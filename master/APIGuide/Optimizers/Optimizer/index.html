@@ -130,7 +130,7 @@ as shown in below interfaces:</p>
   vMethods : Array[ValidationMethod[T])
 </code></pre>
 
-<p><code>trigger</code>: how often to evaluation validation set.<br />
+<p><code>trigger</code>: how often to evaluate validation set.<br />
 <code>dataset</code>: validate data set in type of DataSet[MiniBatch].<br />
 <code>vMethods</code>: a set of ValidationMethod.<br />
  <br></p>
@@ -141,7 +141,7 @@ as shown in below interfaces:</p>
   batchSize: Int)
 </code></pre>
 
-<p><code>trigger</code>: how often to evaluation validation set.<br />
+<p><code>trigger</code>: how often to evaluate validation set.<br />
 <code>sampleRDD</code>: validate data set in type of RDD[Sample].<br />
 <code>vMethods</code>: a set of ValidationMethod.<br />
 <code>batchSize</code>: size of mini batch.
@@ -188,7 +188,7 @@ as shown in below interfaces:</p>
 <code>newModel</code>: a model will replace the old model in optimizer.<br />
  <br>
  ```scala
-optimizer.setModelAndOptimMethods(newModel: Module[T], newOptimMethods: Map[String, OptimMethod[T]])</p>
+ optimizer.setModelAndOptimMethods(newModel: Module[T], newOptimMethods: Map[String, OptimMethod[T]])</p>
 <pre><code>Function setModelAndOptimMethods will set a new model and new OptimMethods to the optimizer.  
 `newModel`: a model will replace the old model in optimizer.  
 `newOptimMethods`: new OptimMethods will replace the old model in optimizer. It's a mapping of submodule -&gt; OptimMethod.
@@ -211,7 +211,7 @@ optimizer.setTrainData(sampleRDD: RDD[Sample[T]],
 <code>batchSize</code>: mini batch size.
 <code>featurePaddingParam</code>: feature padding strategy.
 <code>labelPaddingParam</code>: label padding strategy.
-<code>miniBatch</code>: An User-Defined MiniBatch implemenation.
+<code>miniBatch</code>: A User-Defined MiniBatch implemenation.
  <br></p>
 <pre><code class="scala">optimizer.setCriterion(newCriterion: Criterion[T])
 </code></pre>
@@ -229,7 +229,7 @@ optimizer.setTrainData(sampleRDD: RDD[Sample[T]],
 </code></pre>
 
 <p>Function setOptimMethod is used to set an optimization method in this <code>optimizer</code>.<br />
-<code>method</code>: the method the optimize the model in this <code>optimizer</code>.<br />
+<code>method</code>: the method to optimize the model in this <code>optimizer</code>.<br />
  <br>
  ```scala
 optimizer.setOptimMethods(method: Map[String, OptimMethod[T]])</p>
