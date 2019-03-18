@@ -72,7 +72,7 @@
       </h4>
       
     </li><li name="com.intel.analytics.bigdl.nn.mkldnn.CAddTable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="CAddTableextendsAbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,Float]withMklDnnLayer"></a>
+      <a id="CAddTableextendsAbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,Float]withMklDnnLayerwithMklInt8Convertible"></a>
       <a id="CAddTable:CAddTable"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -80,7 +80,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="CAddTable.html"><span class="name">CAddTable</span></a><span class="result"> extends <a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="scala.Float">Float</span>] with <a href="MklDnnLayer.html" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.MklDnnLayer">MklDnnLayer</a></span>
+        <a href="CAddTable.html"><span class="name">CAddTable</span></a><span class="result"> extends <a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="scala.Float">Float</span>] with <a href="MklDnnLayer.html" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.MklDnnLayer">MklDnnLayer</a> with <a href="../MklInt8Convertible.html" class="extype" name="com.intel.analytics.bigdl.nn.MklInt8Convertible">MklInt8Convertible</a></span>
       </span>
       </h4>
       
@@ -98,7 +98,7 @@
       </h4>
       
     </li><li name="com.intel.analytics.bigdl.nn.mkldnn.DnnGraph" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="DnnGraphextendsGraph[Float]withMklDnnLayer"></a>
+      <a id="DnnGraphextendsGraph[Float]withMklDnnLayerwithMklInt8Convertible"></a>
       <a id="DnnGraph:DnnGraph"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -106,7 +106,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="DnnGraph.html"><span class="name">DnnGraph</span></a><span class="result"> extends <a href="../Graph.html" class="extype" name="com.intel.analytics.bigdl.nn.Graph">Graph</a>[<span class="extype" name="scala.Float">Float</span>] with <a href="MklDnnLayer.html" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.MklDnnLayer">MklDnnLayer</a></span>
+        <a href="DnnGraph.html"><span class="name">DnnGraph</span></a><span class="result"> extends <a href="../Graph.html" class="extype" name="com.intel.analytics.bigdl.nn.Graph">Graph</a>[<span class="extype" name="scala.Float">Float</span>] with <a href="MklDnnLayer.html" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.MklDnnLayer">MklDnnLayer</a> with <a href="../MklInt8Convertible.html" class="extype" name="com.intel.analytics.bigdl.nn.MklInt8Convertible">MklInt8Convertible</a></span>
       </span>
       </h4>
       
@@ -132,7 +132,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="HeapData.html"><span class="name">HeapData</span></a><span class="params">(<span name="_shape">_shape: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="_layout">_layout: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <a href="MemoryData.html" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.MemoryData">MemoryData</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="HeapData.html"><span class="name">HeapData</span></a><span class="params">(<span name="_shape">_shape: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="_layout">_layout: <span class="extype" name="scala.Int">Int</span></span>, <span name="_dataType">_dataType: <span class="extype" name="scala.Int">Int</span> = <span class="defval" name="com.intel.analytics.bigdl.mkl.DataType.F32">...</span></span>)</span><span class="result"> extends <a href="MemoryData.html" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.MemoryData">MemoryData</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -303,7 +303,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="NativeData.html"><span class="name">NativeData</span></a><span class="params">(<span name="_shape">_shape: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="_layout">_layout: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <a href="MemoryData.html" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.MemoryData">MemoryData</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="NativeData.html"><span class="name">NativeData</span></a><span class="params">(<span name="_shape">_shape: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="_layout">_layout: <span class="extype" name="scala.Int">Int</span></span>, <span name="_dataType">_dataType: <span class="extype" name="scala.Int">Int</span> = <span class="defval" name="com.intel.analytics.bigdl.mkl.DataType.F32">...</span></span>)</span><span class="result"> extends <a href="MemoryData.html" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.MemoryData">MemoryData</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -689,6 +689,19 @@
       </span>
       <span class="symbol">
         <a href="SbnDnn$.html"><span class="name">SbnDnn</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.mkldnn.Scale" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Scale"></a>
+      <a id="Scale:Scale"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Scale$.html"><span class="name">Scale</span></a>
       </span>
       </h4>
       
