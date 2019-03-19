@@ -96,7 +96,7 @@ java -cp xxx.jar -DFOO=BAR your.main.class.name
 <p><strong>Mode</strong></p>
 <ul>
 <li><code>bigdl.localMode</code>: Whether BigDL is running as a local Java/Scala program. Default is false.</li>
-<li><code>bigdl.engineType</code>: Default is <strong>mklblas</strong>. When you run model contains mkl dnn layers, you should set it to <strong>mkldnn</strong> to get better performance.</li>
+<li><code>bigdl.engineType</code>: Default is <strong>mklblas</strong>. Besides, you can try <strong>mkldnn</strong> When you want to get better performance for model prediction/training.</li>
 </ul>
 <p><strong>Multi-threading</strong></p>
 <ul>
@@ -112,9 +112,10 @@ java -cp xxx.jar -DFOO=BAR your.main.class.name
 <li><code>bigdl.ModelBroadcastFactory</code>: Specify a ModelBroadcastFactory which creates a ModelBroadcast to control how to broadcast the model in the distributed training.</li>
 </ul>
 <p><strong>Tensor</strong></p>
-<ul>
-<li><code>bigdl.tensor.fold</code>: To set how many elements in a tensor to determine it is a large tensor, and thus print only part of it. Default is 1000.</li>
-</ul>
+<p><code>bigdl.tensor.fold</code>: To set how many elements in a tensor to determine it is a large tensor, and thus print only part of it. Default is 1000.</p>
+<p><strong>MKLDNN Prediction</strong>
+- <code>bigdl.mkldnn.fusion</code>: To do layers fusion for model prediction which can improve performance, just for mkldnn engine type. Default is true.
+- <code>multiThread</code>: To do java parallelism for some layers, just for mkldnn engine type. Default is false.</p>
 
   <br>
 </div>
