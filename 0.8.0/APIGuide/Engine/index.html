@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Engine - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "How to do it in the code?", url: "#how-to-do-it-in-the-code", children: [
+          ]},
+          {title: "What if the spark context has been created before my code get executed?", url: "#what-if-the-spark-context-has-been-created-before-my-code-get-executed", children: [
+              {title: "What's the required configurations?", url: "#whats-the-required-configurations" },
+              {title: "How to do it?", url: "#how-to-do-it" },
+          ]},
+          {title: "Run BigDL without Spark", url: "#run-bigdl-without-spark", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60548202-2', 'bigdl-project.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Engine</strong></h1>
+    <hr>
+    <p>BigDL need some environment variables be set correctly to get a good performance. Engine.init method
+can help you set and verify them.</p>
+<h2 id="how-to-do-it-in-the-code">How to do it in the code?</h2>
+<p>Before any BigDL related code piece, please invoke <code>Engine.init</code> like this</p>
+<pre><code class="scala">val conf = Engine.createSparkConf()
+val sc = new SparkContext(conf)
+Engine.init
+</code></pre>
+
+<pre><code class="python">conf=create_spark_conf()
+sc = SparkContext(conf)
+init_engine()
+</code></pre>
+
+<p>Please note that there's an old Engine.init(executorNum, coreNumber) API, which need you pass in the
+executor number and core number. As user may input an incorrect value, we have changed to auto
+detect these two values. So the old API is deprecated.</p>
+<h2 id="what-if-the-spark-context-has-been-created-before-my-code-get-executed">What if the spark context has been created before my code get executed?</h2>
+<p>In some platform or application(e.g. spark-shell, pyspark or jupyter notebook), the spark context
+is created before your code execution. In such case, you cannot use the 'createSparkConf' API to
+initialize your own spark context. Such platform or application should always allow you to modify
+the spark configuration in some way, so you can pass in the required spark configurations by youself.</p>
+<h3 id="whats-the-required-configurations">What's the required configurations?</h3>
+<p>You can find them in the <code>conf/spark-bigdl.conf</code> file.</p>
+<h3 id="how-to-do-it">How to do it?</h3>
+<p>If you use spark shell or pyspark notebook</p>
+<pre><code class="shell"># Spark shell
+spark-shell --properties-file dist/conf/spark-bigdl.conf ...
+
+# Pyspark
+pyspark --properties-file dist/conf/spark-bigdl.conf ... 
+</code></pre>
+
+<p>In your code</p>
+<pre><code class="scala">Engine.init 
+</code></pre>
+
+<pre><code class="python">init_engine()
+</code></pre>
+
+<h2 id="run-bigdl-without-spark">Run BigDL without Spark</h2>
+<p>If you run BigDL models without Spark, you should set the JVM property <code>bigdl.localMode</code> to true.
+So the Engine.init won't check spark related environments.</p>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

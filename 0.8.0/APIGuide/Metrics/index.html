@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Metrics - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Loss", url: "#loss", children: [
+          ]},
+          {title: "Top1Accuracy", url: "#top1accuracy", children: [
+          ]},
+          {title: "Top5Accuracy", url: "#top5accuracy", children: [
+          ]},
+          {title: "HitRatio", url: "#hitratio", children: [
+          ]},
+          {title: "NDCG", url: "#ndcg", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60548202-2', 'bigdl-project.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Metrics</strong></h1>
+    <hr>
+    <p>ValidationMethod is a method to validate the model during model training or evaluation.
+The trait can be extended by user-defined method. Now we have defined Top1Accuracy, Top5Accuracy, Loss.
+You can use those methods to evaluate model, please refer to <a href="https://github.com/intel-analytics/BigDL/blob/master/docs/docs/APIdocs/Module.md">Module</a> for details.</p>
+<hr />
+<h2 id="loss">Loss</h2>
+<p>Calculate loss of output and target with criterion. The default criterion is ClassNLLCriterion.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val loss = new Loss(criterion)
+</code></pre>
+
+<p>example</p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.optim._
+import com.intel.analytics.bigdl.utils.Engine
+import org.apache.spark.SparkContext
+import com.intel.analytics.bigdl.dataset.Sample
+import com.intel.analytics.bigdl.models.lenet.LeNet5
+
+val conf = Engine.createSparkConf()
+val sc = new SparkContext(conf)
+Engine.init
+
+val data = new Array[Sample[Float]](10)
+var i = 0
+while (i &lt; data.length) {
+  val input = Tensor[Float](28, 28).fill(0.8f)
+  val label = Tensor[Float](1).fill(1.0f)
+  data(i) = Sample(input, label)
+  i += 1
+}
+val model = LeNet5(classNum = 10)
+val dataSet = sc.parallelize(data, 4)
+
+val result = model.evaluate(dataSet, Array(new Loss[Float]().asInstanceOf[ValidationMethod[Float]]))
+
+scala&gt; result
+res12: Array[(com.intel.analytics.bigdl.optim.ValidationResult, com.intel.analytics.bigdl.optim.ValidationMethod[Float])] = Array(((Loss: 9.339776, count: 4, Average Loss: 2.334944),Loss))
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">loss = Loss(cri)
+</code></pre>
+
+<p>example</p>
+<pre><code>from pyspark import SparkContext
+from bigdl.util.common import *
+from bigdl.nn.layer import *
+from bigdl.optim.optimizer import *
+
+sc = get_spark_context(conf=create_spark_conf())
+init_engine()
+
+data_len = 10
+batch_size = 8
+FEATURES_DIM = 4
+
+def gen_rand_sample():
+    features = np.random.uniform(0, 1, (FEATURES_DIM))
+    label = features.sum() + 0.4
+    return Sample.from_ndarray(features, label)
+
+trainingData = sc.parallelize(range(0, data_len)).map(
+    lambda i: gen_rand_sample())
+
+model = Sequential()
+model.add(Linear(4, 5))
+test_results = model.evaluate(trainingData, batch_size, [Loss()])
+
+&gt;&gt;&gt; print test_results[0]
+Test result: 0.116546951234, total_num: 10, method: Loss
+</code></pre>
+
+<hr />
+<h2 id="top1accuracy">Top1Accuracy</h2>
+<p>Caculate the percentage that output's max probability index equals target.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val top1accuracy = new Top1Accuracy()
+</code></pre>
+
+<p>set validation method as Top1Accuracy</p>
+<pre><code class="scala">val result = model.evaluate(dataSet, Array(new Top1Accuracy[Float]().asInstanceOf[ValidationMethod[Float]]))
+
+scala&gt; result
+res13: Array[(com.intel.analytics.bigdl.optim.ValidationResult, com.intel.analytics.bigdl.optim.ValidationMethod[Float])] = Array((Accuracy(correct: 0, count: 10, accuracy: 0.0),Top1Accuracy))
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">top1accuracy = Top1Accuracy()
+</code></pre>
+
+<pre><code class="python">test_results = model.evaluate(trainingData, batch_size, [Top1Accuracy()])
+
+&gt;&gt;&gt; print test_results[0]
+Test result: 0.0, total_num: 10, method: Top1Accuracy
+</code></pre>
+
+<hr />
+<h2 id="top5accuracy">Top5Accuracy</h2>
+<p>Caculate the percentage that target in output's top5 probability indexes.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val top5accuracy = new Top5Accuracy()
+</code></pre>
+
+<p>set validation method as Top5Accuracy</p>
+<pre><code class="scala">val result = model.evaluate(dataSet, Array(new Top5Accuracy[Float]().asInstanceOf[ValidationMethod[Float]]))
+
+scala&gt; result
+res18: Array[(com.intel.analytics.bigdl.optim.ValidationResult, com.intel.analytics.bigdl.optim.ValidationMethod[Float])] = Array((Accuracy(correct: 10, count: 10, accuracy: 1.0),Top5Accuracy))
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">top5accuracy = Top5Accuracy()
+</code></pre>
+
+<pre><code class="python">test_results = model.evaluate(trainingData, batch_size, [Top5Accuracy()])
+
+&gt;&gt;&gt; print test_results[0]
+Test result: 0.0, total_num: 10, method: Top5Accuracy
+</code></pre>
+
+<hr />
+<h2 id="hitratio">HitRatio</h2>
+<p>Hit Ratio(HR) used in recommandation application. HR intuitively measures whether the test item is present on the top-k list.  </p>
+<p>Notice: Output and target should belong to the same user. And have (negNum + 1) elements. Target should have only one positive label, means one element is 1, others are all 0. A couple of output and target will be count as one record.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val hr10 = new HitRatio(k = 10, negNum = 100)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">hr10 = HitRatio(k = 10)
+</code></pre>
+
+<hr />
+<h2 id="ndcg">NDCG</h2>
+<p>NDCG is Normalized Discounted Cumulative Gain(NDCG).<br />
+NDCG accounts for the position of the hit by assigning higher scores to hits at top ranks.  </p>
+<p>Notice: Like HitRatio, output and target should belong to the same user. And have (negNum + 1) elements. Target should have only one positive label, means one element is 1, others are all 0. A couple of output and target will be count as one record.</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val ndcg = new NDCG(k = 10, negNum = 100)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">ndcg = NDCG(k = 10)
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

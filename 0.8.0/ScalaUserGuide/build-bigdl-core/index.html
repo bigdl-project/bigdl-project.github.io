@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Build BigDL-core - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Environment on CentOS (after 6.8 final)", url: "#environment-on-centos-after-68-final", children: [
+          ]},
+          {title: "Environment on Ubuntu/Debian", url: "#environment-on-ubuntudebian", children: [
+          ]},
+          {title: "Environment on Windows 10", url: "#environment-on-windows-10", children: [
+          ]},
+          {title: "Environment on macOS (after Sierra / 10.12.1)", url: "#environment-on-macos-after-sierra-10121", children: [
+          ]},
+          {title: "Build and Deploy", url: "#build-and-deploy", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60548202-2', 'bigdl-project.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Build BigDL-core</strong></h1>
+    <hr>
+    <p>BigDL-core provides a lot of native methods including math processing routines,
+quantized operation and so on. It will increase the performance of neural
+networks. The math processing routines will call <a href="https://software.intel.com/en-us/mkl">Intel MKL</a>,
+including gemm, add operations and so on.</p>
+<p>BigDL-core is a JNI project, <code>mkl2017-xeon-blas</code> needs MKL libraries with icc and 
+<code>bigquant</code> needs g++-7. We use <code>maven</code> + <code>make</code> to control the build process where
+maven for java and make for c/c++ code. For building BigDL-core, there should have</p>
+<ul>
+<li>JDK 1.7+</li>
+<li>maven</li>
+<li>make</li>
+<li>g++-7</li>
+<li><a href="https://software.intel.com/en-us/parallel-studio-xe/choose-download">Intel Parallel Studio</a></li>
+<li>Git.</li>
+</ul>
+<h2 id="environment-on-centos-after-68-final"><strong>Environment on CentOS</strong> (after 6.8 final)</h2>
+<p>You should build the environment with CentOS 6.8 final. BigQuant depends the GCC 7.2,
+and it's hard to find the a GCC 7.2 repo or rpm package that supports this version
+OS. So you should build it from source. Another thing you should pay attention is,
+you should build a new version binutils because the old version doesn't support to
+assemble the code generated from GCC 7.2.</p>
+<ul>
+<li><strong>Build GCC-7.2</strong></li>
+</ul>
+<pre><code class="bash">git clone https://github.com/gcc-mirror/gcc.git
+git checkout gcc-7_2_0-release
+./configure --prefix=/opt/gcc-7.2.0 --enable-languages=c,c++ --disable-multilib --disable-nls
+make -j4 &amp;&amp; make install
+ln -s /opt/gcc-7.2.0 /opt/gcc
+</code></pre>
+
+<ul>
+<li><strong>Build binutils 2.29</strong></li>
+</ul>
+<pre><code class="bash">wget https://ftp.gnu.org/gnu/binutils/binutils-2.29.tar.gz
+tar zxvf binutils-2.29.tar.gz -C /tmp/ &amp;&amp; cd /tmp/binutils-2.29
+configure --prefix=/opt/binutils-2.29
+make &amp;&amp; make install
+ln -s /opt/binutils-2.29 /opt/binutils/
+</code></pre>
+
+<ul>
+<li><strong>Install Git</strong></li>
+</ul>
+<pre><code class="bash">./configure --prefix=/opt/git-2.9.5
+make -j4 &amp;&amp; make install
+ln -s /opt/git-2.9.5 /opt/git
+</code></pre>
+
+<ul>
+<li>
+<p><strong>Install Intel Parallel Studio XE</strong></p>
+</li>
+<li>
+<p><strong>Set environment variables</strong></p>
+</li>
+</ul>
+<pre><code class="bash">GCC_7_HOME=/opt/gcc
+LIBDIR=${GCC_7_HOME}/lib/../lib64
+export LD_LIBRARY_PATH=${LIBDIR}:${LD_LIBRARY_PATH}
+export LIBRARY_PATH=${LIBDIR}:${LIBRARY_PATH}
+export LD_RUN_PATH=${LIBDIR}:${LD_RUN_PATH}
+export PATH=${GCC_7_HOME}/bin/:${PATH}
+export C_INCLUDE_PATH=/opt/gcc/include/:${C_INCLUDE_PATH}
+export CPLUS_INCLUDE_PATH=/opt/gcc/include/:${CPLUS_INCLUDE_PATH}
+
+GIT_HOME=/opt/git
+export PATH=${GIT_HOME}/bin:${PATH}
+
+BINUTILS_HOME=/opt/binutils
+export LD_LIBRARY_PATH=${BINUTILS_HOME}/lib:${LD_LIBRARY_PATH}
+export PATH=${BINUTILS_HOME}/bin:${PATH}
+</code></pre>
+
+<h2 id="environment-on-ubuntudebian"><strong>Environment on Ubuntu/Debian</strong></h2>
+<ul>
+<li><strong>Install g++-7</strong></li>
+</ul>
+<pre><code class="bash">sudo add-apt-repository ppa:jonathonf/gcc-7.1
+sudo apt-get update
+sudo apt-get install gcc-7 g++-7
+sudo apt-get install build-essential
+</code></pre>
+
+<ul>
+<li><strong>Install Intel Parallel Studio XE</strong></li>
+</ul>
+<h2 id="environment-on-windows-10"><strong>Environment on Windows 10</strong></h2>
+<p>For this platform, you should install Visual Studio 2015. We have not built
+successfully with much newer VS. When you do the installation, you need only
+forllow the default steps and click <em>next</em>.</p>
+<p>Please pay attention, the MinGW must follows the link below. Otherwise it maybe
+can't work. By default, the <code>make</code> names with <code>ming32-make.exe</code>, and <code>g++-7</code> names with <code>g++</code>.
+You should change the name at last as follows.</p>
+<ol>
+<li><strong>Install Visual Studio 2015</strong></li>
+<li><strong>Install Intel Parallel Studio XE 2018</strong></li>
+<li><strong>Install <a href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/7.2.0/threads-win32/sjlj/x86_64-7.2.0-release-win32-sjlj-rt_v5-rev0.7z">MinGW</a></strong></li>
+<li><strong>Copy <code>ming32-make.exe</code> to <code>make.exe</code></strong></li>
+<li><strong>Copy <code>g++</code> to <code>g++-7</code></strong></li>
+</ol>
+<p>At the end, open a cmd terminal and input <code>g++-7 -v</code> , should output like below,</p>
+<pre><code class="bash">Using built-in specs.
+COLLECT_GCC=g++-7
+COLLECT_LTO_WRAPPER=C:/MinGW/bin/../libexec/gcc/x86_64-w64-mingw32/7.1.0/lto-wrapper.exe
+Target: x86_64-w64-mingw32
+Configured with: ../../../src/gcc-7.1.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-ingw32 --prefix=/mingw64 --with-sysroot=/c/mingw710/x86_64-710-win32-sjlj-rt_v5-rev2/mingw64 --enable-shared --enable-static --enable-targets=all --enable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=win32 --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --enable-sjlj-exceptions --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch-32=i686 --with-arch-64=nocona --with-tune-32=generic --with-tune-64=core2 --with-libiconv --with-system-zlib --with-gmp=/c/mingw710/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/mingw710/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/mingw710/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/mingw710/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-win32-sjlj-rev2, Built by MinGW-W64 project' --with-bugurl=https://sourceforge.net/projects/mingw-w64 CFLAGS='-O2 -pipe -fno-ident -I/c/mingw710/x86_64-710-win32-sjlj-rt_v5-rev2/mingw64/opt/include -I/c/mingw710/prerequisites/x86_64-zlib-static/include -I/c/mingw710/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/mingw710/x86_64-710-win32-sjlj-rt_v5-rev2/mingw64/opt/include -I/c/mingw710/prerequisites/x86_64-zlib-static/include -I/c/mingw710/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/mingw710/x86_64-710-win32-sjlj-rt_v5-rev2/mingw64/opt/include -I/c/mingw710/prerequisites/x86_64-zlib-static/include -I/c/mingw710/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/mingw710/x86_64-710-win32-sjlj-rt_v5-rev2/mingw64/opt/lib -L/c/mingw710/prerequisites/x86_64-zlib-static/lib -L/c/mingw710/prerequisites/x86_64-w64-mingw32-static/lib '
+Thread model: win32
+gcc version 7.1.0 (x86_64-win32-sjlj-rev2, Built by MinGW-W64 project)
+</code></pre>
+
+<h2 id="environment-on-macos-after-sierra-10121"><strong>Environment on macOS (after Sierra / 10.12.1)</strong></h2>
+<p>On macOS, you can install Intel Parallell Studio XE as normal. And for gcc, you
+can use <code>brew</code>.</p>
+<ol>
+<li><strong>Install Intel Parallel Studio XE.</strong></li>
+<li><strong>Install g++-7:</strong> <code>brew install gcc@7</code>.</li>
+</ol>
+<h2 id="build-and-deploy"><strong>Build and Deploy</strong></h2>
+<p>We use maven profile to control the build process. For different platforms has different profiles.</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th align="center">Profile</th>
+<th align="center">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td align="center">linux</td>
+<td align="center"><code>mvn clean package -P linux</code></td>
+</tr>
+<tr>
+<td>RedHat5</td>
+<td align="center">rh5</td>
+<td align="center"><code>mvn clean package -P rh5</code></td>
+</tr>
+<tr>
+<td>macOS</td>
+<td align="center">mac</td>
+<td align="center"><code>mvn clean package -P mac</code></td>
+</tr>
+<tr>
+<td>Windows</td>
+<td align="center">win64</td>
+<td align="center"><code>mvn clean package -P win64</code></td>
+</tr>
+<tr>
+<td>All Platforms</td>
+<td align="center">-</td>
+<td align="center"><code>mvn clean package</code></td>
+</tr>
+</tbody>
+</table>
+<p>Note, the default command whithout any profile will generate a jar package which should contain
+all libraries of different OS. But it requires you put the relevant libraries into the folder.
+For example, for biquant, you should put the .so, .dylib, .dll to <code>bigquant/bigquant-java-&lt;os&gt;/target/clases</code>.</p>
+<p>There two ways to deploy. You can use <code>mvn deploy -P deploy</code> at the end.</p>
+<ul>
+<li>Copy the prebuilt libraries from every platform to a main machine, and deploy it.</li>
+<li>Build the jar on specific platform and deploy it. For example, you want to deploy bigquant of linux.</li>
+</ul>
+<pre><code>mvn clean deploy -P 'linux' -pl 'bigquant/bigquant-java-x86_64-linux'
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
