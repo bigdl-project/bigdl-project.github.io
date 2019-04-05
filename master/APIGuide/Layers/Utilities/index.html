@@ -128,7 +128,11 @@ array([[ 0.7006678 ,  0.29719472],
 
 <p>This module is for debug purpose, which can print activation and gradient size in your model topology</p>
 <p><strong>Scala example:</strong></p>
-<pre><code class="scala">val module = Echo()
+<pre><code class="scala">import com.intel.analytics.bigdl.nn.Echo
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val module = Echo()
 val input = Tensor(3, 2).rand()
 input: com.intel.analytics.bigdl.tensor.Tensor[Float] =
 0.24058184      0.22737113
