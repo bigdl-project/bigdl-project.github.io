@@ -99,7 +99,7 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 By default, <code>make-dist.sh</code> uses Scala 2.10 for Spark 1.5.x or 1.6.x, and Scala 2.11 for Spark 2.0.x or 2.1.x. To override the default behaviors, you can pass <code>-P scala_2.10</code> or <code>-P scala_2.11</code> to <code>make-dist.sh</code> as appropriate.</p>
 <p>After that, you can find a <code>dist</code> folder, which contains all the needed files to run a BigDL program. The files in <code>dist</code> include:</p>
 <ul>
-<li><strong>dist/bin/bigdl.sh</strong>: A script used to set up proper environment variables and launch the BigDL program.</li>
+<li><strong>dist/bin/</strong>: The folder contains scripts used to set up proper environment variables and launch the BigDL program.</li>
 <li><strong>dist/lib/bigdl-VERSION-jar-with-dependencies.jar</strong>: This jar package contains all dependencies except Spark classes.</li>
 <li><strong>dist/lib/bigdl-VERSION-python-api.zip</strong>: This zip package contains all Python files of BigDL.</li>
 <li><strong>dist/conf/spark-bigdl.conf</strong>: This file contains necessary property configurations. <code>Engine.createSparkConf</code> will populate these properties, so try to use that method in your code. Or you need to pass the file to Spark with the "--properties-file" option. </li>

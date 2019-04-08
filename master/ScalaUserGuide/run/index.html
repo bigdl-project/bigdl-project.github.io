@@ -135,6 +135,8 @@ res9: com.intel.analytics.bigdl.tensor.Tensor[Double] =
   -b batch_size
 
   # Spark standalone mode
+  ## ${SPARK_HOME}/sbin/start-master.sh
+  ## check master URL from http://localhost:8080
   spark-submit --master spark://... --executor-cores cores_per_executor \
   --total-executor-cores total_cores_for_the_job \
   --class com.intel.analytics.bigdl.models.vgg.Train \
@@ -210,7 +212,7 @@ safety of your model files.</li>
 <pre><code class="bash">scala -cp spark/dl/target/bigdl-VERSION-jar-with-dependencies-and-spark.jar \
 com.intel.analytics.bigdl.example.lenetLocal.Test \
 -f path_to_mnist_folder \
---model ./model/model.iteration \
+--model ./model/model.#iteration_number \
 -c core_number \
 -b batch_size
 </code></pre>
@@ -218,7 +220,7 @@ com.intel.analytics.bigdl.example.lenetLocal.Test \
 <p>In the above command</p>
 <ul>
 <li>-f: where you put your MNIST data</li>
-<li>--model: the model snapshot file</li>
+<li>--model: the model snapshot file cached during training. </li>
 <li>-c: The core number on local machine used for this testing. The default value is physical cores number. Get it through Runtime.getRuntime().availableProcessors() / 2</li>
 <li>-b: The mini-batch size. It is expected that the mini-batch size is a multiple of core_number   </li>
 </ul>
@@ -227,14 +229,14 @@ com.intel.analytics.bigdl.example.lenetLocal.Test \
 com.intel.analytics.bigdl.example.lenetLocal.Predict \
 -f path_to_mnist_folder \
 -c core_number \
---model ./model/model.iteration
+--model ./model/model.#iteration_number
 </code></pre>
 
 <p>In the above command</p>
 <ul>
 <li>-f: where you put your MNIST data</li>
 <li>-c: The core number on local machine used for this prediction. The default value is physical cores number. Get it through Runtime.getRuntime().availableProcessors() / 2</li>
-<li>--model: the model snapshot file</li>
+<li>--model: the model snapshot file cached during training</li>
 </ul>
 <hr />
 <h2 id="for-windows-user"><strong>For Windows User</strong></h2>
