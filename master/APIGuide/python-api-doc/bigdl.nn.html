@@ -1111,6 +1111,17 @@ uniform distribution within [-limit, limit] where “limit” is “1/sqrt(fan_i
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.Attention">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Attention</code><span class="sig-paren">(</span><em>hidden_size</em>, <em>num_heads</em>, <em>attention_dropout</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Attention"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Attention" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Implementation of multiheaded attention and self-attention layers.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">attention</span> <span class="o">=</span> <span class="n">Attention</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="go">creating: createAttention</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.BatchNormalization">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">BatchNormalization</code><span class="sig-paren">(</span><em>n_output</em>, <em>eps=1e-05</em>, <em>momentum=0.1</em>, <em>affine=True</em>, <em>init_weight=None</em>, <em>init_bias=None</em>, <em>init_grad_weight=None</em>, <em>init_grad_bias=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#BatchNormalization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.BatchNormalization" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
@@ -1861,6 +1872,19 @@ topology</p>
 <p>Applies element-wise exp to input tensor.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">exp</span> <span class="o">=</span> <span class="n">Exp</span><span class="p">()</span>
 <span class="go">creating: createExp</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.FeedForwardNetwork">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">FeedForwardNetwork</code><span class="sig-paren">(</span><em>hidden_size</em>, <em>filter_size</em>, <em>relu_dropout</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#FeedForwardNetwork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.FeedForwardNetwork" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Implementation FeedForwardNetwork constructed with fully connected network.
+Input with shape (batch_size, length, hidden_size)
+Output with shape (batch_size, length, hidden_size)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ffn</span> <span class="o">=</span> <span class="n">FeedForwardNetwork</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="go">creating: createFeedForwardNetwork</span>
 </pre></div>
 </div>
 </dd></dl>

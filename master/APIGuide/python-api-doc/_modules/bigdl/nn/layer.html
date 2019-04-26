@@ -957,6 +957,34 @@
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;saveGraphTopology&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">log_path</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div></div>
 
+<div class="viewcode-block" id="Attention"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Attention">[docs]</a><span class="k">class</span> <span class="nc">Attention</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Implementation of multiheaded attention and self-attention layers.</span>
+
+<span class="sd">    &gt;&gt;&gt; attention = Attention(8, 4, 1.0)</span>
+<span class="sd">    creating: createAttention</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">attention_dropout</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Attention</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                        <span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">attention_dropout</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FeedForwardNetwork"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.FeedForwardNetwork">[docs]</a><span class="k">class</span> <span class="nc">FeedForwardNetwork</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Implementation FeedForwardNetwork constructed with fully connected network.</span>
+<span class="sd">    Input with shape (batch_size, length, hidden_size)</span>
+<span class="sd">    Output with shape (batch_size, length, hidden_size)</span>
+
+<span class="sd">    &gt;&gt;&gt; ffn = FeedForwardNetwork(8, 4, 1.0)</span>
+<span class="sd">    creating: createFeedForwardNetwork</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">filter_size</span><span class="p">,</span> <span class="n">relu_dropout</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FeedForwardNetwork</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                        <span class="n">hidden_size</span><span class="p">,</span> <span class="n">filter_size</span><span class="p">,</span> <span class="n">relu_dropout</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Linear"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Linear">[docs]</a><span class="k">class</span> <span class="nc">Linear</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
