@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>SGD - bigdl 0.9.0-SNAPSHOT API - com.intel.analytics.bigdl.optim.SGD</title>
-          <meta name="description" content="SGD - bigdl 0.9.0 - SNAPSHOT API - com.intel.analytics.bigdl.optim.SGD" />
-          <meta name="keywords" content="SGD bigdl 0.9.0 SNAPSHOT API com.intel.analytics.bigdl.optim.SGD" />
+          <title>LarsSGD - bigdl 0.9.0-SNAPSHOT API - com.intel.analytics.bigdl.optim.LarsSGD</title>
+          <meta name="description" content="LarsSGD - bigdl 0.9.0 - SNAPSHOT API - com.intel.analytics.bigdl.optim.LarsSGD" />
+          <meta name="keywords" content="LarsSGD bigdl 0.9.0 SNAPSHOT API com.intel.analytics.bigdl.optim.LarsSGD" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -12,7 +12,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
-            var hash = 'com.intel.analytics.bigdl.optim.SGD';
+            var hash = 'com.intel.analytics.bigdl.optim.LarsSGD';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -24,9 +24,9 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="SGD$.html" title="Go to companion"><img src="../../../../../lib/class_to_object_big.png" /></a>
+        <a href="LarsSGD$.html" title="Go to companion"><img src="../../../../../lib/class_to_object_big.png" /></a>
         <p id="owner"><a href="../../../../package.html" class="extype" name="com">com</a>.<a href="../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.optim">optim</a></p>
-        <h1><a href="SGD$.html" title="Go to companion">SGD</a></h1>
+        <h1><a href="LarsSGD$.html" title="Go to companion">LarsSGD</a></h1>
       </div>
 
       <h4 id="signature" class="signature">
@@ -35,17 +35,17 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">SGD</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>]</span>
+        <span class="name">LarsSGD</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>]</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A plain implementation of SGD</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>An implementation of LARS https://arxiv.org/abs/1708.03888
+Lars.createOptimForModule is recommended to be used to create LARS optim methods for multiple
+layers
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>
 </p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div><div class="toggleContainer block">
-          <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="LarsSGD.html" class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD">LarsSGD</a></div>
+          <div class="superTypes hiddenContent"><a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>], <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -63,7 +63,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.intel.analytics.bigdl.optim.SGD"><span>SGD</span></li><li class="in" name="com.intel.analytics.bigdl.optim.OptimMethod"><span>OptimMethod</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.intel.analytics.bigdl.optim.LarsSGD"><span>LarsSGD</span></li><li class="in" name="com.intel.analytics.bigdl.optim.SGD"><span>SGD</span></li><li class="in" name="com.intel.analytics.bigdl.optim.OptimMethod"><span>OptimMethod</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -83,19 +83,20 @@
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="com.intel.analytics.bigdl.optim.SGD#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(learningRate:Double,learningRateDecay:Double,weightDecay:Double,momentum:Double,dampening:Double,nesterov:Boolean,learningRateSchedule:com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule,learningRates:com.intel.analytics.bigdl.tensor.Tensor[T],weightDecays:com.intel.analytics.bigdl.tensor.Tensor[T])(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.optim.SGD[T]"></a>
-      <a id="&lt;init&gt;:SGD[T]"></a>
+              <ol><li name="com.intel.analytics.bigdl.optim.LarsSGD#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(lrScheduleOwner:Boolean,trust:Double,_learningRate:Double,_learningRateDecay:Double,_weightDecay:Double,_momentum:Double,_learningRateSchedule:com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.optim.LarsSGD[T]"></a>
+      <a id="&lt;init&gt;:LarsSGD[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">SGD</span><span class="params">(<span name="learningRate">learningRate: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.001</span></span>, <span name="learningRateDecay">learningRateDecay: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.0</span></span>, <span name="weightDecay">weightDecay: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.0</span></span>, <span name="momentum">momentum: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.0</span></span>, <span name="dampening">dampening: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">scala.Double.MaxValue</span></span>, <span name="nesterov">nesterov: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="learningRateSchedule">learningRateSchedule: <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a> = <span class="defval" name="com.intel.analytics.bigdl.optim.SGD.Default.apply()">...</span></span>, <span name="learningRates">learningRates: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>] = <span class="symbol">null</span></span>, <span name="weightDecays">weightDecays: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>] = <span class="symbol">null</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>]</span>)</span>
+        <span class="name">LarsSGD</span><span class="params">(<span name="lrScheduleOwner">lrScheduleOwner: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="trust">trust: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">1.0</span></span>, <span name="_learningRate">_learningRate: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.001</span></span>, <span name="_learningRateDecay">_learningRateDecay: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.01</span></span>, <span name="_weightDecay">_weightDecay: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">5.0E-4</span></span>, <span name="_momentum">_momentum: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.5</span></span>, <span name="_learningRateSchedule">_learningRateSchedule: <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a> = <span class="defval" name="com.intel.analytics.bigdl.optim.SGD.Default.apply()">...</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">learningRate</dt><dd class="cmt"><p>learning rate</p></dd><dt class="param">learningRateDecay</dt><dd class="cmt"><p>learning rate decay</p></dd><dt class="param">weightDecay</dt><dd class="cmt"><p>weight decay</p></dd><dt class="param">momentum</dt><dd class="cmt"><p>momentum</p></dd><dt class="param">dampening</dt><dd class="cmt"><p>dampening for momentum</p></dd><dt class="param">nesterov</dt><dd class="cmt"><p>enables Nesterov momentum</p></dd><dt class="param">learningRates</dt><dd class="cmt"><p>1D tensor of individual learning rates</p></dd><dt class="param">weightDecays</dt><dd class="cmt"><p>1D tensor of individual weight decays</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">lrScheduleOwner</dt><dd class="cmt"><p>if this optim method owns the learning rate scheduler.
+                             A scheduler may be shared by multiple LARS scheduler</p></dd><dt class="param">trust</dt><dd class="cmt"><p>the trust on the learning rate scale, should be in 0 to 1</p></dd><dt class="param">_learningRate</dt><dd class="cmt"><p>learning rate</p></dd><dt class="param">_learningRateDecay</dt><dd class="cmt"><p>learning rate decay</p></dd><dt class="param">_weightDecay</dt><dd class="cmt"><p>weight decay</p></dd><dt class="param">_momentum</dt><dd class="cmt"><p>momentum</p></dd><dt class="param">_learningRateSchedule</dt><dd class="cmt"><p>the learning rate scheduler</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -198,7 +199,7 @@
       <p class="shortcomment cmt">Clear the history information in the OptimMethod state
 </p><div class="fullcomment"><div class="comment cmt"><p>Clear the history information in the OptimMethod state
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.OptimMethod#clone" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():com.intel.analytics.bigdl.optim.OptimMethod[T]"></a>
       <a id="clone():OptimMethod[T]"></a>
@@ -208,14 +209,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>]</span>
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">clone OptimMethod
 </p><div class="fullcomment"><div class="comment cmt"><p>clone OptimMethod
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a> → AnyRef</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.optim.SGD#dampening" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.optim.SGD#dampening" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="dampening:Double"></a>
       <a id="dampening:Double"></a>
       <h4 class="signature">
@@ -227,7 +228,7 @@
         <span class="name">dampening</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">dampening for momentum</p>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -286,7 +287,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.optim.SGD#getHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.optim.LarsSGD#getHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getHyperParameter(config:com.intel.analytics.bigdl.utils.Table):String"></a>
       <a id="getHyperParameter(Table):String"></a>
       <h4 class="signature">
@@ -298,8 +299,8 @@
         <span class="name">getHyperParameter</span><span class="params">(<span name="config">config: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">return an string of current hyperParameter.</p><div class="fullcomment"><div class="comment cmt"><p>return an string of current hyperParameter.</p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>a table contains the hyper parameter.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.optim.SGD#getHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <p class="shortcomment cmt">return an string of current hyperParameter.</p><div class="fullcomment"><div class="comment cmt"><p>return an string of current hyperParameter.</p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>a table contains the hyper parameter.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD">LarsSGD</a> → <a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.LarsSGD#getHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getHyperParameter():String"></a>
       <a id="getHyperParameter():String"></a>
       <h4 class="signature">
@@ -312,8 +313,8 @@
       </span>
       </h4>
       <p class="shortcomment cmt">return an string of current hyperParameter.</p><div class="fullcomment"><div class="comment cmt"><p>return an string of current hyperParameter.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.optim.SGD#getLearningRate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD">LarsSGD</a> → <a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.LarsSGD#getLearningRate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getLearningRate():Double"></a>
       <a id="getLearningRate():Double"></a>
       <h4 class="signature">
@@ -328,7 +329,7 @@
       <p class="shortcomment cmt">get learning rate
 </p><div class="fullcomment"><div class="comment cmt"><p>get learning rate
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD">LarsSGD</a> → <a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -355,7 +356,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.optim.SGD#learningRate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.optim.SGD#learningRate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="learningRate:Double"></a>
       <a id="learningRate:Double"></a>
       <h4 class="signature">
@@ -367,8 +368,8 @@
         <span class="name">learningRate</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">learning rate</p>
-    </li><li name="com.intel.analytics.bigdl.optim.SGD#learningRateDecay" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD#learningRateDecay" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="learningRateDecay:Double"></a>
       <a id="learningRateDecay:Double"></a>
       <h4 class="signature">
@@ -380,8 +381,8 @@
         <span class="name">learningRateDecay</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">learning rate decay</p>
-    </li><li name="com.intel.analytics.bigdl.optim.SGD#learningRateSchedule" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD#learningRateSchedule" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="learningRateSchedule:com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule"></a>
       <a id="learningRateSchedule:LearningRateSchedule"></a>
       <h4 class="signature">
@@ -393,8 +394,8 @@
         <span class="name">learningRateSchedule</span><span class="result">: <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a></span>
       </span>
       </h4>
-      
-    </li><li name="com.intel.analytics.bigdl.optim.SGD#learningRates" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD#learningRates" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="learningRates:com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
       <a id="learningRates:Tensor[T]"></a>
       <h4 class="signature">
@@ -403,25 +404,25 @@
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">learningRates</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>]</span>
+        <span class="name">learningRates</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">1D tensor of individual learning rates</p>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.SGD#loadFromTable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="loadFromTable(config:com.intel.analytics.bigdl.utils.Table):SGD.this.type"></a>
-      <a id="loadFromTable(Table):SGD.this.type"></a>
+      <a id="loadFromTable(Table):LarsSGD.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">loadFromTable</span><span class="params">(<span name="config">config: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a>.this.type</span>
+        <span class="name">loadFromTable</span><span class="params">(<span name="config">config: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD">LarsSGD</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">load optimMethod parameters from Table</p><div class="fullcomment"><div class="comment cmt"><p>load optimMethod parameters from Table</p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.optim.SGD#momentum" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD#momentum" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="momentum:Double"></a>
       <a id="momentum:Double"></a>
       <h4 class="signature">
@@ -433,7 +434,7 @@
         <span class="name">momentum</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">momentum</p>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -447,7 +448,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.optim.SGD#nesterov" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.optim.SGD#nesterov" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="nesterov:Boolean"></a>
       <a id="nesterov:Boolean"></a>
       <h4 class="signature">
@@ -459,7 +460,7 @@
         <span class="name">nesterov</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">enables Nesterov momentum</p>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a></dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <a id="notify():Unit"></a>
@@ -486,8 +487,8 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.optim.SGD#optimize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="optimize(feval:com.intel.analytics.bigdl.tensor.Tensor[T]=&gt;(T,com.intel.analytics.bigdl.tensor.Tensor[T]),x:com.intel.analytics.bigdl.tensor.Tensor[T]):(com.intel.analytics.bigdl.tensor.Tensor[T],Array[T])"></a>
+    </li><li name="com.intel.analytics.bigdl.optim.LarsSGD#optimize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="optimize(feval:com.intel.analytics.bigdl.tensor.Tensor[T]=&gt;(T,com.intel.analytics.bigdl.tensor.Tensor[T]),parameter:com.intel.analytics.bigdl.tensor.Tensor[T]):(com.intel.analytics.bigdl.tensor.Tensor[T],Array[T])"></a>
       <a id="optimize((Tensor[T])⇒(T,Tensor[T]),Tensor[T]):(Tensor[T],Array[T])"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -495,22 +496,22 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">optimize</span><span class="params">(<span name="feval">feval: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>]) ⇒ (<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>])</span>, <span name="x">x: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>]</span>)</span><span class="result">: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>])</span>
+        <span class="name">optimize</span><span class="params">(<span name="feval">feval: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>]) ⇒ (<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>])</span>, <span name="parameter">parameter: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>]</span>)</span><span class="result">: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>])</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">feval</dt><dd class="cmt"><p>a function that takes a single input (X), the point of a evaluation,
-and returns f(X) and df/dX</p></dd><dt class="param">x</dt><dd class="cmt"><p>the initial point</p></dd><dt>returns</dt><dd class="cmt"><p>the new x 1D tensor and the function list, evaluated before the update
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">feval</dt><dd class="cmt"><p>a function that takes a single input (X), the point of a evaluation, and
+                 returns f(X) and df/dX</p></dd><dt class="param">parameter</dt><dd class="cmt"><p>the initial point</p></dd><dt>returns</dt><dd class="cmt"><p>the new x vector and the function list {fx}, evaluated before the update
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD">LarsSGD</a> → <a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.OptimMethod#save" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="save(path:String,overWrite:Boolean):OptimMethod.this.type"></a>
-      <a id="save(String,Boolean):SGD.this.type"></a>
+      <a id="save(String,Boolean):LarsSGD.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">save</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a>.this.type</span>
+        <span class="name">save</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD">LarsSGD</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">save OptimMethod
@@ -543,7 +544,7 @@ and returns f(X) and df/dX</p></dd><dt class="param">x</dt><dd class="cmt"><p>th
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.optim.SGD#updateHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.optim.LarsSGD#updateHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="updateHyperParameter(config:com.intel.analytics.bigdl.utils.Table,state:com.intel.analytics.bigdl.utils.Table):Unit"></a>
       <a id="updateHyperParameter(Table,Table):Unit"></a>
       <h4 class="signature">
@@ -560,7 +561,7 @@ We have updated hyper parameter in method optimize(). But in DistriOptimizer, th
 optimize() is only called on the executor side, the driver's hyper parameter is unchanged.
 So this method is using to update hyper parameter on the driver side.
 </p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>config table.</p></dd><dt class="param">state</dt><dd class="cmt"><p>state Table.</p></dd><dt>returns</dt><dd class="cmt"><p>A string.
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD">LarsSGD</a> → <a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.SGD#updateHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="updateHyperParameter():Unit"></a>
       <a id="updateHyperParameter():Unit"></a>
@@ -578,7 +579,7 @@ We have updated hyper parameter in method optimize(). But in DistriOptimizer, th
 optimize() is only called on the executor side, the driver's hyper parameter is unchanged.
 So this method is using to update hyper parameter on the driver side.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>A string.
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a> → <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -636,7 +637,7 @@ So this method is using to update hyper parameter on the driver side.
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.optim.SGD#weightDecay" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.optim.SGD#weightDecay" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="weightDecay:Double"></a>
       <a id="weightDecay:Double"></a>
       <h4 class="signature">
@@ -648,8 +649,8 @@ So this method is using to update hyper parameter on the driver side.
         <span class="name">weightDecay</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">weight decay</p>
-    </li><li name="com.intel.analytics.bigdl.optim.SGD#weightDecays" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.SGD#weightDecays" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="weightDecays:com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
       <a id="weightDecays:Tensor[T]"></a>
       <h4 class="signature">
@@ -658,10 +659,10 @@ So this method is using to update hyper parameter on the driver side.
         <span class="kind">var</span>
       </span>
       <span class="symbol">
-        <span class="name">weightDecays</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>]</span>
+        <span class="name">weightDecays</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">1D tensor of individual weight decays</p>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a></dd></dl></div>
     </li></ol>
             </div>
 
@@ -697,7 +698,7 @@ So this method is using to update hyper parameter on the driver side.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Please initialize OptimMethod with parameters when creating it instead of importing table">optimize</span><span class="params">(<span name="feval">feval: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>]) ⇒ (<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>])</span>, <span name="parameter">parameter: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>]</span>, <span name="config">config: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="state">state: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a> = <span class="symbol">null</span></span>)</span><span class="result">: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>])</span>
+        <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Please initialize OptimMethod with parameters when creating it instead of importing table">optimize</span><span class="params">(<span name="feval">feval: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>]) ⇒ (<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>, <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>])</span>, <span name="parameter">parameter: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>]</span>, <span name="config">config: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="state">state: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a> = <span class="symbol">null</span></span>)</span><span class="result">: (<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>])</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Optimize the model parameter
@@ -714,8 +715,10 @@ So this method is using to update hyper parameter on the driver side.
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="com.intel.analytics.bigdl.optim.OptimMethod">
-              <h3>Inherited from <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.T">T</span>]</h3>
+        <div class="parent" name="com.intel.analytics.bigdl.optim.SGD">
+              <h3>Inherited from <a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>]</h3>
+            </div><div class="parent" name="com.intel.analytics.bigdl.optim.OptimMethod">
+              <h3>Inherited from <a href="OptimMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.OptimMethod">OptimMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.LarsSGD.T">T</span>]</h3>
             </div><div class="parent" name="scala.Serializable">
               <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
             </div><div class="parent" name="java.io.Serializable">
