@@ -321,6 +321,32 @@ will compute incorrect gradients.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.MklInt8Convertible#calcScales" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="calcScales(inputActvt:com.intel.analytics.bigdl.nn.abstractnn.Activity):Unit"></a>
+      <a id="calcScales(Activity):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">calcScales</span><span class="params">(<span name="inputActvt">inputActvt: <a href="../abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Calculate the required scales for converting int8 modules
+Currently there are four type of modules should be supported:
+1) Graph: calculate scales for input and output
+2) Linear: calculate scales for input, output and weight
+3) Spatial Convolution: calculate scales for input, output and weight
+4) Sequential: calculate scales for input, output as well as the scales of submodules
+5) ConcatTable: calculate scales for input, output as well as the scales of submodules</p><div class="fullcomment"><div class="comment cmt"><p>Calculate the required scales for converting int8 modules
+Currently there are four type of modules should be supported:
+1) Graph: calculate scales for input and output
+2) Linear: calculate scales for input, output and weight
+3) Spatial Convolution: calculate scales for input, output and weight
+4) Sequential: calculate scales for input, output as well as the scales of submodules
+5) ConcatTable: calculate scales for input, output as well as the scales of submodules</p></div><dl class="paramcmts block"><dt class="param">inputActvt</dt><dd class="cmt"><p>input activity
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../MklInt8Convertible.html" class="extype" name="com.intel.analytics.bigdl.nn.MklInt8Convertible">MklInt8Convertible</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#clearState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clearState():AbstractModule.this.type"></a>
       <a id="clearState():ReLU.this.type"></a>
@@ -651,20 +677,6 @@ and runningVar in BatchNormalization.</p><p>The subclass should override this me
       </h4>
       <p class="shortcomment cmt">Get numeric type of module parameters</p><div class="fullcomment"><div class="comment cmt"><p>Get numeric type of module parameters</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.MklInt8Convertible#getOutputDimMask" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getOutputDimMask():Int"></a>
-      <a id="getOutputDimMask():Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getOutputDimMask</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Get dimension mask of output</p><div class="fullcomment"><div class="comment cmt"><p>Get dimension mask of output</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>outputDimMask field which stores value of output dimension mask
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../MklInt8Convertible.html" class="extype" name="com.intel.analytics.bigdl.nn.MklInt8Convertible">MklInt8Convertible</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.MklInt8Convertible#getOutputScales" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getOutputScales():Array[Array[Float]]"></a>
       <a id="getOutputScales():Array[Array[Float]]"></a>
@@ -1430,18 +1442,20 @@ and runningVar in BatchNormalization.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>this
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.MklInt8Convertible#setInputDimMask" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setInputDimMask(mask:Int):Unit"></a>
-      <a id="setInputDimMask(Int):Unit"></a>
+      <a id="setInputDimMask(mask:Int,overrideSubmodules:Boolean):Unit"></a>
+      <a id="setInputDimMask(Int,Boolean):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setInputDimMask</span><span class="params">(<span name="mask">mask: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">setInputDimMask</span><span class="params">(<span name="mask">mask: <span class="extype" name="scala.Int">Int</span></span>, <span name="overrideSubmodules">overrideSubmodules: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Set dimension mask of input</p><div class="fullcomment"><div class="comment cmt"><p>Set dimension mask of input</p></div><dl class="paramcmts block"><dt class="param">mask</dt><dd class="cmt"><p>value of input dimension mask to be set</p></dd><dt>returns</dt><dd class="cmt"><p>Unit
+      <p class="shortcomment cmt">Set dimension mask of input</p><div class="fullcomment"><div class="comment cmt"><p>Set dimension mask of input</p></div><dl class="paramcmts block"><dt class="param">mask</dt><dd class="cmt"><p>value of input dimension mask to be set</p></dd><dt class="param">overrideSubmodules</dt><dd class="cmt"><p>when set it to true,
+            update mask including itself and submodules,
+            otherwise only update mask to module itself.</p></dd><dt>returns</dt><dd class="cmt"><p>Unit
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../MklInt8Convertible.html" class="extype" name="com.intel.analytics.bigdl.nn.MklInt8Convertible">MklInt8Convertible</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.MklInt8Convertible#setInputScales" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setInputScales(inScales:Array[Array[Float]]):Unit"></a>
@@ -1490,18 +1504,20 @@ Clear existing buffer of input scales, and place updated scales into the cleared
 </p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.MklInt8Convertible#setOutputDimMask" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setOutputDimMask(mask:Int):Unit"></a>
-      <a id="setOutputDimMask(Int):Unit"></a>
+      <a id="setOutputDimMask(mask:Int,overrideSubmodules:Boolean):Unit"></a>
+      <a id="setOutputDimMask(Int,Boolean):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setOutputDimMask</span><span class="params">(<span name="mask">mask: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">setOutputDimMask</span><span class="params">(<span name="mask">mask: <span class="extype" name="scala.Int">Int</span></span>, <span name="overrideSubmodules">overrideSubmodules: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Set dimension mask of output</p><div class="fullcomment"><div class="comment cmt"><p>Set dimension mask of output</p></div><dl class="paramcmts block"><dt class="param">mask</dt><dd class="cmt"><p>value of output dimension mask to be set</p></dd><dt>returns</dt><dd class="cmt"><p>Unit
+      <p class="shortcomment cmt">Set dimension mask of output</p><div class="fullcomment"><div class="comment cmt"><p>Set dimension mask of output</p></div><dl class="paramcmts block"><dt class="param">mask</dt><dd class="cmt"><p>value of output dimension mask to be set</p></dd><dt class="param">overrideSubmodules</dt><dd class="cmt"><p>when set it to true,
+            update mask in full scope including itself and submodules,
+            otherwise only update mask to module itself.</p></dd><dt>returns</dt><dd class="cmt"><p>Unit
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../MklInt8Convertible.html" class="extype" name="com.intel.analytics.bigdl.nn.MklInt8Convertible">MklInt8Convertible</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.MklInt8Convertible#setOutputScales" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setOutputScales(outScales:Array[Array[Float]]):Unit"></a>
@@ -1578,18 +1594,20 @@ Clear existing buffer of output scales, and place updated scales into the cleare
 </p></div><dl class="paramcmts block"><dt class="param">w</dt><dd class="cmt"><p>the value of the scale of gradientWeight</p></dd><dt>returns</dt><dd class="cmt"><p>this
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.MklInt8Convertible#setWeightDimMask" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setWeightDimMask(mask:Int):Unit"></a>
-      <a id="setWeightDimMask(Int):Unit"></a>
+      <a id="setWeightDimMask(mask:Int,overrideSubmodules:Boolean):Unit"></a>
+      <a id="setWeightDimMask(Int,Boolean):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setWeightDimMask</span><span class="params">(<span name="mask">mask: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">setWeightDimMask</span><span class="params">(<span name="mask">mask: <span class="extype" name="scala.Int">Int</span></span>, <span name="overrideSubmodules">overrideSubmodules: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Set dimension mask of weight</p><div class="fullcomment"><div class="comment cmt"><p>Set dimension mask of weight</p></div><dl class="paramcmts block"><dt class="param">mask</dt><dd class="cmt"><p>value of weight mask to be set</p></dd><dt>returns</dt><dd class="cmt"><p>Unit
+      <p class="shortcomment cmt">Set dimension mask for weight</p><div class="fullcomment"><div class="comment cmt"><p>Set dimension mask for weight</p></div><dl class="paramcmts block"><dt class="param">mask</dt><dd class="cmt"><p>value of weight mask to be set</p></dd><dt class="param">overrideSubmodules</dt><dd class="cmt"><p>when set it to true,
+            update mask in full scope including itself and submodules,
+            otherwise only update mask to module itself.</p></dd><dt>returns</dt><dd class="cmt"><p>Unit
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../MklInt8Convertible.html" class="extype" name="com.intel.analytics.bigdl.nn.MklInt8Convertible">MklInt8Convertible</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.MklInt8Convertible#setWeightScales" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setWeightScales(weightScales:Array[Array[Float]]):Unit"></a>
@@ -1748,20 +1766,6 @@ gradInput. Also, the gradInput state variable is updated accordingly.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="MklDnnLayer.html" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.MklDnnLayer">MklDnnLayer</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.MklInt8Convertible#updateInputScales" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="updateInputScales(scale:Array[Float],index:Int):Unit"></a>
-      <a id="updateInputScales(Array[Float],Int):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">updateInputScales</span><span class="params">(<span name="scale">scale: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="index">index: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Update input scales at specific index with provided new scale</p><div class="fullcomment"><div class="comment cmt"><p>Update input scales at specific index with provided new scale</p></div><dl class="paramcmts block"><dt class="param">scale</dt><dd class="cmt"><p>the new scale</p></dd><dt class="param">index</dt><dd class="cmt"><p>the index of which the scale need to be updated</p></dd><dt>returns</dt><dd class="cmt"><p>Unit
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../MklInt8Convertible.html" class="extype" name="com.intel.analytics.bigdl.nn.MklInt8Convertible">MklInt8Convertible</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.mkldnn.MklDnnLayer#updateOutput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="updateOutput(input:com.intel.analytics.bigdl.nn.abstractnn.Activity):com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
       <a id="updateOutput(Activity):Activity"></a>
@@ -1794,34 +1798,6 @@ returns the result which is stored in the output field.
 initPrimitives method. This field will be erased when sending model to remote worker. So you
 need to reinitialize it after sending the model.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="MklDnnLayer.html" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.MklDnnLayer">MklDnnLayer</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.MklInt8Convertible#updateOutputScales" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="updateOutputScales(scale:Array[Float],index:Int):Unit"></a>
-      <a id="updateOutputScales(Array[Float],Int):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">updateOutputScales</span><span class="params">(<span name="scale">scale: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="index">index: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Update output scales at specific index with provided new scale</p><div class="fullcomment"><div class="comment cmt"><p>Update output scales at specific index with provided new scale</p></div><dl class="paramcmts block"><dt class="param">scale</dt><dd class="cmt"><p>the new scale</p></dd><dt class="param">index</dt><dd class="cmt"><p>the index of which the scale need to be updated</p></dd><dt>returns</dt><dd class="cmt"><p>Unit
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../MklInt8Convertible.html" class="extype" name="com.intel.analytics.bigdl.nn.MklInt8Convertible">MklInt8Convertible</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.MklInt8Convertible#updateWeightScales" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="updateWeightScales(scale:Array[Float],index:Int):Unit"></a>
-      <a id="updateWeightScales(Array[Float],Int):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">updateWeightScales</span><span class="params">(<span name="scale">scale: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="index">index: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Update weight scales at specific index with provided new scale</p><div class="fullcomment"><div class="comment cmt"><p>Update weight scales at specific index with provided new scale</p></div><dl class="paramcmts block"><dt class="param">scale</dt><dd class="cmt"><p>the new scale</p></dd><dt class="param">index</dt><dd class="cmt"><p>the index of which the scale need to be updated</p></dd><dt>returns</dt><dd class="cmt"><p>Unit
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../MklInt8Convertible.html" class="extype" name="com.intel.analytics.bigdl.nn.MklInt8Convertible">MklInt8Convertible</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.mkldnn.MklDnnLayer#updateWithNewTensor" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="updateWithNewTensor(from:Array[com.intel.analytics.bigdl.tensor.Tensor[Float]],index:Int,value:com.intel.analytics.bigdl.nn.abstractnn.Activity):Unit"></a>
       <a id="updateWithNewTensor(Array[Tensor[Float]],Int,Activity):Unit"></a>
