@@ -1877,6 +1877,17 @@ topology</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.ExpandSize">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">ExpandSize</code><span class="sig-paren">(</span><em>sizes</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#ExpandSize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.ExpandSize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Expand tensor to configured size</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">expand</span> <span class="o">=</span> <span class="n">ExpandSize</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="go">creating: createExpandSize</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.FeedForwardNetwork">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">FeedForwardNetwork</code><span class="sig-paren">(</span><em>hidden_size</em>, <em>filter_size</em>, <em>relu_dropout</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#FeedForwardNetwork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.FeedForwardNetwork" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
@@ -2840,6 +2851,17 @@ If the module has parameters, this will zero the accumulation of the gradients w
 to these parameters. Otherwise, it does nothing.</p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.LayerNormalization">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">LayerNormalization</code><span class="sig-paren">(</span><em>hidden_size</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#LayerNormalization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.LayerNormalization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Applies layer normalization.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">norm</span> <span class="o">=</span> <span class="n">LayerNormalization</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="go">creating: createLayerNormalization</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="class">
@@ -5203,6 +5225,19 @@ batch using <cite>nInputDims</cite>.</p>
 </table>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span> <span class="o">=</span> <span class="n">Sum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 <span class="go">creating: createSum</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.TableOperation">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">TableOperation</code><span class="sig-paren">(</span><em>operation_layer</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#TableOperation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.TableOperation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>When two tensors have different size, firstly expand small size tensor to large size tensor,
+and then do table operation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">norm</span> <span class="o">=</span> <span class="n">TableOperation</span><span class="p">(</span><span class="n">CMulTable</span><span class="p">())</span>
+<span class="go">creating: createCMulTable</span>
+<span class="go">creating: createTableOperation</span>
 </pre></div>
 </div>
 </dd></dl>

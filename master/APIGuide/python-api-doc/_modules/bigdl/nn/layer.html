@@ -984,6 +984,40 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">filter_size</span><span class="p">,</span> <span class="n">relu_dropout</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">FeedForwardNetwork</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
                                         <span class="n">hidden_size</span><span class="p">,</span> <span class="n">filter_size</span><span class="p">,</span> <span class="n">relu_dropout</span><span class="p">)</span></div>
+<div class="viewcode-block" id="LayerNormalization"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.LayerNormalization">[docs]</a><span class="k">class</span> <span class="nc">LayerNormalization</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Applies layer normalization.</span>
+
+<span class="sd">    &gt;&gt;&gt; norm = LayerNormalization(8)</span>
+<span class="sd">    creating: createLayerNormalization</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">LayerNormalization</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TableOperation"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.TableOperation">[docs]</a><span class="k">class</span> <span class="nc">TableOperation</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    When two tensors have different size, firstly expand small size tensor to large size tensor,</span>
+<span class="sd">    and then do table operation.</span>
+
+<span class="sd">    &gt;&gt;&gt; norm = TableOperation(CMulTable())</span>
+<span class="sd">    creating: createCMulTable</span>
+<span class="sd">    creating: createTableOperation</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operation_layer</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TableOperation</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">operation_layer</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ExpandSize"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.ExpandSize">[docs]</a><span class="k">class</span> <span class="nc">ExpandSize</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Expand tensor to configured size</span>
+
+<span class="sd">    &gt;&gt;&gt; expand = ExpandSize([2, 3, 4])</span>
+<span class="sd">    creating: createExpandSize</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sizes</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ExpandSize</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">sizes</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Linear"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Linear">[docs]</a><span class="k">class</span> <span class="nc">Linear</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
