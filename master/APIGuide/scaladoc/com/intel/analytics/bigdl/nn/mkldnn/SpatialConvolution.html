@@ -39,7 +39,33 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Applies a 2D convolution over an input image composed of several input planes.
+The input tensor in forward(input) is expected to be
+a 3D tensor (nInputPlane x height x width).</p><p>nInputPlane The number of expected input planes in the image given into forward()
+nOutputPlane: The number of output planes the convolution layer will produce.
+kernelW: the kernel width of the convolution
+kernelH: The kernel height of the convolution
+strideW: Int = 1, The step of the convolution in the width dimension.
+strideH: Int = 1, The step of the convolution in the height dimension
+padW: Int = 0, The additional zeros added per width to the input planes.
+padH: Int = 0, The additional zeros added per height to the input planes.
+nGroup: Int = 1, Kernel group number
+propagateBack: Boolean = true, propagate gradient back
+wRegularizer: Regularizer[Float] = null,
+bRegularizer: Regularizer[Float] = null,
+initWeight: Tensor[Float] = null,
+initBias: Tensor[Float] = null,
+initGradWeight: Tensor[Float] = null,
+initGradBias: Tensor[Float] = null,
+withBias: Boolean = true,
+format: DataFormat = DataFormat.NCHW,
+dilationW: Int = 1,
+dilationH: Int = 1</p><p>When padW and padH are both -1, we use a padding algorithm similar to the &quot;SAME&quot;
+padding of tensorflow. That is</p><p>outHeight = Math.ceil(inHeight.toFloat/strideH.toFloat)
+outWidth = Math.ceil(inWidth.toFloat/strideW.toFloat)</p><p>padAlongHeight = Math.max(0, (outHeight - 1) * strideH + kernelH - inHeight)
+padAlongWidth = Math.max(0, (outWidth - 1) * strideW + kernelW - inWidth)</p><p>padTop = padAlongHeight / 2
+padLeft = padAlongWidth / 2
+</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../MklInt8Convertible.html" class="extype" name="com.intel.analytics.bigdl.nn.MklInt8Convertible">MklInt8Convertible</a>, <a href="../abstractnn/Initializable.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Initializable">Initializable</a>, <a href="MklDnnLayer.html" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.MklDnnLayer">MklDnnLayer</a>, <a href="MklDnnModule.html" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.MklDnnModule">MklDnnModule</a>, <a href="MklDnnModuleHelper.html" class="extype" name="com.intel.analytics.bigdl.nn.mkldnn.MklDnnModuleHelper">MklDnnModuleHelper</a>, <a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="../abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="../abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="scala.Float">Float</span>], <a href="../abstractnn/InferShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.InferShape">InferShape</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -80,7 +106,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.mkldnn.SpatialConvolution#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(nInputPlane:Int,nOutputPlane:Int,kernelW:Int,kernelH:Int,strideW:Int,strideH:Int,padW:Int,padH:Int,nGroup:Int,propagateBack:Boolean,wRegularizer:com.intel.analytics.bigdl.optim.Regularizer[Float],bRegularizer:com.intel.analytics.bigdl.optim.Regularizer[Float],initWeight:com.intel.analytics.bigdl.tensor.Tensor[Float],initBias:com.intel.analytics.bigdl.tensor.Tensor[Float],initGradWeight:com.intel.analytics.bigdl.tensor.Tensor[Float],initGradBias:com.intel.analytics.bigdl.tensor.Tensor[Float],withBias:Boolean,format:com.intel.analytics.bigdl.nn.abstractnn.DataFormat):com.intel.analytics.bigdl.nn.mkldnn.SpatialConvolution"></a>
+      <a id="&lt;init&gt;(nInputPlane:Int,nOutputPlane:Int,kernelW:Int,kernelH:Int,strideW:Int,strideH:Int,padW:Int,padH:Int,nGroup:Int,propagateBack:Boolean,wRegularizer:com.intel.analytics.bigdl.optim.Regularizer[Float],bRegularizer:com.intel.analytics.bigdl.optim.Regularizer[Float],initWeight:com.intel.analytics.bigdl.tensor.Tensor[Float],initBias:com.intel.analytics.bigdl.tensor.Tensor[Float],initGradWeight:com.intel.analytics.bigdl.tensor.Tensor[Float],initGradBias:com.intel.analytics.bigdl.tensor.Tensor[Float],withBias:Boolean,format:com.intel.analytics.bigdl.nn.abstractnn.DataFormat,dilationW:Int,dilationH:Int):com.intel.analytics.bigdl.nn.mkldnn.SpatialConvolution"></a>
       <a id="&lt;init&gt;:SpatialConvolution"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -88,10 +114,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">SpatialConvolution</span><span class="params">(<span name="nInputPlane">nInputPlane: <span class="extype" name="scala.Int">Int</span></span>, <span name="nOutputPlane">nOutputPlane: <span class="extype" name="scala.Int">Int</span></span>, <span name="kernelW">kernelW: <span class="extype" name="scala.Int">Int</span></span>, <span name="kernelH">kernelH: <span class="extype" name="scala.Int">Int</span></span>, <span name="strideW">strideW: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="strideH">strideH: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="padW">padW: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="padH">padH: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="nGroup">nGroup: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="propagateBack">propagateBack: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="wRegularizer">wRegularizer: <a href="../../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="bRegularizer">bRegularizer: <a href="../../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="initWeight">initWeight: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="initBias">initBias: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="initGradWeight">initGradWeight: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="initGradBias">initGradBias: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="withBias">withBias: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="format">format: <a href="../abstractnn/DataFormat.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.DataFormat">DataFormat</a> = <span class="defval" name="com.intel.analytics.bigdl.nn.abstractnn.DataFormat.NCHW">...</span></span>)</span>
+        <span class="name">SpatialConvolution</span><span class="params">(<span name="nInputPlane">nInputPlane: <span class="extype" name="scala.Int">Int</span></span>, <span name="nOutputPlane">nOutputPlane: <span class="extype" name="scala.Int">Int</span></span>, <span name="kernelW">kernelW: <span class="extype" name="scala.Int">Int</span></span>, <span name="kernelH">kernelH: <span class="extype" name="scala.Int">Int</span></span>, <span name="strideW">strideW: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="strideH">strideH: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="padW">padW: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="padH">padH: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="nGroup">nGroup: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="propagateBack">propagateBack: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="wRegularizer">wRegularizer: <a href="../../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="bRegularizer">bRegularizer: <a href="../../optim/Regularizer.html" class="extype" name="com.intel.analytics.bigdl.optim.Regularizer">Regularizer</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="initWeight">initWeight: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="initBias">initBias: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="initGradWeight">initGradWeight: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="initGradBias">initGradBias: <a href="../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>, <span name="withBias">withBias: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="format">format: <a href="../abstractnn/DataFormat.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.DataFormat">DataFormat</a> = <span class="defval" name="com.intel.analytics.bigdl.nn.abstractnn.DataFormat.NCHW">...</span></span>, <span name="dilationW">dilationW: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="dilationH">dilationH: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt"></p>
     </li></ol>
             </div>
 
@@ -450,6 +476,32 @@ super.clearState in the override method
       </h4>
       <p class="shortcomment cmt">Clone the model</p><div class="fullcomment"><div class="comment cmt"><p>Clone the model</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.mkldnn.SpatialConvolution#dilationH" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="dilationH:Int"></a>
+      <a id="dilationH:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dilationH</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.mkldnn.SpatialConvolution#dilationW" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="dilationW:Int"></a>
+      <a id="dilationW:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dilationW</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
