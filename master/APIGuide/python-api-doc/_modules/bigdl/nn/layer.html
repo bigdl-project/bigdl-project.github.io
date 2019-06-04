@@ -1019,6 +1019,20 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sizes</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ExpandSize</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">sizes</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="Transformer"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Transformer">[docs]</a><span class="k">class</span> <span class="nc">Transformer</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Implementation for Transformer</span>
+<span class="sd">    &gt;&gt;&gt; layer = Transformer(20, 4, 2, 3, 1, 0.1, 0.1, 0.1)</span>
+<span class="sd">    creating: createTransformer</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">filter_size</span><span class="p">,</span> <span class="n">num_hidden_layers</span><span class="p">,</span>
+                 <span class="n">postprocess_dropout</span><span class="p">,</span> <span class="n">attention_dropout</span><span class="p">,</span>
+                 <span class="n">relu_dropout</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Transformer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span>
+                                               <span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">filter_size</span><span class="p">,</span>
+                                               <span class="n">num_hidden_layers</span><span class="p">,</span> <span class="n">postprocess_dropout</span><span class="p">,</span>
+                                               <span class="n">attention_dropout</span><span class="p">,</span> <span class="n">relu_dropout</span><span class="p">)</span></div>
 <div class="viewcode-block" id="Linear"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Linear">[docs]</a><span class="k">class</span> <span class="nc">Linear</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>

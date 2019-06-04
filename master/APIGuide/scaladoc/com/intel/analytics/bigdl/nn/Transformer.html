@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>FeedForwardNetwork - bigdl 0.9.0-SNAPSHOT API - com.intel.analytics.bigdl.nn.FeedForwardNetwork</title>
-          <meta name="description" content="FeedForwardNetwork - bigdl 0.9.0 - SNAPSHOT API - com.intel.analytics.bigdl.nn.FeedForwardNetwork" />
-          <meta name="keywords" content="FeedForwardNetwork bigdl 0.9.0 SNAPSHOT API com.intel.analytics.bigdl.nn.FeedForwardNetwork" />
+          <title>Transformer - bigdl 0.9.0-SNAPSHOT API - com.intel.analytics.bigdl.nn.Transformer</title>
+          <meta name="description" content="Transformer - bigdl 0.9.0 - SNAPSHOT API - com.intel.analytics.bigdl.nn.Transformer" />
+          <meta name="keywords" content="Transformer bigdl 0.9.0 SNAPSHOT API com.intel.analytics.bigdl.nn.Transformer" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -12,7 +12,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
-            var hash = 'com.intel.analytics.bigdl.nn.FeedForwardNetwork';
+            var hash = 'com.intel.analytics.bigdl.nn.Transformer';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -24,9 +24,9 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="FeedForwardNetwork$.html" title="Go to companion"><img src="../../../../../lib/class_to_object_big.png" /></a>
+        <a href="Transformer$.html" title="Go to companion"><img src="../../../../../lib/class_to_object_big.png" /></a>
         <p id="owner"><a href="../../../../package.html" class="extype" name="com">com</a>.<a href="../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.nn">nn</a></p>
-        <h1><a href="FeedForwardNetwork$.html" title="Go to companion">FeedForwardNetwork</a></h1>
+        <h1><a href="Transformer$.html" title="Go to companion">Transformer</a></h1>
       </div>
 
       <h4 id="signature" class="signature">
@@ -35,15 +35,19 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">FeedForwardNetwork</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="com.intel.analytics.bigdl.nn.BaseModule">BaseModule</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]</span>
+        <span class="name">Transformer</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="com.intel.analytics.bigdl.nn.BaseModule">BaseModule</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Implementation FeedForwardNetwork constructed with fully connected network.
-Input with shape (batch_size, length, hidden_size)
-Output with shape (batch_size, length, hidden_size)</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Transformer model from &quot;Attention Is All You Need&quot;.
+The Transformer model consists of an encoder and a decoder, both are stacks
+of self-attention layers followed by feed-forward layers. This model yields
+good results on a number of problems, especially in NLP and machine translation.
+See &quot;Attention Is All You Need&quot; (https://arxiv.org/abs/1706.03762) for the full
+description of the model and the results obtained with its early version.</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>The numeric type in this module parameters.
+</p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="com.intel.analytics.bigdl.nn.BaseModule">BaseModule</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>], <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>], <a href="abstractnn/InferShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.InferShape">InferShape</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="com.intel.analytics.bigdl.nn.BaseModule">BaseModule</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>], <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>], <a href="abstractnn/InferShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.InferShape">InferShape</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -61,7 +65,7 @@ Output with shape (batch_size, length, hidden_size)</p></div><div class="toggleC
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork"><span>FeedForwardNetwork</span></li><li class="in" name="com.intel.analytics.bigdl.nn.BaseModule"><span>BaseModule</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule"><span>AbstractModule</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.InferShape"><span>InferShape</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.intel.analytics.bigdl.nn.Transformer"><span>Transformer</span></li><li class="in" name="com.intel.analytics.bigdl.nn.BaseModule"><span>BaseModule</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule"><span>AbstractModule</span></li><li class="in" name="com.intel.analytics.bigdl.nn.abstractnn.InferShape"><span>InferShape</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -81,20 +85,19 @@ Output with shape (batch_size, length, hidden_size)</p></div><div class="toggleC
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="com.intel.analytics.bigdl.nn.FeedForwardNetwork#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(hiddenSize:Int,filterSize:Int,reluDropout:Float)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.FeedForwardNetwork[T]"></a>
-      <a id="&lt;init&gt;:FeedForwardNetwork[T]"></a>
+              <ol><li name="com.intel.analytics.bigdl.nn.Transformer#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(vocabSize:Int,hiddenSize:Int,numHeads:Int,filterSize:Int,numHiddenlayers:Int,embeddingDropout:Float,attentionDropout:Float,ffnDropout:Float,transformerType:com.intel.analytics.bigdl.nn.TransformerType)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Transformer[T]"></a>
+      <a id="&lt;init&gt;:Transformer[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">FeedForwardNetwork</span><span class="params">(<span name="hiddenSize">hiddenSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="filterSize">filterSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="reluDropout">reluDropout: <span class="extype" name="scala.Float">Float</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]</span>)</span>
+        <span class="name">Transformer</span><span class="params">(<span name="vocabSize">vocabSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="hiddenSize">hiddenSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="numHeads">numHeads: <span class="extype" name="scala.Int">Int</span></span>, <span name="filterSize">filterSize: <span class="extype" name="scala.Int">Int</span></span>, <span name="numHiddenlayers">numHiddenlayers: <span class="extype" name="scala.Int">Int</span></span>, <span name="embeddingDropout">embeddingDropout: <span class="extype" name="scala.Float">Float</span></span>, <span name="attentionDropout">attentionDropout: <span class="extype" name="scala.Float">Float</span></span>, <span name="ffnDropout">ffnDropout: <span class="extype" name="scala.Float">Float</span></span>, <span name="transformerType">transformerType: <a href="TransformerType.html" class="extype" name="com.intel.analytics.bigdl.nn.TransformerType">TransformerType</a> = <span class="symbol">LanguageModel</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">hiddenSize</dt><dd class="cmt"><p>hidden_size</p></dd><dt class="param">filterSize</dt><dd class="cmt"></dd><dt class="param">reluDropout</dt><dd class="cmt"><p>
-</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">hiddenSize</dt><dd class="cmt"></dd><dt class="param">numHeads</dt><dd class="cmt"></dd><dt class="param">filterSize</dt><dd class="cmt"></dd><dt class="param">numHiddenlayers</dt><dd class="cmt"></dd><dt class="param">embeddingDropout</dt><dd class="cmt"></dd><dt class="param">attentionDropout</dt><dd class="cmt"></dd><dt class="param">ffnDropout</dt><dd class="cmt"></dd></dl></div>
     </li></ol>
             </div>
 
@@ -196,7 +199,7 @@ respect to the parameters in some variable.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>
+        <span class="name">apply</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Find a module with given name.</p><div class="fullcomment"><div class="comment cmt"><p>Find a module with given name. If there is no module with given name, it will return None. If
@@ -215,6 +218,19 @@ there are multiple modules with the given name, an exception will be thrown.</p>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Transformer#attentionDropout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="attentionDropout:Float"></a>
+      <a id="attentionDropout:Float"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">attentionDropout</span><span class="result">: <span class="extype" name="scala.Float">Float</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p>
     </li><li name="com.intel.analytics.bigdl.nn.BaseModule#backward" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="backward(input:com.intel.analytics.bigdl.nn.abstractnn.Activity,gradOutput:com.intel.analytics.bigdl.nn.abstractnn.Activity):com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
       <a id="backward(Activity,Activity):Activity"></a>
@@ -246,7 +262,7 @@ will compute incorrect gradients.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.FeedForwardNetwork#buildModel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.Transformer#buildModel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="buildModel():com.intel.analytics.bigdl.Module[T]"></a>
       <a id="buildModel():Module[T]"></a>
       <h4 class="signature">
@@ -255,20 +271,20 @@ will compute incorrect gradients.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">buildModel</span><span class="params">()</span><span class="result">: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]</span>
+        <span class="name">buildModel</span><span class="params">()</span><span class="result">: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]</span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a> → BaseModule</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a> → BaseModule</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.BaseModule#clearState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clearState():BaseModule.this.type"></a>
-      <a id="clearState():FeedForwardNetwork.this.type"></a>
+      <a id="clearState():Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clearState</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">clearState</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Clear cached activities to save storage space or network bandwidth.</p><div class="fullcomment"><div class="comment cmt"><p>Clear cached activities to save storage space or network bandwidth. Note that we use
@@ -285,7 +301,7 @@ super.clearState in the override method
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clone</span><span class="params">(<span name="deepCopy">deepCopy: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]</span>
+        <span class="name">clone</span><span class="params">(<span name="deepCopy">deepCopy: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Clone the module, deep or shallow copy</p><div class="fullcomment"><div class="comment cmt"><p>Clone the module, deep or shallow copy</p></div><dl class="paramcmts block"><dt class="param">deepCopy</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
@@ -311,18 +327,31 @@ super.clearState in the override method
         </dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#cloneModule" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="cloneModule():AbstractModule.this.type"></a>
-      <a id="cloneModule():FeedForwardNetwork.this.type"></a>
+      <a id="cloneModule():Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cloneModule</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">cloneModule</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Clone the model</p><div class="fullcomment"><div class="comment cmt"><p>Clone the model</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Transformer#embeddingDropout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="embeddingDropout:Float"></a>
+      <a id="embeddingDropout:Float"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">embeddingDropout</span><span class="result">: <span class="extype" name="scala.Float">Float</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -351,14 +380,14 @@ super.clearState in the override method
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a> → AnyRef → Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.BaseModule#evaluate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="evaluate():BaseModule.this.type"></a>
-      <a id="evaluate():FeedForwardNetwork.this.type"></a>
+      <a id="evaluate():Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">evaluate</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">evaluate</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set the module to evaluate mode</p><div class="fullcomment"><div class="comment cmt"><p>Set the module to evaluate mode</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
@@ -372,7 +401,7 @@ super.clearState in the override method
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">evaluate</span><span class="params">(<span name="dataSet">dataSet: <a href="../dataset/LocalDataSet.html" class="extype" name="com.intel.analytics.bigdl.dataset.LocalDataSet">LocalDataSet</a>[<a href="../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>, <span name="vMethods">vMethods: <span class="extype" name="scala.Array">Array</span>[_ &lt;: <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="../optim/ValidationResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationResult">ValidationResult</a>, <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>])]</span>
+        <span class="name">evaluate</span><span class="params">(<span name="dataSet">dataSet: <a href="../dataset/LocalDataSet.html" class="extype" name="com.intel.analytics.bigdl.dataset.LocalDataSet">LocalDataSet</a>[<a href="../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>, <span name="vMethods">vMethods: <span class="extype" name="scala.Array">Array</span>[_ &lt;: <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="../optim/ValidationResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationResult">ValidationResult</a>, <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">use ValidationMethod to evaluate module on the given local dataset</p><div class="fullcomment"><div class="comment cmt"><p>use ValidationMethod to evaluate module on the given local dataset</p></div><dl class="paramcmts block"><dt class="param">dataSet</dt><dd class="cmt"></dd><dt class="param">vMethods</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
@@ -386,7 +415,7 @@ super.clearState in the override method
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">evaluate</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>, <span name="vMethods">vMethods: <span class="extype" name="scala.Array">Array</span>[_ &lt;: <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="../optim/ValidationResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationResult">ValidationResult</a>, <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>])]</span>
+        <span class="name">evaluate</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>, <span name="vMethods">vMethods: <span class="extype" name="scala.Array">Array</span>[_ &lt;: <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="../optim/ValidationResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationResult">ValidationResult</a>, <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">use ValidationMethod to evaluate module on the given rdd dataset</p><div class="fullcomment"><div class="comment cmt"><p>use ValidationMethod to evaluate module on the given rdd dataset</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"></dd><dt class="param">vMethods</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
@@ -400,7 +429,7 @@ super.clearState in the override method
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">evaluate</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>, <span name="vMethods">vMethods: <span class="extype" name="scala.Array">Array</span>[_ &lt;: <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="../optim/ValidationResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationResult">ValidationResult</a>, <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>])]</span>
+        <span class="name">evaluate</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>, <span name="vMethods">vMethods: <span class="extype" name="scala.Array">Array</span>[_ &lt;: <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="../optim/ValidationResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationResult">ValidationResult</a>, <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">use ValidationMethod to evaluate module on the given rdd dataset</p><div class="fullcomment"><div class="comment cmt"><p>use ValidationMethod to evaluate module on the given rdd dataset</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for test</p></dd><dt class="param">vMethods</dt><dd class="cmt"><p>validation methods</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchsize of all partitions,
@@ -415,12 +444,25 @@ super.clearState in the override method
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">evaluateImage</span><span class="params">(<span name="imageFrame">imageFrame: <a href="../transform/vision/image/ImageFrame.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame">ImageFrame</a></span>, <span name="vMethods">vMethods: <span class="extype" name="scala.Array">Array</span>[_ &lt;: <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="../optim/ValidationResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationResult">ValidationResult</a>, <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>])]</span>
+        <span class="name">evaluateImage</span><span class="params">(<span name="imageFrame">imageFrame: <a href="../transform/vision/image/ImageFrame.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame">ImageFrame</a></span>, <span name="vMethods">vMethods: <span class="extype" name="scala.Array">Array</span>[_ &lt;: <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="../optim/ValidationResult.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationResult">ValidationResult</a>, <a href="../optim/ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>])]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">use ValidationMethod to evaluate module on the given ImageFrame</p><div class="fullcomment"><div class="comment cmt"><p>use ValidationMethod to evaluate module on the given ImageFrame</p></div><dl class="paramcmts block"><dt class="param">imageFrame</dt><dd class="cmt"><p>ImageFrame for valudation</p></dd><dt class="param">vMethods</dt><dd class="cmt"><p>validation methods</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batch size of all partitions</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.FeedForwardNetwork#filterSize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.Transformer#ffnDropout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ffnDropout:Float"></a>
+      <a id="ffnDropout:Float"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ffnDropout</span><span class="result">: <span class="extype" name="scala.Float">Float</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p>
+    </li><li name="com.intel.analytics.bigdl.nn.Transformer#filterSize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="filterSize:Int"></a>
       <a id="filterSize:Int"></a>
       <h4 class="signature">
@@ -483,14 +525,14 @@ the output state variable should have been updated to the new value.
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#freeze" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="freeze(names:String*):AbstractModule.this.type"></a>
-      <a id="freeze(String*):FeedForwardNetwork.this.type"></a>
+      <a id="freeze(String*):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">freeze</span><span class="params">(<span name="names">names: <span class="extype" name="scala.Predef.String">String</span>*</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">freeze</span><span class="params">(<span name="names">names: <span class="extype" name="scala.Predef.String">String</span>*</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">freeze the module,
@@ -522,7 +564,7 @@ set an array of layers that match the given <code><code><code>names</code></code
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getExtraParameter</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>
+        <span class="name">getExtraParameter</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Get extra parameter in this module.</p><div class="fullcomment"><div class="comment cmt"><p>Get extra parameter in this module.
@@ -664,7 +706,7 @@ the requirement.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getTimes</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[_ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, _ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>], <span class="extype" name="scala.Long">Long</span>, <span class="extype" name="scala.Long">Long</span>)]</span>
+        <span class="name">getTimes</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[(<a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[_ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, _ &lt;: <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>], <span class="extype" name="scala.Long">Long</span>, <span class="extype" name="scala.Long">Long</span>)]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Get the forward/backward cost time for the module or its submodules</p><div class="fullcomment"><div class="comment cmt"><p>Get the forward/backward cost time for the module or its submodules</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
@@ -694,7 +736,7 @@ and group by module type.</p></div><dl class="paramcmts block"><dt>returns</dt><
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getWeightsBias</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>
+        <span class="name">getWeightsBias</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Get weight and bias for the module</p><div class="fullcomment"><div class="comment cmt"><p>Get weight and bias for the module</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>array of weights and bias</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
@@ -739,7 +781,7 @@ and group by module type.</p></div><dl class="paramcmts block"><dt>returns</dt><
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a> → AnyRef → Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.FeedForwardNetwork#hiddenSize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.nn.Transformer#hiddenSize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="hiddenSize:Int"></a>
       <a id="hiddenSize:Int"></a>
       <h4 class="signature">
@@ -751,7 +793,7 @@ and group by module type.</p></div><dl class="paramcmts block"><dt>returns</dt><
         <span class="name">hiddenSize</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">hidden_size</p>
+      <p class="shortcomment cmt"></p>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#inputs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="inputs(first:(com.intel.analytics.bigdl.nn.Graph.ModuleNode[T],Int),nodesWithIndex:(com.intel.analytics.bigdl.nn.Graph.ModuleNode[T],Int)*):com.intel.analytics.bigdl.nn.Graph.ModuleNode[T]"></a>
       <a id="inputs((ModuleNode[T],Int),(ModuleNode[T],Int)*):ModuleNode[T]"></a>
@@ -761,7 +803,7 @@ and group by module type.</p></div><dl class="paramcmts block"><dt>returns</dt><
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">inputs</span><span class="params">(<span name="first">first: (<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>], <span class="extype" name="scala.Int">Int</span>)</span>, <span name="nodesWithIndex">nodesWithIndex: (<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>], <span class="extype" name="scala.Int">Int</span>)*</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]</span>
+        <span class="name">inputs</span><span class="params">(<span name="first">first: (<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>], <span class="extype" name="scala.Int">Int</span>)</span>, <span name="nodesWithIndex">nodesWithIndex: (<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>], <span class="extype" name="scala.Int">Int</span>)*</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Build graph: some other modules point to current module</p><div class="fullcomment"><div class="comment cmt"><p>Build graph: some other modules point to current module</p></div><dl class="paramcmts block"><dt class="param">first</dt><dd class="cmt"><p>distinguish from another inputs when input parameter list is empty</p></dd><dt class="param">nodesWithIndex</dt><dd class="cmt"><p>upstream module nodes and the output tensor index. The start index is 1.</p></dd><dt>returns</dt><dd class="cmt"><p>node containing current module
@@ -775,7 +817,7 @@ and group by module type.</p></div><dl class="paramcmts block"><dt>returns</dt><
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">inputs</span><span class="params">(<span name="nodes">nodes: <span class="extype" name="scala.Array">Array</span>[<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]</span>
+        <span class="name">inputs</span><span class="params">(<span name="nodes">nodes: <span class="extype" name="scala.Array">Array</span>[<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Build graph: some other modules point to current module</p><div class="fullcomment"><div class="comment cmt"><p>Build graph: some other modules point to current module</p></div><dl class="paramcmts block"><dt class="param">nodes</dt><dd class="cmt"><p>upstream module nodes in an array</p></dd><dt>returns</dt><dd class="cmt"><p>node containing current module
@@ -789,7 +831,7 @@ and group by module type.</p></div><dl class="paramcmts block"><dt>returns</dt><
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">inputs</span><span class="params">(<span name="nodes">nodes: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]*</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]</span>
+        <span class="name">inputs</span><span class="params">(<span name="nodes">nodes: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]*</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Build graph: some other modules point to current module</p><div class="fullcomment"><div class="comment cmt"><p>Build graph: some other modules point to current module</p></div><dl class="paramcmts block"><dt class="param">nodes</dt><dd class="cmt"><p>upstream module nodes</p></dd><dt>returns</dt><dd class="cmt"><p>node containing current module
@@ -836,28 +878,28 @@ and group by module type.</p></div><dl class="paramcmts block"><dt>returns</dt><
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#loadModelWeights" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="loadModelWeights(srcModel:com.intel.analytics.bigdl.Module[Float],matchAll:Boolean):AbstractModule.this.type"></a>
-      <a id="loadModelWeights(Module[Float],Boolean):FeedForwardNetwork.this.type"></a>
+      <a id="loadModelWeights(Module[Float],Boolean):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">loadModelWeights</span><span class="params">(<span name="srcModel">srcModel: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="matchAll">matchAll: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">loadModelWeights</span><span class="params">(<span name="srcModel">srcModel: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="matchAll">matchAll: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">copy weights from another model, mapping by layer name</p><div class="fullcomment"><div class="comment cmt"><p>copy weights from another model, mapping by layer name</p></div><dl class="paramcmts block"><dt class="param">srcModel</dt><dd class="cmt"><p>model to copy from</p></dd><dt class="param">matchAll</dt><dd class="cmt"><p>whether to match all layers' weights and bias,</p></dd><dt>returns</dt><dd class="cmt"><p>current module
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#loadWeights" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="loadWeights(weightPath:String,matchAll:Boolean):AbstractModule.this.type"></a>
-      <a id="loadWeights(String,Boolean):FeedForwardNetwork.this.type"></a>
+      <a id="loadWeights(String,Boolean):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">loadWeights</span><span class="params">(<span name="weightPath">weightPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="matchAll">matchAll: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">loadWeights</span><span class="params">(<span name="weightPath">weightPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="matchAll">matchAll: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">load pretrained weights and bias to current module</p><div class="fullcomment"><div class="comment cmt"><p>load pretrained weights and bias to current module</p></div><dl class="paramcmts block"><dt class="param">weightPath</dt><dd class="cmt"><p>file to store weights and bias</p></dd><dt class="param">matchAll</dt><dd class="cmt"><p>whether to match all layers' weights and bias,
@@ -902,6 +944,32 @@ and group by module type.</p></div><dl class="paramcmts block"><dt>returns</dt><
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Transformer#numHeads" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="numHeads:Int"></a>
+      <a id="numHeads:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">numHeads</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p>
+    </li><li name="com.intel.analytics.bigdl.nn.Transformer#numHiddenlayers" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="numHiddenlayers:Int"></a>
+      <a id="numHiddenlayers:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">numHiddenlayers</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#output" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="output:B"></a>
       <a id="output:Activity"></a>
@@ -925,7 +993,7 @@ and group by module type.</p></div><dl class="paramcmts block"><dt>returns</dt><
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">parameters</span><span class="params">()</span><span class="result">: (<span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]], <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]])</span>
+        <span class="name">parameters</span><span class="params">()</span><span class="result">: (<span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]], <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]])</span>
       </span>
       </h4>
       <p class="shortcomment cmt">This function returns two arrays.</p><div class="fullcomment"><div class="comment cmt"><p>This function returns two arrays. One for the weights and the other the gradients
@@ -941,7 +1009,7 @@ Custom modules should override this function if they have parameters
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">predict</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="shareBuffer">shareBuffer: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>]</span>
+        <span class="name">predict</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="shareBuffer">shareBuffer: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">module predict, return the probability distribution</p><div class="fullcomment"><div class="comment cmt"><p>module predict, return the probability distribution</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for prediction</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchSize for all partitions.
@@ -956,7 +1024,7 @@ Custom modules should override this function if they have parameters
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">predictClass</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+        <span class="name">predictClass</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../dataset/Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">module predict, return the predict label</p><div class="fullcomment"><div class="comment cmt"><p>module predict, return the predict label</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>dataset for prediction</p></dd><dt class="param">batchSize</dt><dd class="cmt"><p>total batchSize for all partitions.
@@ -971,7 +1039,7 @@ Custom modules should override this function if they have parameters
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">predictImage</span><span class="params">(<span name="imageFrame">imageFrame: <a href="../transform/vision/image/ImageFrame.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame">ImageFrame</a></span>, <span name="outputLayer">outputLayer: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">null</span></span>, <span name="shareBuffer">shareBuffer: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="batchPerPartition">batchPerPartition: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">4</span></span>, <span name="predictKey">predictKey: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="../../../../package.html">ImageFeature.predict</a></span></span></span>, <span name="featurePaddingParam">featurePaddingParam: <span class="extype" name="scala.Option">Option</span>[<a href="../dataset/PaddingParam.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingParam">PaddingParam</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]] = <span class="symbol">None</span></span>)</span><span class="result">: <a href="../transform/vision/image/ImageFrame.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame">ImageFrame</a></span>
+        <span class="name">predictImage</span><span class="params">(<span name="imageFrame">imageFrame: <a href="../transform/vision/image/ImageFrame.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame">ImageFrame</a></span>, <span name="outputLayer">outputLayer: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">null</span></span>, <span name="shareBuffer">shareBuffer: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="batchPerPartition">batchPerPartition: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">4</span></span>, <span name="predictKey">predictKey: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="../../../../package.html">ImageFeature.predict</a></span></span></span>, <span name="featurePaddingParam">featurePaddingParam: <span class="extype" name="scala.Option">Option</span>[<a href="../dataset/PaddingParam.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingParam">PaddingParam</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]] = <span class="symbol">None</span></span>)</span><span class="result">: <a href="../transform/vision/image/ImageFrame.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFrame">ImageFrame</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">model predict images, return imageFrame with predicted tensor,
@@ -992,7 +1060,7 @@ or LocalPredictor for LocalImageFrame</p></div><dl class="paramcmts block"><dt c
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">processInputs</span><span class="params">(<span name="first">first: (<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>], <span class="extype" name="scala.Int">Int</span>)</span>, <span name="nodesWithIndex">nodesWithIndex: (<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>], <span class="extype" name="scala.Int">Int</span>)*</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]</span>
+        <span class="name">processInputs</span><span class="params">(<span name="first">first: (<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>], <span class="extype" name="scala.Int">Int</span>)</span>, <span name="nodesWithIndex">nodesWithIndex: (<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>], <span class="extype" name="scala.Int">Int</span>)*</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
@@ -1005,7 +1073,7 @@ or LocalPredictor for LocalImageFrame</p></div><dl class="paramcmts block"><dt c
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">processInputs</span><span class="params">(<span name="nodes">nodes: <span class="extype" name="scala.Seq">Seq</span>[<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]</span>
+        <span class="name">processInputs</span><span class="params">(<span name="nodes">nodes: <span class="extype" name="scala.Seq">Seq</span>[<a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>)</span><span class="result">: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]</span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
@@ -1018,7 +1086,7 @@ or LocalPredictor for LocalImageFrame</p></div><dl class="paramcmts block"><dt c
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">quantize</span><span class="params">()</span><span class="result">: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]</span>
+        <span class="name">quantize</span><span class="params">()</span><span class="result">: <a href="../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Quantize this module, which reduces the precision of the parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Quantize this module, which reduces the precision of the parameter. Get a higher speed with a
@@ -1039,20 +1107,6 @@ little accuracy cost.</p></div><dl class="paramcmts block"><dt>returns</dt><dd c
       <p class="shortcomment cmt">if the model contains native resources such as aligned memory, we should release it by manual.</p><div class="fullcomment"><div class="comment cmt"><p>if the model contains native resources such as aligned memory, we should release it by manual.
 JVM GC can't release them reliably.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.nn.FeedForwardNetwork#reluDropout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="reluDropout:Float"></a>
-      <a id="reluDropout:Float"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">reluDropout</span><span class="result">: <span class="extype" name="scala.Float">Float</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">
-</p>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#reset" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="reset():Unit"></a>
       <a id="reset():Unit"></a>
@@ -1084,28 +1138,28 @@ JVM GC can't release them reliably.
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd>BaseModule → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveCaffe" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveCaffe(prototxtPath:String,modelPath:String,useV2:Boolean,overwrite:Boolean):AbstractModule.this.type"></a>
-      <a id="saveCaffe(String,String,Boolean,Boolean):FeedForwardNetwork.this.type"></a>
+      <a id="saveCaffe(String,String,Boolean,Boolean):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">saveCaffe</span><span class="params">(<span name="prototxtPath">prototxtPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="modelPath">modelPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="useV2">useV2: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="overwrite">overwrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">saveCaffe</span><span class="params">(<span name="prototxtPath">prototxtPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="modelPath">modelPath: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="useV2">useV2: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="overwrite">overwrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Save this module to path in caffe readable format</p><div class="fullcomment"><div class="comment cmt"><p>Save this module to path in caffe readable format</p></div><dl class="paramcmts block"><dt class="param">prototxtPath</dt><dd class="cmt"></dd><dt class="param">modelPath</dt><dd class="cmt"></dd><dt class="param">useV2</dt><dd class="cmt"></dd><dt class="param">overwrite</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveDefinition" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveDefinition(path:String,overWrite:Boolean):AbstractModule.this.type"></a>
-      <a id="saveDefinition(String,Boolean):FeedForwardNetwork.this.type"></a>
+      <a id="saveDefinition(String,Boolean):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">saveDefinition</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">saveDefinition</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Save this module definition to path.</p><div class="fullcomment"><div class="comment cmt"><p>Save this module definition to path.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to save module, local file system, HDFS and Amazon S3 is supported.
@@ -1114,14 +1168,14 @@ JVM GC can't release them reliably.
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveModule" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveModule(path:String,weightPath:String,overWrite:Boolean):AbstractModule.this.type"></a>
-      <a id="saveModule(String,String,Boolean):FeedForwardNetwork.this.type"></a>
+      <a id="saveModule(String,String,Boolean):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">saveModule</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="weightPath">weightPath: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">null</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">saveModule</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="weightPath">weightPath: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">null</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Save this module to path with protobuf format</p><div class="fullcomment"><div class="comment cmt"><p>Save this module to path with protobuf format</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to save module, local file system, HDFS and Amazon S3 is supported.
@@ -1130,28 +1184,28 @@ JVM GC can't release them reliably.
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveTF" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveTF(inputs:Seq[(String,Seq[Int])],path:String,byteOrder:java.nio.ByteOrder,dataFormat:com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat):AbstractModule.this.type"></a>
-      <a id="saveTF(Seq[(String,Seq[Int])],String,ByteOrder,TensorflowDataFormat):FeedForwardNetwork.this.type"></a>
+      <a id="saveTF(Seq[(String,Seq[Int])],String,ByteOrder,TensorflowDataFormat):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">saveTF</span><span class="params">(<span name="inputs">inputs: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Int">Int</span>])]</span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="byteOrder">byteOrder: <span class="extype" name="java.nio.ByteOrder">ByteOrder</span> = <span class="symbol">ByteOrder.LITTLE_ENDIAN</span></span>, <span name="dataFormat">dataFormat: <a href="../utils/tf/TensorflowDataFormat.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat">TensorflowDataFormat</a> = <span class="symbol"><span class="name"><a href="../../../../package.html">TensorflowDataFormat.NHWC</a></span></span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">saveTF</span><span class="params">(<span name="inputs">inputs: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Int">Int</span>])]</span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="byteOrder">byteOrder: <span class="extype" name="java.nio.ByteOrder">ByteOrder</span> = <span class="symbol">ByteOrder.LITTLE_ENDIAN</span></span>, <span name="dataFormat">dataFormat: <a href="../utils/tf/TensorflowDataFormat.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.TensorflowDataFormat">TensorflowDataFormat</a> = <span class="symbol"><span class="name"><a href="../../../../package.html">TensorflowDataFormat.NHWC</a></span></span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Save this module to path in tensorflow readable format</p><div class="fullcomment"><div class="comment cmt"><p>Save this module to path in tensorflow readable format</p></div><dl class="paramcmts block"><dt class="param">inputs</dt><dd class="cmt"></dd><dt class="param">path</dt><dd class="cmt"></dd><dt class="param">byteOrder</dt><dd class="cmt"></dd><dt class="param">dataFormat</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#saveTorch" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="saveTorch(path:String,overWrite:Boolean):AbstractModule.this.type"></a>
-      <a id="saveTorch(String,Boolean):FeedForwardNetwork.this.type"></a>
+      <a id="saveTorch(String,Boolean):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">saveTorch</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">saveTorch</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Save this module to path in torch7 readable format</p><div class="fullcomment"><div class="comment cmt"><p>Save this module to path in torch7 readable format</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"></dd><dt class="param">overWrite</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
@@ -1201,14 +1255,14 @@ before gradParameters being accumulated.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setExtraParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setExtraParameter(extraParam:Array[com.intel.analytics.bigdl.tensor.Tensor[T]]):AbstractModule.this.type"></a>
-      <a id="setExtraParameter(Array[Tensor[T]]):FeedForwardNetwork.this.type"></a>
+      <a id="setExtraParameter(Array[Tensor[T]]):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setExtraParameter</span><span class="params">(<span name="extraParam">extraParam: <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">setExtraParameter</span><span class="params">(<span name="extraParam">extraParam: <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set extra parameter to this module.</p><div class="fullcomment"><div class="comment cmt"><p>Set extra parameter to this module.
@@ -1218,28 +1272,28 @@ and runningVar in BatchNormalization.
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setLine" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setLine(line:String):AbstractModule.this.type"></a>
-      <a id="setLine(String):FeedForwardNetwork.this.type"></a>
+      <a id="setLine(String):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setLine</span><span class="params">(<span name="line">line: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">setLine</span><span class="params">(<span name="line">line: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set the line separator when print the module</p><div class="fullcomment"><div class="comment cmt"><p>Set the line separator when print the module</p></div><dl class="paramcmts block"><dt class="param">line</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setName(name:String):AbstractModule.this.type"></a>
-      <a id="setName(String):FeedForwardNetwork.this.type"></a>
+      <a id="setName(String):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setName</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">setName</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set the module name
@@ -1248,14 +1302,14 @@ and runningVar in BatchNormalization.
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setScaleB" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setScaleB(b:Double):AbstractModule.this.type"></a>
-      <a id="setScaleB(Double):FeedForwardNetwork.this.type"></a>
+      <a id="setScaleB(Double):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setScaleB</span><span class="params">(<span name="b">b: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">setScaleB</span><span class="params">(<span name="b">b: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set the scale of gradientBias
@@ -1264,14 +1318,14 @@ and runningVar in BatchNormalization.
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setScaleW" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setScaleW(w:Double):AbstractModule.this.type"></a>
-      <a id="setScaleW(Double):FeedForwardNetwork.this.type"></a>
+      <a id="setScaleW(Double):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setScaleW</span><span class="params">(<span name="w">w: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">setScaleW</span><span class="params">(<span name="w">w: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set the scale of gradientWeight
@@ -1280,14 +1334,14 @@ and runningVar in BatchNormalization.
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#setWeightsBias" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setWeightsBias(newWeights:Array[com.intel.analytics.bigdl.tensor.Tensor[T]]):AbstractModule.this.type"></a>
-      <a id="setWeightsBias(Array[Tensor[T]]):FeedForwardNetwork.this.type"></a>
+      <a id="setWeightsBias(Array[Tensor[T]]):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setWeightsBias</span><span class="params">(<span name="newWeights">newWeights: <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">setWeightsBias</span><span class="params">(<span name="newWeights">newWeights: <span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set weight and bias for the module</p><div class="fullcomment"><div class="comment cmt"><p>Set weight and bias for the module</p></div><dl class="paramcmts block"><dt class="param">newWeights</dt><dd class="cmt"><p>array of weights and bias</p></dd><dt>returns</dt><dd class="cmt"><p>
@@ -1314,7 +1368,7 @@ and runningVar in BatchNormalization.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">toGraph</span><span class="params">(<span name="startNodes">startNodes: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]*</span>)</span><span class="result">: <a href="Graph.html" class="extype" name="com.intel.analytics.bigdl.nn.Graph">Graph</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]</span>
+        <span class="name">toGraph</span><span class="params">(<span name="startNodes">startNodes: <a href="Graph$.html#ModuleNode[T]=com.intel.analytics.bigdl.utils.Node[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]" class="extmbr" name="com.intel.analytics.bigdl.nn.Graph.ModuleNode">ModuleNode</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]*</span>)</span><span class="result">: <a href="Graph.html" class="extype" name="com.intel.analytics.bigdl.nn.Graph">Graph</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generate graph module with start nodes</p><div class="fullcomment"><div class="comment cmt"><p>Generate graph module with start nodes</p></div><dl class="paramcmts block"><dt class="param">startNodes</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
@@ -1348,28 +1402,41 @@ and runningVar in BatchNormalization.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.BaseModule#training" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="training():BaseModule.this.type"></a>
-      <a id="training():FeedForwardNetwork.this.type"></a>
+      <a id="training():Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">training</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">training</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set the module to training mode</p><div class="fullcomment"><div class="comment cmt"><p>Set the module to training mode</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd>BaseModule → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Transformer#transformerType" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="transformerType:com.intel.analytics.bigdl.nn.TransformerType"></a>
+      <a id="transformerType:TransformerType"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">transformerType</span><span class="result">: <a href="TransformerType.html" class="extype" name="com.intel.analytics.bigdl.nn.TransformerType">TransformerType</a></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#unFreeze" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="unFreeze(names:String*):AbstractModule.this.type"></a>
-      <a id="unFreeze(String*):FeedForwardNetwork.this.type"></a>
+      <a id="unFreeze(String*):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">unFreeze</span><span class="params">(<span name="names">names: <span class="extype" name="scala.Predef.String">String</span>*</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name">unFreeze</span><span class="params">(<span name="names">names: <span class="extype" name="scala.Predef.String">String</span>*</span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">&quot;unfreeze&quot; module, i.</p><div class="fullcomment"><div class="comment cmt"><p>&quot;unfreeze&quot; module, i.e. make the module parameters(weight/bias, if exists)
@@ -1409,6 +1476,19 @@ gradInput. Also, the gradInput state variable is updated accordingly.
 returns the result which is stored in the output field.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd>BaseModule → <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.Transformer#vocabSize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="vocabSize:Int"></a>
+      <a id="vocabSize:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">vocabSize</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -1491,14 +1571,14 @@ to these parameters. Otherwise, it does nothing.
               <h3>Deprecated Value Members</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#save" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="save(path:String,overWrite:Boolean):AbstractModule.this.type"></a>
-      <a id="save(String,Boolean):FeedForwardNetwork.this.type"></a>
+      <a id="save(String,Boolean):Transformer.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 0.3.0) please use recommended saveModule(path, overWrite)">save</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork">FeedForwardNetwork</a>.this.type</span>
+        <span class="name deprecated" title="Deprecated: (Since version 0.3.0) please use recommended saveModule(path, overWrite)">save</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="overWrite">overWrite: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="com.intel.analytics.bigdl.nn.Transformer">Transformer</a>.this.type</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Save this module to path.</p><div class="fullcomment"><div class="comment cmt"><p>Save this module to path.</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>path to save module, local file system, HDFS and Amazon S3 is supported.
@@ -1514,9 +1594,9 @@ to these parameters. Otherwise, it does nothing.
 
         <div id="inheritedMembers">
         <div class="parent" name="com.intel.analytics.bigdl.nn.BaseModule">
-              <h3>Inherited from <span class="extype" name="com.intel.analytics.bigdl.nn.BaseModule">BaseModule</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]</h3>
+              <h3>Inherited from <span class="extype" name="com.intel.analytics.bigdl.nn.BaseModule">BaseModule</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]</h3>
             </div><div class="parent" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">
-              <h3>Inherited from <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.FeedForwardNetwork.T">T</span>]</h3>
+              <h3>Inherited from <a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a>[<a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <a href="abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a>, <span class="extype" name="com.intel.analytics.bigdl.nn.Transformer.T">T</span>]</h3>
             </div><div class="parent" name="com.intel.analytics.bigdl.nn.abstractnn.InferShape">
               <h3>Inherited from <a href="abstractnn/InferShape.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.InferShape">InferShape</a></h3>
             </div><div class="parent" name="scala.Serializable">
