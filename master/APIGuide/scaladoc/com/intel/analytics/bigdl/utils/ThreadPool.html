@@ -318,15 +318,15 @@ class later.
 </p></div><dl class="paramcmts block"><dt class="param">tasks</dt><dd class="cmt"><p>
 </p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.utils.ThreadPool#invoke2" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="invoke2[T](tasks:Seq[()=&gt;T]):Seq[java.util.concurrent.Future[T]]"></a>
-      <a id="invoke2[T](Seq[()⇒T]):Seq[Future[T]]"></a>
+      <a id="invoke2[T](tasks:Seq[()=&gt;T]):Seq[ThreadPool.this.JavaFuture[T]]"></a>
+      <a id="invoke2[T](Seq[()⇒T]):Seq[JavaFuture[T]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">invoke2</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="tasks">tasks: <span class="extype" name="scala.Seq">Seq</span>[() ⇒ <span class="extype" name="com.intel.analytics.bigdl.utils.ThreadPool.invoke2.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.util.concurrent.Future">Future</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.ThreadPool.invoke2.T">T</span>]]</span>
+        <span class="name">invoke2</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="tasks">tasks: <span class="extype" name="scala.Seq">Seq</span>[() ⇒ <span class="extype" name="com.intel.analytics.bigdl.utils.ThreadPool.invoke2.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.ThreadPool.JavaFuture">JavaFuture</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.ThreadPool.invoke2.T">T</span>]]</span>
       </span>
       </h4>
       
@@ -346,19 +346,22 @@ class later.
 </p><div class="fullcomment"><div class="comment cmt"><p>Invoke a batch of tasks and wait for all them finished
 </p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"></dd><dt class="param">tasks</dt><dd class="cmt"></dd><dt class="param">timeout</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.utils.ThreadPool#invokeAndWait2" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="invokeAndWait2[T](tasks:Seq[()=&gt;T],timeout:Long,timeUnit:java.util.concurrent.TimeUnit):scala.collection.mutable.Buffer[java.util.concurrent.Future[T]]"></a>
-      <a id="invokeAndWait2[T](Seq[()⇒T],Long,TimeUnit):Buffer[Future[T]]"></a>
+    </li><li name="com.intel.analytics.bigdl.utils.ThreadPool#invokeAndWait2" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="invokeAndWait2[T](tasks:Seq[()=&gt;T],timeout:Long,timeUnit:java.util.concurrent.TimeUnit):scala.collection.mutable.Buffer[ThreadPool.this.JavaFuture[T]]"></a>
+      <a id="invokeAndWait2[T](Seq[()⇒T],Long,TimeUnit):Buffer[JavaFuture[T]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">invokeAndWait2</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="tasks">tasks: <span class="extype" name="scala.Seq">Seq</span>[() ⇒ <span class="extype" name="com.intel.analytics.bigdl.utils.ThreadPool.invokeAndWait2.T">T</span>]</span>, <span name="timeout">timeout: <span class="extype" name="scala.Long">Long</span> = <span class="symbol">Long.MaxValue</span></span>, <span name="timeUnit">timeUnit: <span class="extype" name="java.util.concurrent.TimeUnit">TimeUnit</span> = <span class="symbol">TimeUnit.NANOSECONDS</span></span>)</span><span class="result">: <span class="extype" name="scala.collection.mutable.Buffer">Buffer</span>[<span class="extype" name="java.util.concurrent.Future">Future</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.ThreadPool.invokeAndWait2.T">T</span>]]</span>
+        <span class="name">invokeAndWait2</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="tasks">tasks: <span class="extype" name="scala.Seq">Seq</span>[() ⇒ <span class="extype" name="com.intel.analytics.bigdl.utils.ThreadPool.invokeAndWait2.T">T</span>]</span>, <span name="timeout">timeout: <span class="extype" name="scala.Long">Long</span> = <span class="symbol">Long.MaxValue</span></span>, <span name="timeUnit">timeUnit: <span class="extype" name="java.util.concurrent.TimeUnit">TimeUnit</span> = <span class="symbol">TimeUnit.NANOSECONDS</span></span>)</span><span class="result">: <span class="extype" name="scala.collection.mutable.Buffer">Buffer</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.ThreadPool.JavaFuture">JavaFuture</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.ThreadPool.invokeAndWait2.T">T</span>]]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Use java future to execute the tasks.</p><div class="fullcomment"><div class="comment cmt"><p>Use java future to execute the tasks. It will be blocking until tasks completed.
+If any task throws an exception, it will throw that exception in caller.
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>return type of tasks</p></dd><dt class="param">tasks</dt><dd class="cmt"><p>task sequence. each task's return type is T</p></dd><dt class="param">timeout</dt><dd class="cmt"><p>the maximum time to wait</p></dd><dt class="param">timeUnit</dt><dd class="cmt"><p>the time unit for the timeout</p></dd><dt>returns</dt><dd class="cmt"><p>a sequence of Futures representing the tasks.
+</p></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
