@@ -4231,6 +4231,34 @@ internally to do so is recursive.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.SequenceBeamSearch">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SequenceBeamSearch</code><span class="sig-paren">(</span><em>vocab_size</em>, <em>beam_size</em>, <em>alpha</em>, <em>decode_length</em>, <em>eos_id</em>, <em>num_hidden_layers</em>, <em>hidden_size</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SequenceBeamSearch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SequenceBeamSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Find the translated sequence with the highest probability.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vocab_size</strong> – size of tokens</li>
+<li><strong>beam_size</strong> – number of beams</li>
+<li><strong>alpha</strong> – defining the strength of length normalization</li>
+<li><strong>decode_length</strong> – maximum length to decoded sequence</li>
+<li><strong>eos_id</strong> – id of eos token, used to determine when a sequence has finished</li>
+<li><strong>num_hidden_layers</strong> – number of hidden layers</li>
+<li><strong>hidden_size</strong> – size of hidden layer</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sequenceBeamSearch</span> <span class="o">=</span> <span class="n">SequenceBeamSearch</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">creating: createSequenceBeamSearch</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.Sequential">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Sequential</code><span class="sig-paren">(</span><em>jvalue=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Sequential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Sequential" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Container" title="bigdl.nn.layer.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Container</span></code></a></p>

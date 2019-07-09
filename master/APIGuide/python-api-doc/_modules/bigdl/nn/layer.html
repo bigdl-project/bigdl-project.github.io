@@ -4078,6 +4078,44 @@
                                           <span class="n">index</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="SequenceBeamSearch"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SequenceBeamSearch">[docs]</a><span class="k">class</span> <span class="nc">SequenceBeamSearch</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Find the translated sequence with the highest probability.</span>
+
+
+<span class="sd">    :param vocab_size: size of tokens</span>
+<span class="sd">    :param beam_size: number of beams</span>
+<span class="sd">    :param alpha: defining the strength of length normalization</span>
+<span class="sd">    :param decode_length: maximum length to decoded sequence</span>
+<span class="sd">    :param eos_id: id of eos token, used to determine when a sequence has finished</span>
+<span class="sd">    :param num_hidden_layers: number of hidden layers</span>
+<span class="sd">    :param hidden_size: size of hidden layer</span>
+
+
+<span class="sd">    &gt;&gt;&gt; sequenceBeamSearch = SequenceBeamSearch(4, 3, 0.0, 10, 1.0, 2, 5)</span>
+<span class="sd">    creating: createSequenceBeamSearch</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                <span class="n">vocab_size</span><span class="p">,</span>
+                <span class="n">beam_size</span><span class="p">,</span>
+                <span class="n">alpha</span><span class="p">,</span>
+                <span class="n">decode_length</span><span class="p">,</span>
+                <span class="n">eos_id</span><span class="p">,</span>
+                <span class="n">num_hidden_layers</span><span class="p">,</span>
+                <span class="n">hidden_size</span><span class="p">,</span>
+                <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SequenceBeamSearch</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                                 <span class="n">vocab_size</span><span class="p">,</span>
+                                                 <span class="n">beam_size</span><span class="p">,</span>
+                                                 <span class="n">alpha</span><span class="p">,</span>
+                                                 <span class="n">decode_length</span><span class="p">,</span>
+                                                 <span class="n">eos_id</span><span class="p">,</span>
+                                                 <span class="n">num_hidden_layers</span><span class="p">,</span>
+                                                 <span class="n">hidden_size</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="SoftMax"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.SoftMax">[docs]</a><span class="k">class</span> <span class="nc">SoftMax</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
     <span class="sd">&#39;&#39;&#39;</span>
