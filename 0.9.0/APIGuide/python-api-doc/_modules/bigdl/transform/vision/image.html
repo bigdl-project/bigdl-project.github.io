@@ -1,0 +1,831 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>bigdl.transform.vision.image &#8212; BigDL  documentation</title>
+    <link rel="stylesheet" href="../../../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for bigdl.transform.vision.image</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># Copyright 2016 The BigDL Authors.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1">#</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">JavaValue</span>
+<span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">callBigDlFunc</span>
+<span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span> <span class="o">&gt;=</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
+    <span class="n">long</span> <span class="o">=</span> <span class="nb">int</span>
+    <span class="n">unicode</span> <span class="o">=</span> <span class="nb">str</span>
+
+
+<div class="viewcode-block" id="FeatureTransformer"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.FeatureTransformer">[docs]</a><span class="k">class</span> <span class="nc">FeatureTransformer</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    FeatureTransformer is a transformer that transform ImageFeature</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span>
+                <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">JavaValue</span><span class="o">.</span><span class="n">jvm_class_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FeatureTransformer.transform"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.FeatureTransformer.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_feature</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        transform ImageFeature</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;transformImageFeature&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">image_feature</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">image_feature</span></div>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_frame</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        transform ImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">jframe</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span>
+                             <span class="s2">&quot;transformImageFrame&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">image_frame</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ImageFrame</span><span class="p">(</span><span class="n">jvalue</span><span class="o">=</span><span class="n">jframe</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Pipeline"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.Pipeline">[docs]</a><span class="k">class</span> <span class="nc">Pipeline</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pipeline of FeatureTransformer</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transformers</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">transfomer</span> <span class="ow">in</span> <span class="n">transformers</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">transfomer</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__bases__</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;FeatureTransformer&quot;</span><span class="p">,</span> <span class="s2">&quot;the transformer should be &quot;</span> \
+                                                                                       <span class="s2">&quot;subclass of FeatureTransformer&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Pipeline</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">transformers</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ImageFeature"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFeature">[docs]</a><span class="k">class</span> <span class="nc">ImageFeature</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Each ImageFeature keeps information about single image,</span>
+<span class="sd">    it can include various status of an image,</span>
+<span class="sd">    e.g. original bytes read from image file, an opencv mat,</span>
+<span class="sd">    pixels in float array, image label, meta data and so on.</span>
+<span class="sd">    it uses HashMap to store all these data,</span>
+<span class="sd">    the key is string that identify the corresponding value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="n">image_tensor</span> <span class="o">=</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="k">if</span> <span class="n">image</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">label_tensor</span> <span class="o">=</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span>
+            <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">JavaValue</span><span class="o">.</span><span class="n">jvm_class_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">image_tensor</span><span class="p">,</span> <span class="n">label_tensor</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ImageFeature.get_image"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFeature.get_image">[docs]</a>    <span class="k">def</span> <span class="nf">get_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">float_key</span><span class="o">=</span><span class="s2">&quot;floats&quot;</span><span class="p">,</span> <span class="n">to_chw</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get image as ndarray from ImageFeature</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tensor</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;imageFeatureToImageTensor&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                               <span class="n">float_key</span><span class="p">,</span> <span class="n">to_chw</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ImageFeature.get_label"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFeature.get_label">[docs]</a>    <span class="k">def</span> <span class="nf">get_label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get label as ndarray from ImageFeature</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;imageFeatureToLabelTensor&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">label</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ImageFeature.keys"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFeature.keys">[docs]</a>    <span class="k">def</span> <span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get key set from ImageFeature</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;imageFeatureGetKeys&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="ImageFrame"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame">[docs]</a><span class="k">class</span> <span class="nc">ImageFrame</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ImageFrame wraps a set of ImageFeature</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jvalue</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">jvalue</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_local</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">image_frame</span> <span class="o">=</span> <span class="n">LocalImageFrame</span><span class="p">(</span><span class="n">jvalue</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">image_frame</span> <span class="o">=</span> <span class="n">DistributedImageFrame</span><span class="p">(</span><span class="n">jvalue</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="ImageFrame.read"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.read">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_partitions</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read images as Image Frame</span>
+<span class="sd">        if sc is defined, Read image as DistributedImageFrame from local file system or HDFS</span>
+<span class="sd">        if sc is null, Read image as LocalImageFrame from local file system</span>
+<span class="sd">        :param path path to read images</span>
+<span class="sd">        if sc is defined, path can be local or HDFS. Wildcard character are supported.</span>
+<span class="sd">        if sc is null, path is local directory/image file/image file with wildcard character</span>
+<span class="sd">        :param sc SparkContext</span>
+<span class="sd">        :param min_partitions A suggestion value of the minimal splitting number for input data.</span>
+<span class="sd">        :return ImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ImageFrame</span><span class="p">(</span><span class="n">jvalue</span><span class="o">=</span><span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="n">min_partitions</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ImageFrame.read_parquet"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.read_parquet">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">read_parquet</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read parquet file as DistributedImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">DistributedImageFrame</span><span class="p">(</span><span class="n">jvalue</span><span class="o">=</span><span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;readParquet&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">sc</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ImageFrame.write_parquet"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.write_parquet">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">write_parquet</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="n">partition_num</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        write ImageFrame as parquet file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;writeParquet&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="n">partition_num</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ImageFrame.is_local"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.is_local">[docs]</a>    <span class="k">def</span> <span class="nf">is_local</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        whether this is a LocalImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;isLocal&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ImageFrame.is_distributed"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.is_distributed">[docs]</a>    <span class="k">def</span> <span class="nf">is_distributed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        whether this is a DistributedImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;isDistributed&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ImageFrame.transform"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transformer</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        transformImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span>
+                                 <span class="s2">&quot;transformImageFrame&quot;</span><span class="p">,</span> <span class="n">transformer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="ImageFrame.get_image"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.get_image">[docs]</a>    <span class="k">def</span> <span class="nf">get_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">float_key</span><span class="o">=</span><span class="s2">&quot;floats&quot;</span><span class="p">,</span> <span class="n">to_chw</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get image from ImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_frame</span><span class="o">.</span><span class="n">get_image</span><span class="p">(</span><span class="n">float_key</span><span class="p">,</span> <span class="n">to_chw</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ImageFrame.get_label"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.get_label">[docs]</a>    <span class="k">def</span> <span class="nf">get_label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get label from ImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_frame</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ImageFrame.get_predict"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.get_predict">[docs]</a>    <span class="k">def</span> <span class="nf">get_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get prediction from ImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_frame</span><span class="o">.</span><span class="n">get_predict</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ImageFrame.get_sample"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.get_sample">[docs]</a>    <span class="k">def</span> <span class="nf">get_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get sample from ImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_frame</span><span class="o">.</span><span class="n">get_sample</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ImageFrame.get_uri"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.get_uri">[docs]</a>    <span class="k">def</span> <span class="nf">get_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get uri from imageframe</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_frame</span><span class="o">.</span><span class="n">get_uri</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ImageFrame.set_label"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.set_label">[docs]</a>    <span class="k">def</span> <span class="nf">set_label</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        set label for imageframe</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span>
+                             <span class="s2">&quot;setLabel&quot;</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ImageFrame.random_split"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrame.random_split">[docs]</a>    <span class="k">def</span> <span class="nf">random_split</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Random split imageframes according to weights</span>
+<span class="sd">        :param weights: weights for each ImageFrame</span>
+<span class="sd">        :return: </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">jvalues</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">image_frame</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">ImageFrame</span><span class="p">(</span><span class="n">jvalue</span><span class="p">)</span> <span class="k">for</span> <span class="n">jvalue</span> <span class="ow">in</span> <span class="n">jvalues</span><span class="p">]</span></div></div>
+
+<div class="viewcode-block" id="LocalImageFrame"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.LocalImageFrame">[docs]</a><span class="k">class</span> <span class="nc">LocalImageFrame</span><span class="p">(</span><span class="n">ImageFrame</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    LocalImageFrame wraps a list of ImageFeature</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">jvalue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">jvalue</span> <span class="ow">or</span> <span class="n">image_list</span><span class="p">,</span> <span class="s2">&quot;jvalue and image_list cannot be None in the same time&quot;</span>
+        <span class="k">if</span> <span class="n">jvalue</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">jvalue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># init from image ndarray list and label rdd(optional)</span>
+            <span class="n">image_tensor_list</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image</span><span class="p">:</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">image</span><span class="p">),</span> <span class="n">image_list</span><span class="p">)</span>
+            <span class="n">label_tensor_list</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">label</span><span class="p">:</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">label</span><span class="p">),</span> <span class="n">label_list</span><span class="p">)</span> <span class="k">if</span> <span class="n">label_list</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">JavaValue</span><span class="o">.</span><span class="n">jvm_class_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
+                                       <span class="n">image_tensor_list</span><span class="p">,</span> <span class="n">label_tensor_list</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
+
+<div class="viewcode-block" id="LocalImageFrame.get_image"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.LocalImageFrame.get_image">[docs]</a>    <span class="k">def</span> <span class="nf">get_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">float_key</span><span class="o">=</span><span class="s2">&quot;floats&quot;</span><span class="p">,</span> <span class="n">to_chw</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get image list from ImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tensors</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span>
+                                   <span class="s2">&quot;localImageFrameToImageTensor&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">float_key</span><span class="p">,</span> <span class="n">to_chw</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">tensor</span><span class="p">:</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">(),</span> <span class="n">tensors</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LocalImageFrame.get_label"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.LocalImageFrame.get_label">[docs]</a>    <span class="k">def</span> <span class="nf">get_label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get label list from ImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;localImageFrameToLabelTensor&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">tensor</span><span class="p">:</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">(),</span> <span class="n">labels</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LocalImageFrame.get_predict"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.LocalImageFrame.get_predict">[docs]</a>    <span class="k">def</span> <span class="nf">get_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get prediction list from ImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">predicts</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;localImageFrameToPredict&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">predict</span><span class="p">:</span> <span class="p">(</span><span class="n">predict</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">predict</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">())</span> <span class="k">if</span> <span class="n">predict</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="p">(</span><span class="n">predict</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">None</span><span class="p">),</span> <span class="n">predicts</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LocalImageFrame.get_sample"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.LocalImageFrame.get_sample">[docs]</a>    <span class="k">def</span> <span class="nf">get_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">key</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;localImageFrameToSample&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LocalImageFrame.get_uri"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.LocalImageFrame.get_uri">[docs]</a>    <span class="k">def</span> <span class="nf">get_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;uri&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;localImageFrameToUri&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="LocalImageFrame.random_split"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.LocalImageFrame.random_split">[docs]</a>    <span class="k">def</span> <span class="nf">random_split</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="s2">&quot;random split not supported in LocalImageFrame&quot;</span></div></div>
+
+<div class="viewcode-block" id="DistributedImageFrame"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.DistributedImageFrame">[docs]</a><span class="k">class</span> <span class="nc">DistributedImageFrame</span><span class="p">(</span><span class="n">ImageFrame</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    DistributedImageFrame wraps an RDD of ImageFeature</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_rdd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label_rdd</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">jvalue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">jvalue</span> <span class="ow">or</span> <span class="n">image_rdd</span><span class="p">,</span> <span class="s2">&quot;jvalue and image_rdd cannot be None in the same time&quot;</span>
+        <span class="k">if</span> <span class="n">jvalue</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">jvalue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># init from image ndarray rdd and label rdd(optional)</span>
+            <span class="n">image_tensor_rdd</span> <span class="o">=</span> <span class="n">image_rdd</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">image</span><span class="p">:</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
+            <span class="n">label_tensor_rdd</span> <span class="o">=</span> <span class="n">label_rdd</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">label</span><span class="p">:</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">label</span><span class="p">))</span> <span class="k">if</span> <span class="n">label_rdd</span> <span class="k">else</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">JavaValue</span><span class="o">.</span><span class="n">jvm_class_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span>
+                                       <span class="n">image_tensor_rdd</span><span class="p">,</span> <span class="n">label_tensor_rdd</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
+
+<div class="viewcode-block" id="DistributedImageFrame.get_image"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.DistributedImageFrame.get_image">[docs]</a>    <span class="k">def</span> <span class="nf">get_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">float_key</span><span class="o">=</span><span class="s2">&quot;floats&quot;</span><span class="p">,</span> <span class="n">to_chw</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get image rdd from ImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tensor_rdd</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span>
+                               <span class="s2">&quot;distributedImageFrameToImageTensorRdd&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">float_key</span><span class="p">,</span> <span class="n">to_chw</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tensor_rdd</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">tensor</span><span class="p">:</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="DistributedImageFrame.get_label"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.DistributedImageFrame.get_label">[docs]</a>    <span class="k">def</span> <span class="nf">get_label</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get label rdd from ImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tensor_rdd</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;distributedImageFrameToLabelTensorRdd&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tensor_rdd</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">tensor</span><span class="p">:</span> <span class="n">tensor</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="DistributedImageFrame.get_predict"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.DistributedImageFrame.get_predict">[docs]</a>    <span class="k">def</span> <span class="nf">get_predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;predict&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get prediction rdd from ImageFrame</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">predicts</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;distributedImageFrameToPredict&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">predicts</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">predict</span><span class="p">:</span> <span class="p">(</span><span class="n">predict</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">predict</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">())</span> <span class="k">if</span> <span class="n">predict</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">else</span> <span class="p">(</span><span class="n">predict</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">None</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="DistributedImageFrame.get_sample"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.DistributedImageFrame.get_sample">[docs]</a>    <span class="k">def</span> <span class="nf">get_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">key</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;distributedImageFrameToSample&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DistributedImageFrame.get_uri"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.DistributedImageFrame.get_uri">[docs]</a>    <span class="k">def</span> <span class="nf">get_uri</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;uri&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;distributedImageFrameToUri&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DistributedImageFrame.random_split"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.DistributedImageFrame.random_split">[docs]</a>    <span class="k">def</span> <span class="nf">random_split</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;distributedImageFrameRandomSplit&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="HFlip"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.HFlip">[docs]</a><span class="k">class</span> <span class="nc">HFlip</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Flip the image horizontally</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+            <span class="nb">super</span><span class="p">(</span><span class="n">HFlip</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Resize"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.Resize">[docs]</a><span class="k">class</span> <span class="nc">Resize</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Resize image</span>
+<span class="sd">    :param resize_h height after resize</span>
+<span class="sd">    :param resize_w width after resize</span>
+<span class="sd">    :param resize_mode if resizeMode = -1, random select a mode from (Imgproc.INTER_LINEAR,</span>
+<span class="sd">     Imgproc.INTER_CUBIC, Imgproc.INTER_AREA, Imgproc.INTER_NEAREST, Imgproc.INTER_LANCZOS4)</span>
+<span class="sd">    :param use_scale_factor if true, scale factor fx and fy is used, fx = fy = 0</span>
+<span class="sd">    note that the result of the following are different</span>
+<span class="sd">    Imgproc.resize(mat, mat, new Size(resizeWH, resizeWH), 0, 0, Imgproc.INTER_LINEAR)</span>
+<span class="sd">    Imgproc.resize(mat, mat, new Size(resizeWH, resizeWH))</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resize_h</span><span class="p">,</span> <span class="n">resize_w</span><span class="p">,</span> <span class="n">resize_mode</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">use_scale_factor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Resize</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">resize_h</span><span class="p">,</span> <span class="n">resize_w</span><span class="p">,</span> <span class="n">resize_mode</span><span class="p">,</span> <span class="n">use_scale_factor</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Brightness"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.Brightness">[docs]</a><span class="k">class</span> <span class="nc">Brightness</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    adjust the image brightness</span>
+<span class="sd">    :param deltaLow brightness parameter: low bound</span>
+<span class="sd">    :param deltaHigh brightness parameter: high bound</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_low</span><span class="p">,</span> <span class="n">delta_high</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Brightness</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">delta_low</span><span class="p">,</span> <span class="n">delta_high</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ChannelOrder"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ChannelOrder">[docs]</a><span class="k">class</span> <span class="nc">ChannelOrder</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    random change the channel of an image</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ChannelOrder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Contrast"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.Contrast">[docs]</a><span class="k">class</span> <span class="nc">Contrast</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adjust the image contrast</span>
+<span class="sd">    :param delta_low contrast parameter low bound</span>
+<span class="sd">    :param delta_high contrast parameter high bound</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_low</span><span class="p">,</span> <span class="n">delta_high</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Contrast</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">delta_low</span><span class="p">,</span> <span class="n">delta_high</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Saturation"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.Saturation">[docs]</a><span class="k">class</span> <span class="nc">Saturation</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adjust image saturation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_low</span><span class="p">,</span> <span class="n">delta_high</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Saturation</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">delta_low</span><span class="p">,</span> <span class="n">delta_high</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Hue"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.Hue">[docs]</a><span class="k">class</span> <span class="nc">Hue</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adjust image hue</span>
+<span class="sd">    :param delta_low hue parameter: low bound</span>
+<span class="sd">    :param delta_high hue parameter: high bound</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_low</span><span class="p">,</span> <span class="n">delta_high</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Hue</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">delta_low</span><span class="p">,</span> <span class="n">delta_high</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ChannelNormalize"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ChannelNormalize">[docs]</a><span class="k">class</span> <span class="nc">ChannelNormalize</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    image channel normalize</span>
+<span class="sd">    :param mean_r mean value in R channel</span>
+<span class="sd">    :param mean_g mean value in G channel</span>
+<span class="sd">    :param meanB_b mean value in B channel</span>
+<span class="sd">    :param std_r std value in R channel</span>
+<span class="sd">    :param std_g std value in G channel</span>
+<span class="sd">    :param std_b std value in B channel</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mean_r</span><span class="p">,</span> <span class="n">mean_g</span><span class="p">,</span> <span class="n">mean_b</span><span class="p">,</span> <span class="n">std_r</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">std_g</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">std_b</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ChannelNormalize</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">mean_r</span><span class="p">,</span> <span class="n">mean_g</span><span class="p">,</span> <span class="n">mean_b</span><span class="p">,</span> <span class="n">std_r</span><span class="p">,</span> <span class="n">std_g</span><span class="p">,</span> <span class="n">std_b</span><span class="p">)</span></div>
+        
+<div class="viewcode-block" id="PixelNormalize"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.PixelNormalize">[docs]</a><span class="k">class</span> <span class="nc">PixelNormalize</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pixel level normalizer, data(i) = data(i) - mean(i)</span>
+
+<span class="sd">    :param means pixel level mean, following H * W * C order</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">means</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PixelNormalize</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">means</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RandomCrop"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.RandomCrop">[docs]</a><span class="k">class</span> <span class="nc">RandomCrop</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Random crop a `cropWidth` x `cropHeight` patch from an image.</span>
+<span class="sd">    The patch size should be less than the image size.</span>
+<span class="sd">    </span>
+<span class="sd">    :param crop_width width after crop</span>
+<span class="sd">    :param crop_height height after crop</span>
+<span class="sd">    :param is_clip whether to clip the roi to image boundaries</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">crop_width</span><span class="p">,</span> <span class="n">crop_height</span><span class="p">,</span> <span class="n">is_clip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RandomCrop</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">crop_width</span><span class="p">,</span> <span class="n">crop_height</span><span class="p">,</span> <span class="n">is_clip</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="CenterCrop"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.CenterCrop">[docs]</a><span class="k">class</span> <span class="nc">CenterCrop</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crop a `cropWidth` x `cropHeight` patch from center of image.</span>
+<span class="sd">    The patch size should be less than the image size.</span>
+<span class="sd">    :param crop_width width after crop</span>
+<span class="sd">    :param crop_height height after crop</span>
+<span class="sd">    :param is_clip  clip cropping box boundary</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">crop_width</span><span class="p">,</span> <span class="n">crop_height</span><span class="p">,</span> <span class="n">is_clip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">CenterCrop</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">crop_width</span><span class="p">,</span> <span class="n">crop_height</span><span class="p">,</span> <span class="n">is_clip</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FixedCrop"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.FixedCrop">[docs]</a><span class="k">class</span> <span class="nc">FixedCrop</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crop a fixed area of image</span>
+
+<span class="sd">    :param x1 start in width</span>
+<span class="sd">    :param y1 start in height</span>
+<span class="sd">    :param x2 end in width</span>
+<span class="sd">    :param y2 end in height</span>
+<span class="sd">    :param normalized whether args are normalized, i.e. in range [0, 1]</span>
+<span class="sd">    :param is_clip whether to clip the roi to image boundaries</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">is_clip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FixedCrop</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">normalized</span><span class="p">,</span> <span class="n">is_clip</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DetectionCrop"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.DetectionCrop">[docs]</a><span class="k">class</span> <span class="nc">DetectionCrop</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Crop from object detections, each image should has a tensor detection,</span>
+<span class="sd">    which is stored in ImageFeature</span>
+<span class="sd">    :param roi_key key that map a tensor detection</span>
+<span class="sd">    :param normalized whether is detection is normalized, i.e. in range [0, 1]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roi_key</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DetectionCrop</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">roi_key</span><span class="p">,</span> <span class="n">normalized</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Expand"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.Expand">[docs]</a><span class="k">class</span> <span class="nc">Expand</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    expand image, fill the blank part with the meanR, meanG, meanB</span>
+
+<span class="sd">    :param means_r means in R channel</span>
+<span class="sd">    :param means_g means in G channel</span>
+<span class="sd">    :param means_b means in B channel</span>
+<span class="sd">    :param min_expand_ratio min expand ratio</span>
+<span class="sd">    :param max_expand_ratio max expand ratio</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">means_r</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">means_g</span><span class="o">=</span><span class="mi">117</span><span class="p">,</span> <span class="n">means_b</span><span class="o">=</span><span class="mi">104</span><span class="p">,</span>
+                 <span class="n">min_expand_ratio</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                 <span class="n">max_expand_ratio</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Expand</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">means_r</span><span class="p">,</span> <span class="n">means_g</span><span class="p">,</span> <span class="n">means_b</span><span class="p">,</span>
+                                     <span class="n">min_expand_ratio</span><span class="p">,</span> <span class="n">max_expand_ratio</span><span class="p">)</span></div>
+        
+<div class="viewcode-block" id="Filler"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.Filler">[docs]</a><span class="k">class</span> <span class="nc">Filler</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fill part of image with certain pixel value</span>
+<span class="sd">    :param start_x start x ratio</span>
+<span class="sd">    :param start_y start y ratio</span>
+<span class="sd">    :param end_x end x ratio</span>
+<span class="sd">    :param end_y end y ratio</span>
+<span class="sd">    :param value filling value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span><span class="p">,</span> <span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">255</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Filler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">start_x</span><span class="p">,</span>
+                                     <span class="n">start_y</span><span class="p">,</span>
+                                     <span class="n">end_x</span><span class="p">,</span>
+                                     <span class="n">end_y</span><span class="p">,</span>
+                                     <span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RandomTransformer"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.RandomTransformer">[docs]</a><span class="k">class</span> <span class="nc">RandomTransformer</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    It is a wrapper for transformers to control the transform probability</span>
+<span class="sd">    :param transformer transformer to apply randomness</span>
+<span class="sd">    :param prob max prob</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transformer</span><span class="p">,</span> <span class="n">prob</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RandomTransformer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">transformer</span><span class="p">,</span> <span class="n">prob</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ColorJitter"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ColorJitter">[docs]</a><span class="k">class</span> <span class="nc">ColorJitter</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Random adjust brightness, contrast, hue, saturation</span>
+<span class="sd">    :param brightness_prob probability to adjust brightness</span>
+<span class="sd">    :param brightness_delta brightness parameter</span>
+<span class="sd">    :param contrast_prob probability to adjust contrast</span>
+<span class="sd">    :param contrast_lower contrast lower parameter</span>
+<span class="sd">    :param contrast_upper contrast upper parameter</span>
+<span class="sd">    :param hue_prob probability to adjust hue</span>
+<span class="sd">    :param hue_delta hue parameter</span>
+<span class="sd">    :param saturation_prob probability to adjust saturation</span>
+<span class="sd">    :param saturation_lower saturation lower parameter</span>
+<span class="sd">    :param saturation_upper saturation upper parameter</span>
+<span class="sd">    :param random_order_prob random order for different operation</span>
+<span class="sd">    :param shuffle  shuffle the transformers</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">brightness_prob</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+                 <span class="n">brightness_delta</span> <span class="o">=</span> <span class="mf">32.0</span><span class="p">,</span>
+                 <span class="n">contrast_prob</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+                 <span class="n">contrast_lower</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+                 <span class="n">contrast_upper</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+                 <span class="n">hue_prob</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+                 <span class="n">hue_delta</span> <span class="o">=</span> <span class="mf">18.0</span><span class="p">,</span>
+                 <span class="n">saturation_prob</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+                 <span class="n">saturation_lower</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+                 <span class="n">saturation_upper</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+                 <span class="n">random_order_prob</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+                 <span class="n">shuffle</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ColorJitter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">brightness_prob</span><span class="p">,</span>
+                                          <span class="n">brightness_delta</span><span class="p">,</span>
+                                          <span class="n">contrast_prob</span><span class="p">,</span>
+                                          <span class="n">contrast_lower</span><span class="p">,</span>
+                                          <span class="n">contrast_upper</span><span class="p">,</span>
+                                          <span class="n">hue_prob</span><span class="p">,</span>
+                                          <span class="n">hue_delta</span><span class="p">,</span>
+                                          <span class="n">saturation_prob</span><span class="p">,</span>
+                                          <span class="n">saturation_lower</span><span class="p">,</span>
+                                          <span class="n">saturation_upper</span><span class="p">,</span>
+                                          <span class="n">random_order_prob</span><span class="p">,</span>
+                                          <span class="n">shuffle</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RandomSampler"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.RandomSampler">[docs]</a><span class="k">class</span> <span class="nc">RandomSampler</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Random sample a bounding box given some constraints and crop the image</span>
+<span class="sd">    This is used in SSD training augmentation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RandomSampler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RoiProject"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.RoiProject">[docs]</a><span class="k">class</span> <span class="nc">RoiProject</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Project gt boxes onto the coordinate system defined by image boundary</span>
+<span class="sd">    :param need_meet_center_constraint whether need to meet center constraint, i.e., the center of gt box need be within image boundary</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">need_meet_center_constraint</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RoiProject</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">need_meet_center_constraint</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RoiHFlip"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.RoiHFlip">[docs]</a><span class="k">class</span> <span class="nc">RoiHFlip</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    horizontally flip the roi</span>
+<span class="sd">    :param normalized whether the roi is normalized, i.e. in range [0, 1]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RoiHFlip</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">normalized</span><span class="p">)</span></div>
+        
+<div class="viewcode-block" id="RoiResize"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.RoiResize">[docs]</a><span class="k">class</span> <span class="nc">RoiResize</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    resize the roi according to scale</span>
+<span class="sd">    :param normalized whether the roi is normalized, i.e. in range [0, 1]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">normalized</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RoiResize</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">normalized</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RoiNormalize"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.RoiNormalize">[docs]</a><span class="k">class</span> <span class="nc">RoiNormalize</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Normalize Roi to [0, 1]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RoiNormalize</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MatToFloats"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.MatToFloats">[docs]</a><span class="k">class</span> <span class="nc">MatToFloats</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Transform OpenCVMat to float array, note that in this transformer, the mat is released</span>
+<span class="sd">    :param valid_height valid height in case the mat is invalid</span>
+<span class="sd">    :param valid_width valid width in case the mat is invalid</span>
+<span class="sd">    :param valid_channel valid channel in case the mat is invalid</span>
+<span class="sd">    :param out_key key to store float array</span>
+<span class="sd">    :param share_buffer share buffer of output</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valid_height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">valid_width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">valid_channel</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+                 <span class="n">out_key</span> <span class="o">=</span> <span class="s2">&quot;floats&quot;</span><span class="p">,</span> <span class="n">share_buffer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MatToFloats</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">valid_height</span><span class="p">,</span> <span class="n">valid_width</span><span class="p">,</span> <span class="n">valid_channel</span><span class="p">,</span>
+                                          <span class="n">out_key</span><span class="p">,</span> <span class="n">share_buffer</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MatToTensor"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.MatToTensor">[docs]</a><span class="k">class</span> <span class="nc">MatToTensor</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    transform opencv mat to tensor</span>
+<span class="sd">    :param to_rgb BGR to RGB (default is BGR)</span>
+<span class="sd">    :param tensor_key key to store transformed tensor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">to_rgb</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">tensor_key</span><span class="o">=</span><span class="s2">&quot;imageTensor&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MatToTensor</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">to_rgb</span><span class="p">,</span> <span class="n">tensor_key</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="AspectScale"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.AspectScale">[docs]</a><span class="k">class</span> <span class="nc">AspectScale</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Resize the image, keep the aspect ratio. scale according to the short edge</span>
+<span class="sd">    :param min_size scale size, apply to short edge</span>
+<span class="sd">    :param scale_multiple_of make the scaled size multiple of some value</span>
+<span class="sd">    :param max_size max size after scale</span>
+<span class="sd">    :param resize_mode if resizeMode = -1, random select a mode from</span>
+<span class="sd">    (Imgproc.INTER_LINEAR, Imgproc.INTER_CUBIC, Imgproc.INTER_AREA,</span>
+<span class="sd">    Imgproc.INTER_NEAREST, Imgproc.INTER_LANCZOS4)</span>
+<span class="sd">    :param use_scale_factor if true, scale factor fx and fy is used, fx = fy = 0</span>
+<span class="sd">    :aram min_scale control the minimum scale up for image</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_size</span><span class="p">,</span> <span class="n">scale_multiple_of</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">max_size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+                 <span class="n">resize_mode</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">use_scale_factor</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_scale</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">AspectScale</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">min_size</span><span class="p">,</span> <span class="n">scale_multiple_of</span><span class="p">,</span> <span class="n">max_size</span><span class="p">,</span>
+                                          <span class="n">resize_mode</span><span class="p">,</span> <span class="n">use_scale_factor</span><span class="p">,</span> <span class="n">min_scale</span><span class="p">)</span></div>
+        
+<div class="viewcode-block" id="RandomAspectScale"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.RandomAspectScale">[docs]</a><span class="k">class</span> <span class="nc">RandomAspectScale</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    resize the image by randomly choosing a scale</span>
+<span class="sd">    :param scales array of scale options that for random choice</span>
+<span class="sd">    :param scaleMultipleOf Resize test images so that its width and height are multiples of</span>
+<span class="sd">    :param maxSize Max pixel size of the longest side of a scaled input image</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">scale_multiple_of</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">max_size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RandomAspectScale</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">scales</span><span class="p">,</span> <span class="n">scale_multiple_of</span><span class="p">,</span> <span class="n">max_size</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BytesToMat"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.BytesToMat">[docs]</a><span class="k">class</span> <span class="nc">BytesToMat</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Transform byte array(original image file in byte) to OpenCVMat</span>
+<span class="sd">    :param byte_key key that maps byte array</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">byte_key</span> <span class="o">=</span> <span class="s2">&quot;bytes&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">BytesToMat</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">byte_key</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ImageFrameToSample"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ImageFrameToSample">[docs]</a><span class="k">class</span> <span class="nc">ImageFrameToSample</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    transform imageframe to samples</span>
+<span class="sd">    :param input_keys keys that maps inputs (each input should be a tensor)</span>
+<span class="sd">    :param target_keys keys that maps targets (each target should be a tensor)</span>
+<span class="sd">    :param sample_key key to store sample</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;imageTensor&quot;</span><span class="p">],</span> <span class="n">target_keys</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">sample_key</span><span class="o">=</span><span class="s2">&quot;sample&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ImageFrameToSample</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">input_keys</span><span class="p">,</span> <span class="n">target_keys</span><span class="p">,</span> <span class="n">sample_key</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="PixelBytesToMat"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.PixelBytesToMat">[docs]</a><span class="k">class</span> <span class="nc">PixelBytesToMat</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Transform byte array(pixels in byte) to OpenCVMat</span>
+<span class="sd">    :param byte_key key that maps byte array</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">byte_key</span> <span class="o">=</span> <span class="s2">&quot;bytes&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PixelBytesToMat</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">byte_key</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FixExpand"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.FixExpand">[docs]</a><span class="k">class</span> <span class="nc">FixExpand</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Expand image with given expandHeight and expandWidth,</span>
+<span class="sd">    put the original image to the center of expanded image</span>
+<span class="sd">    :param expand_height height expand to</span>
+<span class="sd">    :param expand_width width expand to</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expand_height</span><span class="p">,</span> <span class="n">expand_width</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FixExpand</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">expand_height</span><span class="p">,</span> <span class="n">expand_width</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ChannelScaledNormalizer"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.ChannelScaledNormalizer">[docs]</a><span class="k">class</span> <span class="nc">ChannelScaledNormalizer</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Scaled image at channel level with offset and scale</span>
+<span class="sd">    :param mean_r : offset for R channel</span>
+<span class="sd">    :param mean_g : offset for G channel</span>
+<span class="sd">    :param mean_b: offset for B channel</span>
+<span class="sd">    :param scale: scaling factor for all channels</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mean_r</span><span class="p">,</span> <span class="n">mean_g</span><span class="p">,</span> <span class="n">mean_b</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ChannelScaledNormalizer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">mean_r</span><span class="p">,</span> <span class="n">mean_g</span><span class="p">,</span> <span class="n">mean_b</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RandomAlterAspect"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.RandomAlterAspect">[docs]</a><span class="k">class</span> <span class="nc">RandomAlterAspect</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply random crop based on area ratio and resize to cropLenth size</span>
+<span class="sd">    :param min_area_ratio  min area ratio</span>
+<span class="sd">    :param max_area_ratio  max area ratio</span>
+<span class="sd">    :param min_aspect_ratio_change factor applied to ratio area</span>
+<span class="sd">    :param interp_mode   interp mode applied in resize</span>
+<span class="sd">    :param crop_length final size resized to</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_area_ratio</span><span class="p">,</span>
+                 <span class="n">max_area_ratio</span><span class="p">,</span>
+                 <span class="n">min_aspect_ratio_change</span><span class="p">,</span>
+                 <span class="n">interp_mode</span><span class="p">,</span>
+                 <span class="n">crop_length</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RandomAlterAspect</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">min_area_ratio</span><span class="p">,</span>
+                                                <span class="n">max_area_ratio</span><span class="p">,</span>
+                                                <span class="n">min_aspect_ratio_change</span><span class="p">,</span>
+                                                <span class="n">interp_mode</span><span class="p">,</span>
+                                                <span class="n">crop_length</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RandomCropper"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.RandomCropper">[docs]</a><span class="k">class</span> <span class="nc">RandomCropper</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Random cropper on uniform distribution with fixed height &amp; width</span>
+<span class="sd">    :param crop_w  width cropped to</span>
+<span class="sd">    :param crop_h height cropped to</span>
+<span class="sd">    :param mirror   whether mirror</span>
+<span class="sd">    :param cropper_method crop method</span>
+<span class="sd">    :param channels total channels</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">crop_w</span><span class="p">,</span> <span class="n">crop_h</span><span class="p">,</span> <span class="n">mirror</span><span class="p">,</span> <span class="n">cropper_method</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RandomCropper</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">crop_w</span><span class="p">,</span> <span class="n">crop_h</span><span class="p">,</span> <span class="n">mirror</span><span class="p">,</span> <span class="n">cropper_method</span><span class="p">,</span> <span class="n">channels</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RandomResize"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.RandomResize">[docs]</a><span class="k">class</span> <span class="nc">RandomResize</span><span class="p">(</span><span class="n">FeatureTransformer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Random resize between minSize and maxSize and scale height and width to each other</span>
+<span class="sd">    :param min_size min size to resize to</span>
+<span class="sd">    :param max_size max size to resize to</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">min_size</span><span class="p">,</span> <span class="n">max_size</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RandomResize</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">min_size</span><span class="p">,</span> <span class="n">max_size</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SeqFileFolder"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.SeqFileFolder">[docs]</a><span class="k">class</span> <span class="nc">SeqFileFolder</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+
+<div class="viewcode-block" id="SeqFileFolder.files_to_image_frame"><a class="viewcode-back" href="../../../../bigdl.transform.vision.html#bigdl.transform.vision.image.SeqFileFolder.files_to_image_frame">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">files_to_image_frame</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span>
+                             <span class="n">url</span><span class="p">,</span>
+                             <span class="n">sc</span><span class="p">,</span>
+                             <span class="n">class_num</span><span class="p">,</span>
+                             <span class="n">partition_num</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+                             <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extract hadoop sequence files from an HDFS path as ImageFrame</span>
+<span class="sd">        :param url: sequence files folder path</span>
+<span class="sd">        :param sc: spark context</span>
+<span class="sd">        :param class_num: class number of data</span>
+<span class="sd">        :param partition_num: partition number, default: Engine.nodeNumber() * Engine.coreNumber()</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">jvalue</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span>
+                               <span class="s2">&quot;seqFilesToImageFrame&quot;</span><span class="p">,</span>
+                               <span class="n">url</span><span class="p">,</span>
+                               <span class="n">sc</span><span class="p">,</span>
+                               <span class="n">class_num</span><span class="p">,</span>
+                               <span class="n">partition_num</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ImageFrame</span><span class="p">(</span><span class="n">jvalue</span><span class="o">=</span><span class="n">jvalue</span><span class="p">)</span></div></div>
+
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Intel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.
+    </div>
+  </body>
+</html>
