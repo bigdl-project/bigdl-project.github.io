@@ -3472,6 +3472,24 @@ tensorboard –logdir logPath
 </dd></dl>
 
 <dl class="method">
+<dt id="bigdl.nn.layer.Model.set_input_formats">
+<code class="descname">set_input_formats</code><span class="sig-paren">(</span><em>input_formats</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.set_input_formats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.set_input_formats" title="Permalink to this definition">¶</a></dt>
+<dd><p>set input formats for graph.
+:param input_formats: list of input format numbers
+:param bigdl_type:
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.nn.layer.Model.set_output_formats">
+<code class="descname">set_output_formats</code><span class="sig-paren">(</span><em>output_formats</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.set_output_formats"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.set_output_formats" title="Permalink to this definition">¶</a></dt>
+<dd><p>set output formats for graph.
+:param output_formats: list of output format numbers
+:param bigdl_type:
+:return:</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="bigdl.nn.layer.Model.stop_gradient">
 <code class="descname">stop_gradient</code><span class="sig-paren">(</span><em>stop_layers</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Model.stop_gradient"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Model.stop_gradient" title="Permalink to this definition">¶</a></dt>
 <dd><p>stop the input gradient of layers that match the given <code class="docutils literal notranslate"><span class="pre">`names`</span></code>
@@ -4076,6 +4094,46 @@ The input can be a Tensor or Table.</p>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createL1Regularizer</span>
 <span class="go">creating: createRnnCell</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.nn.layer.RoiAlign">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">RoiAlign</code><span class="sig-paren">(</span><em>spatial_scale</em>, <em>sampling_ratio</em>, <em>pooled_h</em>, <em>pooled_w</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#RoiAlign"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.RoiAlign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Region of interest aligning (RoIAlign) for Mask-RCNN</p>
+<p>The RoIAlign uses average pooling on bilinear-interpolated sub-windows to convert
+the features inside any valid region of interest into a small feature map with a
+fixed spatial extent of pooledH * pooledW (e.g., 7 * 7).</p>
+<p>An RoI is a rectangular window into a conv feature map.
+Each RoI is defined by a four-tuple (x1, y1, x2, y2) that specifies its
+top-left corner (x1, y1) and its bottom-right corner (x2, y2).</p>
+<p>RoIAlign works by dividing the h * w RoI window into an pooledH * pooledW grid of
+sub-windows of approximate size h/H * w/W. In each sub-window, compute exact values
+of input features at four regularly sampled locations, and then do average pooling on
+the values in each sub-window.</p>
+<p>Pooling is applied independently to each feature map channel</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>spatial_scale</strong> – spatial scale</li>
+<li><strong>sampling_ratio</strong> – sampling ratio</li>
+<li><strong>pooled_h</strong> – spatial extent in height</li>
+<li><strong>pooled_w</strong> – spatial extent in width</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_rois</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">RoiAlign</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">creating: createRoiAlign</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">forward</span><span class="p">([</span><span class="n">input_data</span><span class="p">,</span><span class="n">input_rois</span><span class="p">])</span>
 </pre></div>
 </div>
 </dd></dl>

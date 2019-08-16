@@ -955,6 +955,34 @@
 <span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;saveGraphTopology&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">log_path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Model.set_input_formats"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.set_input_formats">[docs]</a>    <span class="k">def</span> <span class="nf">set_input_formats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_formats</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        set input formats for graph.</span>
+<span class="sd">        :param input_formats: list of input format numbers</span>
+<span class="sd">        :param bigdl_type:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">jname</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span>
+                              <span class="s2">&quot;getRealClassNameOfJValue&quot;</span><span class="p">,</span>
+                              <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">jname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;StaticGraph&quot;</span> <span class="p">:</span>
+            <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setInputFormats&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">input_formats</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Model.set_output_formats"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Model.set_output_formats">[docs]</a>    <span class="k">def</span> <span class="nf">set_output_formats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_formats</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        set output formats for graph.</span>
+<span class="sd">        :param output_formats: list of output format numbers</span>
+<span class="sd">        :param bigdl_type:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">jname</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span>
+                              <span class="s2">&quot;getRealClassNameOfJValue&quot;</span><span class="p">,</span>
+                              <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">jname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;StaticGraph&quot;</span><span class="p">:</span>
+            <span class="n">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;setOutputFormats&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">output_formats</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div></div>
 
 <div class="viewcode-block" id="Attention"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Attention">[docs]</a><span class="k">class</span> <span class="nc">Attention</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
@@ -5666,6 +5694,50 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim1Crop</span><span class="p">,</span> <span class="n">dim2Crop</span><span class="p">,</span> <span class="n">dim3Crop</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="s2">&quot;channel_first&quot;</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Cropping3D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">dim1Crop</span><span class="p">,</span> <span class="n">dim2Crop</span><span class="p">,</span> <span class="n">dim3Crop</span><span class="p">,</span> <span class="n">data_format</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RoiAlign"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.RoiAlign">[docs]</a><span class="k">class</span> <span class="nc">RoiAlign</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Region of interest aligning (RoIAlign) for Mask-RCNN</span>
+
+<span class="sd">    The RoIAlign uses average pooling on bilinear-interpolated sub-windows to convert</span>
+<span class="sd">    the features inside any valid region of interest into a small feature map with a</span>
+<span class="sd">    fixed spatial extent of pooledH * pooledW (e.g., 7 * 7).</span>
+
+<span class="sd">    An RoI is a rectangular window into a conv feature map.</span>
+<span class="sd">    Each RoI is defined by a four-tuple (x1, y1, x2, y2) that specifies its</span>
+<span class="sd">    top-left corner (x1, y1) and its bottom-right corner (x2, y2).</span>
+
+<span class="sd">    RoIAlign works by dividing the h * w RoI window into an pooledH * pooledW grid of</span>
+<span class="sd">    sub-windows of approximate size h/H * w/W. In each sub-window, compute exact values</span>
+<span class="sd">    of input features at four regularly sampled locations, and then do average pooling on</span>
+<span class="sd">    the values in each sub-window.</span>
+
+<span class="sd">    Pooling is applied independently to each feature map channel</span>
+
+<span class="sd">    :param spatial_scale:  spatial scale</span>
+<span class="sd">    :param sampling_ratio: sampling ratio</span>
+<span class="sd">    :param pooled_h:       spatial extent in height</span>
+<span class="sd">    :param pooled_w:       spatial extent in width</span>
+
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; input_data = np.random.rand(1,2,6,8)</span>
+<span class="sd">    &gt;&gt;&gt; input_rois = np.array([0, 0, 7, 5, 6, 2, 7, 5, 3, 1, 6, 4, 3, 3, 3, 3],dtype=&#39;float&#39;).reshape(4,4)</span>
+<span class="sd">    &gt;&gt;&gt; m = RoiAlign(1.0,3,2,2)</span>
+<span class="sd">    creating: createRoiAlign</span>
+<span class="sd">    &gt;&gt;&gt; out = m.forward([input_data,input_rois])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">spatial_scale</span><span class="p">,</span>
+                 <span class="n">sampling_ratio</span><span class="p">,</span>
+                 <span class="n">pooled_h</span><span class="p">,</span>
+                 <span class="n">pooled_w</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RoiAlign</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                         <span class="n">spatial_scale</span><span class="p">,</span>
+                                         <span class="n">sampling_ratio</span><span class="p">,</span>
+                                         <span class="n">pooled_h</span><span class="p">,</span>
+                                         <span class="n">pooled_w</span><span class="p">)</span></div>
 
 <span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
     <span class="kn">import</span> <span class="nn">doctest</span>
