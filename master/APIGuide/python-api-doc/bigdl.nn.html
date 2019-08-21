@@ -1888,6 +1888,34 @@ topology</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.FPN">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">FPN</code><span class="sig-paren">(</span><em>in_channels_list</em>, <em>out_channels</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#FPN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.FPN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Feature Pyramid Network (FPN) for Mask-RCNN</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>in_channels_list</strong> – number of channels of feature maps</li>
+<li><strong>out_channels</strong> – number of channels of FPN output</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">feature1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">feature2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">feature3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">FPN</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">creating: createFPN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">forward</span><span class="p">([</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">feature3</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.FeedForwardNetwork">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">FeedForwardNetwork</code><span class="sig-paren">(</span><em>hidden_size</em>, <em>filter_size</em>, <em>relu_dropout</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#FeedForwardNetwork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.FeedForwardNetwork" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
@@ -4345,7 +4373,7 @@ in a feed-forward fully connected manner.</p>
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">SharedStaticUtils</code><a class="reference internal" href="_modules/bigdl/nn/layer.html#SharedStaticUtils"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SharedStaticUtils" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="staticmethod">
 <dt id="bigdl.nn.layer.SharedStaticUtils.load">
-<em class="property">static </em><code class="descname">load</code><span class="sig-paren">(</span><em>path</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SharedStaticUtils.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SharedStaticUtils.load" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">load</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SharedStaticUtils.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SharedStaticUtils.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a pre-trained Bigdl model.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -4361,7 +4389,7 @@ in a feed-forward fully connected manner.</p>
 
 <dl class="staticmethod">
 <dt id="bigdl.nn.layer.SharedStaticUtils.of">
-<em class="property">static </em><code class="descname">of</code><span class="sig-paren">(</span><em>jvalue</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SharedStaticUtils.of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SharedStaticUtils.of" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">of</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#SharedStaticUtils.of"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.SharedStaticUtils.of" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a Python Layer base on the given java value and the real type.
 :param jvalue: Java object create by Py4j
 :return: A Python Layer</p>
@@ -5779,7 +5807,7 @@ half of kernel size. That is, padT &lt; kT/2, padW &lt; kW/2 and padH &lt; kH/2<
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
   </body>
 </html>

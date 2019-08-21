@@ -5739,6 +5739,30 @@
                                          <span class="n">pooled_h</span><span class="p">,</span>
                                          <span class="n">pooled_w</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="FPN"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.FPN">[docs]</a><span class="k">class</span> <span class="nc">FPN</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Feature Pyramid Network (FPN) for Mask-RCNN</span>
+
+<span class="sd">    :param in_channels_list:  number of channels of feature maps</span>
+<span class="sd">    :param out_channels:      number of channels of FPN output</span>
+
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; feature1 = np.random.rand(1,1,8,8)</span>
+<span class="sd">    &gt;&gt;&gt; feature2 = np.random.rand(1,2,4,4)</span>
+<span class="sd">    &gt;&gt;&gt; feature3 = np.random.rand(1,4,2,2)</span>
+<span class="sd">    &gt;&gt;&gt; m = FPN([1,2,4],2)</span>
+<span class="sd">    creating: createFPN</span>
+<span class="sd">    &gt;&gt;&gt; out = m.forward([feature1, feature2, feature3])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">in_channels_list</span><span class="p">,</span>
+                 <span class="n">out_channels</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FPN</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                       <span class="n">in_channels_list</span><span class="p">,</span>
+                                       <span class="n">out_channels</span><span class="p">)</span></div>
+
 <span class="k">def</span> <span class="nf">_test</span><span class="p">():</span>
     <span class="kn">import</span> <span class="nn">doctest</span>
     <span class="kn">from</span> <span class="nn">pyspark</span> <span class="k">import</span> <span class="n">SparkContext</span>
@@ -5780,7 +5804,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
   </body>
 </html>
