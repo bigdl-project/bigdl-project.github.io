@@ -9,7 +9,7 @@
     <title>bigdl.nn package &#8212; BigDL  documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -1895,7 +1895,7 @@ topology</p>
 
 <dl class="class">
 <dt id="bigdl.nn.layer.FPN">
-<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">FPN</code><span class="sig-paren">(</span><em>in_channels_list</em>, <em>out_channels</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#FPN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.FPN" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">FPN</code><span class="sig-paren">(</span><em>in_channels_list</em>, <em>out_channels</em>, <em>top_blocks=0</em>, <em>in_channels_of_p6p7=0</em>, <em>out_channels_of_p6p7=0</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#FPN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.FPN" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
 <p>Feature Pyramid Network (FPN) for Mask-RCNN</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1905,16 +1905,25 @@ topology</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>in_channels_list</strong> – number of channels of feature maps</li>
 <li><strong>out_channels</strong> – number of channels of FPN output</li>
+<li><strong>top_blocks</strong> – top blocks option</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+<p>extra operation to be performed on the smallest
+resolution FPN output, whose result is appended
+to the result list
+0 for null,
+1 for using max pooling on the last level
+2 for extra layers P6 and P7 in RetinaNet
+:param in_channels_of_p6p7     number of input channels of P6 P7
+:param out_channels_of_p6p7    number of output channels of P6 P7</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">feature1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">feature2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">feature3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">FPN</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">FPN</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="go">creating: createFPN</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">forward</span><span class="p">([</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">feature3</span><span class="p">])</span>
 </pre></div>
@@ -5819,7 +5828,7 @@ half of kernel size. That is, padT &lt; kT/2, padW &lt; kW/2 and padH &lt; kH/2<
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
   </body>
 </html>

@@ -9,7 +9,7 @@
     <title>bigdl.optim.optimizer &#8212; BigDL  documentation</title>
     <link rel="stylesheet" href="../../../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
@@ -123,6 +123,32 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="MeanAveragePrecision"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.MeanAveragePrecision">[docs]</a><span class="k">class</span> <span class="nc">MeanAveragePrecision</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the Mean Average Precision for top-k confident predictions.</span>
+<span class="sd">    The algorithm follows VOC Challenge after 2007</span>
+
+<span class="sd">    &gt;&gt;&gt; MAP = MeanAveragePrecision(10, 20)</span>
+<span class="sd">    creating: createMeanAveragePrecision</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">classes</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MeanAveragePrecisionObjectDetection"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.MeanAveragePrecisionObjectDetection">[docs]</a><span class="k">class</span> <span class="nc">MeanAveragePrecisionObjectDetection</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the Mean Average Precision for Object Detection.</span>
+
+<span class="sd">    &gt;&gt;&gt; MAPObj = MeanAveragePrecisionObjectDetection(20)</span>
+<span class="sd">    creating: createMeanAveragePrecisionObjectDetection</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">iou</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">use_voc2007</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">skip_class</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param classes: the number of classes</span>
+<span class="sd">        :param iou: the IOU threshold</span>
+<span class="sd">        :param use_voc2007: use validation method before voc2010 (i.e. voc2007)</span>
+<span class="sd">        :param skip_class: skip calculation on a specific class (e.g. background)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">JavaValue</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">iou</span><span class="p">,</span> <span class="n">use_voc2007</span><span class="p">,</span> <span class="n">skip_class</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Loss"><a class="viewcode-back" href="../../../bigdl.optim.html#bigdl.optim.optimizer.Loss">[docs]</a><span class="k">class</span> <span class="nc">Loss</span><span class="p">(</span><span class="n">JavaValue</span><span class="p">):</span>
 
@@ -1252,7 +1278,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
   </body>
 </html>
