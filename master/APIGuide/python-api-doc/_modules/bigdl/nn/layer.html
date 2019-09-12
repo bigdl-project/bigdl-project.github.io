@@ -281,10 +281,19 @@
                 <span class="k">return</span> <span class="n">i</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Error unknown input type </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+        <span class="k">def</span> <span class="nf">check_list</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Error when checking: empty input&#39;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">check_list</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="nb">input</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">to_jtensor</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Error when checking: empty input&#39;</span><span class="p">)</span>
-            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">to_jtensor</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="nb">input</span><span class="p">)),</span> <span class="kc">True</span>
+            <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">check_list</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="nb">input</span><span class="p">)),</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="p">[</span><span class="n">to_jtensor</span><span class="p">(</span><span class="nb">input</span><span class="p">)],</span> <span class="kc">False</span></div>
 
@@ -5743,6 +5752,35 @@
                                          <span class="n">sampling_ratio</span><span class="p">,</span>
                                          <span class="n">pooled_h</span><span class="p">,</span>
                                          <span class="n">pooled_w</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Pooler"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Pooler">[docs]</a><span class="k">class</span> <span class="nc">Pooler</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Pooler selects the feature map which matches the size of RoI for RoIAlign</span>
+
+<span class="sd">    :param resolution:     the resolution of pooled feature maps. Height equals width.</span>
+<span class="sd">    :param scales:         spatial scales of each feature map</span>
+<span class="sd">    :param sampling_ratio: sampling ratio</span>
+
+<span class="sd">    &gt;&gt;&gt; import numpy as np</span>
+<span class="sd">    &gt;&gt;&gt; feature0 = np.random.rand(1,2,2,2)</span>
+<span class="sd">    &gt;&gt;&gt; feature1 = np.random.rand(1,2,4,4)</span>
+<span class="sd">    &gt;&gt;&gt; feature2 = np.random.rand(1,2,8,8)</span>
+<span class="sd">    &gt;&gt;&gt; features = [feature0, feature1, feature2]</span>
+<span class="sd">    &gt;&gt;&gt; input_rois = np.array([0, 0, 3, 3, 2, 2, 50, 50, 50, 50, 500, 500],dtype=&#39;float&#39;).reshape(3,4)</span>
+<span class="sd">    &gt;&gt;&gt; m = Pooler(2,[1.0, 0.5, 0.25],2)</span>
+<span class="sd">    creating: createPooler</span>
+<span class="sd">    &gt;&gt;&gt; out = m.forward([features,input_rois])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">resolution</span><span class="p">,</span>
+                 <span class="n">scales</span><span class="p">,</span>
+                 <span class="n">sampling_ratio</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Pooler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span>
+                                     <span class="n">resolution</span><span class="p">,</span>
+                                     <span class="n">scales</span><span class="p">,</span>
+                                     <span class="n">sampling_ratio</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FPN"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.FPN">[docs]</a><span class="k">class</span> <span class="nc">FPN</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>

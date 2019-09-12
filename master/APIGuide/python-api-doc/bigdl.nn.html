@@ -3851,6 +3851,37 @@ input, and outputs an output in the form of Table</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="bigdl.nn.layer.Pooler">
+<em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Pooler</code><span class="sig-paren">(</span><em>resolution</em>, <em>scales</em>, <em>sampling_ratio</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Pooler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Pooler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>Pooler selects the feature map which matches the size of RoI for RoIAlign</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>resolution</strong> – the resolution of pooled feature maps. Height equals width.</li>
+<li><strong>scales</strong> – spatial scales of each feature map</li>
+<li><strong>sampling_ratio</strong> – sampling ratio</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">feature0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">feature1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">feature2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="n">feature0</span><span class="p">,</span> <span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_rois</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">Pooler</span><span class="p">(</span><span class="mi">2</span><span class="p">,[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">],</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">creating: createPooler</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">forward</span><span class="p">([</span><span class="n">features</span><span class="p">,</span><span class="n">input_rois</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.layer.Power">
 <em class="property">class </em><code class="descclassname">bigdl.nn.layer.</code><code class="descname">Power</code><span class="sig-paren">(</span><em>power</em>, <em>scale=1.0</em>, <em>shift=0.0</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/layer.html#Power"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.layer.Power" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
