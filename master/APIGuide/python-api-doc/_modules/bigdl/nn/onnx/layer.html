@@ -70,11 +70,37 @@
 <span class="c1">#</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">bigdl.nn.layer</span> <span class="k">import</span> <span class="n">Layer</span>
+<span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="n">JTensor</span>
 
 <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span> <span class="o">&gt;=</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
     <span class="n">long</span> <span class="o">=</span> <span class="nb">int</span>
     <span class="n">unicode</span> <span class="o">=</span> <span class="nb">str</span>
+
+
+
+<div class="viewcode-block" id="Gemm"><a class="viewcode-back" href="../../../../bigdl.nn.onnx.html#bigdl.nn.onnx.layer.Gemm">[docs]</a><span class="k">class</span> <span class="nc">Gemm</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    General Matrix multiplication: https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms#Level_3</span>
+
+<span class="sd">    A&#39; = transpose(A) if transA else A</span>
+<span class="sd">    B&#39; = transpose(B) if transB else B</span>
+
+<span class="sd">    Compute Y = alpha * A&#39; * B&#39; + beta * C, where input tensor A has shape (M, K) or (K, M),</span>
+<span class="sd">    input tensor B has shape (K, N) or (N, K), input tensor C is broadcastable to shape (M, N),</span>
+<span class="sd">    and output tensor Y has shape (M, N). A will be transposed before doing the computation if</span>
+<span class="sd">    attribute transA is non-zero, same for B and transB.</span>
+
+<span class="sd">    &gt;&gt;&gt; matrix_b = np.random.random([2, 2])</span>
+<span class="sd">    &gt;&gt;&gt; matrix_c = np.random.random([2, 2])</span>
+<span class="sd">    &gt;&gt;&gt; gemm = Gemm(matrix_b=matrix_b, matrix_c=matrix_c)</span>
+<span class="sd">    creating: createGemm</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matrix_b</span><span class="p">,</span> <span class="n">matrix_c</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">beta</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="mf">1.0</span><span class="p">),</span> <span class="n">trans_a</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">trans_b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                 <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Gemm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">trans_a</span><span class="p">,</span> <span class="n">trans_b</span><span class="p">,</span>
+                                   <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">matrix_b</span><span class="p">),</span> <span class="n">JTensor</span><span class="o">.</span><span class="n">from_ndarray</span><span class="p">(</span><span class="n">matrix_c</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="Shape"><a class="viewcode-back" href="../../../../bigdl.nn.onnx.html#bigdl.nn.onnx.layer.Shape">[docs]</a><span class="k">class</span> <span class="nc">Shape</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
@@ -86,6 +112,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Shape</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span></div>
+
 </pre></div>
 
           </div>

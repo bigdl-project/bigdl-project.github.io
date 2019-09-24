@@ -92,6 +92,25 @@
 <div class="section" id="module-bigdl.nn.onnx.layer">
 <span id="bigdl-nn-onnx-layer-module"></span><h2>bigdl.nn.onnx.layer module<a class="headerlink" href="#module-bigdl.nn.onnx.layer" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
+<dt id="bigdl.nn.onnx.layer.Gemm">
+<em class="property">class </em><code class="descclassname">bigdl.nn.onnx.layer.</code><code class="descname">Gemm</code><span class="sig-paren">(</span><em>matrix_b</em>, <em>matrix_c</em>, <em>alpha=1.0</em>, <em>beta=1.0</em>, <em>trans_a=0</em>, <em>trans_b=0</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/onnx/layer.html#Gemm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.onnx.layer.Gemm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.nn.html#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
+<p>General Matrix multiplication: <a class="reference external" href="https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms#Level_3">https://en.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms#Level_3</a></p>
+<p>A’ = transpose(A) if transA else A
+B’ = transpose(B) if transB else B</p>
+<p>Compute Y = alpha * A’ * B’ + beta * C, where input tensor A has shape (M, K) or (K, M),
+input tensor B has shape (K, N) or (N, K), input tensor C is broadcastable to shape (M, N),
+and output tensor Y has shape (M, N). A will be transposed before doing the computation if
+attribute transA is non-zero, same for B and transB.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix_c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gemm</span> <span class="o">=</span> <span class="n">Gemm</span><span class="p">(</span><span class="n">matrix_b</span><span class="o">=</span><span class="n">matrix_b</span><span class="p">,</span> <span class="n">matrix_c</span><span class="o">=</span><span class="n">matrix_c</span><span class="p">)</span>
+<span class="go">creating: createGemm</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
 <dt id="bigdl.nn.onnx.layer.Shape">
 <em class="property">class </em><code class="descclassname">bigdl.nn.onnx.layer.</code><code class="descname">Shape</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/nn/onnx/layer.html#Shape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.nn.onnx.layer.Shape" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="bigdl.nn.html#bigdl.nn.layer.Layer" title="bigdl.nn.layer.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.nn.layer.Layer</span></code></a></p>
