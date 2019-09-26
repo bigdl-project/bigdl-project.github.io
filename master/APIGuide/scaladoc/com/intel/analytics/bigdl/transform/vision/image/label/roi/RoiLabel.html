@@ -35,13 +35,13 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">RoiLabel</span><span class="params">(<span name="classes">classes: <a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="bboxes">bboxes: <a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">RoiLabel</span><span class="params">(<span name="classes">classes: <a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="bboxes">bboxes: <a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="masks">masks: <span class="extype" name="scala.Array">Array</span>[<a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]] = <span class="symbol">null</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>image target with classes and bounding boxes
 </p></div><dl class="paramcmts block"><dt class="param">classes</dt><dd class="cmt"><p>N (class labels) or 2 * N, the first row is class labels,
-the second line is difficults</p></dd><dt class="param">bboxes</dt><dd class="cmt"><p>N * 4
+the second line is difficults</p></dd><dt class="param">bboxes</dt><dd class="cmt"><p>N * 4</p></dd><dt class="param">masks</dt><dd class="cmt"><p>the array of annotation masks of the targets
 </p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -83,7 +83,7 @@ the second line is difficults</p></dd><dt class="param">bboxes</dt><dd class="cm
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(classes:com.intel.analytics.bigdl.tensor.Tensor[Float],bboxes:com.intel.analytics.bigdl.tensor.Tensor[Float]):com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel"></a>
+      <a id="&lt;init&gt;(classes:com.intel.analytics.bigdl.tensor.Tensor[Float],bboxes:com.intel.analytics.bigdl.tensor.Tensor[Float],masks:Array[com.intel.analytics.bigdl.tensor.Tensor[Float]]):com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel"></a>
       <a id="&lt;init&gt;:RoiLabel"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -91,11 +91,11 @@ the second line is difficults</p></dd><dt class="param">bboxes</dt><dd class="cm
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">RoiLabel</span><span class="params">(<span name="classes">classes: <a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="bboxes">bboxes: <a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>)</span>
+        <span class="name">RoiLabel</span><span class="params">(<span name="classes">classes: <a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="bboxes">bboxes: <a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="masks">masks: <span class="extype" name="scala.Array">Array</span>[<a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]] = <span class="symbol">null</span></span>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">classes</dt><dd class="cmt"><p>N (class labels) or 2 * N, the first row is class labels,
-the second line is difficults</p></dd><dt class="param">bboxes</dt><dd class="cmt"><p>N * 4
+the second line is difficults</p></dd><dt class="param">bboxes</dt><dd class="cmt"><p>N * 4</p></dd><dt class="param">masks</dt><dd class="cmt"><p>the array of annotation masks of the targets
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -196,8 +196,7 @@ the second line is difficults</p></dd><dt class="param">bboxes</dt><dd class="cm
         <span class="name">bboxes</span><span class="result">: <a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">N * 4
-</p>
+      <p class="shortcomment cmt">N * 4</p>
     </li><li name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel#classes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="classes:com.intel.analytics.bigdl.tensor.Tensor[Float]"></a>
       <a id="classes:Tensor[Float]"></a>
@@ -302,6 +301,20 @@ the second line is difficults</p>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel#masks" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="masks:Array[com.intel.analytics.bigdl.tensor.Tensor[Float]]"></a>
+      <a id="masks:Array[Tensor[Float]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">masks</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">the array of annotation masks of the targets
+</p>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>

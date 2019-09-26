@@ -2,17 +2,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>RoiLabel - bigdl 0.10.0-SNAPSHOT API - com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel</title>
-          <meta name="description" content="RoiLabel - bigdl 0.10.0 - SNAPSHOT API - com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel" />
-          <meta name="keywords" content="RoiLabel bigdl 0.10.0 SNAPSHOT API com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel" />
+          <title>RoiMTImageFeatureToBatch - bigdl 0.10.0-SNAPSHOT API - com.intel.analytics.bigdl.transform.vision.image.RoiMTImageFeatureToBatch</title>
+          <meta name="description" content="RoiMTImageFeatureToBatch - bigdl 0.10.0 - SNAPSHOT API - com.intel.analytics.bigdl.transform.vision.image.RoiMTImageFeatureToBatch" />
+          <meta name="keywords" content="RoiMTImageFeatureToBatch bigdl 0.10.0 SNAPSHOT API com.intel.analytics.bigdl.transform.vision.image.RoiMTImageFeatureToBatch" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link href="../../../../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
-      <link href="../../../../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <link href="../../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
       <script type="text/javascript">
          if(top === self) {
-            var url = '../../../../../../../../../index.html';
-            var hash = 'com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel$';
+            var url = '../../../../../../../index.html';
+            var hash = 'com.intel.analytics.bigdl.transform.vision.image.RoiMTImageFeatureToBatch';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -22,26 +22,28 @@
    	  </script>
     
         </head>
-        <body class="value">
+        <body class="type">
       <div id="definition">
-        <a href="RoiLabel.html" title="Go to companion"><img src="../../../../../../../../../lib/object_to_class_big.png" /></a>
-        <p id="owner"><a href="../../../../../../../../package.html" class="extype" name="com">com</a>.<a href="../../../../../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../../../../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../../../../../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="../../../../package.html" class="extype" name="com.intel.analytics.bigdl.transform">transform</a>.<a href="../../../package.html" class="extype" name="com.intel.analytics.bigdl.transform.vision">vision</a>.<a href="../../package.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image">image</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.label">label</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.label.roi">roi</a></p>
-        <h1><a href="RoiLabel.html" title="Go to companion">RoiLabel</a></h1>
+        <img src="../../../../../../../lib/class_big.png" />
+        <p id="owner"><a href="../../../../../../package.html" class="extype" name="com">com</a>.<a href="../../../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../../../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="../../package.html" class="extype" name="com.intel.analytics.bigdl.transform">transform</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl.transform.vision">vision</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image">image</a></p>
+        <h1>RoiMTImageFeatureToBatch</h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">object</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">RoiLabel</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">RoiMTImageFeatureToBatch</span><span class="result"> extends <a href="MTImageFeatureToBatch.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch">MTImageFeatureToBatch</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A transformer pipeline wrapper to create RoiMiniBatch in multiple threads
+The output &quot;target&quot; is a Table. The keys are from 1 to sizeof(batch). The values are
+the tables for each RoiLabel. Each Roi label table, contains fields of RoiLabel class.</p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="MTImageFeatureToBatch.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch">MTImageFeatureToBatch</a>, <a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>, <a href="../../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="scala.Float">Float</span>]], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -59,7 +61,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel"><span>RoiLabel</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.intel.analytics.bigdl.transform.vision.image.RoiMTImageFeatureToBatch"><span>RoiMTImageFeatureToBatch</span></li><li class="in" name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch"><span>MTImageFeatureToBatch</span></li><li class="in" name="com.intel.analytics.bigdl.dataset.Transformer"><span>Transformer</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -124,6 +126,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.dataset.Transformer#-&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="-&gt;[C](other:com.intel.analytics.bigdl.dataset.Transformer[B,C]):com.intel.analytics.bigdl.dataset.Transformer[A,C]"></a>
+      <a id="-&gt;[C](Transformer[MiniBatch[Float],C]):Transformer[ImageFeature,C]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $minus$greater" class="name">-&gt;</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="other">other: <a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="../../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="scala.Float">Float</span>], <span class="extype" name="com.intel.analytics.bigdl.dataset.Transformer.-&gt;.C">C</span>]</span>)</span><span class="result">: <a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>, <span class="extype" name="com.intel.analytics.bigdl.dataset.Transformer.-&gt;.C">C</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a></dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:AnyRef):Boolean"></a>
       <a id="==(AnyRef):Boolean"></a>
@@ -150,71 +165,35 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel#BBOXES" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="BBOXES:String"></a>
-      <a id="BBOXES:String"></a>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(prev:Iterator[com.intel.analytics.bigdl.transform.vision.image.ImageFeature]):Iterator[com.intel.analytics.bigdl.dataset.MiniBatch[Float]]"></a>
+      <a id="apply(Iterator[ImageFeature]):Iterator[MiniBatch[Float]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">BBOXES</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+        <span class="name">apply</span><span class="params">(<span name="prev">prev: <span class="extype" name="scala.Iterator">Iterator</span>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Iterator">Iterator</span>[<a href="../../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="scala.Float">Float</span>]]</span>
       </span>
       </h4>
-      
-    </li><li name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel#CLASSES" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="CLASSES:String"></a>
-      <a id="CLASSES:String"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="MTImageFeatureToBatch.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch">MTImageFeatureToBatch</a> → <a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.dataset.Transformer#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(dataset:org.apache.spark.rdd.RDD[A])(implicitevidence:scala.reflect.ClassTag[B]):org.apache.spark.rdd.RDD[B]"></a>
+      <a id="apply(RDD[ImageFeature])(ClassTag[MiniBatch[Float]]):RDD[MiniBatch[Float]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">CLASSES</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+        <span class="name">apply</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence">evidence: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<a href="../../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="scala.Float">Float</span>]]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<a href="../../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="scala.Float">Float</span>]]</span>
       </span>
       </h4>
-      
-    </li><li name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel#ISCROWD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ISCROWD:String"></a>
-      <a id="ISCROWD:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">ISCROWD</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel#MASKS" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="MASKS:String"></a>
-      <a id="MASKS:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">MASKS</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel#ORIGSIZE" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ORIGSIZE:String"></a>
-      <a id="ORIGSIZE:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">ORIGSIZE</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      
+      <p class="shortcomment cmt">Apply this transformer to rdd
+</p><div class="fullcomment"><div class="comment cmt"><p>Apply this transformer to rdd
+</p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -228,6 +207,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch#batchSize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="batchSize:Int"></a>
+      <a id="batchSize:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">batchSize</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="MTImageFeatureToBatch.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch">MTImageFeatureToBatch</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -240,13 +232,39 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.dataset.Transformer#cloneTransformer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="cloneTransformer():com.intel.analytics.bigdl.dataset.Transformer[A,B]"></a>
+      <a id="cloneTransformer():Transformer[ImageFeature,MiniBatch[Float]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cloneTransformer</span><span class="params">()</span><span class="result">: <a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>, <a href="../../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="scala.Float">Float</span>]]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.RoiMTImageFeatureToBatch#createBatch" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createBatch(batchSize:Int):com.intel.analytics.bigdl.dataset.MiniBatch[Float]"></a>
+      <a id="createBatch(Int):MiniBatch[Float]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createBatch</span><span class="params">(<span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="scala.Float">Float</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.RoiMTImageFeatureToBatch">RoiMTImageFeatureToBatch</a> → <a href="MTImageFeatureToBatch.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch">MTImageFeatureToBatch</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -285,39 +303,13 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="symbol">classOf[java.lang.Throwable]</span>
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel#fromTensor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="fromTensor(tensor:com.intel.analytics.bigdl.tensor.Tensor[Float]):com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel"></a>
-      <a id="fromTensor(Tensor[Float]):RoiLabel"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">fromTensor</span><span class="params">(<span name="tensor">tensor: <a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>)</span><span class="result">: <a href="RoiLabel.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel">RoiLabel</a></span>
-      </span>
-      </h4>
-      
-    </li><li name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel#getBBoxes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="getBBoxes(tab:com.intel.analytics.bigdl.utils.Table):com.intel.analytics.bigdl.tensor.Tensor[Float]"></a>
-      <a id="getBBoxes(Table):Tensor[Float]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getBBoxes</span><span class="params">(<span name="tab">tab: <a href="../../../../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -331,59 +323,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel#getClasses" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="getClasses(tab:com.intel.analytics.bigdl.utils.Table):com.intel.analytics.bigdl.tensor.Tensor[Float]"></a>
-      <a id="getClasses(Table):Tensor[Float]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getClasses</span><span class="params">(<span name="tab">tab: <a href="../../../../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>
-      </span>
-      </h4>
-      
-    </li><li name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel#getIsCrowd" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="getIsCrowd(tab:com.intel.analytics.bigdl.utils.Table):com.intel.analytics.bigdl.tensor.Tensor[Float]"></a>
-      <a id="getIsCrowd(Table):Tensor[Float]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getIsCrowd</span><span class="params">(<span name="tab">tab: <a href="../../../../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>
-      </span>
-      </h4>
-      
-    </li><li name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel#getMasks" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="getMasks(tab:com.intel.analytics.bigdl.utils.Table):Array[com.intel.analytics.bigdl.tensor.Tensor[Float]]"></a>
-      <a id="getMasks(Table):Array[Tensor[Float]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getMasks</span><span class="params">(<span name="tab">tab: <a href="../../../../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="../../../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]]</span>
-      </span>
-      </h4>
-      
-    </li><li name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel#getOrigSize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getOrigSize(tab:com.intel.analytics.bigdl.utils.Table):(Int,Int,Int)"></a>
-      <a id="getOrigSize(Table):(Int,Int,Int)"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getOrigSize</span><span class="params">(<span name="tab">tab: <a href="../../../../../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>(height, width, channel)
-</p></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -449,6 +388,32 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch#parallelism" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="parallelism:Int"></a>
+      <a id="parallelism:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">parallelism</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="MTImageFeatureToBatch.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch">MTImageFeatureToBatch</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.RoiMTImageFeatureToBatch#processImageFeature" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="processImageFeature(img:com.intel.analytics.bigdl.transform.vision.image.ImageFeature,position:Int):Unit"></a>
+      <a id="processImageFeature(ImageFeature,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">processImageFeature</span><span class="params">(<span name="img">img: <a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a></span>, <span name="position">position: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.RoiMTImageFeatureToBatch">RoiMTImageFeatureToBatch</a> → <a href="MTImageFeatureToBatch.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch">MTImageFeatureToBatch</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -541,7 +506,11 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.Serializable">
+        <div class="parent" name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch">
+              <h3>Inherited from <a href="MTImageFeatureToBatch.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch">MTImageFeatureToBatch</a></h3>
+            </div><div class="parent" name="com.intel.analytics.bigdl.dataset.Transformer">
+              <h3>Inherited from <a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>, <a href="../../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="scala.Float">Float</span>]]</h3>
+            </div><div class="parent" name="scala.Serializable">
               <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
             </div><div class="parent" name="java.io.Serializable">
               <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
@@ -565,6 +534,6 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../../../../../lib/template.js"></script>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../../../lib/template.js"></script>
     </body>
       </html>

@@ -84,6 +84,19 @@
       </span>
       </h4>
       <p class="comment cmt">A transformer chain two FeatureTransformer together.</p>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.ClassificationMTImageFeatureToBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ClassificationMTImageFeatureToBatchextendsMTImageFeatureToBatch"></a>
+      <a id="ClassificationMTImageFeatureToBatch:ClassificationMTImageFeatureToBatch"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ClassificationMTImageFeatureToBatch.html"><span class="name">ClassificationMTImageFeatureToBatch</span></a><span class="result"> extends <a href="MTImageFeatureToBatch.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch">MTImageFeatureToBatch</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A transformer pipeline wrapper to create Minibatch in multiple threads for classification</p>
     </li><li name="com.intel.analytics.bigdl.transform.vision.image.DistributedImageFrame" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DistributedImageFrameextendsImageFrame"></a>
       <a id="DistributedImageFrame:DistributedImageFrame"></a>
@@ -179,19 +192,19 @@ e.</p>
       </span>
       </h4>
       <p class="comment cmt">Local ImageFrame, keeps an array of ImageFeature</p>
-    </li><li name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="MTImageFeatureToBatchextendsTransformer[com.intel.analytics.bigdl.transform.vision.image.ImageFeature,com.intel.analytics.bigdl.dataset.MiniBatch[Float]]"></a>
       <a id="MTImageFeatureToBatch:MTImageFeatureToBatch"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">abstract </span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
         <a href="MTImageFeatureToBatch.html"><span class="name">MTImageFeatureToBatch</span></a><span class="result"> extends <a href="../../../dataset/Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="ImageFeature.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.ImageFeature">ImageFeature</a>, <a href="../../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="scala.Float">Float</span>]]</span>
       </span>
       </h4>
-      <p class="comment cmt">A transformer pipleline wrapper to create Minibatch in multiple threads</p>
+      <p class="comment cmt">An abstract class to convert ImageFeature iterator to MiniBatches.</p>
     </li><li name="com.intel.analytics.bigdl.transform.vision.image.MatToFloats" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MatToFloatsextendsFeatureTransformer"></a>
       <a id="MatToFloats:MatToFloats"></a>
@@ -231,6 +244,34 @@ e.</p>
       </span>
       </h4>
       <p class="comment cmt">Transform byte array(pixels in byte) to OpenCVMat</p>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.RoiMTImageFeatureToBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RoiMTImageFeatureToBatchextendsMTImageFeatureToBatch"></a>
+      <a id="RoiMTImageFeatureToBatch:RoiMTImageFeatureToBatch"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="RoiMTImageFeatureToBatch.html"><span class="name">RoiMTImageFeatureToBatch</span></a><span class="result"> extends <a href="MTImageFeatureToBatch.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.MTImageFeatureToBatch">MTImageFeatureToBatch</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A transformer pipeline wrapper to create RoiMiniBatch in multiple threads
+The output &quot;target&quot; is a Table.</p>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.RoiMiniBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RoiMiniBatchextendsMiniBatch[Float]"></a>
+      <a id="RoiMiniBatch:RoiMiniBatch"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="RoiMiniBatch.html"><span class="name">RoiMiniBatch</span></a><span class="result"> extends <a href="../../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="scala.Float">Float</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A batch of images with flattened RoiLabels
+the getTarget() returns a Table with key from 1 to batchSize.</p>
     </li></ol>
             </div>
 
@@ -365,6 +406,19 @@ e.</p>
       </span>
       <span class="symbol">
         <a href="PixelBytesToMat$.html"><span class="name">PixelBytesToMat</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.RoiMiniBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="RoiMiniBatch"></a>
+      <a id="RoiMiniBatch:RoiMiniBatch"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="RoiMiniBatch$.html"><span class="name">RoiMiniBatch</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
