@@ -39,8 +39,11 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Insert singleton dim (i.e., dimension 1) at position pos. For an input with dim = input.dim(),
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Insert singleton dim (i.e., dimension 1) at position array pos.
+For an input with dim = input.dim(),
 there are dim + 1 possible positions to insert the singleton dimension.
+Dimension index are 1-based. 0 and negative pos correspond to unsqueeze() applied at
+pos = pos + input.dim() + 1
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@SerialVersionUID</span><span class="args">(<span>
       
@@ -87,8 +90,8 @@ there are dim + 1 possible positions to insert the singleton dimension.
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="com.intel.analytics.bigdl.nn.Unsqueeze#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(pos:Int,numInputDims:Int)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Unsqueeze[T]"></a>
+              <ol><li name="com.intel.analytics.bigdl.nn.Unsqueeze#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(pos:Int)(implicitevidence$3:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Unsqueeze[T]"></a>
       <a id="&lt;init&gt;:Unsqueeze[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -96,10 +99,36 @@ there are dim + 1 possible positions to insert the singleton dimension.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Unsqueeze</span><span class="params">(<span name="pos">pos: <span class="extype" name="scala.Int">Int</span></span>, <span name="numInputDims">numInputDims: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">scala.Int.MinValue</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Unsqueeze.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Unsqueeze.T">T</span>]</span>)</span>
+        <span class="name">Unsqueeze</span><span class="params">(<span name="pos">pos: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Unsqueeze.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Unsqueeze.T">T</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">pos</dt><dd class="cmt"><p>The position will be insert singleton.</p></dd><dt class="param">numInputDims</dt><dd class="cmt"><p>Optional. If in a batch model, set to the inputDims.
+      
+    </li><li name="com.intel.analytics.bigdl.nn.Unsqueeze#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(pos:Int,numInputDims:Int)(implicitevidence$2:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Unsqueeze[T]"></a>
+      <a id="&lt;init&gt;:Unsqueeze[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Unsqueeze</span><span class="params">(<span name="pos">pos: <span class="extype" name="scala.Int">Int</span></span>, <span name="numInputDims">numInputDims: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Unsqueeze.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Unsqueeze.T">T</span>]</span>)</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.nn.Unsqueeze#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(pos:Array[Int],numInputDims:Int)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.Unsqueeze[T]"></a>
+      <a id="&lt;init&gt;:Unsqueeze[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Unsqueeze</span><span class="params">(<span name="pos">pos: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="numInputDims">numInputDims: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">scala.Int.MinValue</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.Unsqueeze.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.Unsqueeze.T">T</span>]</span>)</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">pos</dt><dd class="cmt"><p>The array of position will insert singleton.</p></dd><dt class="param">numInputDims</dt><dd class="cmt"><p>Optional. If in a batch model, set to the inputDims.
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -927,18 +956,18 @@ Custom modules should override this function if they have parameters
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>(Array of weights, Array of grad)
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.Unsqueeze#pos" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="pos:Int"></a>
-      <a id="pos:Int"></a>
+      <a id="pos:Array[Int]"></a>
+      <a id="pos:Array[Int]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">pos</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+        <span class="name">pos</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">The position will be insert singleton.</p>
+      <p class="shortcomment cmt">The array of position will insert singleton.</p>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#predict" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="predict(dataset:org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.dataset.Sample[T]],batchSize:Int,shareBuffer:Boolean):org.apache.spark.rdd.RDD[com.intel.analytics.bigdl.nn.abstractnn.Activity]"></a>
       <a id="predict(RDD[Sample[T]],Int,Boolean):RDD[Activity]"></a>
