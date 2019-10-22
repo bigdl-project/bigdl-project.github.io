@@ -1,0 +1,250 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>bigdl.contrib.onnx package &#8212; BigDL  documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="bigdl.dataset package" href="bigdl.dataset.html" />
+    <link rel="prev" title="bigdl.contrib package" href="bigdl.contrib.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="bigdl.dataset.html" title="bigdl.dataset package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="bigdl.contrib.html" title="bigdl.contrib package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="bigdl.html" >bigdl package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="bigdl.contrib.html" accesskey="U">bigdl.contrib package</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">bigdl.contrib.onnx package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-bigdl.contrib.onnx.converter_utils">bigdl.contrib.onnx.converter_utils module</a></li>
+<li><a class="reference internal" href="#module-bigdl.contrib.onnx.onnx_loader">bigdl.contrib.onnx.onnx_loader module</a></li>
+<li><a class="reference internal" href="#module-bigdl.contrib.onnx.ops_converter">bigdl.contrib.onnx.ops_converter module</a></li>
+<li><a class="reference internal" href="#module-bigdl.contrib.onnx.ops_mapping">bigdl.contrib.onnx.ops_mapping module</a></li>
+<li><a class="reference internal" href="#module-bigdl.contrib.onnx">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="bigdl.contrib.html"
+                        title="previous chapter">bigdl.contrib package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="bigdl.dataset.html"
+                        title="next chapter">bigdl.dataset package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/bigdl.contrib.onnx.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="bigdl-contrib-onnx-package">
+<h1>bigdl.contrib.onnx package<a class="headerlink" href="#bigdl-contrib-onnx-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-bigdl.contrib.onnx.converter_utils">
+<span id="bigdl-contrib-onnx-converter-utils-module"></span><h2>bigdl.contrib.onnx.converter_utils module<a class="headerlink" href="#module-bigdl.contrib.onnx.converter_utils" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="bigdl.contrib.onnx.converter_utils.calc_output_shape">
+<code class="descclassname">bigdl.contrib.onnx.converter_utils.</code><code class="descname">calc_output_shape</code><span class="sig-paren">(</span><em>input</em>, <em>kernel</em>, <em>padding=0</em>, <em>stride=1</em>, <em>dilation=1</em>, <em>ceil_mode=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/converter_utils.html#calc_output_shape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.converter_utils.calc_output_shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.converter_utils.parse_node_attr">
+<code class="descclassname">bigdl.contrib.onnx.converter_utils.</code><code class="descname">parse_node_attr</code><span class="sig-paren">(</span><em>node_proto</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/converter_utils.html#parse_node_attr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.converter_utils.parse_node_attr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.converter_utils.parse_tensor_data">
+<code class="descclassname">bigdl.contrib.onnx.converter_utils.</code><code class="descname">parse_tensor_data</code><span class="sig-paren">(</span><em>tensor_proto</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/converter_utils.html#parse_tensor_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.converter_utils.parse_tensor_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-bigdl.contrib.onnx.onnx_loader">
+<span id="bigdl-contrib-onnx-onnx-loader-module"></span><h2>bigdl.contrib.onnx.onnx_loader module<a class="headerlink" href="#module-bigdl.contrib.onnx.onnx_loader" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="bigdl.contrib.onnx.onnx_loader.OnnxLoader">
+<em class="property">class </em><code class="descclassname">bigdl.contrib.onnx.onnx_loader.</code><code class="descname">OnnxLoader</code><a class="reference internal" href="_modules/bigdl/contrib/onnx/onnx_loader.html#OnnxLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.onnx_loader.OnnxLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="bigdl.contrib.onnx.onnx_loader.OnnxLoader.load_graph">
+<code class="descname">load_graph</code><span class="sig-paren">(</span><em>graph_proto</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/onnx_loader.html#OnnxLoader.load_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.onnx_loader.OnnxLoader.load_graph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bigdl.contrib.onnx.onnx_loader.OnnxLoader.load_model">
+<code class="descname">load_model</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/onnx_loader.html#OnnxLoader.load_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.onnx_loader.OnnxLoader.load_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.onnx_loader.load">
+<code class="descclassname">bigdl.contrib.onnx.onnx_loader.</code><code class="descname">load</code><span class="sig-paren">(</span><em>model_path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/onnx_loader.html#load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.onnx_loader.load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.onnx_loader.load_model_proto">
+<code class="descclassname">bigdl.contrib.onnx.onnx_loader.</code><code class="descname">load_model_proto</code><span class="sig-paren">(</span><em>model_proto</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/onnx_loader.html#load_model_proto"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.onnx_loader.load_model_proto" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-bigdl.contrib.onnx.ops_converter">
+<span id="bigdl-contrib-onnx-ops-converter-module"></span><h2>bigdl.contrib.onnx.ops_converter module<a class="headerlink" href="#module-bigdl.contrib.onnx.ops_converter" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="bigdl.contrib.onnx.ops_converter.average_pool">
+<code class="descclassname">bigdl.contrib.onnx.ops_converter.</code><code class="descname">average_pool</code><span class="sig-paren">(</span><em>inputs</em>, <em>prev_modules</em>, <em>attrs</em>, <em>outputs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/ops_converter.html#average_pool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.ops_converter.average_pool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.ops_converter.batch_norm">
+<code class="descclassname">bigdl.contrib.onnx.ops_converter.</code><code class="descname">batch_norm</code><span class="sig-paren">(</span><em>inputs</em>, <em>prev_modules</em>, <em>attrs</em>, <em>outputs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/ops_converter.html#batch_norm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.ops_converter.batch_norm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.ops_converter.concat">
+<code class="descclassname">bigdl.contrib.onnx.ops_converter.</code><code class="descname">concat</code><span class="sig-paren">(</span><em>inputs</em>, <em>prev_modules</em>, <em>attrs</em>, <em>outputs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/ops_converter.html#concat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.ops_converter.concat" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.ops_converter.constant">
+<code class="descclassname">bigdl.contrib.onnx.ops_converter.</code><code class="descname">constant</code><span class="sig-paren">(</span><em>inputs</em>, <em>prev_modules</em>, <em>attrs</em>, <em>outputs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/ops_converter.html#constant"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.ops_converter.constant" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.ops_converter.conv">
+<code class="descclassname">bigdl.contrib.onnx.ops_converter.</code><code class="descname">conv</code><span class="sig-paren">(</span><em>inputs</em>, <em>prev_modules</em>, <em>attrs</em>, <em>outputs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/ops_converter.html#conv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.ops_converter.conv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.ops_converter.gather">
+<code class="descclassname">bigdl.contrib.onnx.ops_converter.</code><code class="descname">gather</code><span class="sig-paren">(</span><em>inputs</em>, <em>prev_modules</em>, <em>attrs</em>, <em>outputs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/ops_converter.html#gather"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.ops_converter.gather" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.ops_converter.gemm">
+<code class="descclassname">bigdl.contrib.onnx.ops_converter.</code><code class="descname">gemm</code><span class="sig-paren">(</span><em>inputs</em>, <em>prev_modules</em>, <em>attrs</em>, <em>outputs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/ops_converter.html#gemm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.ops_converter.gemm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.ops_converter.max_pool">
+<code class="descclassname">bigdl.contrib.onnx.ops_converter.</code><code class="descname">max_pool</code><span class="sig-paren">(</span><em>inputs</em>, <em>prev_modules</em>, <em>attrs</em>, <em>outputs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/ops_converter.html#max_pool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.ops_converter.max_pool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.ops_converter.relu">
+<code class="descclassname">bigdl.contrib.onnx.ops_converter.</code><code class="descname">relu</code><span class="sig-paren">(</span><em>inputs</em>, <em>prev_modules</em>, <em>attrs</em>, <em>outputs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/ops_converter.html#relu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.ops_converter.relu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.ops_converter.reshape">
+<code class="descclassname">bigdl.contrib.onnx.ops_converter.</code><code class="descname">reshape</code><span class="sig-paren">(</span><em>inputs</em>, <em>prev_modules</em>, <em>attrs</em>, <em>outputs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/ops_converter.html#reshape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.ops_converter.reshape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.ops_converter.shape">
+<code class="descclassname">bigdl.contrib.onnx.ops_converter.</code><code class="descname">shape</code><span class="sig-paren">(</span><em>inputs</em>, <em>prev_modules</em>, <em>attrs</em>, <em>outputs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/ops_converter.html#shape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.ops_converter.shape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.ops_converter.softmax">
+<code class="descclassname">bigdl.contrib.onnx.ops_converter.</code><code class="descname">softmax</code><span class="sig-paren">(</span><em>inputs</em>, <em>prev_modules</em>, <em>attrs</em>, <em>outputs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/ops_converter.html#softmax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.ops_converter.softmax" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="bigdl.contrib.onnx.ops_converter.unsqueeze">
+<code class="descclassname">bigdl.contrib.onnx.ops_converter.</code><code class="descname">unsqueeze</code><span class="sig-paren">(</span><em>inputs</em>, <em>prev_modules</em>, <em>attrs</em>, <em>outputs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/contrib/onnx/ops_converter.html#unsqueeze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.contrib.onnx.ops_converter.unsqueeze" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-bigdl.contrib.onnx.ops_mapping">
+<span id="bigdl-contrib-onnx-ops-mapping-module"></span><h2>bigdl.contrib.onnx.ops_mapping module<a class="headerlink" href="#module-bigdl.contrib.onnx.ops_mapping" title="Permalink to this headline">¶</a></h2>
+<p>Operator attributes conversion</p>
+</div>
+<div class="section" id="module-bigdl.contrib.onnx">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bigdl.contrib.onnx" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="bigdl.dataset.html" title="bigdl.dataset package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="bigdl.contrib.html" title="bigdl.contrib package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="bigdl.html" >bigdl package</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="bigdl.contrib.html" >bigdl.contrib package</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Intel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.
+    </div>
+  </body>
+</html>

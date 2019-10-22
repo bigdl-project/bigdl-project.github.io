@@ -58,7 +58,124 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="com.intel.analytics.bigdl.dataset.segmentation.PolyMasks" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="com.intel.analytics.bigdl.dataset.segmentation.COCOAnotationOD" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="COCOAnotationODextendsProductwithSerializable"></a>
+      <a id="COCOAnotationOD:COCOAnotationOD"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="COCOAnotationOD.html"><span class="name">COCOAnotationOD</span></a><span class="params">(<span name="id">id: <span class="extype" name="scala.Long">Long</span></span>, <span name="imageId">imageId: <span class="extype" name="scala.Long">Long</span></span>, <span name="categoryId">categoryId: <span class="extype" name="scala.Long">Long</span></span>, <span name="segmentation">segmentation: <a href="COCOSegmentation.html" class="extype" name="com.intel.analytics.bigdl.dataset.segmentation.COCOSegmentation">COCOSegmentation</a></span>, <span name="area">area: <span class="extype" name="scala.Float">Float</span></span>, <span name="bbox">bbox: (<span class="extype" name="scala.Float">Float</span>, <span class="extype" name="scala.Float">Float</span>, <span class="extype" name="scala.Float">Float</span>, <span class="extype" name="scala.Float">Float</span>)</span>, <span name="isCrowd">isCrowd: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="image">image: <a href="COCOImage.html" class="extype" name="com.intel.analytics.bigdl.dataset.segmentation.COCOImage">COCOImage</a> = <span class="symbol">null</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An annotation for an image (OD in the name for Object Detection)</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.segmentation.COCOCategory" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="COCOCategoryextendsProductwithSerializable"></a>
+      <a id="COCOCategory:COCOCategory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="COCOCategory.html"><span class="name">COCOCategory</span></a><span class="params">(<span name="id">id: <span class="extype" name="scala.Long">Long</span></span>, <span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.segmentation.COCODataset" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="COCODatasetextendsProductwithSerializable"></a>
+      <a id="COCODataset:COCODataset"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="COCODataset.html"><span class="name">COCODataset</span></a><span class="params">(<span name="info">info: <a href="COCODatasetInfo.html" class="extype" name="com.intel.analytics.bigdl.dataset.segmentation.COCODatasetInfo">COCODatasetInfo</a></span>, <span name="images">images: <span class="extype" name="scala.Array">Array</span>[<a href="COCOImage.html" class="extype" name="com.intel.analytics.bigdl.dataset.segmentation.COCOImage">COCOImage</a>]</span>, <span name="annotations">annotations: <span class="extype" name="scala.Array">Array</span>[<a href="COCOAnotationOD.html" class="extype" name="com.intel.analytics.bigdl.dataset.segmentation.COCOAnotationOD">COCOAnotationOD</a>]</span>, <span name="licenses">licenses: <span class="extype" name="scala.Array">Array</span>[<a href="COCOLicence.html" class="extype" name="com.intel.analytics.bigdl.dataset.segmentation.COCOLicence">COCOLicence</a>]</span>, <span name="categories">categories: <span class="extype" name="scala.Array">Array</span>[<a href="COCOCategory.html" class="extype" name="com.intel.analytics.bigdl.dataset.segmentation.COCOCategory">COCOCategory</a>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.segmentation.COCODatasetInfo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="COCODatasetInfoextendsProductwithSerializable"></a>
+      <a id="COCODatasetInfo:COCODatasetInfo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="COCODatasetInfo.html"><span class="name">COCODatasetInfo</span></a><span class="params">(<span name="year">year: <span class="extype" name="scala.Int">Int</span></span>, <span name="version">version: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="description">description: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="contributor">contributor: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.segmentation.COCOImage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="COCOImageextendsProductwithSerializable"></a>
+      <a id="COCOImage:COCOImage"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="COCOImage.html"><span class="name">COCOImage</span></a><span class="params">(<span name="id">id: <span class="extype" name="scala.Long">Long</span></span>, <span name="height">height: <span class="extype" name="scala.Int">Int</span></span>, <span name="width">width: <span class="extype" name="scala.Int">Int</span></span>, <span name="license">license: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.segmentation.COCOLicence" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="COCOLicenceextendsProductwithSerializable"></a>
+      <a id="COCOLicence:COCOLicence"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="COCOLicence.html"><span class="name">COCOLicence</span></a><span class="params">(<span name="id">id: <span class="extype" name="scala.Long">Long</span></span>, <span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.segmentation.COCOPoly" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="COCOPolyextendsPolyMaskswithCOCOSegmentationwithProductwithSerializable"></a>
+      <a id="COCOPoly:COCOPoly"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="COCOPoly.html"><span class="name">COCOPoly</span></a><span class="params">(<span name="_poly">_poly: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Float">Float</span>]]</span>, <span name="_height">_height: <span class="extype" name="scala.Int">Int</span></span>, <span name="_width">_width: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <a href="PolyMasks.html" class="extype" name="com.intel.analytics.bigdl.dataset.segmentation.PolyMasks">PolyMasks</a> with <a href="COCOSegmentation.html" class="extype" name="com.intel.analytics.bigdl.dataset.segmentation.COCOSegmentation">COCOSegmentation</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.segmentation.COCORLE" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="COCORLEextendsRLEMaskswithCOCOSegmentationwithProductwithSerializable"></a>
+      <a id="COCORLE:COCORLE"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="COCORLE.html"><span class="name">COCORLE</span></a><span class="params">(<span name="_counts">_counts: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="_height">_height: <span class="extype" name="scala.Int">Int</span></span>, <span name="_width">_width: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <a href="RLEMasks.html" class="extype" name="com.intel.analytics.bigdl.dataset.segmentation.RLEMasks">RLEMasks</a> with <a href="COCOSegmentation.html" class="extype" name="com.intel.analytics.bigdl.dataset.segmentation.COCOSegmentation">COCOSegmentation</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.segmentation.COCOSegmentation" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="COCOSegmentationextendsAnyRef"></a>
+      <a id="COCOSegmentation:COCOSegmentation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="COCOSegmentation.html"><span class="name">COCOSegmentation</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.segmentation.PolyMasks" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="PolyMasksextendsSegmentationMasks"></a>
       <a id="PolyMasks:PolyMasks"></a>
       <h4 class="signature">
@@ -104,7 +221,20 @@
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="com.intel.analytics.bigdl.dataset.segmentation.MaskUtils" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="com.intel.analytics.bigdl.dataset.segmentation.COCODataset" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="COCODataset"></a>
+      <a id="COCODataset:COCODataset"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="COCODataset$.html"><span class="name">COCODataset</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.segmentation.MaskUtils" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MaskUtils"></a>
       <a id="MaskUtils:MaskUtils"></a>
       <h4 class="signature">
