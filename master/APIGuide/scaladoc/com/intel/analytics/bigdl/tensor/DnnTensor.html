@@ -2624,6 +2624,23 @@ tensor.select(2, 3) is [3 6]
 </p></div><dl class="paramcmts block"><dt class="param">dim</dt><dd class="cmt"></dd><dt class="param">index</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DnnTensor$$DnnTensorUnsupportOperations.html" class="extype" name="com.intel.analytics.bigdl.tensor.DnnTensor.DnnTensorUnsupportOperations">DnnTensorUnsupportOperations</a> → <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.DnnTensor#set" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="set(other:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="set(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">set</span><span class="params">(<span name="other">other: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.DnnTensor.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.DnnTensor.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">The Tensor is now going to &quot;view&quot; the same storage as the given tensor.</p><div class="fullcomment"><div class="comment cmt"><p>The Tensor is now going to &quot;view&quot; the same storage as the given tensor. As the result,
+any modification in the elements of the Tensor will have an impact on the elements of the
+given tensor, and vice-versa. This is an efficient method, as there is no memory copy!
+</p></div><dl class="paramcmts block"><dt class="param">other</dt><dd class="cmt"><p>the given tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.tensor.DnnTensor">DnnTensor</a> → <a href="DnnTensor$$DnnTensorUnsupportOperations.html" class="extype" name="com.intel.analytics.bigdl.tensor.DnnTensor.DnnTensorUnsupportOperations">DnnTensorUnsupportOperations</a> → <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.DnnTensor#set" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="set():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
       <a id="set():Tensor[T]"></a>
       <h4 class="signature">
@@ -2657,23 +2674,6 @@ with the given dimension sizes and the optional given strides. As the result, an
 modification in the elements of the Storage will have an impact on the elements of the Tensor,
 and vice-versa. This is an efficient method, as there is no memory copy!</p><p>If only storage is provided, the whole storage will be viewed as a 1D Tensor.
 </p></div><dl class="paramcmts block"><dt class="param">storage</dt><dd class="cmt"></dd><dt class="param">storageOffset</dt><dd class="cmt"></dd><dt class="param">sizes</dt><dd class="cmt"></dd><dt class="param">strides</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>current tensor
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DnnTensor$$DnnTensorUnsupportOperations.html" class="extype" name="com.intel.analytics.bigdl.tensor.DnnTensor.DnnTensorUnsupportOperations">DnnTensorUnsupportOperations</a> → <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a></dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.tensor.DnnTensor.DnnTensorUnsupportOperations#set" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="set(other:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
-      <a id="set(Tensor[T]):Tensor[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">set</span><span class="params">(<span name="other">other: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.DnnTensor.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.DnnTensor.T">T</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">The Tensor is now going to &quot;view&quot; the same storage as the given tensor.</p><div class="fullcomment"><div class="comment cmt"><p>The Tensor is now going to &quot;view&quot; the same storage as the given tensor. As the result,
-any modification in the elements of the Tensor will have an impact on the elements of the
-given tensor, and vice-versa. This is an efficient method, as there is no memory copy!
-</p></div><dl class="paramcmts block"><dt class="param">other</dt><dd class="cmt"><p>the given tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DnnTensor$$DnnTensorUnsupportOperations.html" class="extype" name="com.intel.analytics.bigdl.tensor.DnnTensor.DnnTensorUnsupportOperations">DnnTensorUnsupportOperations</a> → <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.tensor.DnnTensor.DnnTensorUnsupportOperations#setValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setValue(d1:Int,d2:Int,d3:Int,d4:Int,d5:Int,value:T):DnnTensorUnsupportOperations.this.type"></a>
