@@ -179,6 +179,34 @@ Implementation based on COCO's MaskApi.c</p></div><dl class="paramcmts block"><d
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.dataset.segmentation.MaskUtils#bboxIOU" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="bboxIOU(groundTruth:(Float,Float,Float,Float),detection:(Float,Float,Float,Float),isCrowd:Boolean):Float"></a>
+      <a id="bboxIOU((Float,Float,Float,Float),(Float,Float,Float,Float),Boolean):Float"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">bboxIOU</span><span class="params">(<span name="groundTruth">groundTruth: (<span class="extype" name="scala.Float">Float</span>, <span class="extype" name="scala.Float">Float</span>, <span class="extype" name="scala.Float">Float</span>, <span class="extype" name="scala.Float">Float</span>)</span>, <span name="detection">detection: (<span class="extype" name="scala.Float">Float</span>, <span class="extype" name="scala.Float">Float</span>, <span class="extype" name="scala.Float">Float</span>, <span class="extype" name="scala.Float">Float</span>)</span>, <span name="isCrowd">isCrowd: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Float">Float</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get the iou of two bounding boxes</p><div class="fullcomment"><div class="comment cmt"><p>Get the iou of two bounding boxes</p></div><dl class="paramcmts block"><dt class="param">groundTruth</dt><dd class="cmt"></dd><dt class="param">detection</dt><dd class="cmt"></dd><dt class="param">isCrowd</dt><dd class="cmt"><p>if groundTruth is isCrowd</p></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.dataset.segmentation.MaskUtils#bboxIOU" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="bboxIOU(gtx1:Float,gty1:Float,gtx2:Float,gty2:Float,dtx1:Float,dty1:Float,dtx2:Float,dty2:Float,isCrowd:Boolean):Float"></a>
+      <a id="bboxIOU(Float,Float,Float,Float,Float,Float,Float,Float,Boolean):Float"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">bboxIOU</span><span class="params">(<span name="gtx1">gtx1: <span class="extype" name="scala.Float">Float</span></span>, <span name="gty1">gty1: <span class="extype" name="scala.Float">Float</span></span>, <span name="gtx2">gtx2: <span class="extype" name="scala.Float">Float</span></span>, <span name="gty2">gty2: <span class="extype" name="scala.Float">Float</span></span>, <span name="dtx1">dtx1: <span class="extype" name="scala.Float">Float</span></span>, <span name="dty1">dty1: <span class="extype" name="scala.Float">Float</span></span>, <span name="dtx2">dtx2: <span class="extype" name="scala.Float">Float</span></span>, <span name="dty2">dty2: <span class="extype" name="scala.Float">Float</span></span>, <span name="isCrowd">isCrowd: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Float">Float</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get the iou of two bounding boxes</p><div class="fullcomment"><div class="comment cmt"><p>Get the iou of two bounding boxes</p></div><dl class="paramcmts block"><dt class="param">gtx1</dt><dd class="cmt"><p>Ground truth x1</p></dd><dt class="param">gty1</dt><dd class="cmt"><p>Ground truth y1</p></dd><dt class="param">gtx2</dt><dd class="cmt"><p>Ground truth x2</p></dd><dt class="param">gty2</dt><dd class="cmt"><p>Ground truth y2</p></dd><dt class="param">dtx1</dt><dd class="cmt"><p>Detection x1</p></dd><dt class="param">dty1</dt><dd class="cmt"><p>Detection y1</p></dd><dt class="param">dtx2</dt><dd class="cmt"><p>Detection x2</p></dd><dt class="param">dty2</dt><dd class="cmt"><p>Detection y2</p></dd><dt class="param">isCrowd</dt><dd class="cmt"><p>if ground truth is is crowd</p></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.dataset.segmentation.MaskUtils#binaryToRLE" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="binaryToRLE(binaryMask:com.intel.analytics.bigdl.tensor.Tensor[Float]):com.intel.analytics.bigdl.dataset.segmentation.RLEMasks"></a>
       <a id="binaryToRLE(Tensor[Float]):RLEMasks"></a>
@@ -379,6 +407,20 @@ Implementation based on COCO's MaskApi.c</p></div><dl class="paramcmts block"><d
       </span>
       </h4>
       
+    </li><li name="com.intel.analytics.bigdl.dataset.segmentation.MaskUtils#rleIOU" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="rleIOU(detection:com.intel.analytics.bigdl.dataset.segmentation.RLEMasks,groundTruth:com.intel.analytics.bigdl.dataset.segmentation.RLEMasks,isCrowd:Boolean):Float"></a>
+      <a id="rleIOU(RLEMasks,RLEMasks,Boolean):Float"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">rleIOU</span><span class="params">(<span name="detection">detection: <a href="RLEMasks.html" class="extype" name="com.intel.analytics.bigdl.dataset.segmentation.RLEMasks">RLEMasks</a></span>, <span name="groundTruth">groundTruth: <a href="RLEMasks.html" class="extype" name="com.intel.analytics.bigdl.dataset.segmentation.RLEMasks">RLEMasks</a></span>, <span name="isCrowd">isCrowd: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Float">Float</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Calculate the intersection over union (IOU) of two RLEs</p><div class="fullcomment"><div class="comment cmt"><p>Calculate the intersection over union (IOU) of two RLEs</p></div><dl class="paramcmts block"><dt class="param">detection</dt><dd class="cmt"><p>the detection RLE</p></dd><dt class="param">groundTruth</dt><dd class="cmt"><p>the ground truth RLE</p></dd><dt class="param">isCrowd</dt><dd class="cmt"><p>if groundTruth is isCrowd</p></dd><dt>returns</dt><dd class="cmt"><p>IOU
+</p></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.dataset.segmentation.MaskUtils#string2RLE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="string2RLE(s:String,h:Int,w:Int):com.intel.analytics.bigdl.dataset.segmentation.RLEMasks"></a>
       <a id="string2RLE(String,Int,Int):RLEMasks"></a>

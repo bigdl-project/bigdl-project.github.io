@@ -40,15 +40,18 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>MeanAveragePrecision for Object Detection
-IMPORTANT: The labels in the target vector (Ground truth) begin with 0. BUT in the
-NN output, the labels begins with 1</p><p>The expected output from the last layer should be [num_of_batch X (1 + maxDetection * 6)] matrix
+The class label begins with 0</p><p>The expected output from the last layer should be a Tensor[Float] or a Table
+If output is a tensor, it should be [num_of_batch X (1 + maxDetection * 6)] matrix
 The format of the matrix should be [&lt;batch&gt;, &lt;batch&gt;, ...], where each row vector is
 &lt;batch&gt; = [&lt;size_of_batch&gt;, &lt;sample&gt;,...]. Each sample has format:
-&lt;sample&gt; = &lt;label, score, bbox x4&gt;   the labels begins with 1
+&lt;sample&gt; = &lt;label, score, bbox x4&gt;
 imgId is the batch number of the sample. imgId begins with 0.
-Multiple samples may share one imgId</p><p>The target vector (Ground truth) is a [num_of_gt X 7] matrix
-having format [&lt;sample_gt&gt;, &lt;sample_gt&gt;, &lt;sample_gt&gt;, ...]
-where &lt;sample_gt&gt; = &lt;imgId, label, diff, bbox x4&gt;  the labels begins with 0
+Multiple samples may share one imgId</p><p>If output is a table, it is a table of tables.
+output(i) is the results of the i-th image in the batch, where i = 1 to sizeof(batch)
+output(i) is a table, which contains the same keys (fields) of image info in the &quot;target&quot;
+Please refer to RoiMiniBatch/RoiImageInfo's documents. Besides, the inner tables also contain
+the scores for the detections in the image.</p><p>The &quot;target&quot; (Ground truth) is a table with the same structure of &quot;output&quot;, except that
+it does not have &quot;score&quot; field
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="ValidationMethod.html" class="extype" name="com.intel.analytics.bigdl.optim.ValidationMethod">ValidationMethod</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.MeanAveragePrecisionObjectDetection.T">T</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -90,7 +93,7 @@ where &lt;sample_gt&gt; = &lt;imgId, label, diff, bbox x4&gt;  the labels begins
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.optim.MeanAveragePrecisionObjectDetection#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(classes:Int,iou:Float,useVoc2007:Boolean,skipClass:Int)(implicitevidence$4:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.optim.MeanAveragePrecisionObjectDetection[T]"></a>
+      <a id="&lt;init&gt;(classes:Int,topK:Int,iouThres:Array[Float],theType:com.intel.analytics.bigdl.optim.MAPType,skipClass:Int,isSegmentation:Boolean)(implicitevidence$4:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.optim.MeanAveragePrecisionObjectDetection[T]"></a>
       <a id="&lt;init&gt;:MeanAveragePrecisionObjectDetection[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -98,11 +101,12 @@ where &lt;sample_gt&gt; = &lt;imgId, label, diff, bbox x4&gt;  the labels begins
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">MeanAveragePrecisionObjectDetection</span><span class="params">(<span name="classes">classes: <span class="extype" name="scala.Int">Int</span></span>, <span name="iou">iou: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">0.5</span></span>, <span name="useVoc2007">useVoc2007: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="skipClass">skipClass: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">-1</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.optim.MeanAveragePrecisionObjectDetection.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.MeanAveragePrecisionObjectDetection.T">T</span>]</span>)</span>
+        <span class="name">MeanAveragePrecisionObjectDetection</span><span class="params">(<span name="classes">classes: <span class="extype" name="scala.Int">Int</span></span>, <span name="topK">topK: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">-1</span></span>, <span name="iouThres">iouThres: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">scala.Array.apply(0.5)</span></span>, <span name="theType">theType: <a href="MAPType.html" class="extype" name="com.intel.analytics.bigdl.optim.MAPType">MAPType</a> = <span class="symbol">MAPPascalVoc2010</span></span>, <span name="skipClass">skipClass: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">-1</span></span>, <span name="isSegmentation">isSegmentation: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.optim.MeanAveragePrecisionObjectDetection.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.MeanAveragePrecisionObjectDetection.T">T</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">classes</dt><dd class="cmt"><p>the number of classes</p></dd><dt class="param">iou</dt><dd class="cmt"><p>the IOU threshold</p></dd><dt class="param">useVoc2007</dt><dd class="cmt"><p>use validation method before voc2010 (i.e. voc2007)</p></dd><dt class="param">skipClass</dt><dd class="cmt"><p>skip calculating on a specific class (e.g. background)
-                 the class index starts from 0, or is -1 if no skipping
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">classes</dt><dd class="cmt"><p>the number of classes</p></dd><dt class="param">topK</dt><dd class="cmt"><p>only take topK confident predictions (-1 for all predictions)</p></dd><dt class="param">iouThres</dt><dd class="cmt"><p>the IOU thresholds</p></dd><dt class="param">theType</dt><dd class="cmt"><p>the type of MAP algorithm. (voc2007/voc2010/COCO)</p></dd><dt class="param">skipClass</dt><dd class="cmt"><p>skip calculating on a specific class (e.g. background)
+                 the class index starts from 0, or is -1 if no skipping</p></dd><dt class="param">isSegmentation</dt><dd class="cmt"><p>if check the IOU of segmentations instead of bounding boxes. If true,
+                      the output and target must have &quot;masks&quot; data
 </p></dd></dl></div>
     </li></ol>
             </div>

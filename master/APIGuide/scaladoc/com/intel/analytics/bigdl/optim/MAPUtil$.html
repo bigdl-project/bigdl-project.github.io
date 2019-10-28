@@ -253,6 +253,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.MAPUtil#gtTablesToGroundTruthRegions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="gtTablesToGroundTruthRegions(gtTable:com.intel.analytics.bigdl.utils.Table,classes:Int,numIOU:Int,isCOCO:Boolean,isSegmentation:Boolean):(Array[scala.collection.mutable.ArrayBuffer[com.intel.analytics.bigdl.optim.GroundTruthRegion]],Array[Int])"></a>
+      <a id="gtTablesToGroundTruthRegions(Table,Int,Int,Boolean,Boolean):(Array[ArrayBuffer[GroundTruthRegion]],Array[Int])"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">gtTablesToGroundTruthRegions</span><span class="params">(<span name="gtTable">gtTable: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="classes">classes: <span class="extype" name="scala.Int">Int</span></span>, <span name="numIOU">numIOU: <span class="extype" name="scala.Int">Int</span></span>, <span name="isCOCO">isCOCO: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="isSegmentation">isSegmentation: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: (<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.collection.mutable.ArrayBuffer">ArrayBuffer</span>[<span class="extype" name="com.intel.analytics.bigdl.optim.GroundTruthRegion">GroundTruthRegion</span>]], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>])</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">convert the ground truth into parsed GroundTruthRegions</p><div class="fullcomment"><div class="comment cmt"><p>convert the ground truth into parsed GroundTruthRegions</p></div><dl class="paramcmts block"><dt class="param">gtTable</dt><dd class="cmt"></dd><dt class="param">classes</dt><dd class="cmt"></dd><dt class="param">isCOCO</dt><dd class="cmt"><p>if using COCO's algorithm for IOU computation</p></dd><dt class="param">isSegmentation</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>(array of GT BBoxes of images, # of GT bboxes for each class)
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -318,6 +332,33 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.optim.MAPUtil#parseDetection" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="parseDetection(gtBbox:scala.collection.mutable.ArrayBuffer[com.intel.analytics.bigdl.optim.GroundTruthRegion],label:Int,score:Float,x1:Float,y1:Float,x2:Float,y2:Float,mask:com.intel.analytics.bigdl.dataset.segmentation.RLEMasks,classes:Int,iou:Array[Float],predictByClasses:Array[Array[scala.collection.mutable.ArrayBuffer[(Float,Boolean)]]]):Unit"></a>
+      <a id="parseDetection(ArrayBuffer[GroundTruthRegion],Int,Float,Float,Float,Float,Float,RLEMasks,Int,Array[Float],Array[Array[ArrayBuffer[(Float,Boolean)]]]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">parseDetection</span><span class="params">(<span name="gtBbox">gtBbox: <span class="extype" name="scala.collection.mutable.ArrayBuffer">ArrayBuffer</span>[<span class="extype" name="com.intel.analytics.bigdl.optim.GroundTruthRegion">GroundTruthRegion</span>]</span>, <span name="label">label: <span class="extype" name="scala.Int">Int</span></span>, <span name="score">score: <span class="extype" name="scala.Float">Float</span></span>, <span name="x1">x1: <span class="extype" name="scala.Float">Float</span></span>, <span name="y1">y1: <span class="extype" name="scala.Float">Float</span></span>, <span name="x2">x2: <span class="extype" name="scala.Float">Float</span></span>, <span name="y2">y2: <span class="extype" name="scala.Float">Float</span></span>, <span name="mask">mask: <a href="../dataset/segmentation/RLEMasks.html" class="extype" name="com.intel.analytics.bigdl.dataset.segmentation.RLEMasks">RLEMasks</a></span>, <span name="classes">classes: <span class="extype" name="scala.Int">Int</span></span>, <span name="iou">iou: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="predictByClasses">predictByClasses: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.collection.mutable.ArrayBuffer">ArrayBuffer</span>[(<span class="extype" name="scala.Float">Float</span>, <span class="extype" name="scala.Boolean">Boolean</span>)]]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">For a detection, match it with all GT boxes.</p><div class="fullcomment"><div class="comment cmt"><p>For a detection, match it with all GT boxes. Record the match in &quot;predictByClass&quot;
+</p></div></div>
+    </li><li name="com.intel.analytics.bigdl.optim.MAPUtil#parseSegmentationTensorResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="parseSegmentationTensorResult(outTensor:com.intel.analytics.bigdl.tensor.Tensor[Float],func:(Int,Int,Float,Float,Float,Float,Float)=&gt;Unit):Unit"></a>
+      <a id="parseSegmentationTensorResult(Tensor[Float],(Int,Int,Float,Float,Float,Float,Float)⇒Unit):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">parseSegmentationTensorResult</span><span class="params">(<span name="outTensor">outTensor: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="func">func: (<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Float">Float</span>, <span class="extype" name="scala.Float">Float</span>, <span class="extype" name="scala.Float">Float</span>, <span class="extype" name="scala.Float">Float</span>, <span class="extype" name="scala.Float">Float</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

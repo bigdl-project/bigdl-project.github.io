@@ -43,14 +43,15 @@
 the getTarget() returns a Table with key from 1 to batchSize. Each key in the table is mapped to
 a Table for the annotation of an image in the batch. The annotation table holds the annotation
 info for one image (assume the image has N detections). The annotation table has</p><p>Key                Value
-RoiLabel.CLASSES   the categories for each detections (see RoiLabel.clasees field)
+RoiImageInfo.CLASSES   the categories for each detections (see RoiLabel.clasees field)
                    (1 x N), or (2 x N) Tensor[Float]
-RoiLabel.BBOXES    the bboxes, (N x 4) Tensor[Float]
-RoiLabel.MASKS     (Optional) the mask data, Array[Tensor[Float]\]. The outer array has N
+RoiImageInfo.BBOXES    the bboxes, (N x 4) Tensor[Float]
+RoiImageInfo.MASKS     (Optional) the mask data, Array[Tensor[Float]\]. The outer array has N
                    elements. The inner tensor holds the data for segmentation
-RoiLabel.ISCROWD   Whether each detection is crowd. (1 x N) Tensor[Float].
+RoiImageInfo.ISCROWD   Whether each detection is crowd. (1 x N) Tensor[Float].
                    -1: unknown, 0: not crowd, 1: is crowd
-RoiLabel.ORIGSIZE  The original size of the image, tuple of (height, width, channels)
+RoiImageInfo.IMGINFO  with shape (batchSize, 4), contains all images info
+                (height, width, original height, original width)
 </p></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../../../dataset/MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="scala.Float">Float</span>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -92,7 +93,7 @@ RoiLabel.ORIGSIZE  The original size of the image, tuple of (height, width, chan
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.transform.vision.image.RoiMiniBatch#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(input:com.intel.analytics.bigdl.tensor.Tensor[Float],target:scala.collection.mutable.IndexedSeq[com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel],isCrowd:scala.collection.mutable.IndexedSeq[com.intel.analytics.bigdl.tensor.Tensor[Float]],originalSizes:scala.collection.mutable.IndexedSeq[(Int,Int,Int)]):com.intel.analytics.bigdl.transform.vision.image.RoiMiniBatch"></a>
+      <a id="&lt;init&gt;(input:com.intel.analytics.bigdl.tensor.Tensor[Float],target:Array[com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel],isCrowd:Array[com.intel.analytics.bigdl.tensor.Tensor[Float]],imageInfo:com.intel.analytics.bigdl.tensor.Tensor[Float]):com.intel.analytics.bigdl.transform.vision.image.RoiMiniBatch"></a>
       <a id="&lt;init&gt;:RoiMiniBatch"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -100,7 +101,7 @@ RoiLabel.ORIGSIZE  The original size of the image, tuple of (height, width, chan
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">RoiMiniBatch</span><span class="params">(<span name="input">input: <a href="../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="target">target: <span class="extype" name="scala.collection.mutable.IndexedSeq">IndexedSeq</span>[<a href="label/roi/RoiLabel.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel">RoiLabel</a>]</span>, <span name="isCrowd">isCrowd: <span class="extype" name="scala.collection.mutable.IndexedSeq">IndexedSeq</span>[<a href="../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]]</span>, <span name="originalSizes">originalSizes: <span class="extype" name="scala.collection.mutable.IndexedSeq">IndexedSeq</span>[(<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)]</span>)</span>
+        <span class="name">RoiMiniBatch</span><span class="params">(<span name="input">input: <a href="../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>, <span name="target">target: <span class="extype" name="scala.Array">Array</span>[<a href="label/roi/RoiLabel.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel">RoiLabel</a>]</span>, <span name="isCrowd">isCrowd: <span class="extype" name="scala.Array">Array</span>[<a href="../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]]</span>, <span name="imageInfo">imageInfo: <a href="../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>] = <span class="symbol">null</span></span>)</span>
       </span>
       </h4>
       
@@ -269,15 +270,15 @@ RoiLabel.ORIGSIZE  The original size of the image, tuple of (height, width, chan
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.transform.vision.image.RoiMiniBatch#getInput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getInput():com.intel.analytics.bigdl.tensor.Tensor[Float]"></a>
-      <a id="getInput():Tensor[Float]"></a>
+      <a id="getInput():com.intel.analytics.bigdl.nn.abstractnn.Activity"></a>
+      <a id="getInput():Activity"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getInput</span><span class="params">()</span><span class="result">: <a href="../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>
+        <span class="name">getInput</span><span class="params">()</span><span class="result">: <a href="../../../nn/abstractnn/Activity.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.Activity">Activity</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Get input in this MiniBatch.</p><div class="fullcomment"><div class="comment cmt"><p>Get input in this MiniBatch.
@@ -312,6 +313,19 @@ RoiLabel.ORIGSIZE  The original size of the image, tuple of (height, width, chan
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.transform.vision.image.RoiMiniBatch#imageInfo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="imageInfo:com.intel.analytics.bigdl.tensor.Tensor[Float]"></a>
+      <a id="imageInfo:Tensor[Float]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">imageInfo</span><span class="result">: <a href="../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]</span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.transform.vision.image.RoiMiniBatch#input" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="input:com.intel.analytics.bigdl.tensor.Tensor[Float]"></a>
       <a id="input:Tensor[Float]"></a>
@@ -326,15 +340,15 @@ RoiLabel.ORIGSIZE  The original size of the image, tuple of (height, width, chan
       </h4>
       
     </li><li name="com.intel.analytics.bigdl.transform.vision.image.RoiMiniBatch#isCrowd" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="isCrowd:scala.collection.mutable.IndexedSeq[com.intel.analytics.bigdl.tensor.Tensor[Float]]"></a>
-      <a id="isCrowd:IndexedSeq[Tensor[Float]]"></a>
+      <a id="isCrowd:Array[com.intel.analytics.bigdl.tensor.Tensor[Float]]"></a>
+      <a id="isCrowd:Array[Tensor[Float]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">isCrowd</span><span class="result">: <span class="extype" name="scala.collection.mutable.IndexedSeq">IndexedSeq</span>[<a href="../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]]</span>
+        <span class="name">isCrowd</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="../../../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="scala.Float">Float</span>]]</span>
       </span>
       </h4>
       
@@ -390,19 +404,6 @@ RoiLabel.ORIGSIZE  The original size of the image, tuple of (height, width, chan
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="com.intel.analytics.bigdl.transform.vision.image.RoiMiniBatch#originalSizes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="originalSizes:scala.collection.mutable.IndexedSeq[(Int,Int,Int)]"></a>
-      <a id="originalSizes:IndexedSeq[(Int,Int,Int)]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">originalSizes</span><span class="result">: <span class="extype" name="scala.collection.mutable.IndexedSeq">IndexedSeq</span>[(<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)]</span>
-      </span>
-      </h4>
-      
     </li><li name="com.intel.analytics.bigdl.transform.vision.image.RoiMiniBatch#set" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="set(samples:Seq[com.intel.analytics.bigdl.dataset.Sample[Float]])(implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[Float]):RoiMiniBatch.this.type"></a>
       <a id="set(Seq[Sample[Float]])(TensorNumeric[Float]):RoiMiniBatch.this.type"></a>
@@ -464,15 +465,15 @@ RoiLabel.ORIGSIZE  The original size of the image, tuple of (height, width, chan
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.transform.vision.image.RoiMiniBatch#target" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="target:scala.collection.mutable.IndexedSeq[com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel]"></a>
-      <a id="target:IndexedSeq[RoiLabel]"></a>
+      <a id="target:Array[com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel]"></a>
+      <a id="target:Array[RoiLabel]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">target</span><span class="result">: <span class="extype" name="scala.collection.mutable.IndexedSeq">IndexedSeq</span>[<a href="label/roi/RoiLabel.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel">RoiLabel</a>]</span>
+        <span class="name">target</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="label/roi/RoiLabel.html" class="extype" name="com.intel.analytics.bigdl.transform.vision.image.label.roi.RoiLabel">RoiLabel</a>]</span>
       </span>
       </h4>
       
