@@ -171,12 +171,39 @@
 
     <span class="k">return</span> <span class="n">sample_rdd</span><span class="p">,</span> <span class="n">val_sample_rdd</span><span class="p">,</span> <span class="n">total_vocab_len</span></div>
 
-<div class="viewcode-block" id="build_model"><a class="viewcode-back" href="../../../../bigdl.models.rnn.html#bigdl.models.rnn.rnnexample.build_model">[docs]</a><span class="k">def</span> <span class="nf">build_model</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">):</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Recurrent</span><span class="p">()</span>
-              <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">RnnCell</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">Tanh</span><span class="p">())))</span>\
-        <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TimeDistributed</span><span class="p">(</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)))</span>
-    <span class="n">model</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<div class="viewcode-block" id="build_model"><a class="viewcode-back" href="../../../../bigdl.models.rnn.html#bigdl.models.rnn.rnnexample.build_model">[docs]</a><span class="k">def</span> <span class="nf">build_model</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">model_type</span><span class="p">):</span>
+    <span class="c1"># Model Type is simple RNN</span>
+    <span class="k">if</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;rnn&quot;</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Recurrent</span><span class="p">()</span>
+                  <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">RnnCell</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">Tanh</span><span class="p">())))</span>\
+            <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TimeDistributed</span><span class="p">(</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)))</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+        <span class="c1"># Simple RNN with MKL-DNN backend is unsupported for now.</span>
+        <span class="k">if</span> <span class="n">get_bigdl_engine_type</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;MklDnn&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Simple RNN is unsupported with MKL-DNN backend&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Model Type is LSTM</span>
+    <span class="k">elif</span> <span class="n">model_type</span> <span class="o">==</span> <span class="s2">&quot;lstm&quot;</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Recurrent</span><span class="p">()</span>
+                  <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)))</span>\
+            <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">TimeDistributed</span><span class="p">(</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)))</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+        <span class="c1"># LSTM with MKL-DNN backend</span>
+        <span class="k">if</span> <span class="n">get_bigdl_engine_type</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;MklDnn&quot;</span><span class="p">:</span>
+            <span class="c1"># To use MKL-DNN backend, the model has to be a graph model with</span>
+            <span class="c1"># input and output formats set. Sequential model cannot be used in</span>
+            <span class="c1"># this case, so we convert it to a graph model.</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to_graph</span><span class="p">()</span>
+
+            <span class="c1"># The format index of input or output format can be checked</span>
+            <span class="c1"># in: ${BigDL-core}/native-dnn/src/main/java/com/intel/analytics/bigdl/mkl/Memory.java</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">set_input_formats</span><span class="p">([</span><span class="mi">27</span><span class="p">])</span> <span class="c1"># Set input format to ntc</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">set_output_formats</span><span class="p">([</span><span class="mi">27</span><span class="p">])</span> <span class="c1"># Set output format to ntc</span>
+
     <span class="k">return</span> <span class="n">model</span></div>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
@@ -191,6 +218,7 @@
     <span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s2">&quot;--hiddenSize&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;hidden_size&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;40&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s2">&quot;--vocabSize&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;vob_size&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;4000&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s2">&quot;--maxEpoch&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;max_epoch&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;30&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s2">&quot;--modelType&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;model_type&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;rnn&quot;</span><span class="p">)</span>
 
     <span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
 
@@ -204,6 +232,7 @@
     <span class="n">max_epoch</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">max_epoch</span><span class="p">)</span>
     <span class="n">folder</span> <span class="o">=</span> <span class="n">options</span><span class="o">.</span><span class="n">folder</span>
     <span class="n">training_split</span> <span class="o">=</span> <span class="mf">0.8</span>
+    <span class="n">model_type</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">options</span><span class="o">.</span><span class="n">model_type</span><span class="p">)</span>
 
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="p">(</span><span class="n">appName</span><span class="o">=</span><span class="s2">&quot;simplernn_example&quot;</span><span class="p">,</span>
                       <span class="n">conf</span><span class="o">=</span><span class="n">create_spark_conf</span><span class="p">())</span>
@@ -211,10 +240,19 @@
     <span class="n">show_bigdl_info_logs</span><span class="p">()</span>
     <span class="n">init_engine</span><span class="p">()</span>
 
+    <span class="c1"># In order to use MklDnn as the backend, you should:</span>
+    <span class="c1"># 1. Define a model with Model(graph container) or convert a sequential model to a graph model</span>
+    <span class="c1"># 2. Specify the input and output formats of it.</span>
+    <span class="c1">#    BigDL needs these format information to build a graph running with MKL-DNN backend</span>
+    <span class="c1"># 3. Run spark-submit command with correct configurations</span>
+    <span class="c1">#    --conf &quot;spark.driver.extraJavaOptions=-Dbigdl.engineType=mkldnn&quot;</span>
+    <span class="c1">#    --conf &quot;spark.executor.extraJavaOptions=-Dbigdl.engineType=mkldnn&quot;</span>
+    <span class="c1"># LSTM supports MklDnn backend. Simple RNN does not for now.</span>
+
     <span class="p">(</span><span class="n">train_rdd</span><span class="p">,</span> <span class="n">val_rdd</span><span class="p">,</span> <span class="n">vob_size</span><span class="p">)</span> <span class="o">=</span> <span class="n">prepare_data</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">folder</span><span class="p">,</span> <span class="n">vob_size</span><span class="p">,</span> <span class="n">training_split</span><span class="p">)</span>
 
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">Optimizer</span><span class="p">(</span>
-        <span class="n">model</span><span class="o">=</span><span class="n">build_model</span><span class="p">(</span><span class="n">vob_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">vob_size</span><span class="p">),</span>
+        <span class="n">model</span><span class="o">=</span><span class="n">build_model</span><span class="p">(</span><span class="n">vob_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">vob_size</span><span class="p">,</span> <span class="n">model_type</span><span class="p">),</span>
         <span class="n">training_rdd</span><span class="o">=</span><span class="n">train_rdd</span><span class="p">,</span>
         <span class="n">criterion</span><span class="o">=</span><span class="n">TimeDistributedCriterion</span><span class="p">(</span><span class="n">CrossEntropyCriterion</span><span class="p">(),</span> <span class="n">size_average</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
         <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>

@@ -92,6 +92,17 @@
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Tanh</span><span class="p">())</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Linear</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">class_num</span><span class="p">))</span>
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LogSoftMax</span><span class="p">())</span>
+
+    <span class="c1"># To use MKL-DNN backend, the model has to be a graph model with input and output formats set.</span>
+    <span class="c1"># Sequential model cannot be used in this case, so we convert it to a graph model.</span>
+    <span class="k">if</span> <span class="n">get_bigdl_engine_type</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;MklDnn&quot;</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to_graph</span><span class="p">()</span>
+
+        <span class="c1"># The format index of input or output format can be checked</span>
+        <span class="c1"># in: ${BigDL-core}/native-dnn/src/main/java/com/intel/analytics/bigdl/mkl/Memory.java</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">set_input_formats</span><span class="p">([</span><span class="mi">7</span><span class="p">])</span> <span class="c1"># Set input format to nchw</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">set_output_formats</span><span class="p">([</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># Set output format to nc</span>
+
     <span class="k">return</span> <span class="n">model</span></div>
 
 
@@ -111,6 +122,14 @@
     <span class="n">redire_spark_logs</span><span class="p">()</span>
     <span class="n">show_bigdl_info_logs</span><span class="p">()</span>
     <span class="n">init_engine</span><span class="p">()</span>
+
+    <span class="c1"># In order to use MklDnn as the backend, you should:</span>
+    <span class="c1"># 1. Define a graph model with Model(graph container) or convert a sequential model to a graph model</span>
+    <span class="c1"># 2. Specify the input and output formats of it.</span>
+    <span class="c1">#    BigDL needs these format information to build a graph running with MKL-DNN backend</span>
+    <span class="c1"># 3. Run spark-submit command with correct configurations</span>
+    <span class="c1">#    --conf &quot;spark.driver.extraJavaOptions=-Dbigdl.engineType=mkldnn&quot;</span>
+    <span class="c1">#    --conf &quot;spark.executor.extraJavaOptions=-Dbigdl.engineType=mkldnn&quot;</span>
 
     <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">action</span> <span class="o">==</span> <span class="s2">&quot;train&quot;</span><span class="p">:</span>
         <span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">test_data</span><span class="p">)</span> <span class="o">=</span> <span class="n">preprocess_mnist</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>

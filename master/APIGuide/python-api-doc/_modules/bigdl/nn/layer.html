@@ -1304,7 +1304,20 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">(</span><span class="n">jvalue</span><span class="o">=</span><span class="n">jvalue</span><span class="p">)</span>
         <span class="n">model</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">jvalue</span>
+        <span class="k">return</span> <span class="n">model</span></div>
+
+<div class="viewcode-block" id="Sequential.to_graph"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.Sequential.to_graph">[docs]</a>    <span class="k">def</span> <span class="nf">to_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert a sequential model (Sequential) to a graph model (Model)</span>
+<span class="sd">        :return: A Python graph model</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">jvalue</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span>
+                               <span class="s2">&quot;toGraph&quot;</span><span class="p">,</span>
+                               <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="o">.</span><span class="n">from_jvalue</span><span class="p">(</span><span class="n">jvalue</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">model</span></div></div>
+
+
 
 <div class="viewcode-block" id="TemporalConvolution"><a class="viewcode-back" href="../../../bigdl.nn.html#bigdl.nn.layer.TemporalConvolution">[docs]</a><span class="k">class</span> <span class="nc">TemporalConvolution</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
 
