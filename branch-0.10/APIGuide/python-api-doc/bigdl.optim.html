@@ -1,0 +1,1084 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>bigdl.optim package &#8212; BigDL  documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="bigdl.transform package" href="bigdl.transform.html" />
+    <link rel="prev" title="bigdl.nn.onnx package" href="bigdl.nn.onnx.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="bigdl.transform.html" title="bigdl.transform package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="bigdl.nn.onnx.html" title="bigdl.nn.onnx package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="bigdl.html" accesskey="U">bigdl package</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">bigdl.optim package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-bigdl.optim.optimizer">bigdl.optim.optimizer module</a></li>
+<li><a class="reference internal" href="#module-bigdl.optim">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="bigdl.nn.onnx.html"
+                        title="previous chapter">bigdl.nn.onnx package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="bigdl.transform.html"
+                        title="next chapter">bigdl.transform package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/bigdl.optim.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="bigdl-optim-package">
+<h1>bigdl.optim package<a class="headerlink" href="#bigdl-optim-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-bigdl.optim.optimizer">
+<span id="bigdl-optim-optimizer-module"></span><h2>bigdl.optim.optimizer module<a class="headerlink" href="#module-bigdl.optim.optimizer" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="bigdl.optim.optimizer.ActivityRegularization">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">ActivityRegularization</code><span class="sig-paren">(</span><em>l1</em>, <em>l2</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#ActivityRegularization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.ActivityRegularization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Apply both L1 and L2 regularization</p>
+<p>:param l1 l1 regularization rate
+:param l2 l2 regularization rate</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Adadelta">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Adadelta</code><span class="sig-paren">(</span><em>decayrate=0.9</em>, <em>epsilon=1e-10</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Adadelta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Adadelta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.optim.optimizer.OptimMethod" title="bigdl.optim.optimizer.OptimMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.optim.optimizer.OptimMethod</span></code></a></p>
+<p>Adadelta implementation for SGD: <a class="reference external" href="http://arxiv.org/abs/1212.5701">http://arxiv.org/abs/1212.5701</a></p>
+<p>:param decayrate interpolation parameter rho
+:param epsilon for numerical stability
+&gt;&gt;&gt; adagrad = Adadelta()
+creating: createAdadelta</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Adagrad">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Adagrad</code><span class="sig-paren">(</span><em>learningrate=0.001</em>, <em>learningrate_decay=0.0</em>, <em>weightdecay=0.0</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Adagrad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Adagrad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.optim.optimizer.OptimMethod" title="bigdl.optim.optimizer.OptimMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.optim.optimizer.OptimMethod</span></code></a></p>
+<p>An implementation of Adagrad. See the original paper:
+<a class="reference external" href="http://jmlr.org/papers/volume12/duchi11a/duchi11a.pdf">http://jmlr.org/papers/volume12/duchi11a/duchi11a.pdf</a></p>
+<p>:param learningrate learning rate
+:param learningrate_decay learning rate decay
+:param weightdecay weight decay
+&gt;&gt;&gt; adagrad = Adagrad()
+creating: createAdagrad</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Adam">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Adam</code><span class="sig-paren">(</span><em>learningrate=0.001</em>, <em>learningrate_decay=0.0</em>, <em>beta1=0.9</em>, <em>beta2=0.999</em>, <em>epsilon=1e-08</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Adam"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Adam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.optim.optimizer.OptimMethod" title="bigdl.optim.optimizer.OptimMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.optim.optimizer.OptimMethod</span></code></a></p>
+<p>An implementation of Adam <a class="reference external" href="http://arxiv.org/pdf/1412.6980.pdf">http://arxiv.org/pdf/1412.6980.pdf</a>
+:param learningrate learning rate
+:param learningrate_decay learning rate decay
+:param beta1 first moment coefficient
+:param beta2 second moment coefficient
+:param epsilon for numerical stability
+&gt;&gt;&gt; adam = Adam()
+creating: createAdam</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Adamax">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Adamax</code><span class="sig-paren">(</span><em>learningrate=0.002</em>, <em>beta1=0.9</em>, <em>beta2=0.999</em>, <em>epsilon=1e-38</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Adamax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Adamax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.optim.optimizer.OptimMethod" title="bigdl.optim.optimizer.OptimMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.optim.optimizer.OptimMethod</span></code></a></p>
+<p>An implementation of Adamax <a class="reference external" href="http://arxiv.org/pdf/1412.6980.pdf">http://arxiv.org/pdf/1412.6980.pdf</a>
+:param learningrate learning rate
+:param beta1 first moment coefficient
+:param beta2 second moment coefficient
+:param epsilon for numerical stability
+&gt;&gt;&gt; adagrad = Adamax()
+creating: createAdamax</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.BaseOptimizer">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">BaseOptimizer</code><span class="sig-paren">(</span><em>jvalue</em>, <em>bigdl_type</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#BaseOptimizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.BaseOptimizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<dl class="method">
+<dt id="bigdl.optim.optimizer.BaseOptimizer.disable_gradclip">
+<code class="descname">disable_gradclip</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#BaseOptimizer.disable_gradclip"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.BaseOptimizer.disable_gradclip" title="Permalink to this definition">¶</a></dt>
+<dd><p>disable clipping.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.optim.optimizer.BaseOptimizer.optimize">
+<code class="descname">optimize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#BaseOptimizer.optimize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.BaseOptimizer.optimize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do an optimization.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.optim.optimizer.BaseOptimizer.prepare_input">
+<code class="descname">prepare_input</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#BaseOptimizer.prepare_input"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.BaseOptimizer.prepare_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load input. Notebook user can call this method to seprate load data and
+create optimizer time</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.optim.optimizer.BaseOptimizer.set_checkpoint">
+<code class="descname">set_checkpoint</code><span class="sig-paren">(</span><em>checkpoint_trigger</em>, <em>checkpoint_path</em>, <em>isOverWrite=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#BaseOptimizer.set_checkpoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.BaseOptimizer.set_checkpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure checkpoint settings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>checkpoint_trigger</strong> – the interval to write snapshots</li>
+<li><strong>checkpoint_path</strong> – the path to write snapshots into</li>
+<li><strong>isOverWrite</strong> – whether to overwrite existing snapshots in path.default is True</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.optim.optimizer.BaseOptimizer.set_criterion">
+<code class="descname">set_criterion</code><span class="sig-paren">(</span><em>criterion</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#BaseOptimizer.set_criterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.BaseOptimizer.set_criterion" title="Permalink to this definition">¶</a></dt>
+<dd><p>set new criterion, for optimizer reuse</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>criterion</strong> – new criterion</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.optim.optimizer.BaseOptimizer.set_end_when">
+<code class="descname">set_end_when</code><span class="sig-paren">(</span><em>end_when</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#BaseOptimizer.set_end_when"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.BaseOptimizer.set_end_when" title="Permalink to this definition">¶</a></dt>
+<dd><p>When to stop, passed in a [[Trigger]]</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.optim.optimizer.BaseOptimizer.set_gradclip_const">
+<code class="descname">set_gradclip_const</code><span class="sig-paren">(</span><em>min_value</em>, <em>max_value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#BaseOptimizer.set_gradclip_const"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.BaseOptimizer.set_gradclip_const" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure constant clipping settings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>min_value</strong> – the minimum value to clip by</li>
+<li><strong>max_value</strong> – the maxmimum value to clip by</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.optim.optimizer.BaseOptimizer.set_gradclip_l2norm">
+<code class="descname">set_gradclip_l2norm</code><span class="sig-paren">(</span><em>clip_norm</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#BaseOptimizer.set_gradclip_l2norm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.BaseOptimizer.set_gradclip_l2norm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure L2 norm clipping settings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>clip_norm</strong> – gradient L2-Norm threshold</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.optim.optimizer.BaseOptimizer.set_model">
+<code class="descname">set_model</code><span class="sig-paren">(</span><em>model</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#BaseOptimizer.set_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.BaseOptimizer.set_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>model</strong> – new model</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.optim.optimizer.BaseOptimizer.set_train_summary">
+<code class="descname">set_train_summary</code><span class="sig-paren">(</span><em>summary</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#BaseOptimizer.set_train_summary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.BaseOptimizer.set_train_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set train summary. A TrainSummary object contains information
+necessary for the optimizer to know how often the logs are recorded,
+where to store the logs and how to retrieve them, etc. For details,
+refer to the docs of TrainSummary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>summary</strong> – a TrainSummary object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.optim.optimizer.BaseOptimizer.set_val_summary">
+<code class="descname">set_val_summary</code><span class="sig-paren">(</span><em>summary</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#BaseOptimizer.set_val_summary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.BaseOptimizer.set_val_summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set validation summary. A ValidationSummary object contains information
+necessary for the optimizer to know how often the logs are recorded,
+where to store the logs and how to retrieve them, etc. For details,
+refer to the docs of ValidationSummary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>summary</strong> – a ValidationSummary object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Default">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Default</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Default"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>A learning rate decay policy, where the effective learning rate is
+calculated as base_lr * gamma ^ (floor(iter / step_size))</p>
+<p>:param step_size
+:param gamma</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">step</span> <span class="o">=</span> <span class="n">Default</span><span class="p">()</span>
+<span class="go">creating: createDefault</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.DistriOptimizer">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">DistriOptimizer</code><span class="sig-paren">(</span><em>model</em>, <em>training_rdd</em>, <em>criterion</em>, <em>end_trigger</em>, <em>batch_size</em>, <em>optim_method=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#DistriOptimizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.DistriOptimizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.optim.optimizer.Optimizer" title="bigdl.optim.optimizer.Optimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.optim.optimizer.Optimizer</span></code></a></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.EveryEpoch">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">EveryEpoch</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#EveryEpoch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.EveryEpoch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>A trigger specifies a timespot or several timespots during training,
+and a corresponding action will be taken when the timespot(s) is reached.
+EveryEpoch is a trigger that triggers an action when each epoch finishs.
+Could be used as trigger in setvalidation and setcheckpoint in Optimizer,
+and also in TrainSummary.set_summary_trigger.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">everyEpoch</span> <span class="o">=</span> <span class="n">EveryEpoch</span><span class="p">()</span>
+<span class="go">creating: createEveryEpoch</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Exponential">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Exponential</code><span class="sig-paren">(</span><em>decay_step</em>, <em>decay_rate</em>, <em>stair_case=False</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Exponential"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Exponential" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>[[Exponential]] is a learning rate schedule, which rescale the learning rate by
+lr_{n + 1} = lr * decayRate <cite>^</cite> (iter / decayStep)
+:param decay_step the inteval for lr decay
+:param decay_rate decay rate
+:param stair_case if true, iter / decayStep is an integer division
+and the decayed learning rate follows a staircase function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">exponential</span> <span class="o">=</span> <span class="n">Exponential</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="go">creating: createExponential</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Ftrl">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Ftrl</code><span class="sig-paren">(</span><em>learningrate=0.001</em>, <em>learningrate_power=-0.5</em>, <em>initial_accumulator_value=0.1</em>, <em>l1_regularization_strength=0.0</em>, <em>l2_regularization_strength=0.0</em>, <em>l2_shrinkage_regularization_strength=0.0</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Ftrl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Ftrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.optim.optimizer.OptimMethod" title="bigdl.optim.optimizer.OptimMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.optim.optimizer.OptimMethod</span></code></a></p>
+<p>An implementation of Ftrl <a class="reference external" href="https://www.eecs.tufts.edu/~dsculley/papers/ad-click-prediction.pdf">https://www.eecs.tufts.edu/~dsculley/papers/ad-click-prediction.pdf</a>.
+Support L1 penalty, L2 penalty and shrinkage-type L2 penalty.</p>
+<p>:param learningrate learning rate
+:param learningrate_power double, must be less or equal to zero. Default is -0.5.
+:param initial_accumulator_value double, the starting value for accumulators,
+require zero or positive values.
+:param l1_regularization_strength double, must be greater or equal to zero. Default is zero.
+:param l2_regularization_strength double, must be greater or equal to zero. Default is zero.
+:param l2_shrinkage_regularization_strength double, must be greater or equal to zero.
+Default is zero. This differs from l2RegularizationStrength above. L2 above is a
+stabilization penalty, whereas this one is a magnitude penalty.
+&gt;&gt;&gt; ftrl = Ftrl()
+creating: createFtrl
+&gt;&gt;&gt; ftrl2 = Ftrl(1e-2, -0.1, 0.2, 0.3, 0.4, 0.5)
+creating: createFtrl</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.HitRatio">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">HitRatio</code><span class="sig-paren">(</span><em>k=10</em>, <em>neg_num=100</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#HitRatio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.HitRatio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Hit Ratio(HR) used in recommandation application.
+HR intuitively measures whether the test item is present on the top-k list.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hr10</span> <span class="o">=</span> <span class="n">HitRatio</span><span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">creating: createHitRatio</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.L1L2Regularizer">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">L1L2Regularizer</code><span class="sig-paren">(</span><em>l1</em>, <em>l2</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#L1L2Regularizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.L1L2Regularizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Apply both L1 and L2 regularization</p>
+<p>:param l1 l1 regularization rate
+:param l2 l2 regularization rate</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.L1Regularizer">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">L1Regularizer</code><span class="sig-paren">(</span><em>l1</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#L1Regularizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.L1Regularizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Apply L1 regularization</p>
+<p>:param l1 l1 regularization rate</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.L2Regularizer">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">L2Regularizer</code><span class="sig-paren">(</span><em>l2</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#L2Regularizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.L2Regularizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Apply L2 regularization</p>
+<p>:param l2 l2 regularization rate</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.LBFGS">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">LBFGS</code><span class="sig-paren">(</span><em>max_iter=20</em>, <em>max_eval=1.7976931348623157e+308</em>, <em>tolfun=1e-05</em>, <em>tolx=1e-09</em>, <em>ncorrection=100</em>, <em>learningrate=1.0</em>, <em>verbose=False</em>, <em>linesearch=None</em>, <em>linesearch_options=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#LBFGS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.LBFGS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.optim.optimizer.OptimMethod" title="bigdl.optim.optimizer.OptimMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.optim.optimizer.OptimMethod</span></code></a></p>
+<p>This implementation of L-BFGS relies on a user-provided line
+search function (state.lineSearch). If this function is not
+provided, then a simple learningRate is used to produce fixed
+size steps. Fixed size steps are much less costly than line
+searches, and can be useful for stochastic problems.
+The learning rate is used even when a line search is provided.
+This is also useful for large-scale stochastic problems, where
+opfunc is a noisy approximation of f(x). In that case, the learning
+rate allows a reduction of confidence in the step size.</p>
+<p>:param max_iter Maximum number of iterations allowed
+:param max_eval Maximum number of function evaluations
+:param tolfun Termination tolerance on the first-order optimality
+:param tolx Termination tol on progress in terms of func/param changes
+:param ncorrection
+:param learningrate
+:param verbose
+:param linesearch A line search function
+:param linesearch_options If no line search provided, then a fixed step size is used
+&gt;&gt;&gt; lbfgs = LBFGS()
+creating: createLBFGS</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.LocalOptimizer">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">LocalOptimizer</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em>, <em>model</em>, <em>criterion</em>, <em>end_trigger</em>, <em>batch_size</em>, <em>optim_method=None</em>, <em>cores=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#LocalOptimizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.LocalOptimizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.optim.optimizer.BaseOptimizer" title="bigdl.optim.optimizer.BaseOptimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.optim.optimizer.BaseOptimizer</span></code></a></p>
+<p>Create an optimizer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>model</strong> – the neural net model</li>
+<li><strong>X</strong> – the training features which is an ndarray or list of ndarray</li>
+<li><strong>Y</strong> – the training label which is an ndarray</li>
+<li><strong>criterion</strong> – the loss function</li>
+<li><strong>optim_method</strong> – the algorithm to use for optimization,</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>e.g. SGD, Adagrad, etc. If optim_method is None, the default algorithm is SGD.
+:param end_trigger: when to end the optimization
+:param batch_size: training batch size
+:param cores: by default is the total physical cores.</p>
+<dl class="method">
+<dt id="bigdl.optim.optimizer.LocalOptimizer.set_validation">
+<code class="descname">set_validation</code><span class="sig-paren">(</span><em>batch_size</em>, <em>X_val</em>, <em>Y_val</em>, <em>trigger</em>, <em>val_method=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#LocalOptimizer.set_validation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.LocalOptimizer.set_validation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure validation settings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>batch_size</strong> – validation batch size</li>
+<li><strong>X_val</strong> – features of validation dataset</li>
+<li><strong>Y_val</strong> – label of validation dataset</li>
+<li><strong>trigger</strong> – validation interval</li>
+<li><strong>val_method</strong> – the ValidationMethod to use,e.g. “Top1Accuracy”, “Top5Accuracy”, “Loss”</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Loss">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Loss</code><span class="sig-paren">(</span><em>cri=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Loss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Loss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>This evaluation method is calculate loss of output with respect to target
+&gt;&gt;&gt; from bigdl.nn.criterion import ClassNLLCriterion
+&gt;&gt;&gt; loss = Loss()
+creating: createClassNLLCriterion
+creating: createLoss</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">Loss</span><span class="p">(</span><span class="n">ClassNLLCriterion</span><span class="p">())</span>
+<span class="go">creating: createClassNLLCriterion</span>
+<span class="go">creating: createLoss</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.MAE">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">MAE</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#MAE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.MAE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>This evaluation method calculates the mean absolute error of output with respect to target.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mae</span> <span class="o">=</span> <span class="n">MAE</span><span class="p">()</span>
+<span class="go">creating: createMAE</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.MaxEpoch">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">MaxEpoch</code><span class="sig-paren">(</span><em>max_epoch</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#MaxEpoch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.MaxEpoch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>A trigger specifies a timespot or several timespots during training,
+and a corresponding action will be taken when the timespot(s) is reached.
+MaxEpoch is a trigger that triggers an action when training reaches
+the number of epochs specified by “max_epoch”.
+Usually used as end_trigger when creating an Optimizer.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxEpoch</span> <span class="o">=</span> <span class="n">MaxEpoch</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">creating: createMaxEpoch</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.MaxIteration">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">MaxIteration</code><span class="sig-paren">(</span><em>max</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#MaxIteration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.MaxIteration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>A trigger specifies a timespot or several timespots during training,
+and a corresponding action will be taken when the timespot(s) is reached.
+MaxIteration is a trigger that triggers an action when training reaches
+the number of iterations specified by “max”.
+Usually used as end_trigger when creating an Optimizer.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxIteration</span> <span class="o">=</span> <span class="n">MaxIteration</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="go">creating: createMaxIteration</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.MaxScore">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">MaxScore</code><span class="sig-paren">(</span><em>max</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#MaxScore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.MaxScore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>A trigger that triggers an action when validation score larger than “max” score</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxScore</span> <span class="o">=</span> <span class="n">MaxScore</span><span class="p">(</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="go">creating: createMaxScore</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.MeanAveragePrecision">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">MeanAveragePrecision</code><span class="sig-paren">(</span><em>k</em>, <em>classes</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#MeanAveragePrecision"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.MeanAveragePrecision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Calculate the Mean Average Precision for top-k confident predictions.
+The algorithm follows VOC Challenge after 2007</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MAP</span> <span class="o">=</span> <span class="n">MeanAveragePrecision</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="go">creating: createMeanAveragePrecision</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.MeanAveragePrecisionObjectDetection">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">MeanAveragePrecisionObjectDetection</code><span class="sig-paren">(</span><em>classes</em>, <em>iou=0.5</em>, <em>use_voc2007=False</em>, <em>skip_class=-1</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#MeanAveragePrecisionObjectDetection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.MeanAveragePrecisionObjectDetection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Calculate the Mean Average Precision for Object Detection.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MAPObj</span> <span class="o">=</span> <span class="n">MeanAveragePrecisionObjectDetection</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="go">creating: createMeanAveragePrecisionObjectDetection</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.MinLoss">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">MinLoss</code><span class="sig-paren">(</span><em>min</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#MinLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.MinLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>A trigger that triggers an action when training loss less than “min” loss</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">minLoss</span> <span class="o">=</span> <span class="n">MinLoss</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="go">creating: createMinLoss</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.MultiStep">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">MultiStep</code><span class="sig-paren">(</span><em>step_sizes</em>, <em>gamma</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#MultiStep"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.MultiStep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>similar to step but it allows non uniform steps defined by stepSizes</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>step_size</strong> – the series of step sizes used for lr decay</li>
+<li><strong>gamma</strong> – coefficient of decay</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">step</span> <span class="o">=</span> <span class="n">MultiStep</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="go">creating: createMultiStep</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.NDCG">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">NDCG</code><span class="sig-paren">(</span><em>k=10</em>, <em>neg_num=100</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#NDCG"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.NDCG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Normalized Discounted Cumulative Gain(NDCG).
+NDCG accounts for the position of the hit by assigning higher scores to hits at top ranks.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ndcg</span> <span class="o">=</span> <span class="n">NDCG</span><span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="go">creating: createNDCG</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.OptimMethod">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">OptimMethod</code><span class="sig-paren">(</span><em>jvalue</em>, <em>bigdl_type</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#OptimMethod"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.OptimMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<dl class="staticmethod">
+<dt id="bigdl.optim.optimizer.OptimMethod.load">
+<em class="property">static </em><code class="descname">load</code><span class="sig-paren">(</span><em>path</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#OptimMethod.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.OptimMethod.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>load optim method
+:param path: file path</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.optim.optimizer.OptimMethod.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>path</em>, <em>overWrite</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#OptimMethod.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.OptimMethod.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>save OptimMethod
+:param path      path
+:param overWrite whether to overwrite</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Optimizer">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Optimizer</code><span class="sig-paren">(</span><em>model</em>, <em>training_rdd</em>, <em>criterion</em>, <em>end_trigger</em>, <em>batch_size</em>, <em>optim_method=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Optimizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Optimizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.optim.optimizer.BaseOptimizer" title="bigdl.optim.optimizer.BaseOptimizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.optim.optimizer.BaseOptimizer</span></code></a></p>
+<dl class="staticmethod">
+<dt id="bigdl.optim.optimizer.Optimizer.create">
+<em class="property">static </em><code class="descname">create</code><span class="sig-paren">(</span><em>model</em>, <em>training_set</em>, <em>criterion</em>, <em>end_trigger=None</em>, <em>batch_size=32</em>, <em>optim_method=None</em>, <em>cores=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Optimizer.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Optimizer.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an optimizer.
+Depend on the input type, the returning optimizer can be a local optimizer         or a distributed optimizer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>model</strong> – the neural net model</li>
+<li><strong>training_set</strong> – (features, label) for local mode. RDD[Sample] for distributed mode.</li>
+<li><strong>criterion</strong> – the loss function</li>
+<li><strong>optim_method</strong> – the algorithm to use for optimization,</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>e.g. SGD, Adagrad, etc. If optim_method is None, the default algorithm is SGD.
+:param end_trigger: when to end the optimization. default value is MapEpoch(1)
+:param batch_size: training batch size
+:param cores: This is for local optimizer only and use total physical cores as the default value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.optim.optimizer.Optimizer.set_traindata">
+<code class="descname">set_traindata</code><span class="sig-paren">(</span><em>training_rdd</em>, <em>batch_size</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Optimizer.set_traindata"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Optimizer.set_traindata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set new training dataset, for optimizer reuse</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>training_rdd</strong> – the training dataset</li>
+<li><strong>batch_size</strong> – training batch size</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.optim.optimizer.Optimizer.set_validation">
+<code class="descname">set_validation</code><span class="sig-paren">(</span><em>batch_size</em>, <em>val_rdd</em>, <em>trigger</em>, <em>val_method=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Optimizer.set_validation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Optimizer.set_validation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure validation settings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>batch_size</strong> – validation batch size</li>
+<li><strong>val_rdd</strong> – validation dataset</li>
+<li><strong>trigger</strong> – validation interval</li>
+<li><strong>val_method</strong> – the ValidationMethod to use,e.g. “Top1Accuracy”, “Top5Accuracy”, “Loss”</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.ParallelAdam">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">ParallelAdam</code><span class="sig-paren">(</span><em>learningrate=0.001</em>, <em>learningrate_decay=0.0</em>, <em>beta1=0.9</em>, <em>beta2=0.999</em>, <em>epsilon=1e-08</em>, <em>parallel_num=-1</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#ParallelAdam"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.ParallelAdam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.optim.optimizer.OptimMethod" title="bigdl.optim.optimizer.OptimMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.optim.optimizer.OptimMethod</span></code></a></p>
+<p>An implementation of Adam <a class="reference external" href="http://arxiv.org/pdf/1412.6980.pdf">http://arxiv.org/pdf/1412.6980.pdf</a>
+:param learningrate learning rate
+:param learningrate_decay learning rate decay
+:param beta1 first moment coefficient
+:param beta2 second moment coefficient
+:param epsilon for numerical stability
+&gt;&gt;&gt; init_engine()
+&gt;&gt;&gt; pAdam = ParallelAdam()
+creating: createParallelAdam</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Plateau">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Plateau</code><span class="sig-paren">(</span><em>monitor</em>, <em>factor=0.1</em>, <em>patience=10</em>, <em>mode='min'</em>, <em>epsilon=0.0001</em>, <em>cooldown=0</em>, <em>min_lr=0.0</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Plateau"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Plateau" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Plateau is the learning rate schedule when a metric has stopped improving.
+Models often benefit from reducing the learning rate by a factor of 2-10
+once learning stagnates. It monitors a quantity and if no improvement
+is seen for a ‘patience’ number of epochs, the learning rate is reduced.</p>
+<p>:param monitor quantity to be monitored, can be Loss or score
+:param factor factor by which the learning rate will be reduced. new_lr = lr * factor
+:param patience number of epochs with no improvement after which learning rate will be reduced.
+:param mode one of {min, max}.
+In min mode, lr will be reduced when the quantity monitored has stopped decreasing;
+in max mode it will be reduced when the quantity monitored has stopped increasing
+:param epsilon threshold for measuring the new optimum, to only focus on significant changes.
+:param cooldown number of epochs to wait before resuming normal operation
+after lr has been reduced.
+:param min_lr lower bound on the learning rate.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plateau</span> <span class="o">=</span> <span class="n">Plateau</span><span class="p">(</span><span class="s2">&quot;score&quot;</span><span class="p">)</span>
+<span class="go">creating: createPlateau</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Poly">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Poly</code><span class="sig-paren">(</span><em>power</em>, <em>max_iteration</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Poly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Poly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>A learning rate decay policy, where the effective learning rate
+follows a polynomial decay, to be zero by the max_iteration.
+Calculation: base_lr (1 - iter/max_iteration) ^ (power)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>power</strong> – coeffient of decay, refer to calculation formula</li>
+<li><strong>max_iteration</strong> – max iteration when lr becomes zero</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span> <span class="o">=</span> <span class="n">Poly</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">creating: createPoly</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.RMSprop">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">RMSprop</code><span class="sig-paren">(</span><em>learningrate=0.01</em>, <em>learningrate_decay=0.0</em>, <em>decayrate=0.99</em>, <em>epsilon=1e-08</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#RMSprop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.RMSprop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.optim.optimizer.OptimMethod" title="bigdl.optim.optimizer.OptimMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.optim.optimizer.OptimMethod</span></code></a></p>
+<p>An implementation of RMSprop
+:param learningrate learning rate
+:param learningrate_decay learning rate decay
+:param decayrate decay rate, also called rho
+:param epsilon for numerical stability
+&gt;&gt;&gt; adagrad = RMSprop()
+creating: createRMSprop</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.SGD">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">SGD</code><span class="sig-paren">(</span><em>learningrate=0.001</em>, <em>learningrate_decay=0.0</em>, <em>weightdecay=0.0</em>, <em>momentum=0.0</em>, <em>dampening=1.7976931348623157e+308</em>, <em>nesterov=False</em>, <em>leaningrate_schedule=None</em>, <em>learningrates=None</em>, <em>weightdecays=None</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#SGD"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.SGD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bigdl.optim.optimizer.OptimMethod" title="bigdl.optim.optimizer.OptimMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.optim.optimizer.OptimMethod</span></code></a></p>
+<p>A plain implementation of SGD</p>
+<p>:param learningrate learning rate
+:param learningrate_decay learning rate decay
+:param weightdecay weight decay
+:param momentum momentum
+:param dampening dampening for momentum
+:param nesterov enables Nesterov momentum
+:param learningrates 1D tensor of individual learning rates
+:param weightdecays 1D tensor of individual weight decays
+&gt;&gt;&gt; sgd = SGD()
+creating: createDefault
+creating: createSGD</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.SequentialSchedule">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">SequentialSchedule</code><span class="sig-paren">(</span><em>iteration_per_epoch</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#SequentialSchedule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.SequentialSchedule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Stack several learning rate schedulers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>iterationPerEpoch</strong> – iteration numbers per epoch</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sequentialSchedule</span> <span class="o">=</span> <span class="n">SequentialSchedule</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">creating: createSequentialSchedule</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">poly</span> <span class="o">=</span> <span class="n">Poly</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">creating: createPoly</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test</span> <span class="o">=</span> <span class="n">sequentialSchedule</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="bigdl.optim.optimizer.SequentialSchedule.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>scheduler</em>, <em>max_iteration</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#SequentialSchedule.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.SequentialSchedule.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a learning rate scheduler to the contained <cite>schedules</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>scheduler</strong> – learning rate scheduler to be add</li>
+<li><strong>max_iteration</strong> – iteration numbers this scheduler will run</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.SeveralIteration">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">SeveralIteration</code><span class="sig-paren">(</span><em>interval</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#SeveralIteration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.SeveralIteration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>A trigger specifies a timespot or several timespots during training,
+and a corresponding action will be taken when the timespot(s) is reached.
+SeveralIteration is a trigger that triggers an action every “n”
+iterations.
+Could be used as trigger in setvalidation and setcheckpoint in Optimizer,
+and also in TrainSummary.set_summary_trigger.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">serveralIteration</span> <span class="o">=</span> <span class="n">SeveralIteration</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">creating: createSeveralIteration</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Step">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Step</code><span class="sig-paren">(</span><em>step_size</em>, <em>gamma</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Step"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>A learning rate decay policy, where the effective learning rate is
+calculated as base_lr * gamma ^ (floor(iter / step_size))</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>step_size</strong> – </li>
+<li><strong>gamma</strong> – </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">step</span> <span class="o">=</span> <span class="n">Step</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="go">creating: createStep</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Top1Accuracy">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Top1Accuracy</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Top1Accuracy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Top1Accuracy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Caculate the percentage that output’s max probability index equals target.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">top1</span> <span class="o">=</span> <span class="n">Top1Accuracy</span><span class="p">()</span>
+<span class="go">creating: createTop1Accuracy</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Top5Accuracy">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Top5Accuracy</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Top5Accuracy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Top5Accuracy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Caculate the percentage that output’s max probability index equals target.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">top5</span> <span class="o">=</span> <span class="n">Top5Accuracy</span><span class="p">()</span>
+<span class="go">creating: createTop5Accuracy</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.TrainSummary">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">TrainSummary</code><span class="sig-paren">(</span><em>log_dir</em>, <em>app_name</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#TrainSummary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.TrainSummary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>A logging facility which allows user to trace how indicators (e.g.
+learning rate, training loss, throughput, etc.) change with iterations/time
+in an optimization process. TrainSummary is for training indicators only
+(check ValidationSummary for validation indicators).  It contains necessary
+information for the optimizer to know where to store the logs, how to
+retrieve the logs, and so on. - The logs are written in tensorflow-compatible
+format so that they can be visualized directly using tensorboard. Also the
+logs can be retrieved as ndarrays and visualized using python libraries
+such as matplotlib (in notebook, etc.).</p>
+<p>Use optimizer.setTrainSummary to enable train logger.</p>
+<dl class="method">
+<dt id="bigdl.optim.optimizer.TrainSummary.read_scalar">
+<code class="descname">read_scalar</code><span class="sig-paren">(</span><em>tag</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#TrainSummary.read_scalar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.TrainSummary.read_scalar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve train logs by type. Return an array of records in the format
+(step,value,wallClockTime). - “Step” is the iteration count by default.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tag</strong> – the type of the logs, Supported tags are: “LearningRate”,”Loss”, “Throughput”</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="bigdl.optim.optimizer.TrainSummary.set_summary_trigger">
+<code class="descname">set_summary_trigger</code><span class="sig-paren">(</span><em>name</em>, <em>trigger</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#TrainSummary.set_summary_trigger"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.TrainSummary.set_summary_trigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the interval of recording for each indicator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>tag</strong> – tag name. Supported tag names are “LearningRate”, “Loss”,”Throughput”, “Parameters”. “Parameters” is an umbrella tag thatincludes weight, bias, gradWeight, gradBias, and some running status(eg. runningMean and runningVar in BatchNormalization). If youdidn’t set any triggers, we will by default record Loss and Throughputin each iteration, while <em>NOT</em> recording LearningRate and Parameters,as recording parameters may introduce substantial overhead when themodel is very big, LearningRate is not a public attribute for allOptimMethod.</li>
+<li><strong>trigger</strong> – trigger</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.TreeNNAccuracy">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">TreeNNAccuracy</code><span class="sig-paren">(</span><em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#TreeNNAccuracy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.TreeNNAccuracy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>Caculate the percentage that output’s max probability index equals target.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">top1</span> <span class="o">=</span> <span class="n">TreeNNAccuracy</span><span class="p">()</span>
+<span class="go">creating: createTreeNNAccuracy</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.TriggerAnd">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">TriggerAnd</code><span class="sig-paren">(</span><em>first</em>, <em>*other</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#TriggerAnd"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.TriggerAnd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>A trigger contains other triggers and triggers when all of them trigger (logical AND)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">TriggerAnd</span><span class="p">(</span><span class="n">MinLoss</span><span class="p">(</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">MaxEpoch</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">creating: createMinLoss</span>
+<span class="go">creating: createMaxEpoch</span>
+<span class="go">creating: createTriggerAnd</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.TriggerOr">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">TriggerOr</code><span class="sig-paren">(</span><em>first</em>, <em>*other</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#TriggerOr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.TriggerOr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>A trigger contains other triggers and triggers when any of them trigger (logical OR)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">o</span> <span class="o">=</span> <span class="n">TriggerOr</span><span class="p">(</span><span class="n">MinLoss</span><span class="p">(</span><span class="mf">0.1</span><span class="p">),</span> <span class="n">MaxEpoch</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">creating: createMinLoss</span>
+<span class="go">creating: createMaxEpoch</span>
+<span class="go">creating: createTriggerOr</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.ValidationSummary">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">ValidationSummary</code><span class="sig-paren">(</span><em>log_dir</em>, <em>app_name</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#ValidationSummary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.ValidationSummary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>A logging facility which allows user to trace how indicators (e.g.
+validation loss, top1 accuray, top5 accuracy etc.) change with
+iterations/time in an optimization process. ValidationSummary is for
+validation indicators only (check TrainSummary for train indicators).
+It contains necessary information for the optimizer to know where to
+store the logs, how to retrieve the logs, and so on. - The logs are
+written in tensorflow-compatible format so that they can be visualized
+directly using tensorboard. Also the logs can be retrieved as ndarrays
+and visualized using python libraries such as matplotlib
+(in notebook, etc.).</p>
+<p>Use optimizer.setValidationSummary to enable validation logger.</p>
+<dl class="method">
+<dt id="bigdl.optim.optimizer.ValidationSummary.read_scalar">
+<code class="descname">read_scalar</code><span class="sig-paren">(</span><em>tag</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#ValidationSummary.read_scalar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.ValidationSummary.read_scalar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve validation logs by type. Return an array of records in the
+format (step,value,wallClockTime). - “Step” is the iteration count
+by default.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tag</strong> – the type of the logs. The tag should match the name ofthe ValidationMethod set into the optimizer. e.g.”Top1AccuracyLoss”,”Top1Accuracy” or “Top5Accuracy”.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bigdl.optim.optimizer.Warmup">
+<em class="property">class </em><code class="descclassname">bigdl.optim.optimizer.</code><code class="descname">Warmup</code><span class="sig-paren">(</span><em>delta</em>, <em>bigdl_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/optim/optimizer.html#Warmup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.optim.optimizer.Warmup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="bigdl.util.html#bigdl.util.common.JavaValue" title="bigdl.util.common.JavaValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">bigdl.util.common.JavaValue</span></code></a></p>
+<p>A learning rate gradual increase policy, where the effective learning rate
+increase delta after each iteration.
+Calculation: base_lr + delta * iteration</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>delta</strong> – increase amount after each iteration</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warmup</span> <span class="o">=</span> <span class="n">Warmup</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="go">creating: createWarmup</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-bigdl.optim">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bigdl.optim" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="bigdl.transform.html" title="bigdl.transform package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="bigdl.nn.onnx.html" title="bigdl.nn.onnx package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="bigdl.html" >bigdl package</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Intel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>
