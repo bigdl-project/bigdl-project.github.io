@@ -1,0 +1,2154 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>TensorMath - bigdl 0.10.0 API - com.intel.analytics.bigdl.tensor.TensorMath</title>
+          <meta name="description" content="TensorMath - bigdl 0.10.0 API - com.intel.analytics.bigdl.tensor.TensorMath" />
+          <meta name="keywords" content="TensorMath bigdl 0.10.0 API com.intel.analytics.bigdl.tensor.TensorMath" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../index.html';
+            var hash = 'com.intel.analytics.bigdl.tensor.TensorMath';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="type">
+      <div id="definition">
+        <img src="../../../../../lib/trait_big.png" />
+        <p id="owner"><a href="../../../../package.html" class="extype" name="com">com</a>.<a href="../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.tensor">tensor</a></p>
+        <h1>TensorMath</h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <span class="name">TensorMath</span><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>It provides multiple math operation functions for manipulating Tensor objects.
+All functions support both allocating a new Tensor to return the result
+and treating the caller as a target Tensor, in which case the target Tensor(s)
+will be resized accordingly and filled with the result. This property is especially
+useful when one wants to have tight control over when memory is allocated.
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>should be double or float
+</p></dd></dl><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div><div class="toggleContainer block">
+          <span class="toggle">Known Subclasses</span>
+          <div class="subClasses hiddenContent"><a href="DnnTensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.DnnTensor">DnnTensor</a>, <a href="DnnTensor$$DnnTensorUnsupportOperations.html" class="extype" name="com.intel.analytics.bigdl.tensor.DnnTensor.DnnTensorUnsupportOperations">DnnTensorUnsupportOperations</a>, <a href="QuantizedTensorUnsupported.html" class="extype" name="com.intel.analytics.bigdl.tensor.QuantizedTensorUnsupported">QuantizedTensorUnsupported</a>, <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="com.intel.analytics.bigdl.tensor.TensorMath"><span>TensorMath</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show all</span></li>
+            </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        
+
+        <div id="values" class="values members">
+              <h3>Abstract Value Members</h3>
+              <ol><li name="com.intel.analytics.bigdl.tensor.TensorMath#*" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="*(t:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="*(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $times" class="name">*</span><span class="params">(<span name="t">t: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Multiply a Tensor by another one, return the result in new allocated memory.</p><div class="fullcomment"><div class="comment cmt"><p>Multiply a Tensor by another one, return the result in new allocated memory.
+The number of elements in the Tensors must match, but the sizes do not matter.
+The size of the returned Tensor will be the size of the first Tensor</p></div><dl class="paramcmts block"><dt class="param">t</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#*" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="*(s:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="*(T):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $times" class="name">*</span><span class="params">(<span name="s">s: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">multiply all elements of this with value not in place.</p><div class="fullcomment"><div class="comment cmt"><p>multiply all elements of this with value not in place.
+It will allocate new memory.</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#+" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="+(t:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="+(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $plus" class="name">+</span><span class="params">(<span name="t">t: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Add a Tensor to another one, return the result in new allocated memory.</p><div class="fullcomment"><div class="comment cmt"><p>Add a Tensor to another one, return the result in new allocated memory.
+The number of elements in the Tensors must match, but the sizes do not matter.
+The size of the returned Tensor will be the size of the first Tensor</p></div><dl class="paramcmts block"><dt class="param">t</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#+" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="+(s:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="+(T):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $plus" class="name">+</span><span class="params">(<span name="s">s: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Add all elements of this with value not in place.</p><div class="fullcomment"><div class="comment cmt"><p>Add all elements of this with value not in place.
+It will allocate new memory.</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#-" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="-(t:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="-(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $minus" class="name">-</span><span class="params">(<span name="t">t: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Subtract a Tensor from another one, return the result in new allocated memory.</p><div class="fullcomment"><div class="comment cmt"><p>Subtract a Tensor from another one, return the result in new allocated memory.
+The number of elements in the Tensors must match, but the sizes do not matter.
+The size of the returned Tensor will be the size of the first Tensor</p></div><dl class="paramcmts block"><dt class="param">t</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#-" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="-(s:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="-(T):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $minus" class="name">-</span><span class="params">(<span name="s">s: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">subtract all elements of this with the value not in place.</p><div class="fullcomment"><div class="comment cmt"><p>subtract all elements of this with the value not in place.
+It will allocate new memory.</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#/" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="/(t:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="/(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $div" class="name">/</span><span class="params">(<span name="t">t: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Divide a Tensor by another one, return the result in new allocated memory.</p><div class="fullcomment"><div class="comment cmt"><p>Divide a Tensor by another one, return the result in new allocated memory.
+The number of elements in the Tensors must match, but the sizes do not matter.
+The size of the returned Tensor will be the size of the first Tensor</p></div><dl class="paramcmts block"><dt class="param">t</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#/" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="/(s:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="/(T):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $div" class="name">/</span><span class="params">(<span name="s">s: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">divide all elements of this with value not in place.</p><div class="fullcomment"><div class="comment cmt"><p>divide all elements of this with value not in place.
+It will allocate new memory.</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#abs" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="abs(x:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="abs(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">abs</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#abs" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="abs():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="abs():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">abs</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">replaces all elements in-place with the absolute values of the elements of this.</p><div class="fullcomment"><div class="comment cmt"><p>replaces all elements in-place with the absolute values of the elements of this.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#add" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="add(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="add(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">add</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#add" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="add(value:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="add(T):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">add</span><span class="params">(<span name="value">value: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">x.</p><div class="fullcomment"><div class="comment cmt"><p>x.add(value) : add value to all elements of x in place.</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#add" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="add(x:com.intel.analytics.bigdl.tensor.Tensor[T],value:T,y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="add(Tensor[T],T,Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">add</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="value">value: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">z.</p><div class="fullcomment"><div class="comment cmt"><p>z.add(x, value, y) puts the result of x + value * y in z.
+</p></div><dl class="paramcmts block"><dt class="param">x</dt><dd class="cmt"></dd><dt class="param">value</dt><dd class="cmt"></dd><dt class="param">y</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#add" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="add(y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="add(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">add</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">accumulates all elements of y into this
+</p><div class="fullcomment"><div class="comment cmt"><p>accumulates all elements of y into this
+</p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"><p>other tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#add" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="add(value:T,y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="add(T,Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">add</span><span class="params">(<span name="value">value: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">x.</p><div class="fullcomment"><div class="comment cmt"><p>x.add(value,y) multiply-accumulates values of y into x.
+</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>scalar</p></dd><dt class="param">y</dt><dd class="cmt"><p>other tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#addcdiv" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="addcdiv(value:T,tensor1:com.intel.analytics.bigdl.tensor.Tensor[T],tensor2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="addcdiv(T,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addcdiv</span><span class="params">(<span name="value">value: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="tensor1">tensor1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="tensor2">tensor2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Performs the element-wise division of tensor1 by tensor2, multiply the result by the scalar
+value and add it to x.</p><div class="fullcomment"><div class="comment cmt"><p>Performs the element-wise division of tensor1 by tensor2, multiply the result by the scalar
+value and add it to x.
+The number of elements must match, but sizes do not matter.
+</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"></dd><dt class="param">tensor1</dt><dd class="cmt"></dd><dt class="param">tensor2</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#addcmul" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="addcmul(tensor1:com.intel.analytics.bigdl.tensor.Tensor[T],tensor2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="addcmul(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addcmul</span><span class="params">(<span name="tensor1">tensor1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="tensor2">tensor2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#addcmul" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="addcmul(value:T,tensor1:com.intel.analytics.bigdl.tensor.Tensor[T],tensor2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="addcmul(T,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addcmul</span><span class="params">(<span name="value">value: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="tensor1">tensor1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="tensor2">tensor2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Performs the element-wise multiplication of tensor1 by tensor2, multiply the result by the
+scalar value (1 if not present) and add it to x.</p><div class="fullcomment"><div class="comment cmt"><p>Performs the element-wise multiplication of tensor1 by tensor2, multiply the result by the
+scalar value (1 if not present) and add it to x. The number of elements must match, but sizes
+do not matter.
+</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"></dd><dt class="param">tensor1</dt><dd class="cmt"></dd><dt class="param">tensor2</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#addmm" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="addmm(v1:T,v2:T,mat1:com.intel.analytics.bigdl.tensor.Tensor[T],mat2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="addmm(T,T,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addmm</span><span class="params">(<span name="v1">v1: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="v2">v2: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="mat1">mat1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="mat2">mat2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">res = v1 * res + v2 * mat1*mat2</p>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#addmm" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="addmm(v2:T,mat1:com.intel.analytics.bigdl.tensor.Tensor[T],mat2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="addmm(T,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addmm</span><span class="params">(<span name="v2">v2: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="mat1">mat1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="mat2">mat2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">res = res + v2 * mat1 * mat2</p>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#addmm" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="addmm(mat1:com.intel.analytics.bigdl.tensor.Tensor[T],mat2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="addmm(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addmm</span><span class="params">(<span name="mat1">mat1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="mat2">mat2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">res = res + mat1 * mat2</p>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#addmm" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="addmm(M:com.intel.analytics.bigdl.tensor.Tensor[T],mat1:com.intel.analytics.bigdl.tensor.Tensor[T],mat2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="addmm(Tensor[T],Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addmm</span><span class="params">(<span name="M">M: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="mat1">mat1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="mat2">mat2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">res = M + (mat1*mat2)</p>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#addmm" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="addmm(v1:T,M:com.intel.analytics.bigdl.tensor.Tensor[T],v2:T,mat1:com.intel.analytics.bigdl.tensor.Tensor[T],mat2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="addmm(T,Tensor[T],T,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addmm</span><span class="params">(<span name="v1">v1: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="M">M: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="v2">v2: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="mat1">mat1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="mat2">mat2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Performs a matrix-matrix multiplication between mat1 (2D tensor) and mat2 (2D tensor).</p><div class="fullcomment"><div class="comment cmt"><p>Performs a matrix-matrix multiplication between mat1 (2D tensor) and mat2 (2D tensor).
+Optional values v1 and v2 are scalars that multiply M and mat1 * mat2 respectively.
+Optional value beta is a scalar that scales the result tensor, before accumulating the result
+into the tensor. Defaults to 1.0.
+If mat1 is a n x m matrix, mat2 a m x p matrix, M must be a n x p matrix.</p><p>res = (v1 * M) + (v2 * mat1*mat2)
+</p></div><dl class="paramcmts block"><dt class="param">v1</dt><dd class="cmt"></dd><dt class="param">M</dt><dd class="cmt"></dd><dt class="param">v2</dt><dd class="cmt"></dd><dt class="param">mat1</dt><dd class="cmt"></dd><dt class="param">mat2</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#addmv" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="addmv(alpha:T,mat:com.intel.analytics.bigdl.tensor.Tensor[T],vec2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="addmv(T,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addmv</span><span class="params">(<span name="alpha">alpha: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="mat">mat: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="vec2">vec2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">res = res + alpha * (mat * vec2)</p>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#addmv" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="addmv(beta:T,alpha:T,mat:com.intel.analytics.bigdl.tensor.Tensor[T],vec2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="addmv(T,T,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addmv</span><span class="params">(<span name="beta">beta: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="alpha">alpha: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="mat">mat: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="vec2">vec2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">res = beta * res + alpha * (mat * vec2)</p>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#addmv" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="addmv(beta:T,vec1:com.intel.analytics.bigdl.tensor.Tensor[T],alpha:T,mat:com.intel.analytics.bigdl.tensor.Tensor[T],vec2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="addmv(T,Tensor[T],T,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addmv</span><span class="params">(<span name="beta">beta: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="vec1">vec1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="alpha">alpha: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="mat">mat: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="vec2">vec2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Performs a matrix-vector multiplication between mat (2D Tensor) and vec2 (1D Tensor) and add
+it to vec1.</p><div class="fullcomment"><div class="comment cmt"><p>Performs a matrix-vector multiplication between mat (2D Tensor) and vec2 (1D Tensor) and add
+it to vec1. Optional values v1 and v2 are scalars that multiply vec1 and vec2 respectively.</p><p>In other words,
+res = (beta * vec1) + alpha * (mat * vec2)</p><p>Sizes must respect the matrix-multiplication operation: if mat is a n × m matrix,
+vec2 must be vector of size m and vec1 must be a vector of size n.
+</p></div></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#addr" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="addr(v1:T,t1:com.intel.analytics.bigdl.tensor.Tensor[T],v2:T,t2:com.intel.analytics.bigdl.tensor.Tensor[T],t3:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="addr(T,Tensor[T],T,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addr</span><span class="params">(<span name="v1">v1: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="t1">t1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="v2">v2: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="t2">t2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="t3">t3: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Performs the outer-product between vec1 (1D Tensor) and vec2 (1D Tensor).</p><div class="fullcomment"><div class="comment cmt"><p>Performs the outer-product between vec1 (1D Tensor) and vec2 (1D Tensor).
+Optional values v1 and v2 are scalars that multiply mat and vec1 [out] vec2 respectively.
+In other words,res_ij = (v1 * mat_ij) + (v2 * vec1_i * vec2_j)</p></div><dl class="paramcmts block"><dt class="param">v1</dt><dd class="cmt"></dd><dt class="param">t1</dt><dd class="cmt"></dd><dt class="param">v2</dt><dd class="cmt"></dd><dt class="param">t2</dt><dd class="cmt"></dd><dt class="param">t3</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#addr" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="addr(v1:T,t1:com.intel.analytics.bigdl.tensor.Tensor[T],v2:T,t2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="addr(T,Tensor[T],T,Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addr</span><span class="params">(<span name="v1">v1: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="t1">t1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="v2">v2: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="t2">t2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#addr" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="addr(v1:T,t1:com.intel.analytics.bigdl.tensor.Tensor[T],t2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="addr(T,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addr</span><span class="params">(<span name="v1">v1: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="t1">t1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="t2">t2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#addr" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="addr(t1:com.intel.analytics.bigdl.tensor.Tensor[T],t2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="addr(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addr</span><span class="params">(<span name="t1">t1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="t2">t2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Performs the outer-product between vec1 (1D tensor) and vec2 (1D tensor).</p><div class="fullcomment"><div class="comment cmt"><p>Performs the outer-product between vec1 (1D tensor) and vec2 (1D tensor).
+Optional values v1 and v2 are scalars that multiply mat and vec1 [out] vec2 respectively.
+In other words,
+res_ij = (v1 * mat_ij) + (v2 * vec1_i * vec2_j)
+</p></div><dl class="paramcmts block"><dt class="param">t1</dt><dd class="cmt"></dd><dt class="param">t2</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#baddbmm" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="baddbmm(alpha:T,batch1:com.intel.analytics.bigdl.tensor.Tensor[T],batch2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="baddbmm(T,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">baddbmm</span><span class="params">(<span name="alpha">alpha: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="batch1">batch1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="batch2">batch2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">res_i = res_i + (alpha * batch1_i * batch2_i)</p>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#baddbmm" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="baddbmm(beta:T,alpha:T,batch1:com.intel.analytics.bigdl.tensor.Tensor[T],batch2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="baddbmm(T,T,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">baddbmm</span><span class="params">(<span name="beta">beta: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="alpha">alpha: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="batch1">batch1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="batch2">batch2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">res_i = (beta * res_i) + (alpha * batch1_i * batch2_i)</p>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#baddbmm" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="baddbmm(beta:T,M:com.intel.analytics.bigdl.tensor.Tensor[T],alpha:T,batch1:com.intel.analytics.bigdl.tensor.Tensor[T],batch2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="baddbmm(T,Tensor[T],T,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">baddbmm</span><span class="params">(<span name="beta">beta: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="M">M: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="alpha">alpha: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="batch1">batch1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="batch2">batch2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Perform a batch matrix matrix multiplication of matrices and stored in batch1 and batch2
+with batch add.</p><div class="fullcomment"><div class="comment cmt"><p>Perform a batch matrix matrix multiplication of matrices and stored in batch1 and batch2
+with batch add. batch1 and batch2 must be 3D Tensors each containing the same number of
+matrices. If batch1 is a b × n × m Tensor, batch2 a b × m × p Tensor, res will be a
+b × n × p Tensor.</p><p>In other words,
+res_i = (beta * M_i) + (alpha * batch1_i * batch2_i)
+</p></div></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#bmm" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="bmm(batch1:com.intel.analytics.bigdl.tensor.Tensor[T],batch2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="bmm(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">bmm</span><span class="params">(<span name="batch1">batch1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="batch2">batch2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">res_i = res_i + batch1_i * batch2_i</p>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#cdiv" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="cdiv(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="cdiv(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cdiv</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Element-wise divide
+z.</p><div class="fullcomment"><div class="comment cmt"><p>Element-wise divide
+z.cdiv(x, y) means z = x / y
+</p></div><dl class="paramcmts block"><dt class="param">x</dt><dd class="cmt"><p>tensor</p></dd><dt class="param">y</dt><dd class="cmt"><p>tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#cdiv" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="cdiv(y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="cdiv(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cdiv</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Element-wise divide
+x.</p><div class="fullcomment"><div class="comment cmt"><p>Element-wise divide
+x.cdiv(y) all elements of x divide all elements of y.
+x = x / y
+</p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"><p>tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#ceil" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="ceil():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="ceil():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ceil</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Replaces all elements in-place with the ceil result of elements</p><div class="fullcomment"><div class="comment cmt"><p>Replaces all elements in-place with the ceil result of elements</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#clamp" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="clamp(min:Double,max:Double):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="clamp(Double,Double):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clamp</span><span class="params">(<span name="min">min: <span class="extype" name="scala.Double">Double</span></span>, <span name="max">max: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#cmax" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="cmax(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="cmax(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cmax</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">stores the element-wise maximum of x and y in z.</p><div class="fullcomment"><div class="comment cmt"><p>stores the element-wise maximum of x and y in z.
+z.cmax(x, y) means z = max(x, y)
+</p></div><dl class="paramcmts block"><dt class="param">x</dt><dd class="cmt"><p>tensor</p></dd><dt class="param">y</dt><dd class="cmt"><p>tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#cmax" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="cmax(y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="cmax(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cmax</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">stores the element-wise maximum of x and y in x.</p><div class="fullcomment"><div class="comment cmt"><p>stores the element-wise maximum of x and y in x.
+x.cmax(y) = max(x, y)
+</p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"><p>tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#cmax" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="cmax(value:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="cmax(T):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cmax</span><span class="params">(<span name="value">value: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">For each elements of the tensor, performs the max operation compared with the given value
+vector.</p><div class="fullcomment"><div class="comment cmt"><p>For each elements of the tensor, performs the max operation compared with the given value
+vector.
+</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#cmin" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="cmin(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="cmin(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cmin</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">stores the element-wise maximum of x and y in z.</p><div class="fullcomment"><div class="comment cmt"><p>stores the element-wise maximum of x and y in z.
+z.cmin(x, y) means z = min(x, y)
+</p></div><dl class="paramcmts block"><dt class="param">x</dt><dd class="cmt"><p>tensor</p></dd><dt class="param">y</dt><dd class="cmt"><p>tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#cmin" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="cmin(y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="cmin(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cmin</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">stores the element-wise maximum of x and y in x.</p><div class="fullcomment"><div class="comment cmt"><p>stores the element-wise maximum of x and y in x.
+x.cmin(y) = min(x, y)
+</p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"><p>tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#cmul" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="cmul(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="cmul(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cmul</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Element-wise multiply
+z.</p><div class="fullcomment"><div class="comment cmt"><p>Element-wise multiply
+z.cmul(x, y) equals z = x * y
+</p></div><dl class="paramcmts block"><dt class="param">x</dt><dd class="cmt"><p>tensor</p></dd><dt class="param">y</dt><dd class="cmt"><p>tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#cmul" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="cmul(y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="cmul(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cmul</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Element-wise multiply
+x.</p><div class="fullcomment"><div class="comment cmt"><p>Element-wise multiply
+x.cmul(y) multiplies all elements of x with corresponding elements of y.
+x = x * y
+</p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"><p>tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#conv2" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="conv2(kernel:com.intel.analytics.bigdl.tensor.Tensor[T],vf:Char):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="conv2(Tensor[T],Char):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">conv2</span><span class="params">(<span name="kernel">kernel: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="vf">vf: <span class="extype" name="scala.Char">Char</span> = <span class="symbol">'V'</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">This function computes 2 dimensional convolution of a single image
+with a single kernel (2D output).</p><div class="fullcomment"><div class="comment cmt"><p>This function computes 2 dimensional convolution of a single image
+with a single kernel (2D output). the dimensions of input and kernel
+need to be 2, and Input image needs to be bigger than kernel. The
+last argument controls if the convolution is a full ('F') or valid
+('V') convolution. The default is valid convolution.
+</p></div><dl class="paramcmts block"><dt class="param">kernel</dt><dd class="cmt"></dd><dt class="param">vf</dt><dd class="cmt"><p>full ('F') or valid ('V') convolution.</p></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#digamma" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="digamma():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="digamma():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">digamma</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Computes Psi, the derivative of Lgamma (the log of the absolute value of
+<code>Gamma(x)</code>), element-wise and update the content inplace</p><div class="fullcomment"><div class="comment cmt"><p>Computes Psi, the derivative of Lgamma (the log of the absolute value of
+<code>Gamma(x)</code>), element-wise and update the content inplace</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#dist" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="dist(y:com.intel.analytics.bigdl.tensor.Tensor[T],norm:Int):T"></a>
+      <a id="dist(Tensor[T],Int):T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dist</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="norm">norm: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Performs the p-norm distance calculation between two tensors</p><div class="fullcomment"><div class="comment cmt"><p>Performs the p-norm distance calculation between two tensors</p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"><p>the secode Tensor</p></dd><dt class="param">norm</dt><dd class="cmt"><p>the norm of distance</p></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#div" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="div(y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="div(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">div</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Element-wise divide
+x.</p><div class="fullcomment"><div class="comment cmt"><p>Element-wise divide
+x.div(y) all elements of x divide all elements of y.
+x = x / y
+</p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"><p>tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#div" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="div(value:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="div(T):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">div</span><span class="params">(<span name="value">value: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">divide all elements of this with value in-place.</p><div class="fullcomment"><div class="comment cmt"><p>divide all elements of this with value in-place.
+</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#dot" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="dot(y:com.intel.analytics.bigdl.tensor.Tensor[T]):T"></a>
+      <a id="dot(Tensor[T]):T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dot</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Performs the dot product.</p><div class="fullcomment"><div class="comment cmt"><p>Performs the dot product. The number of elements must match: both Tensors are seen as a 1D
+vector.
+</p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#eq" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="eq(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="eq(Tensor[T],T):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="y">y: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Implements == operator comparing each element in x with y
+</p><div class="fullcomment"><div class="comment cmt"><p>Implements == operator comparing each element in x with y
+</p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>current tensor reference
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#erf" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="erf():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="erf():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">erf</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Computes the reciprocal of this tensor element-wise and update the content inplace</p><div class="fullcomment"><div class="comment cmt"><p>Computes the reciprocal of this tensor element-wise and update the content inplace</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#erfc" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="erfc():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="erfc():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">erfc</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Computes the reciprocal of this tensor element-wise and update the content inplace</p><div class="fullcomment"><div class="comment cmt"><p>Computes the reciprocal of this tensor element-wise and update the content inplace</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#exp" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="exp():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="exp():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">exp</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#exp" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="exp(y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="exp(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">exp</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#floor" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="floor():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="floor():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">floor</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Replaces all elements in-place with the floor result of elements</p><div class="fullcomment"><div class="comment cmt"><p>Replaces all elements in-place with the floor result of elements</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#floor" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="floor(y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="floor(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">floor</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Populate the given tensor with the floor result of elements</p><div class="fullcomment"><div class="comment cmt"><p>Populate the given tensor with the floor result of elements</p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#gather" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="gather(dim:Int,index:com.intel.analytics.bigdl.tensor.Tensor[T],src:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="gather(Int,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">gather</span><span class="params">(<span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>, <span name="index">index: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="src">src: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">change this tensor with values from the original tensor by gathering a number of values
+from each &quot;row&quot;, where the rows are along the dimension dim.</p><div class="fullcomment"><div class="comment cmt"><p>change this tensor with values from the original tensor by gathering a number of values
+from each &quot;row&quot;, where the rows are along the dimension dim.</p></div><dl class="paramcmts block"><dt class="param">dim</dt><dd class="cmt"></dd><dt class="param">index</dt><dd class="cmt"></dd><dt class="param">src</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>this
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#ge" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="ge(x:com.intel.analytics.bigdl.tensor.Tensor[T],value:Double):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="ge(Tensor[T],Double):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ge</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="value">value: <span class="extype" name="scala.Double">Double</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Implements &gt;= operator comparing each element in x with value</p><div class="fullcomment"><div class="comment cmt"><p>Implements &gt;= operator comparing each element in x with value</p></div><dl class="paramcmts block"><dt class="param">x</dt><dd class="cmt"></dd><dt class="param">value</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#gt" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="gt(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="gt(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">gt</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Implements &gt; operator comparing each element in x with y
+</p><div class="fullcomment"><div class="comment cmt"><p>Implements &gt; operator comparing each element in x with y
+</p></div><dl class="paramcmts block"><dt class="param">x</dt><dd class="cmt"></dd><dt class="param">y</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>current tensor reference
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#index" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="index(dim:Int,index:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="index(Int,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">index</span><span class="params">(<span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>, <span name="index">index: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Accumulate the elements of tensor into the original tensor by adding to the indices
+in the order given in index.</p><div class="fullcomment"><div class="comment cmt"><p>Accumulate the elements of tensor into the original tensor by adding to the indices
+in the order given in index. The shape of tensor must exactly match the elements indexed
+or an error will be thrown.</p></div><dl class="paramcmts block"><dt class="param">dim</dt><dd class="cmt"></dd><dt class="param">index</dt><dd class="cmt"></dd><dt class="param">y</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#indexAdd" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="indexAdd(dim:Int,index:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="indexAdd(Int,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">indexAdd</span><span class="params">(<span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>, <span name="index">index: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Accumulate the elements of tensor into the original tensor by adding to the indices
+in the order given in index.</p><div class="fullcomment"><div class="comment cmt"><p>Accumulate the elements of tensor into the original tensor by adding to the indices
+in the order given in index. The shape of tensor must exactly match the elements indexed
+or an error will be thrown.</p></div><dl class="paramcmts block"><dt class="param">dim</dt><dd class="cmt"></dd><dt class="param">index</dt><dd class="cmt"></dd><dt class="param">y</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#inv" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="inv():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="inv():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">inv</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Computes the reciprocal of this tensor element-wise and update the content inplace</p><div class="fullcomment"><div class="comment cmt"><p>Computes the reciprocal of this tensor element-wise and update the content inplace</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#le" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="le(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="le(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">le</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Implements &lt;= operator comparing each element in x with y
+</p><div class="fullcomment"><div class="comment cmt"><p>Implements &lt;= operator comparing each element in x with y
+</p></div><dl class="paramcmts block"><dt class="param">x</dt><dd class="cmt"></dd><dt class="param">y</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>current tensor reference
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#log" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="log():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="log():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">log</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#log" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="log(y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="log(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">log</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Replaces all elements in-place with the elements of lnx
+</p><div class="fullcomment"><div class="comment cmt"><p>Replaces all elements in-place with the elements of lnx
+</p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>current tensor reference
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#log1p" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="log1p():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="log1p():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">log1p</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#log1p" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="log1p(y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="log1p(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">log1p</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#logGamma" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="logGamma():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="logGamma():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logGamma</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Computes the log of the absolute value of <code>Gamma(x)</code> element-wise,
+and update the content inplace</p><div class="fullcomment"><div class="comment cmt"><p>Computes the log of the absolute value of <code>Gamma(x)</code> element-wise,
+and update the content inplace</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#lt" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="lt(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="lt(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">lt</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Implements &lt; operator comparing each element in x with y
+</p><div class="fullcomment"><div class="comment cmt"><p>Implements &lt; operator comparing each element in x with y
+</p></div><dl class="paramcmts block"><dt class="param">x</dt><dd class="cmt"></dd><dt class="param">y</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>current tensor reference
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#maskedCopy" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="maskedCopy(mask:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="maskedCopy(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">maskedCopy</span><span class="params">(<span name="mask">mask: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Copies the elements of tensor into mask locations of itself.</p><div class="fullcomment"><div class="comment cmt"><p>Copies the elements of tensor into mask locations of itself.
+</p></div><dl class="paramcmts block"><dt class="param">mask</dt><dd class="cmt"></dd><dt class="param">y</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>current tensor reference
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#maskedFill" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="maskedFill(mask:com.intel.analytics.bigdl.tensor.Tensor[T],e:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="maskedFill(Tensor[T],T):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">maskedFill</span><span class="params">(<span name="mask">mask: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="e">e: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Fills the masked elements of itself with value val
+</p><div class="fullcomment"><div class="comment cmt"><p>Fills the masked elements of itself with value val
+</p></div><dl class="paramcmts block"><dt class="param">mask</dt><dd class="cmt"></dd><dt class="param">e</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>current tensor reference
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#maskedSelect" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="maskedSelect(mask:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="maskedSelect(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">maskedSelect</span><span class="params">(<span name="mask">mask: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns a new Tensor which contains all elements aligned to a 1 in the corresponding mask.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a new Tensor which contains all elements aligned to a 1 in the corresponding mask.
+</p></div><dl class="paramcmts block"><dt class="param">mask</dt><dd class="cmt"></dd><dt class="param">y</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>current tensor reference
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#max" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="max(values:com.intel.analytics.bigdl.tensor.Tensor[T],indices:com.intel.analytics.bigdl.tensor.Tensor[T],dim:Int):(com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T])"></a>
+      <a id="max(Tensor[T],Tensor[T],Int):(Tensor[T],Tensor[T])"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">max</span><span class="params">(<span name="values">values: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="indices">indices: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: (<a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>], <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>])</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">performs the max operation over the dimension n</p><div class="fullcomment"><div class="comment cmt"><p>performs the max operation over the dimension n</p></div><dl class="paramcmts block"><dt class="param">values</dt><dd class="cmt"></dd><dt class="param">indices</dt><dd class="cmt"></dd><dt class="param">dim</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#max" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="max(dim:Int):(com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T])"></a>
+      <a id="max(Int):(Tensor[T],Tensor[T])"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">max</span><span class="params">(<span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: (<a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>], <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>])</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">performs the max operation over the dimension n</p><div class="fullcomment"><div class="comment cmt"><p>performs the max operation over the dimension n</p></div><dl class="paramcmts block"><dt class="param">dim</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#max" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="max():T"></a>
+      <a id="max():T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">max</span><span class="params">()</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">returns the single biggest element of x</p><div class="fullcomment"><div class="comment cmt"><p>returns the single biggest element of x</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#mean" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="mean(dim:Int):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="mean(Int):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">mean</span><span class="params">(<span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">performs the mean operation over the dimension dim.</p><div class="fullcomment"><div class="comment cmt"><p>performs the mean operation over the dimension dim.
+</p></div><dl class="paramcmts block"><dt class="param">dim</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#mean" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="mean():T"></a>
+      <a id="mean():T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">mean</span><span class="params">()</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">returns the mean of all elements of this.</p><div class="fullcomment"><div class="comment cmt"><p>returns the mean of all elements of this.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#min" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="min(values:com.intel.analytics.bigdl.tensor.Tensor[T],indices:com.intel.analytics.bigdl.tensor.Tensor[T],dim:Int):(com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T])"></a>
+      <a id="min(Tensor[T],Tensor[T],Int):(Tensor[T],Tensor[T])"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">min</span><span class="params">(<span name="values">values: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="indices">indices: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: (<a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>], <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>])</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">performs the min operation over the dimension n</p><div class="fullcomment"><div class="comment cmt"><p>performs the min operation over the dimension n</p></div><dl class="paramcmts block"><dt class="param">values</dt><dd class="cmt"></dd><dt class="param">indices</dt><dd class="cmt"></dd><dt class="param">dim</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#min" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="min(dim:Int):(com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T])"></a>
+      <a id="min(Int):(Tensor[T],Tensor[T])"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">min</span><span class="params">(<span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: (<a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>], <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>])</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">performs the min operation over the dimension n</p><div class="fullcomment"><div class="comment cmt"><p>performs the min operation over the dimension n</p></div><dl class="paramcmts block"><dt class="param">dim</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#min" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="min():T"></a>
+      <a id="min():T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">min</span><span class="params">()</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">returns the single minimum element of x</p><div class="fullcomment"><div class="comment cmt"><p>returns the single minimum element of x</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#mm" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="mm(mat1:com.intel.analytics.bigdl.tensor.Tensor[T],mat2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="mm(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">mm</span><span class="params">(<span name="mat1">mat1: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="mat2">mat2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">res = mat1*mat2</p>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#mul" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="mul(x:com.intel.analytics.bigdl.tensor.Tensor[T],value:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="mul(Tensor[T],T):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">mul</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="value">value: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">put the result of x * value in current tensor
+</p><div class="fullcomment"><div class="comment cmt"><p>put the result of x * value in current tensor
+</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#mul" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="mul(value:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="mul(T):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">mul</span><span class="params">(<span name="value">value: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">multiply all elements of this with value in-place.</p><div class="fullcomment"><div class="comment cmt"><p>multiply all elements of this with value in-place.
+</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#mv" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="mv(mat:com.intel.analytics.bigdl.tensor.Tensor[T],vec2:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="mv(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">mv</span><span class="params">(<span name="mat">mat: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="vec2">vec2: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">res = res + (mat * vec2)</p>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#negative" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="negative(x:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="negative(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">negative</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Computes numerical negative value element-wise.</p><div class="fullcomment"><div class="comment cmt"><p>Computes numerical negative value element-wise. y = -x</p></div><dl class="paramcmts block"><dt class="param">x</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>this tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#norm" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="norm(value:Int):T"></a>
+      <a id="norm(Int):T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">norm</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">returns the sum of the n-norms on the Tensor x</p><div class="fullcomment"><div class="comment cmt"><p>returns the sum of the n-norms on the Tensor x</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>the n-norms</p></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#norm" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="norm(y:com.intel.analytics.bigdl.tensor.Tensor[T],value:Int,dim:Int):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="norm(Tensor[T],Int,Int):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">norm</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="value">value: <span class="extype" name="scala.Int">Int</span></span>, <span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">returns the p-norms of the Tensor x computed over the dimension dim.</p><div class="fullcomment"><div class="comment cmt"><p>returns the p-norms of the Tensor x computed over the dimension dim.</p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"><p>result buffer</p></dd><dt class="param">value</dt><dd class="cmt"></dd><dt class="param">dim</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#pow" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="pow(n:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="pow(T):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">pow</span><span class="params">(<span name="n">n: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#pow" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="pow(y:com.intel.analytics.bigdl.tensor.Tensor[T],n:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="pow(Tensor[T],T):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">pow</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="n">n: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Replaces all elements in-place with the elements of x to the power of n
+</p><div class="fullcomment"><div class="comment cmt"><p>Replaces all elements in-place with the elements of x to the power of n
+</p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"></dd><dt class="param">n</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>current tensor reference
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#prod" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="prod(x:com.intel.analytics.bigdl.tensor.Tensor[T],dim:Int):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="prod(Tensor[T],Int):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">prod</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#prod" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="prod():T"></a>
+      <a id="prod():T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">prod</span><span class="params">()</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">returns the product of the elements of this</p><div class="fullcomment"><div class="comment cmt"><p>returns the product of the elements of this</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#range" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="range(xmin:Double,xmax:Double,step:Int):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="range(Double,Double,Int):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">range</span><span class="params">(<span name="xmin">xmin: <span class="extype" name="scala.Double">Double</span></span>, <span name="xmax">xmax: <span class="extype" name="scala.Double">Double</span></span>, <span name="step">step: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">resize this tensor size to floor((xmax - xmin) / step) + 1 and set values from
+xmin to xmax with step (default to 1).</p><div class="fullcomment"><div class="comment cmt"><p>resize this tensor size to floor((xmax - xmin) / step) + 1 and set values from
+xmin to xmax with step (default to 1).</p></div><dl class="paramcmts block"><dt class="param">xmin</dt><dd class="cmt"></dd><dt class="param">xmax</dt><dd class="cmt"></dd><dt class="param">step</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>this tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#reduce" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="reduce(dim:Int,result:com.intel.analytics.bigdl.tensor.Tensor[T],reducer:(T,T)=&gt;T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="reduce(Int,Tensor[T],(T,T)⇒T):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">reduce</span><span class="params">(<span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>, <span name="result">result: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="reducer">reducer: (<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>, <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>) ⇒ <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Reduce along the given dimension with the given reducer, and copy the result to the result
+tensor</p><div class="fullcomment"><div class="comment cmt"><p>Reduce along the given dimension with the given reducer, and copy the result to the result
+tensor</p></div><dl class="paramcmts block"><dt class="param">dim</dt><dd class="cmt"></dd><dt class="param">result</dt><dd class="cmt"></dd><dt class="param">reducer</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#scatter" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="scatter(dim:Int,index:com.intel.analytics.bigdl.tensor.Tensor[T],src:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="scatter(Int,Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">scatter</span><span class="params">(<span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>, <span name="index">index: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="src">src: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Writes all values from tensor src into this tensor at the specified indices</p><div class="fullcomment"><div class="comment cmt"><p>Writes all values from tensor src into this tensor at the specified indices</p></div><dl class="paramcmts block"><dt class="param">dim</dt><dd class="cmt"></dd><dt class="param">index</dt><dd class="cmt"></dd><dt class="param">src</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>this
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#sign" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="sign():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sign():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sign</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">returns a new Tensor with the sign (+/- 1 or 0) of the elements of x.</p><div class="fullcomment"><div class="comment cmt"><p>returns a new Tensor with the sign (+/- 1 or 0) of the elements of x.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#sqrt" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="sqrt(y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sqrt(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sqrt</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#sqrt" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="sqrt():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sqrt():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sqrt</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">replaces all elements in-place with the square root of the elements of this.</p><div class="fullcomment"><div class="comment cmt"><p>replaces all elements in-place with the square root of the elements of this.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#square" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="square():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="square():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">square</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Replaces all elements in-place with the elements of x squared
+</p><div class="fullcomment"><div class="comment cmt"><p>Replaces all elements in-place with the elements of x squared
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>current tensor reference
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#sub" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="sub(value:T):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sub(T):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sub</span><span class="params">(<span name="value">value: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#sub" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="sub(x:com.intel.analytics.bigdl.tensor.Tensor[T],y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sub(Tensor[T],Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sub</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#sub" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="sub(y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sub(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sub</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">subtracts all elements of y from this
+</p><div class="fullcomment"><div class="comment cmt"><p>subtracts all elements of y from this
+</p></div><dl class="paramcmts block"><dt class="param">y</dt><dd class="cmt"><p>other tensor</p></dd><dt>returns</dt><dd class="cmt"><p>current tensor
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#sub" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="sub(x:com.intel.analytics.bigdl.tensor.Tensor[T],value:T,y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sub(Tensor[T],T,Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sub</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="value">value: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#sub" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="sub(value:T,y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sub(T,Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sub</span><span class="params">(<span name="value">value: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>, <span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#sum" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="sum(x:com.intel.analytics.bigdl.tensor.Tensor[T],dim:Int):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sum(Tensor[T],Int):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sum</span><span class="params">(<span name="x">x: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#sum" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="sum(dim:Int):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="sum(Int):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sum</span><span class="params">(<span name="dim">dim: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">performs the sum operation over the dimension dim</p><div class="fullcomment"><div class="comment cmt"><p>performs the sum operation over the dimension dim</p></div><dl class="paramcmts block"><dt class="param">dim</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#sum" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="sum():T"></a>
+      <a id="sum():T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sum</span><span class="params">()</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">returns the sum of the elements of this</p><div class="fullcomment"><div class="comment cmt"><p>returns the sum of the elements of this</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#sumSquare" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="sumSquare():T"></a>
+      <a id="sumSquare():T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sumSquare</span><span class="params">()</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#tanh" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="tanh(y:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="tanh(Tensor[T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tanh</span><span class="params">(<span name="y">y: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#tanh" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="tanh():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="tanh():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tanh</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">replaces all elements in-place with the tanh root of the elements of this.</p><div class="fullcomment"><div class="comment cmt"><p>replaces all elements in-place with the tanh root of the elements of this.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#topk" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="topk(k:Int,dim:Int,increase:Boolean,result:com.intel.analytics.bigdl.tensor.Tensor[T],indices:com.intel.analytics.bigdl.tensor.Tensor[T],sortedResult:Boolean):(com.intel.analytics.bigdl.tensor.Tensor[T],com.intel.analytics.bigdl.tensor.Tensor[T])"></a>
+      <a id="topk(Int,Int,Boolean,Tensor[T],Tensor[T],Boolean):(Tensor[T],Tensor[T])"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">topk</span><span class="params">(<span name="k">k: <span class="extype" name="scala.Int">Int</span></span>, <span name="dim">dim: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>, <span name="increase">increase: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="result">result: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>] = <span class="symbol">null</span></span>, <span name="indices">indices: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>] = <span class="symbol">null</span></span>, <span name="sortedResult">sortedResult: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result">: (<a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>], <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>])</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Get the top k smallest values and their indices.</p><div class="fullcomment"><div class="comment cmt"><p>Get the top k smallest values and their indices.
+</p></div><dl class="paramcmts block"><dt class="param">k</dt><dd class="cmt"></dd><dt class="param">dim</dt><dd class="cmt"><p>dimension, default is the last dimension</p></dd><dt class="param">increase</dt><dd class="cmt"><p>sort order, set it to true if you want to get the smallest top k values</p></dd><dt class="param">result</dt><dd class="cmt"><p>result buffer</p></dd><dt class="param">indices</dt><dd class="cmt"><p>indices buffer</p></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#unary_-" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="unary_-():com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="unary_-():Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: unary_$minus" class="name">unary_-</span><span class="params">()</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#uniform" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="uniform(args:T*):T"></a>
+      <a id="uniform(T*):T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">uniform</span><span class="params">(<span name="args">args: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>*</span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">return pseudo-random numbers, require 0&lt;=args.</p><div class="fullcomment"><div class="comment cmt"><p>return pseudo-random numbers, require 0&lt;=args.length&lt;=2
+if args.length = 0, return [0, 1)
+if args.length = 1, return [1, args(0)] or [args(0), 1]
+if args.length = 2, return [args(0), args(1)]
+</p></div><dl class="paramcmts block"><dt class="param">args</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#xcorr2" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="xcorr2(kernel:com.intel.analytics.bigdl.tensor.Tensor[T],vf:Char):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="xcorr2(Tensor[T],Char):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">xcorr2</span><span class="params">(<span name="kernel">kernel: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>, <span name="vf">vf: <span class="extype" name="scala.Char">Char</span> = <span class="symbol">'V'</span></span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">This function operates with same options and input/output configurations as conv2,
+but performs cross-correlation of the input with the kernel k.</p><div class="fullcomment"><div class="comment cmt"><p>This function operates with same options and input/output configurations as conv2,
+but performs cross-correlation of the input with the kernel k.
+</p></div><dl class="paramcmts block"><dt class="param">kernel</dt><dd class="cmt"></dd><dt class="param">vf</dt><dd class="cmt"><p>full ('F') or valid ('V') convolution.</p></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Concrete Value Members</h3>
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:AnyRef):Boolean"></a>
+      <a id="!=(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.tensor.TensorMath#+" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="+(e:Either[com.intel.analytics.bigdl.tensor.Tensor[T],T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
+      <a id="+(Either[Tensor[T],T]):Tensor[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $plus" class="name">+</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Either">Either</span>[<a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>)</span><span class="result">: <a href="Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.tensor.TensorMath.T">T</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:AnyRef):Boolean"></a>
+      <a id="==(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
+      <a id="clone():AnyRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
+      <a id="equals(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <a id="hashCode():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+    </body>
+      </html>
