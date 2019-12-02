@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>RoiAlign - bigdl 0.10.0-SNAPSHOT API - com.intel.analytics.bigdl.nn.RoiAlign</title>
-          <meta name="description" content="RoiAlign - bigdl 0.10.0 - SNAPSHOT API - com.intel.analytics.bigdl.nn.RoiAlign" />
-          <meta name="keywords" content="RoiAlign bigdl 0.10.0 SNAPSHOT API com.intel.analytics.bigdl.nn.RoiAlign" />
+          <title>RoiAlign - bigdl 0.11.0-SNAPSHOT API - com.intel.analytics.bigdl.nn.RoiAlign</title>
+          <meta name="description" content="RoiAlign - bigdl 0.11.0 - SNAPSHOT API - com.intel.analytics.bigdl.nn.RoiAlign" />
+          <meta name="keywords" content="RoiAlign bigdl 0.11.0 SNAPSHOT API com.intel.analytics.bigdl.nn.RoiAlign" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -90,7 +90,7 @@ Pooling is applied independently to each feature map channel</p></div><div class
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="com.intel.analytics.bigdl.nn.RoiAlign#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(spatialScale:Float,samplingRatio:Int,pooledH:Int,pooledW:Int,mode:String)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.RoiAlign[T]"></a>
+      <a id="&lt;init&gt;(spatialScale:Float,samplingRatio:Int,pooledH:Int,pooledW:Int,mode:String,aligned:Boolean)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.RoiAlign[T]"></a>
       <a id="&lt;init&gt;:RoiAlign[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -98,7 +98,7 @@ Pooling is applied independently to each feature map channel</p></div><div class
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">RoiAlign</span><span class="params">(<span name="spatialScale">spatialScale: <span class="extype" name="scala.Float">Float</span></span>, <span name="samplingRatio">samplingRatio: <span class="extype" name="scala.Int">Int</span></span>, <span name="pooledH">pooledH: <span class="extype" name="scala.Int">Int</span></span>, <span name="pooledW">pooledW: <span class="extype" name="scala.Int">Int</span></span>, <span name="mode">mode: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;avg&quot;</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.RoiAlign.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RoiAlign.T">T</span>]</span>)</span>
+        <span class="name">RoiAlign</span><span class="params">(<span name="spatialScale">spatialScale: <span class="extype" name="scala.Float">Float</span></span>, <span name="samplingRatio">samplingRatio: <span class="extype" name="scala.Int">Int</span></span>, <span name="pooledH">pooledH: <span class="extype" name="scala.Int">Int</span></span>, <span name="pooledW">pooledW: <span class="extype" name="scala.Int">Int</span></span>, <span name="mode">mode: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;avg&quot;</span></span>, <span name="aligned">aligned: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.RoiAlign.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.RoiAlign.T">T</span>]</span>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">spatialScale</dt><dd class="cmt"><p>Spatial scale</p></dd><dt class="param">samplingRatio</dt><dd class="cmt"><p>Sampling ratio</p></dd><dt class="param">pooledH</dt><dd class="cmt"><p>spatial extent in height</p></dd><dt class="param">pooledW</dt><dd class="cmt"><p>spatial extent in width
@@ -195,6 +195,19 @@ parameters is module dependent. The module is expected to accumulate the gradien
 respect to the parameters in some variable.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"></dd><dt class="param">gradOutput</dt><dd class="cmt"><p>
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractModule.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule">AbstractModule</a></dd></dl></div>
+    </li><li name="com.intel.analytics.bigdl.nn.RoiAlign#aligned" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="aligned:Boolean"></a>
+      <a id="aligned:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">aligned</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractModule#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="apply(name:String):Option[com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]]"></a>
       <a id="apply(String):Option[AbstractModule[Activity,Activity,T]]"></a>
