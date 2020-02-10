@@ -9,7 +9,7 @@
     <title>bigdl.keras package &#8212; BigDL  documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -611,7 +611,7 @@ A Numpy array or RDD[Sample] of predictions.</p>
 <em class="property">class </em><code class="descclassname">bigdl.keras.converter.</code><code class="descname">WeightLoader</code><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightLoader"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightLoader" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightLoader.load_weights_from_hdf5">
-<em class="property">static </em><code class="descname">load_weights_from_hdf5</code><span class="sig-paren">(</span><em>kmodel</em>, <em>filepath</em>, <em>by_name=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightLoader.load_weights_from_hdf5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightLoader.load_weights_from_hdf5" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">load_weights_from_hdf5</code><span class="sig-paren">(</span><em>bmodel</em>, <em>kmodel</em>, <em>filepath</em>, <em>by_name=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightLoader.load_weights_from_hdf5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightLoader.load_weights_from_hdf5" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads all layer weights from a HDF5 save file.
 filepath can be stored in a local file system, HDFS, S3,
 or any Hadoop-supported file system.
@@ -627,14 +627,14 @@ some of the layers have changed.</p>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightLoader.load_weights_from_json_hdf5">
-<em class="property">static </em><code class="descname">load_weights_from_json_hdf5</code><span class="sig-paren">(</span><em>weights_hdf5</em>, <em>by_name=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightLoader.load_weights_from_json_hdf5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightLoader.load_weights_from_json_hdf5" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">load_weights_from_json_hdf5</code><span class="sig-paren">(</span><em>def_json</em>, <em>weights_hdf5</em>, <em>by_name=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightLoader.load_weights_from_json_hdf5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightLoader.load_weights_from_json_hdf5" title="Permalink to this definition">¶</a></dt>
 <dd><p>The file path can be stored in a local file system, HDFS, S3,
 or any Hadoop-supported file system.</p>
 </dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightLoader.load_weights_from_kmodel">
-<em class="property">static </em><code class="descname">load_weights_from_kmodel</code><span class="sig-paren">(</span><em>kmodel</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightLoader.load_weights_from_kmodel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightLoader.load_weights_from_kmodel" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">load_weights_from_kmodel</code><span class="sig-paren">(</span><em>bmodel</em>, <em>kmodel</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightLoader.load_weights_from_kmodel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightLoader.load_weights_from_kmodel" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -648,127 +648,127 @@ so we only test against TensorFlow backend.
 TODO: Support th backend as well.</p>
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_atrousconvolution1d">
-<em class="property">static </em><code class="descname">convert_atrousconvolution1d</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_atrousconvolution1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_atrousconvolution1d" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_atrousconvolution1d</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_atrousconvolution1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_atrousconvolution1d" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_atrousconvolution2d">
-<em class="property">static </em><code class="descname">convert_atrousconvolution2d</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_atrousconvolution2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_atrousconvolution2d" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_atrousconvolution2d</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_atrousconvolution2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_atrousconvolution2d" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_batchnormalization">
-<em class="property">static </em><code class="descname">convert_batchnormalization</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_batchnormalization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_batchnormalization" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_batchnormalization</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_batchnormalization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_batchnormalization" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_bidirectional">
-<em class="property">static </em><code class="descname">convert_bidirectional</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_bidirectional"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_bidirectional" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_bidirectional</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_bidirectional"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_bidirectional" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_convlstm2d">
-<em class="property">static </em><code class="descname">convert_convlstm2d</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_convlstm2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_convlstm2d" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_convlstm2d</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_convlstm2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_convlstm2d" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_convolution1d">
-<em class="property">static </em><code class="descname">convert_convolution1d</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_convolution1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_convolution1d" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_convolution1d</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_convolution1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_convolution1d" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_convolution2d">
-<em class="property">static </em><code class="descname">convert_convolution2d</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_convolution2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_convolution2d" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_convolution2d</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_convolution2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_convolution2d" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_convolution3d">
-<em class="property">static </em><code class="descname">convert_convolution3d</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_convolution3d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_convolution3d" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_convolution3d</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_convolution3d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_convolution3d" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_deconvolution2d">
-<em class="property">static </em><code class="descname">convert_deconvolution2d</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_deconvolution2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_deconvolution2d" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_deconvolution2d</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_deconvolution2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_deconvolution2d" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_dense">
-<em class="property">static </em><code class="descname">convert_dense</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_dense"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_dense" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_dense</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_dense"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_dense" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_embedding">
-<em class="property">static </em><code class="descname">convert_embedding</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_embedding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_embedding" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_embedding</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_embedding"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_embedding" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_gru">
-<em class="property">static </em><code class="descname">convert_gru</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_gru"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_gru" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_gru</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_gru"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_gru" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_highway">
-<em class="property">static </em><code class="descname">convert_highway</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_highway"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_highway" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_highway</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_highway"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_highway" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_locallyconnected1d">
-<em class="property">static </em><code class="descname">convert_locallyconnected1d</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_locallyconnected1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_locallyconnected1d" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_locallyconnected1d</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_locallyconnected1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_locallyconnected1d" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_locallyconnected2d">
-<em class="property">static </em><code class="descname">convert_locallyconnected2d</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_locallyconnected2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_locallyconnected2d" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_locallyconnected2d</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_locallyconnected2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_locallyconnected2d" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_lstm">
-<em class="property">static </em><code class="descname">convert_lstm</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_lstm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_lstm" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_lstm</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_lstm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_lstm" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_maxoutdense">
-<em class="property">static </em><code class="descname">convert_maxoutdense</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_maxoutdense"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_maxoutdense" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_maxoutdense</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_maxoutdense"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_maxoutdense" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_separableconvolution2d">
-<em class="property">static </em><code class="descname">convert_separableconvolution2d</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_separableconvolution2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_separableconvolution2d" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_separableconvolution2d</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_separableconvolution2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_separableconvolution2d" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_simplernn">
-<em class="property">static </em><code class="descname">convert_simplernn</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_simplernn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_simplernn" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_simplernn</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_simplernn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_simplernn" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_srelu">
-<em class="property">static </em><code class="descname">convert_srelu</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_srelu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_srelu" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_srelu</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_srelu"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_srelu" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_timedistributed">
-<em class="property">static </em><code class="descname">convert_timedistributed</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_timedistributed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_timedistributed" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_timedistributed</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_timedistributed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_timedistributed" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.convert_timedistributeddense">
-<em class="property">static </em><code class="descname">convert_timedistributeddense</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_timedistributeddense"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_timedistributeddense" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">convert_timedistributeddense</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.convert_timedistributeddense"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.convert_timedistributeddense" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.get_bigdl_weights_from_klayer">
-<em class="property">static </em><code class="descname">get_bigdl_weights_from_klayer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.get_bigdl_weights_from_klayer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.get_bigdl_weights_from_klayer" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">get_bigdl_weights_from_klayer</code><span class="sig-paren">(</span><em>klayer</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.get_bigdl_weights_from_klayer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.get_bigdl_weights_from_klayer" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.get_converter">
-<em class="property">static </em><code class="descname">get_converter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.get_converter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.get_converter" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">get_converter</code><span class="sig-paren">(</span><em>class_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.get_converter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.get_converter" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.get_weights_from_kmodel">
-<em class="property">static </em><code class="descname">get_weights_from_kmodel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.get_weights_from_kmodel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.get_weights_from_kmodel" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">get_weights_from_kmodel</code><span class="sig-paren">(</span><em>kmodel</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.get_weights_from_kmodel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.get_weights_from_kmodel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert kmodel’s weights to bigdl format.
 We are supposing the order is the same as the execution order.
 :param kmodel: keras model
@@ -777,7 +777,7 @@ We are supposing the order is the same as the execution order.
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.converter.WeightsConverter.to_bigdl_weights">
-<em class="property">static </em><code class="descname">to_bigdl_weights</code><span class="sig-paren">(</span><em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.to_bigdl_weights"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.to_bigdl_weights" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">to_bigdl_weights</code><span class="sig-paren">(</span><em>klayer</em>, <em>weights</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/converter.html#WeightsConverter.to_bigdl_weights"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.converter.WeightsConverter.to_bigdl_weights" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -795,17 +795,17 @@ We are supposing the order is the same as the execution order.
 <em class="property">class </em><code class="descclassname">bigdl.keras.optimization.</code><code class="descname">OptimConverter</code><a class="reference internal" href="_modules/bigdl/keras/optimization.html#OptimConverter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.optimization.OptimConverter" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="staticmethod">
 <dt id="bigdl.keras.optimization.OptimConverter.to_bigdl_criterion">
-<em class="property">static </em><code class="descname">to_bigdl_criterion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/optimization.html#OptimConverter.to_bigdl_criterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.optimization.OptimConverter.to_bigdl_criterion" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">to_bigdl_criterion</code><span class="sig-paren">(</span><em>kloss</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/optimization.html#OptimConverter.to_bigdl_criterion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.optimization.OptimConverter.to_bigdl_criterion" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.optimization.OptimConverter.to_bigdl_metrics">
-<em class="property">static </em><code class="descname">to_bigdl_metrics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/optimization.html#OptimConverter.to_bigdl_metrics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.optimization.OptimConverter.to_bigdl_metrics" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">to_bigdl_metrics</code><span class="sig-paren">(</span><em>metrics</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/optimization.html#OptimConverter.to_bigdl_metrics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.optimization.OptimConverter.to_bigdl_metrics" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="staticmethod">
 <dt id="bigdl.keras.optimization.OptimConverter.to_bigdl_optim_method">
-<em class="property">static </em><code class="descname">to_bigdl_optim_method</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/optimization.html#OptimConverter.to_bigdl_optim_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.optimization.OptimConverter.to_bigdl_optim_method" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">to_bigdl_optim_method</code><span class="sig-paren">(</span><em>koptim_method</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/bigdl/keras/optimization.html#OptimConverter.to_bigdl_optim_method"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bigdl.keras.optimization.OptimConverter.to_bigdl_optim_method" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -843,7 +843,7 @@ We are supposing the order is the same as the execution order.
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Intel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.
     </div>
   </body>
 </html>
