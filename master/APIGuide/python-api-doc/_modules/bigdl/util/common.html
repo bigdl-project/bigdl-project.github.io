@@ -636,6 +636,7 @@
 <div class="viewcode-block" id="callBigDlFunc"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.callBigDlFunc">[docs]</a><span class="k">def</span> <span class="nf">callBigDlFunc</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Call API in PythonBigDL &quot;&quot;&quot;</span>
     <span class="n">gateway</span> <span class="o">=</span> <span class="n">_get_gateway</span><span class="p">()</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">_py2java</span><span class="p">(</span><span class="n">gateway</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
     <span class="n">error</span> <span class="o">=</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Cannot find function: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">jinvoker</span> <span class="ow">in</span> <span class="n">JavaCreator</span><span class="o">.</span><span class="n">instance</span><span class="p">(</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">gateway</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
         <span class="c1"># hasattr(jinvoker, name) always return true here,</span>
@@ -690,7 +691,6 @@
 <div class="viewcode-block" id="callJavaFunc"><a class="viewcode-back" href="../../../bigdl.util.html#bigdl.util.common.callJavaFunc">[docs]</a><span class="k">def</span> <span class="nf">callJavaFunc</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Call Java Function &quot;&quot;&quot;</span>
     <span class="n">gateway</span> <span class="o">=</span> <span class="n">_get_gateway</span><span class="p">()</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">_py2java</span><span class="p">(</span><span class="n">gateway</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">_java2py</span><span class="p">(</span><span class="n">gateway</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span></div>
 
