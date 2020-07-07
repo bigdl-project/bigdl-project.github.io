@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>From pip - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "NOTES", url: "#notes", children: [
+          ]},
+          {title: "Install BigDL-0.11.0.dev0", url: "#install-bigdl-0110dev0", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60548202-2', 'bigdl-project.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>From pip</strong></h1>
+    <hr>
+    <h2 id="notes"><strong>NOTES</strong></h2>
+<ul>
+<li>Pip install supports <strong>Mac</strong> and <strong>Linux</strong> platforms.</li>
+<li>You need to install Java <strong>&gt;= JDK8</strong> before runing BigDL, which is required by <strong>PySpark 2.2.0</strong>.</li>
+<li>Pip install only supports <strong>local</strong> mode. Might support cluster mode in the future. For those who want to use BigDL in cluster mode, try to <a href="../install-without-pip/">install without pip</a>.</li>
+<li>We've tested this package with <strong>Python 2.7</strong>, <strong>Python 3.5</strong> and <strong>Python 3.6</strong>. Only these three Python versions are supported for now.</li>
+<li>Note that <strong>Python 3.6</strong> is only compatible with Spark 1.6.4, 2.0.3, 2.1.1 and 2.2.0. See <a href="https://issues.apache.org/jira/browse/SPARK-19019">this issue</a> for more discussion.</li>
+</ul>
+<h2 id="install-bigdl-0110dev0"><strong>Install BigDL-0.11.0.dev0</strong></h2>
+<p>Install BigDL release via pip (we tested this on pip 9.0.1)</p>
+<p><strong>Remark:</strong></p>
+<ul>
+<li>
+<p>You might need to add <code>sudo</code> if without permission for the installation.</p>
+</li>
+<li>
+<p><code>pyspark</code> will be automatically installed first before installing BigDL if it hasn't been detected locally.</p>
+</li>
+</ul>
+<pre><code class="bash">pip install --upgrade pip
+pip install BigDL==0.11.0.dev0     # for Python 2.7
+pip3 install BigDL==0.11.0.dev0    # for Python 3.5 and Python 3.6
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

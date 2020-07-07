@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Run on Kubernetes - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Prerequisites", url: "#prerequisites", children: [
+          ]},
+          {title: "Docker image", url: "#docker-image", children: [
+          ]},
+          {title: "Run BigDL examples", url: "#run-bigdl-examples", children: [
+              {title: "Build your BigDL on Kubernetes image", url: "#build-your-bigdl-on-kubernetes-image" },
+          ]},
+          {title: "tag the image for yourself", url: "#tag-the-image-for-yourself", children: [
+          ]},
+          {title: "push", url: "#push", children: [
+              {title: "create Kubernetes service account", url: "#create-kubernetes-service-account" },
+              {title: "Run the Letnet5 application", url: "#run-the-letnet5-application" },
+              {title: "Future Work", url: "#future-work" },
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60548202-2', 'bigdl-project.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Run on Kubernetes</strong></h1>
+    <hr>
+    <p>Spark can run on clusters managed by Kubernetes. This feature makes use of native Kubernetes scheduler that has been added to Spark 2.3. Now as a deep learning library for Apache
+Spark, BigDL can also run on Kubernetes by leveraging Spark on Kubernetes.</p>
+<hr />
+<h2 id="prerequisites"><strong>Prerequisites</strong></h2>
+<ul>
+<li>
+<p>You need to have a running Kubernetes cluster that support Spark on Kubernetes. See <a href="https://spark.apache.org/docs/2.3.0/running-on-kubernetes.html#prerequisites">here</a>
+Otherwise, you can use <a href="https://kubernetes.io/docs/setup/minikube/">minikube</a> to run kubernetes locally and start a test. </p>
+</li>
+<li>
+<p>Download the <a href="https://spark.apache.org/downloads.html">spark2.3</a> release from Spark and unzip it. </p>
+</li>
+</ul>
+<hr />
+<h2 id="docker-image"><strong>Docker image</strong></h2>
+<p>For Spark2.3,
+BigDL ships with a Dockerfile that can be found in the <code>docker/spark2.3-k8s</code> directory. </p>
+<p>To built it, copy the 
+<code>docker/spark2.3-k8s</code> folder under <code>kubernetes/dockerfiles/</code> your unzipped spark 2.3 folder. </p>
+<p>Then the  docker build 
+command should be invoked from the top level directory of the Spark distribution. E.g.:
+<code>docker build -t bigdl-spark2.3-k8s:latest -f kubernetes/dockerfiles/spark2.3-k8s/Dockerfile .</code></p>
+<p>You can set your own image name and tag. We'll just use <code>bigdl-spark2.3-k8s:latest</code> as the name and tag for
+demonstration in the following usage example.</p>
+<hr />
+<h2 id="run-bigdl-examples"><strong>Run BigDL examples</strong></h2>
+<p>Now, let's go on a quick tour on how to run BigDL Lenet5 example with a local k8s cluster created by minikube.</p>
+<h3 id="build-your-bigdl-on-kubernetes-image">Build your BigDL on Kubernetes image</h3>
+<p>Follow the instructions under <strong>Docker Image</strong> section above, and you can have your pre-built docker image 
+<code>bigdl-spark2.3-k8s:latest</code>.</p>
+<p>Now you can tag it and push it to your docker hub for your k8s cluster's docker 
+ deamon to pull it. Something like:
+```$shell</p>
+<h1 id="tag-the-image-for-yourself">tag the image for yourself</h1>
+<p>docker tag bigdl-spark2.3-k8s my-repo-name/bigdl-spark2.3-k8s </p>
+<h1 id="push">push</h1>
+<p>docker push my-repo-name/bigdl-spark2.3-k8s</p>
+<pre><code>Or If we test with minikube, you can build your docker image using minikube since it will do so 
+directly into minikube's Docker daemon. There is no need to push the images into minikube in that 
+case, they'll be automatically available when running applications inside the minikube cluster.
+
+### Download minikube
+Follow the instructions from the [minikube chapter](https://kubernetes.io/docs/tasks/tools/install-minikube/) 
+in the Kubernetes official document and install minikube on your client machine.
+
+After installation, run ```minikube start```. You can see the terminal output like this:
+```shell
+Starting local Kubernetes v1.10.0 cluster...
+Starting VM...
+Getting VM IP address...
+Moving files into cluster...
+Setting up certs...
+Connecting to cluster...
+Setting up kubeconfig...
+Starting cluster components...
+Kubectl is now configured to use the cluster.
+Loading cached images from config file.
+
+</code></pre>
+
+<p>To further verify your minikube's local k8s cluster is correctly launched, run <code>kubetcl cluster-info</code>.
+It tells you where the kubernetes master DNS is running at. Sample output should be like:</p>
+<pre><code class="shell">Kubernetes master is running at https://192.168.99.100:8443
+KubeDNS is running at https://192.168.99.100:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+</code></pre>
+
+<h3 id="create-kubernetes-service-account">create Kubernetes service account</h3>
+<pre><code class="shell">kubectl create spark(you can replace it with your preferred name)
+kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
+</code></pre>
+
+<p>The reason why we need to do this is illustrated <a href="https://spark.apache.org/docs/2.3.0/running-on-kubernetes.html#rbac">here</a>.
+In simple words, the <code>default</code> service account may not allow driver pods to create pods so
+we need to create another one granted with access.</p>
+<h3 id="run-the-letnet5-application">Run the Letnet5 application</h3>
+<p>It's been a lot of setup work that might make your palm sweaty but finally we are ready to launch the application.</p>
+<p>Run the script below to train lenet5 model for only 2 epochs on MNIST dataset as a demo. </p>
+<pre><code class="shell">SPARK_HOME=...(your spark 2.3 home directory)
+$SPARK_HOME/bin/spark-submit \
+    --master k8s://your-master-ip(found by kubertcl cluster-info)\
+    --deploy-mode cluster \
+    --name bigdl-lenet5 \
+    --class com.intel.analytics.bigdl.models.lenet.Train \
+    --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark(Or your own service account name) \
+    --conf spark.executor.instances=4 \
+    --conf spark.executor.cores=1 \
+    --conf spark.cores.max=4 \
+    --conf spark.kubernetes.container.image=docker.io/my-repo-name/bigdl-spark2.3-k8s:latest \
+    local:///opt/bigdl-0.6.0/lib/bigdl-SPARK_2.3-0.6.0-jar-with-dependencies.jar \
+    -f hdfs://path-to-your-mnist \
+    -b 128 \
+    -e 2 \
+    --checkpoint /tmp
+</code></pre>
+
+<p>In the above commands
+<em> -f: where you put your MNIST data
+</em> --checkpoint: Where you cache the model/train_state snapshot. You should input a folder and
+make sure the folder is created when you run this example. The model snapshot will be named as
+model.#iteration_number, and train state will be named as state.#iteration_number. Note that if
+there are some files already exist in the folder, the old file will not be overwrite for the
+safety of your model files.
+* -b: The mini-batch size. It is expected that the mini-batch size is a multiple of node_number * core_number.</p>
+<p>You can find more information about this example in 
+BigDL <a href="https://github.com/intel-analytics/BigDL/tree/master/pyspark/bigdl/models/lenet">lenet</a> folder.</p>
+<hr />
+<h2 id="future-work"><strong>Future Work</strong></h2>
+<p>As there are several Spark on Kubernetes features that await to be added into the future versions of Spark. See more 
+<a href="https://spark.apache.org/docs/2.3.0/running-on-kubernetes.html#future-work">here</a>. Some of those such as 
+Pyspark and Local File Dependency Management BigDL will also support by leveraging Spark, and the document, docker 
+image plus script to run the examples so please stay tuned. We welcome you send your questions in our BigDL user group 
+during the usage.</p>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

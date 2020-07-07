@@ -1,0 +1,626 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+        <head>
+          <title>dataset - bigdl 0.11.0-SNAPSHOT API - com.intel.analytics.bigdl.dataset</title>
+          <meta name="description" content="dataset - bigdl 0.11.0 - SNAPSHOT API - com.intel.analytics.bigdl.dataset" />
+          <meta name="keywords" content="dataset bigdl 0.11.0 SNAPSHOT API com.intel.analytics.bigdl.dataset" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../index.html';
+            var hash = 'com.intel.analytics.bigdl.dataset.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img src="../../../../../lib/package_big.png" />
+        <p id="owner"><a href="../../../../package.html" class="extype" name="com">com</a>.<a href="../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a></p>
+        <h1>dataset</h1>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dataset</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="com.intel.analytics.bigdl.dataset.AbstractDataSet" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AbstractDataSet[D,DataSequence]extendsAnyRef"></a>
+      <a id="AbstractDataSet[D,DataSequence]:AbstractDataSet[D,DataSequence]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="AbstractDataSet.html"><span class="name">AbstractDataSet</span></a><span class="tparams">[<span name="D">D</span>, <span name="DataSequence">DataSequence</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A set of data which is used in the model optimization process.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.ArraySample" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ArraySample[T]extendsSample[T]"></a>
+      <a id="ArraySample[T]:ArraySample[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ArraySample.html"><span class="name">ArraySample</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.ArraySample.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A kind of sample who use only one array
+</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.ByteRecord" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ByteRecordextendsProductwithSerializable"></a>
+      <a id="ByteRecord:ByteRecord"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ByteRecord.html"><span class="name">ByteRecord</span></a><span class="params">(<span name="data">data: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>, <span name="label">label: <span class="extype" name="scala.Float">Float</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A byte array and a label.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.CachedDistriDataSet" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CachedDistriDataSet[T]extendsDistributedDataSet[T]"></a>
+      <a id="CachedDistriDataSet[T]:CachedDistriDataSet[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CachedDistriDataSet.html"><span class="name">CachedDistriDataSet</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="DistributedDataSet.html" class="extype" name="com.intel.analytics.bigdl.dataset.DistributedDataSet">DistributedDataSet</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.CachedDistriDataSet.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Wrap a RDD as a DataSet.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.ChainedTransformer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ChainedTransformer[A,B,C]extendsTransformer[A,C]"></a>
+      <a id="ChainedTransformer[A,B,C]:ChainedTransformer[A,B,C]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ChainedTransformer.html"><span class="name">ChainedTransformer</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>, <span name="C">C</span>]</span><span class="result"> extends <a href="Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.ChainedTransformer.A">A</span>, <span class="extype" name="com.intel.analytics.bigdl.dataset.ChainedTransformer.C">C</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A transformer chain two transformer together.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.DefaultPadding" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DefaultPaddingextendsPaddingStrategy"></a>
+      <a id="DefaultPadding:DefaultPadding"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultPadding.html"><span class="name">DefaultPadding</span></a><span class="result"> extends <a href="PaddingStrategy.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingStrategy">PaddingStrategy</a></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.DistributedDataSet" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="DistributedDataSet[T]extendsAbstractDataSet[T,org.apache.spark.rdd.RDD[T]]"></a>
+      <a id="DistributedDataSet[T]:DistributedDataSet[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="DistributedDataSet.html"><span class="name">DistributedDataSet</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="AbstractDataSet.html" class="extype" name="com.intel.analytics.bigdl.dataset.AbstractDataSet">AbstractDataSet</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.DistributedDataSet.T">T</span>, <span class="extype" name="org.apache.spark.rdd.RDD">RDD</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.DistributedDataSet.T">T</span>]]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Represent a distributed data.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.FixedLength" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FixedLengthextendsPaddingStrategywithProductwithSerializable"></a>
+      <a id="FixedLength:FixedLength"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="FixedLength.html"><span class="name">FixedLength</span></a><span class="params">(<span name="fixedLength">fixedLength: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result"> extends <a href="PaddingStrategy.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingStrategy">PaddingStrategy</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Set the first dimension's length to fixed length.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.Identity" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Identity[A]extendsTransformer[A,A]"></a>
+      <a id="Identity[A]:Identity[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Identity.html"><span class="name">Identity</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.Identity.A">A</span>, <span class="extype" name="com.intel.analytics.bigdl.dataset.Identity.A">A</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Just transform the input to output.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.Image" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ImageextendsSerializable"></a>
+      <a id="Image:Image"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Image.html"><span class="name">Image</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Represent an image
+</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.Label" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Label[T]extendsAnyRef"></a>
+      <a id="Label[T]:Label[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Label.html"><span class="name">Label</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Represent a label
+</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.LocalArrayDataSet" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LocalArrayDataSet[T]extendsLocalDataSet[T]"></a>
+      <a id="LocalArrayDataSet[T]:LocalArrayDataSet[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="LocalArrayDataSet.html"><span class="name">LocalArrayDataSet</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="LocalDataSet.html" class="extype" name="com.intel.analytics.bigdl.dataset.LocalDataSet">LocalDataSet</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.LocalArrayDataSet.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Wrap an array as a DataSet.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.LocalDataSet" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LocalDataSet[T]extendsAbstractDataSet[T,Iterator[T]]"></a>
+      <a id="LocalDataSet[T]:LocalDataSet[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="LocalDataSet.html"><span class="name">LocalDataSet</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="AbstractDataSet.html" class="extype" name="com.intel.analytics.bigdl.dataset.AbstractDataSet">AbstractDataSet</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.LocalDataSet.T">T</span>, <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.LocalDataSet.T">T</span>]]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Manage some 'local' data, e.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.LocalImagePath" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LocalImagePathextendsAnyRef"></a>
+      <a id="LocalImagePath:LocalImagePath"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="LocalImagePath.html"><span class="name">LocalImagePath</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Represent a local file path of an image file
+</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.LocalSeqFilePath" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LocalSeqFilePathextendsProductwithSerializable"></a>
+      <a id="LocalSeqFilePath:LocalSeqFilePath"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="LocalSeqFilePath.html"><span class="name">LocalSeqFilePath</span></a><span class="params">(<span name="path">path: <span class="extype" name="java.nio.file.Path">Path</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Represent a local file path of a hadoop sequence file
+</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.MiniBatch" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="MiniBatch[T]extendsSerializable"></a>
+      <a id="MiniBatch[T]:MiniBatch[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="MiniBatch.html"><span class="name">MiniBatch</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A interface for MiniBatch.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.PaddingLongest" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PaddingLongestextendsPaddingStrategywithProductwithSerializable"></a>
+      <a id="PaddingLongest:PaddingLongest"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="PaddingLongest.html"><span class="name">PaddingLongest</span></a><span class="params">(<span name="paddingLength">paddingLength: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result"> extends <a href="PaddingStrategy.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingStrategy">PaddingStrategy</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Add an constant length to longest feature in the first dimension
+</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.PaddingParam" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PaddingParam[T]extendsSerializablewithProduct"></a>
+      <a id="PaddingParam[T]:PaddingParam[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="PaddingParam.html"><span class="name">PaddingParam</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="paddingTensor">paddingTensor: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.PaddingParam.T">T</span>]]] = <span class="symbol">scala.None</span></span>, <span name="paddingStrategy">paddingStrategy: <a href="PaddingStrategy.html" class="extype" name="com.intel.analytics.bigdl.dataset.PaddingStrategy">PaddingStrategy</a> = <span class="symbol">new DefaultPadding()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="evidence$14">evidence$14: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.PaddingParam.T">T</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span> with <span class="extype" name="scala.Product">Product</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Feature Padding param for MiniBatch.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.PaddingStrategy" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="PaddingStrategyextendsSerializable"></a>
+      <a id="PaddingStrategy:PaddingStrategy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="PaddingStrategy.html"><span class="name">PaddingStrategy</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.Sample" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Sample[T]extendsSerializable"></a>
+      <a id="Sample[T]:Sample[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Sample.html"><span class="name">Sample</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Class that represents the features and labels of a data sample.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.SampleToMiniBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SampleToMiniBatch[T]extendsTransformer[com.intel.analytics.bigdl.dataset.Sample[T],com.intel.analytics.bigdl.dataset.MiniBatch[T]]"></a>
+      <a id="SampleToMiniBatch[T]:SampleToMiniBatch[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SampleToMiniBatch.html"><span class="name">SampleToMiniBatch</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToMiniBatch.T">T</span>], <a href="MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToMiniBatch.T">T</span>]]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Convert a sequence of <a href="Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a> to a sequence of <a href="MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a> through function toMiniBatch.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.Sentence" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Sentence[T]extendsSerializable"></a>
+      <a id="Sentence[T]:Sentence[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Sentence.html"><span class="name">Sentence</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Represent a sentence
+</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.SparseMiniBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SparseMiniBatch[T]extendsArrayTensorMiniBatch[T]"></a>
+      <a id="SparseMiniBatch[T]:SparseMiniBatch[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SparseMiniBatch.html"><span class="name">SparseMiniBatch</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="com.intel.analytics.bigdl.dataset.ArrayTensorMiniBatch">ArrayTensorMiniBatch</span>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SparseMiniBatch.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">SparseMiniBatch is a MiniBatch type for TensorSample.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.TensorSample" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TensorSample[T]extendsSample[T]"></a>
+      <a id="TensorSample[T]:TensorSample[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="TensorSample.html"><span class="name">TensorSample</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.TensorSample.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A kind of Sample who hold both DenseTensor and SparseTensor as features.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.Transformer" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Transformer[A,B]extendsSerializable"></a>
+      <a id="Transformer[A,B]:Transformer[A,B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Transformer.html"><span class="name">Transformer</span></a><span class="tparams">[<span name="A">A</span>, <span name="B">B</span>]</span><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Transform a data stream of type A to type B.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.SampleToBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SampleToBatch[T]extendsTransformer[com.intel.analytics.bigdl.dataset.Sample[T],com.intel.analytics.bigdl.dataset.MiniBatch[T]]"></a>
+      <a id="SampleToBatch[T]:SampleToBatch[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SampleToBatch.html"><span class="name deprecated" title="Deprecated: (Since version 0.2.0) Use SampleToMiniBatch instead">SampleToBatch</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <a href="Transformer.html" class="extype" name="com.intel.analytics.bigdl.dataset.Transformer">Transformer</a>[<a href="Sample.html" class="extype" name="com.intel.analytics.bigdl.dataset.Sample">Sample</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch.T">T</span>], <a href="MiniBatch.html" class="extype" name="com.intel.analytics.bigdl.dataset.MiniBatch">MiniBatch</a>[<span class="extype" name="com.intel.analytics.bigdl.dataset.SampleToBatch.T">T</span>]]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Convert a sequence of single-feature and single-label Sample to a sequence of MiniBatch,
+optionally padding all the features (or labels) in the mini-batch to the same length
+</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="com.intel.analytics.bigdl.dataset.ArraySample" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ArraySample"></a>
+      <a id="ArraySample:ArraySample"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ArraySample$.html"><span class="name">ArraySample</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.DataSet" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DataSet"></a>
+      <a id="DataSet:DataSet"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="DataSet$.html"><span class="name">DataSet</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Common used DataSet builder.</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.Identity" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Identity"></a>
+      <a id="Identity:Identity"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Identity$.html"><span class="name">Identity</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.MiniBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MiniBatch"></a>
+      <a id="MiniBatch:MiniBatch"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="MiniBatch$.html"><span class="name">MiniBatch</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.Sample" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Sample"></a>
+      <a id="Sample:Sample"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Sample$.html"><span class="name">Sample</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.SampleToBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SampleToBatch"></a>
+      <a id="SampleToBatch:SampleToBatch"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SampleToBatch$.html"><span class="name">SampleToBatch</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Convert a sequence of Sample to a sequence of MiniBatch,
+optionally padding all the features (or labels) in the mini-batch to the same length
+</p>
+    </li><li name="com.intel.analytics.bigdl.dataset.SampleToMiniBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SampleToMiniBatch"></a>
+      <a id="SampleToMiniBatch:SampleToMiniBatch"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SampleToMiniBatch$.html"><span class="name">SampleToMiniBatch</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.SparseMiniBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SparseMiniBatch"></a>
+      <a id="SparseMiniBatch:SparseMiniBatch"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SparseMiniBatch$.html"><span class="name">SparseMiniBatch</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.TensorSample" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TensorSample"></a>
+      <a id="TensorSample:TensorSample"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="TensorSample$.html"><span class="name">TensorSample</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.Utils" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Utils"></a>
+      <a id="Utils:Utils"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Utils$.html"><span class="name">Utils</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.datamining" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="datamining"></a>
+      <a id="datamining:datamining"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="datamining/package.html"><span class="name">datamining</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.image" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="image"></a>
+      <a id="image:image"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="image/package.html"><span class="name">image</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.segmentation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="segmentation"></a>
+      <a id="segmentation:segmentation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="segmentation/package.html"><span class="name">segmentation</span></a>
+      </span>
+      </h4>
+      
+    </li><li name="com.intel.analytics.bigdl.dataset.text" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="text"></a>
+      <a id="text:text"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="text/package.html"><span class="name">text</span></a>
+      </span>
+      </h4>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+    </body>
+      </html>
