@@ -35,7 +35,7 @@
         var pageToc = [
           {title: "NOTES", url: "#notes", children: [
           ]},
-          {title: "Install BigDL-0.12.0.dev0", url: "#install-bigdl-0120dev0", children: [
+          {title: "Install BigDL from pip", url: "#install-bigdl-from-pip", children: [
           ]},
         ];
 
@@ -66,12 +66,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
     <h2 id="notes"><strong>NOTES</strong></h2>
 <ul>
 <li>Pip install supports <strong>Mac</strong> and <strong>Linux</strong> platforms.</li>
-<li>You need to install Java <strong>&gt;= JDK8</strong> before runing BigDL, which is required by <strong>PySpark 2.2.0</strong>.</li>
+<li>You need to install Java <strong>&gt;= JDK8</strong> before runing BigDL, which is required by <strong>PySpark</strong>.</li>
 <li>Pip install only supports <strong>local</strong> mode. Might support cluster mode in the future. For those who want to use BigDL in cluster mode, try to <a href="../install-without-pip/">install without pip</a>.</li>
-<li>We've tested this package with <strong>Python 2.7</strong>, <strong>Python 3.5</strong> and <strong>Python 3.6</strong>. Only these three Python versions are supported for now.</li>
-<li>Note that <strong>Python 3.6</strong> is only compatible with Spark 1.6.4, 2.0.3, 2.1.1 and 2.2.0. See <a href="https://issues.apache.org/jira/browse/SPARK-19019">this issue</a> for more discussion.</li>
+<li>We've tested this package with <strong>Python 3.5</strong> and <strong>Python 3.6</strong>. Support for Python 2.7 has been removed due to its end of life.</li>
+<li>Note that <strong>Python 3.6</strong> is only compatible with Spark 1.6.4, 2.0.3, 2.1.1 and &gt;=2.2.0. See <a href="https://issues.apache.org/jira/browse/SPARK-19019">this issue</a> for more discussion.</li>
 </ul>
-<h2 id="install-bigdl-0120dev0"><strong>Install BigDL-0.12.0.dev0</strong></h2>
+<h2 id="install-bigdl-from-pip"><strong>Install BigDL from pip</strong></h2>
 <p>Install BigDL release via pip (we tested this on pip 9.0.1)</p>
 <p><strong>Remark:</strong></p>
 <ul>
@@ -79,12 +79,12 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>You might need to add <code>sudo</code> if without permission for the installation.</p>
 </li>
 <li>
-<p><code>pyspark</code> will be automatically installed first before installing BigDL if it hasn't been detected locally.</p>
+<p><code>numpy&gt;=1.7</code>, <code>six&gt;=1.10.0</code>, <code>pyspark==2.4.3</code> and their dependencies will be automatically installed if they haven't been detected in the current Python environment. </p>
 </li>
+<li>Note that installing BigDL from pip will automatically install <code>pyspark==2.4.3</code>. You are highly recommended to <strong>unset SPARK_HOME</strong> to avoid possible conflicts.</li>
 </ul>
-<pre><code class="bash">pip install --upgrade pip
-pip install BigDL==0.12.0.dev0     # for Python 2.7
-pip3 install BigDL==0.12.0.dev0    # for Python 3.5 and Python 3.6
+<pre><code class="bash">pip3 install --upgrade pip
+pip3 install BigDL        
 </code></pre>
 
   <br>

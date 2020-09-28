@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>udfpredictor - bigdl 0.12.0-SNAPSHOT API - com.intel.analytics.bigdl.example.udfpredictor</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../../index.html';
@@ -24,9 +28,13 @@
         </head>
         <body class="value">
       <div id="definition">
-        <img src="../../../../../../lib/package_big.png" />
+        <img alt="Package" src="../../../../../../lib/package_big.png" />
         <p id="owner"><a href="../../../../../package.html" class="extype" name="com">com</a>.<a href="../../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl.example">example</a></p>
-        <h1>udfpredictor</h1>
+        <h1>udfpredictor</h1><span class="permalink">
+      <a href="../../../../../../index.html#com.intel.analytics.bigdl.example.udfpredictor.package" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -67,10 +75,14 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="TextClassificationUDFParams.html"><span class="name">TextClassificationUDFParams</span></a><span class="params">(<span name="baseDir">baseDir: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;./&quot;</span></span>, <span name="maxSequenceLength">maxSequenceLength: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1000</span></span>, <span name="maxWordsNum">maxWordsNum: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">20000</span></span>, <span name="trainingSplit">trainingSplit: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.8</span></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">128</span></span>, <span name="embeddingDim">embeddingDim: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">100</span></span>, <span name="partitionNum">partitionNum: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">4</span></span>, <span name="modelPath">modelPath: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="checkpoint">checkpoint: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="testDir">testDir: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;./&quot;</span></span>)</span><span class="result"> extends <a href="../utils/AbstractTextClassificationParams.html" class="extype" name="com.intel.analytics.bigdl.example.utils.AbstractTextClassificationParams">AbstractTextClassificationParams</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="TextClassificationUDFParams.html"><span class="name">TextClassificationUDFParams</span></a><span class="params">(<span name="baseDir">baseDir: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;./&quot;</span></span>, <span name="maxSequenceLength">maxSequenceLength: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1000</span></span>, <span name="maxWordsNum">maxWordsNum: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">20000</span></span>, <span name="trainingSplit">trainingSplit: <span class="extype" name="scala.Double">Double</span> = <span class="symbol">0.8</span></span>, <span name="batchSize">batchSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">128</span></span>, <span name="embeddingDim">embeddingDim: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">100</span></span>, <span name="partitionNum">partitionNum: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">4</span></span>, <span name="modelPath">modelPath: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="checkpoint">checkpoint: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="testDir">testDir: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;./&quot;</span></span>)</span><span class="result"> extends <a href="../utils/AbstractTextClassificationParams.html" class="extype" name="com.intel.analytics.bigdl.example.utils.AbstractTextClassificationParams">AbstractTextClassificationParams</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Text classification udf parameters
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.intel.analytics.bigdl.example.udfpredictor.package@TextClassificationUDFParamsextendsAbstractTextClassificationParamswithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Text classification udf parameters
 </p>
     </li></ol>
             </div>
@@ -90,7 +102,11 @@
       <span class="symbol">
         <a href="DataframePredictor$.html"><span class="name">DataframePredictor</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.intel.analytics.bigdl.example.udfpredictor.package@DataframePredictor" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       
     </li><li name="com.intel.analytics.bigdl.example.udfpredictor.Utils" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Utils"></a>
@@ -103,7 +119,11 @@
       <span class="symbol">
         <a href="Utils$.html"><span class="name">Utils</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.intel.analytics.bigdl.example.udfpredictor.package@Utils" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       
     </li></ol>
             </div>
@@ -130,6 +150,7 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../../lib/template.js"></script>
+
+
     </body>
       </html>

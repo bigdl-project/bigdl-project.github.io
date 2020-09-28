@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>Plateau - bigdl 0.12.0-SNAPSHOT API - com.intel.analytics.bigdl.optim.SGD.Plateau</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
@@ -24,9 +28,15 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../../../lib/class_big.png" />
+        <img alt="Class" src="../../../../../lib/class_big.png" />
         <p id="owner"><a href="../../../../package.html" class="extype" name="com">com</a>.<a href="../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.optim">optim</a>.<a href="SGD$.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a></p>
-        <h1>Plateau</h1>
+        <h1>Plateau</h1><h3><span class="morelinks"><div>Related Doc:
+            <a href="SGD$.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">package SGD</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -35,7 +45,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Plateau</span><span class="params">(<span name="monitor">monitor: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="factor">factor: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">0.1</span></span>, <span name="patience">patience: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">10</span></span>, <span name="mode">mode: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;min&quot;</span></span>, <span name="epsilon">epsilon: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">1.0E-4</span></span>, <span name="cooldown">cooldown: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="minLr">minLr: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">0</span></span>)</span><span class="result"> extends <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">Plateau</span><span class="params">(<span name="monitor">monitor: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="factor">factor: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">0.1f</span></span>, <span name="patience">patience: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">10</span></span>, <span name="mode">mode: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;min&quot;</span></span>, <span name="epsilon">epsilon: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">1e-4f</span></span>, <span name="cooldown">cooldown: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="minLr">minLr: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">0</span></span>)</span><span class="result"> extends <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -45,8 +55,7 @@ once learning stagnates. It monitors a quantity and if no improvement
 is seen for a 'patience' number of epochs, the learning rate is reduced.</p></div><dl class="paramcmts block"><dt class="param">monitor</dt><dd class="cmt"><p>quantity to be monitored, can be Loss or score</p></dd><dt class="param">factor</dt><dd class="cmt"><p>factor by which the learning rate will be reduced. new_lr = lr * factor</p></dd><dt class="param">patience</dt><dd class="cmt"><p>number of epochs with no improvement after which learning rate will be reduced.</p></dd><dt class="param">mode</dt><dd class="cmt"><p>one of {min, max}.
             In min mode, lr will be reduced when the quantity monitored has stopped decreasing;
             in max mode it will be reduced when the quantity monitored has stopped increasing</p></dd><dt class="param">epsilon</dt><dd class="cmt"><p>threshold for measuring the new optimum, to only focus on significant changes.</p></dd><dt class="param">cooldown</dt><dd class="cmt"><p>number of epochs to wait before resuming normal operation
-                after lr has been reduced.</p></dd><dt class="param">minLr</dt><dd class="cmt"><p>lower bound on the learning rate.
-</p></dd></dl><div class="toggleContainer block">
+                after lr has been reduced.</p></dd><dt class="param">minLr</dt><dd class="cmt"><p>lower bound on the learning rate.</p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -59,7 +68,7 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
               <ol>
                 
                 <li class="alpha in"><span>Alphabetic</span></li>
-                <li class="inherit out"><span>By inheritance</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
               </ol>
             </div>
         <div id="ancestors">
@@ -72,9 +81,8 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
             <span class="filtertype"></span>
             <ol>
               <li class="hideall out"><span>Hide All</span></li>
-              <li class="showall in"><span>Show all</span></li>
+              <li class="showall in"><span>Show All</span></li>
             </ol>
-            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
           </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -95,14 +103,17 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Plateau</span><span class="params">(<span name="monitor">monitor: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="factor">factor: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">0.1</span></span>, <span name="patience">patience: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">10</span></span>, <span name="mode">mode: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;min&quot;</span></span>, <span name="epsilon">epsilon: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">1.0E-4</span></span>, <span name="cooldown">cooldown: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="minLr">minLr: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">0</span></span>)</span>
+        <span class="name">Plateau</span><span class="params">(<span name="monitor">monitor: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="factor">factor: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">0.1f</span></span>, <span name="patience">patience: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">10</span></span>, <span name="mode">mode: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;min&quot;</span></span>, <span name="epsilon">epsilon: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">1e-4f</span></span>, <span name="cooldown">cooldown: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="minLr">minLr: <span class="extype" name="scala.Float">Float</span> = <span class="symbol">0</span></span>)</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@&lt;init&gt;(monitor:String,factor:Float,patience:Int,mode:String,epsilon:Float,cooldown:Int,minLr:Float):com.intel.analytics.bigdl.optim.SGD.Plateau" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">monitor</dt><dd class="cmt"><p>quantity to be monitored, can be Loss or score</p></dd><dt class="param">factor</dt><dd class="cmt"><p>factor by which the learning rate will be reduced. new_lr = lr * factor</p></dd><dt class="param">patience</dt><dd class="cmt"><p>number of epochs with no improvement after which learning rate will be reduced.</p></dd><dt class="param">mode</dt><dd class="cmt"><p>one of {min, max}.
             In min mode, lr will be reduced when the quantity monitored has stopped decreasing;
             in max mode it will be reduced when the quantity monitored has stopped increasing</p></dd><dt class="param">epsilon</dt><dd class="cmt"><p>threshold for measuring the new optimum, to only focus on significant changes.</p></dd><dt class="param">cooldown</dt><dd class="cmt"><p>number of epochs to wait before resuming normal operation
-                after lr has been reduced.</p></dd><dt class="param">minLr</dt><dd class="cmt"><p>lower bound on the learning rate.
-</p></dd></dl></div>
+                after lr has been reduced.</p></dd><dt class="param">minLr</dt><dd class="cmt"><p>lower bound on the learning rate.</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -113,19 +124,6 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
         <div id="values" class="values members">
               <h3>Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="!=(x$1:AnyRef):Boolean"></a>
-      <a id="!=(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
       <h4 class="signature">
@@ -136,8 +134,12 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <a id="##():Int"></a>
@@ -149,22 +151,13 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@##():Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="==(x$1:AnyRef):Boolean"></a>
-      <a id="==(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
       <h4 class="signature">
@@ -175,8 +168,12 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -188,7 +185,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.SGD.Plateau#best" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="best:Float"></a>
@@ -201,7 +202,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">best</span><span class="result">: <span class="extype" name="scala.Float">Float</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@best:Float" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
@@ -214,7 +219,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@clone():Object" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -233,7 +242,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">cooldown</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@cooldown:Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">number of epochs to wait before resuming normal operation
                 after lr has been reduced.</p>
     </li><li name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule#currentRate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -247,7 +260,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">currentRate</span><span class="result">: <span class="extype" name="scala.Double">Double</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@currentRate:Double" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.SGD.Plateau#epsilon" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="epsilon:Float"></a>
@@ -260,7 +277,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">epsilon</span><span class="result">: <span class="extype" name="scala.Float">Float</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@epsilon:Float" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">threshold for measuring the new optimum, to only focus on significant changes.</p>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
@@ -273,7 +294,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.SGD.Plateau#factor" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="factor:Float"></a>
@@ -286,7 +311,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">factor</span><span class="result">: <span class="extype" name="scala.Float">Float</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@factor:Float" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">factor by which the learning rate will be reduced.</p><div class="fullcomment"><div class="comment cmt"><p>factor by which the learning rate will be reduced. new_lr = lr * factor</p></div></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
@@ -299,7 +328,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -318,7 +351,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -331,7 +368,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.SGD.Plateau#minLr" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="minLr:Float"></a>
@@ -344,7 +385,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">minLr</span><span class="result">: <span class="extype" name="scala.Float">Float</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@minLr:Float" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">lower bound on the learning rate.</p>
     </li><li name="com.intel.analytics.bigdl.optim.SGD.Plateau#mode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mode:String"></a>
@@ -357,7 +402,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">mode</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@mode:String" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">one of {min, max}.</p><div class="fullcomment"><div class="comment cmt"><p>one of {min, max}.
             In min mode, lr will be reduced when the quantity monitored has stopped decreasing;
             in max mode it will be reduced when the quantity monitored has stopped increasing</p></div></div>
@@ -372,7 +421,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">monitor</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@monitor:String" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">quantity to be monitored, can be Loss or score</p>
     </li><li name="com.intel.analytics.bigdl.optim.SGD.Plateau#monitorOp" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="monitorOp:(Float,Float)=&gt;Boolean"></a>
@@ -385,7 +438,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">monitorOp</span><span class="result">: (<span class="extype" name="scala.Float">Float</span>, <span class="extype" name="scala.Float">Float</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@monitorOp:(Float,Float)=&gt;Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
@@ -398,7 +455,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
@@ -411,7 +472,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -424,7 +489,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.SGD.Plateau#patience" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="patience:Int"></a>
@@ -437,7 +506,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">patience</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@patience:Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">number of epochs with no improvement after which learning rate will be reduced.</p>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
@@ -450,7 +523,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.optim.SGD.Plateau#updateHyperParameter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="updateHyperParameter[T](optimMethod:com.intel.analytics.bigdl.optim.SGD[T]):Unit"></a>
@@ -463,9 +540,12 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">updateHyperParameter</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="optimMethod">optimMethod: <a href="SGD.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD">SGD</a>[<span class="extype" name="com.intel.analytics.bigdl.optim.SGD.Plateau.updateHyperParameter.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">update learning rate by config table and state table</p><div class="fullcomment"><div class="comment cmt"><p>update learning rate by config table and state table</p></div><dl class="paramcmts block"><dt class="param">optimMethod</dt><dd class="cmt"><p>init optiMethod.
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD.Plateau">Plateau</a> → <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a></dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@updateHyperParameter[T](optimMethod:com.intel.analytics.bigdl.optim.SGD[T]):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">update learning rate by config table and state table</p><div class="fullcomment"><div class="comment cmt"><p>update learning rate by config table and state table</p></div><dl class="paramcmts block"><dt class="param">optimMethod</dt><dd class="cmt"><p>init optiMethod.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.optim.SGD.Plateau">Plateau</a> → <a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -477,7 +557,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -496,7 +580,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -515,7 +603,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -541,7 +633,11 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 0.2.0) Please input SGD instead of Table">updateHyperParameter</span><span class="params">(<span name="config">config: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>, <span name="state">state: <a href="../utils/Table.html" class="extype" name="com.intel.analytics.bigdl.utils.Table">Table</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.optim.SGD$$Plateau@updateHyperParameter(config:com.intel.analytics.bigdl.utils.Table,state:com.intel.analytics.bigdl.utils.Table):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SGD$$LearningRateSchedule.html" class="extype" name="com.intel.analytics.bigdl.optim.SGD.LearningRateSchedule">LearningRateSchedule</a></dd><dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
@@ -581,6 +677,7 @@ is seen for a 'patience' number of epochs, the learning rate is reduced.</p></di
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+
+
     </body>
       </html>

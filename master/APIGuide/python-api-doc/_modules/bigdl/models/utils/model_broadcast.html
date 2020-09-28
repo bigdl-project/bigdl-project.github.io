@@ -74,7 +74,6 @@
 <span class="kn">import</span> <span class="nn">gc</span>
 <span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">NamedTemporaryFile</span>
 
-<span class="kn">from</span> <span class="nn">pyspark.cloudpickle</span> <span class="k">import</span> <span class="n">print_exec</span>
 <span class="kn">from</span> <span class="nn">pyspark.broadcast</span> <span class="k">import</span> <span class="n">Broadcast</span>
 <span class="kn">from</span> <span class="nn">pyspark.broadcast</span> <span class="k">import</span> <span class="n">_from_id</span>
 <span class="kn">from</span> <span class="nn">bigdl.nn.layer</span> <span class="k">import</span> <span class="n">Model</span>
@@ -104,6 +103,10 @@
             <span class="n">value</span><span class="o">.</span><span class="n">saveModel</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">over_write</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Could not serialize broadcast: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">sc</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;2.1&quot;</span><span class="p">):</span>
+                <span class="kn">from</span> <span class="nn">pyspark.cloudpickle</span> <span class="k">import</span> <span class="n">print_exec</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="kn">from</span> <span class="nn">pyspark.util</span> <span class="k">import</span> <span class="n">print_exec</span>
             <span class="n">print_exec</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
         <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>

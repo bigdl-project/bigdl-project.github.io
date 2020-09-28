@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>ClassNLLCriterion - bigdl 0.12.0-SNAPSHOT API - com.intel.analytics.bigdl.nn.ClassNLLCriterion</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
@@ -24,9 +28,17 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="ClassNLLCriterion$.html" title="Go to companion"><img src="../../../../../lib/class_to_object_big.png" /></a>
+        <a href="ClassNLLCriterion$.html" title="See companion object"><img alt="Class/Object" src="../../../../../lib/class_to_object_big.png" /></a>
         <p id="owner"><a href="../../../../package.html" class="extype" name="com">com</a>.<a href="../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.nn">nn</a></p>
-        <h1><a href="ClassNLLCriterion$.html" title="Go to companion">ClassNLLCriterion</a></h1>
+        <h1><a href="ClassNLLCriterion$.html" title="See companion object">ClassNLLCriterion</a></h1><h3><span class="morelinks"><div>
+            Related Docs:
+            <a href="ClassNLLCriterion$.html" title="See companion object">object ClassNLLCriterion</a>
+            | <a href="package.html" class="extype" name="com.intel.analytics.bigdl.nn">package nn</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -56,12 +68,8 @@ In other words, the forward process will return zero output and the backward pro
 will also return zero <code>gradInput</code>.</p><p>By default, the losses are averaged over observations for each minibatch. However, if the field
 sizeAverage is set to false, the losses are instead summed for each minibatch.</p><p>In particular, when weights=None, size_average=True and logProbAsInput=False, this is same as
 <code>sparse_categorical_crossentropy</code> loss in keras.
-</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>numeric type
-</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@SerialVersionUID</span><span class="args">(<span>
-      
-      <span class="symbol">8696382776046599502L</span>
-    </span>)</span>
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>numeric type</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@SerialVersionUID</span><span class="args">()</span>
               
         </dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
@@ -76,7 +84,7 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
               <ol>
                 
                 <li class="alpha in"><span>Alphabetic</span></li>
-                <li class="inherit out"><span>By inheritance</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
               </ol>
             </div>
         <div id="ancestors">
@@ -89,9 +97,8 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
             <span class="filtertype"></span>
             <ol>
               <li class="hideall out"><span>Hide All</span></li>
-              <li class="showall in"><span>Show all</span></li>
+              <li class="showall in"><span>Show All</span></li>
             </ol>
-            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
           </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -112,9 +119,13 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">ClassNLLCriterion</span><span class="params">(<span name="weights">weights: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>] = <span class="symbol">null</span></span>, <span name="sizeAverage">sizeAverage: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="logProbAsInput">logProbAsInput: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="paddingValue">paddingValue: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">-1</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>)</span>
+        <span class="name">ClassNLLCriterion</span><span class="params">(<span name="weights">weights: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>] = <span class="symbol">null</span></span>, <span name="sizeAverage">sizeAverage: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="logProbAsInput">logProbAsInput: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="paddingValue">paddingValue: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>, <span name="ev">ev: <a href="../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>)</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@&lt;init&gt;(weights:com.intel.analytics.bigdl.tensor.Tensor[T],sizeAverage:Boolean,logProbAsInput:Boolean,paddingValue:Int)(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.nn.ClassNLLCriterion[T]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">weights</dt><dd class="cmt"><p>weights of each element of the input</p></dd><dt class="param">sizeAverage</dt><dd class="cmt"><p>size average of batch</p></dd><dt class="param">logProbAsInput</dt><dd class="cmt"><p>indicating whether to accept log-probabilities or probabilities as input.
                   True means accepting log-probabilities as input.</p></dd><dt class="param">ev</dt><dd class="cmt"><p>numeric operator</p></dd></dl></div>
     </li></ol>
@@ -127,19 +138,6 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
         <div id="values" class="values members">
               <h3>Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="!=(x$1:AnyRef):Boolean"></a>
-      <a id="!=(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
       <h4 class="signature">
@@ -150,8 +148,12 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
       <span class="symbol">
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <a id="##():Int"></a>
@@ -163,22 +165,13 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
       <span class="symbol">
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@##():Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="==(x$1:AnyRef):Boolean"></a>
-      <a id="==(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
       <h4 class="signature">
@@ -189,8 +182,12 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
       <span class="symbol">
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -202,7 +199,11 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
       <span class="symbol">
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#backward" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="backward(input:A,target:B):A"></a>
@@ -215,10 +216,13 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
       <span class="symbol">
         <span class="name">backward</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>, <span name="target">target: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@backward(input:A,target:B):A" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Performs a back-propagation step through the criterion, with respect to the given input.</p><div class="fullcomment"><div class="comment cmt"><p>Performs a back-propagation step through the criterion, with respect to the given input.
-</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">target</dt><dd class="cmt"><p>target</p></dd><dt>returns</dt><dd class="cmt"><p>gradient corresponding to input data
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">target</dt><dd class="cmt"><p>target</p></dd><dt>returns</dt><dd class="cmt"><p>gradient corresponding to input data</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#canEqual" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="canEqual(other:Any):Boolean"></a>
       <a id="canEqual(Any):Boolean"></a>
@@ -230,7 +234,11 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
       <span class="symbol">
         <span class="name">canEqual</span><span class="params">(<span name="other">other: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@canEqual(other:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
@@ -243,7 +251,11 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
       <span class="symbol">
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@clone():Object" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -262,9 +274,12 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
       <span class="symbol">
         <span class="name">cloneCriterion</span><span class="params">()</span><span class="result">: <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a>[<a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>], <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>], <span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>
       </span>
-      </h4>
-      <p class="shortcomment cmt">Deep copy this criterion</p><div class="fullcomment"><div class="comment cmt"><p>Deep copy this criterion</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a deep copied criterion
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@cloneCriterion():com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion[A,B,T]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Deep copy this criterion</p><div class="fullcomment"><div class="comment cmt"><p>Deep copy this criterion</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a deep copied criterion</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -276,7 +291,11 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
       <span class="symbol">
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(other:Any):Boolean"></a>
@@ -289,7 +308,11 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
       <span class="symbol">
         <span class="name">equals</span><span class="params">(<span name="other">other: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@equals(other:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a> → AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
@@ -302,7 +325,11 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
       <span class="symbol">
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -321,12 +348,15 @@ sizeAverage is set to false, the losses are instead summed for each minibatch.</
       <span class="symbol">
         <span class="name">forward</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>, <span name="target">target: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@forward(input:A,target:B):T" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Takes an input object, and computes the corresponding loss of the criterion,
 compared with <code>target</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Takes an input object, and computes the corresponding loss of the criterion,
 compared with <code>target</code>.
-</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">target</dt><dd class="cmt"><p>target</p></dd><dt>returns</dt><dd class="cmt"><p>the loss of criterion
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">target</dt><dd class="cmt"><p>target</p></dd><dt>returns</dt><dd class="cmt"><p>the loss of criterion</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -338,7 +368,11 @@ compared with <code>target</code>.
       <span class="symbol">
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#gradInput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="gradInput:A"></a>
@@ -351,7 +385,11 @@ compared with <code>target</code>.
       <span class="symbol">
         <span class="name">gradInput</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@gradInput:A" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
@@ -364,7 +402,11 @@ compared with <code>target</code>.
       <span class="symbol">
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a> → AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -377,7 +419,11 @@ compared with <code>target</code>.
       <span class="symbol">
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
@@ -390,7 +436,11 @@ compared with <code>target</code>.
       <span class="symbol">
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
@@ -403,7 +453,11 @@ compared with <code>target</code>.
       <span class="symbol">
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -416,7 +470,11 @@ compared with <code>target</code>.
       <span class="symbol">
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion#output" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="output:T"></a>
@@ -429,7 +487,11 @@ compared with <code>target</code>.
       <span class="symbol">
         <span class="name">output</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@output:T" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
@@ -442,7 +504,11 @@ compared with <code>target</code>.
       <span class="symbol">
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
@@ -455,7 +521,11 @@ compared with <code>target</code>.
       <span class="symbol">
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@toString():String" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.ClassNLLCriterion#updateGradInput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="updateGradInput(input:com.intel.analytics.bigdl.tensor.Tensor[T],target:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]"></a>
@@ -468,11 +538,14 @@ compared with <code>target</code>.
       <span class="symbol">
         <span class="name">updateGradInput</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>, <span name="target">target: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>)</span><span class="result">: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@updateGradInput(input:com.intel.analytics.bigdl.tensor.Tensor[T],target:com.intel.analytics.bigdl.tensor.Tensor[T]):com.intel.analytics.bigdl.tensor.Tensor[T]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Computing the gradient of the criterion with respect to its own input.</p><div class="fullcomment"><div class="comment cmt"><p>Computing the gradient of the criterion with respect to its own input. This is returned in
 gradInput. Also, the gradInput state variable is updated accordingly.
-</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">target</dt><dd class="cmt"><p>target data / labels</p></dd><dt>returns</dt><dd class="cmt"><p>gradient of input
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion">ClassNLLCriterion</a> → <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input data</p></dd><dt class="param">target</dt><dd class="cmt"><p>target data / labels</p></dd><dt>returns</dt><dd class="cmt"><p>gradient of input</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion">ClassNLLCriterion</a> → <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="com.intel.analytics.bigdl.nn.ClassNLLCriterion#updateOutput" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="updateOutput(input:com.intel.analytics.bigdl.tensor.Tensor[T],target:com.intel.analytics.bigdl.tensor.Tensor[T]):T"></a>
       <a id="updateOutput(Tensor[T],Tensor[T]):T"></a>
@@ -484,11 +557,14 @@ gradInput. Also, the gradInput state variable is updated accordingly.
       <span class="symbol">
         <span class="name">updateOutput</span><span class="params">(<span name="input">input: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>, <span name="target">target: <a href="../tensor/Tensor.html" class="extype" name="com.intel.analytics.bigdl.tensor.Tensor">Tensor</a>[<span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion.T">T</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@updateOutput(input:com.intel.analytics.bigdl.tensor.Tensor[T],target:com.intel.analytics.bigdl.tensor.Tensor[T]):T" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Computes the loss using input and objective function.</p><div class="fullcomment"><div class="comment cmt"><p>Computes the loss using input and objective function. This function
 returns the result which is stored in the output field.
-</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input of the criterion</p></dd><dt class="param">target</dt><dd class="cmt"><p>target or labels</p></dd><dt>returns</dt><dd class="cmt"><p>the loss of the criterion
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion">ClassNLLCriterion</a> → <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>input of the criterion</p></dd><dt class="param">target</dt><dd class="cmt"><p>target or labels</p></dd><dt>returns</dt><dd class="cmt"><p>the loss of the criterion</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.intel.analytics.bigdl.nn.ClassNLLCriterion">ClassNLLCriterion</a> → <a href="abstractnn/AbstractCriterion.html" class="extype" name="com.intel.analytics.bigdl.nn.abstractnn.AbstractCriterion">AbstractCriterion</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -500,7 +576,11 @@ returns the result which is stored in the output field.
       <span class="symbol">
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -519,7 +599,11 @@ returns the result which is stored in the output field.
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -538,7 +622,11 @@ returns the result which is stored in the output field.
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#com.intel.analytics.bigdl.nn.ClassNLLCriterion@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -583,6 +671,7 @@ returns the result which is stored in the output field.
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+
+
     </body>
       </html>
