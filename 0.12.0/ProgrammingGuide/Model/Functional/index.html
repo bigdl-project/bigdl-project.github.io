@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Using Functional API - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Define a simple model", url: "#define-a-simple-model", children: [
+          ]},
+          {title: "Define a model with branches", url: "#define-a-model-with-branches", children: [
+          ]},
+          {title: "Define a model with merged branch", url: "#define-a-model-with-merged-branch", children: [
+          ]},
+          {title: "Define a model with multiple inputs", url: "#define-a-model-with-multiple-inputs", children: [
+          ]},
+          {title: "Define a model with data pre-processing", url: "#define-a-model-with-data-pre-processing", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60548202-2', 'bigdl-project.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Using Functional API</strong></h1>
+    <hr>
+    <p>BigDL supports two different model definition styles: Sequential API and Functional API.</p>
+<p>In Functional API, the model is described as a graph. It is more convenient than Sequential API
+when define some complex model.</p>
+<hr />
+<h2 id="define-a-simple-model"><strong>Define a simple model</strong></h2>
+<p>Suppose we want to define a model with three layers</p>
+<pre><code>Linear -&gt; Sigmoid -&gt; SoftMax
+</code></pre>
+
+<p>You can write code like this</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val inputSize = 3
+val outputSize = 5
+val input = Tensor(inputSize).rand()
+
+val linear = Linear(inputSize, outputSize).inputs()
+val sigmoid = Sigmoid().inputs(linear)
+val softmax = SoftMax().inputs(sigmoid)
+val model = Graph(Array(linear), Array(softmax))
+
+val output = model.forward(input)
+
+print(output)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">import numpy as np
+from bigdl.nn.layer import *
+
+input_size = 3
+output_size = 5
+input = np.random.random(input_size)
+
+linear = Linear(3, 5)()
+sigmoid = Sigmoid()(linear)
+softmax = SoftMax()(sigmoid)
+model = Model([linear], [softmax])
+
+model.forward(input)
+</code></pre>
+
+<p>An easy way to understand the Functional API is to think of each layer in the model as a directed
+edge connecting its input and output</p>
+<p>In the above code, first we create an input node named as linear by using
+the Linear layer, then connect it to the sigmoid node with a Sigmoid
+layer, then connect the sigmoid node to the softmax node with a SoftMax layer.</p>
+<p>After defined the graph, we create the model by passing in the input nodes
+and output nodes.</p>
+<hr />
+<h2 id="define-a-model-with-branches"><strong>Define a model with branches</strong></h2>
+<p>Suppose we want to define a model like this</p>
+<pre><code>Linear -&gt; ReLU --&gt; Linear -&gt; ReLU
+               |-&gt; Linear -&gt; ReLU
+</code></pre>
+
+<p>The model has two outputs from two branches. The inputs of the branches are both the
+output from the first ReLU.</p>
+<p>You can define the model like this</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val inputSize = 3
+val midLayerSize = 10
+val outputSize = 5
+val input = Tensor(inputSize).rand()
+
+val linear1 = Linear(inputSize, midLayerSize).inputs()
+val relu1 = ReLU().inputs(linear1)
+val linear2 = Linear(midLayerSize, outputSize).inputs(relu1)
+val relu2 = ReLU().inputs(linear2)
+val linear3 = Linear(midLayerSize, outputSize).inputs(relu1)
+val relu3 = ReLU().inputs(linear3)
+val model = Graph(Array(linear1), Array(relu2, relu3))
+
+val output = model.forward(input)
+
+print(output)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">import numpy as np
+from bigdl.nn.layer import *
+
+input_size = 3
+mid_layer_size = 10
+output_size = 5
+input = np.random.random(input_size)
+
+linear1 = Linear(input_size, mid_layer_size)()
+relu1 = ReLU()(linear1)
+linear2 = Linear(mid_layer_size, output_size)(relu1)
+relu2 = ReLU()(linear2)
+linear3 = Linear(mid_layer_size, output_size)(relu1)
+relu3 = ReLU()(linear3)
+model = Model([linear1], [relu2, relu3])
+
+model.forward(input)
+</code></pre>
+
+<p>In the above node, linear2 and linear3 are both from relu1 with separated
+Linear layers, which construct the branch structure. When we create the model,
+the outputs parameter contains relu2 and relu3 as the model has two outputs.</p>
+<hr />
+<h2 id="define-a-model-with-merged-branch"><strong>Define a model with merged branch</strong></h2>
+<p>Suppose we want to define a model like this</p>
+<pre><code>Linear -&gt; ReLU --&gt; Linear -&gt; ReLU ----&gt; Add
+               |-&gt; Linear -&gt; ReLU --|
+</code></pre>
+
+<p>In the model, the outputs of the two branches are merged by an add operation.</p>
+<p>You can define the model like this</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val inputSize = 3
+val midLayerSize = 10
+val outputSize = 5
+val input = Tensor(inputSize).rand()
+
+val linear1 = Linear(inputSize, midLayerSize).inputs()
+val relu1 = ReLU().inputs(linear1)
+val linear2 = Linear(midLayerSize, outputSize).inputs(relu1)
+val relu2 = ReLU().inputs(linear2)
+val linear3 = Linear(midLayerSize, outputSize).inputs(relu1)
+val relu3 = ReLU().inputs(linear3)
+val add = CAddTable().inputs(relu2, relu3)
+val model = Graph(Array(linear1), Array(add))
+
+val output = model.forward(input)
+
+print(output)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">import numpy as np
+from bigdl.nn.layer import *
+
+input_size = 3
+mid_layer_size = 10
+output_size = 5
+input = np.random.random(input_size)
+
+linear1 = Linear(input_size, mid_layer_size)()
+relu1 = ReLU()(linear1)
+linear2 = Linear(mid_layer_size, output_size)(relu1)
+relu2 = ReLU()(linear2)
+linear3 = Linear(mid_layer_size, output_size)(relu1)
+relu3 = ReLU()(linear3)
+add = CAddTable()([relu2, relu3])
+model = Model([linear1], [add])
+
+model.forward(input)
+</code></pre>
+
+<p>In the above code, to merge the branch, we use the CAddTable, which takes two
+input nodes, to generate one output node.</p>
+<p>BigDL provides many merge layers. Please check Merge layers document page. They all
+take a list of tensors as input and merge the tensors by some operation.</p>
+<hr />
+<h2 id="define-a-model-with-multiple-inputs"><strong>Define a model with multiple inputs</strong></h2>
+<p>We have already seen how to define branches in model and how to merge branches.
+What if we have multiple input? Suppose we want to define a model like this</p>
+<pre><code>Linear -&gt; ReLU ----&gt; Add
+Linear -&gt; ReLU --|
+</code></pre>
+
+<p>You can define the model like this</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">import com.intel.analytics.bigdl.nn._
+import com.intel.analytics.bigdl.utils.T
+import com.intel.analytics.bigdl.tensor.Tensor
+import com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric.NumericFloat
+
+val inputSize = 3
+val midLayerSize = 10
+val outputSize = 5
+val input = T(
+  Tensor(inputSize).rand(),
+  Tensor(inputSize).rand()
+)
+
+val linear1 = Linear(inputSize, outputSize).inputs()
+val relu1 = ReLU().inputs(linear1)
+val linear2 = Linear(inputSize, outputSize).inputs()
+val relu2 = ReLU().inputs(linear2)
+val add = CAddTable().inputs(relu1, relu2)
+val model = Graph(Array(linear1, linear2), Array(add))
+
+val output = model.forward(input)
+
+print(output)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">import numpy as np
+from bigdl.nn.layer import *
+
+input_size = 3
+mid_layer_size = 10
+output_size = 5
+linear1_input = np.random.random(input_size)
+linear2_input = np.random.random(input_size)
+input = [linear1_input, linear2_input]
+
+linear1 = Linear(input_size, output_size)()
+relu1 = ReLU()(linear1)
+linear2 = Linear(input_size, output_size)()
+relu2 = ReLU()(linear2)
+add = CAddTable()([relu1, relu2])
+model = Model([linear1, linear2], [add])
+
+model.forward(input)
+</code></pre>
+
+<p>In the above code, we define two input nodes linear1 and linear2 and put them
+into the first parameter when create the graph model.</p>
+<h2 id="define-a-model-with-data-pre-processing"><strong>Define a model with data pre-processing</strong></h2>
+<p>You can use a model as the data preprocessor for another model. In the training, the parameter of
+the preprocessor won't be updated. Here's how you can use it:</p>
+<p><strong>Scala:</strong></p>
+<pre><code class="scala">val preprocessor = Module.Load(...)
+val trainable = Module.Load(...)
+val model = Graph(preprocessor, trainable)
+</code></pre>
+
+<p><strong>Python:</strong></p>
+<pre><code class="python">preprocessor = Model.loadModel(...)
+trainable = Model.loadModel(...)
+model = Model(preprocessor, trainable)
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
