@@ -1,0 +1,250 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>bigdl.models.ml_pipeline.dl_classifier &#8212; BigDL  documentation</title>
+    <link rel="stylesheet" href="../../../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for bigdl.models.ml_pipeline.dl_classifier</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">pyspark.ml.pipeline</span> <span class="k">import</span> <span class="n">Estimator</span><span class="p">,</span> <span class="n">Model</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml.param.shared</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">bigdl.util.common</span> <span class="k">import</span> <span class="o">*</span>
+
+
+<span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version</span> <span class="o">&gt;=</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span>
+    <span class="n">long</span> <span class="o">=</span> <span class="nb">int</span>
+    <span class="n">unicode</span> <span class="o">=</span> <span class="nb">str</span>
+
+
+<div class="viewcode-block" id="HasBatchSize"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.HasBatchSize">[docs]</a><span class="k">class</span> <span class="nc">HasBatchSize</span><span class="p">(</span><span class="n">Params</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Mixin for param batchSize: batch size.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># a placeholder to make it appear in the generated doc</span>
+    <span class="n">batchSize</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;batchSize&quot;</span><span class="p">,</span> <span class="s2">&quot;batchSize&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">HasBatchSize</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1">#: param for batch size.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batchSize</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;batchSize&quot;</span><span class="p">,</span> <span class="s2">&quot;batchSize&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setDefault</span><span class="p">(</span><span class="n">batchSize</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<div class="viewcode-block" id="HasBatchSize.setBatchSize"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.HasBatchSize.setBatchSize">[docs]</a>    <span class="k">def</span> <span class="nf">setBatchSize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the value of :py:attr:`batchSize`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_paramMap</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">batchSize</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="n">pythonBigDL_method_name</span> <span class="o">=</span> <span class="s2">&quot;setBatchSize&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">pythonBigDL_method_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="HasBatchSize.getBatchSize"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.HasBatchSize.getBatchSize">[docs]</a>    <span class="k">def</span> <span class="nf">getBatchSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the value of batchSize or its default value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">batchSize</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="HasMaxEpoch"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.HasMaxEpoch">[docs]</a><span class="k">class</span> <span class="nc">HasMaxEpoch</span><span class="p">(</span><span class="n">Params</span><span class="p">):</span>
+    <span class="n">maxEpoch</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;maxEpoch&quot;</span><span class="p">,</span> <span class="s2">&quot;number of max Epoch&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">HasMaxEpoch</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxEpoch</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;maxEpoch&quot;</span><span class="p">,</span> <span class="s2">&quot;maxEpoch&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setDefault</span><span class="p">(</span><span class="n">maxEpoch</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<div class="viewcode-block" id="HasMaxEpoch.setMaxEpoch"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.HasMaxEpoch.setMaxEpoch">[docs]</a>    <span class="k">def</span> <span class="nf">setMaxEpoch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_paramMap</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">maxEpoch</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="n">pythonBigDL_method_name</span> <span class="o">=</span> <span class="s2">&quot;setMaxEpoch&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">pythonBigDL_method_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="HasMaxEpoch.getMaxEpoch"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.HasMaxEpoch.getMaxEpoch">[docs]</a>    <span class="k">def</span> <span class="nf">getMaxEpoch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the value of maxEpoch or its default value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">maxEpoch</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="HasFeatureSize"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.HasFeatureSize">[docs]</a><span class="k">class</span> <span class="nc">HasFeatureSize</span><span class="p">(</span><span class="n">Params</span><span class="p">):</span>
+    <span class="n">featureSize</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;featureSize&quot;</span><span class="p">,</span> <span class="s2">&quot;size of the feature&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">HasFeatureSize</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">featureSize</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;featureSize&quot;</span><span class="p">,</span> <span class="s2">&quot;featureSize&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setDefault</span><span class="p">(</span><span class="n">featureSize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<div class="viewcode-block" id="HasFeatureSize.setFeatureSize"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.HasFeatureSize.setFeatureSize">[docs]</a>    <span class="k">def</span> <span class="nf">setFeatureSize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_paramMap</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">featureSize</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="n">pythonBigDL_mehtod_name</span> <span class="o">=</span> <span class="s2">&quot;setFeatureSize&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">pythonBigDL_mehtod_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="HasFeatureSize.getFeatureSize"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.HasFeatureSize.getFeatureSize">[docs]</a>    <span class="k">def</span> <span class="nf">getFeatureSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">featureSize</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="HasLearningRate"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.HasLearningRate">[docs]</a><span class="k">class</span> <span class="nc">HasLearningRate</span><span class="p">(</span><span class="n">Params</span><span class="p">):</span>
+    <span class="n">learningRate</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;learningRate&quot;</span><span class="p">,</span> <span class="s2">&quot;learning rate&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">HasLearningRate</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">learningRate</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;learningRate&quot;</span><span class="p">,</span> <span class="s2">&quot;learning rate&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_setDefault</span><span class="p">(</span><span class="n">learningRate</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<div class="viewcode-block" id="HasLearningRate.setLearningRate"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.HasLearningRate.setLearningRate">[docs]</a>    <span class="k">def</span> <span class="nf">setLearningRate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_paramMap</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">learningRate</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="n">pythonBigDL_method_name</span> <span class="o">=</span> <span class="s2">&quot;setLearningRate&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="n">pythonBigDL_method_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="HasLearningRate.getLearningRate"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.HasLearningRate.getLearningRate">[docs]</a>    <span class="k">def</span> <span class="nf">getLearningRate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets the value of maxEpoch or its default value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">learningRate</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="DLEstimator"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.DLEstimator">[docs]</a><span class="k">class</span> <span class="nc">DLEstimator</span><span class="p">(</span><span class="n">Estimator</span><span class="p">,</span> <span class="n">HasFeaturesCol</span><span class="p">,</span> <span class="n">HasLabelCol</span><span class="p">,</span> <span class="n">HasPredictionCol</span><span class="p">,</span> <span class="n">HasBatchSize</span><span class="p">,</span> <span class="n">HasMaxEpoch</span><span class="p">,</span> <span class="n">HasLearningRate</span><span class="p">,</span> <span class="n">JavaValue</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    .. note:: Deprecated in 0.5.0. `DLEstimator` has been migrated to package</span>
+<span class="sd">     `bigdl.dlframes`. This will be removed in BigDL 0.6.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">model</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">feature_size</span><span class="p">,</span> <span class="n">label_size</span><span class="p">,</span> <span class="n">jvalue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DLEstimator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">jvalue</span> <span class="k">if</span> <span class="n">jvalue</span> <span class="k">else</span> <span class="n">callBigDlFunc</span><span class="p">(</span>
+            <span class="n">bigdl_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">jvm_class_constructor</span><span class="p">(),</span> <span class="n">model</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">feature_size</span><span class="p">,</span> <span class="n">label_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">featureSize</span> <span class="o">=</span> <span class="n">feature_size</span>
+
+    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+        <span class="c1">#self._transfer_params_to_java()</span>
+        <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;fitEstimator&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">DLModel</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">featureSize</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">model</span></div>
+
+
+<div class="viewcode-block" id="DLModel"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.DLModel">[docs]</a><span class="k">class</span> <span class="nc">DLModel</span><span class="p">(</span><span class="n">Model</span><span class="p">,</span> <span class="n">HasFeaturesCol</span><span class="p">,</span> <span class="n">HasPredictionCol</span><span class="p">,</span> <span class="n">HasBatchSize</span><span class="p">,</span> <span class="n">HasFeatureSize</span><span class="p">,</span> <span class="n">JavaValue</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    .. note:: Deprecated in 0.5.0. `DLModel` has been migrated to package</span>
+<span class="sd">     `bigdl.dlframes`. This will be removed in BigDL 0.6.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">model</span><span class="p">,</span> <span class="n">featureSize</span><span class="p">,</span> <span class="n">jvalue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DLModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">jvalue</span> <span class="k">if</span> <span class="n">jvalue</span> <span class="k">else</span> <span class="n">callBigDlFunc</span><span class="p">(</span>
+            <span class="n">bigdl_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">jvm_class_constructor</span><span class="p">(),</span> <span class="n">model</span><span class="p">,</span> <span class="n">featureSize</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span> <span class="o">=</span> <span class="n">bigdl_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setFeatureSize</span><span class="p">(</span><span class="n">featureSize</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;dlModelTransform&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DLModel.of"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.DLModel.of">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">of</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jvalue</span><span class="p">,</span> <span class="n">feature_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">DLModel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">featureSize</span><span class="o">=</span><span class="n">feature_size</span><span class="p">,</span> <span class="n">jvalue</span><span class="o">=</span><span class="n">jvalue</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="n">bigdl_type</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">model</span></div></div>
+
+
+<div class="viewcode-block" id="DLClassifier"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.DLClassifier">[docs]</a><span class="k">class</span> <span class="nc">DLClassifier</span><span class="p">(</span><span class="n">DLEstimator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    .. note:: Deprecated in 0.5.0. `DLClassifier` has been migrated to package</span>
+<span class="sd">     `bigdl.dlframes`. This will be removed in BigDL 0.6.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">model</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">feature_size</span><span class="p">,</span>  <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DLClassifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">feature_size</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+        <span class="n">jmodel</span> <span class="o">=</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;fitClassifier&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">DLClassifierModel</span><span class="o">.</span><span class="n">of</span><span class="p">(</span><span class="n">jmodel</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">featureSize</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">model</span></div>
+
+
+<div class="viewcode-block" id="DLClassifierModel"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.DLClassifierModel">[docs]</a><span class="k">class</span> <span class="nc">DLClassifierModel</span><span class="p">(</span><span class="n">DLModel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    .. note:: Deprecated in 0.5.0. `DLClassifierModel` has been migrated to package</span>
+<span class="sd">     `bigdl.dlframes`. This will be removed in BigDL 0.6.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>  <span class="n">model</span><span class="p">,</span> <span class="n">featureSize</span><span class="p">,</span> <span class="n">jvalue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DLClassifierModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">featureSize</span><span class="p">,</span> <span class="n">jvalue</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">callBigDlFunc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bigdl_type</span><span class="p">,</span> <span class="s2">&quot;dlClassifierModelTransform&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DLClassifierModel.of"><a class="viewcode-back" href="../../../../bigdl.models.ml_pipeline.html#bigdl.models.ml_pipeline.dl_classifier.DLClassifierModel.of">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">of</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jvalue</span><span class="p">,</span> <span class="n">feature_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">):</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">DLClassifierModel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">featureSize</span><span class="o">=</span><span class="n">feature_size</span><span class="p">,</span> <span class="n">jvalue</span><span class="o">=</span><span class="n">jvalue</span><span class="p">,</span> <span class="n">bigdl_type</span><span class="o">=</span><span class="n">bigdl_type</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">model</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../../index.html">BigDL  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Intel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.6.
+    </div>
+  </body>
+</html>
