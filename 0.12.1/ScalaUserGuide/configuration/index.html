@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Configuration - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "How to set the properties", url: "#how-to-set-the-properties", children: [
+              {title: "Spark", url: "#spark" },
+              {title: "Local Java/Scala program", url: "#local-javascala-program" },
+          ]},
+          {title: "Available Properties", url: "#available-properties", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60548202-2', 'bigdl-project.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Configuration</strong></h1>
+    <hr>
+    <p>BigDL uses Java properties to control its behavior. Here's the list of
+these properties.</p>
+<h2 id="how-to-set-the-properties"><strong>How to set the properties</strong></h2>
+<h3 id="spark"><strong>Spark</strong></h3>
+<p>If you run BigDL on Apache Spark, you can set the properties by passing
+spark-submit options. Here's an example:</p>
+<pre><code class="bash"># Say you want to set property FOO to value BAR
+spark-submit ...
+    --conf 'spark.executor.extraJavaOptions=-DFOO=BAR' # Set that property for executor process
+    --conf 'spark.driver.extraJavaOptions=-DFOO=BAR'   # Set that property for driver process
+    ...
+</code></pre>
+
+<h3 id="local-javascala-program"><strong>Local Java/Scala program</strong></h3>
+<p>If you run BigDL as a local Java/Scala program, you can set the properties
+by passing JVM parameters. Here's an example:</p>
+<pre><code class="bash"># Say you want to set property FOO to value BAR
+java -cp xxx.jar -DFOO=BAR your.main.class.name
+</code></pre>
+
+<hr />
+<h2 id="available-properties"><strong>Available Properties</strong></h2>
+<p><strong>Logging</strong></p>
+<ul>
+<li><code>bigdl.utils.LoggerFilter.disable</code>: To disable redirecting logs of Spark and BigDL to a file. Default is false.</li>
+<li><code>bigdl.utils.LoggerFilter.logFile</code>: To set the path to redirect log. By default, it will be directed to <code>bigdl.log</code> in the current working directory.</li>
+<li><code>bigdl.utils.LoggerFilter.enableSparkLog</code>: To enable redirecting Spark logs to logFile. Set it to false when you don't want to see Spark logs in the redirected log file. Default is true.</li>
+</ul>
+<p><strong>Mode</strong></p>
+<ul>
+<li>
+<p><code>bigdl.localMode</code>: Whether BigDL is running as a local Java/Scala program. Default is false.</p>
+</li>
+<li>
+<p><code>bigdl.engineType</code>: Default is <strong>mklblas</strong>. Besides, you can try <strong>mkldnn</strong> When you want to get better performance for model prediction/training. By enabling mkldnn verbose mode , you can also get mkldnn primitives execution details. To enable Intel MKL-DNN verbose mode, set <code>MKLDNN_VERBOSE</code> environment variable to <code>1</code> (to dump only execution time) or <code>2</code> (to dump both execution and creation time). </p>
+<p>For example: </p>
+<p><code>export MKLDNN_VERBOSE=2</code></p>
+<p>You should be able to have the similar outputs as following verbose logs while you are running your program.</p>
+<p><code>mkldnn_verbose,info,Intel(R) MKL-DNN v0.90.0 (Git Hash c1860ebb526e1116811811975481552119676fe8),Intel(R) Advanced Vector Extensions 2 (Intel(R) AVX2)
+mkldnn_verbose,create,reorder,jit:uni,undef,src_f32::blocked:abcd:f0 dst_f32::blocked:Acdb8a:f0,num:1,96x3x11x11,0.0979004
+mkldnn_verbose,create,convolution,jit:avx2,forward_training,src_f32::blocked:abcd:f0 wei_f32::blocked:Acdb8a:f0 bia_f32::blocked:a:f0 dst_f32::blocked:aBcd8b:f0,alg:convolution_direct,mb8_ic3oc96_ih227oh55kh11sh4dh0ph0_iw227ow55kw11sw4dw0pw0,0.0449219</code></p>
+</li>
+</ul>
+<p><strong>Multi-threading</strong></p>
+<ul>
+<li><code>bigdl.coreNumber</code>: To set how many cores BigDL will use on your machine. It will only be used when bigdl.localMode is set to true. If hyper thread is enabled on your machine, <strong>DO NOT</strong> set it larger than half of the virtual core number. Default is half of the virtual core number.</li>
+<li><code>bigdl.Parameter.syncPoolSize</code>: To set the thread pool size for syncing parameter between executors. Default is 4.</li>
+</ul>
+<p><strong>Distributed Training</strong></p>
+<ul>
+<li><code>bigdl.network.nio</code>: Whether use NIO as BlockManager backend in Spark 1.5. Default is true. If it is set to be false, user can specify spark.shuffle.blockTransferService to change the BlockManager backend. <strong>ONLY</strong> use this when running on Spark 1.5.</li>
+<li><code>bigdl.failure.retryTimes</code>: To set how many times to retry when there's failure in distributed training. Default is 5.</li>
+<li><code>bigdl.failure.retryTimeInterval</code>: To set how long to recount the retry times. Time unit here is second. Default is 120.</li>
+<li><code>bigdl.check.singleton</code>: To check whether multiple partitions run on the same executor, which is bad for performance. Default is false.</li>
+<li><code>bigdl.ModelBroadcastFactory</code>: Specify a ModelBroadcastFactory which creates a ModelBroadcast to control how to broadcast the model in the distributed training.</li>
+</ul>
+<p><strong>Tensor</strong></p>
+<p><code>bigdl.tensor.fold</code>: To set how many elements in a tensor to determine it is a large tensor, and thus print only part of it. Default is 1000.</p>
+<p><strong>MKLDNN Prediction</strong>
+- <code>bigdl.mkldnn.fusion</code>: To do layers fusion for model prediction which can improve performance, just for mkldnn engine type. Default is true.
+- <code>multiThread</code>: To do java parallelism for some layers, just for mkldnn engine type. Default is false.</p>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
