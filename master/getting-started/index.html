@@ -94,8 +94,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <li>To load a Keras model, refer to <a href="../ProgrammingGuide/keras-support/">Keras Support</a> for details.</li>
 </ul>
 <p>Refer to <a href="../APIGuide/Module/#model-prediction">Model Predict</a> for details about how to use a model for prediction.</p>
-<p>If you are using the trained model as a component inside a Spark ML pipeline, refer to
-<a href="../ProgrammingGuide/MLPipeline/">Using BigDL in Spark ML Pipeline</a> page for usage. </p>
 <hr />
 <h2 id="train-a-model-from-scratch"><strong>Train a Model from Scratch</strong></h2>
 <p>The procedure of training a model from scratch usually involves following steps:</p>
@@ -112,7 +110,6 @@ if (is_top_frame) { $('body').addClass('wm-top-page'); }
 <p>Now you create an <code>Optimizer</code> and set the loss function, input dataset along with other hyper parameters into the Optimizer. Then call <code>Optimizer.optimize</code> to train. Refer to <a href="../ProgrammingGuide/optimization/">Optimization</a> and <a href="../APIGuide/Optimizers/Optimizer/">Optimizer API guide</a> for details. </p>
 <p>Model Evaluation can be performed periodically during a training. Refer to <a href="../ProgrammingGuide/optimization/#validate-your-model-in-training">Validate your Model in Training</a> for details.  For a list of defined metrics, refer to <a href="../APIGuide/Metrics/">Metrics</a>.</p>
 <p>When <code>Optimizer.optimize</code> finishes, it will return a trained model. You can then use the trained model for prediction or evaluation. Refer to <a href="../APIGuide/Module/#model-prediction">Model Prediction</a> and <a href="../APIGuide/Module/#model-evaluation">Model Evaluation</a> for detailed usage.    </p>
-<p>If you prefer to train a model inside a Spark ML pipeline, please refer to  <a href="../ProgrammingGuide/MLPipeline/">Using BigDL in Spark ML Pipeline</a> page for usage.</p>
 <hr />
 <h2 id="save-a-model"><strong>Save a Model</strong></h2>
 <p>When training is finished, you may need to save the final model for later use. </p>
