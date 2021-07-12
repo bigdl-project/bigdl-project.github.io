@@ -1,0 +1,525 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>TensorflowOpsLoader - bigdl 0.13.0 API - com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader</title>
+          <meta name="description" content="TensorflowOpsLoader - bigdl 0.13.0 API - com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader" />
+          <meta name="keywords" content="TensorflowOpsLoader bigdl 0.13.0 API com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../../../index.html';
+            var hash = 'com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="type">
+      <div id="definition">
+        <img alt="Class" src="../../../../../../../lib/class_big.png" />
+        <p id="owner"><a href="../../../../../../package.html" class="extype" name="com">com</a>.<a href="../../../../../package.html" class="extype" name="com.intel">intel</a>.<a href="../../../../package.html" class="extype" name="com.intel.analytics">analytics</a>.<a href="../../../package.html" class="extype" name="com.intel.analytics.bigdl">bigdl</a>.<a href="../../package.html" class="extype" name="com.intel.analytics.bigdl.utils">utils</a>.<a href="../package.html" class="extype" name="com.intel.analytics.bigdl.utils.tf">tf</a>.<a href="package.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders">loaders</a></p>
+        <h1>TensorflowOpsLoader</h1><h3><span class="morelinks"><div>Related Doc:
+            <a href="package.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders">package loaders</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">TensorflowOpsLoader</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">scala.Any</span></div>
+        </div><div class="toggleContainer block">
+            <span class="toggle">Known Subclasses</span>
+            <div class="subClasses hiddenContent"><a href="Abs.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Abs">Abs</a>, <a href="Add.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Add">Add</a>, <a href="AddN.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.AddN">AddN</a>, <a href="All.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.All">All</a>, <a href="Any.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Any">Any</a>, <a href="ApproximateEqual.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.ApproximateEqual">ApproximateEqual</a>, <a href="ArgMax.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.ArgMax">ArgMax</a>, <a href="Assert.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Assert">Assert</a>, <a href="AvgPool.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.AvgPool">AvgPool</a>, <a href="AvgPoolGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.AvgPoolGrad">AvgPoolGrad</a>, <a href="BatchMatMul.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.BatchMatMul">BatchMatMul</a>, <a href="BiasAdd.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.BiasAdd">BiasAdd</a>, <a href="BiasAddGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.BiasAddGrad">BiasAddGrad</a>, <a href="BiasAddV1.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.BiasAddV1">BiasAddV1</a>, <a href="BroadcastGradientArgs.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.BroadcastGradientArgs">BroadcastGradientArgs</a>, <a href="Cast.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Cast">Cast</a>, <a href="Ceil.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Ceil">Ceil</a>, <a href="ConcatV2.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.ConcatV2">ConcatV2</a>, <a href="Const.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Const">Const</a>, <a href="Conv2D.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Conv2D">Conv2D</a>, <a href="Conv2DBackpropFilter.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Conv2DBackpropFilter">Conv2DBackpropFilter</a>, <a href="Conv2DBackpropInput.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Conv2DBackpropInput">Conv2DBackpropInput</a>, <a href="Conv3D.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Conv3D">Conv3D</a>, <a href="Conv3DBackpropFilter.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Conv3DBackpropFilter">Conv3DBackpropFilter</a>, <a href="Conv3DBackpropFilterV2.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Conv3DBackpropFilterV2">Conv3DBackpropFilterV2</a>, <a href="Conv3DBackpropInput.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Conv3DBackpropInput">Conv3DBackpropInput</a>, <a href="Conv3DBackpropInputV2.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Conv3DBackpropInputV2">Conv3DBackpropInputV2</a>, <a href="DecodeBmp.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.DecodeBmp">DecodeBmp</a>, <a href="DecodeGif.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.DecodeGif">DecodeGif</a>, <a href="DecodeJpeg.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.DecodeJpeg">DecodeJpeg</a>, <a href="DecodePng.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.DecodePng">DecodePng</a>, <a href="DecodeRaw.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.DecodeRaw">DecodeRaw</a>, <a href="DependencyNode.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.DependencyNode">DependencyNode</a>, <a href="DepthwiseConv2dNative.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.DepthwiseConv2dNative">DepthwiseConv2dNative</a>, <a href="DepthwiseConv2dNativeBackpropFilter.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.DepthwiseConv2dNativeBackpropFilter">DepthwiseConv2dNativeBackpropFilter</a>, <a href="DepthwiseConv2dNativeBackpropInput.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.DepthwiseConv2dNativeBackpropInput">DepthwiseConv2dNativeBackpropInput</a>, <a href="Digamma.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Digamma">Digamma</a>, <a href="Dilation2D.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Dilation2D">Dilation2D</a>, <a href="Dilation2DBackpropFilter.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Dilation2DBackpropFilter">Dilation2DBackpropFilter</a>, <a href="Dilation2DBackpropInput.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Dilation2DBackpropInput">Dilation2DBackpropInput</a>, <a href="Div.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Div">Div</a>, <a href="Elu.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Elu">Elu</a>, <a href="EluGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.EluGrad">EluGrad</a>, <a href="Equal.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Equal">Equal</a>, <a href="Erf.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Erf">Erf</a>, <a href="Erfc.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Erfc">Erfc</a>, <a href="Exp.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Exp">Exp</a>, <a href="ExpandDims.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.ExpandDims">ExpandDims</a>, <a href="Expm1.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Expm1">Expm1</a>, <a href="Fill.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Fill">Fill</a>, <a href="Floor.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Floor">Floor</a>, <a href="FloorDiv.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.FloorDiv">FloorDiv</a>, <a href="FloorMod.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.FloorMod">FloorMod</a>, <a href="FusedBatchNorm.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.FusedBatchNorm">FusedBatchNorm</a>, <a href="FusedBatchNormGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.FusedBatchNormGrad">FusedBatchNormGrad</a>, <a href="FusedBatchNormGradV2.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.FusedBatchNormGradV2">FusedBatchNormGradV2</a>, <a href="FusedBatchNormV2.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.FusedBatchNormV2">FusedBatchNormV2</a>, <a href="Gather.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Gather">Gather</a>, <a href="Greater.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Greater">Greater</a>, <a href="GreaterEqual.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.GreaterEqual">GreaterEqual</a>, <a href="Identity.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Identity">Identity</a>, <a href="InTopK.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.InTopK">InTopK</a>, <a href="Inv.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Inv">Inv</a>, <a href="InvGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.InvGrad">InvGrad</a>, <a href="IsFinite.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.IsFinite">IsFinite</a>, <a href="IsInf.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.IsInf">IsInf</a>, <a href="IsNan.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.IsNan">IsNan</a>, <a href="L2Loss.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.L2Loss">L2Loss</a>, <a href="LRN.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.LRN">LRN</a>, <a href="LRNGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.LRNGrad">LRNGrad</a>, <a href="Less.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Less">Less</a>, <a href="LessEqual.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.LessEqual">LessEqual</a>, <a href="Lgamma.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Lgamma">Lgamma</a>, <a href="Log.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Log">Log</a>, <a href="Log1p.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Log1p">Log1p</a>, <a href="LogSoftmax.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.LogSoftmax">LogSoftmax</a>, <a href="LogicalAnd.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.LogicalAnd">LogicalAnd</a>, <a href="LogicalNot.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.LogicalNot">LogicalNot</a>, <a href="LogicalOr.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.LogicalOr">LogicalOr</a>, <a href="MatMul.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.MatMul">MatMul</a>, <a href="Max.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Max">Max</a>, <a href="MaxPool.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.MaxPool">MaxPool</a>, <a href="MaxPoolGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.MaxPoolGrad">MaxPoolGrad</a>, <a href="Maximum.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Maximum">Maximum</a>, <a href="Mean.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Mean">Mean</a>, <a href="Minimum.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Minimum">Minimum</a>, <a href="Mod.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Mod">Mod</a>, <a href="Mul.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Mul">Mul</a>, <a href="Neg.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Neg">Neg</a>, <a href="NotEqual.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.NotEqual">NotEqual</a>, <a href="OneHot.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.OneHot">OneHot</a>, <a href="Pack.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Pack">Pack</a>, <a href="Pad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Pad">Pad</a>, <a href="ParseExample.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.ParseExample">ParseExample</a>, <a href="ParseSingleExample.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.ParseSingleExample">ParseSingleExample</a>, <a href="Placeholder.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Placeholder">Placeholder</a>, <a href="Pow.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Pow">Pow</a>, <a href="Prod.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Prod">Prod</a>, <a href="QueueDequeueManyV2.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.QueueDequeueManyV2">QueueDequeueManyV2</a>, <a href="QueueDequeueV2.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.QueueDequeueV2">QueueDequeueV2</a>, <a href="QueueEnqueueManyV2.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.QueueEnqueueManyV2">QueueEnqueueManyV2</a>, <a href="QueueEnqueueV2.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.QueueEnqueueV2">QueueEnqueueV2</a>, <a href="RandomShuffle.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.RandomShuffle">RandomShuffle</a>, <a href="RandomUniform.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.RandomUniform">RandomUniform</a>, <a href="Range.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Range">Range</a>, <a href="Rank.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Rank">Rank</a>, <a href="ReaderReadV2.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.ReaderReadV2">ReaderReadV2</a>, <a href="RealDiv.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.RealDiv">RealDiv</a>, <a href="Reciprocal.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Reciprocal">Reciprocal</a>, <a href="ReciprocalGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.ReciprocalGrad">ReciprocalGrad</a>, <a href="Relu.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Relu">Relu</a>, <a href="Relu6.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Relu6">Relu6</a>, <a href="Relu6Grad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Relu6Grad">Relu6Grad</a>, <a href="ReluGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.ReluGrad">ReluGrad</a>, <a href="Reshape.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Reshape">Reshape</a>, <a href="ResizeBilinear.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.ResizeBilinear">ResizeBilinear</a>, <a href="ResizeBilinearGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.ResizeBilinearGrad">ResizeBilinearGrad</a>, <a href="Rint.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Rint">Rint</a>, <a href="Round.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Round">Round</a>, <a href="Rsqrt.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Rsqrt">Rsqrt</a>, <a href="RsqrtGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.RsqrtGrad">RsqrtGrad</a>, <a href="SegmentSum.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.SegmentSum">SegmentSum</a>, <a href="Select.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Select">Select</a>, <a href="Shape.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Shape">Shape</a>, <a href="Sigmoid.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Sigmoid">Sigmoid</a>, <a href="SigmoidGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.SigmoidGrad">SigmoidGrad</a>, <a href="Sign.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Sign">Sign</a>, <a href="Slice.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Slice">Slice</a>, <a href="Softmax.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Softmax">Softmax</a>, <a href="SoftmaxCrossEntropyWithLogits.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.SoftmaxCrossEntropyWithLogits">SoftmaxCrossEntropyWithLogits</a>, <a href="Softplus.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Softplus">Softplus</a>, <a href="SoftplusGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.SoftplusGrad">SoftplusGrad</a>, <a href="Softsign.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Softsign">Softsign</a>, <a href="SoftsignGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.SoftsignGrad">SoftsignGrad</a>, <a href="Split.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Split">Split</a>, <a href="Sqrt.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Sqrt">Sqrt</a>, <a href="SqrtGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.SqrtGrad">SqrtGrad</a>, <a href="Square.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Square">Square</a>, <a href="SquaredDifference.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.SquaredDifference">SquaredDifference</a>, <a href="Squeeze.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Squeeze">Squeeze</a>, <a href="StridedSlice.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.StridedSlice">StridedSlice</a>, <a href="Sub.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Sub">Sub</a>, <a href="Substr.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Substr">Substr</a>, <a href="Sum.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Sum">Sum</a>, <a href="Tanh.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Tanh">Tanh</a>, <a href="TanhGrad.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.TanhGrad">TanhGrad</a>, <a href="TensorArrayGatherV3.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.TensorArrayGatherV3">TensorArrayGatherV3</a>, <a href="Tile.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Tile">Tile</a>, <a href="TopK.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.TopK">TopK</a>, <a href="TopKV2.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.TopKV2">TopKV2</a>, <a href="Transpose.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Transpose">Transpose</a>, <a href="TruncateDiv.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.TruncateDiv">TruncateDiv</a>, <a href="TruncateMod.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.TruncateMod">TruncateMod</a>, <a href="Unpack.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.Unpack">Unpack</a>, <a href="VariableV2.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.VariableV2">VariableV2</a></div>
+          </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader"><span>TensorflowOpsLoader</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show All</span></li>
+            </ol>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;():com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader"></a>
+      <a id="&lt;init&gt;:TensorflowOpsLoader"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">TensorflowOpsLoader</span><span class="params">()</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@&lt;init&gt;():com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Abstract Value Members</h3>
+              <ol><li name="com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader#build" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="build[T](nodeDef:org.tensorflow.framework.NodeDef,byteOrder:java.nio.ByteOrder,context:com.intel.analytics.bigdl.utils.tf.Context[T])(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.Module[T]"></a>
+      <a id="build[T](NodeDef,ByteOrder,Context[T])(ClassTag[T],TensorNumeric[T]):Module[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">build</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="nodeDef">nodeDef: <span class="extype" name="org.tensorflow.framework.NodeDef">NodeDef</span></span>, <span name="byteOrder">byteOrder: <span class="extype" name="java.nio.ByteOrder">ByteOrder</span></span>, <span name="context">context: <a href="../Context.html" class="extype" name="com.intel.analytics.bigdl.utils.tf.Context">Context</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader.build.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader.build.T">T</span>]</span>, <span name="ev">ev: <a href="../../../tensor/TensorNumericMath$$TensorNumeric.html" class="extype" name="com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric">TensorNumeric</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader.build.T">T</span>]</span>)</span><span class="result">: <a href="../../../package.html#Module[T]=com.intel.analytics.bigdl.nn.abstractnn.AbstractModule[com.intel.analytics.bigdl.nn.abstractnn.Activity,com.intel.analytics.bigdl.nn.abstractnn.Activity,T]" class="extmbr" name="com.intel.analytics.bigdl.Module">Module</a>[<span class="extype" name="com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader.build.T">T</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@build[T](nodeDef:org.tensorflow.framework.NodeDef,byteOrder:java.nio.ByteOrder,context:com.intel.analytics.bigdl.utils.tf.Context[T])(implicitevidence$1:scala.reflect.ClassTag[T],implicitev:com.intel.analytics.bigdl.tensor.TensorNumericMath.TensorNumeric[T]):com.intel.analytics.bigdl.Module[T]" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Concrete Value Members</h3>
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(scala.Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">scala.Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@##():Int" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(scala.Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">scala.Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
+      <a id="clone():AnyRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@clone():Object" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
+      <a id="equals(scala.Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">scala.Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <a id="hashCode():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@toString():String" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../../index.html#com.intel.analytics.bigdl.utils.tf.loaders.TensorflowOpsLoader@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">scala.Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

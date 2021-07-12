@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Quantization Support - BigDL Project</title>
+    <link href="/css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="/css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link href="../../extra.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap-3.3.7.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Introduction", url: "#introduction", children: [
+          ]},
+          {title: "Quantize the pretrained model", url: "#quantize-the-pretrained-model", children: [
+          ]},
+          {title: "Quantize model in code", url: "#quantize-model-in-code", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="/js/base.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-60548202-2', 'bigdl-project.github.io');
+        ga('send', 'pageview');
+    </script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+    
+    <h1><strong>Quantization Support</strong></h1>
+    <hr>
+    <h2 id="introduction">Introduction</h2>
+<p>Quantization is a method that will use low-precision caculations to substitute float caculations. It will improve the inference performance and reduce the size of model by up to 4x.</p>
+<h2 id="quantize-the-pretrained-model">Quantize the pretrained model</h2>
+<p>BigDL provide command line tools for converting the pretrained
+(BigDL, Caffe, Torch and Tensorflow) model to quantized model with
+parameter <code>--quantize true</code>. You can modify the script below to convert a model to
+quantized model.</p>
+<p>By default, you should set some shell variables below. The <code>BIGDL_HOME</code> is the 
+<code>dist</code> directory. If the spark version you use is after 2.0, you should add
+spark jars directory to <code>SPARK_JAR</code>.</p>
+<pre><code class="bash">#!/bin/bash
+
+set -x
+
+VERSION=0.13.0
+BIGDL_HOME=${WORKSPACE}/dist
+JAR_HOME=${BIGDL_HOME}/lib/target
+SPARK_JAR=/opt/spark/jars/*
+JAR=${JAR_HOME}/bigdl-${VERSION}-jar-with-dependencies.jar:${SPARK_JAR}
+</code></pre>
+
+<p>For example, we want to convert a caffe model to a bigdl model.</p>
+<pre><code class="bash">FROM=caffe
+TO=bigdl
+MODEL=bvlc_alexnet.caffemodel
+</code></pre>
+
+<p>And the last commands are as follows.</p>
+<pre><code class="bash">CLASS=com.intel.analytics.bigdl.utils.ConvertModel
+
+
+java -cp ${JAR} ${CLASS} --from ${FROM} --to ${TO} \
+    --input ${MODEL} --output ${MODEL%%.caffemodel}.bigdlmodel \
+    --prototxt ${PWD}/deploy.prototxt --quantize true
+</code></pre>
+
+<p><code>ConvertModel</code> supports converting different types of pretrained models to bigdlmodel.
+It also supports converting bigdlmodel to other types. The help is</p>
+<pre><code>Usage: Convert models between different dl frameworks [options]
+
+  --from &lt;value&gt;
+        What's the type origin model bigdl,caffe,torch,tensorflow?
+  --to &lt;value&gt;
+        What's the type of model you want bigdl,caffe,torch?
+  --input &lt;value&gt;
+        Where's the origin model file?
+  --output &lt;value&gt;
+        Where's the bigdl model file to save?
+  --prototxt &lt;value&gt;
+        Where's the caffe deploy prototxt?
+  --quantize &lt;value&gt;
+        Do you want to quantize the model? Only works when &quot;--to&quot; is bigdl;you can only perform inference using the new quantized model.
+  --tf_inputs &lt;value&gt;
+        Inputs for Tensorflow
+  --tf_outputs &lt;value&gt;
+        Outputs for Tensorflow
+
+</code></pre>
+
+<h2 id="quantize-model-in-code">Quantize model in code</h2>
+<p>You can call <code>quantize()</code> method to quantize the model. It will deep copy original model and generate new one. You can only perform inference using the new quantized model.</p>
+<pre><code class="scala">val model = xxx
+val quantizedModel = model.quantize()
+quantizeModel.forward(inputTensor)
+</code></pre>
+
+<p>There's also a Python API which is same as scala version.</p>
+<pre><code class="python">model = xxx
+quantizedModel = model.quantize()
+</code></pre>
+
+  <br>
+</div>
+
+<footer class="col-md-12 wm-page-content">
+  <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
