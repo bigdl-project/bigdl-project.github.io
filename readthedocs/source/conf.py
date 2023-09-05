@@ -6,6 +6,8 @@
 # full list see the documentation:
 # http://www.sphinx-doc.org/en/master/config
 
+import os
+import sys
 
 project = 'BigDL Assets'
 copyright = '2020, BigDL Authors'
