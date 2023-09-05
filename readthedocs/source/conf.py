@@ -10,3 +10,5 @@
 project = 'BigDL Assets'
 copyright = '2020, BigDL Authors'
 author = 'BigDL Authors'
+
+html_theme = 'sphinx_rtd_theme'
