@@ -1,4 +1,4 @@
-BigDL Assets
+BigDL-LLM Assets
 =========================
 
 .. include:: ../../assets/
@@ -11,7 +11,7 @@ Image address:
 
 .. code-block::
 
-  https://bigdl-project-assets.readthedocs.io/en/latest/_images/chatglm2-6b.gif
+  https://llm-assets.readthedocs.io/en/latest/_images/chatglm2-6b.gif
 
 
 llama-2-13b-chat.gif
@@ -22,7 +22,7 @@ Image address:
 
 .. code-block::
 
-  https://bigdl-project-assets.readthedocs.io/en/latest/_images/llama-2-13b-chat.gif
+  https://llm-assets.readthedocs.io/en/latest/_images/llama-2-13b-chat.gif
 
 
 llm-7b.gif
@@ -33,7 +33,7 @@ Image address:
 
 .. code-block::
 
-  https://bigdl-project-assets.readthedocs.io/en/latest/_images/llm-7b.gif
+  https://llm-assets.readthedocs.io/en/latest/_images/llm-7b.gif
 
 
 llm-13b.gif
@@ -44,7 +44,7 @@ Image address:
 
 .. code-block::
 
-  https://bigdl-project-assets.readthedocs.io/en/latest/_images/llm-13b.gif
+  https://llm-assets.readthedocs.io/en/latest/_images/llm-13b.gif
 
 
 llm-15b5.gif
@@ -55,7 +55,7 @@ Image address:
 
 .. code-block::
 
-  https://bigdl-project-assets.readthedocs.io/en/latest/_images/llm-15b5.gif
+  https://llm-assets.readthedocs.io/en/latest/_images/llm-15b5.gif
 
 
 llm-models.png
@@ -66,7 +66,7 @@ Image address:
 
 .. code-block::
 
-  https://bigdl-project-assets.readthedocs.io/en/latest/_images/llm-models.png
+  https://llm-assets.readthedocs.io/en/latest/_images/llm-models.png
 
 
 llm-models2.png
@@ -77,7 +77,7 @@ Image address:
 
 .. code-block::
 
-  https://bigdl-project-assets.readthedocs.io/en/latest/_images/llm-models2.png
+  https://llm-assets.readthedocs.io/en/latest/_images/llm-models2.png
 
 
 llm-models3.png
@@ -88,4 +88,4 @@ Image address:
 
 .. code-block::
 
-  https://bigdl-project-assets.readthedocs.io/en/latest/_images/llm-models3.png
+  https://llm-assets.readthedocs.io/en/latest/_images/llm-models3.png
