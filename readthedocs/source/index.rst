@@ -7,7 +7,7 @@ chatglm2-6b.gif
 -------------------------
 .. figure:: ../../assets/chatglm2-6b.gif
 
-..code-block::
+.. code-block::
 
   https://bigdl-projectgithubio.readthedocs.io/en/latest/_images/chatglm2-6b.gif
 
