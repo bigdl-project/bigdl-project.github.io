@@ -9,7 +9,7 @@
 import os
 import sys
 
-project = 'BigDL Assets'
+project = 'BigDL-LLM Assets'
 copyright = '2020, BigDL Authors'
 author = 'BigDL Authors'
 
