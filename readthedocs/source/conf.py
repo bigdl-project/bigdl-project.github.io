@@ -14,3 +14,7 @@ copyright = '2020, BigDL Authors'
 author = 'BigDL Authors'
 
 html_theme = 'sphinx_rtd_theme'
+
+extensions = [
+  'sphinx_copybutton'
+]
