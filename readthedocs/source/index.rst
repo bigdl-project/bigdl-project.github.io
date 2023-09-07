@@ -89,3 +89,25 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/llm-models3.png
+
+
+bigdl_logo.jpg
+-------------------------
+.. figure:: ../../assets/bigdl_logo.jpg
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/bigdl_logo.jpg
+
+
+bigdl_logo.png
+-------------------------
+.. figure:: ../../assets/bigdl_logo.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/bigdl_logo.png
