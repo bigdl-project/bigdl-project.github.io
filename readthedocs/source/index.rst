@@ -25,17 +25,6 @@ Image address:
   https://llm-assets.readthedocs.io/en/latest/_images/llama-2-13b-chat.gif
 
 
-llm-7b.gif
--------------------------
-.. figure:: ../../assets/llm-7b.gif
-
-Image address:
-
-.. code-block::
-
-  https://llm-assets.readthedocs.io/en/latest/_images/llm-7b.gif
-
-
 llm-13b.gif
 -------------------------
 .. figure:: ../../assets/llm-13b.gif
@@ -58,26 +47,26 @@ Image address:
   https://llm-assets.readthedocs.io/en/latest/_images/llm-15b5.gif
 
 
-llm-models.png
+chatglm2-arc.gif
 -------------------------
-.. figure:: ../../assets/llm-models.png
+.. figure:: ../../assets/chatglm2-arc.gif
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/llm-models.png
+  https://llm-assets.readthedocs.io/en/latest/_images/chatglm2-arc.gif
 
 
-llm-models2.png
+llama2-13b-arc.gif
 -------------------------
-.. figure:: ../../assets/llm-models2.png
+.. figure:: ../../assets/llama2-13b-arc.gif
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/llm-models2.png
+  https://llm-assets.readthedocs.io/en/latest/_images/llama2-13b-arc.gif
 
 
 llm-models3.png
