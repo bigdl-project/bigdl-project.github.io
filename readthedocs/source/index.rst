@@ -25,16 +25,6 @@ Image address:
   https://llm-assets.readthedocs.io/en/latest/_images/llama-2-13b-chat.gif
 
 
-llm-7b.gif
--------------------------
-.. figure:: ../../assets/llm-7b.gif
-
-Image address:
-
-.. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/llm-7b.gif
-
-
 llm-13b.gif
 -------------------------
 .. figure:: ../../assets/llm-13b.gif
