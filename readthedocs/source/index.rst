@@ -100,3 +100,47 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/bigdl_logo.png
+
+
+one-click-installer-screen-capture.gif
+---------------------------------------------
+.. figure:: ../../assets/one-click-installer/one-click-installer-screen-capture.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/one-click-installer-screen-capture.gif
+
+
+one-click-installer-user-guide-step1.png
+---------------------------------------------
+.. figure:: ../../assets/one-click-installer/one-click-installer-user-guide-step1.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/one-click-installer-user-guide-step1.png
+
+
+one-click-installer-user-guide-step2.png
+---------------------------------------------
+.. figure:: ../../assets/one-click-installer/one-click-installer-user-guide-step2.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/one-click-installer-user-guide-step2.png
+
+
+one-click-installer-user-guide-step34.png
+---------------------------------------------
+.. figure:: ../../assets/one-click-installer/one-click-installer-user-guide-step34.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/one-click-installer-user-guide-step34.png
