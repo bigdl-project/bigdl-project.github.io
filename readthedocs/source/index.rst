@@ -144,3 +144,25 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/one-click-installer-user-guide-step34.png
+
+
+llm-inference-chatpy-demo.gif
+---------------------------------------------
+.. figure:: ../../assets/llm-inference/llm-inference-chatpy-demo.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/llm-inference-chatpy-demo.gif
+
+
+llm-inference-tutorial-demo.gif
+---------------------------------------------
+.. figure:: ../../assets/llm-inference/llm-inference-tutorial-demo.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/llm-inference-tutorial-demo.gif
