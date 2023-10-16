@@ -146,23 +146,23 @@ Image address:
   https://llm-assets.readthedocs.io/en/latest/_images/one-click-installer-user-guide-step34.png
 
 
-llm-inference-docker-chatpy-demo.gif
+llm-inference-cpu-docker-chatpy-demo.gif
 ---------------------------------------------
-.. figure:: ../../assets/llm-inference-docker/llm-inference-docker-chatpy-demo.gif
+.. figure:: ../../assets/llm-inference-cpu-docker/llm-inference-cpu-docker-chatpy-demo.gif
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/llm-inference-docker-chatpy-demo.gif
+  https://llm-assets.readthedocs.io/en/latest/_images/llm-inference-cpu-docker-chatpy-demo.gif
 
 
-llm-inference-docker-tutorial-demo.gif
+llm-inference-cpu-docker-tutorial-demo.gif
 ---------------------------------------------
-.. figure:: ../../assets/llm-inference-docker/llm-inference-docker-tutorial-demo.gif
+.. figure:: ../../assets/llm-inference-cpu-docker/llm-inference-cpu-docker-tutorial-demo.gif
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/llm-inference-docker-tutorial-demo.gif
+  https://llm-assets.readthedocs.io/en/latest/_images/llm-inference-cpu-docker-tutorial-demo.gif
