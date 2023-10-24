@@ -181,7 +181,7 @@ Image address:
 
 qwen-vl-example-input.jpg
 ---------------------------------
-.. figure:: ../../assets/qwen-vl-example/qwen-vl-example-input.jpg
+.. figure:: ../../assets/llm-example/qwen-vl-example-input.jpg
 
 Image address:
 
@@ -193,11 +193,10 @@ Image address:
 
 qwen-vl-example-output.png
 ---------------------------------
-.. figure:: ../../assets/qwen-vl-example/qwen-vl-example-output.png
+.. figure:: ../../assets/llm-example/qwen-vl-example-output.png
 
 Image address:
 
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/qwen-vl-example-output.png
-  
