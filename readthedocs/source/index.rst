@@ -166,3 +166,14 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/llm-inference-cpu-docker-tutorial-demo.gif
+
+
+llm-finetune-lora-cpu-k8s.png
+---------------------------------
+.. figure:: ../../assets/llm-finetune-lora-cpu/llm-finetune-lora-cpu-k8s.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/llm-finetune-lora-cpu-k8s.png
