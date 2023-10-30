@@ -187,3 +187,13 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/qwen-vl-example-output.png
+
+qwen-vl-example-output-gpu.png
+---------------------------------
+.. figure:: ../../assets/llm-example/qwen-vl-example-output-gpu.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/qwen-vl-example-output-gpu.png
