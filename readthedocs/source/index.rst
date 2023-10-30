@@ -178,19 +178,6 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/llm-finetune-lora-cpu-k8s.png
 
-
-qwen-vl-example-input.jpg
----------------------------------
-.. figure:: ../../assets/llm-example/qwen-vl-example-input.jpg
-
-Image address:
-
-.. code-block::
-
-  https://llm-assets.readthedocs.io/en/latest/_images/qwen-vl-example-input.jpg
-
-
-
 qwen-vl-example-output.png
 ---------------------------------
 .. figure:: ../../assets/llm-example/qwen-vl-example-output.png
