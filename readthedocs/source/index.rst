@@ -197,3 +197,19 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/qwen-vl-example-output-gpu.png
+
+bark-example-output.wav
+---------------------------------
+.. raw:: html
+
+   <audio controls>
+     <source src="../../assets/llm-example/bark-example-output.wav" type="audio/wav">
+   </audio>
+
+speech-t5-example-output.wav
+---------------------------------
+.. raw:: html
+
+   <audio controls>
+     <source src="../../assets/llm-example/speech-t5-example-output.wav" type="audio/wav">
+   </audio>
