@@ -200,16 +200,23 @@ Image address:
 
 bark-example-output.wav
 ---------------------------------
+
+Click :download:`here <../../assets/llm-example/bark-example-output.wav>` to get wave file.
+
 .. raw:: html
 
    <audio controls>
-     <source src="../../assets/llm-example/bark-example-output.wav" type="audio/wav">
+     <source src="_downloads/e92874986553193acbd321d1cfe29739/bark-example-output.wav" type="audio/wav">
    </audio>
+  
 
 speech-t5-example-output.wav
 ---------------------------------
+
+Click :download:`here <../../assets/llm-example/speech-t5-example-output.wav>` to get wave file.
+
 .. raw:: html
 
    <audio controls>
-     <source src="../../assets/llm-example/speech-t5-example-output.wav" type="audio/wav">
+     <source src="_downloads/f0bebfbe8c350b71fe565a82192c079b/speech-t5-example-output.wav" type="audio/wav">
    </audio>
