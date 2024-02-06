@@ -206,8 +206,12 @@ Click :download:`here <../../assets/llm-example/bark-example-output.wav>` to get
 .. raw:: html
 
    <audio controls>
-     <source src="_downloads/e92874986553193acbd321d1cfe29739/bark-example-output.wav" type="audio/wav">
+     <source src="https://llm-assets.readthedocs.io/en/latest/_downloads/e92874986553193acbd321d1cfe29739/bark-example-output.wav" type="audio/wav">
    </audio>
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_downloads/e92874986553193acbd321d1cfe29739/bark-example-output.wav
   
 
 speech-t5-example-output.wav
@@ -218,5 +222,10 @@ Click :download:`here <../../assets/llm-example/speech-t5-example-output.wav>` t
 .. raw:: html
 
    <audio controls>
-     <source src="_downloads/f0bebfbe8c350b71fe565a82192c079b/speech-t5-example-output.wav" type="audio/wav">
+     <source src="https://llm-assets.readthedocs.io/en/latest/_downloads/f0bebfbe8c350b71fe565a82192c079b/speech-t5-example-output.wav" type="audio/wav">
    </audio>
+
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_downloads/f0bebfbe8c350b71fe565a82192c079b/speech-t5-example-output.wav
