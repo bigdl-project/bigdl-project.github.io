@@ -229,3 +229,57 @@ Click :download:`here <../../assets/llm-example/speech-t5-example-output.wav>` t
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_downloads/f0bebfbe8c350b71fe565a82192c079b/speech-t5-example-output.wav
+
+quickstart_windows_gpu_1.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_windows_gpu/quickstart_windows_gpu_1.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/quickstart_windows_gpu_1.png
+
+
+quickstart_windows_gpu_3.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_windows_gpu/quickstart_windows_gpu_3.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/quickstart_windows_gpu_3.png
+
+
+quickstart_windows_gpu_4.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_windows_gpu/quickstart_windows_gpu_4.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/quickstart_windows_gpu_4.png
+
+
+quickstart_windows_gpu_5.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_windows_gpu/quickstart_windows_gpu_5.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/quickstart_windows_gpu_5.png
+
+
+quickstart_windows_gpu_6.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_windows_gpu/quickstart_windows_gpu_6.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/quickstart_windows_gpu_6.png
