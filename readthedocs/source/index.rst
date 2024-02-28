@@ -283,3 +283,62 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/quickstart_windows_gpu_6.png
+webui_quickstart_chat.png
+---------------------------------
+.. figure:: ../../assets/quickstart/webui_quickstart/webui_quickstart_chat.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_chat.png
+
+webui_quickstart_download_model.png
+---------------------------------
+.. figure:: ../../assets/quickstart/webui_quickstart/webui_quickstart_download_model.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_download_model.png
+
+webui_quickstart_launch_server.png
+---------------------------------
+.. figure:: ../../assets/quickstart/webui_quickstart/webui_quickstart_launch_server.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_launch_server.png
+
+webui_quickstart_load_model_error.png
+---------------------------------
+.. figure:: ../../assets/quickstart/webui_quickstart/webui_quickstart_load_model_error.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_load_model_error.png
+
+webui_quickstart_load_model_success.png
+---------------------------------
+.. figure:: ../../assets/quickstart/webui_quickstart/webui_quickstart_load_model_success.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_load_model_success.png
+
+webui_quickstart_select_model.png
+---------------------------------
+.. figure:: ../../assets/quickstart/webui_quickstart/webui_quickstart_select_model.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_select_model.png
