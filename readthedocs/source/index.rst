@@ -283,6 +283,17 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/quickstart_windows_gpu_6.png
+
+quickstart_windows_gpu_oneapi_offline_installer.png
+---------------------------------
+.. figure:: ../../assets/quickstart/webui_quickstart/quickstart_windows_gpu_oneapi_offline_installer.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/quickstart_windows_gpu_oneapi_offline_installer.png
+
 webui_quickstart_chat.png
 ---------------------------------
 .. figure:: ../../assets/quickstart/webui_quickstart/webui_quickstart_chat.png
