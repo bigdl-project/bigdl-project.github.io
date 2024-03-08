@@ -286,7 +286,7 @@ Image address:
 
 quickstart_windows_gpu_oneapi_offline_installer.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/webui_quickstart/quickstart_windows_gpu_oneapi_offline_installer.png
+.. figure:: ../../assets/quickstart/install_windows_gpu/quickstart_windows_gpu_oneapi_offline_installer.png
 
 Image address:
 
