@@ -354,46 +354,6 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_select_model.png
 
-driver_install1.png
----------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/1_driver/linuxdriver_1.png
-
-Image address:
-
-.. code-block::
-
-  https://llm-assets.readthedocs.io/en/latest/_images/driver_install1.png
-
-driver_install2.png
----------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/1_driver/linuxdriver_2.png
-
-Image address:
-
-.. code-block::
-
-  https://llm-assets.readthedocs.io/en/latest/_images/driver_install2.png
-
-driver_install3.png
----------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/1_driver/linuxdriver_3.png
-
-Image address:
-
-.. code-block::
-
-  https://llm-assets.readthedocs.io/en/latest/_images/driver_install3.png
-
-driver_install4.png
----------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/1_driver/linuxdriver_4.png
-
-Image address:
-
-.. code-block::
-
-  https://llm-assets.readthedocs.io/en/latest/_images/driver_install4.png
-
 
 driver_install5_1.png
 ---------------------------------
