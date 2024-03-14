@@ -353,3 +353,25 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_select_model.png
+
+
+docker_desktop_new.png
+---------------------------------
+.. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/docker_desktop_new.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/docker_desktop_new.png
+
+
+docker_wsl.png
+---------------------------------
+.. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/docker_wsl.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/docker_wsl.png
