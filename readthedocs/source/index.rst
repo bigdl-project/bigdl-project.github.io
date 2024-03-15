@@ -415,3 +415,13 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/start_docker_in_wsl.png
+
+disable_iGPU.png
+---------------------------------
+.. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/disable_iGPU.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/disable_iGPU.png
