@@ -354,6 +354,25 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_select_model.png
 
+webui_quickstart_chat_mode_instruct.png
+---------------------------------
+.. figure:: ../../assets/quickstart/webui_quickstart/webui_quickstart_chat_mode_instruct.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_chat_mode_instruct.png
+
+webui_quickstart_instruction_template.png
+---------------------------------
+.. figure:: ../../assets/quickstart/webui_quickstart/webui_quickstart_instruction_template.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_instruction_template.png
 
 docker_desktop_new.png
 ---------------------------------
