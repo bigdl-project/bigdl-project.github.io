@@ -354,85 +354,51 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_select_model.png
 
-
-driver_install5_1.png
+driver_install1.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/1_driver/linuxdriver_5_install_driver.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/1_driver/1_wget.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/driver_install5_1.png
+  https://llm-assets.readthedocs.io/en/latest/_images/driver_install1.png
 
 
-driver_install5_2.png
+driver_install2.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/1_driver/linuxdriver_5_install_driver2.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/1_driver/2_915.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/driver_install5_2.png
+  https://llm-assets.readthedocs.io/en/latest/_images/driver_install2.png
 
-driver_install6.png
+driver_install3.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/1_driver/linuxdriver_6_verify_driver.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/1_driver/3_gawk.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/driver_install6.png
+  https://llm-assets.readthedocs.io/en/latest/_images/driver_install3.png
 
-
-pythonenv_install_conda1.png
+python_env1.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/2_python_env/2_pythonenv_install_conda1.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/2_python_env/1_conda_install.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/pythonenv_install_conda1.png
-
-
-pythonenv_install_conda2.png
----------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/2_python_env/2_pythonenv_install_conda2.png
-
-Image address:
-
-.. code-block::
-
-  https://llm-assets.readthedocs.io/en/latest/_images/pythonenv_install_conda2.png
-
-pythonenv_install_conda3.png
----------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/2_python_env/2_pythonenv_install_conda3_verify.png
-
-Image address:
-
-.. code-block::
-
-  https://llm-assets.readthedocs.io/en/latest/_images/pythonenv_install_conda3.png
-
-
-pythonenv_install_conda4.png
----------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/2_python_env/2_pythonenv_install_conda4_upgrade.png
-
-Image address:
-
-.. code-block::
-
-  https://llm-assets.readthedocs.io/en/latest/_images/pythonenv_install_conda4.png
+  https://llm-assets.readthedocs.io/en/latest/_images/python_env1.png
 
 
 install_oneapi_1.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/3_install_oneapi/install1.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/3_install_oneapi/1_oneapi1.png
 
 Image address:
 
@@ -440,42 +406,44 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/install_oneapi_1.png
 
-bigd_dl1.png
+
+install_oneapi_2.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/4_install_bigdl/1_conda_env.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/3_install_oneapi/2_oneapi2.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/bigd_dl1.png
+  https://llm-assets.readthedocs.io/en/latest/_images/install_oneapi_2.png
 
-bigd_dl2.png
+
+big_dl1.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/4_install_bigdl/2_installbigdl.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/4_install_bigdl/1_create_conda_env.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/bigd_dl2.png
+  https://llm-assets.readthedocs.io/en/latest/_images/big_dl1.png
 
-bigd_dl4.png
+big_dl2.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/4_install_bigdl/4_source_oneapi.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/4_install_bigdl/2_install_bigdl.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/bigd_dl4.png
+  https://llm-assets.readthedocs.io/en/latest/_images/big_dl2.png
 
-bigd_dl5.png
+big_dl3.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/4_install_bigdl/5_verify.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/4_install_bigdl/3_verify.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/bigd_dl5.png
+  https://llm-assets.readthedocs.io/en/latest/_images/big_dl3.png
