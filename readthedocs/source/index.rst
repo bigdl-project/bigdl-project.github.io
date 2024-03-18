@@ -374,6 +374,16 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_instruction_template.png
 
+init_llama_cpp_demo_image.png
+---------------------------------
+.. figure:: ../../assets/quickstart/llama_cpp_quickstart/init_llama_cpp_demo_image.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/init_llama_cpp_demo_image.png
+
 docker_desktop_new.png
 ---------------------------------
 .. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/docker_desktop_new.png
