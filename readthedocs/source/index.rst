@@ -500,7 +500,7 @@ Image address:
   https://llm-assets.readthedocs.io/en/latest/_images/verify_bigdl_import.png
 
 
-langchain-chatchat-chs-1536.mp4
+langchain-chatchat-chs.mp4
 ---------------------------------
 .. figure:: ../../assets/langchain-chatchat/langchain-chatchat-chs-1536.mp4
 
@@ -508,10 +508,10 @@ Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/langchain-chatchat-chs-1536.mp4
+  https://llm-assets.readthedocs.io/en/latest/_images/langchain-chatchat-chs.mp4
 
 
-langchain-chatchat-en-1536.mp4
+langchain-chatchat-en.mp4
 ---------------------------------
 .. figure:: ../../assets/langchain-chatchat/langchain-chatchat-en-1536.mp4
 
@@ -519,4 +519,4 @@ Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/langchain-chatchat-en-1536.mp4
+  https://llm-assets.readthedocs.io/en/latest/_images/langchain-chatchat-en.mp4
