@@ -354,6 +354,57 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_select_model.png
 
+webui_quickstart_chat_mode_instruct.png
+---------------------------------
+.. figure:: ../../assets/quickstart/webui_quickstart/webui_quickstart_chat_mode_instruct.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_chat_mode_instruct.png
+
+webui_quickstart_instruction_template.png
+---------------------------------
+.. figure:: ../../assets/quickstart/webui_quickstart/webui_quickstart_instruction_template.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_instruction_template.png
+
+init_llama_cpp_demo_image.png
+---------------------------------
+.. figure:: ../../assets/quickstart/llama_cpp_quickstart/init_llama_cpp_demo_image.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/init_llama_cpp_demo_image.png
+
+docker_desktop_new.png
+---------------------------------
+.. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/docker_desktop_new.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/docker_desktop_new.png
+
+
+docker_wsl.png
+---------------------------------
+.. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/docker_wsl.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/docker_wsl.png
+
 driver_install1.png
 ---------------------------------
 .. figure:: ../../assets/quickstart/install_linux_gpu/1_driver/1_wget.png
