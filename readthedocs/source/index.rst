@@ -404,3 +404,97 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/docker_wsl.png
+
+driver_install1.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_linux_gpu/1_driver/1_wget.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/driver_install1.png
+
+
+driver_install2.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_linux_gpu/1_driver/2_915.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/driver_install2.png
+
+driver_install3.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_linux_gpu/1_driver/3_gawk.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/driver_install3.png
+
+python_env1.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_linux_gpu/2_python_env/1_conda_install.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/python_env1.png
+
+
+install_oneapi_1.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_linux_gpu/3_install_oneapi/1_oneapi1.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/install_oneapi_1.png
+
+
+install_oneapi_2.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_linux_gpu/3_install_oneapi/2_oneapi2.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/install_oneapi_2.png
+
+
+big_dl1.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_linux_gpu/4_install_bigdl/1_create_conda_env.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/big_dl1.png
+
+big_dl2.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_linux_gpu/4_install_bigdl/2_install_bigdl.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/big_dl2.png
+
+big_dl3.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_linux_gpu/4_install_bigdl/3_verify.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/big_dl3.png
