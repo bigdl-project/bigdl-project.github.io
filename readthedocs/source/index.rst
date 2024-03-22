@@ -384,6 +384,15 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/init_llama_cpp_demo_image.png
 
+init_llama_cpp_demo_image_windows.png
+---------------------------------
+.. figure:: ../../assets/quickstart/llama_cpp_quickstart/init_llama_cpp_demo_image_windows.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/init_llama_cpp_demo_image_windows.png
+
 docker_desktop_new.png
 ---------------------------------
 .. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/docker_desktop_new.png
