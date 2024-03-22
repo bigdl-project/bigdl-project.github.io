@@ -529,3 +529,58 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/langchain-chatchat-en.mp4
+
+
+docker_desktop_install.png
+---------------------------------
+.. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/docker_desktop_install.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/docker_desktop_install.png
+
+
+docker_exit.png
+---------------------------------
+.. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/docker_exit.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/docker_exit.png
+
+
+docker_install_finish.png
+---------------------------------
+.. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/docker_install_finish.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/docker_install_finish.png
+
+
+start_docker_in_wsl.png
+---------------------------------
+.. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/start_docker_in_wsl.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/start_docker_in_wsl.png
+
+
+disable_iGPU.png
+---------------------------------
+.. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/disable_iGPU.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/disable_iGPU.png
