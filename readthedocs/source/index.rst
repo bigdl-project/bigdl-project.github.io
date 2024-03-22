@@ -354,6 +354,44 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_select_model.png
 
+webui_quickstart_chat_mode_instruct.png
+---------------------------------
+.. figure:: ../../assets/quickstart/webui_quickstart/webui_quickstart_chat_mode_instruct.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_chat_mode_instruct.png
+
+webui_quickstart_instruction_template.png
+---------------------------------
+.. figure:: ../../assets/quickstart/webui_quickstart/webui_quickstart_instruction_template.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_instruction_template.png
+
+init_llama_cpp_demo_image.png
+---------------------------------
+.. figure:: ../../assets/quickstart/llama_cpp_quickstart/init_llama_cpp_demo_image.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/init_llama_cpp_demo_image.png
+
+init_llama_cpp_demo_image_windows.png
+---------------------------------
+.. figure:: ../../assets/quickstart/llama_cpp_quickstart/init_llama_cpp_demo_image_windows.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/init_llama_cpp_demo_image_windows.png
 
 docker_desktop_new.png
 ---------------------------------
@@ -376,52 +414,118 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/docker_wsl.png
 
-docker_desktop_install.png
+wget.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/docker_desktop_install.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/wget.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/docker_desktop_install.png
+  https://llm-assets.readthedocs.io/en/latest/_images/wget.png
 
-docker_exit.png
+
+i915.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/docker_exit.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/i915.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/docker_exit.png
+  https://llm-assets.readthedocs.io/en/latest/_images/i915.png
 
-docker_install_finish.png
+gawk.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/docker_install_finish.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/gawk.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/docker_install_finish.png
+  https://llm-assets.readthedocs.io/en/latest/_images/gawk.png
 
-start_docker_in_wsl.png
+install_conda.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/start_docker_in_wsl.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/install_conda.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/start_docker_in_wsl.png
+  https://llm-assets.readthedocs.io/en/latest/_images/install_conda.png
 
-disable_iGPU.png
+
+oneapi.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/BigDL-LLM_Docker_Windows_quickstart/disable_iGPU.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/oneapi.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/disable_iGPU.png
+  https://llm-assets.readthedocs.io/en/latest/_images/oneapi.png
+
+
+basekit.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_linux_gpu/basekit.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/basekit.png
+
+
+create_conda_env.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_linux_gpu/create_conda_env.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/create_conda_env.png
+
+install_bigdl_llm.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_linux_gpu/install_bigdl_llm.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/install_bigdl_llm.png
+
+verify_bigdl_import.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_linux_gpu/verify_bigdl_import.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/verify_bigdl_import.png
+
+
+langchain-chatchat-chs.mp4
+---------------------------------
+.. figure:: ../../assets/langchain-chatchat/langchain-chatchat-chs-1536.mp4
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/langchain-chatchat-chs.mp4
+
+
+langchain-chatchat-en.mp4
+---------------------------------
+.. figure:: ../../assets/langchain-chatchat/langchain-chatchat-en-1536.mp4
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/langchain-chatchat-en.mp4
