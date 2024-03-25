@@ -488,25 +488,25 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/create_conda_env.png
 
-install_bigdl_llm.png
+install_ipex_llm.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/install_bigdl_llm.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/install_ipex_llm.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/install_bigdl_llm.png
+  https://llm-assets.readthedocs.io/en/latest/_images/install_ipex_llm.png
 
-verify_bigdl_import.png
+verify_ipex_llm_import.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/install_linux_gpu/verify_bigdl_import.png
+.. figure:: ../../assets/quickstart/install_linux_gpu/verify_ipex_llm_import.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/verify_bigdl_import.png
+  https://llm-assets.readthedocs.io/en/latest/_images/verify_ipex_llm_import.png
 
 
 langchain-chatchat-chs.mp4
