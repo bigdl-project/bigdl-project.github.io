@@ -374,6 +374,7 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/webui_quickstart_instruction_template.png
 
+
 continue_quickstart_preview.jpeg
 ---------------------------------
 .. figure:: ../../assets/quickstart/continue_quickstart/continue_quickstart_preview.jpeg
@@ -383,6 +384,7 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_preview.jpeg
+
 
 continue_quickstart_open_continue.png
 ---------------------------------
@@ -394,15 +396,17 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_open_continue.png
 
-continue_quickstart_launch_server.png
+
+continue_quickstart_launch_server.jpeg
 ---------------------------------
-.. figure:: ../../assets/quickstart/continue_quickstart/continue_quickstart_launch_server.png
+.. figure:: ../../assets/quickstart/continue_quickstart/continue_quickstart_launch_server.jpeg
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_launch_server.png
+  https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_launch_server.jpeg
+
 
 continue_quickstart_configuration.png
 ---------------------------------
@@ -414,6 +418,7 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_configuration.png
 
+
 continue_quickstart_sample_usage1.png
 ---------------------------------
 .. figure:: ../../assets/quickstart/continue_quickstart/continue_quickstart_sample_usage1.png
@@ -424,6 +429,7 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_sample_usage1.png
 
+
 continue_quickstart_sample_usage2.png
 ---------------------------------
 .. figure:: ../../assets/quickstart/continue_quickstart/continue_quickstart_sample_usage2.png
@@ -433,6 +439,7 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_sample_usage2.png
+
 
 init_llama_cpp_demo_image.png
 ---------------------------------
