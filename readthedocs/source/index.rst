@@ -586,9 +586,12 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/langchain-chatchat-chs.mp4
 
-<video>
-   <source src="../../assets/langchain-chatchat/langchain-chatchat-chs-1536.mp4" type="video/mp4">
-</video>
+.. raw:: html
+  <p>
+    <video>
+       <source src="../../assets/langchain-chatchat/langchain-chatchat-chs-1536.mp4" type="video/mp4">
+    </video>
+  </p>
 
 langchain-chatchat-en.mp4
 ---------------------------------
@@ -599,10 +602,6 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/langchain-chatchat-en.mp4
-
-<video>
-   <source src="../../assets/langchain-chatchat/langchain-chatchat-en-1536.mp4" type="video/mp4">
-</video>
 
 
 docker_desktop_install.png
