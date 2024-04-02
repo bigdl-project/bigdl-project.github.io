@@ -576,33 +576,25 @@ Image address:
   https://llm-assets.readthedocs.io/en/latest/_images/verify_ipex_llm_import.png
 
 
-langchain-chatchat-chs.mp4
+langchain-chatchat-cn.mp4
 ---------------------------------
-.. figure:: ../../assets/langchain-chatchat/langchain-chatchat-chs-1536.mp4
+.. figure:: ../../assets/langchain-chatchat/langchain-chatchat-cn.mp4
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/langchain-chatchat-chs.mp4
-
-.. raw:: html
-  <p>
-    <video>
-       <source src="../../assets/langchain-chatchat/langchain-chatchat-chs-1536.mp4" type="video/mp4">
-    </video>
-  </p>
+  https://llm-assets.readthedocs.io/en/latest/_images/langchain-chatchat-cn.mp4
 
 langchain-chatchat-en.mp4
 ---------------------------------
-.. figure:: ../../assets/langchain-chatchat/langchain-chatchat-en-1536.mp4
+.. figure:: ../../assets/langchain-chatchat/langchain-chatchat-en.mp4
 
 Image address:
 
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/langchain-chatchat-en.mp4
-
 
 docker_desktop_install.png
 ---------------------------------
