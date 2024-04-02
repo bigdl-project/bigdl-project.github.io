@@ -294,6 +294,17 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/quickstart_windows_gpu_oneapi_offline_installer.png
 
+webui-mtl.mp4
+---------------------------------
+.. figure:: ../../assets/quickstart/webui_quickstart/webui-mtl.mp4
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/webui-mtl.mp4
+
+
 webui_quickstart_chat.png
 ---------------------------------
 .. figure:: ../../assets/quickstart/webui_quickstart/webui_quickstart_chat.png
@@ -439,6 +450,17 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_sample_usage2.png
+
+llama-cpp-arc.mp4
+---------------------------------
+.. figure:: ../../assets/quickstart/llama_cpp_quickstart/llama-cpp-arc.mp4
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/llama-cpp-arc.mp4
+
 
 
 init_llama_cpp_demo_image.png
