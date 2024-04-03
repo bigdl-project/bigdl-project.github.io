@@ -782,3 +782,22 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/ollama-linux-arc.mp4
 
+code-gen.mp4
+---------------------------------
+.. figure:: ../../assets/quickstart/continue_quickstart/code-gen.mp4
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/code-gen.mp4
+
+code-explanation.mp4
+---------------------------------
+.. figure:: ../../assets/quickstart/continue_quickstart/code-explanation.mp4
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/code-explanation.mp4
