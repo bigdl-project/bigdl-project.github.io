@@ -772,4 +772,13 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/ollama_serve.png
 
+ollama-linux-arc.mp4
+---------------------------------
+.. figure:: ../../assets/quickstart/ollama_quickstart/ollama-linux-arc.mp4
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama-linux-arc.mp4
 
