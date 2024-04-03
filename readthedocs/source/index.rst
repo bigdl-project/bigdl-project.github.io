@@ -597,6 +597,56 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/verify_ipex_llm_import.png
 
+create-kb.png
+---------------------------------
+.. figure:: ../../assets/langchain-chatchat/create-kb.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/create-kb.png
+
+build-kb.png
+---------------------------------
+.. figure:: ../../assets/langchain-chatchat/build-kb.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/build-kb.png
+
+new-kb.png
+---------------------------------
+.. figure:: ../../assets/langchain-chatchat/new-kb.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/new-kb.png
+
+langchain-arch.png
+---------------------------------
+.. figure:: ../../assets/langchain-chatchat/langchain-arch.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/langchain-arch.png
+
+rag-menu.png
+---------------------------------
+.. figure:: ../../assets/langchain-chatchat/rag-menu.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/rag-menu.png
+
 
 langchain-chatchat-cn.mp4
 ---------------------------------
