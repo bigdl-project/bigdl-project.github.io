@@ -721,3 +721,55 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/disable_iGPU.png
+
+ollama_curl.png
+---------------------------------
+.. figure:: ../../assets/quickstart/ollama_quickstart/ollama_curl.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_curl.png
+
+ollama_pull.png
+---------------------------------
+.. figure:: ../../assets/quickstart/ollama_quickstart/ollama_pull.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_pull.png
+
+ollama_run_1.png
+---------------------------------
+.. figure:: ../../assets/quickstart/ollama_quickstart/ollama_run_1.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_run_1.png
+
+ollama_run_2.png
+---------------------------------
+.. figure:: ../../assets/quickstart/ollama_quickstart/ollama_run_2.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_run_2.png
+
+ollama_serve.png
+---------------------------------
+.. figure:: ../../assets/quickstart/ollama_quickstart/ollama_serve.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_serve.png
+
+
