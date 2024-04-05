@@ -597,6 +597,18 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/verify_ipex_llm_import.png
 
+chat-py.mp4
+---------------------------------
+.. figure:: ../../assets/quickstart/install_linux_gpu/chat-py.mp4
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/chat-py.mp4
+
+
+
 create-kb.png
 ---------------------------------
 .. figure:: ../../assets/langchain-chatchat/create-kb.png
