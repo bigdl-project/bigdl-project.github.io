@@ -813,3 +813,84 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/code-explanation.mp4
+
+open_webui_signup.png
+---------------------------------
+.. figure:: ../../assets/quickstart/open_webui_quickstart/open_webui_signup.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/open_webui_signup.png
+
+open_webui_login.png
+---------------------------------
+.. figure:: ../../assets/quickstart/open_webui_quickstart/open_webui_login.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/open_webui_login.png
+
+open_webui_settings.png
+---------------------------------
+.. figure:: ../../assets/quickstart/open_webui_quickstart/open_webui_settings.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/open_webui_settings.png
+
+open_webui_pull_models.png
+---------------------------------
+.. figure:: ../../assets/quickstart/open_webui_quickstart/open_webui_pull_models.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/open_webui_pull_models.png
+
+open_webui_select_model.png
+---------------------------------
+.. figure:: ../../assets/quickstart/open_webui_quickstart/open_webui_select_model.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/open_webui_select_model.png
+
+open_webui_chat_1.png
+---------------------------------
+.. figure:: ../../assets/quickstart/open_webui_quickstart/open_webui_chat_1.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/open_webui_chat_1.png
+
+open_webui_chat_2.png
+---------------------------------
+.. figure:: ../../assets/quickstart/open_webui_quickstart/open_webui_chat_2.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/open_webui_chat_2.png
+
+open_webui_demo.mp4
+---------------------------------
+.. figure:: ../../assets/quickstart/open_webui_quickstart/open_webui_demo.mp4
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/open_webui_demo.mp4
+
