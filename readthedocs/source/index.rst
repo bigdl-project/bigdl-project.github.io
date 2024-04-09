@@ -834,6 +834,16 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/open_webui_login.png
 
+open_webui_settings_0.png
+---------------------------------
+.. figure:: ../../assets/quickstart/open_webui_quickstart/open_webui_settings_0.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/open_webui_settings_0.png
+
 open_webui_settings.png
 ---------------------------------
 .. figure:: ../../assets/quickstart/open_webui_quickstart/open_webui_settings.png
