@@ -904,3 +904,12 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/open_webui_demo.mp4
 
+fastchat_gradio_web_ui.png
+---------------------------------
+.. figure:: ../../assets/quickstart/fastchat_quickstart/fastchat_gradio_web_ui.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/fastchat_gradio_web_ui.png
