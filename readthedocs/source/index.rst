@@ -913,3 +913,13 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/fastchat_gradio_web_ui.png
+
+
+ollama_gguf_demo_image.png
+---------------------------------
+.. figure:: ../../assets/quickstart/ollama_quickstart/ollama_gguf_demo_image.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_gguf_demo_image.png
