@@ -972,13 +972,13 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/dify-p5.png
 
-dify-rag.mp4
+dify-rag-small.mp4
 ---------------------------------
-.. figure:: ../../assets/quickstart/dify-quickstart/dify-rag.mp4
+.. figure:: ../../assets/quickstart/dify-quickstart/dify-rag-small.mp4
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/dify-rag.mp4
+  https://llm-assets.readthedocs.io/en/latest/_images/dify-rag-small.mp4
 
