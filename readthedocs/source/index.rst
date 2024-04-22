@@ -948,11 +948,9 @@ ollama-llama3-arc-demo.png
 ---------------------------------
 .. figure:: ../../assets/quickstart/llama3_llamacpp_ollama/ollama-llama3-arc-demo.png
 
-
 Image address:
 
 .. code-block::
-
   https://llm-assets.readthedocs.io/en/latest/_images/ollama-llama3-arc-demo.png
   
 dify-p1.png
