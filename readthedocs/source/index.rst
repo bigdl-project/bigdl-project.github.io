@@ -955,7 +955,7 @@ Image address:
   
 dify-p1.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/dify-quickstart/dify-p1.png
+.. figure:: ../../assets/quickstart/dify_quickstart/dify-p1.png
 
 Image address:
 
@@ -965,7 +965,7 @@ Image address:
 
 dify-p2.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/dify-quickstart/dify-p2.png
+.. figure:: ../../assets/quickstart/dify_quickstart/dify-p2.png
 
 Image address:
 
@@ -975,7 +975,7 @@ Image address:
 
 dify-p3.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/dify-quickstart/dify-p3.png
+.. figure:: ../../assets/quickstart/dify_quickstart/dify-p3.png
 
 Image address:
 
@@ -985,7 +985,7 @@ Image address:
 
 dify-p5.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/dify-quickstart/dify-p5.png
+.. figure:: ../../assets/quickstart/dify_quickstart/dify-p5.png
 
 Image address:
 
@@ -995,7 +995,7 @@ Image address:
 
 dify-rag-small.mp4
 ---------------------------------
-.. figure:: ../../assets/quickstart/dify-quickstart/dify-rag-small.mp4
+.. figure:: ../../assets/quickstart/dify_quickstart/dify-rag-small.mp4
 
 Image address:
 
