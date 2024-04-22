@@ -932,13 +932,16 @@ Image address:
 .. code-block::
   https://llm-assets.readthedocs.io/en/latest/_images/ollama-llama3-linux-arc.mp4
 
+
 llama3-cpp-arc-demo.png
 ---------------------------------
 .. figure:: ../../assets/quickstart/llama3_llamacpp_ollama/llama3-cpp-arc-demo.png
 
+
 Image address:
 
 .. code-block::
+
   https://llm-assets.readthedocs.io/en/latest/_images/llama3-cpp-arc-demo.png
 
 ollama-llama3-arc-demo.png
@@ -949,3 +952,55 @@ Image address:
 
 .. code-block::
   https://llm-assets.readthedocs.io/en/latest/_images/ollama-llama3-arc-demo.png
+  
+dify-p1.png
+---------------------------------
+.. figure:: ../../assets/quickstart/dify-quickstart/dify-p1.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/dify-p1.png
+
+dify-p2.png
+---------------------------------
+.. figure:: ../../assets/quickstart/dify-quickstart/dify-p2.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/dify-p2.png
+
+dify-p3.png
+---------------------------------
+.. figure:: ../../assets/quickstart/dify-quickstart/dify-p3.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/dify-p3.png
+
+dify-p5.png
+---------------------------------
+.. figure:: ../../assets/quickstart/dify-quickstart/dify-p5.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/dify-p5.png
+
+dify-rag-small.mp4
+---------------------------------
+.. figure:: ../../assets/quickstart/dify-quickstart/dify-rag-small.mp4
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/dify-rag-small.mp4
+
+
