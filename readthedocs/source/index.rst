@@ -1009,11 +1009,20 @@ Image address:
   https://llm-assets.readthedocs.io/en/latest/_images/dify-rag-small.mp4
 
 
-axolotl-linux-arc.mp4
+axolotl-lora-linux-arc.mp4
 ---------------------------------
-.. figure:: ../../assets/quickstart/axolotl_quickstart/axolotl-linux-arc.mp4
+.. figure:: ../../assets/quickstart/axolotl_quickstart/axolotl-lora-linux-arc.mp4
 
 Image address:
 
 .. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/axolotl-linux-arc.mp4
+  https://llm-assets.readthedocs.io/en/latest/_images/axolotl-lora-linux-arc.mp4
+
+axolotl-qlora-linux-arc.mp4
+---------------------------------
+.. figure:: ../../assets/quickstart/axolotl_quickstart/axolotl-qlora-linux-arc.mp4
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/axolotl-qlora-linux-arc.mp4
