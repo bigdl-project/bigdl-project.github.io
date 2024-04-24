@@ -1011,7 +1011,7 @@ Image address:
 
 axolotl-linux-arc.mp4
 ---------------------------------
-.. figure:: ../../assets/quickstart/axolotl-linux-arc.mp4
+.. figure:: ../../assets/quickstart/axolotl_quickstart/axolotl-linux-arc.mp4
 
 Image address:
 
