@@ -452,67 +452,67 @@ Image address:
   https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_sample_usage2.png
 
 
-continue_quickstart_config.png
+continue_config.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/continue_quickstart/config.png
+.. figure:: ../../assets/quickstart/continue_quickstart/continue_config.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_config.png
+  https://llm-assets.readthedocs.io/en/latest/_images/continue_config.png
 
 
-continue_quickstart_dragdrop.png
+continue_dragdrop.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/continue_quickstart/dragdrop.png
+.. figure:: ../../assets/quickstart/continue_quickstart/continue_dragdrop.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_dragdrop.png
+  https://llm-assets.readthedocs.io/en/latest/_images/continue_dragdrop.png
 
-continue_quickstart_install.png
+continue_install.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/continue_quickstart/install.png
+.. figure:: ../../assets/quickstart/continue_quickstart/continue_install.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_install.png
+  https://llm-assets.readthedocs.io/en/latest/_images/continue_install.png
 
-continue_quickstart_openview.png
+continue_openview.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/continue_quickstart/openview.png
+.. figure:: ../../assets/quickstart/continue_quickstart/continue_openview.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_openview.png
+  https://llm-assets.readthedocs.io/en/latest/_images/continue_openview.png
 
-continue_quickstart_ready.png
+continue_ready.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/continue_quickstart/ready.png
+.. figure:: ../../assets/quickstart/continue_quickstart/continue_ready.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_ready.png
+  https://llm-assets.readthedocs.io/en/latest/_images/continue_ready.png
 
 
-continue_quickstart_welcom.png
+continue_welcome.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/continue_quickstart/welcome.png
+.. figure:: ../../assets/quickstart/continue_quickstart/continue_welcome.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_welcome.png
+  https://llm-assets.readthedocs.io/en/latest/_images/continue_welcome.png
 
 continue_demo_ollama_backend_arc.mp4
 ---------------------------------
