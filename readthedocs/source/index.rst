@@ -451,6 +451,79 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_sample_usage2.png
 
+
+continue_quickstart_config.png
+---------------------------------
+.. figure:: ../../assets/quickstart/continue_quickstart/config.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_config.png
+
+
+continue_quickstart_dragdrop.png
+---------------------------------
+.. figure:: ../../assets/quickstart/continue_quickstart/dragdrop.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_dragdrop.png
+
+continue_quickstart_install.png
+---------------------------------
+.. figure:: ../../assets/quickstart/continue_quickstart/install.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_install.png
+
+continue_quickstart_openview.png
+---------------------------------
+.. figure:: ../../assets/quickstart/continue_quickstart/openview.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_openview.png
+
+continue_quickstart_ready.png
+---------------------------------
+.. figure:: ../../assets/quickstart/continue_quickstart/ready.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_ready.png
+
+
+continue_quickstart_welcom.png
+---------------------------------
+.. figure:: ../../assets/quickstart/continue_quickstart/welcome.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/continue_quickstart_welcome.png
+
+continue_demo_ollama_backend_arc.mp4
+---------------------------------
+.. figure:: ../../assets/quickstart/continue_quickstart/continue_demo_ollama_backend_arc.mp4
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/continue_demo_ollama_backend_arc.mp4
+
 llama-cpp-arc.mp4
 ---------------------------------
 .. figure:: ../../assets/quickstart/llama_cpp_quickstart/llama-cpp-arc.mp4
