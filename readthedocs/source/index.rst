@@ -524,6 +524,48 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/continue_demo_ollama_backend_arc.mp4
 
+PrivateGPT-ARC.mp4
+---------------------------------
+.. figure:: ../../assets/quickstart/privateGPT_quickstart/PrivateGPT-ARC.mp4
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/PrivateGPT-ARC.mp4
+
+privateGPT-windows-MTL.mp4
+---------------------------------
+.. figure:: ../../assets/quickstart/privateGPT_quickstart/privateGPT-windows-MTL.mp4
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/privateGPT-windows-MTL.mp4
+
+
+privateGPT-LLM-Chat.png
+---------------------------------
+.. figure:: ../../assets/quickstart/privateGPT_quickstart/privateGPT-LLM-Chat.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/privateGPT-LLM-Chat.png
+
+
+privateGPT-LLM-Chat.png
+---------------------------------
+.. figure:: ../../assets/quickstart/privateGPT_quickstart/privateGPT-Query-Files.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/privateGPT-Query-Files.png
+
 llama-cpp-arc.mp4
 ---------------------------------
 .. figure:: ../../assets/quickstart/llama_cpp_quickstart/llama-cpp-arc.mp4
