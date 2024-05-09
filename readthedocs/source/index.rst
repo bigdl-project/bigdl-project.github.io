@@ -556,7 +556,39 @@ Image address:
   https://llm-assets.readthedocs.io/en/latest/_images/privateGPT-LLM-Chat.png
 
 
-privateGPT-LLM-Chat.png
+privateGPT-llamacpp-setting.png
+---------------------------------
+.. figure:: ../../assets/quickstart/privateGPT_quickstart/privateGPT-llamacpp-setting.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/privateGPT-llamacpp-setting.png
+
+privateGPT-ollama-setting.png
+---------------------------------
+.. figure:: ../../assets/quickstart/privateGPT_quickstart/privateGPT-ollama-setting.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/privateGPT-ollama-setting.png
+
+
+privateGPT-service-success.png
+---------------------------------
+.. figure:: ../../assets/quickstart/privateGPT_quickstart/privateGPT-service-success.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/privateGPT-service-success.png
+
+
+privateGPT-Query-Files.png
 ---------------------------------
 .. figure:: ../../assets/quickstart/privateGPT_quickstart/privateGPT-Query-Files.png
 
