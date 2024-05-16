@@ -1163,3 +1163,12 @@ Image address:
 
 .. code-block::
   https://llm-assets.readthedocs.io/en/latest/_images/axolotl-qlora-linux-arc.mp4
+
+start-vllm-service.png
+---------------------------------
+.. figure:: ../../assets/quickstart/vllm_quickstart/start-vllm-service.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/start-vllm-service.png
