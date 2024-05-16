@@ -1168,7 +1168,6 @@ start-vllm-service.png
 ---------------------------------
 .. figure:: ../../assets/quickstart/vllm_quickstart/start-vllm-service.png
 
-
 Image address:
 
 .. code-block::
@@ -1177,7 +1176,6 @@ Image address:
 vllm-curl-result.png
 ---------------------------------
 .. figure:: ../../assets/quickstart/vllm_quickstart/vllm-curl-result.png
-
 
 Image address:
 
