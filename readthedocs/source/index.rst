@@ -1163,3 +1163,129 @@ Image address:
 
 .. code-block::
   https://llm-assets.readthedocs.io/en/latest/_images/axolotl-qlora-linux-arc.mp4
+
+configurations_for_browser.png
+---------------------------------
+.. figure:: ../../assets/quickstart/jupyter_notebook_quickstart/configurations_for_browser.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/configurations_for_browser.png
+
+example_for_notebook.png
+---------------------------------
+.. figure:: ../../assets/quickstart/jupyter_notebook_quickstart/example_for_notebook.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/example_for_notebook.png
+
+inference_browser.png
+---------------------------------
+.. figure:: ../../assets/quickstart/jupyter_notebook_quickstart/inference_browser.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/inference_browser.png
+
+inference.png
+---------------------------------
+.. figure:: ../../assets/quickstart/jupyter_notebook_quickstart/inference.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/inference.png
+
+install_ipykernel.png
+---------------------------------
+.. figure:: ../../assets/quickstart/jupyter_notebook_quickstart/install_ipykernel.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/install_ipykernel.png
+
+launch_notebook.png
+---------------------------------
+.. figure:: ../../assets/quickstart/jupyter_notebook_quickstart/launch_notebook.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/launch_notebook.png
+
+load_model_and_tokenizer.png
+---------------------------------
+.. figure:: ../../assets/quickstart/jupyter_notebook_quickstart/load_model_and_tokenizer.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/load_model_and_tokenizer.png
+
+load_model_for_browser.png
+---------------------------------
+.. figure:: ../../assets/quickstart/jupyter_notebook_quickstart/load_model_for_browser.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/load_model_for_browser.png
+
+notebook_browser.png
+---------------------------------
+.. figure:: ../../assets/quickstart/jupyter_notebook_quickstart/notebook_browser.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/notebook_browser.png
+
+prompt_for_browser.png
+---------------------------------
+.. figure:: ../../assets/quickstart/jupyter_notebook_quickstart/prompt_for_browser.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/prompt_for_browser.png
+
+python_extension.png
+---------------------------------
+.. figure:: ../../assets/quickstart/jupyter_notebook_quickstart/python_extension.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/python_extension.png
+
+select_kernel.png
+---------------------------------
+.. figure:: ../../assets/quickstart/jupyter_notebook_quickstart/select_kernel.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/select_kernel.png
+
+set_environ.png
+---------------------------------
+.. figure:: ../../assets/quickstart/jupyter_notebook_quickstart/set_environ.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/set_environ.png
+
+set_prompt.png
+---------------------------------
+.. figure:: ../../assets/quickstart/jupyter_notebook_quickstart/set_prompt.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/set_prompt.png
