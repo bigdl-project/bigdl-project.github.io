@@ -1172,3 +1172,12 @@ Image address:
 
 .. code-block::
   https://llm-assets.readthedocs.io/en/latest/_images/start-vllm-service.png
+
+vllm-curl-result.png
+---------------------------------
+.. figure:: ../../assets/quickstart/vllm_quickstart/vllm-curl-result.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/vllm-curl-result.png
