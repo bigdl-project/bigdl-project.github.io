@@ -1192,3 +1192,36 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/vllm-benchmark-result.png
+
+start-fastchat.png
+---------------------------------
+.. figure:: ../../assets/quickstart/serving_docker_quickstart/start-fastchat.png
+
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/start-fastchat.png
+
+fastchat-benchmark.png
+---------------------------------
+.. figure:: ../../assets/quickstart/serving_docker_quickstart/fastchat-benchmark.png
+
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/fastchat-benchmark.png
+
+service-benchmark-result.png
+---------------------------------
+.. figure:: ../../assets/quickstart/serving_docker_quickstart/service-benchmark-result.png
+
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/service-benchmark-result.png
