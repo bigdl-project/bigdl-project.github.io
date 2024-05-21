@@ -1225,3 +1225,14 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/service-benchmark-result.png
+
+fastchat-vllm-worker.png
+---------------------------------
+.. figure:: ../../assets/quickstart/serving_docker_quickstart/fastchat-vllm-worker.png
+
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/fastchat-vllm-worker.png
