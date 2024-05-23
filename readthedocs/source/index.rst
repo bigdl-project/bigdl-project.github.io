@@ -1236,3 +1236,38 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/fastchat-vllm-worker.png
+
+
+install_dev_container_extension_in_vscode.gif
+---------------------------------
+.. figure:: ../../assets/quickstart/vscode_docker_quickstart/install_dev_container_extension_in_vscode.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/install_dev_container_extension_in_vscode.gif
+
+
+
+install_wsl_extention_in_vscode.gif
+---------------------------------
+.. figure:: ../../assets/quickstart/vscode_docker_quickstart/install_wsl_extention_in_vscode.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/install_wsl_extention_in_vscode.gif
+
+
+
+run_example_in_vscode.gif
+---------------------------------
+.. figure:: ../../assets/quickstart/vscode_docker_quickstart/run_example_in_vscode.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/run_example_in_vscode.gif
