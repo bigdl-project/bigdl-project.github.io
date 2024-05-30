@@ -294,6 +294,16 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/quickstart_windows_gpu_oneapi_offline_installer.png
 
+quickstart_windows_gpu_miniforge_download.png
+---------------------------------
+.. figure:: ../../assets/quickstart/install_windows_gpu/quickstart_windows_gpu_miniforge_download.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/quickstart_windows_gpu_miniforge_download.png
+
 webui-mtl.mp4
 ---------------------------------
 .. figure:: ../../assets/quickstart/webui_quickstart/webui-mtl.mp4
