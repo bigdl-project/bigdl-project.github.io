@@ -931,3 +931,22 @@ Image address:
 
 .. code-block::
   https://llm-assets.readthedocs.io/en/latest/_images/ollama-llama3-linux-arc.mp4
+
+sdxl-cpu.png
+---------------------------------
+.. figure:: ../../assets/quickstart/stable_diffusion/sdxl-cpu.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/sdxl-cpu.png
+
+
+sdxl-gpu.png
+---------------------------------
+.. figure:: ../../assets/quickstart/stable_diffusion/sdxl-gpu.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/sdxl-gpu.png
