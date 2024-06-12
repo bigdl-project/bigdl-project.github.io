@@ -1355,3 +1355,22 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/mtl_mistral-7B_q4_0_ollama.gif
+
+sdxl-cpu.png
+---------------------------------
+.. figure:: ../../assets/quickstart/stable_diffusion/sdxl-cpu.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/sdxl-cpu.png
+
+
+sdxl-gpu.png
+---------------------------------
+.. figure:: ../../assets/quickstart/stable_diffusion/sdxl-gpu.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/sdxl-gpu.png
