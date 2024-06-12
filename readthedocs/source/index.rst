@@ -1281,3 +1281,77 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/run_example_in_vscode.gif
+
+
+
+##  README Figures
+
+2arc_qwen1.5-14B_fp6_fastchat.gif
+---------------------------------
+
+.. figure:: ../../assets/readme/2arc_qwen1.5-14B_fp6_fastchat.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/2arc_qwen1.5-14B_fp6_fastchat.gif
+
+
+2arc_qwen1.5-32B_fp6_fastchat.gif
+---------------------------------
+
+.. figure:: ../../assets/readme/2arc_qwen1.5-32B_fp6_fastchat.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/2arc_qwen1.5-32B_fp6_fastchat.gif
+
+
+arc_llama3-8B_fp8_textwebui.gif
+---------------------------------
+
+.. figure:: ../../assets/readme/arc_llama3-8B_fp8_textwebui.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/arc_llama3-8B_fp8_textwebui.gif
+
+
+iris_phi3-3.8B_q4_0_llamacpp_long.gif
+---------------------------------
+
+.. figure:: ../../assets/readme/iris_phi3-3.8B_q4_0_llamacpp_long.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/iris_phi3-3.8B_q4_0_llamacpp_long.gif
+
+
+mtl_mistral-7B_q4_k_m_ollama.gif
+---------------------------------
+
+.. figure:: ../../assets/readme/mtl_mistral-7B_q4_k_m_ollama.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/mtl_mistral-7B_q4_k_m_ollama.gif
+
+mtl_mistral-7B_q4_0_ollama.gif
+---------------------------------
+
+.. figure:: ../../assets/readme/mtl_mistral-7B_q4_0_ollama.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/mtl_mistral-7B_q4_0_ollama.gif
