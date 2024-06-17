@@ -1363,7 +1363,8 @@ sdxl-cpu.png
 Image address:
 
 .. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/sdxl-cpu.png
+
+   https://llm-assets.readthedocs.io/en/latest/_images/sdxl-cpu.png
 
 
 sdxl-gpu.png
@@ -1373,7 +1374,8 @@ sdxl-gpu.png
 Image address:
 
 .. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/sdxl-gpu.png
+
+   https://llm-assets.readthedocs.io/en/latest/_images/sdxl-gpu.png
 
 
 MTL_perf.jpg
@@ -1383,7 +1385,8 @@ MTL_perf.jpg
 Image address:
 
 .. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/MTL_perf.jpg
+
+   https://llm-assets.readthedocs.io/en/latest/_images/MTL_perf.jpg
 
 
 Arc_perf.jpg
@@ -1393,4 +1396,5 @@ Arc_perf.jpg
 Image address:
 
 .. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/Arc_perf.jpg
+
+   https://llm-assets.readthedocs.io/en/latest/_images/Arc_perf.jpg
