@@ -1402,7 +1402,7 @@ Image address:
 
 ragflow-login.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-login.png
+.. figure:: ../../assets/quickstart/RAGFlow_quickstart/ragflow-login.png
 
 Image address:
 
@@ -1413,7 +1413,7 @@ Image address:
 
 ragflow-login2.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-login2.png
+.. figure:: ../../assets/quickstart/RAGFlow_quickstart/ragflow-login2.png
 
 Image address:
 
@@ -1424,7 +1424,7 @@ Image address:
 
 ragflow-add-ollama.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-add-ollama.png
+.. figure:: ../../assets/quickstart/RAGFlow_quickstart/ragflow-add-ollama.png
 
 Image address:
 
@@ -1435,7 +1435,7 @@ Image address:
 
 ragflow-add-ollama2.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-add-ollama2.png
+.. figure:: ../../assets/quickstart/RAGFlow_quickstart/ragflow-add-ollama2.png
 
 Image address:
 
@@ -1446,7 +1446,7 @@ Image address:
 
 ragflow-chat.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-chat.png
+.. figure:: ../../assets/quickstart/RAGFlow_quickstart/ragflow-chat.png
 
 Image address:
 
@@ -1457,7 +1457,7 @@ Image address:
 
 ragflow-chat2.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-chat2.png
+.. figure:: ../../assets/quickstart/RAGFlow_quickstart/ragflow-chat2.png
 
 Image address:
 
@@ -1468,7 +1468,7 @@ Image address:
 
 ragflow-chat3.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-chat3.png
+.. figure:: ../../assets/quickstart/RAGFlow_quickstart/ragflow-chat3.png
 
 Image address:
 
@@ -1479,7 +1479,7 @@ Image address:
 
 ragflow-knowledgebase.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-knowledgebase.png
+.. figure:: ../../assets/quickstart/RAGFlow_quickstart/ragflow-knowledgebase.png
 
 Image address:
 
@@ -1490,7 +1490,7 @@ Image address:
 
 ragflow-knowledgebase2.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-knowledgebase2.png
+.. figure:: ../../assets/quickstart/RAGFlow_quickstart/ragflow-knowledgebase2.png
 
 Image address:
 
@@ -1501,7 +1501,7 @@ Image address:
 
 ragflow-knowledgebase3.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-knowledgebase3.png
+.. figure:: ../../assets/quickstart/RAGFlow_quickstart/ragflow-knowledgebase3.png
 
 Image address:
 
@@ -1512,7 +1512,7 @@ Image address:
 
 ragflow-knowledgebase4.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-knowledgebase4.png
+.. figure:: ../../assets/quickstart/RAGFlow_quickstart/ragflow-knowledgebase4.png
 
 Image address:
 
@@ -1523,7 +1523,7 @@ Image address:
 
 ragflow-knowledgebase5.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-knowledgebase5.png
+.. figure:: ../../assets/quickstart/RAGFlow_quickstart/ragflow-knowledgebase5.png
 
 Image address:
 
@@ -1534,7 +1534,7 @@ Image address:
 
 ragflow-knowledgebase6.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-knowledgebase6.png
+.. figure:: ../../assets/quickstart/RAGFlow_quickstart/ragflow-knowledgebase6.png
 
 Image address:
 
@@ -1545,7 +1545,7 @@ Image address:
 
 ragflow-record.mp4
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-record.mp4
+.. figure:: ../../assets/quickstart/RAGFlow_quickstart/ragflow-record.mp4
 
 Image address:
 
