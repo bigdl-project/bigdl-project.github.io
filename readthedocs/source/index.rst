@@ -1374,3 +1374,23 @@ Image address:
 
 .. code-block::
   https://llm-assets.readthedocs.io/en/latest/_images/sdxl-gpu.png
+
+
+MTL_perf.jpg
+---------------------------------
+.. figure:: ../../assets/readme/MTL_perf.jpg
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/MTL_perf.jpg
+
+
+Arc_perf.jpg
+---------------------------------
+.. figure:: ../../assets/readme/Arc_perf.jpg
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/Arc_perf.jpg
