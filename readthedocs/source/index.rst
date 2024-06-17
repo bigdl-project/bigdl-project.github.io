@@ -1363,7 +1363,8 @@ sdxl-cpu.png
 Image address:
 
 .. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/sdxl-cpu.png
+
+   https://llm-assets.readthedocs.io/en/latest/_images/sdxl-cpu.png
 
 
 sdxl-gpu.png
@@ -1373,130 +1374,27 @@ sdxl-gpu.png
 Image address:
 
 .. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/sdxl-gpu.png
 
-ragflow-login.png
+   https://llm-assets.readthedocs.io/en/latest/_images/sdxl-gpu.png
+
+
+MTL_perf.jpg
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-login.png
+.. figure:: ../../assets/readme/MTL_perf.jpg
 
 Image address:
 
 .. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/ragflow-login.png
 
-ragflow-login2.png
+   https://llm-assets.readthedocs.io/en/latest/_images/MTL_perf.jpg
+
+
+Arc_perf.jpg
 ---------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-login2.png
+.. figure:: ../../assets/readme/Arc_perf.jpg
 
 Image address:
 
 .. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/ragflow-login2.png
 
-ragflow-add-ollama.png
----------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-add-ollama.png
-
-Image address:
-
-.. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/ragflow-add-ollama.png
-
-ragflow-add-ollama2.png
----------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-add-ollama2.png
-
-Image address:
-
-.. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/ragflow-add-ollama2.png
-
-ragflow-chat.png
----------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-chat.png
-
-Image address:
-
-.. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/ragflow-chat.png
-
-ragflow-chat2.png
----------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-chat2.png
-
-Image address:
-
-.. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/ragflow-chat2.png
-
-ragflow-chat3.png
----------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-chat3.png
-
-Image address:
-
-.. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/ragflow-chat3.png
-
-ragflow-knowledgebase.png
----------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-knowledgebase.png
-
-Image address:
-
-.. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/ragflow-knowledgebase.png
-
-ragflow-knowledgebase2.png
----------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-knowledgebase2.png
-
-Image address:
-
-.. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/ragflow-knowledgebase2.png
-
-ragflow-knowledgebase3.png
----------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-knowledgebase3.png
-
-Image address:
-
-.. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/ragflow-knowledgebase3.png
-
-ragflow-knowledgebase4.png
----------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-knowledgebase4.png
-
-Image address:
-
-.. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/ragflow-knowledgebase4.png
-
-ragflow-knowledgebase5.png
----------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-knowledgebase5.png
-
-Image address:
-
-.. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/ragflow-knowledgebase5.png
-
-ragflow-knowledgebase6.png
----------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-knowledgebase6.png
-
-Image address:
-
-.. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/ragflow-knowledgebase6.png
-
-ragflow-record.mp4
----------------------------------
-.. figure:: ../../assets/quickstart/ragflow_quickstart/ragflow-record.mp4
-
-Image address:
-
-.. code-block::
-  https://llm-assets.readthedocs.io/en/latest/_images/ragflow-record.mp4
+   https://llm-assets.readthedocs.io/en/latest/_images/Arc_perf.jpg
