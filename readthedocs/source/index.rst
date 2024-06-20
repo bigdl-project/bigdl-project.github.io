@@ -304,6 +304,18 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/quickstart_windows_gpu_miniforge_download.png
 
+
+webui-mtl.png
+---------------------------------
+.. figure:: ../../assets/mddoc-video-preview/webui-mtl.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/webui-mtl.png
+
+
 webui-mtl.mp4
 ---------------------------------
 .. figure:: ../../assets/quickstart/webui_quickstart/webui-mtl.mp4
@@ -546,6 +558,18 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/continue_demo_ollama_backend_arc.mp4
 
+
+PrivateGPT-ARC.png
+---------------------------------
+.. figure:: ../../assets/mddoc-video-preview/PrivateGPT-ARC.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/PrivateGPT-ARC.png
+
+
 PrivateGPT-ARC.mp4
 ---------------------------------
 .. figure:: ../../assets/quickstart/privateGPT_quickstart/PrivateGPT-ARC.mp4
@@ -619,6 +643,18 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/privateGPT-Query-Files.png
+
+
+llama-cpp-arc.png
+---------------------------------
+.. figure:: ../../assets/mddoc-video-preview/llama-cpp-arc.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/llama-cpp-arc.png
+
 
 llama-cpp-arc.mp4
 ---------------------------------
@@ -976,6 +1012,18 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/ollama_serve.png
 
+
+ollama-linux-arc.png
+---------------------------------
+.. figure:: ../../assets/mddoc-video-preview/ollama-linux-arc.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama-linux-arc.png
+
+
 ollama-linux-arc.mp4
 ---------------------------------
 .. figure:: ../../assets/quickstart/ollama_quickstart/ollama-linux-arc.mp4
@@ -1086,6 +1134,18 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/open_webui_chat_2.png
 
+
+open_webui_demo.png
+---------------------------------
+.. figure:: ../../assets/mddoc-video-preview/open_webui_demo.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/open_webui_demo.png
+
+
 open_webui_demo.mp4
 ---------------------------------
 .. figure:: ../../assets/quickstart/open_webui_quickstart/open_webui_demo.mp4
@@ -1114,6 +1174,17 @@ Image address:
 
 .. code-block::
   https://llm-assets.readthedocs.io/en/latest/_images/ollama_gguf_demo_image.png
+
+
+ollama-llama3-linux-arc.png
+---------------------------------
+.. figure:: ../../assets/mddoc-video-preview/ollama-llama3-linux-arc.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama-llama3-linux-arc.png
+
 
 ollama-llama3-linux-arc.mp4
 ---------------------------------
