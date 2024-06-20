@@ -524,6 +524,18 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/continue_welcome.png
 
+
+continue_demo_ollama_backend_arc.png
+---------------------------------
+.. figure:: ../../assets/mddoc-video-preview/continue_demo_ollama_backend_arc.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/continue_demo_ollama_backend_arc.png
+
+
 continue_demo_ollama_backend_arc.mp4
 ---------------------------------
 .. figure:: ../../assets/quickstart/continue_quickstart/continue_demo_ollama_backend_arc.mp4
@@ -817,6 +829,17 @@ Image address:
   https://llm-assets.readthedocs.io/en/latest/_images/rag-menu.png
 
 
+langchain-chatchat-cn.png
+---------------------------------
+.. figure:: ../../assets/mddoc-video-preview/langchain-chatchat-cn.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/langchain-chatchat-cn.png
+
+
 langchain-chatchat-cn.mp4
 ---------------------------------
 .. figure:: ../../assets/langchain-chatchat/langchain-chatchat-cn.mp4
@@ -826,6 +849,18 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/langchain-chatchat-cn.mp4
+
+
+langchain-chatchat-en.png
+---------------------------------
+.. figure:: ../../assets/mddoc-video-preview/langchain-chatchat-en.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/langchain-chatchat-en.png
+
 
 langchain-chatchat-en.mp4
 ---------------------------------
@@ -1154,6 +1189,19 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/dify-p5.png
 
+
+dify-rag-small.png
+---------------------------------
+.. figure:: ../../assets/mddoc-video-preview/dify-rag-small.png
+
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/dify-rag-small.png
+
+
 dify-rag-small.mp4
 ---------------------------------
 .. figure:: ../../assets/quickstart/dify_quickstart/dify-rag-small.mp4
@@ -1164,6 +1212,17 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/dify-rag-small.mp4
+
+
+axolotl-qlora-linux-arc.png
+---------------------------------
+.. figure:: ../../assets/mddoc-video-preview/axolotl-qlora-linux-arc.png
+
+Image address:
+
+.. code-block::
+  https://llm-assets.readthedocs.io/en/latest/_images/axolotl-qlora-linux-arc.png
+
 
 axolotl-qlora-linux-arc.mp4
 ---------------------------------
