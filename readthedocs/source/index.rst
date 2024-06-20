@@ -685,6 +685,7 @@ init_llama_cpp_demo_image_windows.png
 Image address:
 
 .. code-block::
+
   https://llm-assets.readthedocs.io/en/latest/_images/init_llama_cpp_demo_image_windows.png
 
 docker_desktop_new.png
@@ -1173,6 +1174,7 @@ ollama_gguf_demo_image.png
 Image address:
 
 .. code-block::
+
   https://llm-assets.readthedocs.io/en/latest/_images/ollama_gguf_demo_image.png
 
 
@@ -1183,6 +1185,7 @@ ollama-llama3-linux-arc.png
 Image address:
 
 .. code-block::
+
   https://llm-assets.readthedocs.io/en/latest/_images/ollama-llama3-linux-arc.png
 
 
@@ -1193,6 +1196,7 @@ ollama-llama3-linux-arc.mp4
 Image address:
 
 .. code-block::
+
   https://llm-assets.readthedocs.io/en/latest/_images/ollama-llama3-linux-arc.mp4
 
 
@@ -1214,6 +1218,7 @@ ollama-llama3-arc-demo.png
 Image address:
 
 .. code-block::
+
   https://llm-assets.readthedocs.io/en/latest/_images/ollama-llama3-arc-demo.png
   
 dify-p1.png
@@ -1292,6 +1297,7 @@ axolotl-qlora-linux-arc.png
 Image address:
 
 .. code-block::
+
   https://llm-assets.readthedocs.io/en/latest/_images/axolotl-qlora-linux-arc.png
 
 
@@ -1302,6 +1308,7 @@ axolotl-qlora-linux-arc.mp4
 Image address:
 
 .. code-block::
+
   https://llm-assets.readthedocs.io/en/latest/_images/axolotl-qlora-linux-arc.mp4
 
 start-vllm-service.png
@@ -1311,6 +1318,7 @@ start-vllm-service.png
 Image address:
 
 .. code-block::
+
   https://llm-assets.readthedocs.io/en/latest/_images/start-vllm-service.png
 
 vllm-curl-result.png
@@ -1320,6 +1328,7 @@ vllm-curl-result.png
 Image address:
 
 .. code-block::
+
   https://llm-assets.readthedocs.io/en/latest/_images/vllm-curl-result.png
 
 vllm-benchmark-result.png
@@ -1414,7 +1423,7 @@ Image address:
 
 
 
-##  README Figures
+## README Figures
 
 2arc_qwen1.5-14B_fp6_fastchat.gif
 ---------------------------------
