@@ -1682,6 +1682,17 @@ Image address:
    https://llm-assets.readthedocs.io/en/latest/_images/ragflow-knowledgebase6.png
 
 
+ragflow-record.png
+---------------------------------
+.. figure:: ../../assets/mddoc-video-preview/ragflow-record.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/ragflow-record.png
+
+
 ragflow-record.mp4
 ---------------------------------
 .. figure:: ../../assets/quickstart/RAGFlow_quickstart/ragflow-record.mp4
