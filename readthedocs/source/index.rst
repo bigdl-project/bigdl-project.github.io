@@ -1702,3 +1702,25 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/ragflow-record.mp4
+
+
+knowledge_graph_1.png
+---------------------------------
+.. figure:: ../../assets/quickstart/graphrag_quickstart/knowledge_graph_1.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/knowledge_graph_1.png
+
+
+knowledge_graph_2.png
+---------------------------------
+.. figure:: ../../assets/quickstart/graphrag_quickstart/knowledge_graph_2.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/knowledge_graph_2.png
