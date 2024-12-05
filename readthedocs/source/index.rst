@@ -1724,3 +1724,14 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/knowledge_graph_2.png
+
+
+npu_llama3.2-3B.gif
+---------------------------------
+.. figure:: ../../assets/readme/npu_llama3.2-3B.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/npu_llama3.2-3B.gif
