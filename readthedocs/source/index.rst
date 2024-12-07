@@ -1735,3 +1735,14 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/npu_llama3.2-3B.gif
+
+
+arc_qwen2.5-14B_q4_0_llamacpp.gif
+---------------------------------
+.. figure:: ../../assets/readme/arc_qwen2.5-14B_q4_0_llamacpp.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/arc_qwen2.5-14B_q4_0_llamacpp.gif
