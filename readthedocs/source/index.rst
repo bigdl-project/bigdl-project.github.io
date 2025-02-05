@@ -1451,17 +1451,6 @@ Image address:
 2arc_DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gif
 --------------------------------------------
 
-.. figure:: ../../assets/readme/2arc_qwen1.5-32B_fp6_fastchat.gif
-
-Image address:
-
-.. code-block::
-
-  https://llm-assets.readthedocs.io/en/latest/_images/2arc_qwen1.5-32B_fp6_fastchat.gif
-
-arc_llama3-8B_fp8_textwebui.gif
----------------------------------
-
 .. figure:: ../../assets/readme/2arc_DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gif
 
 Image address:
@@ -1469,6 +1458,17 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/2arc_DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gif
+
+arc_llama3-8B_fp8_textwebui.gif
+---------------------------------
+
+.. figure:: ../../assets/readme/arc_llama3-8B_fp8_textwebui.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/arc_llama3-8B_fp8_textwebui.gif
 
 
 iris_phi3-3.8B_q4_0_llamacpp_long.gif
