@@ -1745,3 +1745,14 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/npu_llama3.2-3B.gif
+
+
+start_ollama.png
+---------------------------------
+.. figure:: ../../assets/quickstart/ollama_portable_zip/start_ollama.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/start_ollama.png
