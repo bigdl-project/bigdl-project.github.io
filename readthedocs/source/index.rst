@@ -1747,12 +1747,23 @@ Image address:
   https://llm-assets.readthedocs.io/en/latest/_images/npu_llama3.2-3B.gif
 
 
-start_ollama.png
+ollama_portable_start_ollama.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/ollama_portable_zip/start_ollama.png
+.. figure:: ../../assets/quickstart/ollama_portable_zip/ollama_portable_start_ollama.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/start_ollama.png
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_portable_start_ollama.png
+
+
+ollama_portable_run_ollama.png
+---------------------------------
+.. figure:: ../../assets/quickstart/ollama_portable_zip/ollama_portable_run_ollama.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_portable_run_ollama.png
