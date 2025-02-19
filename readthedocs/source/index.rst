@@ -1767,3 +1767,25 @@ Image address:
 .. code-block::
 
   https://llm-assets.readthedocs.io/en/latest/_images/ollama_portable_run_ollama.png
+
+
+ollama_portable_start_ollama_ubuntu.png
+---------------------------------
+.. figure:: ../../assets/quickstart/ollama_portable_zip/ollama_portable_start_ollama_ubuntu.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_portable_start_ollama_ubuntu.png
+
+
+ollama_portable_run_ollama_ubuntu.png
+---------------------------------
+.. figure:: ../../assets/quickstart/ollama_portable_zip/ollama_portable_run_ollama_ubuntu.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_portable_run_ollama_ubuntu.png
