@@ -1792,12 +1792,12 @@ Image address:
 
 
 
-ollama_portable_start_ollama_multi_gpus.png
+ollama_portable_multi_gpus.png
 ---------------------------------
-.. figure:: ../../assets/quickstart/ollama_portable_zip/ollama_portable_start_ollama_multi_gpus.png
+.. figure:: ../../assets/quickstart/ollama_portable_zip/ollama_portable_multi_gpus.png
 
 Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/ollama_portable_start_ollama_multi_gpus.png
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_portable_multi_gpus.png
