@@ -1459,6 +1459,18 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/2arc_DeepSeek-R1-Distill-Qwen-32B-Q4_K_M.gif
 
+
+2_Arc_DeepSeek-R1-671B-Q4-falsh_moe.gif
+--------------------------------------------
+
+.. figure:: ../../assets/readme/2_Arc_r1-671B-Q4-falsh_moe.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/2_Arc_r1-671B-Q4-falsh_moe.gif
+
 arc_llama3-8B_fp8_textwebui.gif
 ---------------------------------
 
