@@ -1845,7 +1845,7 @@ Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/ollama_portable_start_ollama_new.png
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_portable_start_ollama_win_new.png
 
 
 ollama_portable_run_ollama_win_new.png
