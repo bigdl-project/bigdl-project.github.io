@@ -1834,4 +1834,48 @@ Image address:
 
 .. code-block::
 
-  https://llm-assets.readthedocs.io/en/latest/_images/ollama_portable_run_ollama_new.png
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_portable_run_ollama_win_new.png
+
+
+ollama_portable_start_ollama_win_new.png
+---------------------------------
+.. figure:: ../../assets/quickstart/ollama_portable_zip/ollama_portable_start_ollama_win_new.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_portable_start_ollama_new.png
+
+
+ollama_portable_run_ollama_win_new.png
+---------------------------------
+.. figure:: ../../assets/quickstart/ollama_portable_zip/ollama_portable_run_ollama_win_new.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_portable_run_ollama_win_new.png
+
+
+ollama_portable_start_ollama_ubuntu_new.png
+---------------------------------
+.. figure:: ../../assets/quickstart/ollama_portable_zip/ollama_portable_start_ollama_ubuntu_new.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_portable_start_ollama_ubuntu.png
+
+
+ollama_portable_run_ollama_ubuntu_new.png
+---------------------------------
+.. figure:: ../../assets/quickstart/ollama_portable_zip/ollama_portable_run_ollama_ubuntu_new.png
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/ollama_portable_run_ollama_ubuntu_new.png
