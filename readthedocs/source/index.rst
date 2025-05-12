@@ -1035,6 +1035,16 @@ Image address:
 
   https://llm-assets.readthedocs.io/en/latest/_images/ollama-linux-arc.mp4
 
+FlashMoE-Qwen3-235B.gif
+---------------------------------
+.. figure:: ../../assets/quickstart/flashmoe_quickstart/FlashMoE-Qwen3-235B.gif
+
+Image address:
+
+.. code-block::
+
+  https://llm-assets.readthedocs.io/en/latest/_images/FlashMoE-Qwen3-235B.gif
+
 code-gen.mp4
 ---------------------------------
 .. figure:: ../../assets/quickstart/continue_quickstart/code-gen.mp4
